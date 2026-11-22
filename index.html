@@ -994,6 +994,10 @@
           <span class="stats-sep">|</span>
           <span class="stat-xp" title="Points">⚡ <span id="hdr-xp">0</span></span>
         </div>
+        <button id="hdr-voice-btn" class="stats-pill" type="button" title="Moteur vocal Kokoro Cloud" style="cursor:pointer;border-color:#bbf7d0;background:#f0fdf4;padding:6px 10px;">
+          <span id="hdr-voice-icon">🎙️</span>
+          <span id="hdr-voice-label" style="font-weight:700;font-size:11px;color:#166534;">Kokoro ✨</span>
+        </button>
         <button id="btn-open-settings" class="icon-btn" type="button" aria-label="Réglages">
           ⚙️
           <span id="hdr-api-dot" class="api-dot hidden"></span>
@@ -1444,6 +1448,57 @@
           <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;"></div>
         </div>
 
+        <!-- BLOC MOTEUR VOCAL KOKORO CLOUD (HUGGING FACE) -->
+        <div class="settings-box" style="background:#f0fdf4;border-color:#bbf7d0;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong style="font-size:13px;color:#166534;">🎙️ Voix IA Réaliste (Kokoro Cloud)</strong>
+            <span id="set-voice-badge" class="badge badge-emerald">Actif ✨</span>
+          </div>
+          <p style="font-size:12px;color:#15803d;margin-top:2px;">
+            Génère la vraie voix humaine Kokoro directement depuis Hugging Face GPU. Zéro freeze sur téléphone, son studio ultra-naturel avec respiration (US/UK).
+          </p>
+          <div class="btn-row" style="margin-top:6px;">
+            <button id="btn-voice-kokoro" type="button" class="btn btn-primary btn-sm flex-1">✨ Kokoro Cloud (Humain)</button>
+            <button id="btn-voice-browser" type="button" class="btn btn-secondary btn-sm flex-1">💻 Navigateur (Secours)</button>
+          </div>
+
+          <div id="kokoro-settings-group" style="margin-top:8px;">
+            <div>
+              <label for="input-hf-token" class="prompt-label" style="color:#166534;">Clé Hugging Face (hf_...)</label>
+              <div class="input-with-btn">
+                <input id="input-hf-token" type="password" class="text-input" placeholder="hf_...">
+                <button id="btn-toggle-hf-vis" type="button" class="eye-btn" aria-label="Afficher la clé">👁️</button>
+              </div>
+            </div>
+
+            <div style="margin-top:6px;">
+              <label for="select-kokoro-voice" class="prompt-label" style="color:#166534;">Voix Kokoro sélectionnée</label>
+              <select id="select-kokoro-voice" class="select-input" style="width:100%;">
+                <optgroup label="🇺🇸 Voix Américaines (en-US)">
+                  <option value="af_heart">🇺🇸 Heart (Femme, chaleureuse & humaine) ⭐ Recommandée</option>
+                  <option value="af_bella">🇺🇸 Bella (Femme, dynamique)</option>
+                  <option value="af_nicole">🇺🇸 Nicole (Femme, posée)</option>
+                  <option value="af_sky">🇺🇸 Sky (Femme, douce)</option>
+                  <option value="am_adam">🇺🇸 Adam (Homme, dynamique & naturel)</option>
+                  <option value="am_michael">🇺🇸 Michael (Homme, posé & grave)</option>
+                </optgroup>
+                <optgroup label="🇬🇧 Voix Britanniques (en-GB)">
+                  <option value="bf_emma">🇬🇧 Emma (Femme, accent British parfait) ⭐ Recommandée</option>
+                  <option value="bf_isabella">🇬🇧 Isabella (Femme, British douce)</option>
+                  <option value="bm_george">🇬🇧 George (Homme, accent British naturel)</option>
+                  <option value="bm_daniel">🇬🇧 Daniel (Homme, British posé)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="btn-row" style="margin-top:8px;">
+              <button id="btn-save-hf" type="button" class="btn btn-primary btn-sm flex-1" style="background:#166534;border:none;">Enregistrer</button>
+              <button id="btn-test-kokoro" type="button" class="btn btn-secondary btn-sm flex-1">🔊 Tester Kokoro</button>
+            </div>
+            <div id="kokoro-status-text" class="hidden" style="font-size:11px;font-weight:600;margin-top:4px;"></div>
+          </div>
+        </div>
+
         <div>
           <div class="prompt-label">Accent de la voix anglaise</div>
           <div class="btn-row" style="margin-top:4px;">
@@ -1496,6 +1551,10 @@
       listenSpeed: 1,
       apiKey: "",
       groqModel: "llama-3.3-70b-versatile",
+      hfToken: "",
+      voiceEngine: "kokoro",
+      kokoroVoiceUS: "af_heart",
+      kokoroVoiceUK: "bf_emma",
       aiItems: [],
       reviews: {},
       stats: { xp: 0, streak: 0, lastDate: null },
@@ -1517,6 +1576,10 @@
         if (["A2", "B1", "B2"].includes(d.level)) state.level = d.level;
         if (d.accent === "en-GB" || d.accent === "en-US") state.accent = d.accent;
         if (typeof d.apiKey === "string") state.apiKey = d.apiKey;
+        if (typeof d.hfToken === "string" && d.hfToken) state.hfToken = d.hfToken;
+        if (d.voiceEngine === "kokoro" || d.voiceEngine === "browser") state.voiceEngine = d.voiceEngine;
+        if (typeof d.kokoroVoiceUS === "string" && d.kokoroVoiceUS) state.kokoroVoiceUS = d.kokoroVoiceUS;
+        if (typeof d.kokoroVoiceUK === "string" && d.kokoroVoiceUK) state.kokoroVoiceUK = d.kokoroVoiceUK;
         if (typeof d.groqModel === "string" && d.groqModel) state.groqModel = d.groqModel;
         if (Array.isArray(d.aiItems)) state.aiItems = d.aiItems;
         if (d.reviews && typeof d.reviews === "object") state.reviews = d.reviews;
@@ -1537,6 +1600,10 @@
           accent: state.accent,
           apiKey: state.apiKey,
           groqModel: state.groqModel,
+          hfToken: state.hfToken,
+          voiceEngine: state.voiceEngine,
+          kokoroVoiceUS: state.kokoroVoiceUS,
+          kokoroVoiceUK: state.kokoroVoiceUK,
           aiItems: state.aiItems,
           reviews: state.reviews,
           stats: state.stats
@@ -1646,13 +1713,160 @@
       updateHeader();
     }
 
-    function stopSpeech() {
-      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-      const eq = $("listen-eq");
-      if (eq) eq.classList.remove("eq-playing");
+    // ==================== MOTEUR VOCAL KOKORO CLOUD (HUGGING FACE) & SYSTÈME ====================
+    const kokoroAudioCache = new Map();
+    let activeKokoroAudio = null;
+    let isKokoroGenerating = false;
+
+    function updateKokoroUIState() {
+      const isKokoro = state.voiceEngine === "kokoro";
+      const hasToken = !!(state.hfToken && state.hfToken.trim());
+      const btnK = $("btn-voice-kokoro");
+      const btnB = $("btn-voice-browser");
+      const group = $("kokoro-settings-group");
+      const badge = $("set-voice-badge");
+      const hdrBadge = $("hdr-voice-label");
+      const tokenInput = $("input-hf-token");
+      const voiceSelect = $("select-kokoro-voice");
+
+      if (btnK) btnK.className = isKokoro ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
+      if (btnB) btnB.className = !isKokoro ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
+      if (group) group.style.display = isKokoro ? "block" : "none";
+      if (tokenInput && state.hfToken) tokenInput.value = state.hfToken;
+
+      if (voiceSelect) {
+        const isUK = state.accent === "en-GB";
+        voiceSelect.value = isUK ? (state.kokoroVoiceUK || "bf_emma") : (state.kokoroVoiceUS || "af_heart");
+      }
+
+      if (badge) {
+        if (!isKokoro) {
+          badge.textContent = "Standard 💻";
+          badge.className = "badge badge-muted";
+        } else if (hasToken) {
+          badge.textContent = "Kokoro Cloud ⚡";
+          badge.className = "badge badge-emerald";
+        } else {
+          badge.textContent = "Jeton requis ⚠️";
+          badge.className = "badge badge-rose";
+        }
+      }
+
+      if (hdrBadge) {
+        hdrBadge.textContent = isKokoro && hasToken ? "Kokoro ✨" : "Système";
+      }
     }
 
-    // Sélecteur intelligent des meilleures voix neurales et naturelles disponibles sur l'appareil (iOS / Android / Chrome / Safari / Edge)
+    async function fetchKokoroAudioUrl(text, voice, speed) {
+      const token = (state.hfToken || "").trim();
+      if (!token) throw new Error("Jeton Hugging Face manquant");
+
+      // 1. Soumission de la requête au serveur GPU Hugging Face
+      const postRes = await fetch("https://remsky-kokoro-tts-zero.hf.space/gradio_api/call/generate_speech_from_ui", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          data: [text, [voice], speed || 1.0]
+        })
+      });
+
+      if (!postRes.ok) {
+        throw new Error(`Erreur HF (${postRes.status})`);
+      }
+
+      const { event_id } = await postRes.json();
+      if (!event_id) throw new Error("ID de tâche manquant");
+
+      // 2. Récupération de l'onde audio générée
+      const streamRes = await fetch(`https://remsky-kokoro-tts-zero.hf.space/gradio_api/call/generate_speech_from_ui/${event_id}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+
+      if (!streamRes.ok) throw new Error(`Erreur génération (${streamRes.status})`);
+      const streamText = await streamRes.text();
+
+      let audioUrl = null;
+      const lines = streamText.split("\n");
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i].startsWith("data:")) {
+          try {
+            const parsed = JSON.parse(lines[i].slice(5).trim());
+            if (Array.isArray(parsed) && parsed[0] && parsed[0].url) {
+              audioUrl = parsed[0].url;
+            }
+          } catch (e) {}
+        }
+      }
+
+      if (!audioUrl) throw new Error("Aucun lien audio produit");
+      return audioUrl;
+    }
+
+    // Pré-chargement automatique silencieux pour latence 0 ms dès que l'utilisateur clique
+    function preloadKokoroAudio(text, langCode, speed) {
+      if (state.voiceEngine !== "kokoro" || !state.hfToken || !text) return;
+      const cleanText = text.trim();
+      const isUK = (langCode || state.accent) === "en-GB";
+      const voice = isUK ? (state.kokoroVoiceUK || "bf_emma") : (state.kokoroVoiceUS || "af_heart");
+      const sp = speed || 1.0;
+      const cacheKey = `${voice}_${sp}_${cleanText}`;
+
+      if (kokoroAudioCache.has(cacheKey)) return;
+
+      fetchKokoroAudioUrl(cleanText, voice, sp)
+        .then(url => {
+          kokoroAudioCache.set(cacheKey, url);
+          const preAudio = new Audio(url);
+          preAudio.preload = "auto";
+        })
+        .catch(() => {});
+    }
+
+    function stopSpeech() {
+      if (activeKokoroAudio) {
+        try {
+          activeKokoroAudio.pause();
+          activeKokoroAudio.currentTime = 0;
+        } catch (e) {}
+        activeKokoroAudio = null;
+      }
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+      const eq = $("listen-eq");
+      if (eq) eq.classList.remove("eq-playing");
+      isKokoroGenerating = false;
+    }
+
+    function playDirectAudioUrl(url, onEnd) {
+      const audio = new Audio(url);
+      activeKokoroAudio = audio;
+
+      const eq = $("listen-eq");
+      if (eq) eq.classList.add("eq-playing");
+
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        if (activeKokoroAudio === audio) activeKokoroAudio = null;
+        if (eq) eq.classList.remove("eq-playing");
+        if (onEnd) onEnd();
+      };
+
+      audio.onended = finish;
+      audio.onerror = finish;
+      audio.play().catch(err => {
+        console.warn("Échec lecture audio direct:", err);
+        finish();
+      });
+    }
+
     function pickBestVoice(targetLang) {
       if (!("speechSynthesis" in window)) return null;
       const voices = window.speechSynthesis.getVoices() || [];
@@ -1661,45 +1875,31 @@
       const isEnglish = targetLang.startsWith("en");
       const isFrench = targetLang.startsWith("fr");
       const isUK = targetLang === "en-GB";
-
-      // Mots-clés désignant les voix haute fidélité (Neural, Natural, Premium, Siri, Google, Samantha, Daniel, Thomas, Audrey)
       const premiumKeywords = ["neural", "natural", "premium", "enhanced", "siri", "google", "samantha", "daniel", "arthur", "karen", "serena", "oliver", "audrey", "thomas", "amelie", "aurelie", "julie"];
 
-      // 1. Filtrer les voix de la langue exacte demandée
       let matchingVoices = voices.filter(v => v.lang.replace("_", "-").toLowerCase() === targetLang.toLowerCase());
-
-      // Si pas de correspondance exacte pour l'accent demandé, élargir à la langue principale
       if (!matchingVoices.length) {
         matchingVoices = voices.filter(v => v.lang.toLowerCase().startsWith(targetLang.slice(0, 2).toLowerCase()));
       }
-
       if (!matchingVoices.length) return null;
 
-      // 2. Trouver la voix avec le plus haut score de réalisme
       let best = matchingVoices[0];
       let bestScore = -1;
 
       matchingVoices.forEach(v => {
         let score = 0;
         const name = (v.name || "").toLowerCase();
-
-        // Bonus si c'est une voix marquée Premium / Natural / Neural
         premiumKeywords.forEach(kw => {
           if (name.includes(kw)) score += 30;
         });
-
-        // Voix spécifiques iOS réputées très naturelles
         if (isEnglish) {
           if (name.includes("samantha") || name.includes("daniel") || name.includes("karen") || name.includes("serena")) score += 40;
           if (isUK && (name.includes("daniel") || name.includes("oliver") || name.includes("george") || name.includes("uk"))) score += 35;
           if (!isUK && (name.includes("samantha") || name.includes("alex") || name.includes("us") || name.includes("ava"))) score += 35;
         }
-
         if (isFrench) {
           if (name.includes("thomas") || name.includes("audrey") || name.includes("amelie") || name.includes("aurelie") || name.includes("julie")) score += 40;
         }
-
-        // Privilégier les voix en ligne ou système haute qualité
         if (!v.localService) score += 10;
         if (v.default) score += 5;
 
@@ -1708,30 +1908,22 @@
           best = v;
         }
       });
-
       return best;
     }
 
-    function speakText(text, langCode, rate, onEnd) {
+    function speakWithBrowser(text, targetLang, rate, onEnd) {
       if (!("speechSynthesis" in window)) {
         showToast("Synthèse vocale non disponible.");
         if (onEnd) onEnd();
         return;
       }
-      stopSpeech();
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
-      }
       const u = new SpeechSynthesisUtterance(text);
-      const targetLang = langCode || state.accent;
       u.lang = targetLang;
       u.rate = rate || 1.0;
       u.pitch = 1.0;
 
       const voice = pickBestVoice(targetLang);
-      if (voice) {
-        u.voice = voice;
-      }
+      if (voice) u.voice = voice;
 
       let done = false;
       const finish = () => {
@@ -1740,10 +1932,58 @@
           if (onEnd) onEnd();
         }
       };
-
       u.onend = finish;
       u.onerror = finish;
       window.speechSynthesis.speak(u);
+    }
+
+    async function speakText(text, langCode, rate, onEnd) {
+      stopSpeech();
+      if (!text || !text.trim()) {
+        if (onEnd) onEnd();
+        return;
+      }
+
+      const cleanText = text.trim();
+      const targetLang = langCode || state.accent;
+      const speed = rate || 1.0;
+      const isEnglish = targetLang.startsWith("en");
+
+      // 1. Tenter Kokoro Cloud (vraie voix humaine Hugging Face)
+      if (state.voiceEngine === "kokoro" && isEnglish && state.hfToken) {
+        const isUK = targetLang === "en-GB";
+        const voice = isUK ? (state.kokoroVoiceUK || "bf_emma") : (state.kokoroVoiceUS || "af_heart");
+        const cacheKey = `${voice}_${speed}_${cleanText}`;
+
+        // Si déjà en cache -> Lecture 0 ms immédiate
+        if (kokoroAudioCache.has(cacheKey)) {
+          playDirectAudioUrl(kokoroAudioCache.get(cacheKey), onEnd);
+          return;
+        }
+
+        // Sinon, génération via l'API Hugging Face
+        isKokoroGenerating = true;
+        showToast("🎙️ Kokoro Cloud génère la voix...");
+        const eq = $("listen-eq");
+        if (eq) eq.classList.add("eq-playing");
+
+        try {
+          const audioUrl = await fetchKokoroAudioUrl(cleanText, voice, speed);
+          kokoroAudioCache.set(cacheKey, audioUrl);
+          if (isKokoroGenerating) {
+            playDirectAudioUrl(audioUrl, onEnd);
+            return;
+          }
+        } catch (err) {
+          console.warn("Échec Kokoro Cloud, bascule sur la voix système:", err);
+          showToast("⚠️ Kokoro Cloud indisponible, voix système utilisée.");
+        } finally {
+          isKokoroGenerating = false;
+        }
+      }
+
+      // 2. Secours transparent du navigateur
+      speakWithBrowser(cleanText, targetLang, speed, onEnd);
     }
 
     function speakEnglish(text, rate, onEnd) {
@@ -2364,6 +2604,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function loadSpeakItem(item) {
       if (!item) return;
       state.currentSpeak = item;
+      preloadKokoroAudio(item.en, state.accent, 1.0);
       $("speak-lvl-badge").textContent = item.level;
       $("speak-theme-badge").textContent = item.theme;
       $("speak-ai-badge").classList.toggle("hidden", !item.isAi);
@@ -2378,6 +2619,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function loadListenItem(item) {
       if (!item) return;
       state.currentListen = item;
+      preloadKokoroAudio(item.en, state.accent, state.listenSpeed);
       $("listen-lvl-badge").textContent = item.level;
       $("listen-theme-badge").textContent = item.theme;
       $("listen-ai-badge").classList.toggle("hidden", !item.isAi);
@@ -2596,6 +2838,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       b.textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
       b.className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
       updateAccentButtons();
+      updateKokoroUIState();
       $("settings-modal").classList.remove("hidden");
     }
 
@@ -2866,8 +3109,69 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         }
       });
 
-      $("btn-set-us").addEventListener("click", () => { state.accent = "en-US"; saveState(); updateAccentButtons(); showToast("🇺🇸 US"); });
-      $("btn-set-gb").addEventListener("click", () => { state.accent = "en-GB"; saveState(); updateAccentButtons(); showToast("🇬🇧 UK"); });
+      $("btn-set-us").addEventListener("click", () => {
+        state.accent = "en-US";
+        saveState();
+        updateAccentButtons();
+        updateKokoroUIState();
+        showToast("🇺🇸 Accent US sélectionné");
+      });
+      $("btn-set-gb").addEventListener("click", () => {
+        state.accent = "en-GB";
+        saveState();
+        updateAccentButtons();
+        updateKokoroUIState();
+        showToast("🇬🇧 Accent UK sélectionné");
+      });
+
+      // Gestionnaires Kokoro Cloud
+      $("hdr-voice-btn").addEventListener("click", openSettingsModal);
+
+      $("btn-toggle-hf-vis").addEventListener("click", () => {
+        const inp = $("input-hf-token");
+        inp.type = inp.type === "password" ? "text" : "password";
+      });
+
+      $("btn-voice-kokoro").addEventListener("click", () => {
+        state.voiceEngine = "kokoro";
+        saveState();
+        updateKokoroUIState();
+        showToast("✨ Voix Kokoro Cloud activée");
+      });
+
+      $("btn-voice-browser").addEventListener("click", () => {
+        state.voiceEngine = "browser";
+        saveState();
+        updateKokoroUIState();
+        showToast("💻 Voix système du navigateur activée");
+      });
+
+      $("btn-save-hf").addEventListener("click", () => {
+        state.hfToken = $("input-hf-token").value.trim();
+        saveState();
+        updateKokoroUIState();
+        showToast(state.hfToken ? "Jeton Hugging Face enregistré !" : "Jeton supprimé");
+      });
+
+      $("select-kokoro-voice").addEventListener("change", (e) => {
+        const val = e.target.value;
+        if (state.accent === "en-GB") state.kokoroVoiceUK = val;
+        else state.kokoroVoiceUS = val;
+        saveState();
+        updateKokoroUIState();
+        showToast("Voix Kokoro mise à jour");
+      });
+
+      $("btn-test-kokoro").addEventListener("click", async () => {
+        const isUK = state.accent === "en-GB";
+        const sampleText = isUK
+          ? "Hello there! Welcome to English Coach. I am your native British AI tutor, powered by Kokoro."
+          : "Hello! Welcome to English Coach. I am your native American AI tutor, powered by Kokoro.";
+        showToast("🔊 Test Kokoro Cloud en cours...");
+        speakText(sampleText, state.accent, 1.0, () => {
+          showToast("✅ Test terminé !");
+        });
+      });
 
       $("btn-reset-ask").addEventListener("click", () => {
         $("btn-reset-ask").classList.add("hidden");
