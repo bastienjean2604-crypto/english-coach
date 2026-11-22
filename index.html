@@ -1648,6 +1648,66 @@
       if (eq) eq.classList.remove("eq-playing");
     }
 
+    // Sélecteur intelligent des meilleures voix neurales et naturelles disponibles sur l'appareil (iOS / Android / Chrome / Safari / Edge)
+    function pickBestVoice(targetLang) {
+      if (!("speechSynthesis" in window)) return null;
+      const voices = window.speechSynthesis.getVoices() || [];
+      if (!voices.length) return null;
+
+      const isEnglish = targetLang.startsWith("en");
+      const isFrench = targetLang.startsWith("fr");
+      const isUK = targetLang === "en-GB";
+
+      // Mots-clés désignant les voix haute fidélité (Neural, Natural, Premium, Siri, Google, Samantha, Daniel, Thomas, Audrey)
+      const premiumKeywords = ["neural", "natural", "premium", "enhanced", "siri", "google", "samantha", "daniel", "arthur", "karen", "serena", "oliver", "audrey", "thomas", "amelie", "aurelie", "julie"];
+
+      // 1. Filtrer les voix de la langue exacte demandée
+      let matchingVoices = voices.filter(v => v.lang.replace("_", "-").toLowerCase() === targetLang.toLowerCase());
+
+      // Si pas de correspondance exacte pour l'accent demandé, élargir à la langue principale
+      if (!matchingVoices.length) {
+        matchingVoices = voices.filter(v => v.lang.toLowerCase().startsWith(targetLang.slice(0, 2).toLowerCase()));
+      }
+
+      if (!matchingVoices.length) return null;
+
+      // 2. Trouver la voix avec le plus haut score de réalisme
+      let best = matchingVoices[0];
+      let bestScore = -1;
+
+      matchingVoices.forEach(v => {
+        let score = 0;
+        const name = (v.name || "").toLowerCase();
+
+        // Bonus si c'est une voix marquée Premium / Natural / Neural
+        premiumKeywords.forEach(kw => {
+          if (name.includes(kw)) score += 30;
+        });
+
+        // Voix spécifiques iOS réputées très naturelles
+        if (isEnglish) {
+          if (name.includes("samantha") || name.includes("daniel") || name.includes("karen") || name.includes("serena")) score += 40;
+          if (isUK && (name.includes("daniel") || name.includes("oliver") || name.includes("george") || name.includes("uk"))) score += 35;
+          if (!isUK && (name.includes("samantha") || name.includes("alex") || name.includes("us") || name.includes("ava"))) score += 35;
+        }
+
+        if (isFrench) {
+          if (name.includes("thomas") || name.includes("audrey") || name.includes("amelie") || name.includes("aurelie") || name.includes("julie")) score += 40;
+        }
+
+        // Privilégier les voix en ligne ou système haute qualité
+        if (!v.localService) score += 10;
+        if (v.default) score += 5;
+
+        if (score > bestScore) {
+          bestScore = score;
+          best = v;
+        }
+      });
+
+      return best;
+    }
+
     function speakText(text, langCode, rate, onEnd) {
       if (!("speechSynthesis" in window)) {
         showToast("Synthèse vocale non disponible.");
@@ -1659,9 +1719,13 @@
       const targetLang = langCode || state.accent;
       u.lang = targetLang;
       u.rate = rate || 1.0;
-      const voices = window.speechSynthesis.getVoices();
-      const voice = voices.find(v => v.lang === targetLang) || voices.find(v => v.lang.startsWith(targetLang.slice(0, 2)));
-      if (voice) u.voice = voice;
+      u.pitch = 1.0;
+
+      const voice = pickBestVoice(targetLang);
+      if (voice) {
+        u.voice = voice;
+      }
+
       if (onEnd) { u.onend = onEnd; u.onerror = onEnd; }
       window.speechSynthesis.speak(u);
     }
