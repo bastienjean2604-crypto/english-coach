@@ -1,0 +1,2746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>English Coach — Oral, Écoute & Prépa (Groq)</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-soft: #eef2ff;
+      --violet: #7c3aed;
+      --violet-soft: #f5f3ff;
+      --emerald: #059669;
+      --emerald-soft: #ecfdf5;
+      --amber: #d97706;
+      --amber-soft: #fffbeb;
+      --rose: #e11d48;
+      --rose-soft: #fff1f2;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      padding-bottom: 88px;
+      overscroll-behavior-y: none;
+    }
+
+    .hidden { display: none !important; }
+
+    /* ===== HEADER ===== */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-top {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--violet));
+      color: #fff;
+      font-weight: 900;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.28);
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .stats-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      padding: 6px 11px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .stats-sep { color: #cbd5e1; }
+    .stat-xp { color: var(--primary); }
+
+    .icon-btn {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--text);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.12s, background 0.15s;
+    }
+
+    .icon-btn:active { transform: scale(0.93); }
+    .icon-btn:hover { background: #e2e8f0; }
+
+    .api-dot {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      border: 2px solid #fff;
+    }
+
+    /* ===== FILTERS BAR ===== */
+    .filters-bar {
+      background: var(--surface-soft);
+      border-top: 1px solid var(--border);
+    }
+
+    .filters-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .level-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      background: #e2e8f0;
+      padding: 4px;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .lvl-btn {
+      border: none;
+      background: transparent;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 7px 14px;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .lvl-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+    }
+
+    .select-input, .text-input, .textarea-input {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 9px 12px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .select-input:focus, .text-input:focus, .textarea-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14);
+    }
+
+    .theme-select { flex: 1; min-width: 150px; }
+
+    /* ===== MAIN CONTAINER ===== */
+    .main-container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.18s ease-out; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== CARDS & BADGES ===== */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .badge-primary { background: var(--primary-soft); color: var(--primary); }
+    .badge-emerald { background: var(--emerald-soft); color: var(--emerald); }
+    .badge-violet { background: var(--violet-soft); color: var(--violet); }
+    .badge-muted { background: #f1f5f9; color: #475569; }
+    .badge-amber { background: var(--amber-soft); color: var(--amber); }
+
+    .card-tools { display: flex; align-items: center; gap: 6px; }
+
+    .tool-btn {
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: #475569;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 11px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.12s, background 0.15s;
+    }
+
+    .tool-btn:active { transform: scale(0.95); }
+    .tool-btn.fav-active { background: var(--amber-soft); border-color: #fde68a; color: var(--amber); }
+    .tool-btn.hint-btn { background: var(--amber-soft); border-color: #fde68a; color: #b45309; }
+
+    .prompt-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .sentence-display {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+
+    .hint-box {
+      background: var(--amber-soft);
+      border: 1px solid #fde68a;
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #78350f;
+    }
+
+    .hint-box p + p { margin-top: 6px; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.12s, background 0.15s, opacity 0.15s;
+    }
+
+    .btn:active { transform: scale(0.97); }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .btn-primary {
+      width: 100%;
+      padding: 15px 18px;
+      background: linear-gradient(135deg, var(--primary), var(--violet));
+      color: #fff;
+      font-size: 15px;
+      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
+    }
+
+    .btn-emerald {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--emerald);
+      color: #fff;
+      font-size: 14px;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.22);
+    }
+
+    .btn-secondary {
+      padding: 11px 14px;
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 13px;
+    }
+
+    .btn-violet-soft {
+      padding: 11px 14px;
+      background: var(--violet-soft);
+      color: var(--violet);
+      border: 1px solid #ddd6fe;
+      font-size: 13px;
+    }
+
+    .btn-sm {
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn-row .flex-1 { flex: 1; }
+
+    /* ===== AUDIO PLAYER (TAB 2) ===== */
+    .audio-stage {
+      background: linear-gradient(145deg, #0f172a, #1e1b4b);
+      color: #fff;
+      border-radius: 18px;
+      padding: 20px 16px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .eq-bars {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 6px;
+      height: 36px;
+      margin-bottom: 12px;
+    }
+
+    .eq-bar {
+      width: 6px;
+      height: 100%;
+      border-radius: 99px;
+      background: #818cf8;
+      transform-origin: bottom;
+      transform: scaleY(0.28);
+      transition: transform 0.2s;
+    }
+
+    .eq-bar:nth-child(even) { background: #34d399; }
+
+    .eq-playing .eq-bar:nth-child(1) { animation: eq 0.5s infinite ease-in-out; }
+    .eq-playing .eq-bar:nth-child(2) { animation: eq 0.42s infinite ease-in-out 0.1s; }
+    .eq-playing .eq-bar:nth-child(3) { animation: eq 0.58s infinite ease-in-out 0.18s; }
+    .eq-playing .eq-bar:nth-child(4) { animation: eq 0.46s infinite ease-in-out 0.08s; }
+    .eq-playing .eq-bar:nth-child(5) { animation: eq 0.54s infinite ease-in-out 0.2s; }
+    .eq-playing .eq-bar:nth-child(6) { animation: eq 0.44s infinite ease-in-out 0.12s; }
+
+    @keyframes eq {
+      0%, 100% { transform: scaleY(0.26); }
+      50% { transform: scaleY(1); }
+    }
+
+    .audio-status { font-size: 14px; font-weight: 700; }
+    .audio-sub { font-size: 11px; color: #cbd5e1; margin-top: 4px; }
+
+    .audio-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .play-main-btn {
+      padding: 11px 20px;
+      border-radius: 12px;
+      border: none;
+      background: #10b981;
+      color: #022c22;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .pill-toggle-group {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 3px;
+      border-radius: 11px;
+      gap: 3px;
+    }
+
+    .pill-toggle {
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 11px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .pill-toggle.active {
+      background: #fff;
+      color: #0f172a;
+    }
+
+    .prepa-controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      align-items: center;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      background: #e2e8f0;
+      padding: 3px;
+      border-radius: 11px;
+      gap: 3px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      background: var(--violet);
+      color: #fff;
+    }
+
+    /* ===== CORRECTION RESULT CARD ===== */
+    .result-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .result-banner {
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .banner-good { background: var(--emerald-soft); color: #065f46; }
+    .banner-mid { background: var(--primary-soft); color: #3730a3; }
+    .banner-warn { background: var(--amber-soft); color: #92400e; }
+    .banner-low { background: var(--rose-soft); color: #9f1239; }
+
+    .score-circle {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      color: #fff;
+      font-weight: 900;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .bg-good { background: var(--emerald); }
+    .bg-mid { background: var(--primary); }
+    .bg-warn { background: var(--amber); }
+    .bg-low { background: var(--rose); }
+
+    .result-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .verdict-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .verdict-title { font-size: 16px; font-weight: 800; }
+    .verdict-sub { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+
+    .latency-pill {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #334155;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+    }
+
+    .ai-loading-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--violet-soft);
+      border: 1px solid #ddd6fe;
+      color: #5b21b6;
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2.5px solid #c4b5fd;
+      border-top-color: var(--violet);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .diff-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .chip-ok { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 8px; }
+    .chip-wrong { background: #ffe4e6; color: #be123c; padding: 3px 8px; border-radius: 8px; text-decoration: line-through; }
+    .chip-miss { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 8px; border: 1px solid #fcd34d; }
+
+    .diff-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .user-audio-box {
+      background: #0f172a;
+      color: #fff;
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .user-audio-box audio { height: 34px; max-width: 100%; }
+
+    .ref-box {
+      background: var(--primary-soft);
+      border: 1px solid #c7d2fe;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .ref-sentence {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text);
+      margin-top: 4px;
+    }
+
+    .transcript-box {
+      background: #0f172a;
+      color: #fff;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .transcript-text {
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    .alts-box {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #c7d2fe;
+      font-size: 12px;
+      color: #334155;
+    }
+
+    .alts-box ul { padding-left: 18px; margin-top: 4px; }
+
+    .error-item {
+      background: var(--rose-soft);
+      border: 1px solid #fecdd3;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .error-pair {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .grammar-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .grammar-title {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .grammar-text { font-size: 13.5px; color: #334155; white-space: pre-line; }
+
+    .vocab-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .vocab-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 7px 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .vocab-chip strong { color: var(--primary); }
+    .vocab-chip span { color: var(--text-muted); }
+
+    /* ===== BANK TAB ===== */
+    .bank-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bank-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .bank-filter-row .select-input { flex: 1; min-width: 110px; }
+
+    .bank-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .bank-item-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .bank-fr { font-size: 14px; font-weight: 700; color: var(--text); }
+    .bank-en { font-size: 13px; font-weight: 600; color: var(--primary); margin-top: 3px; }
+    .bank-gram { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 6px; }
+
+    /* ===== BOTTOM NAV ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.05);
+    }
+
+    .bottom-nav-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      padding: 10px 4px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .nav-btn .nav-ico { font-size: 18px; line-height: 1; }
+    .nav-btn.active { color: var(--primary); font-weight: 800; }
+
+    /* ===== MODALS ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(3px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0;
+    }
+
+    @media (min-width: 600px) {
+      .modal-overlay { align-items: center; padding: 16px; }
+    }
+
+    .modal-sheet {
+      background: var(--surface);
+      width: 100%;
+      max-width: 500px;
+      border-radius: 24px 24px 0 0;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+    }
+
+    @media (min-width: 600px) {
+      .modal-sheet { border-radius: 24px; }
+    }
+
+    .modal-head {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-title { font-size: 16px; font-weight: 800; }
+    .modal-sub { font-size: 12px; color: var(--text-muted); }
+
+    .modal-body {
+      padding: 18px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .mic-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 0;
+    }
+
+    .mic-btn {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--violet));
+      color: #fff;
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(79, 70, 229, 0.35);
+      transition: transform 0.15s;
+    }
+
+    .mic-btn:active { transform: scale(0.92); }
+
+    .mic-btn.recording {
+      background: var(--rose);
+      animation: pulseMic 1.3s infinite;
+    }
+
+    @keyframes pulseMic {
+      0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.65); }
+      70% { box-shadow: 0 0 0 20px rgba(225, 29, 72, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+    }
+
+    .mic-status {
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .mic-status.recording { color: var(--rose); }
+
+    .alert-box {
+      background: var(--amber-soft);
+      border: 1px solid #fde68a;
+      color: #92400e;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+
+    .textarea-input {
+      width: 100%;
+      min-height: 86px;
+      resize: none;
+      font-size: 15px;
+    }
+
+    .settings-box {
+      background: var(--violet-soft);
+      border: 1px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .input-with-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-with-btn .text-input { width: 100%; padding-right: 40px; }
+
+    .eye-btn {
+      position: absolute;
+      right: 8px;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      top: 72px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background: #0f172a;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 99px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s, transform 0.22s;
+      z-index: 60;
+      max-width: 90vw;
+      text-align: center;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="app-header">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-logo">EC</div>
+        <div>
+          <div class="brand-title">English Coach</div>
+          <div class="brand-sub">Oral, Écoute & Prépa (Groq)</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="stats-pill">
+          <span title="Série">🔥 <span id="hdr-streak">0</span></span>
+          <span class="stats-sep">|</span>
+          <span class="stat-xp" title="Points">⚡ <span id="hdr-xp">0</span></span>
+        </div>
+        <button id="btn-open-settings" class="icon-btn" type="button" aria-label="Réglages">
+          ⚙️
+          <span id="hdr-api-dot" class="api-dot hidden"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Barre de filtres Niveau + Thème -->
+    <div id="global-filters-bar" class="filters-bar">
+      <div class="filters-inner">
+        <div class="level-group" role="group" aria-label="Niveau">
+          <button type="button" class="lvl-btn active" data-level="A2">A2</button>
+          <button type="button" class="lvl-btn" data-level="B1">B1</button>
+          <button type="button" class="lvl-btn" data-level="B2">B2</button>
+        </div>
+        <select id="theme-select" class="select-input theme-select" aria-label="Thème">
+          <option value="ALL">🎲 Tous les thèmes (Aléatoire)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENU PRINCIPAL ==================== -->
+  <main class="main-container">
+
+    <!-- ONGLET 1 : PARLER (FR -> EN) -->
+    <section id="tab-speak" class="tab-panel active">
+      <div class="card">
+        <div class="card-header">
+          <div class="badge-row">
+            <span id="speak-lvl-badge" class="badge badge-primary">A2</span>
+            <span id="speak-theme-badge" class="badge badge-muted">Vie quotidienne</span>
+            <span id="speak-ai-badge" class="badge badge-violet hidden">✨ IA</span>
+          </div>
+          <div class="card-tools">
+            <button id="btn-speak-fav" type="button" class="tool-btn" title="Favori">⭐</button>
+            <button id="btn-speak-hint" type="button" class="tool-btn hint-btn">💡 Indice</button>
+          </div>
+        </div>
+
+        <div class="prompt-label">Traduisez à l'oral en anglais :</div>
+        <h2 id="speak-fr-text" class="sentence-display"></h2>
+
+        <div id="speak-hint-box" class="hint-box hidden">
+          <p><strong>Grammaire :</strong> <span id="speak-hint-gram"></span></p>
+          <p><strong>Mots utiles :</strong> <span id="speak-hint-vocab"></span></p>
+        </div>
+
+        <button id="btn-speak-record" type="button" class="btn btn-primary">
+          <span>🎙️</span> <span>Traduire à l'oral</span>
+        </button>
+
+        <div class="btn-row">
+          <button id="btn-speak-next" type="button" class="btn btn-secondary flex-1">Phrase suivante ➡️</button>
+        </div>
+      </div>
+
+      <!-- Résultat Parler -->
+      <div id="speak-result" class="card result-card hidden">
+        <div id="speak-banner" class="result-banner banner-good">
+          <div>
+            <div class="verdict-row">
+              <span id="speak-verdict" class="verdict-title">Très bien !</span>
+              <span id="speak-latency" class="latency-pill">0 ms</span>
+            </div>
+            <div id="speak-substatus" class="verdict-sub">Analyse instantanée</div>
+          </div>
+          <div id="speak-score" class="score-circle bg-good">100%</div>
+        </div>
+
+        <div class="result-body">
+          <div id="speak-ai-loading" class="ai-loading-box hidden">
+            <div class="spinner"></div>
+            <span id="speak-ai-loading-text">Transcription Whisper + analyse Groq en cours...</span>
+          </div>
+
+          <div>
+            <div class="prompt-label">Comparaison mot à mot</div>
+            <div id="speak-diff" class="diff-box"></div>
+            <div class="diff-legend">
+              <span>🟢 Correct</span>
+              <span>🔴 Différence / en trop</span>
+              <span>🟡 Mot attendu</span>
+            </div>
+          </div>
+
+          <div id="speak-user-audio-wrap" class="user-audio-box hidden">
+            <span style="font-size:12px;font-weight:700;">🎧 Votre enregistrement</span>
+            <audio id="speak-user-audio" controls style="width:100%; margin-top:8px;"></audio>
+          </div>
+
+          <div class="ref-box">
+            <div class="prompt-label" style="color:var(--primary);">Formulation naturelle</div>
+            <div id="speak-ref-en" class="ref-sentence"></div>
+            <div id="speak-alts-wrap" class="alts-box hidden">
+              <strong>Autres formulations valides :</strong>
+              <ul id="speak-alts-list"></ul>
+            </div>
+            <div class="btn-row">
+              <button id="btn-speak-play-1x" type="button" class="btn btn-primary btn-sm" style="width:auto;box-shadow:none;">🔊 Écouter (1x)</button>
+              <button id="btn-speak-play-slow" type="button" class="btn btn-secondary btn-sm">🐢 Lent (0.75x)</button>
+            </div>
+          </div>
+
+          <div id="speak-errors-wrap" class="hidden">
+            <div class="prompt-label" style="color:var(--rose);">🔍 Erreurs & conseils précis</div>
+            <div id="speak-errors-list"></div>
+          </div>
+
+          <div class="grammar-box">
+            <div id="speak-gram-title" class="grammar-title">📚 Point de grammaire</div>
+            <div id="speak-gram-rule" class="grammar-text"></div>
+          </div>
+
+          <div>
+            <div class="prompt-label">🗂️ Vocabulaire clé (touchez pour écouter)</div>
+            <div id="speak-vocab-list" class="vocab-wrap"></div>
+          </div>
+
+          <button id="btn-speak-next-after" type="button" class="btn btn-emerald">Phrase suivante ➡️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONGLET 2 : ÉCOUTER (EN -> FR, 2 PHRASES) -->
+    <section id="tab-listen" class="tab-panel">
+      <div class="card">
+        <div class="card-header">
+          <div class="badge-row">
+            <span id="listen-lvl-badge" class="badge badge-emerald">A2</span>
+            <span id="listen-theme-badge" class="badge badge-muted">Voyage</span>
+            <span id="listen-ai-badge" class="badge badge-violet hidden">✨ IA</span>
+          </div>
+          <div class="card-tools">
+            <button id="btn-listen-fav" type="button" class="tool-btn" title="Favori">⭐</button>
+            <button id="btn-listen-next" type="button" class="tool-btn">🔀 Suivant</button>
+          </div>
+        </div>
+
+        <div class="audio-stage">
+          <div id="listen-eq" class="eq-bars">
+            <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
+            <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
+          </div>
+          <div id="listen-status" class="audio-status">Écoutez les 2 phrases en anglais</div>
+          <div class="audio-sub">Le texte anglais sera révélé après votre traduction en français</div>
+
+          <div class="audio-controls">
+            <button id="btn-listen-play" type="button" class="play-main-btn">▶️ Écouter</button>
+            <div class="pill-toggle-group">
+              <button type="button" class="pill-toggle active" data-speed="1">1x</button>
+              <button type="button" class="pill-toggle" data-speed="0.75">0.75x</button>
+            </div>
+            <div class="pill-toggle-group">
+              <button type="button" class="pill-toggle active" data-accent="en-US">🇺🇸 US</button>
+              <button type="button" class="pill-toggle" data-accent="en-GB">🇬🇧 UK</button>
+            </div>
+          </div>
+        </div>
+
+        <button id="btn-listen-record" type="button" class="btn btn-primary">
+          <span>🎙️</span> <span>Traduire en français</span>
+        </button>
+      </div>
+
+      <!-- Résultat Écouter -->
+      <div id="listen-result" class="card result-card hidden">
+        <div id="listen-banner" class="result-banner banner-good">
+          <div>
+            <div class="verdict-row">
+              <span id="listen-verdict" class="verdict-title">Bien compris !</span>
+              <span id="listen-latency" class="latency-pill">0 ms</span>
+            </div>
+            <div id="listen-substatus" class="verdict-sub">Transcription révélée</div>
+          </div>
+          <div id="listen-score" class="score-circle bg-good">95%</div>
+        </div>
+
+        <div class="result-body">
+          <div id="listen-ai-loading" class="ai-loading-box hidden">
+            <div class="spinner"></div>
+            <span id="listen-ai-loading-text">Transcription Whisper + analyse Groq en cours...</span>
+          </div>
+
+          <div class="transcript-box">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+              <span class="prompt-label" style="color:#a5b4fc;margin:0;">Transcription anglaise</span>
+              <button id="btn-listen-replay" type="button" class="btn btn-sm" style="background:rgba(255,255,255,0.16);color:#fff;">🔊 Réécouter</button>
+            </div>
+            <div id="listen-reveal-en" class="transcript-text"></div>
+          </div>
+
+          <div>
+            <div class="prompt-label">Votre traduction française</div>
+            <div id="listen-diff" class="diff-box"></div>
+          </div>
+
+          <div class="ref-box">
+            <div class="prompt-label" style="color:var(--primary);">Traduction française naturelle</div>
+            <div id="listen-ref-fr" class="ref-sentence" style="font-size:15px;"></div>
+            <div id="listen-alts-wrap" class="alts-box hidden">
+              <strong>Autres formulations :</strong>
+              <ul id="listen-alts-list"></ul>
+            </div>
+          </div>
+
+          <div id="listen-errors-wrap" class="hidden">
+            <div class="prompt-label" style="color:var(--rose);">🔍 Points à ajuster</div>
+            <div id="listen-errors-list"></div>
+          </div>
+
+          <div class="grammar-box">
+            <div id="listen-gram-title" class="grammar-title">📚 Point de grammaire</div>
+            <div id="listen-gram-rule" class="grammar-text"></div>
+          </div>
+
+          <div>
+            <div class="prompt-label">🗂️ Vocabulaire de l'extrait</div>
+            <div id="listen-vocab-list" class="vocab-wrap"></div>
+          </div>
+
+          <button id="btn-listen-next-after" type="button" class="btn btn-emerald">Audio suivant ➡️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONGLET 3 : PRÉPA ORAL (QUESTIONS SUR THÈMES SCIENTIFIQUES & SOCIÉTÉ) -->
+    <section id="tab-prepa" class="tab-panel">
+      <div class="card">
+        <div class="prepa-controls-row">
+          <select id="prepa-theme-select" class="select-input" style="flex:1; min-width:160px;" aria-label="Thème Prépa">
+            <option value="ALL">🎲 Tous les thèmes Prépa (Aléatoire)</option>
+          </select>
+          <div class="lang-switch" role="group" aria-label="Langue de réponse">
+            <button type="button" class="lang-btn active" data-prepa-lang="en">🇬🇧 Anglais</button>
+            <button type="button" class="lang-btn" data-prepa-lang="fr">🇫🇷 Français</button>
+          </div>
+        </div>
+
+        <div class="card-header">
+          <div class="badge-row">
+            <span class="badge badge-violet">🎓 Khôlle Prépa</span>
+            <span id="prepa-theme-badge" class="badge badge-muted">Intelligence Artificielle</span>
+          </div>
+          <div class="card-tools">
+            <button id="btn-prepa-gen" type="button" class="tool-btn" title="Générer une question IA">✨ Question IA</button>
+            <button id="btn-prepa-next" type="button" class="tool-btn">🔀 Suivant</button>
+          </div>
+        </div>
+
+        <div id="prepa-prompt-label" class="prompt-label">Répondez à l'oral en anglais (2 à 3 phrases) :</div>
+        <h2 id="prepa-question-text" class="sentence-display" style="font-size:18px;"></h2>
+
+        <button id="btn-prepa-record" type="button" class="btn btn-primary">
+          <span>🎙️</span> <span>Répondre à l'oral (2-3 phrases)</span>
+        </button>
+      </div>
+
+      <!-- Résultat Prépa -->
+      <div id="prepa-result" class="card result-card hidden">
+        <div id="prepa-banner" class="result-banner banner-mid">
+          <div>
+            <div class="verdict-row">
+              <span id="prepa-verdict" class="verdict-title">Analyse du colleur</span>
+              <span id="prepa-latency" class="latency-pill">⚡ Groq</span>
+            </div>
+            <div id="prepa-substatus" class="verdict-sub">Grammaire, syntaxe, vocabulaire & pertinence</div>
+          </div>
+          <div id="prepa-score" class="score-circle bg-mid">--%</div>
+        </div>
+
+        <div class="result-body">
+          <div id="prepa-ai-loading" class="ai-loading-box hidden">
+            <div class="spinner"></div>
+            <span id="prepa-ai-loading-text">Transcription Whisper + analyse Prépa par Groq...</span>
+          </div>
+
+          <div id="prepa-user-audio-wrap" class="user-audio-box hidden">
+            <span style="font-size:12px;font-weight:700;">🎧 Votre réponse vocale</span>
+            <audio id="prepa-user-audio" controls style="width:100%; margin-top:8px;"></audio>
+          </div>
+
+          <div class="transcript-box">
+            <span class="prompt-label" style="color:#a5b4fc;margin:0;">Ce que tu as dit (transcription Whisper)</span>
+            <div id="prepa-transcript" class="transcript-text"></div>
+          </div>
+
+          <div id="prepa-good-wrap" class="hidden">
+            <div class="prompt-label" style="color:var(--emerald);">✅ Mots & expressions qui fonctionnent bien</div>
+            <div id="prepa-good-list" class="diff-box"></div>
+          </div>
+
+          <div id="prepa-bad-wrap" class="hidden">
+            <div class="prompt-label" style="color:var(--rose);">🔍 Mots / tournures à corriger</div>
+            <div id="prepa-bad-list"></div>
+          </div>
+
+          <div class="grammar-box">
+            <div class="grammar-title">📐 Syntaxe, Grammaire & Conjugaison</div>
+            <div id="prepa-grammar-text" class="grammar-text"></div>
+          </div>
+
+          <div class="grammar-box">
+            <div class="grammar-title" style="color:var(--violet);">🗂️ Choix du vocabulaire</div>
+            <div id="prepa-vocab-text" class="grammar-text"></div>
+          </div>
+
+          <div class="grammar-box">
+            <div class="grammar-title" style="color:var(--emerald);">🎯 Pertinence & Axes d'amélioration</div>
+            <div id="prepa-relevance-text" class="grammar-text"></div>
+          </div>
+
+          <div id="prepa-improved-wrap" class="ref-box hidden">
+            <div class="prompt-label" style="color:var(--primary);">✨ Version améliorée (niveau concours)</div>
+            <div id="prepa-improved-text" class="ref-sentence" style="font-size:15px;"></div>
+            <div class="btn-row">
+              <button id="btn-prepa-play-improved" type="button" class="btn btn-primary btn-sm" style="width:auto;box-shadow:none;">🔊 Écouter le modèle</button>
+            </div>
+          </div>
+
+          <button id="btn-prepa-next-after" type="button" class="btn btn-emerald">Question suivante ➡️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONGLET 4 : BANQUE & RÉVISIONS -->
+    <section id="tab-bank" class="tab-panel">
+      <div class="card">
+        <div class="bank-controls">
+          <input id="bank-search" type="search" class="text-input" placeholder="🔍 Rechercher un mot, un thème ou une règle...">
+          <div class="bank-filter-row">
+            <select id="bank-filter-scope" class="select-input">
+              <option value="ALL">Toutes les phrases</option>
+              <option value="REVIEWS">⭐ Favoris & À revoir</option>
+            </select>
+            <select id="bank-filter-level" class="select-input">
+              <option value="ALL">Tous niveaux</option>
+              <option value="A2">Niveau A2</option>
+              <option value="B1">Niveau B1</option>
+              <option value="B2">Niveau B2</option>
+            </select>
+            <select id="bank-filter-mode" class="select-input">
+              <option value="ALL">Parler & Écouter</option>
+              <option value="speak">🎙️ Parler</option>
+              <option value="listen">🎧 Écouter</option>
+            </select>
+          </div>
+          <button id="btn-gen-ai" type="button" class="btn btn-violet-soft" style="width:100%;">
+            ✨ Générer des phrases (IA) pour le niveau <span id="gen-ai-lvl-label">A2</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="bank-summary" style="font-size:12px;font-weight:700;color:var(--text-muted);margin:0 4px 10px;"></div>
+      <div id="bank-list"></div>
+    </section>
+
+  </main>
+
+  <!-- ==================== NAVIGATION BASSE ==================== -->
+  <nav class="bottom-nav" aria-label="Navigation principale">
+    <div class="bottom-nav-inner">
+      <button type="button" class="nav-btn active" data-tab="speak">
+        <span class="nav-ico">🎙️</span>
+        <span>Parler</span>
+      </button>
+      <button type="button" class="nav-btn" data-tab="listen">
+        <span class="nav-ico">🎧</span>
+        <span>Écouter</span>
+      </button>
+      <button type="button" class="nav-btn" data-tab="prepa">
+        <span class="nav-ico">🎓</span>
+        <span>Prépa</span>
+      </button>
+      <button type="button" class="nav-btn" data-tab="bank">
+        <span class="nav-ico">📚</span>
+        <span>Banque</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== MODALE ENREGISTREMENT ==================== -->
+  <div id="record-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-sheet">
+      <div class="modal-head">
+        <div>
+          <div id="modal-title" class="modal-title">Traduire à l'oral</div>
+          <div id="modal-sub" class="modal-sub">Enregistrez votre voix ou tapez</div>
+        </div>
+        <button id="btn-close-record" type="button" class="icon-btn" aria-label="Fermer">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-prompt" class="ref-box" style="font-size:14px;font-weight:700;"></div>
+        <div id="modal-mic-alert" class="alert-box hidden"></div>
+
+        <div class="mic-area">
+          <button id="btn-toggle-mic" type="button" class="mic-btn" aria-label="Enregistrer">🎙️</button>
+          <div id="modal-mic-status" class="mic-status">Touchez pour enregistrer</div>
+        </div>
+
+        <audio id="modal-audio-preview" controls class="hidden" style="width:100%; margin-top:4px;"></audio>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <label for="modal-textarea" class="prompt-label" style="margin:0;">Votre texte (optionnel ou modifiable)</label>
+            <button id="btn-clear-textarea" type="button" style="border:none;background:none;color:var(--text-muted);font-size:12px;font-weight:700;cursor:pointer;">Effacer</button>
+          </div>
+          <textarea id="modal-textarea" class="textarea-input" placeholder="Écrivez votre réponse ici si vous préférez taper au clavier..."></textarea>
+        </div>
+
+        <button id="btn-submit-answer" type="button" class="btn btn-emerald">✅ Valider et corriger</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODALE RÉGLAGES ==================== -->
+  <div id="settings-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-sheet">
+      <div class="modal-head">
+        <div class="modal-title">⚙️ Réglages Groq</div>
+        <button id="btn-close-settings" type="button" class="icon-btn" aria-label="Fermer">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="settings-box">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong style="font-size:13px;color:#4c1d95;">⚡ Clé API Groq (gratuite)</strong>
+            <span id="set-api-badge" class="badge badge-muted">Hors-ligne</span>
+          </div>
+          <p style="font-size:12px;color:#5b21b6;">
+            Crée ta clé gratuite sur <strong>console.groq.com/keys</strong>. Elle gère à la fois <strong>Whisper</strong> (audio → texte) et le <strong>LLM</strong> (correction & Prépa) avec un énorme quota quotidien.
+          </p>
+          <div class="input-with-btn">
+            <input id="input-api-key" type="password" class="text-input" placeholder="gsk_...">
+            <button id="btn-toggle-key-vis" type="button" class="eye-btn" aria-label="Afficher la clé">👁️</button>
+          </div>
+          <div>
+            <label for="select-groq-model" class="prompt-label" style="color:#4c1d95;">Modèle de correction (LLM)</label>
+            <select id="select-groq-model" class="select-input" style="width:100%;">
+              <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile (Recommandé / Précis)</option>
+              <option value="openai/gpt-oss-120b">openai/gpt-oss-120b (Puissant / Prépa)</option>
+              <option value="llama-3.1-8b-instant">llama-3.1-8b-instant (Ultra rapide / Quota max)</option>
+            </select>
+          </div>
+          <div class="btn-row" style="margin-top:2px;">
+            <button id="btn-save-key" type="button" class="btn btn-primary btn-sm flex-1" style="box-shadow:none;">Enregistrer</button>
+            <button id="btn-test-key" type="button" class="btn btn-secondary btn-sm flex-1">Tester</button>
+          </div>
+          <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;"></div>
+        </div>
+
+        <div>
+          <div class="prompt-label">Accent de la voix anglaise</div>
+          <div class="btn-row" style="margin-top:4px;">
+            <button id="btn-set-us" type="button" class="btn btn-secondary btn-sm flex-1">🇺🇸 Américain</button>
+            <button id="btn-set-gb" type="button" class="btn btn-secondary btn-sm flex-1">🇬🇧 Britannique</button>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:8px;">
+          <button id="btn-reset-ask" type="button" class="btn btn-secondary btn-sm" style="width:100%;color:var(--rose);background:var(--rose-soft);">
+            Réinitialiser progression & phrases IA
+          </button>
+          <div id="reset-confirm-row" class="btn-row hidden" style="margin-top:0;">
+            <button id="btn-reset-confirm" type="button" class="btn btn-sm flex-1" style="background:var(--rose);color:#fff;">Confirmer la remise à zéro</button>
+            <button id="btn-reset-cancel" type="button" class="btn btn-secondary btn-sm flex-1">Annuler</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script src="data.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    // -------------------------------------------------------------------------
+    // 1. DONNÉES CHARGÉES DYNAMIQUEMENT DEPUIS data.js (3150 phrases, 30 audios, 60 khôlles Prépa)
+    // -------------------------------------------------------------------------
+    const THEMES = window.EC_THEMES || [];
+    const PREPA_THEMES = window.EC_PREPA_THEMES || [];
+    const BUILTIN_SPEAK = window.EC_BUILTIN_SPEAK || [];
+    const BUILTIN_LISTEN = window.EC_BUILTIN_LISTEN || [];
+    const BUILTIN_PREPA = window.EC_BUILTIN_PREPA || [];
+    const STORAGE_KEY = "english_coach_v5_groq";
+
+    // 2. ÉTAT GLOBAL & PERSISTANCE
+    // -------------------------------------------------------------------------
+    const state = {
+      tab: "speak",
+      level: "A2",
+      theme: "ALL",
+      prepaTheme: "ALL",
+      prepaLang: "en",
+      accent: "en-US",
+      listenSpeed: 1,
+      apiKey: "",
+      groqModel: "llama-3.3-70b-versatile",
+      aiItems: [],
+      reviews: {},
+      stats: { xp: 0, streak: 0, lastDate: null },
+      seenIds: new Set(),
+      seenPrepaIds: new Set(),
+      currentSpeak: null,
+      currentListen: null,
+      currentPrepa: null,
+      modalMode: "speak",
+      lastAudioUrl: null,
+      correctionSeq: 0
+    };
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const d = JSON.parse(raw);
+        if (["A2", "B1", "B2"].includes(d.level)) state.level = d.level;
+        if (d.accent === "en-GB" || d.accent === "en-US") state.accent = d.accent;
+        if (typeof d.apiKey === "string") state.apiKey = d.apiKey;
+        if (typeof d.groqModel === "string" && d.groqModel) state.groqModel = d.groqModel;
+        if (Array.isArray(d.aiItems)) state.aiItems = d.aiItems;
+        if (d.reviews && typeof d.reviews === "object") state.reviews = d.reviews;
+        if (d.stats) {
+          state.stats.xp = Number(d.stats.xp) || 0;
+          state.stats.streak = Number(d.stats.streak) || 0;
+          state.stats.lastDate = d.stats.lastDate || null;
+        }
+      } catch (e) {
+        console.warn("Impossible de lire localStorage:", e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          level: state.level,
+          accent: state.accent,
+          apiKey: state.apiKey,
+          groqModel: state.groqModel,
+          aiItems: state.aiItems,
+          reviews: state.reviews,
+          stats: state.stats
+        }));
+      } catch (e) {
+        console.warn("Impossible de sauvegarder localStorage:", e);
+      }
+    }
+
+    function getAllItems(mode) {
+      const base = mode === "speak" ? BUILTIN_SPEAK : mode === "listen" ? BUILTIN_LISTEN : [...BUILTIN_SPEAK, ...BUILTIN_LISTEN];
+      const ai = mode ? state.aiItems.filter(x => x.mode === mode) : state.aiItems;
+      return [...base, ...ai];
+    }
+
+    function pickNextItem(mode, excludeId) {
+      let pool = getAllItems(mode).filter(x => x.level === state.level);
+      if (state.theme !== "ALL") {
+        const byTheme = pool.filter(x => x.theme === state.theme);
+        if (byTheme.length) pool = byTheme;
+      }
+      if (!pool.length) pool = getAllItems(mode);
+
+      const currentItem = mode === "speak" ? state.currentSpeak : state.currentListen;
+      let unseen = pool.filter(x => !state.seenIds.has(x.id) && x.id !== excludeId);
+      if (!unseen.length) {
+        pool.forEach(x => state.seenIds.delete(x.id));
+        unseen = pool.filter(x => x.id !== excludeId);
+        if (!unseen.length) unseen = pool;
+      }
+
+      if (state.theme === "ALL" && currentItem) {
+        const diffTheme = unseen.filter(x => x.theme !== currentItem.theme);
+        if (diffTheme.length) unseen = diffTheme;
+      }
+
+      const chosen = unseen[Math.floor(Math.random() * unseen.length)];
+      if (chosen) state.seenIds.add(chosen.id);
+      return chosen;
+    }
+
+    function pickNextPrepa(excludeId) {
+      let pool = BUILTIN_PREPA;
+      if (state.prepaTheme !== "ALL") {
+        const byTheme = pool.filter(x => x.theme === state.prepaTheme);
+        if (byTheme.length) pool = byTheme;
+      }
+      let unseen = pool.filter(x => !state.seenPrepaIds.has(x.id) && x.id !== excludeId);
+      if (!unseen.length) {
+        pool.forEach(x => state.seenPrepaIds.delete(x.id));
+        unseen = pool.filter(x => x.id !== excludeId);
+        if (!unseen.length) unseen = pool;
+      }
+      if (state.prepaTheme === "ALL" && state.currentPrepa) {
+        const diffTheme = unseen.filter(x => x.theme !== state.currentPrepa.theme);
+        if (diffTheme.length) unseen = diffTheme;
+      }
+      const chosen = unseen[Math.floor(Math.random() * unseen.length)];
+      if (chosen) state.seenPrepaIds.add(chosen.id);
+      return chosen;
+    }
+
+    const $ = id => document.getElementById(id);
+
+    function esc(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = $("toast");
+      el.textContent = msg;
+      el.classList.add("show");
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove("show"), 2800);
+    }
+
+    function updateHeader() {
+      $("hdr-streak").textContent = state.stats.streak;
+      $("hdr-xp").textContent = state.stats.xp;
+      $("hdr-api-dot").classList.toggle("hidden", !state.apiKey);
+      const genLbl = $("gen-ai-lvl-label");
+      if (genLbl) genLbl.textContent = state.level;
+    }
+
+    function awardXP(score) {
+      state.stats.xp += score >= 80 ? 20 : score >= 50 ? 12 : 6;
+      const today = new Date().toISOString().slice(0, 10);
+      if (state.stats.lastDate !== today) {
+        if (state.stats.lastDate) {
+          const days = Math.round((new Date(today) - new Date(state.stats.lastDate)) / 86400000);
+          state.stats.streak = days === 1 ? state.stats.streak + 1 : 1;
+        } else {
+          state.stats.streak = 1;
+        }
+        state.stats.lastDate = today;
+      }
+      saveState();
+      updateHeader();
+    }
+
+    function stopSpeech() {
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      const eq = $("listen-eq");
+      if (eq) eq.classList.remove("eq-playing");
+    }
+
+    function speakText(text, langCode, rate, onEnd) {
+      if (!("speechSynthesis" in window)) {
+        showToast("Synthèse vocale non disponible.");
+        if (onEnd) onEnd();
+        return;
+      }
+      stopSpeech();
+      const u = new SpeechSynthesisUtterance(text);
+      const targetLang = langCode || state.accent;
+      u.lang = targetLang;
+      u.rate = rate || 1.0;
+      const voices = window.speechSynthesis.getVoices();
+      const voice = voices.find(v => v.lang === targetLang) || voices.find(v => v.lang.startsWith(targetLang.slice(0, 2)));
+      if (voice) u.voice = voice;
+      if (onEnd) { u.onend = onEnd; u.onerror = onEnd; }
+      window.speechSynthesis.speak(u);
+    }
+
+    function speakEnglish(text, rate, onEnd) {
+      speakText(text, state.accent, rate, onEnd);
+    }
+
+    function playCurrentListen() {
+      if (!state.currentListen) return;
+      const eq = $("listen-eq");
+      const st = $("listen-status");
+      eq.classList.add("eq-playing");
+      st.textContent = "🔊 Lecture en cours...";
+      speakEnglish(state.currentListen.en, state.listenSpeed, () => {
+        eq.classList.remove("eq-playing");
+        st.textContent = "✅ Terminé — Traduisez en français";
+      });
+    }
+
+    // Comparateur local
+    const CONTRACTIONS = [
+      [/\bi'm\b/g, "i am"], [/\byou're\b/g, "you are"], [/\bhe's\b/g, "he is"], [/\bshe's\b/g, "she is"],
+      [/\bit's\b/g, "it is"], [/\bwe're\b/g, "we are"], [/\bthey're\b/g, "they are"],
+      [/\bdon't\b/g, "do not"], [/\bdoesn't\b/g, "does not"], [/\bdidn't\b/g, "did not"],
+      [/\bcan't\b/g, "cannot"], [/\bwon't\b/g, "will not"], [/\bhaven't\b/g, "have not"]
+    ];
+
+    function normalizeText(str, lang) {
+      let s = String(str || "").toLowerCase().replace(/[''`]/g, "'").replace(/[.,!?;:«»"()—–-]/g, " ");
+      if (lang === "en") {
+        for (const [re, rep] of CONTRACTIONS) s = s.replace(re, rep);
+        s = s.replace(/'/g, " ");
+      } else {
+        s = s.replace(/'/g, " ").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      }
+      return s.replace(/\s+/g, " ").trim();
+    }
+
+    function diffWords(userStr, refStr, lang) {
+      const u = normalizeText(userStr, lang).split(" ").filter(Boolean);
+      const r = normalizeText(refStr, lang).split(" ").filter(Boolean);
+      const m = u.length, n = r.length;
+      const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          dp[i][j] = u[i - 1] === r[j - 1] ? dp[i - 1][j - 1] + 1 : Math.max(dp[i - 1][j], dp[i][j - 1]);
+        }
+      }
+      const res = [];
+      let i = m, j = n, matches = 0;
+      while (i > 0 || j > 0) {
+        if (i > 0 && j > 0 && u[i - 1] === r[j - 1]) {
+          res.push({ t: "ok", w: r[j - 1] });
+          matches++; i--; j--;
+        } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+          res.push({ t: "miss", w: r[j - 1] });
+          j--;
+        } else {
+          res.push({ t: "wrong", w: u[i - 1] });
+          i--;
+        }
+      }
+      res.reverse();
+      const score = Math.round((matches / Math.max(m, n, 1)) * 100);
+      return { score: Math.max(0, Math.min(100, score)), tokens: res };
+    }
+
+    function renderDiffHtml(tokens) {
+      return tokens.map(x => {
+        if (x.t === "ok") return `<span class="chip-ok">${esc(x.w)}</span>`;
+        if (x.t === "wrong") return `<span class="chip-wrong">${esc(x.w)}</span>`;
+        return `<span class="chip-miss">+ ${esc(x.w)}</span>`;
+      }).join("");
+    }
+
+    function scoreTheme(score) {
+      if (score >= 85) return { banner: "banner-good", bg: "bg-good", verdict: "Excellent travail ! 🎉" };
+      if (score >= 65) return { banner: "banner-mid", bg: "bg-mid", verdict: "Très bien, presque parfait ! 👏" };
+      if (score >= 45) return { banner: "banner-warn", bg: "bg-warn", verdict: "Bon effort ! 💪" };
+      return { banner: "banner-low", bg: "bg-low", verdict: "On progresse ! 🌱" };
+    }
+
+    function renderVocabHtml(pairs) {
+      return (pairs || []).map(([en, fr]) => `
+        <button type="button" class="vocab-chip" data-speak="${esc(en)}">
+          <strong>${esc(en)}</strong> <span>→ ${esc(fr)}</span> 🔊
+        </button>
+      `).join("");
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. API GROQ (WHISPER LARGE V3 TURBO + LLM CHAT COMPLETIONS)
+    // -------------------------------------------------------------------------
+    function formatNetworkError(err) {
+      if (err && err.name === "AbortError") {
+        return "Délai dépassé (timeout). Vérifie ta connexion internet.";
+      }
+      const msg = (err && err.message) ? err.message : "Erreur inconnue";
+      if (msg === "Failed to fetch" || /networkerror|load failed/i.test(msg)) {
+        return "Failed to fetch — vérifie ta connexion internet ou un éventuel VPN/bloqueur.";
+      }
+      return msg;
+    }
+
+    function getAudioExtension(mime) {
+      const m = (mime || "").toLowerCase();
+      if (m.includes("mp4") || m.includes("m4a")) return "m4a";
+      if (m.includes("ogg")) return "ogg";
+      if (m.includes("wav")) return "wav";
+      if (m.includes("mpeg") || m.includes("mp3")) return "mp3";
+      return "webm";
+    }
+
+    async function transcribeWithGroq(audioBlob, langCode, customKey) {
+      const key = (customKey || state.apiKey || "").trim();
+      const ext = getAudioExtension(audioBlob.type);
+      const formData = new FormData();
+      formData.append("file", audioBlob, `recording.${ext}`);
+      formData.append("model", "whisper-large-v3-turbo");
+      if (langCode) formData.append("language", langCode);
+      formData.append("response_format", "json");
+
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 25000);
+      const t0 = performance.now();
+
+      try {
+        const resp = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${key}` },
+          signal: controller.signal,
+          body: formData
+        });
+        clearTimeout(timer);
+
+        if (!resp.ok) {
+          let detail = `Whisper HTTP ${resp.status}`;
+          try {
+            const errJson = await resp.json();
+            if (errJson?.error?.message) detail = `Whisper HTTP ${resp.status} — ${errJson.error.message}`;
+          } catch (_) {}
+          throw new Error(detail);
+        }
+
+        const json = await resp.json();
+        return { text: String(json.text || "").trim(), ms: Math.round(performance.now() - t0) };
+      } catch (err) {
+        clearTimeout(timer);
+        throw new Error(formatNetworkError(err));
+      }
+    }
+
+    async function callGroqChat(systemPrompt, userPrompt, customKey, customModel) {
+      const key = (customKey || state.apiKey || "").trim();
+      const model = customModel || state.groqModel || "llama-3.3-70b-versatile";
+
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 25000);
+      const t0 = performance.now();
+
+      try {
+        const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${key}`,
+            "Content-Type": "application/json"
+          },
+          signal: controller.signal,
+          body: JSON.stringify({
+            model: model,
+            temperature: 0.2,
+            response_format: { type: "json_object" },
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: userPrompt }
+            ]
+          })
+        });
+        clearTimeout(timer);
+
+        if (!resp.ok) {
+          let detail = `Groq HTTP ${resp.status}`;
+          try {
+            const errJson = await resp.json();
+            if (errJson?.error?.message) detail = `Groq HTTP ${resp.status} — ${errJson.error.message}`;
+          } catch (_) {}
+          throw new Error(detail);
+        }
+
+        const json = await resp.json();
+        const raw = json?.choices?.[0]?.message?.content || "{}";
+        const cleaned = raw.replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/```\s*$/i, "").trim();
+        const data = JSON.parse(cleaned);
+        return { data, ms: Math.round(performance.now() - t0) };
+      } catch (err) {
+        clearTimeout(timer);
+        throw new Error(formatNetworkError(err));
+      }
+    }
+
+    async function evaluateWithGroqOrLocal(mode, item, userText, audioBlob, seq) {
+      const loadEl = $(`${mode}-ai-loading`);
+      const loadTxt = $(`${mode}-ai-loading-text`);
+      loadEl.classList.remove("hidden");
+
+      if (mode === "listen") {
+        $("listen-reveal-en").textContent = item.en;
+        $("listen-ref-fr").textContent = item.fr;
+      } else {
+        $("speak-ref-en").textContent = item.en;
+      }
+      $(`${mode}-vocab-list`).innerHTML = renderVocabHtml(item.vocab);
+
+      let finalAnswerText = userText || "";
+      let totalMs = 0;
+
+      if (state.apiKey) {
+        try {
+          // Étape 1 : Transcription audio via Groq Whisper si un audio a été enregistré
+          if (audioBlob && audioBlob.size > 100) {
+            loadTxt.textContent = "1/2 Transcription vocale (Whisper)...";
+            const expectedLang = mode === "speak" ? "en" : "fr";
+            const tr = await transcribeWithGroq(audioBlob, expectedLang);
+            if (seq !== state.correctionSeq) return;
+            totalMs += tr.ms;
+            if (tr.text) {
+              finalAnswerText = finalAnswerText ? `${finalAnswerText} ${tr.text}` : tr.text;
+            }
+          }
+
+          if (!finalAnswerText) {
+            throw new Error("Aucun mot détecté dans l'audio. Parle plus près du micro ou tape ta réponse.");
+          }
+
+          // Étape 2 : Analyse grammaticale via Groq LLM
+          loadTxt.textContent = `2/2 Analyse grammaticale (${state.groqModel})...`;
+          const sysPrompt = "Tu es un coach d'anglais rigoureux et bienveillant pour un étudiant francophone. Tu réponds toujours en objet JSON valide.";
+          const userPrompt = mode === "speak"
+            ? `Niveau : ${item.level}.
+Phrase française à traduire : "${item.fr}"
+Référence anglaise : "${item.en}"
+Réponse de l'élève (anglais) : "${finalAnswerText}"
+Accepte toute traduction naturelle et juste. Réponds STRICTEMENT en JSON :
+{"score":0,"verdict":"court en français","better":"meilleure phrase EN naturelle","alternatives":["alt EN 1"],"errors":[{"wrong":"erreur","right":"correction","why":"explication courte en français"}],"grammar":{"title":"règle courte","rule":"explication courte en français"}}`
+            : `Niveau : ${item.level}.
+Extrait audio anglais : "${item.en}"
+Référence française : "${item.fr}"
+Traduction de l'élève (français) : "${finalAnswerText}"
+Évalue la compréhension globale (accepte les formulations naturelles). Réponds STRICTEMENT en JSON :
+{"score":0,"verdict":"court en français","better":"meilleure traduction FR","alternatives":["alt FR 1"],"errors":[{"wrong":"erreur ou oubli","right":"sens correct","why":"explication courte en français"}],"grammar":{"title":"point de grammaire EN","rule":"explication courte en français"}}`;
+
+          const { data, ms } = await callGroqChat(sysPrompt, userPrompt);
+          if (seq !== state.correctionSeq) return;
+          totalMs += ms;
+          loadEl.classList.add("hidden");
+
+          const score = typeof data.score === "number" ? Math.max(0, Math.min(100, Math.round(data.score))) : 80;
+          const th = scoreTheme(score);
+
+          $(`${mode}-banner`).className = `result-banner ${th.banner}`;
+          $(`${mode}-verdict`).textContent = data.verdict || th.verdict;
+          $(`${mode}-substatus`).textContent = `Entendu : "${finalAnswerText}"`;
+          $(`${mode}-latency`).textContent = `⚡ ${totalMs} ms`;
+          $(`${mode}-score`).textContent = `${score}%`;
+          $(`${mode}-score`).className = `score-circle ${th.bg}`;
+
+          const refText = mode === "speak" ? item.en : item.fr;
+          const diff = diffWords(finalAnswerText, refText, mode === "speak" ? "en" : "fr");
+          $(`${mode}-diff`).innerHTML = renderDiffHtml(diff.tokens);
+
+          if (data.better) $(mode === "speak" ? "speak-ref-en" : "listen-ref-fr").textContent = data.better;
+
+          const altsWrap = $(`${mode}-alts-wrap`);
+          if (Array.isArray(data.alternatives) && data.alternatives.length) {
+            $(`${mode}-alts-list`).innerHTML = data.alternatives.map(a => `<li>${esc(a)}</li>`).join("");
+            altsWrap.classList.remove("hidden");
+          } else {
+            altsWrap.classList.add("hidden");
+          }
+
+          const errWrap = $(`${mode}-errors-wrap`);
+          if (Array.isArray(data.errors) && data.errors.length) {
+            $(`${mode}-errors-list`).innerHTML = data.errors.map(e => `
+              <div class="error-item">
+                <div class="error-pair"><span class="chip-wrong">${esc(e.wrong)}</span> → <span class="chip-ok">${esc(e.right)}</span></div>
+                <div>${esc(e.why)}</div>
+              </div>
+            `).join("");
+            errWrap.classList.remove("hidden");
+          } else {
+            errWrap.classList.add("hidden");
+          }
+
+          if (data.grammar?.rule) {
+            $(`${mode}-gram-title`).textContent = `📚 ${data.grammar.title || item.grammarTitle}`;
+            $(`${mode}-gram-rule`).textContent = data.grammar.rule;
+          } else {
+            $(`${mode}-gram-title`).textContent = `📚 ${item.grammarTitle}`;
+            $(`${mode}-gram-rule`).textContent = item.grammarNote;
+          }
+
+          awardXP(score);
+          if (score < 80) markReview(item.id, { missed: true, lastScore: score });
+          return;
+        } catch (e) {
+          console.warn("Erreur Groq, repli local :", e);
+          showToast(e.message);
+        }
+      }
+
+      // Repli local si pas de clé API ou erreur
+      loadEl.classList.add("hidden");
+      const refText = mode === "speak" ? item.en : item.fr;
+      const diff = diffWords(finalAnswerText, refText, mode === "speak" ? "en" : "fr");
+      const th = scoreTheme(diff.score);
+
+      $(`${mode}-banner`).className = `result-banner ${th.banner}`;
+      $(`${mode}-verdict`).textContent = th.verdict;
+      $(`${mode}-substatus`).textContent = state.apiKey ? "Repli local" : "Correction locale (ajoutez votre clé Groq dans ⚙️)";
+      $(`${mode}-latency`).textContent = "0 ms";
+      $(`${mode}-score`).textContent = `${diff.score}%`;
+      $(`${mode}-score`).className = `score-circle ${th.bg}`;
+      $(`${mode}-diff`).innerHTML = renderDiffHtml(diff.tokens);
+      $(`${mode}-alts-wrap`).classList.add("hidden");
+      $(`${mode}-errors-wrap`).classList.add("hidden");
+      $(`${mode}-gram-title`).textContent = `📚 ${item.grammarTitle}`;
+      $(`${mode}-gram-rule`).textContent = item.grammarNote;
+      awardXP(diff.score);
+    }
+
+    async function evaluatePrepaAnswer(item, userText, audioBlob, seq) {
+      const loadEl = $("prepa-ai-loading");
+      const loadTxt = $("prepa-ai-loading-text");
+      loadEl.classList.remove("hidden");
+      $("prepa-good-wrap").classList.add("hidden");
+      $("prepa-bad-wrap").classList.add("hidden");
+      $("prepa-improved-wrap").classList.add("hidden");
+      $("prepa-transcript").textContent = "...";
+      $("prepa-grammar-text").textContent = "";
+      $("prepa-vocab-text").textContent = "";
+      $("prepa-relevance-text").textContent = "";
+
+      if (!state.apiKey) {
+        loadEl.classList.add("hidden");
+        $("prepa-verdict").textContent = "Clé API Groq requise";
+        $("prepa-score").textContent = "⚙️";
+        $("prepa-transcript").textContent = userText || "(Audio enregistré)";
+        $("prepa-grammar-text").textContent = "Ajoute ta clé API Groq gratuite dans ⚙️ Réglages pour que le colleur analyse ta réponse orale.";
+        return;
+      }
+
+      let finalAnswerText = userText || "";
+      let totalMs = 0;
+
+      try {
+        if (audioBlob && audioBlob.size > 100) {
+          loadTxt.textContent = "1/2 Transcription vocale (Whisper)...";
+          const tr = await transcribeWithGroq(audioBlob, state.prepaLang);
+          if (seq !== state.correctionSeq) return;
+          totalMs += tr.ms;
+          if (tr.text) {
+            finalAnswerText = finalAnswerText ? `${finalAnswerText} ${tr.text}` : tr.text;
+          }
+        }
+
+        if (!finalAnswerText) {
+          throw new Error("Aucun mot détecté dans l'audio. Réessaie en parlant plus près du micro.");
+        }
+
+        loadTxt.textContent = `2/2 Correction du colleur (${state.groqModel})...`;
+        const langLabel = state.prepaLang === "en"
+          ? "anglais (khôlle d'anglais en CPGE scientifique)"
+          : "français (colle de français-philosophie en CPGE scientifique)";
+        const question = state.prepaLang === "en" ? item.questionEn : item.questionFr;
+
+        const sysPrompt = "Tu es un examinateur exigeant et pédagogue de CPGE scientifique. Tu réponds toujours en objet JSON valide.";
+        const userPrompt = `Langue de la réponse : ${langLabel}.
+Thème : ${item.theme}.
+Question posée : "${question}"
+Réponse de l'étudiant : "${finalAnswerText}"
+
+Analyse précisément en français :
+1) Les mots et expressions bien choisis ("goodWords").
+2) Les mots/tournures qui ne vont pas avec leur correction ("badWords").
+3) La syntaxe, la grammaire et la conjugaison ("grammarSyntax").
+4) Le choix du vocabulaire et des alternatives plus précises ("vocabChoice").
+5) La pertinence de l'argumentation et ce qu'il doit améliorer ("relevance").
+6) Une version améliorée fluide en 2-3 phrases dans la langue attendue ("improvedVersion").
+
+Réponds STRICTEMENT en JSON :
+{"score":0,"verdict":"court en français","goodWords":["mot/expression 1"],"badWords":[{"wrong":"...","right":"...","why":"explication courte en français"}],"grammarSyntax":"analyse claire en français","vocabChoice":"analyse claire en français","relevance":"analyse de pertinence et conseils en français","improvedVersion":"réponse modèle en 2-3 phrases"}`;
+
+        const { data, ms } = await callGroqChat(sysPrompt, userPrompt);
+        if (seq !== state.correctionSeq) return;
+        totalMs += ms;
+        loadEl.classList.add("hidden");
+
+        const score = typeof data.score === "number" ? Math.max(0, Math.min(100, Math.round(data.score))) : 75;
+        const th = scoreTheme(score);
+
+        $("prepa-banner").className = `result-banner ${th.banner}`;
+        $("prepa-verdict").textContent = data.verdict || th.verdict;
+        $("prepa-latency").textContent = `⚡ ${totalMs} ms`;
+        $("prepa-score").textContent = `${score}%`;
+        $("prepa-score").className = `score-circle ${th.bg}`;
+        $("prepa-transcript").textContent = finalAnswerText;
+
+        if (Array.isArray(data.goodWords) && data.goodWords.length) {
+          $("prepa-good-list").innerHTML = data.goodWords.map(w => `<span class="chip-ok">${esc(w)}</span>`).join("");
+          $("prepa-good-wrap").classList.remove("hidden");
+        }
+
+        if (Array.isArray(data.badWords) && data.badWords.length) {
+          $("prepa-bad-list").innerHTML = data.badWords.map(e => `
+            <div class="error-item">
+              <div class="error-pair"><span class="chip-wrong">${esc(e.wrong)}</span> → <span class="chip-ok">${esc(e.right)}</span></div>
+              <div>${esc(e.why)}</div>
+            </div>
+          `).join("");
+          $("prepa-bad-wrap").classList.remove("hidden");
+        }
+
+        $("prepa-grammar-text").textContent = data.grammarSyntax || "RAS.";
+        $("prepa-vocab-text").textContent = data.vocabChoice || "RAS.";
+        $("prepa-relevance-text").textContent = data.relevance || "RAS.";
+
+        if (data.improvedVersion) {
+          $("prepa-improved-text").textContent = data.improvedVersion;
+          $("prepa-improved-wrap").classList.remove("hidden");
+        }
+
+        awardXP(score);
+      } catch (e) {
+        if (seq !== state.correctionSeq) return;
+        loadEl.classList.add("hidden");
+        $("prepa-verdict").textContent = "Erreur d'analyse IA";
+        $("prepa-transcript").textContent = finalAnswerText || "(Non transcrit)";
+        $("prepa-grammar-text").textContent = e.message;
+      }
+    }
+
+    async function generatePrepaQuestion() {
+      if (!state.apiKey) {
+        showToast("Ajoutez votre clé API Groq dans ⚙️ Réglages");
+        openSettingsModal();
+        return;
+      }
+      const btn = $("btn-prepa-gen");
+      btn.disabled = true;
+      btn.textContent = "⏳...";
+      const themeHint = state.prepaTheme === "ALL" ? PREPA_THEMES.join(", ") : state.prepaTheme;
+      try {
+        const { data } = await callGroqChat(
+          "Tu génères des sujets d'oral de CPGE scientifique. Réponds toujours en objet JSON valide.",
+          `Génère 1 question simple et pertinente de khôlle de CPGE scientifique (répondable en 2-3 phrases à l'oral) sur le thème : ${themeHint}.
+Retourne STRICTEMENT en JSON : {"theme":"...","questionEn":"question en anglais","questionFr":"même question en français"}`
+        );
+        if (data && data.questionEn && data.questionFr) {
+          const newItem = {
+            id: `p-ai-${Date.now()}`,
+            theme: data.theme || (state.prepaTheme === "ALL" ? "Prépa IA" : state.prepaTheme),
+            questionEn: String(data.questionEn).trim(),
+            questionFr: String(data.questionFr).trim()
+          };
+          BUILTIN_PREPA.unshift(newItem);
+          loadPrepaItem(newItem);
+          showToast("✨ Nouvelle question Prépa générée !");
+        }
+      } catch (e) {
+        showToast(e.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "✨ Question IA";
+      }
+    }
+
+    async function generateAiSentences() {
+      if (!state.apiKey) {
+        showToast("Ajoutez votre clé API Groq dans ⚙️ Réglages");
+        openSettingsModal();
+        return;
+      }
+      const btn = $("btn-gen-ai");
+      btn.disabled = true;
+      btn.textContent = "⏳ Génération...";
+      try {
+        const { data, ms } = await callGroqChat(
+          "Tu es un professeur d'anglais. Tu réponds toujours en objet JSON valide.",
+          `Génère 4 phrases FR->EN (mode "speak") et 2 passages audio de 2 phrases EN->FR (mode "listen") de niveau ${state.level}, répartis sur les thèmes : ${THEMES.join(", ")}.
+Retourne STRICTEMENT un objet JSON avec la clé "items" :
+{"items":[{"mode":"speak","theme":"Voyage","fr":"...","en":"...","grammarTitle":"...","grammarNote":"...","vocab":[["en","fr"]]}]}`
+        );
+        const list = Array.isArray(data?.items) ? data.items : [];
+        if (list.length) {
+          const added = list.filter(x => x && x.fr && x.en).map((x, i) => ({
+            id: `ai-${Date.now()}-${i}`,
+            mode: x.mode === "listen" ? "listen" : "speak",
+            level: state.level,
+            theme: THEMES.includes(x.theme) ? x.theme : THEMES[i % THEMES.length],
+            fr: String(x.fr).trim(),
+            en: String(x.en).trim(),
+            grammarTitle: String(x.grammarTitle || "Structure"),
+            grammarNote: String(x.grammarNote || ""),
+            vocab: Array.isArray(x.vocab) ? x.vocab : [],
+            isAi: true
+          }));
+          state.aiItems = [...added, ...state.aiItems];
+          saveState();
+          renderBank();
+          showToast(`✨ ${added.length} phrases générées en ${ms} ms !`);
+        } else {
+          showToast("Format IA inattendu, réessaie.");
+        }
+      } catch (e) {
+        showToast(e.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `✨ Générer des phrases (IA) pour le niveau <span id="gen-ai-lvl-label">${state.level}</span>`;
+      }
+    }
+
+    function markReview(id, patch) {
+      const prev = state.reviews[id] || { fav: false, missed: false, lastScore: null };
+      state.reviews[id] = { ...prev, ...patch };
+      if (!state.reviews[id].fav && !state.reviews[id].missed) delete state.reviews[id];
+      saveState();
+      updateFavUI();
+    }
+
+    function updateFavUI() {
+      const sFav = state.currentSpeak && state.reviews[state.currentSpeak.id]?.fav;
+      const lFav = state.currentListen && state.reviews[state.currentListen.id]?.fav;
+      $("btn-speak-fav").classList.toggle("fav-active", !!sFav);
+      $("btn-listen-fav").classList.toggle("fav-active", !!lFav);
+    }
+
+    function loadSpeakItem(item) {
+      if (!item) return;
+      state.currentSpeak = item;
+      $("speak-lvl-badge").textContent = item.level;
+      $("speak-theme-badge").textContent = item.theme;
+      $("speak-ai-badge").classList.toggle("hidden", !item.isAi);
+      $("speak-fr-text").textContent = item.fr;
+      $("speak-hint-gram").textContent = item.grammarTitle;
+      $("speak-hint-vocab").textContent = (item.vocab || []).map(v => `${v[0]} (${v[1]})`).join(" • ");
+      $("speak-hint-box").classList.add("hidden");
+      $("speak-result").classList.add("hidden");
+      updateFavUI();
+    }
+
+    function loadListenItem(item) {
+      if (!item) return;
+      state.currentListen = item;
+      $("listen-lvl-badge").textContent = item.level;
+      $("listen-theme-badge").textContent = item.theme;
+      $("listen-ai-badge").classList.toggle("hidden", !item.isAi);
+      $("listen-status").textContent = "Écoutez les 2 phrases en anglais";
+      $("listen-result").classList.add("hidden");
+      updateFavUI();
+    }
+
+    function loadPrepaItem(item) {
+      if (!item) return;
+      state.currentPrepa = item;
+      $("prepa-theme-badge").textContent = item.theme;
+      $("prepa-prompt-label").textContent = state.prepaLang === "en"
+        ? "Répondez à l'oral en anglais (2 à 3 phrases) :"
+        : "Répondez à l'oral en français (2 à 3 phrases) :";
+      $("prepa-question-text").textContent = state.prepaLang === "en" ? item.questionEn : item.questionFr;
+      $("prepa-result").classList.add("hidden");
+    }
+
+    let bankPageSize = 50;
+    let bankCurrentDisplayCount = 50;
+
+    function renderBank(resetCount = true) {
+      if (resetCount) bankCurrentDisplayCount = 50;
+
+      const q = $("bank-search").value.trim().toLowerCase();
+      const scope = $("bank-filter-scope").value;
+      const lvl = $("bank-filter-level").value;
+      const mode = $("bank-filter-mode").value;
+
+      let list = getAllItems();
+      if (scope === "REVIEWS") list = list.filter(x => !!state.reviews[x.id]);
+      if (lvl !== "ALL") list = list.filter(x => x.level === lvl);
+      if (mode !== "ALL") list = list.filter(x => x.mode === mode);
+      if (q) {
+        list = list.filter(x =>
+          x.fr.toLowerCase().includes(q) ||
+          x.en.toLowerCase().includes(q) ||
+          x.theme.toLowerCase().includes(q)
+        );
+      }
+
+      const totalCount = list.length;
+      const displayedItems = list.slice(0, bankCurrentDisplayCount);
+
+      $("bank-summary").textContent = `${totalCount} phrase(s) disponible(s) · Affichage de ${displayedItems.length} éléments`;
+      if (!totalCount) {
+        $("bank-list").innerHTML = `<div class="card" style="text-align:center;color:var(--text-muted);font-size:13px;">Aucune phrase trouvée.</div>`;
+        return;
+      }
+
+      const itemsHtml = displayedItems.map(item => `
+        <div class="bank-item">
+          <div class="bank-item-top">
+            <div class="badge-row">
+              <span class="badge badge-primary">${item.level}</span>
+              <span class="badge badge-muted">${item.mode === "speak" ? "🎙️ Parler" : "🎧 Écouter"}</span>
+              <span class="badge badge-muted">${esc(item.theme)}</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button type="button" class="tool-btn" data-speak="${esc(item.en)}" title="Écouter">🔊</button>
+              <button type="button" class="btn btn-primary btn-sm" style="width:auto;box-shadow:none;" data-practice="${esc(item.id)}">S'entraîner</button>
+            </div>
+          </div>
+          <div class="bank-fr">${esc(item.fr)}</div>
+          <div class="bank-en">${esc(item.en)}</div>
+          <div class="bank-gram">📚 ${esc(item.grammarTitle)}</div>
+        </div>
+      `).join("");
+
+      const moreBtnHtml = bankCurrentDisplayCount < totalCount
+        ? `<div style="text-align:center; margin: 16px 0;">
+             <button id="btn-bank-load-more" type="button" class="btn btn-secondary" style="width:100%;">
+               Afficher 50 phrases de plus (${totalCount - bankCurrentDisplayCount} restantes) ⬇️
+             </button>
+           </div>`
+        : "";
+
+      $("bank-list").innerHTML = itemsHtml + moreBtnHtml;
+
+      const loadMoreBtn = $("btn-bank-load-more");
+      if (loadMoreBtn) {
+        loadMoreBtn.addEventListener("click", () => {
+          bankCurrentDisplayCount += 50;
+          renderBank(false);
+        });
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // 8. ENREGISTREMENT AUDIO RÉEL (MEDIARECORDER)
+    // -------------------------------------------------------------------------
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let recordedAudioBlob = null;
+    let isRecording = false;
+    let micStream = null;
+
+    function setMicUI(active) {
+      const btn = $("btn-toggle-mic");
+      const st = $("modal-mic-status");
+      btn.classList.toggle("recording", active);
+      btn.textContent = active ? "⏹️" : "🎙️";
+      st.classList.toggle("recording", active);
+      st.textContent = active ? "Enregistrement en cours... Touchez pour arrêter" : "Touchez pour enregistrer";
+    }
+
+    async function toggleRecording() {
+      if (isRecording) {
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+          mediaRecorder.stop();
+        }
+        isRecording = false;
+        setMicUI(false);
+        if (micStream) {
+          micStream.getTracks().forEach(t => t.stop());
+          micStream = null;
+        }
+        return;
+      }
+
+      try {
+        stopSpeech();
+        audioChunks = [];
+        recordedAudioBlob = null;
+        $("modal-mic-alert").classList.add("hidden");
+        $("modal-audio-preview").classList.add("hidden");
+
+        micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(micStream);
+
+        mediaRecorder.ondataavailable = e => {
+          if (e.data && e.data.size > 0) audioChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+          recordedAudioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType || "audio/webm" });
+          const audioUrl = URL.createObjectURL(recordedAudioBlob);
+          const preview = $("modal-audio-preview");
+          preview.src = audioUrl;
+          preview.classList.remove("hidden");
+          showToast("🎤 Enregistrement prêt !");
+        };
+
+        mediaRecorder.start();
+        isRecording = true;
+        setMicUI(true);
+      } catch (e) {
+        showToast("Impossible d'accéder au micro.");
+        $("modal-mic-alert").textContent = "Erreur micro : vérifiez les autorisations de votre navigateur.";
+        $("modal-mic-alert").classList.remove("hidden");
+      }
+    }
+
+    function openRecordModal(mode) {
+      stopSpeech();
+      state.modalMode = mode;
+      audioChunks = [];
+      recordedAudioBlob = null;
+      isRecording = false;
+      $("modal-textarea").value = "";
+      $("modal-mic-alert").classList.add("hidden");
+      $("modal-audio-preview").classList.add("hidden");
+      setMicUI(false);
+
+      if (mode === "speak") {
+        $("modal-title").textContent = "Traduire à l'oral (EN)";
+        $("modal-sub").textContent = "Enregistrez votre voix en anglais";
+        $("modal-prompt").textContent = state.currentSpeak ? state.currentSpeak.fr : "";
+      } else if (mode === "listen") {
+        $("modal-title").textContent = "Traduire en français";
+        $("modal-sub").textContent = "Enregistrez votre voix ou tapez votre traduction";
+        $("modal-prompt").innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;">Réécouter l'extrait :</span><button type="button" class="btn btn-emerald btn-sm" style="width:auto;" data-action="replay-listen">🔊 Écouter</button></div>`;
+      } else {
+        $("modal-title").textContent = state.prepaLang === "en" ? "Réponse Prépa (Anglais)" : "Réponse Prépa (Français)";
+        $("modal-sub").textContent = "Répondez en 2 ou 3 phrases construites";
+        $("modal-prompt").textContent = state.currentPrepa
+          ? (state.prepaLang === "en" ? state.currentPrepa.questionEn : state.currentPrepa.questionFr)
+          : "";
+      }
+      $("record-modal").classList.remove("hidden");
+    }
+
+    function closeRecordModal() {
+      if (isRecording && mediaRecorder && mediaRecorder.state !== "inactive") {
+        mediaRecorder.stop();
+      }
+      isRecording = false;
+      if (micStream) {
+        micStream.getTracks().forEach(t => t.stop());
+        micStream = null;
+      }
+      $("record-modal").classList.add("hidden");
+    }
+
+    // -------------------------------------------------------------------------
+    // 9. NAVIGATION & RÉGLAGES
+    // -------------------------------------------------------------------------
+    function updateAccentButtons() {
+      document.querySelectorAll("[data-accent]").forEach(b => {
+        b.classList.toggle("active", b.dataset.accent === state.accent);
+      });
+      $("btn-set-us").style.background = state.accent === "en-US" ? "var(--primary)" : "#f1f5f9";
+      $("btn-set-us").style.color = state.accent === "en-US" ? "#fff" : "#334155";
+      $("btn-set-gb").style.background = state.accent === "en-GB" ? "var(--primary)" : "#f1f5f9";
+      $("btn-set-gb").style.color = state.accent === "en-GB" ? "#fff" : "#334155";
+    }
+
+    function openSettingsModal() {
+      $("input-api-key").value = state.apiKey;
+      $("select-groq-model").value = state.groqModel;
+      $("api-test-status").classList.add("hidden");
+      $("reset-confirm-row").classList.add("hidden");
+      $("btn-reset-ask").classList.remove("hidden");
+      const b = $("set-api-badge");
+      b.textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
+      b.className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
+      updateAccentButtons();
+      $("settings-modal").classList.remove("hidden");
+    }
+
+    function switchTab(tab) {
+      stopSpeech();
+      state.tab = tab;
+      ["speak", "listen", "prepa", "bank"].forEach(t => $(`tab-${t}`).classList.toggle("active", t === tab));
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
+      $("global-filters-bar").classList.toggle("hidden", tab === "prepa" || tab === "bank");
+      if (tab === "bank") renderBank();
+      if (tab === "prepa" && !state.currentPrepa) loadPrepaItem(pickNextPrepa(null));
+    }
+
+    function setLevel(lvl) {
+      stopSpeech();
+      state.level = lvl;
+      saveState();
+      document.querySelectorAll(".lvl-btn").forEach(b => b.classList.toggle("active", b.dataset.level === lvl));
+      updateHeader();
+      loadSpeakItem(pickNextItem("speak", state.currentSpeak?.id));
+      loadListenItem(pickNextItem("listen", state.currentListen?.id));
+      if (state.tab === "bank") renderBank();
+    }
+
+    // -------------------------------------------------------------------------
+    // 10. INITIALISATION
+    // -------------------------------------------------------------------------
+    function init() {
+      loadState();
+
+      const themeSel = $("theme-select");
+      THEMES.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t; opt.textContent = t;
+        themeSel.appendChild(opt);
+      });
+
+      const prepaThemeSel = $("prepa-theme-select");
+      PREPA_THEMES.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t; opt.textContent = t;
+        prepaThemeSel.appendChild(opt);
+      });
+
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+      }
+
+      document.querySelectorAll(".lvl-btn").forEach(b => b.classList.toggle("active", b.dataset.level === state.level));
+      updateHeader();
+      updateAccentButtons();
+
+      loadSpeakItem(pickNextItem("speak", null));
+      loadListenItem(pickNextItem("listen", null));
+      loadPrepaItem(pickNextPrepa(null));
+
+      document.querySelectorAll(".lvl-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          setLevel(btn.dataset.level);
+          showToast(`Niveau ${btn.dataset.level}`);
+        });
+      });
+
+      themeSel.addEventListener("change", () => {
+        state.theme = themeSel.value;
+        loadSpeakItem(pickNextItem("speak", state.currentSpeak?.id));
+        loadListenItem(pickNextItem("listen", state.currentListen?.id));
+        showToast(state.theme === "ALL" ? "🎲 Mode aléatoire (tous thèmes)" : `Thème : ${state.theme}`);
+      });
+
+      prepaThemeSel.addEventListener("change", () => {
+        state.prepaTheme = prepaThemeSel.value;
+        loadPrepaItem(pickNextPrepa(state.currentPrepa?.id));
+        showToast(state.prepaTheme === "ALL" ? "🎲 Thèmes Prépa aléatoires" : `Thème : ${state.prepaTheme}`);
+      });
+
+      document.querySelectorAll("[data-prepa-lang]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.prepaLang = btn.dataset.prepaLang;
+          document.querySelectorAll("[data-prepa-lang]").forEach(b => b.classList.toggle("active", b === btn));
+          if (state.currentPrepa) loadPrepaItem(state.currentPrepa);
+        });
+      });
+
+      document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+      });
+
+      $("btn-speak-hint").addEventListener("click", () => $("speak-hint-box").classList.toggle("hidden"));
+
+      $("btn-speak-fav").addEventListener("click", () => {
+        if (!state.currentSpeak) return;
+        const cur = !!state.reviews[state.currentSpeak.id]?.fav;
+        markReview(state.currentSpeak.id, { fav: !cur });
+        showToast(!cur ? "⭐ Ajouté aux favoris" : "Retiré des favoris");
+      });
+
+      $("btn-speak-record").addEventListener("click", () => openRecordModal("speak"));
+
+      const nextSpeak = () => { stopSpeech(); loadSpeakItem(pickNextItem("speak", state.currentSpeak?.id)); };
+      $("btn-speak-next").addEventListener("click", nextSpeak);
+      $("btn-speak-next-after").addEventListener("click", nextSpeak);
+
+      $("btn-speak-play-1x").addEventListener("click", () => {
+        const txt = $("speak-ref-en").textContent || state.currentSpeak?.en;
+        if (txt) speakEnglish(txt, 1.0);
+      });
+
+      $("btn-speak-play-slow").addEventListener("click", () => {
+        const txt = $("speak-ref-en").textContent || state.currentSpeak?.en;
+        if (txt) speakEnglish(txt, 0.75);
+      });
+
+      $("btn-listen-fav").addEventListener("click", () => {
+        if (!state.currentListen) return;
+        const cur = !!state.reviews[state.currentListen.id]?.fav;
+        markReview(state.currentListen.id, { fav: !cur });
+        showToast(!cur ? "⭐ Ajouté aux favoris" : "Retiré des favoris");
+      });
+
+      const nextListen = () => { stopSpeech(); loadListenItem(pickNextItem("listen", state.currentListen?.id)); };
+      $("btn-listen-next").addEventListener("click", nextListen);
+      $("btn-listen-next-after").addEventListener("click", nextListen);
+
+      $("btn-listen-play").addEventListener("click", playCurrentListen);
+      $("btn-listen-replay").addEventListener("click", playCurrentListen);
+
+      document.querySelectorAll("[data-speed]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.listenSpeed = parseFloat(btn.dataset.speed) || 1;
+          document.querySelectorAll("[data-speed]").forEach(b => b.classList.toggle("active", b === btn));
+        });
+      });
+
+      document.querySelectorAll("[data-accent]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.accent = btn.dataset.accent;
+          saveState();
+          updateAccentButtons();
+        });
+      });
+
+      $("btn-listen-record").addEventListener("click", () => openRecordModal("listen"));
+
+      const nextPrepa = () => { stopSpeech(); loadPrepaItem(pickNextPrepa(state.currentPrepa?.id)); };
+      $("btn-prepa-next").addEventListener("click", nextPrepa);
+      $("btn-prepa-next-after").addEventListener("click", nextPrepa);
+      $("btn-prepa-gen").addEventListener("click", generatePrepaQuestion);
+      $("btn-prepa-record").addEventListener("click", () => openRecordModal("prepa"));
+      $("btn-prepa-play-improved").addEventListener("click", () => {
+        const txt = $("prepa-improved-text").textContent;
+        if (txt) speakText(txt, state.prepaLang === "en" ? state.accent : "fr-FR", 0.95);
+      });
+
+      $("bank-search").addEventListener("input", renderBank);
+      $("bank-filter-scope").addEventListener("change", renderBank);
+      $("bank-filter-level").addEventListener("change", renderBank);
+      $("bank-filter-mode").addEventListener("change", renderBank);
+      $("btn-gen-ai").addEventListener("click", generateAiSentences);
+
+      $("btn-close-record").addEventListener("click", closeRecordModal);
+      $("record-modal").addEventListener("click", e => { if (e.target === $("record-modal")) closeRecordModal(); });
+
+      $("btn-toggle-mic").addEventListener("click", toggleRecording);
+
+      $("btn-clear-textarea").addEventListener("click", () => {
+        $("modal-textarea").value = "";
+        recordedAudioBlob = null;
+        $("modal-audio-preview").classList.add("hidden");
+      });
+
+      $("btn-submit-answer").addEventListener("click", async () => {
+        if (isRecording) {
+          if (mediaRecorder && mediaRecorder.state !== "inactive") mediaRecorder.stop();
+          isRecording = false;
+          setMicUI(false);
+          await new Promise(r => setTimeout(r, 250));
+        }
+        const textVal = $("modal-textarea").value.trim();
+        if (!textVal && !recordedAudioBlob) {
+          showToast("Enregistrez votre voix ou tapez une réponse.");
+          return;
+        }
+        const mode = state.modalMode;
+        const blobToProcess = recordedAudioBlob;
+        closeRecordModal();
+
+        state.correctionSeq += 1;
+        const seq = state.correctionSeq;
+
+        if (mode === "prepa") {
+          if (blobToProcess) {
+            state.lastAudioUrl = URL.createObjectURL(blobToProcess);
+            $("prepa-user-audio").src = state.lastAudioUrl;
+            $("prepa-user-audio-wrap").classList.remove("hidden");
+          } else {
+            $("prepa-user-audio-wrap").classList.add("hidden");
+          }
+          const card = $("prepa-result");
+          card.classList.remove("hidden");
+          card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          await evaluatePrepaAnswer(state.currentPrepa, textVal, blobToProcess, seq);
+          return;
+        }
+
+        const item = mode === "speak" ? state.currentSpeak : state.currentListen;
+        if (mode === "speak" && blobToProcess) {
+          state.lastAudioUrl = URL.createObjectURL(blobToProcess);
+          $("speak-user-audio").src = state.lastAudioUrl;
+          $("speak-user-audio-wrap").classList.remove("hidden");
+        } else if (mode === "speak") {
+          $("speak-user-audio-wrap").classList.add("hidden");
+        }
+
+        const card = $(`${mode}-result`);
+        card.classList.remove("hidden");
+        card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+        await evaluateWithGroqOrLocal(mode, item, textVal, blobToProcess, seq);
+      });
+
+      $("btn-open-settings").addEventListener("click", openSettingsModal);
+      $("btn-close-settings").addEventListener("click", () => $("settings-modal").classList.add("hidden"));
+      $("settings-modal").addEventListener("click", e => { if (e.target === $("settings-modal")) $("settings-modal").classList.add("hidden"); });
+
+      $("btn-toggle-key-vis").addEventListener("click", () => {
+        const inp = $("input-api-key");
+        inp.type = inp.type === "password" ? "text" : "password";
+      });
+
+      $("btn-save-key").addEventListener("click", () => {
+        state.apiKey = $("input-api-key").value.trim();
+        state.groqModel = $("select-groq-model").value;
+        saveState();
+        updateHeader();
+        $("set-api-badge").textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
+        $("set-api-badge").className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
+        showToast(state.apiKey ? "Clé Groq & modèle enregistrés !" : "Clé supprimée");
+      });
+
+      $("btn-test-key").addEventListener("click", async () => {
+        const key = $("input-api-key").value.trim();
+        const model = $("select-groq-model").value;
+        const st = $("api-test-status");
+        st.classList.remove("hidden");
+        if (!key) { st.style.color = "var(--rose)"; st.textContent = "Entrez une clé Groq (gsk_...)."; return; }
+        state.apiKey = key;
+        state.groqModel = model;
+        st.style.color = "var(--violet)";
+        st.textContent = "⏳ Test Groq en cours...";
+        try {
+          const { ms } = await callGroqChat(
+            "Réponds en JSON.",
+            'Retourne exactement {"ok":true}',
+            key,
+            model
+          );
+          saveState();
+          updateHeader();
+          $("set-api-badge").textContent = "Connecté ⚡";
+          $("set-api-badge").className = "badge badge-emerald";
+          st.style.color = "var(--emerald)";
+          st.textContent = `✅ Clé Groq valide (${model}) ! Réponse en ${ms} ms.`;
+        } catch (e) {
+          st.style.color = "var(--rose)";
+          st.textContent = `❌ ${e.message}`;
+        }
+      });
+
+      $("btn-set-us").addEventListener("click", () => { state.accent = "en-US"; saveState(); updateAccentButtons(); showToast("🇺🇸 US"); });
+      $("btn-set-gb").addEventListener("click", () => { state.accent = "en-GB"; saveState(); updateAccentButtons(); showToast("🇬🇧 UK"); });
+
+      $("btn-reset-ask").addEventListener("click", () => {
+        $("btn-reset-ask").classList.add("hidden");
+        $("reset-confirm-row").classList.remove("hidden");
+      });
+      $("btn-reset-cancel").addEventListener("click", () => {
+        $("reset-confirm-row").classList.add("hidden");
+        $("btn-reset-ask").classList.remove("hidden");
+      });
+      $("btn-reset-confirm").addEventListener("click", () => {
+        state.aiItems = []; state.reviews = {}; state.stats = { xp: 0, streak: 0, lastDate: null }; state.seenIds.clear(); state.seenPrepaIds.clear();
+        saveState(); updateHeader(); renderBank();
+        $("settings-modal").classList.add("hidden");
+        showToast("Progression réinitialisée.");
+      });
+
+      document.body.addEventListener("click", e => {
+        const speakBtn = e.target.closest("[data-speak]");
+        if (speakBtn) { speakEnglish(speakBtn.dataset.speak, 1.0); return; }
+        const practiceBtn = e.target.closest("[data-practice]");
+        if (practiceBtn) {
+          const item = getAllItems().find(x => x.id === practiceBtn.dataset.practice);
+          if (item) {
+            if (item.mode === "speak") { loadSpeakItem(item); switchTab("speak"); }
+            else { loadListenItem(item); switchTab("listen"); }
+          }
+          return;
+        }
+        if (e.target.closest('[data-action="replay-listen"]')) playCurrentListen();
+      });
+    }
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  })();
+  </script>
+</body>
+</html>
