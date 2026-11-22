@@ -1787,15 +1787,15 @@
       const token = (state.hfToken || "").trim();
       if (!token) throw new Error("Jeton Hugging Face manquant");
 
-      // 1. Soumission de la requête au serveur GPU Hugging Face
-      const postRes = await fetch("https://remsky-kokoro-tts-zero.hf.space/gradio_api/call/generate_speech_from_ui", {
+      // 1. Soumission de la requête au serveur Kokoro CPU (SANS quota ZeroGPU !)
+      const postRes = await fetch("https://pendrokar-kokoro-tts.hf.space/gradio_api/call/predict", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          data: [text, [voice], speed || 1.0]
+          data: [text, voice, speed || 1.0]
         })
       });
 
@@ -1807,7 +1807,7 @@
       if (!event_id) throw new Error("ID de tâche manquant");
 
       // 2. Récupération de l'onde audio générée
-      const streamRes = await fetch(`https://remsky-kokoro-tts-zero.hf.space/gradio_api/call/generate_speech_from_ui/${event_id}`, {
+      const streamRes = await fetch(`https://pendrokar-kokoro-tts.hf.space/gradio_api/call/predict/${event_id}`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -1822,8 +1822,8 @@
         if (lines[i].startsWith("data:")) {
           try {
             const parsed = JSON.parse(lines[i].slice(5).trim());
-            if (Array.isArray(parsed) && parsed[0] && parsed[0].url) {
-              audioUrl = parsed[0].url;
+            if (Array.isArray(parsed) && parsed[0]) {
+              audioUrl = typeof parsed[0] === "string" ? parsed[0] : (parsed[0].url || parsed[0].path);
             }
           } catch (e) {}
         }
@@ -2013,9 +2013,11 @@
               return;
             } catch (gErr) {
               console.warn("Erreur relais Groq:", gErr.message);
+              showToast(`⚠️ Erreur Groq (${gErr.message}) : Voix système.`);
             }
+          } else {
+            showToast(`⚠️ Kokoro indisponible (${err.message}) : Voix système.`);
           }
-          showToast("⚠️ Quota HF ZeroGPU dépassé : Voix système utilisée.");
         } finally {
           isKokoroGenerating = false;
         }
