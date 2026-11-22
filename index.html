@@ -994,9 +994,9 @@
           <span class="stats-sep">|</span>
           <span class="stat-xp" title="Points">⚡ <span id="hdr-xp">0</span></span>
         </div>
-        <button id="hdr-voice-btn" class="stats-pill" type="button" title="Moteur vocal Kokoro Cloud" style="cursor:pointer;border-color:#bbf7d0;background:#f0fdf4;padding:6px 10px;">
-          <span id="hdr-voice-icon">🎙️</span>
-          <span id="hdr-voice-label" style="font-weight:700;font-size:11px;color:#166534;">Kokoro ✨</span>
+        <button id="hdr-voice-btn" class="stats-pill" type="button" title="Moteur vocal Groq Neural" style="cursor:pointer;border-color:#ddd6fe;background:#f5f3ff;padding:6px 10px;">
+          <span id="hdr-voice-icon">⚡</span>
+          <span id="hdr-voice-label" style="font-weight:700;font-size:11px;color:#6b21a8;">Groq Neural</span>
         </button>
         <button id="btn-open-settings" class="icon-btn" type="button" aria-label="Réglages">
           ⚙️
@@ -1445,60 +1445,41 @@
             <button id="btn-save-key" type="button" class="btn btn-primary btn-sm flex-1" style="box-shadow:none;">Enregistrer</button>
             <button id="btn-test-key" type="button" class="btn btn-secondary btn-sm flex-1">Tester LLM</button>
           </div>
-          <button id="btn-test-groq-voice" type="button" class="btn btn-secondary btn-sm" style="width:100%;margin-top:5px;background:#f5f3ff;color:#6b21a8;border-color:#ddd6fe;font-weight:600;">
-            🔊 Écouter la voix Groq Neural
-          </button>
-          <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;"></div>
-        </div>
-
-        <!-- BLOC MOTEUR VOCAL KOKORO CLOUD (HUGGING FACE) -->
-        <div class="settings-box" style="background:#f0fdf4;border-color:#bbf7d0;">
+          <!-- BLOC MOTEUR VOCAL GROQ NEURAL -->
+        <div class="settings-box" style="background:#f5f3ff;border-color:#ddd6fe;">
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <strong style="font-size:13px;color:#166534;">🎙️ Voix IA Réaliste (Kokoro Cloud)</strong>
-            <span id="set-voice-badge" class="badge badge-emerald">Actif ✨</span>
+            <strong style="font-size:13px;color:#5b21b6;">🎙️ Voix IA Réaliste (Groq Neural)</strong>
+            <span id="set-voice-badge" class="badge badge-emerald">Actif ⚡</span>
           </div>
-          <p style="font-size:12px;color:#15803d;margin-top:2px;">
-            Génère la vraie voix humaine Kokoro via Hugging Face GPU. En cas de dépassement du quota ZeroGPU gratuit, votre clé Groq prend automatiquement le relais avec les voix humaines <strong>Groq Neural</strong>.
+          <p style="font-size:12px;color:#6b21a8;margin-top:2px;">
+            Génère une voix humaine naturelle en temps réel (~150 ms) propulsée par les puces LPU de Groq. Fonctionne directement avec votre clé Groq ci-dessus.
           </p>
           <div class="btn-row" style="margin-top:6px;">
-            <button id="btn-voice-kokoro" type="button" class="btn btn-primary btn-sm flex-1">✨ Kokoro Cloud (Humain)</button>
+            <button id="btn-voice-groq" type="button" class="btn btn-primary btn-sm flex-1">⚡ Groq Neural (Humain)</button>
             <button id="btn-voice-browser" type="button" class="btn btn-secondary btn-sm flex-1">💻 Navigateur (Secours)</button>
           </div>
 
-          <div id="kokoro-settings-group" style="margin-top:8px;">
+          <div id="groq-voice-settings-group" style="margin-top:8px;">
             <div>
-              <label for="input-hf-token" class="prompt-label" style="color:#166534;">Clé Hugging Face (hf_...)</label>
-              <div class="input-with-btn">
-                <input id="input-hf-token" type="password" class="text-input" placeholder="hf_...">
-                <button id="btn-toggle-hf-vis" type="button" class="eye-btn" aria-label="Afficher la clé">👁️</button>
-              </div>
-            </div>
-
-            <div style="margin-top:6px;">
-              <label for="select-kokoro-voice" class="prompt-label" style="color:#166534;">Voix Kokoro sélectionnée</label>
-              <select id="select-kokoro-voice" class="select-input" style="width:100%;">
+              <label for="select-groq-voice" class="prompt-label" style="color:#5b21b6;">Voix Groq Neural sélectionnée</label>
+              <select id="select-groq-voice" class="select-input" style="width:100%;">
                 <optgroup label="🇺🇸 Voix Américaines (en-US)">
-                  <option value="af_heart">🇺🇸 Heart (Femme, chaleureuse & humaine) ⭐ Recommandée</option>
-                  <option value="af_bella">🇺🇸 Bella (Femme, dynamique)</option>
-                  <option value="af_nicole">🇺🇸 Nicole (Femme, posée)</option>
-                  <option value="af_sky">🇺🇸 Sky (Femme, douce)</option>
-                  <option value="am_adam">🇺🇸 Adam (Homme, dynamique & naturel)</option>
-                  <option value="am_michael">🇺🇸 Michael (Homme, posé & grave)</option>
+                  <option value="autumn">🇺🇸 Autumn (Femme, chaleureuse & naturelle) ⭐ Recommandée</option>
+                  <option value="diana">🇺🇸 Diana (Femme, dynamique & claire)</option>
+                  <option value="austin">🇺🇸 Austin (Homme, expressif & naturel)</option>
                 </optgroup>
                 <optgroup label="🇬🇧 Voix Britanniques (en-GB)">
-                  <option value="bf_emma">🇬🇧 Emma (Femme, accent British parfait) ⭐ Recommandée</option>
-                  <option value="bf_isabella">🇬🇧 Isabella (Femme, British douce)</option>
-                  <option value="bm_george">🇬🇧 George (Homme, accent British naturel)</option>
-                  <option value="bm_daniel">🇬🇧 Daniel (Homme, British posé)</option>
+                  <option value="hannah">🇬🇧 Hannah (Femme, accent British élégant) ⭐ Recommandée</option>
+                  <option value="daniel">🇬🇧 Daniel (Homme, calme & posé)</option>
+                  <option value="troy">🇬🇧 Troy (Homme, dynamique & moderne)</option>
                 </optgroup>
               </select>
             </div>
 
             <div class="btn-row" style="margin-top:8px;">
-              <button id="btn-save-hf" type="button" class="btn btn-primary btn-sm flex-1" style="background:#166534;border:none;">Enregistrer</button>
-              <button id="btn-test-kokoro" type="button" class="btn btn-secondary btn-sm flex-1">🔊 Tester Kokoro</button>
+              <button id="btn-test-groq-voice-modal" type="button" class="btn btn-primary btn-sm flex-1" style="background:#6b21a8;border:none;">🔊 Tester la voix sélectionnée</button>
             </div>
-            <div id="kokoro-status-text" class="hidden" style="font-size:11px;font-weight:600;margin-top:4px;"></div>
+            <div id="groq-voice-status-text" class="hidden" style="font-size:11px;font-weight:600;margin-top:4px;"></div>
           </div>
         </div>
 
@@ -1554,10 +1535,9 @@
       listenSpeed: 1,
       apiKey: "",
       groqModel: "llama-3.3-70b-versatile",
-      hfToken: "",
-      voiceEngine: "kokoro",
-      kokoroVoiceUS: "af_heart",
-      kokoroVoiceUK: "bf_emma",
+      voiceEngine: "groq",
+      groqVoiceUS: "autumn",
+      groqVoiceUK: "hannah",
       aiItems: [],
       reviews: {},
       stats: { xp: 0, streak: 0, lastDate: null },
@@ -1579,10 +1559,10 @@
         if (["A2", "B1", "B2"].includes(d.level)) state.level = d.level;
         if (d.accent === "en-GB" || d.accent === "en-US") state.accent = d.accent;
         if (typeof d.apiKey === "string") state.apiKey = d.apiKey;
-        if (typeof d.hfToken === "string" && d.hfToken) state.hfToken = d.hfToken;
-        if (d.voiceEngine === "kokoro" || d.voiceEngine === "browser") state.voiceEngine = d.voiceEngine;
-        if (typeof d.kokoroVoiceUS === "string" && d.kokoroVoiceUS) state.kokoroVoiceUS = d.kokoroVoiceUS;
-        if (typeof d.kokoroVoiceUK === "string" && d.kokoroVoiceUK) state.kokoroVoiceUK = d.kokoroVoiceUK;
+        if (d.voiceEngine === "groq" || d.voiceEngine === "browser") state.voiceEngine = d.voiceEngine;
+        else state.voiceEngine = "groq";
+        if (typeof d.groqVoiceUS === "string" && d.groqVoiceUS) state.groqVoiceUS = d.groqVoiceUS;
+        if (typeof d.groqVoiceUK === "string" && d.groqVoiceUK) state.groqVoiceUK = d.groqVoiceUK;
         if (typeof d.groqModel === "string" && d.groqModel) state.groqModel = d.groqModel;
         if (Array.isArray(d.aiItems)) state.aiItems = d.aiItems;
         if (d.reviews && typeof d.reviews === "object") state.reviews = d.reviews;
@@ -1603,10 +1583,9 @@
           accent: state.accent,
           apiKey: state.apiKey,
           groqModel: state.groqModel,
-          hfToken: state.hfToken,
           voiceEngine: state.voiceEngine,
-          kokoroVoiceUS: state.kokoroVoiceUS,
-          kokoroVoiceUK: state.kokoroVoiceUK,
+          groqVoiceUS: state.groqVoiceUS,
+          groqVoiceUK: state.groqVoiceUK,
           aiItems: state.aiItems,
           reviews: state.reviews,
           stats: state.stats
@@ -1716,52 +1695,53 @@
       updateHeader();
     }
 
-    // ==================== MOTEUR VOCAL KOKORO CLOUD (HUGGING FACE) & SYSTÈME ====================
-    const kokoroAudioCache = new Map();
-    let activeKokoroAudio = null;
-    let isKokoroGenerating = false;
+    // ==================== MOTEUR VOCAL GROQ NEURAL TTS & SYSTÈME ====================
+    const audioCache = new Map();
+    let activeAudio = null;
+    let isAudioGenerating = false;
 
-    function updateKokoroUIState() {
-      const isKokoro = state.voiceEngine === "kokoro";
-      const hasToken = !!(state.hfToken && state.hfToken.trim());
-      const btnK = $("btn-voice-kokoro");
+    function updateVoiceUIState() {
+      const isGroq = state.voiceEngine === "groq";
+      const hasKey = !!(state.apiKey && state.apiKey.trim());
+      const btnG = $("btn-voice-groq");
       const btnB = $("btn-voice-browser");
-      const group = $("kokoro-settings-group");
+      const group = $("groq-voice-settings-group");
       const badge = $("set-voice-badge");
       const hdrBadge = $("hdr-voice-label");
-      const tokenInput = $("input-hf-token");
-      const voiceSelect = $("select-kokoro-voice");
+      const voiceSelect = $("select-groq-voice");
 
-      if (btnK) btnK.className = isKokoro ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
-      if (btnB) btnB.className = !isKokoro ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
-      if (group) group.style.display = isKokoro ? "block" : "none";
-      if (tokenInput && state.hfToken) tokenInput.value = state.hfToken;
+      if (btnG) btnG.className = isGroq ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
+      if (btnB) btnB.className = !isGroq ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
+      if (group) group.style.display = isGroq ? "block" : "none";
 
       if (voiceSelect) {
         const isUK = state.accent === "en-GB";
-        voiceSelect.value = isUK ? (state.kokoroVoiceUK || "bf_emma") : (state.kokoroVoiceUS || "af_heart");
+        voiceSelect.value = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
       }
 
       if (badge) {
-        if (!isKokoro) {
-          badge.textContent = "Standard 💻";
+        if (!isGroq) {
+          badge.textContent = "Navigateur 💻";
           badge.className = "badge badge-muted";
-        } else if (hasToken) {
-          badge.textContent = "Kokoro Cloud ⚡";
+        } else if (hasKey) {
+          badge.textContent = "Groq Neural ⚡";
           badge.className = "badge badge-emerald";
         } else {
-          badge.textContent = "Jeton requis ⚠️";
+          badge.textContent = "Clé Groq requise ⚠️";
           badge.className = "badge badge-rose";
         }
       }
 
       if (hdrBadge) {
-        hdrBadge.textContent = isKokoro && hasToken ? "Kokoro ✨" : "Système";
+        hdrBadge.textContent = isGroq && hasKey ? "Groq ⚡" : "Système 💻";
       }
     }
 
     async function fetchGroqAudioUrl(text, voice) {
       if (!state.apiKey) throw new Error("Clé Groq manquante");
+      const isUK = state.accent === "en-GB";
+      const actualVoice = voice || (isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn"));
+
       const res = await fetch("https://api.groq.com/openai/v1/audio/speech", {
         method: "POST",
         headers: {
@@ -1770,7 +1750,7 @@
         },
         body: JSON.stringify({
           model: "canopylabs/orpheus-v1-english",
-          voice: voice || (state.accent === "en-GB" ? "hannah" : "autumn"),
+          voice: actualVoice,
           input: text,
           response_format: "wav"
         })
@@ -1783,70 +1763,19 @@
       return URL.createObjectURL(blob);
     }
 
-    async function fetchKokoroAudioUrl(text, voice, speed) {
-      const token = (state.hfToken || "").trim();
-      if (!token) throw new Error("Jeton Hugging Face manquant");
-
-      // 1. Soumission de la requête au serveur Kokoro CPU (SANS quota ZeroGPU !)
-      const postRes = await fetch("https://pendrokar-kokoro-tts.hf.space/gradio_api/call/predict", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          data: [text, voice, speed || 1.0]
-        })
-      });
-
-      if (!postRes.ok) {
-        throw new Error(`Erreur HF (${postRes.status})`);
-      }
-
-      const { event_id } = await postRes.json();
-      if (!event_id) throw new Error("ID de tâche manquant");
-
-      // 2. Récupération de l'onde audio générée
-      const streamRes = await fetch(`https://pendrokar-kokoro-tts.hf.space/gradio_api/call/predict/${event_id}`, {
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      });
-
-      if (!streamRes.ok) throw new Error(`Erreur génération (${streamRes.status})`);
-      const streamText = await streamRes.text();
-
-      let audioUrl = null;
-      const lines = streamText.split("\n");
-      for (let i = 0; i < lines.length; i++) {
-        if (lines[i].startsWith("data:")) {
-          try {
-            const parsed = JSON.parse(lines[i].slice(5).trim());
-            if (Array.isArray(parsed) && parsed[0]) {
-              audioUrl = typeof parsed[0] === "string" ? parsed[0] : (parsed[0].url || parsed[0].path);
-            }
-          } catch (e) {}
-        }
-      }
-
-      if (!audioUrl) throw new Error("Aucun lien audio produit");
-      return audioUrl;
-    }
-
-    // Pré-chargement automatique silencieux pour latence 0 ms dès que l'utilisateur clique
-    function preloadKokoroAudio(text, langCode, speed) {
-      if (state.voiceEngine !== "kokoro" || !state.hfToken || !text) return;
+    // Préchargement anticipé silencieux pour latence 0 ms dès que l'utilisateur clique
+    function preloadAudio(text, langCode) {
+      if (state.voiceEngine !== "groq" || !state.apiKey || !text) return;
       const cleanText = text.trim();
       const isUK = (langCode || state.accent) === "en-GB";
-      const voice = isUK ? (state.kokoroVoiceUK || "bf_emma") : (state.kokoroVoiceUS || "af_heart");
-      const sp = speed || 1.0;
-      const cacheKey = `${voice}_${sp}_${cleanText}`;
+      const voice = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
+      const cacheKey = `${voice}_${cleanText}`;
 
-      if (kokoroAudioCache.has(cacheKey)) return;
+      if (audioCache.has(cacheKey)) return;
 
-      fetchKokoroAudioUrl(cleanText, voice, sp)
+      fetchGroqAudioUrl(cleanText, voice)
         .then(url => {
-          kokoroAudioCache.set(cacheKey, url);
+          audioCache.set(cacheKey, url);
           const preAudio = new Audio(url);
           preAudio.preload = "auto";
         })
@@ -1854,24 +1783,24 @@
     }
 
     function stopSpeech() {
-      if (activeKokoroAudio) {
+      if (activeAudio) {
         try {
-          activeKokoroAudio.pause();
-          activeKokoroAudio.currentTime = 0;
+          activeAudio.pause();
+          activeAudio.currentTime = 0;
         } catch (e) {}
-        activeKokoroAudio = null;
+        activeAudio = null;
       }
       if ("speechSynthesis" in window) {
         window.speechSynthesis.cancel();
       }
       const eq = $("listen-eq");
       if (eq) eq.classList.remove("eq-playing");
-      isKokoroGenerating = false;
+      isAudioGenerating = false;
     }
 
     function playDirectAudioUrl(url, onEnd) {
       const audio = new Audio(url);
-      activeKokoroAudio = audio;
+      activeAudio = audio;
 
       const eq = $("listen-eq");
       if (eq) eq.classList.add("eq-playing");
@@ -1880,7 +1809,7 @@
       const finish = () => {
         if (done) return;
         done = true;
-        if (activeKokoroAudio === audio) activeKokoroAudio = null;
+        if (activeAudio === audio) activeAudio = null;
         if (eq) eq.classList.remove("eq-playing");
         if (onEnd) onEnd();
       };
@@ -1975,51 +1904,35 @@
       const speed = rate || 1.0;
       const isEnglish = targetLang.startsWith("en");
 
-      // 1. Tenter Kokoro Cloud (vraie voix humaine Hugging Face)
-      if (state.voiceEngine === "kokoro" && isEnglish && state.hfToken) {
+      // 1. Tenter Groq Neural TTS (ultra-rapide LPU ~150 ms)
+      if (state.voiceEngine === "groq" && isEnglish && state.apiKey) {
         const isUK = targetLang === "en-GB";
-        const voice = isUK ? (state.kokoroVoiceUK || "bf_emma") : (state.kokoroVoiceUS || "af_heart");
-        const cacheKey = `${voice}_${speed}_${cleanText}`;
+        const voice = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
+        const cacheKey = `${voice}_${cleanText}`;
 
         // Si déjà en cache -> Lecture 0 ms immédiate
-        if (kokoroAudioCache.has(cacheKey)) {
-          playDirectAudioUrl(kokoroAudioCache.get(cacheKey), onEnd);
+        if (audioCache.has(cacheKey)) {
+          playDirectAudioUrl(audioCache.get(cacheKey), onEnd);
           return;
         }
 
-        // Sinon, génération via l'API Hugging Face
-        isKokoroGenerating = true;
-        showToast("🎙️ Kokoro Cloud génère la voix...");
+        // Sinon, génération via l'API Groq LPU
+        isAudioGenerating = true;
         const eq = $("listen-eq");
         if (eq) eq.classList.add("eq-playing");
 
         try {
-          const audioUrl = await fetchKokoroAudioUrl(cleanText, voice, speed);
-          kokoroAudioCache.set(cacheKey, audioUrl);
-          if (isKokoroGenerating) {
+          const audioUrl = await fetchGroqAudioUrl(cleanText, voice);
+          audioCache.set(cacheKey, audioUrl);
+          if (isAudioGenerating) {
             playDirectAudioUrl(audioUrl, onEnd);
             return;
           }
         } catch (err) {
-          console.warn("Quota ZeroGPU Kokoro atteint ou erreur HF:", err.message);
-          // Relais automatique vers Groq Neural TTS pour eviter la voix robotique du telephone !
-          if (state.apiKey) {
-            try {
-              showToast("⚡ Relais Groq Neural (Quota HF dépassé)...");
-              const groqVoice = isUK ? "hannah" : "autumn";
-              const groqUrl = await fetchGroqAudioUrl(cleanText, groqVoice);
-              kokoroAudioCache.set(cacheKey, groqUrl);
-              playDirectAudioUrl(groqUrl, onEnd);
-              return;
-            } catch (gErr) {
-              console.warn("Erreur relais Groq:", gErr.message);
-              showToast(`⚠️ Erreur Groq (${gErr.message}) : Voix système.`);
-            }
-          } else {
-            showToast(`⚠️ Kokoro indisponible (${err.message}) : Voix système.`);
-          }
+          console.warn("Erreur Groq TTS:", err.message);
+          showToast(`⚠️ Groq TTS indisponible : Voix système.`);
         } finally {
-          isKokoroGenerating = false;
+          isAudioGenerating = false;
         }
       }
 
@@ -2645,7 +2558,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function loadSpeakItem(item) {
       if (!item) return;
       state.currentSpeak = item;
-      preloadKokoroAudio(item.en, state.accent, 1.0);
+      preloadAudio(item.en, state.accent);
       $("speak-lvl-badge").textContent = item.level;
       $("speak-theme-badge").textContent = item.theme;
       $("speak-ai-badge").classList.toggle("hidden", !item.isAi);
@@ -2660,7 +2573,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function loadListenItem(item) {
       if (!item) return;
       state.currentListen = item;
-      preloadKokoroAudio(item.en, state.accent, state.listenSpeed);
+      preloadAudio(item.en, state.accent);
       $("listen-lvl-badge").textContent = item.level;
       $("listen-theme-badge").textContent = item.theme;
       $("listen-ai-badge").classList.toggle("hidden", !item.isAi);
@@ -2879,7 +2792,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       b.textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
       b.className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
       updateAccentButtons();
-      updateKokoroUIState();
+      updateVoiceUIState();
       $("settings-modal").classList.remove("hidden");
     }
 
@@ -2932,6 +2845,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       document.querySelectorAll(".lvl-btn").forEach(b => b.classList.toggle("active", b.dataset.level === state.level));
       updateHeader();
       updateAccentButtons();
+      updateVoiceUIState();
 
       loadSpeakItem(pickNextItem("speak", null));
       loadListenItem(pickNextItem("listen", null));
@@ -3150,7 +3064,48 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         }
       });
 
-      $("btn-test-groq-voice").addEventListener("click", async () => {
+      $("btn-set-us").addEventListener("click", () => {
+        state.accent = "en-US";
+        saveState();
+        updateAccentButtons();
+        updateVoiceUIState();
+        showToast("🇺🇸 Accent US sélectionné");
+      });
+      $("btn-set-gb").addEventListener("click", () => {
+        state.accent = "en-GB";
+        saveState();
+        updateAccentButtons();
+        updateVoiceUIState();
+        showToast("🇬🇧 Accent UK sélectionné");
+      });
+
+      // Gestionnaires Voix Groq Neural
+      $("hdr-voice-btn").addEventListener("click", openSettingsModal);
+
+      $("btn-voice-groq").addEventListener("click", () => {
+        state.voiceEngine = "groq";
+        saveState();
+        updateVoiceUIState();
+        showToast("⚡ Voix Groq Neural activée");
+      });
+
+      $("btn-voice-browser").addEventListener("click", () => {
+        state.voiceEngine = "browser";
+        saveState();
+        updateVoiceUIState();
+        showToast("💻 Voix système du navigateur activée");
+      });
+
+      $("select-groq-voice").addEventListener("change", (e) => {
+        const val = e.target.value;
+        if (state.accent === "en-GB") state.groqVoiceUK = val;
+        else state.groqVoiceUS = val;
+        saveState();
+        updateVoiceUIState();
+        showToast("Voix Groq mise à jour");
+      });
+
+      $("btn-test-groq-voice-modal").addEventListener("click", async () => {
         const key = $("input-api-key").value.trim() || state.apiKey;
         if (!key) {
           showToast("Entrez d'abord votre clé Groq ci-dessus.");
@@ -3158,83 +3113,25 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         }
         state.apiKey = key;
         const isUK = state.accent === "en-GB";
-        const voice = isUK ? "hannah" : "autumn";
-        showToast("🎙️ Génération de la voix Groq Neural...");
+        const voice = $("select-groq-voice").value || (isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn"));
+        const statusEl = $("groq-voice-status-text");
+        statusEl.classList.remove("hidden");
+        statusEl.style.color = "var(--violet)";
+        statusEl.textContent = "⏳ Génération Groq (~150 ms)...";
         try {
           const sampleText = isUK
-            ? "Hello there! This is the Groq Neural British voice, powered by Orpheus. How does it sound to you?"
-            : "Hello! This is the Groq Neural American voice, powered by Orpheus. How does it sound to you?";
+            ? "Hello there! This is your British AI tutor on Groq Neural. How do I sound?"
+            : "Hello! This is your American AI tutor on Groq Neural. How do I sound?";
           const url = await fetchGroqAudioUrl(sampleText, voice);
+          statusEl.style.color = "var(--emerald)";
+          statusEl.textContent = "✅ Voix Groq prête !";
           playDirectAudioUrl(url, () => {
-            showToast("✅ Extrait Groq terminé !");
+            setTimeout(() => statusEl.classList.add("hidden"), 3000);
           });
         } catch (e) {
-          showToast(`❌ Erreur Groq : ${e.message}`);
+          statusEl.style.color = "var(--rose)";
+          statusEl.textContent = `❌ ${e.message}`;
         }
-      });
-
-      $("btn-set-us").addEventListener("click", () => {
-        state.accent = "en-US";
-        saveState();
-        updateAccentButtons();
-        updateKokoroUIState();
-        showToast("🇺🇸 Accent US sélectionné");
-      });
-      $("btn-set-gb").addEventListener("click", () => {
-        state.accent = "en-GB";
-        saveState();
-        updateAccentButtons();
-        updateKokoroUIState();
-        showToast("🇬🇧 Accent UK sélectionné");
-      });
-
-      // Gestionnaires Kokoro Cloud
-      $("hdr-voice-btn").addEventListener("click", openSettingsModal);
-
-      $("btn-toggle-hf-vis").addEventListener("click", () => {
-        const inp = $("input-hf-token");
-        inp.type = inp.type === "password" ? "text" : "password";
-      });
-
-      $("btn-voice-kokoro").addEventListener("click", () => {
-        state.voiceEngine = "kokoro";
-        saveState();
-        updateKokoroUIState();
-        showToast("✨ Voix Kokoro Cloud activée");
-      });
-
-      $("btn-voice-browser").addEventListener("click", () => {
-        state.voiceEngine = "browser";
-        saveState();
-        updateKokoroUIState();
-        showToast("💻 Voix système du navigateur activée");
-      });
-
-      $("btn-save-hf").addEventListener("click", () => {
-        state.hfToken = $("input-hf-token").value.trim();
-        saveState();
-        updateKokoroUIState();
-        showToast(state.hfToken ? "Jeton Hugging Face enregistré !" : "Jeton supprimé");
-      });
-
-      $("select-kokoro-voice").addEventListener("change", (e) => {
-        const val = e.target.value;
-        if (state.accent === "en-GB") state.kokoroVoiceUK = val;
-        else state.kokoroVoiceUS = val;
-        saveState();
-        updateKokoroUIState();
-        showToast("Voix Kokoro mise à jour");
-      });
-
-      $("btn-test-kokoro").addEventListener("click", async () => {
-        const isUK = state.accent === "en-GB";
-        const sampleText = isUK
-          ? "Hello there! Welcome to English Coach. I am your native British AI tutor, powered by Kokoro."
-          : "Hello! Welcome to English Coach. I am your native American AI tutor, powered by Kokoro.";
-        showToast("🔊 Test Kokoro Cloud en cours...");
-        speakText(sampleText, state.accent, 1.0, () => {
-          showToast("✅ Test terminé !");
-        });
       });
 
       $("btn-reset-ask").addEventListener("click", () => {
