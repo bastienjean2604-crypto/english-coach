@@ -1701,10 +1701,31 @@
       return s.replace(/\s+/g, " ").trim();
     }
 
+    // Calcule la similarité de Levenshtein entre deux mots (0 à 1)
+    function wordSimilarity(w1, w2) {
+      if (w1 === w2) return 1;
+      const len1 = w1.length, len2 = w2.length;
+      if (!len1 || !len2) return 0;
+      const matrix = Array.from({ length: len1 + 1 }, () => new Array(len2 + 1).fill(0));
+      for (let i = 0; i <= len1; i++) matrix[i][0] = i;
+      for (let j = 0; j <= len2; j++) matrix[0][j] = j;
+      for (let i = 1; i <= len1; i++) {
+        for (let j = 1; j <= len2; j++) {
+          const cost = w1[i - 1] === w2[j - 1] ? 0 : 1;
+          matrix[i][j] = Math.min(matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + cost);
+        }
+      }
+      const dist = matrix[len1][len2];
+      const maxLen = Math.max(len1, len2);
+      return Math.max(0, (maxLen - dist) / maxLen);
+    }
+
     function diffWords(userStr, refStr, lang) {
       const u = normalizeText(userStr, lang).split(" ").filter(Boolean);
       const r = normalizeText(refStr, lang).split(" ").filter(Boolean);
       const m = u.length, n = r.length;
+
+      // Détection des correspondances exactes via LCS
       const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
       for (let i = 1; i <= m; i++) {
         for (let j = 1; j <= n; j++) {
@@ -1712,11 +1733,11 @@
         }
       }
       const res = [];
-      let i = m, j = n, matches = 0;
+      let i = m, j = n, exactMatches = 0;
       while (i > 0 || j > 0) {
         if (i > 0 && j > 0 && u[i - 1] === r[j - 1]) {
           res.push({ t: "ok", w: r[j - 1] });
-          matches++; i--; j--;
+          exactMatches++; i--; j--;
         } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
           res.push({ t: "miss", w: r[j - 1] });
           j--;
@@ -1726,8 +1747,63 @@
         }
       }
       res.reverse();
-      const score = Math.round((matches / Math.max(m, n, 1)) * 100);
-      return { score: Math.max(0, Math.min(100, score)), tokens: res };
+
+      // Mots mineurs (stop-words) qui ne doivent pas pénaliser lourdement le score
+      const minorWords = new Set(["a", "an", "the", "to", "in", "on", "at", "for", "of", "and", "that", "un", "une", "le", "la", "les", "de", "du", "des", "a", "au", "et"]);
+
+      // Calcul équilibré et bien calibré :
+      // 1. Poids des mots attendus (les mots clés comptent plus)
+      let weightedTotal = 0;
+      let matchedWeight = 0;
+
+      r.forEach(word => {
+        const wWeight = minorWords.has(word) ? 0.4 : 1.0;
+        weightedTotal += wWeight;
+      });
+
+      // Vérification des quasi-correspondances (fautes de frappe d'1 lettre ou pluriel)
+      let fuzzyMatches = 0;
+      res.forEach(item => {
+        if (item.t === "ok") {
+          const wWeight = minorWords.has(item.w) ? 0.4 : 1.0;
+          matchedWeight += wWeight;
+        }
+      });
+
+      // Comparaison des mots manqués avec les mots tapés en trop pour accorder des points de quasi-frappe
+      const misses = res.filter(x => x.t === "miss").map(x => x.w);
+      const wrongs = res.filter(x => x.t === "wrong").map(x => x.w);
+
+      misses.forEach(missW => {
+        wrongs.forEach(wrongW => {
+          const sim = wordSimilarity(missW, wrongW);
+          if (sim >= 0.75) {
+            matchedWeight += (minorWords.has(missW) ? 0.3 : 0.75);
+          }
+        });
+      });
+
+      const rawRatio = weightedTotal > 0 ? (matchedWeight / weightedTotal) : 0;
+      
+      // Pénalité douce si l'utilisateur a écrit beaucoup trop de mots parasites
+      const lengthPenalty = m > n ? Math.max(0, 1 - ((m - n) / (2 * Math.max(n, 1)))) : 1;
+
+      // Calibration progressive :
+      // 95-100% si tout est là
+      // 80-95% pour une omission mineure
+      // 60-80% pour la moitié des mots
+      let calibratedScore = Math.round(rawRatio * lengthPenalty * 100);
+
+      // Si tous les mots clés principaux sont là sauf 1 petit mot, le score reste >= 88%
+      if (exactMatches >= n - 1 && n >= 4 && calibratedScore < 88) {
+        calibratedScore = Math.max(calibratedScore, 90);
+      }
+      if (exactMatches === n) {
+        calibratedScore = 100;
+      }
+
+      const finalScore = Math.max(0, Math.min(100, calibratedScore));
+      return { score: finalScore, tokens: res };
     }
 
     function renderDiffHtml(tokens) {
@@ -1899,7 +1975,13 @@
 
           // Étape 2 : Analyse grammaticale via Groq LLM
           loadTxt.textContent = `2/2 Analyse grammaticale (${state.groqModel})...`;
-          const sysPrompt = "Tu es un coach d'anglais rigoureux et bienveillant pour un étudiant francophone. Tu réponds toujours en objet JSON valide.";
+          const sysPrompt = `Tu es un coach d'anglais pédagogique et bienveillant pour un étudiant francophone. Tu réponds toujours en objet JSON valide.
+BARÈME DU SCORE (0-100%) :
+- 95-100% : Traduction excellente ou formulation parfaitement naturelle (accepte les synonymes et variantes idiomatiques).
+- 85-94% : Très bonne réponse avec juste une faute mineure (un article, une préposition ou une petite faute d'inattention).
+- 70-84% : Sens globalement compris mais avec une erreur de conjugaison, de temps ou de syntaxe.
+- 50-69% : Plusieurs erreurs importantes mais des éléments de vocabulaire corrects.
+- < 50% : Contresens majeur ou phrase très incomplète.`;
           const userPrompt = mode === "speak"
             ? `Niveau : ${item.level}.
 Phrase française à traduire : "${item.fr}"
