@@ -1455,7 +1455,7 @@
             <span id="set-voice-badge" class="badge badge-emerald">Actif ✨</span>
           </div>
           <p style="font-size:12px;color:#15803d;margin-top:2px;">
-            Génère la vraie voix humaine Kokoro directement depuis Hugging Face GPU. Zéro freeze sur téléphone, son studio ultra-naturel avec respiration (US/UK).
+            Génère la vraie voix humaine Kokoro via Hugging Face GPU. En cas de dépassement du quota ZeroGPU gratuit, votre clé Groq prend automatiquement le relais avec les voix humaines <strong>Groq Neural</strong>.
           </p>
           <div class="btn-row" style="margin-top:6px;">
             <button id="btn-voice-kokoro" type="button" class="btn btn-primary btn-sm flex-1">✨ Kokoro Cloud (Humain)</button>
@@ -1757,6 +1757,29 @@
       }
     }
 
+    async function fetchGroqAudioUrl(text, voice) {
+      if (!state.apiKey) throw new Error("Clé Groq manquante");
+      const res = await fetch("https://api.groq.com/openai/v1/audio/speech", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${state.apiKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "canopylabs/orpheus-v1-english",
+          voice: voice || (state.accent === "en-GB" ? "hannah" : "autumn"),
+          input: text,
+          response_format: "wav"
+        })
+      });
+      if (!res.ok) {
+        const errJson = await res.json().catch(() => ({}));
+        throw new Error(errJson.error?.message || `Erreur Groq TTS (${res.status})`);
+      }
+      const blob = await res.blob();
+      return URL.createObjectURL(blob);
+    }
+
     async function fetchKokoroAudioUrl(text, voice, speed) {
       const token = (state.hfToken || "").trim();
       if (!token) throw new Error("Jeton Hugging Face manquant");
@@ -1975,8 +1998,21 @@
             return;
           }
         } catch (err) {
-          console.warn("Échec Kokoro Cloud, bascule sur la voix système:", err);
-          showToast("⚠️ Kokoro Cloud indisponible, voix système utilisée.");
+          console.warn("Quota ZeroGPU Kokoro atteint ou erreur HF:", err.message);
+          // Relais automatique vers Groq Neural TTS pour eviter la voix robotique du telephone !
+          if (state.apiKey) {
+            try {
+              showToast("⚡ Relais Groq Neural (Quota HF dépassé)...");
+              const groqVoice = isUK ? "hannah" : "autumn";
+              const groqUrl = await fetchGroqAudioUrl(cleanText, groqVoice);
+              kokoroAudioCache.set(cacheKey, groqUrl);
+              playDirectAudioUrl(groqUrl, onEnd);
+              return;
+            } catch (gErr) {
+              console.warn("Erreur relais Groq:", gErr.message);
+            }
+          }
+          showToast("⚠️ Quota HF ZeroGPU dépassé : Voix système utilisée.");
         } finally {
           isKokoroGenerating = false;
         }
