@@ -386,6 +386,99 @@
 
     .btn-row .flex-1 { flex: 1; }
 
+    /* ===== KHÔLLE INTERACTIVE (DISCUSSION TYPE CPGE) ===== */
+    .kholle-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .kholle-round-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .kholle-msg {
+      border-radius: 14px;
+      padding: 12px 14px;
+      position: relative;
+    }
+    .kholle-examiner {
+      background: #f8fafc;
+      border-left: 4px solid var(--violet);
+    }
+    .kholle-student {
+      background: #0f172a;
+      color: #fff;
+      border-left: 4px solid var(--emerald);
+    }
+    .kholle-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .kholle-author {
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .kholle-text {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    .kholle-feedback-box {
+      background: #faf5ff;
+      border: 1px solid #f3e8ff;
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .kholle-reaction {
+      background: #ffffff;
+      border: 1px solid #ddd6fe;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #4c1d95;
+      line-height: 1.45;
+    }
+    .kholle-next-box {
+      background: linear-gradient(135deg, #fdf4ff, #ede9fe);
+      border: 2px solid #d8b4fe;
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .kholle-action-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .kholle-score-badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .kholle-report-card {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border: 2px solid #c7d2fe;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+    }
+
     /* ===== AUDIO PLAYER (TAB 2) ===== */
     .audio-stage {
       background: linear-gradient(145deg, #0f172a, #1e1b4b);
@@ -1239,87 +1332,77 @@
 
         <div class="card-header">
           <div class="badge-row">
-            <span class="badge badge-violet">🎓 Khôlle Prépa</span>
+            <span class="badge badge-violet">🎓 Khôlle Prépa Interactive</span>
             <span id="prepa-theme-badge" class="badge badge-muted">Intelligence Artificielle</span>
+            <span id="prepa-turn-badge" class="badge badge-primary">Tour 1</span>
           </div>
           <div class="card-tools">
-            <button id="btn-prepa-gen" type="button" class="tool-btn" title="Générer une question IA">✨ Question IA</button>
-            <button id="btn-prepa-next" type="button" class="tool-btn">🔀 Suivant</button>
+            <button id="btn-prepa-gen" type="button" class="tool-btn" title="Générer un sujet IA">✨ Sujet IA</button>
+            <button id="btn-prepa-next" type="button" class="tool-btn" title="Changer de sujet">🔀 Autre sujet</button>
           </div>
         </div>
 
-        <div id="prepa-prompt-label" class="prompt-label">Répondez à l'oral en anglais (2 à 3 phrases) :</div>
-        <h2 id="prepa-question-text" class="sentence-display" style="font-size:18px;"></h2>
+        <!-- FIL DE DISCUSSION DE LA KHÔLLE -->
+        <div id="prepa-discussion-feed" class="kholle-container"></div>
 
-        <button id="btn-prepa-record" type="button" class="btn btn-primary">
-          <span>🎙️</span> <span>Répondre à l'oral (2-3 phrases)</span>
-        </button>
-      </div>
+        <!-- INDICATEUR DE CHARGEMENT DU KHÔLLEUR -->
+        <div id="prepa-ai-loading" class="ai-loading-box hidden" style="margin-top:14px;">
+          <div class="spinner"></div>
+          <span id="prepa-ai-loading-text">Le khôlleur écoute votre réponse et prépare sa relance...</span>
+        </div>
 
-      <!-- Résultat Prépa -->
-      <div id="prepa-result" class="card result-card hidden">
-        <div id="prepa-banner" class="result-banner banner-mid">
-          <div>
-            <div class="verdict-row">
-              <span id="prepa-verdict" class="verdict-title">Analyse du colleur</span>
-              <span id="prepa-latency" class="latency-pill">⚡ Groq</span>
+        <!-- BOÎTE DE LA QUESTION ACTIVE & ACTIONS -->
+        <div id="prepa-active-prompt-card" class="kholle-next-box" style="margin-top:14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span id="prepa-prompt-label" class="prompt-label" style="color:#6b21a8;margin:0;">🎯 Question du colleur :</span>
+            <button id="btn-prepa-play-current" type="button" class="tool-btn" style="color:#6b21a8;font-size:12px;background:#fff;" title="Écouter avec Jenny Neural">🔊 Écouter la question</button>
+          </div>
+          <h2 id="prepa-question-text" class="sentence-display" style="font-size:17px;margin:6px 0 12px 0;"></h2>
+
+          <div class="kholle-action-bar">
+            <button id="btn-prepa-record" type="button" class="btn btn-primary" style="font-size:15px;box-shadow:var(--shadow-sm);">
+              <span>🎙️</span> <span id="btn-prepa-record-label">Répondre au colleur (Tour 1)</span>
+            </button>
+            <button id="btn-prepa-finish-early" type="button" class="btn btn-secondary btn-sm hidden" style="color:#64748b;border-color:#cbd5e1;background:#fff;margin-top:2px;">
+              🏁 Conclure la khôlle & Obtenir mon bulletin final sur 20
+            </button>
+          </div>
+        </div>
+
+        <!-- BILAN FINAL DE LA KHÔLLE (BULLETIN CPGE) -->
+        <div id="prepa-final-report" class="kholle-report-card hidden" style="margin-top:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+            <div>
+              <div class="badge badge-emerald" style="margin-bottom:6px;">📋 Bulletin Officiel de Khôlle</div>
+              <h3 id="prepa-final-title" style="font-size:18px;margin:0;color:var(--text);">Débriefing de l'examinateur</h3>
+              <p id="prepa-final-verdict" style="font-size:13px;color:#64748b;margin:4px 0 0 0;"></p>
             </div>
-            <div id="prepa-substatus" class="verdict-sub">Grammaire, syntaxe, vocabulaire & pertinence</div>
-          </div>
-          <div id="prepa-score" class="score-circle bg-mid">--%</div>
-        </div>
-
-        <div class="result-body">
-          <div id="prepa-ai-loading" class="ai-loading-box hidden">
-            <div class="spinner"></div>
-            <span id="prepa-ai-loading-text">Transcription Whisper + analyse Prépa par Groq...</span>
-          </div>
-
-          <div id="prepa-user-audio-wrap" class="user-audio-box hidden">
-            <span style="font-size:12px;font-weight:700;">🎧 Votre réponse vocale</span>
-            <audio id="prepa-user-audio" controls style="width:100%; margin-top:8px;"></audio>
-          </div>
-
-          <div class="transcript-box">
-            <span class="prompt-label" style="color:#a5b4fc;margin:0;">Ce que tu as dit (transcription Whisper)</span>
-            <div id="prepa-transcript" class="transcript-text"></div>
-          </div>
-
-          <div id="prepa-good-wrap" class="hidden">
-            <div class="prompt-label" style="color:var(--emerald);">✅ Mots & expressions qui fonctionnent bien</div>
-            <div id="prepa-good-list" class="diff-box"></div>
-          </div>
-
-          <div id="prepa-bad-wrap" class="hidden">
-            <div class="prompt-label" style="color:var(--rose);">🔍 Mots / tournures à corriger</div>
-            <div id="prepa-bad-list"></div>
-          </div>
-
-          <div class="grammar-box">
-            <div class="grammar-title">📐 Syntaxe, Grammaire & Conjugaison</div>
-            <div id="prepa-grammar-text" class="grammar-text"></div>
-          </div>
-
-          <div class="grammar-box">
-            <div class="grammar-title" style="color:var(--violet);">🗂️ Choix du vocabulaire</div>
-            <div id="prepa-vocab-text" class="grammar-text"></div>
-          </div>
-
-          <div class="grammar-box">
-            <div class="grammar-title" style="color:var(--emerald);">🎯 Pertinence & Axes d'amélioration</div>
-            <div id="prepa-relevance-text" class="grammar-text"></div>
-          </div>
-
-          <div id="prepa-improved-wrap" class="ref-box hidden">
-            <div class="prompt-label" style="color:var(--primary);">✨ Version améliorée (niveau concours)</div>
-            <div id="prepa-improved-text" class="ref-sentence" style="font-size:15px;"></div>
-            <div class="btn-row">
-              <button id="btn-prepa-play-improved" type="button" class="btn btn-primary btn-sm" style="width:auto;box-shadow:none;">🔊 Écouter le modèle</button>
+            <div style="text-align:center;">
+              <div id="prepa-final-grade" class="score-circle bg-high" style="font-size:20px;width:68px;height:68px;">--/20</div>
+              <span style="font-size:10px;font-weight:700;color:#64748b;">NOTE CONCOURS</span>
             </div>
           </div>
 
-          <button id="btn-prepa-next-after" type="button" class="btn btn-emerald">Question suivante ➡️</button>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+            <div class="grammar-box">
+              <div class="grammar-title" style="color:var(--primary);">🗣️ Qualité de la langue (Grammaire, Syntaxe & Richesse lexicale)</div>
+              <div id="prepa-final-lang" class="grammar-text"></div>
+            </div>
+            <div class="grammar-box">
+              <div class="grammar-title" style="color:var(--violet);">💡 Argumentation, Clarté & Réactivité aux relances</div>
+              <div id="prepa-final-arg" class="grammar-text"></div>
+            </div>
+            <div class="grammar-box">
+              <div class="grammar-title" style="color:var(--emerald);">🎯 3 Conseils clés pour réussir le jour J</div>
+              <ul id="prepa-final-tips" style="padding-left:18px;margin:6px 0 0 0;font-size:13.5px;color:#334155;line-height:1.6;"></ul>
+            </div>
+          </div>
+
+          <button id="btn-prepa-restart" type="button" class="btn btn-emerald" style="width:100%;margin-top:14px;">
+            🔀 Démarrer une nouvelle khôlle (Autre sujet)
+          </button>
         </div>
+
       </div>
     </section>
 
@@ -1548,6 +1631,7 @@
       currentSpeak: null,
       currentListen: null,
       currentPrepa: null,
+      prepaSession: null,
       modalMode: "speak",
       lastAudioUrl: null,
       correctionSeq: 0
@@ -2382,114 +2466,308 @@ Traduction de l'élève (français) : "${finalAnswerText}"
       awardXP(diff.score);
     }
 
+    // ==================== KHÔLLE INTERACTIVE TYPE CPGE (DISCUSSION & RELANCES) ====================
+    function renderPrepaSessionUI() {
+      const session = state.prepaSession;
+      if (!session) return;
+
+      $("prepa-theme-badge").textContent = session.topic;
+      const turnNum = session.rounds.length + 1;
+      $("prepa-turn-badge").textContent = `Tour ${turnNum}`;
+
+      const feed = $("prepa-discussion-feed");
+      feed.innerHTML = "";
+
+      // Rendu de chaque tour de discussion
+      session.rounds.forEach((r, idx) => {
+        const roundCard = document.createElement("div");
+        roundCard.className = "kholle-round-card";
+
+        const scoreTh = scoreTheme(r.scoreRound);
+
+        let goodHtml = "";
+        if (Array.isArray(r.goodPoints) && r.goodPoints.length) {
+          goodHtml = `<div style="font-size:12px;font-weight:700;color:var(--emerald);">
+            ✅ Points forts & expressions bien choisies :
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+              ${r.goodPoints.map(p => `<span class="chip-ok">${esc(p)}</span>`).join("")}
+            </div>
+          </div>`;
+        }
+
+        let badHtml = "";
+        if (Array.isArray(r.badWords) && r.badWords.length) {
+          badHtml = `<div style="font-size:12px;font-weight:700;color:var(--rose);">
+            🔍 Corrections du colleur :
+            <div style="display:flex;flex-direction:column;gap:4px;margin-top:4px;">
+              ${r.badWords.map(b => `
+                <div class="error-item" style="margin-top:2px;">
+                  <div class="error-pair"><span class="chip-wrong">${esc(b.wrong)}</span> → <span class="chip-ok">${esc(b.right)}</span></div>
+                  <div style="font-size:11px;color:#475569;">${esc(b.why)}</div>
+                </div>
+              `).join("")}
+            </div>
+          </div>`;
+        }
+
+        let reactionHtml = "";
+        if (r.examinerReaction) {
+          reactionHtml = `<div class="kholle-reaction">
+            <strong>💬 Remarque du colleur sur vos idées :</strong> ${esc(r.examinerReaction)}
+          </div>`;
+        }
+
+        let vocabHtml = "";
+        if (Array.isArray(r.suggestedVocab) && r.suggestedVocab.length) {
+          vocabHtml = `<div style="font-size:12px;color:#64748b;font-weight:600;">
+            🗂️ Vocabulaire utile conseillé :
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+              ${r.suggestedVocab.map(v => `<span class="vocab-chip" style="font-size:11px;"><strong>${esc(v.en || v.term || "")}</strong> : ${esc(v.fr || v.meaning || "")}</span>`).join("")}
+            </div>
+          </div>`;
+        }
+
+        roundCard.innerHTML = `
+          <div class="kholle-msg kholle-examiner">
+            <div class="kholle-header">
+              <span class="kholle-author" style="color:var(--violet);">🎓 Khôlleur (Question ${r.roundNum})</span>
+              <button type="button" class="tool-btn" data-action="speak-kholle-q" data-text="${esc(r.question)}" title="Écouter avec Jenny Neural">🔊 Écouter</button>
+            </div>
+            <div class="kholle-text" style="color:#1e1b4b;">${esc(r.question)}</div>
+          </div>
+
+          <div class="kholle-msg kholle-student">
+            <div class="kholle-header">
+              <span class="kholle-author" style="color:#86efac;">🎧 Votre réponse</span>
+              <span class="kholle-score-badge ${scoreTh.bg}">${r.scoreRound}%</span>
+            </div>
+            <div class="kholle-text">${esc(r.studentText)}</div>
+            ${r.audioUrl ? `<audio src="${r.audioUrl}" controls style="height:32px;margin-top:8px;max-width:100%;"></audio>` : ''}
+          </div>
+
+          <div class="kholle-feedback-box">
+            ${goodHtml}
+            ${badHtml}
+            ${reactionHtml}
+            ${vocabHtml}
+          </div>
+        `;
+        feed.appendChild(roundCard);
+      });
+
+      // Gestion de la carte active
+      const activeCard = $("prepa-active-prompt-card");
+      const finishBtn = $("btn-prepa-finish-early");
+      const finalReport = $("prepa-final-report");
+
+      if (session.status === "finished") {
+        activeCard.classList.add("hidden");
+        finalReport.classList.remove("hidden");
+      } else {
+        activeCard.classList.remove("hidden");
+        finalReport.classList.add("hidden");
+
+        const isFirst = session.rounds.length === 0;
+        $("prepa-prompt-label").textContent = isFirst ? "🎯 Sujet de khôlle d'ouverture :" : `🎯 Relance du colleur (Tour ${turnNum}) :`;
+        $("prepa-question-text").textContent = session.currentQuestion;
+        $("btn-prepa-record-label").textContent = isFirst ? "Répondre au colleur (Tour 1)" : `Répondre à cette question (Tour ${turnNum})`;
+
+        if (session.rounds.length >= 1) {
+          finishBtn.classList.remove("hidden");
+        } else {
+          finishBtn.classList.add("hidden");
+        }
+
+        // Préchargement de la voix Jenny Neural pour latence 0 ms
+        preloadAudio(session.currentQuestion, state.accent);
+      }
+    }
+
     async function evaluatePrepaAnswer(item, userText, audioBlob, seq) {
       const loadEl = $("prepa-ai-loading");
       const loadTxt = $("prepa-ai-loading-text");
       loadEl.classList.remove("hidden");
-      $("prepa-good-wrap").classList.add("hidden");
-      $("prepa-bad-wrap").classList.add("hidden");
-      $("prepa-improved-wrap").classList.add("hidden");
-      $("prepa-transcript").textContent = "...";
-      $("prepa-grammar-text").textContent = "";
-      $("prepa-vocab-text").textContent = "";
-      $("prepa-relevance-text").textContent = "";
 
       if (!state.apiKey) {
         loadEl.classList.add("hidden");
-        $("prepa-verdict").textContent = "Clé API Groq requise";
-        $("prepa-score").textContent = "⚙️";
-        $("prepa-transcript").textContent = userText || "(Audio enregistré)";
-        $("prepa-grammar-text").textContent = "Ajoute ta clé API Groq gratuite dans ⚙️ Réglages pour que le colleur analyse ta réponse orale.";
+        showToast("Ajoutez votre clé Groq dans ⚙️ Réglages pour discuter avec le colleur.");
+        openSettingsModal();
         return;
       }
 
+      if (!state.prepaSession) {
+        loadPrepaItem(item);
+      }
+
+      const session = state.prepaSession;
       let finalAnswerText = userText || "";
-      let totalMs = 0;
+      let audioPlaybackUrl = null;
 
       try {
         if (audioBlob && audioBlob.size > 100) {
-          loadTxt.textContent = "1/2 Transcription vocale (Whisper)...";
+          loadTxt.textContent = "1/2 Transcription vocale de vos arguments (Whisper)...";
+          audioPlaybackUrl = URL.createObjectURL(audioBlob);
           const tr = await transcribeWithGroq(audioBlob, state.prepaLang);
           if (seq !== state.correctionSeq) return;
-          totalMs += tr.ms;
           if (tr.text) {
             finalAnswerText = finalAnswerText ? `${finalAnswerText} ${tr.text}` : tr.text;
           }
         }
 
-        if (!finalAnswerText) {
-          throw new Error("Aucun mot détecté dans l'audio. Réessaie en parlant plus près du micro.");
+        if (!finalAnswerText || !finalAnswerText.trim()) {
+          throw new Error("Aucun propos détecté. Rapprochez-vous du micro ou écrivez votre réponse.");
         }
 
-        loadTxt.textContent = `2/2 Correction du colleur (${state.groqModel})...`;
-        const langLabel = state.prepaLang === "en"
-          ? "anglais (khôlle d'anglais en CPGE scientifique)"
-          : "français (colle de français-philosophie en CPGE scientifique)";
-        const question = state.prepaLang === "en" ? item.questionEn : item.questionFr;
+        loadTxt.textContent = `2/2 Le colleur analyse vos idées et prépare sa relance (${state.groqModel})...`;
+        const currentQ = session.currentQuestion;
+        const currentRoundNum = session.rounds.length + 1;
 
-        const sysPrompt = "Tu es un examinateur exigeant et pédagogue de CPGE scientifique. Tu réponds toujours en objet JSON valide.";
-        const userPrompt = `Langue de la réponse : ${langLabel}.
-Thème : ${item.theme}.
-Question posée : "${question}"
+        const langPrompt = state.prepaLang === "en"
+          ? "La discussion se déroule en anglais (khôlle d'oral d'anglais en CPGE scientifique)."
+          : "La discussion se déroule en français.";
+
+        // Résumé de l'historique précédent pour un vrai fil de discussion cohérent
+        const historyText = session.rounds.map((r, i) => `[Tour ${i + 1}]
+Khôlleur : "${r.question}"
+Étudiant : "${r.studentText}"
+Commentaire colleur : "${r.examinerReaction || ""}"`).join("\n\n");
+
+        const sysPrompt = `Tu es un colleur / examinateur d'anglais exigeant, percutant et bienveillant de CPGE scientifique (classes préparatoires aux grandes écoles d'ingénieurs : Polytechnique, Mines-Ponts, Centrale-Supélec).
+Tu animes une vraie discussion orale dynamique (khôlle) avec l'étudiant.
+${langPrompt}
+Consignes pour ce tour :
+1. Analyse la réponse de l'étudiant : clarté de la thèse, vocabulaire, grammaire.
+2. Détecte les fautes précises ("badWords": [{"wrong":"...","right":"...","why":"..."}]).
+3. Relève 1 à 3 points forts ou tournures bien trouvées ("goodPoints").
+4. Rédige une réaction directe et courte ("examinerReaction") en 1 ou 2 phrases qui commente ses arguments (en français si explication, ou anglais selon pertinence).
+5. Formule UNE nouvelle question de relance ("followUpQuestion") en anglais (ou langue de travail), directe, stimulante, qui rebondit précisément sur ce que l'étudiant vient d'affirmer pour lui faire approfondir sa réflexion ("comme si tu voulais en savoir plus", objection, nuance, dilemme).
+6. Propose 1 ou 2 expressions idiomatiques de concours utiles ("suggestedVocab": [{"en":"...","fr":"..."}]).
+7. Note ce tour sur 100 ("scoreRound").
+
+Réponds STRICTEMENT en JSON valide.`;
+
+        const userPrompt = `Thème général : ${session.topic}.
+${historyText ? `Historique des échanges précédents :\n${historyText}\n\n` : ""}
+[Tour ${currentRoundNum}]
+Question posée par le colleur : "${currentQ}"
 Réponse de l'étudiant : "${finalAnswerText}"
 
-Analyse précisément en français :
-1) Les mots et expressions bien choisis ("goodWords").
-2) Les mots/tournures qui ne vont pas avec leur correction ("badWords").
-3) La syntaxe, la grammaire et la conjugaison ("grammarSyntax").
-4) Le choix du vocabulaire et des alternatives plus précises ("vocabChoice").
-5) La pertinence de l'argumentation et ce qu'il doit améliorer ("relevance").
-6) Une version améliorée fluide en 2-3 phrases dans la langue attendue ("improvedVersion").
+Retourne l'objet JSON :
+{
+  "scoreRound": 78,
+  "verdictRound": "court commentaire de performance",
+  "goodPoints": ["point fort 1", "expression 2"],
+  "badWords": [{"wrong":"...","right":"...","why":"..."}],
+  "examinerReaction": "Votre argument est solide, mais comment concilier cela avec...",
+  "followUpQuestion": "Une question de relance percutante en anglais qui rebondit sur ses idées",
+  "suggestedVocab": [{"en":"terme EN","fr":"sens FR"}]
+}`;
 
-Réponds STRICTEMENT en JSON :
-{"score":0,"verdict":"court en français","goodWords":["mot/expression 1"],"badWords":[{"wrong":"...","right":"...","why":"explication courte en français"}],"grammarSyntax":"analyse claire en français","vocabChoice":"analyse claire en français","relevance":"analyse de pertinence et conseils en français","improvedVersion":"réponse modèle en 2-3 phrases"}`;
-
-        const { data, ms } = await callGroqChat(sysPrompt, userPrompt);
+        const { data } = await callGroqChat(sysPrompt, userPrompt);
         if (seq !== state.correctionSeq) return;
-        totalMs += ms;
         loadEl.classList.add("hidden");
 
-        const score = typeof data.score === "number" ? Math.max(0, Math.min(100, Math.round(data.score))) : 75;
-        const th = scoreTheme(score);
+        const scoreRound = typeof data.scoreRound === "number" ? Math.max(0, Math.min(100, Math.round(data.scoreRound))) : 75;
 
-        $("prepa-banner").className = `result-banner ${th.banner}`;
-        $("prepa-verdict").textContent = data.verdict || th.verdict;
-        $("prepa-latency").textContent = `⚡ ${totalMs} ms`;
-        $("prepa-score").textContent = `${score}%`;
-        $("prepa-score").className = `score-circle ${th.bg}`;
-        $("prepa-transcript").textContent = finalAnswerText;
+        session.rounds.push({
+          roundNum: currentRoundNum,
+          question: currentQ,
+          studentText: finalAnswerText,
+          audioUrl: audioPlaybackUrl,
+          scoreRound: scoreRound,
+          verdictRound: data.verdictRound || "Tour complété",
+          goodPoints: Array.isArray(data.goodPoints) ? data.goodPoints : [],
+          badWords: Array.isArray(data.badWords) ? data.badWords : [],
+          examinerReaction: data.examinerReaction || "",
+          suggestedVocab: Array.isArray(data.suggestedVocab) ? data.suggestedVocab : []
+        });
 
-        if (Array.isArray(data.goodWords) && data.goodWords.length) {
-          $("prepa-good-list").innerHTML = data.goodWords.map(w => `<span class="chip-ok">${esc(w)}</span>`).join("");
-          $("prepa-good-wrap").classList.remove("hidden");
-        }
+        // La prochaine question devient la relance du colleur
+        session.currentQuestion = data.followUpQuestion || `Could you elaborate further on your previous argument regarding ${session.topic}?`;
 
-        if (Array.isArray(data.badWords) && data.badWords.length) {
-          $("prepa-bad-list").innerHTML = data.badWords.map(e => `
-            <div class="error-item">
-              <div class="error-pair"><span class="chip-wrong">${esc(e.wrong)}</span> → <span class="chip-ok">${esc(e.right)}</span></div>
-              <div>${esc(e.why)}</div>
-            </div>
-          `).join("");
-          $("prepa-bad-wrap").classList.remove("hidden");
-        }
+        awardXP(scoreRound);
+        renderPrepaSessionUI();
 
-        $("prepa-grammar-text").textContent = data.grammarSyntax || "RAS.";
-        $("prepa-vocab-text").textContent = data.vocabChoice || "RAS.";
-        $("prepa-relevance-text").textContent = data.relevance || "RAS.";
+        // Scroll doux vers la nouvelle question de relance
+        setTimeout(() => {
+          const card = $("prepa-active-prompt-card");
+          if (card) card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }, 150);
 
-        if (data.improvedVersion) {
-          $("prepa-improved-text").textContent = data.improvedVersion;
-          $("prepa-improved-wrap").classList.remove("hidden");
-        }
-
-        awardXP(score);
       } catch (e) {
         if (seq !== state.correctionSeq) return;
         loadEl.classList.add("hidden");
-        $("prepa-verdict").textContent = "Erreur d'analyse IA";
-        $("prepa-transcript").textContent = finalAnswerText || "(Non transcrit)";
-        $("prepa-grammar-text").textContent = e.message;
+        showToast(`❌ ${e.message}`);
+      }
+    }
+
+    async function concludePrepaSession() {
+      const session = state.prepaSession;
+      if (!session || !session.rounds.length) return;
+
+      const loadEl = $("prepa-ai-loading");
+      const loadTxt = $("prepa-ai-loading-text");
+      loadEl.classList.remove("hidden");
+      loadTxt.textContent = "L'examinateur rédige votre bulletin officiel de khôlle...";
+
+      try {
+        const fullTranscript = session.rounds.map((r, i) => `
+[Tour ${i + 1}]
+Question : "${r.question}"
+Réponse de l'étudiant : "${r.studentText}"
+Score du tour : ${r.scoreRound}/100
+`).join("\n");
+
+        const sysPrompt = "Tu es le président d'un jury de khôlle d'anglais de CPGE scientifique. Tu rédiges un bilan officiel de khôlle de concours. Tu réponds toujours en JSON valide.";
+        const userPrompt = `Voici la totalité de la khôlle d'anglais :
+Thème : ${session.topic}
+${fullTranscript}
+
+Rédige le bilan de concours :
+1. Note finale sur 20 ("grade20", entier ou demi-point entre 5 et 19).
+2. Verdict officiel ("verdict", ex: "Prestation remarquable, niveau admissible Mines-Ponts").
+3. Bilan sur la qualité de la langue ("languageReport" : grammaire, richesse, fluidité).
+4. Bilan sur l'argumentation et la réactivité ("argumentReport" : esprit critique, pertinence des réponses aux relances).
+5. 3 conseils prioritaires pour réussir le jour du concours ("topTips": ["...", "...", "..."]).
+
+Réponds STRICTEMENT en JSON :
+{
+  "grade20": 15,
+  "verdict": "...",
+  "languageReport": "...",
+  "argumentReport": "...",
+  "topTips": ["conseil 1", "conseil 2", "conseil 3"]
+}`;
+
+        const { data } = await callGroqChat(sysPrompt, userPrompt);
+        loadEl.classList.add("hidden");
+
+        session.status = "finished";
+        session.finalReport = data;
+
+        const grade = typeof data.grade20 === "number" ? data.grade20 : 14;
+        $("prepa-final-grade").textContent = `${grade}/20`;
+        $("prepa-final-grade").className = `score-circle ${grade >= 14 ? "bg-high" : grade >= 10 ? "bg-mid" : "bg-low"}`;
+        $("prepa-final-verdict").textContent = data.verdict || "Khôlle terminée avec succès.";
+        $("prepa-final-lang").textContent = data.languageReport || "Bon niveau d'expression générale.";
+        $("prepa-final-arg").textContent = data.argumentReport || "Réflexion structurée et réactive aux questions.";
+
+        const tipsList = $("prepa-final-tips");
+        if (tipsList && Array.isArray(data.topTips)) {
+          tipsList.innerHTML = data.topTips.map(t => `<li>${esc(t)}</li>`).join("");
+        }
+
+        awardXP(grade * 5);
+        renderPrepaSessionUI();
+
+        setTimeout(() => {
+          const report = $("prepa-final-report");
+          if (report) report.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 150);
+
+      } catch (e) {
+        loadEl.classList.add("hidden");
+        showToast(`❌ Erreur bilan : ${e.message}`);
       }
     }
 
@@ -2618,12 +2896,15 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function loadPrepaItem(item) {
       if (!item) return;
       state.currentPrepa = item;
-      $("prepa-theme-badge").textContent = item.theme;
-      $("prepa-prompt-label").textContent = state.prepaLang === "en"
-        ? "Répondez à l'oral en anglais (2 à 3 phrases) :"
-        : "Répondez à l'oral en français (2 à 3 phrases) :";
-      $("prepa-question-text").textContent = state.prepaLang === "en" ? item.questionEn : item.questionFr;
-      $("prepa-result").classList.add("hidden");
+      state.prepaSession = {
+        item: item,
+        topic: item.theme,
+        rounds: [],
+        currentQuestion: state.prepaLang === "en" ? item.questionEn : item.questionFr,
+        status: "ongoing",
+        finalReport: null
+      };
+      renderPrepaSessionUI();
     }
 
     let bankPageSize = 50;
@@ -2781,11 +3062,12 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         $("modal-sub").textContent = "Enregistrez votre voix ou tapez votre traduction";
         $("modal-prompt").innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;">Réécouter l'extrait :</span><button type="button" class="btn btn-emerald btn-sm" style="width:auto;" data-action="replay-listen">🔊 Écouter</button></div>`;
       } else {
-        $("modal-title").textContent = state.prepaLang === "en" ? "Réponse Prépa (Anglais)" : "Réponse Prépa (Français)";
-        $("modal-sub").textContent = "Répondez en 2 ou 3 phrases construites";
-        $("modal-prompt").textContent = state.currentPrepa
-          ? (state.prepaLang === "en" ? state.currentPrepa.questionEn : state.currentPrepa.questionFr)
-          : "";
+        const turn = state.prepaSession ? state.prepaSession.rounds.length + 1 : 1;
+        $("modal-title").textContent = `🎓 Khôlle Prépa (Tour ${turn})`;
+        $("modal-sub").textContent = "Exprimez et argumentez vos idées en 2 ou 3 phrases";
+        $("modal-prompt").textContent = state.prepaSession
+          ? state.prepaSession.currentQuestion
+          : (state.currentPrepa ? (state.prepaLang === "en" ? state.currentPrepa.questionEn : state.currentPrepa.questionFr) : "");
       }
       $("record-modal").classList.remove("hidden");
     }
@@ -2845,7 +3127,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
       $("global-filters-bar").classList.toggle("hidden", tab === "prepa" || tab === "bank");
       if (tab === "bank") renderBank();
-      if (tab === "prepa" && !state.currentPrepa) loadPrepaItem(pickNextPrepa(null));
+      if (tab === "prepa" && !state.prepaSession) loadPrepaItem(pickNextPrepa(null));
     }
 
     function setLevel(lvl) {
@@ -2983,12 +3265,24 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
 
       const nextPrepa = () => { stopSpeech(); loadPrepaItem(pickNextPrepa(state.currentPrepa?.id)); };
       $("btn-prepa-next").addEventListener("click", nextPrepa);
-      $("btn-prepa-next-after").addEventListener("click", nextPrepa);
+      $("btn-prepa-restart").addEventListener("click", nextPrepa);
       $("btn-prepa-gen").addEventListener("click", generatePrepaQuestion);
       $("btn-prepa-record").addEventListener("click", () => openRecordModal("prepa"));
-      $("btn-prepa-play-improved").addEventListener("click", () => {
-        const txt = $("prepa-improved-text").textContent;
-        if (txt) speakText(txt, state.prepaLang === "en" ? state.accent : "fr-FR", 0.95);
+
+      $("btn-prepa-play-current").addEventListener("click", () => {
+        if (state.prepaSession && state.prepaSession.currentQuestion) {
+          speakText(state.prepaSession.currentQuestion, state.prepaLang === "en" ? state.accent : "fr-FR", 0.95);
+        }
+      });
+
+      $("btn-prepa-finish-early").addEventListener("click", concludePrepaSession);
+
+      // Écoute déléguée pour les questions du fil de discussion
+      $("prepa-discussion-feed").addEventListener("click", (e) => {
+        const btn = e.target.closest('[data-action="speak-kholle-q"]');
+        if (btn && btn.dataset.text) {
+          speakText(btn.dataset.text, state.prepaLang === "en" ? state.accent : "fr-FR", 0.95);
+        }
       });
 
       $("bank-search").addEventListener("input", renderBank);
@@ -3028,16 +3322,6 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         const seq = state.correctionSeq;
 
         if (mode === "prepa") {
-          if (blobToProcess) {
-            state.lastAudioUrl = URL.createObjectURL(blobToProcess);
-            $("prepa-user-audio").src = state.lastAudioUrl;
-            $("prepa-user-audio-wrap").classList.remove("hidden");
-          } else {
-            $("prepa-user-audio-wrap").classList.add("hidden");
-          }
-          const card = $("prepa-result");
-          card.classList.remove("hidden");
-          card.scrollIntoView({ behavior: "smooth", block: "nearest" });
           await evaluatePrepaAnswer(state.currentPrepa, textVal, blobToProcess, seq);
           return;
         }
