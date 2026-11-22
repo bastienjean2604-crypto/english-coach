@@ -2796,6 +2796,12 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         b.textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
         b.className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
       }
+      // Synchroniser le sélecteur de voix Groq avec l'accent en cours
+      const voiceSelect = $("select-groq-voice");
+      if (voiceSelect) {
+        const isUK = state.accent === "en-GB";
+        voiceSelect.value = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
+      }
       updateAccentButtons();
       updateVoiceUIState();
       const modal = $("settings-modal");
@@ -3036,6 +3042,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         state.groqModel = $("select-groq-model").value;
         saveState();
         updateHeader();
+        updateVoiceUIState();
         $("set-api-badge").textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
         $("set-api-badge").className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
         showToast(state.apiKey ? "Clé Groq & modèle enregistrés !" : "Clé supprimée");
@@ -3060,6 +3067,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
           );
           saveState();
           updateHeader();
+          updateVoiceUIState();
           $("set-api-badge").textContent = "Connecté ⚡";
           $("set-api-badge").className = "badge badge-emerald";
           st.style.color = "var(--emerald)";
@@ -3154,15 +3162,6 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         $("settings-modal").classList.add("hidden");
         showToast("Progression réinitialisée.");
       });
-
-      if ("speechSynthesis" in window) {
-        window.speechSynthesis.getVoices();
-        if (window.speechSynthesis.onvoiceschanged !== undefined) {
-          window.speechSynthesis.onvoiceschanged = () => {
-            window.speechSynthesis.getVoices();
-          };
-        }
-      }
 
       document.body.addEventListener("click", e => {
         const speakBtn = e.target.closest("[data-speak]");
