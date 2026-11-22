@@ -1552,6 +1552,16 @@
       return [...base, ...ai];
     }
 
+    // Mélange de Fisher-Yates cryptographique pour un aléatoire parfait
+    function shuffleArray(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
     function pickNextItem(mode, excludeId) {
       let pool = getAllItems(mode).filter(x => x.level === state.level);
       if (state.theme !== "ALL") {
@@ -1560,20 +1570,17 @@
       }
       if (!pool.length) pool = getAllItems(mode);
 
-      const currentItem = mode === "speak" ? state.currentSpeak : state.currentListen;
-      let unseen = pool.filter(x => !state.seenIds.has(x.id) && x.id !== excludeId);
-      if (!unseen.length) {
-        pool.forEach(x => state.seenIds.delete(x.id));
-        unseen = pool.filter(x => x.id !== excludeId);
-        if (!unseen.length) unseen = pool;
+      // Tirage aléatoire sans biais
+      let candidates = pool.filter(x => !state.seenIds.has(x.id) && x.id !== excludeId);
+      if (!candidates.length) {
+        state.seenIds.clear();
+        candidates = pool.filter(x => x.id !== excludeId);
+        if (!candidates.length) candidates = pool;
       }
 
-      if (state.theme === "ALL" && currentItem) {
-        const diffTheme = unseen.filter(x => x.theme !== currentItem.theme);
-        if (diffTheme.length) unseen = diffTheme;
-      }
-
-      const chosen = unseen[Math.floor(Math.random() * unseen.length)];
+      // Mélange complet de la liste des candidats
+      const shuffled = shuffleArray(candidates);
+      const chosen = shuffled[0];
       if (chosen) state.seenIds.add(chosen.id);
       return chosen;
     }
@@ -1584,17 +1591,14 @@
         const byTheme = pool.filter(x => x.theme === state.prepaTheme);
         if (byTheme.length) pool = byTheme;
       }
-      let unseen = pool.filter(x => !state.seenPrepaIds.has(x.id) && x.id !== excludeId);
-      if (!unseen.length) {
-        pool.forEach(x => state.seenPrepaIds.delete(x.id));
-        unseen = pool.filter(x => x.id !== excludeId);
-        if (!unseen.length) unseen = pool;
+      let candidates = pool.filter(x => !state.seenPrepaIds.has(x.id) && x.id !== excludeId);
+      if (!candidates.length) {
+        state.seenPrepaIds.clear();
+        candidates = pool.filter(x => x.id !== excludeId);
+        if (!candidates.length) candidates = pool;
       }
-      if (state.prepaTheme === "ALL" && state.currentPrepa) {
-        const diffTheme = unseen.filter(x => x.theme !== state.currentPrepa.theme);
-        if (diffTheme.length) unseen = diffTheme;
-      }
-      const chosen = unseen[Math.floor(Math.random() * unseen.length)];
+      const shuffled = shuffleArray(candidates);
+      const chosen = shuffled[0];
       if (chosen) state.seenPrepaIds.add(chosen.id);
       return chosen;
     }
