@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>English Coach — Oral, Écoute & Prépa (Groq)</title>
+  <title>English Coach — Oral, Écoute & Prépa (Jenny Neural)</title>
   <style>
     :root {
       --bg: #f4f6fb;
@@ -985,7 +985,7 @@
         <div class="brand-logo">EC</div>
         <div>
           <div class="brand-title">English Coach</div>
-          <div class="brand-sub">Oral, Écoute & Prépa (Groq)</div>
+          <div class="brand-sub">Oral, Écoute & Prépa (Jenny Neural)</div>
         </div>
       </div>
       <div class="header-actions">
@@ -994,9 +994,9 @@
           <span class="stats-sep">|</span>
           <span class="stat-xp" title="Points">⚡ <span id="hdr-xp">0</span></span>
         </div>
-        <button id="hdr-voice-btn" class="stats-pill" type="button" title="Moteur vocal Groq Neural" style="cursor:pointer;border-color:#ddd6fe;background:#f5f3ff;padding:6px 10px;">
-          <span id="hdr-voice-icon">⚡</span>
-          <span id="hdr-voice-label" style="font-weight:700;font-size:11px;color:#6b21a8;">Groq Neural</span>
+        <button id="hdr-voice-btn" class="stats-pill" type="button" title="Voix IA Réaliste Jenny Neural" style="cursor:pointer;border-color:#ddd6fe;background:#f5f3ff;padding:6px 10px;">
+          <span id="hdr-voice-icon">✨</span>
+          <span id="hdr-voice-label" style="font-weight:700;font-size:11px;color:#6b21a8;">Jenny Neural</span>
         </button>
         <button id="btn-open-settings" class="icon-btn" type="button" aria-label="Réglages">
           ⚙️
@@ -1448,55 +1448,40 @@
           <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;margin-top:4px;"></div>
         </div>
 
-        <!-- BLOC MOTEUR VOCAL UNIFIÉ -->
+        <!-- BLOC MOTEUR VOCAL JENNY NEURAL (AZURE/EDGE) -->
         <div class="settings-box" style="background:#f5f3ff;border-color:#ddd6fe;">
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <strong style="font-size:13px;color:#5b21b6;">🎙️ Synthèse Vocale & Audio</strong>
-            <span id="set-voice-badge" class="badge badge-emerald">Studio HD 🌐</span>
+            <strong style="font-size:13px;color:#5b21b6;">🎙️ Voix IA Réaliste (Jenny Neural)</strong>
+            <span id="set-voice-badge" class="badge badge-emerald">Jenny Neural ✨</span>
           </div>
           <p style="font-size:12px;color:#6b21a8;margin-top:2px;">
-            Choisissez le moteur audio pour l'écoute et l'oral.
+            Voix humaine ultra-réaliste <strong>en-US-JennyNeural</strong> (intonation fluide, accent authentique, zéro robotique). 100% gratuit & illimité.
           </p>
           <div class="btn-row" style="margin-top:6px;display:flex;gap:4px;">
-            <button id="btn-voice-studio" type="button" class="btn btn-primary btn-sm flex-1">🌐 Studio HD</button>
-            <button id="btn-voice-groq" type="button" class="btn btn-secondary btn-sm flex-1">⚡ Groq Neural</button>
-            <button id="btn-voice-browser" type="button" class="btn btn-secondary btn-sm flex-1">💻 Système</button>
+            <button id="btn-voice-jenny" type="button" class="btn btn-primary btn-sm flex-1">✨ Jenny Neural (IA)</button>
+            <button id="btn-voice-browser" type="button" class="btn btn-secondary btn-sm flex-1">💻 Navigateur (Secours)</button>
           </div>
 
-          <!-- REGLAGES STUDIO HD -->
-          <div id="studio-voice-settings-group" style="margin-top:8px;">
-            <p style="font-size:12px;color:#5b21b6;margin:0 0 6px 0;">
-              Voix studio naturelle avec prononciation authentique US & UK. 100% gratuit, instantané, sans clé API.
-            </p>
-            <button id="btn-test-studio-voice-modal" type="button" class="btn btn-secondary btn-sm" style="width:100%;background:#ede9fe;color:#5b21b6;border-color:#ddd6fe;font-weight:600;">
-              🔊 Tester la voix Studio HD
-            </button>
-          </div>
-
-          <!-- REGLAGES GROQ NEURAL -->
-          <div id="groq-voice-settings-group" class="hidden" style="margin-top:8px;">
+          <!-- REGLAGES JENNY NEURAL -->
+          <div id="jenny-voice-settings-group" style="margin-top:8px;">
             <div>
-              <label for="select-groq-voice" class="prompt-label" style="color:#5b21b6;">Voix Groq Neural (Orpheus)</label>
-              <select id="select-groq-voice" class="select-input" style="width:100%;">
+              <label for="select-jenny-voice" class="prompt-label" style="color:#5b21b6;">Voix sélectionnée</label>
+              <select id="select-jenny-voice" class="select-input" style="width:100%;">
                 <optgroup label="🇺🇸 Voix Américaines (en-US)">
-                  <option value="autumn">🇺🇸 Autumn (Femme, chaleureuse) ⭐ Recommandée</option>
-                  <option value="diana">🇺🇸 Diana (Femme, dynamique)</option>
-                  <option value="austin">🇺🇸 Austin (Homme, expressif)</option>
+                  <option value="en-US-JennyNeural - en-US (Female)">🇺🇸 Jenny Neural (Femme, chaleureuse & fluide) ⭐ Recommandée</option>
+                  <option value="en-US-GuyNeural - en-US (Male)">🇺🇸 Guy Neural (Homme, posé & naturel)</option>
+                  <option value="en-US-AriaNeural - en-US (Female)">🇺🇸 Aria Neural (Femme, dynamique)</option>
                 </optgroup>
                 <optgroup label="🇬🇧 Voix Britanniques (en-GB)">
-                  <option value="hannah">🇬🇧 Hannah (Femme, accent soigné) ⭐ Recommandée</option>
-                  <option value="daniel">🇬🇧 Daniel (Homme, calme)</option>
-                  <option value="troy">🇬🇧 Troy (Homme, dynamique)</option>
+                  <option value="en-GB-SoniaNeural - en-GB (Female)">🇬🇧 Sonia Neural (Femme, accent British élégant) ⭐ Recommandée UK</option>
+                  <option value="en-GB-RyanNeural - en-GB (Male)">🇬🇧 Ryan Neural (Homme, accent British naturel)</option>
                 </optgroup>
               </select>
             </div>
-            <p style="font-size:11px;color:#7c3aed;margin:4px 0 0 0;">
-              💡 <em>Si Groq indique "conditions requises", visitez console.groq.com/playground pour activer Orpheus.</em>
-            </p>
-            <div class="btn-row" style="margin-top:6px;">
-              <button id="btn-test-groq-voice-modal" type="button" class="btn btn-primary btn-sm flex-1" style="background:#6b21a8;border:none;">🔊 Tester Groq Neural</button>
+            <div class="btn-row" style="margin-top:8px;">
+              <button id="btn-test-jenny-voice-modal" type="button" class="btn btn-primary btn-sm flex-1" style="background:#6b21a8;border:none;">🔊 Tester Jenny Neural</button>
             </div>
-            <div id="groq-voice-status-text" class="hidden" style="font-size:11px;font-weight:600;margin-top:4px;"></div>
+            <div id="jenny-voice-status-text" class="hidden" style="font-size:11px;font-weight:600;margin-top:4px;"></div>
           </div>
         </div>
 
@@ -1538,7 +1523,7 @@
     const BUILTIN_SPEAK = window.EC_BUILTIN_SPEAK || [];
     const BUILTIN_LISTEN = window.EC_BUILTIN_LISTEN || [];
     const BUILTIN_PREPA = window.EC_BUILTIN_PREPA || [];
-    const STORAGE_KEY = "english_coach_v5_groq";
+    const STORAGE_KEY = "english_coach_v5_jenny";
 
     // 2. ÉTAT GLOBAL & PERSISTANCE
     // -------------------------------------------------------------------------
@@ -1552,9 +1537,9 @@
       listenSpeed: 1,
       apiKey: "",
       groqModel: "llama-3.3-70b-versatile",
-      voiceEngine: "studio",
-      groqVoiceUS: "autumn",
-      groqVoiceUK: "hannah",
+      voiceEngine: "jenny",
+      jennyVoiceUS: "en-US-JennyNeural - en-US (Female)",
+      jennyVoiceUK: "en-GB-SoniaNeural - en-GB (Female)",
       aiItems: [],
       reviews: {},
       stats: { xp: 0, streak: 0, lastDate: null },
@@ -1576,10 +1561,10 @@
         if (["A2", "B1", "B2"].includes(d.level)) state.level = d.level;
         if (d.accent === "en-GB" || d.accent === "en-US") state.accent = d.accent;
         if (typeof d.apiKey === "string") state.apiKey = d.apiKey;
-        if (["studio", "groq", "browser"].includes(d.voiceEngine)) state.voiceEngine = d.voiceEngine;
-        else state.voiceEngine = "studio";
-        if (typeof d.groqVoiceUS === "string" && d.groqVoiceUS) state.groqVoiceUS = d.groqVoiceUS;
-        if (typeof d.groqVoiceUK === "string" && d.groqVoiceUK) state.groqVoiceUK = d.groqVoiceUK;
+        if (d.voiceEngine === "browser") state.voiceEngine = "browser";
+        else state.voiceEngine = "jenny";
+        if (typeof d.jennyVoiceUS === "string" && d.jennyVoiceUS) state.jennyVoiceUS = d.jennyVoiceUS;
+        if (typeof d.jennyVoiceUK === "string" && d.jennyVoiceUK) state.jennyVoiceUK = d.jennyVoiceUK;
         if (typeof d.groqModel === "string" && d.groqModel) state.groqModel = d.groqModel;
         if (Array.isArray(d.aiItems)) state.aiItems = d.aiItems;
         if (d.reviews && typeof d.reviews === "object") state.reviews = d.reviews;
@@ -1601,8 +1586,8 @@
           apiKey: state.apiKey,
           groqModel: state.groqModel,
           voiceEngine: state.voiceEngine,
-          groqVoiceUS: state.groqVoiceUS,
-          groqVoiceUK: state.groqVoiceUK,
+          jennyVoiceUS: state.jennyVoiceUS,
+          jennyVoiceUK: state.jennyVoiceUK,
           aiItems: state.aiItems,
           reviews: state.reviews,
           stats: state.stats
@@ -1712,42 +1697,34 @@
       updateHeader();
     }
 
-    // ==================== MOTEUR VOCAL MULTI-SOURCE & AUDIO HD ====================
+    // ==================== MOTEUR VOCAL JENNY NEURAL (AZURE/EDGE) ====================
     const audioCache = new Map();
     let activeAudio = null;
     let isAudioGenerating = false;
 
     function updateVoiceUIState() {
-      const mode = state.voiceEngine || "studio";
-      const btnS = $("btn-voice-studio");
-      const btnG = $("btn-voice-groq");
+      const mode = state.voiceEngine || "jenny";
+      const btnJ = $("btn-voice-jenny");
       const btnB = $("btn-voice-browser");
-      const groqGroup = $("groq-voice-settings-group");
-      const studioGroup = $("studio-voice-settings-group");
+      const jennyGroup = $("jenny-voice-settings-group");
       const badge = $("set-voice-badge");
       const hdrBadge = $("hdr-voice-label");
-      const voiceSelect = $("select-groq-voice");
+      const voiceSelect = $("select-jenny-voice");
 
-      if (btnS) btnS.className = mode === "studio" ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
-      if (btnG) btnG.className = mode === "groq" ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
+      if (btnJ) btnJ.className = mode === "jenny" ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
       if (btnB) btnB.className = mode === "browser" ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
 
-      if (groqGroup) groqGroup.classList.toggle("hidden", mode !== "groq");
-      if (studioGroup) studioGroup.classList.toggle("hidden", mode !== "studio");
+      if (jennyGroup) jennyGroup.classList.toggle("hidden", mode !== "jenny");
 
       if (voiceSelect) {
         const isUK = state.accent === "en-GB";
-        voiceSelect.value = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
+        voiceSelect.value = isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)");
       }
 
       if (badge) {
-        if (mode === "studio") {
-          badge.textContent = "Studio HD 🌐";
+        if (mode === "jenny") {
+          badge.textContent = "Jenny Neural ✨";
           badge.className = "badge badge-emerald";
-        } else if (mode === "groq") {
-          const hasKey = !!(state.apiKey && state.apiKey.trim());
-          badge.textContent = hasKey ? "Groq Neural ⚡" : "Clé requise ⚠️";
-          badge.className = hasKey ? "badge badge-indigo" : "badge badge-rose";
         } else {
           badge.textContent = "Navigateur 💻";
           badge.className = "badge badge-muted";
@@ -1755,94 +1732,58 @@
       }
 
       if (hdrBadge) {
-        if (mode === "studio") hdrBadge.textContent = "Studio 🌐";
-        else if (mode === "groq") hdrBadge.textContent = "Groq ⚡";
-        else hdrBadge.textContent = "Système 💻";
+        hdrBadge.textContent = mode === "jenny" ? "Jenny ✨" : "Système 💻";
       }
     }
 
-    async function fetchGroqAudioUrl(text, voice) {
-      if (!state.apiKey) throw new Error("Clé Groq manquante");
+    async function fetchJennyAudioUrl(text, voice) {
+      const cleanText = text.trim();
       const isUK = state.accent === "en-GB";
-      const actualVoice = voice || (isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn"));
+      const actualVoice = voice || (isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)"));
 
-      const res = await fetch("https://api.groq.com/openai/v1/audio/speech", {
+      const payload = {
+        data: [cleanText, actualVoice, 0, 0]
+      };
+
+      const res1 = await fetch("https://innoai-edge-tts-text-to-speech.hf.space/gradio_api/call/tts_interface", {
         method: "POST",
-        headers: {
-          "Authorization": `Bearer ${state.apiKey}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "canopylabs/orpheus-v1-english",
-          voice: actualVoice,
-          input: text,
-          response_format: "wav"
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
       });
-      if (!res.ok) {
-        const errJson = await res.json().catch(() => ({}));
-        let errMsg = errJson.error?.message || `Erreur Groq HTTP ${res.status}`;
-        if (errMsg.includes("terms") || errMsg.includes("model_terms_required")) {
-          errMsg = "Conditions requises pour Orpheus sur console.groq.com/playground";
-        }
-        throw new Error(errMsg);
+      if (!res1.ok) throw new Error(`Erreur réseau (${res1.status})`);
+
+      const json1 = await res1.json();
+      const event_id = json1?.event_id;
+      if (!event_id) throw new Error("ID de synthèse introuvable");
+
+      const res2 = await fetch(`https://innoai-edge-tts-text-to-speech.hf.space/gradio_api/call/tts_interface/${event_id}`);
+      if (!res2.ok) throw new Error(`Erreur flux audio (${res2.status})`);
+
+      const raw = await res2.text();
+      const m = raw.match(/https:\/\/innoai-edge-tts-text-to-speech\.hf\.space\/gradio_api\/file=[^\s"]+\.mp3/);
+      if (m && m[0]) {
+        return m[0];
       }
-      const blob = await res.blob();
-      return URL.createObjectURL(blob);
-    }
-
-    // Lecture audio Studio HD (Google Audio MP3 naturel, gratuit & universel)
-    function playStudioAudio(text, langCode, onEnd) {
-      const isUK = (langCode || state.accent) === "en-GB";
-      const tl = isUK ? "en-GB" : "en-US";
-      const clean = text.trim();
-      const cacheKey = `studio_${tl}_${clean}`;
-
-      if (audioCache.has(cacheKey)) {
-        playDirectAudioUrl(audioCache.get(cacheKey), onEnd);
-        return;
-      }
-
-      const encoded = encodeURIComponent(clean);
-      const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
-      audioCache.set(cacheKey, url);
-      playDirectAudioUrl(url, (err) => {
-        if (err) {
-          console.warn("Échec Studio HD, repli navigateur:", err);
-          speakWithBrowser(clean, langCode || state.accent, 1.0, onEnd);
-        } else if (onEnd) {
-          onEnd();
-        }
-      });
+      throw new Error("Fichier audio Jenny non généré");
     }
 
     // Préchargement anticipé silencieux pour latence 0 ms dès que l'utilisateur clique
     function preloadAudio(text, langCode) {
-      if (!text) return;
+      if (!text || state.voiceEngine !== "jenny") return;
       const cleanText = text.trim();
       const isUK = (langCode || state.accent) === "en-GB";
+      const voice = isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)");
+      const cacheKey = `jenny_${voice}_${cleanText}`;
 
-      if (state.voiceEngine === "groq" && state.apiKey) {
-        const voice = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
-        const cacheKey = `groq_${voice}_${cleanText}`;
-        if (audioCache.has(cacheKey)) return;
-        fetchGroqAudioUrl(cleanText, voice)
-          .then(url => {
-            audioCache.set(cacheKey, url);
-            const preAudio = new Audio(url);
-            preAudio.preload = "auto";
-          })
-          .catch(() => {});
-      } else if (state.voiceEngine === "studio") {
-        const tl = isUK ? "en-GB" : "en-US";
-        const cacheKey = `studio_${tl}_${cleanText}`;
-        if (audioCache.has(cacheKey)) return;
-        const encoded = encodeURIComponent(cleanText);
-        const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
-        audioCache.set(cacheKey, url);
-        const preAudio = new Audio(url);
-        preAudio.preload = "auto";
-      }
+      if (audioCache.has(cacheKey)) return;
+
+      fetchJennyAudioUrl(cleanText, voice)
+        .then(url => {
+          audioCache.set(cacheKey, url);
+          const preAudio = new Audio(url);
+          preAudio.preload = "auto";
+        })
+        .catch(() => {});
     }
 
     function stopSpeech() {
@@ -1897,6 +1838,22 @@
       const isEnglish = targetLang.startsWith("en");
       const isFrench = targetLang.startsWith("fr");
       const isUK = targetLang === "en-GB";
+
+      // 1. Détection prioritaire absolue des voix Jenny et Sonia
+      if (isEnglish) {
+        if (!isUK) {
+          const jennyNatural = voices.find(v => /jenny.*online.*natural|jenny.*natural|natural.*jenny/i.test(v.name));
+          if (jennyNatural) return jennyNatural;
+          const jenny = voices.find(v => /jenny/i.test(v.name));
+          if (jenny) return jenny;
+        } else {
+          const soniaNatural = voices.find(v => /sonia.*online.*natural|sonia.*natural|natural.*sonia/i.test(v.name));
+          if (soniaNatural) return soniaNatural;
+          const sonia = voices.find(v => /sonia/i.test(v.name));
+          if (sonia) return sonia;
+        }
+      }
+
       const premiumKeywords = ["neural", "natural", "premium", "enhanced", "siri", "google", "samantha", "daniel", "arthur", "karen", "serena", "oliver", "audrey", "thomas", "amelie", "aurelie", "julie"];
 
       let matchingVoices = voices.filter(v => v.lang.replace("_", "-").toLowerCase() === targetLang.toLowerCase());
@@ -1971,42 +1928,45 @@
       const speed = rate || 1.0;
       const isEnglish = targetLang.startsWith("en");
 
-      // 1. Tenter Groq Neural TTS (si sélectionné et clé configurée)
-      if (state.voiceEngine === "groq" && isEnglish && state.apiKey) {
+      // 1. Moteur Jenny Neural (voix IA ultra-humaine en-US-JennyNeural)
+      if (state.voiceEngine === "jenny" && isEnglish) {
         const isUK = targetLang === "en-GB";
-        const voice = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
-        const cacheKey = `groq_${voice}_${cleanText}`;
+        const voice = isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)");
+        const cacheKey = `jenny_${voice}_${cleanText}`;
 
+        // Si déjà en cache -> Lecture 0 ms immédiate
         if (audioCache.has(cacheKey)) {
           playDirectAudioUrl(audioCache.get(cacheKey), onEnd);
           return;
         }
 
+        // Si disponible nativement dans le navigateur (ex: Edge avec Microsoft Jenny Online Natural)
+        const bestVoice = pickBestVoice(targetLang);
+        if (bestVoice && /natural/i.test(bestVoice.name) && (/jenny/i.test(bestVoice.name) || /sonia/i.test(bestVoice.name))) {
+          speakWithBrowser(cleanText, targetLang, speed, onEnd);
+          return;
+        }
+
+        // Sinon, génération via le service Jenny Neural
         isAudioGenerating = true;
         const eq = $("listen-eq");
         if (eq) eq.classList.add("eq-playing");
 
         try {
-          const audioUrl = await fetchGroqAudioUrl(cleanText, voice);
+          const audioUrl = await fetchJennyAudioUrl(cleanText, voice);
           audioCache.set(cacheKey, audioUrl);
           if (isAudioGenerating) {
             playDirectAudioUrl(audioUrl, onEnd);
             return;
           }
         } catch (err) {
-          console.warn("Groq TTS inaccessible:", err.message);
-          showToast(`⚠️ Groq (${err.message}) → Bascule Studio HD`);
-          playStudioAudio(cleanText, targetLang, onEnd);
+          console.warn("Échec Jenny Neural, repli navigateur:", err);
+          showToast("⚠️ Jenny Neural indisponible : Voix système.");
+          speakWithBrowser(cleanText, targetLang, speed, onEnd);
           return;
         } finally {
           isAudioGenerating = false;
         }
-      }
-
-      // 2. Moteur Studio HD (Google Audio MP3 naturel, gratuit & instantané)
-      if (state.voiceEngine === "studio" || state.voiceEngine === "groq") {
-        playStudioAudio(cleanText, targetLang, onEnd);
-        return;
       }
 
       // 3. Secours transparent du navigateur
@@ -2866,11 +2826,11 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         b.textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
         b.className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
       }
-      // Synchroniser le sélecteur de voix Groq avec l'accent en cours
-      const voiceSelect = $("select-groq-voice");
+      // Synchroniser le sélecteur de voix Jenny avec l'accent en cours
+      const voiceSelect = $("select-jenny-voice");
       if (voiceSelect) {
         const isUK = state.accent === "en-GB";
-        voiceSelect.value = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
+        voiceSelect.value = isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)");
       }
       updateAccentButtons();
       updateVoiceUIState();
@@ -3163,21 +3123,14 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         showToast("🇬🇧 Accent UK sélectionné");
       });
 
-      // Gestionnaires Voix Groq Neural
+      // Gestionnaires Voix Jenny Neural
       $("hdr-voice-btn").addEventListener("click", openSettingsModal);
 
-      $("btn-voice-studio").addEventListener("click", () => {
-        state.voiceEngine = "studio";
+      $("btn-voice-jenny").addEventListener("click", () => {
+        state.voiceEngine = "jenny";
         saveState();
         updateVoiceUIState();
-        showToast("🌐 Voix Studio HD activée");
-      });
-
-      $("btn-voice-groq").addEventListener("click", () => {
-        state.voiceEngine = "groq";
-        saveState();
-        updateVoiceUIState();
-        showToast("⚡ Voix Groq Neural activée");
+        showToast("✨ Voix Jenny Neural activée");
       });
 
       $("btn-voice-browser").addEventListener("click", () => {
@@ -3187,44 +3140,29 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         showToast("💻 Voix système du navigateur activée");
       });
 
-      $("select-groq-voice").addEventListener("change", (e) => {
+      $("select-jenny-voice").addEventListener("change", (e) => {
         const val = e.target.value;
-        if (state.accent === "en-GB") state.groqVoiceUK = val;
-        else state.groqVoiceUS = val;
+        if (state.accent === "en-GB") state.jennyVoiceUK = val;
+        else state.jennyVoiceUS = val;
         saveState();
         updateVoiceUIState();
-        showToast("Voix Groq mise à jour");
+        showToast("Voix Jenny Neural mise à jour");
       });
 
-      $("btn-test-studio-voice-modal").addEventListener("click", () => {
+      $("btn-test-jenny-voice-modal").addEventListener("click", async () => {
         const isUK = state.accent === "en-GB";
-        const sampleText = isUK
-          ? "Hello! Welcome to English Coach. This is the Studio British voice."
-          : "Hello! Welcome to English Coach. This is the Studio American voice.";
-        showToast("🔊 Lecture Studio HD...");
-        playStudioAudio(sampleText, state.accent);
-      });
-
-      $("btn-test-groq-voice-modal").addEventListener("click", async () => {
-        const key = $("input-api-key").value.trim() || state.apiKey;
-        if (!key) {
-          showToast("Entrez d'abord votre clé Groq ci-dessus.");
-          return;
-        }
-        state.apiKey = key;
-        const isUK = state.accent === "en-GB";
-        const voice = $("select-groq-voice").value || (isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn"));
-        const statusEl = $("groq-voice-status-text");
+        const voice = $("select-jenny-voice").value || (isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)"));
+        const statusEl = $("jenny-voice-status-text");
         statusEl.classList.remove("hidden");
         statusEl.style.color = "var(--violet)";
-        statusEl.textContent = "⏳ Génération Groq (~150 ms)...";
+        statusEl.textContent = "⏳ Génération Jenny Neural en cours...";
         try {
           const sampleText = isUK
-            ? "Hello there! This is your British AI tutor on Groq Neural. How do I sound?"
-            : "Hello! This is your American AI tutor on Groq Neural. How do I sound?";
-          const url = await fetchGroqAudioUrl(sampleText, voice);
+            ? "Hello there! Welcome to English Coach. I am Sonia, your natural British voice. How do I sound?"
+            : "Hello! Welcome to English Coach. I am Jenny, your natural American voice. How do I sound?";
+          const url = await fetchJennyAudioUrl(sampleText, voice);
           statusEl.style.color = "var(--emerald)";
-          statusEl.textContent = "✅ Voix Groq prête ! Lecture en cours...";
+          statusEl.textContent = "✅ Voix prête ! Lecture en cours...";
           playDirectAudioUrl(url, () => {
             setTimeout(() => statusEl.classList.add("hidden"), 3000);
           });
