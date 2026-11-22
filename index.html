@@ -994,10 +994,6 @@
           <span class="stats-sep">|</span>
           <span class="stat-xp" title="Points">⚡ <span id="hdr-xp">0</span></span>
         </div>
-        <button id="hdr-voice-btn" class="stats-pill" type="button" title="Moteur vocal Kokoro IA" style="cursor:pointer;border-color:#bbf7d0;background:#f0fdf4;padding:6px 10px;">
-          <span id="hdr-voice-icon">🎙️</span>
-          <span id="hdr-voice-label" style="font-weight:700;font-size:11px;color:#166534;">Kokoro ✨</span>
-        </button>
         <button id="btn-open-settings" class="icon-btn" type="button" aria-label="Réglages">
           ⚙️
           <span id="hdr-api-dot" class="api-dot hidden"></span>
@@ -1448,49 +1444,6 @@
           <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;"></div>
         </div>
 
-        <!-- BLOC MOTEUR VOCAL KOKORO -->
-        <div class="settings-box" style="background:#f0fdf4;border-color:#bbf7d0;">
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <strong style="font-size:13px;color:#166534;">🎙️ Voix IA Réaliste (Kokoro-82M)</strong>
-            <span id="set-voice-badge" class="badge badge-emerald">Actif ✨</span>
-          </div>
-          <p style="font-size:12px;color:#15803d;margin-top:2px;">
-            Remplace la voix robotique du navigateur par <strong>Kokoro</strong> : voix humaine ultra-naturelle avec respiration et intonation native (US/UK).
-          </p>
-          <div class="btn-row" style="margin-top:6px;">
-            <button id="btn-voice-kokoro" type="button" class="btn btn-primary btn-sm flex-1">✨ Kokoro IA (Humain)</button>
-            <button id="btn-voice-browser" type="button" class="btn btn-secondary btn-sm flex-1">💻 Navigateur (Standard)</button>
-          </div>
-          
-          <div id="kokoro-settings-group" style="margin-top:8px;">
-            <div>
-              <label for="select-kokoro-voice" class="prompt-label" style="color:#166534;">Sélection de la voix Kokoro</label>
-              <select id="select-kokoro-voice" class="select-input" style="width:100%;">
-                <optgroup label="🇺🇸 Voix Américaines (en-US)">
-                  <option value="af_heart">🇺🇸 Heart (Femme, très expressive & naturelle) ⭐ Recommandée</option>
-                  <option value="af_bella">🇺🇸 Bella (Femme, claire et dynamique)</option>
-                  <option value="af_nicole">🇺🇸 Nicole (Femme, posée & calme)</option>
-                  <option value="af_sky">🇺🇸 Sky (Femme, douce)</option>
-                  <option value="am_adam">🇺🇸 Adam (Homme, dynamique & naturel)</option>
-                  <option value="am_michael">🇺🇸 Michael (Homme, posé & grave)</option>
-                </optgroup>
-                <optgroup label="🇬🇧 Voix Britanniques (en-GB)">
-                  <option value="bf_emma">🇬🇧 Emma (Femme, accent British impeccable) ⭐ Recommandée</option>
-                  <option value="bf_isabella">🇬🇧 Isabella (Femme, British douce)</option>
-                  <option value="bm_george">🇬🇧 George (Homme, accent British naturel)</option>
-                  <option value="bm_daniel">🇬🇧 Daniel (Homme, British posé)</option>
-                </optgroup>
-              </select>
-            </div>
-            <div class="btn-row" style="margin-top:6px;">
-              <button id="btn-test-kokoro" type="button" class="btn btn-secondary btn-sm flex-1" style="background:#fff;">🔊 Tester cette voix</button>
-            </div>
-            <div id="kokoro-status-text" style="font-size:11px;color:#166534;font-weight:600;margin-top:4px;">
-              ⚡ Moteur prêt à l'emploi
-            </div>
-          </div>
-        </div>
-
         <div>
           <div class="prompt-label">Accent de la voix anglaise</div>
           <div class="btn-row" style="margin-top:4px;">
@@ -1543,9 +1496,6 @@
       listenSpeed: 1,
       apiKey: "",
       groqModel: "llama-3.3-70b-versatile",
-      voiceEngine: "kokoro",
-      kokoroVoiceUS: "af_heart",
-      kokoroVoiceUK: "bf_emma",
       aiItems: [],
       reviews: {},
       stats: { xp: 0, streak: 0, lastDate: null },
@@ -1566,9 +1516,6 @@
         const d = JSON.parse(raw);
         if (["A2", "B1", "B2"].includes(d.level)) state.level = d.level;
         if (d.accent === "en-GB" || d.accent === "en-US") state.accent = d.accent;
-        if (d.voiceEngine === "kokoro" || d.voiceEngine === "browser") state.voiceEngine = d.voiceEngine;
-        if (typeof d.kokoroVoiceUS === "string" && d.kokoroVoiceUS) state.kokoroVoiceUS = d.kokoroVoiceUS;
-        if (typeof d.kokoroVoiceUK === "string" && d.kokoroVoiceUK) state.kokoroVoiceUK = d.kokoroVoiceUK;
         if (typeof d.apiKey === "string") state.apiKey = d.apiKey;
         if (typeof d.groqModel === "string" && d.groqModel) state.groqModel = d.groqModel;
         if (Array.isArray(d.aiItems)) state.aiItems = d.aiItems;
@@ -1590,9 +1537,6 @@
           accent: state.accent,
           apiKey: state.apiKey,
           groqModel: state.groqModel,
-          voiceEngine: state.voiceEngine,
-          kokoroVoiceUS: state.kokoroVoiceUS,
-          kokoroVoiceUK: state.kokoroVoiceUK,
           aiItems: state.aiItems,
           reviews: state.reviews,
           stats: state.stats
@@ -1702,150 +1646,13 @@
       updateHeader();
     }
 
-    // ==================== MOTEUR VOCAL KOKORO-82M & SYSTÈME ====================
-    const KOKORO_CDN_URL = "https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/dist/kokoro.web.js";
-    let kokoroTTSInstance = null;
-    let kokoroLoadPromise = null;
-    let kokoroStatus = "idle"; // "idle" | "loading" | "ready" | "error"
-    let kokoroLoadPct = 0;
-    const kokoroAudioCache = new Map();
-    let activeAudioPlayback = null;
-
-    function updateKokoroUIState() {
-      const isKokoro = state.voiceEngine === "kokoro";
-      const btnK = $("btn-voice-kokoro");
-      const btnB = $("btn-voice-browser");
-      const group = $("kokoro-settings-group");
-      const badge = $("set-voice-badge");
-      const hdrBadge = $("hdr-voice-label");
-      const st = $("kokoro-status-text");
-      const voiceSelect = $("select-kokoro-voice");
-
-      if (btnK) {
-        btnK.className = isKokoro ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
-      }
-      if (btnB) {
-        btnB.className = !isKokoro ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
-      }
-      if (group) group.style.display = isKokoro ? "block" : "none";
-      if (badge) {
-        badge.textContent = isKokoro ? "Kokoro IA ✨" : "Standard 💻";
-        badge.className = isKokoro ? "badge badge-emerald" : "badge badge-muted";
-      }
-      if (hdrBadge) {
-        hdrBadge.textContent = isKokoro ? (kokoroStatus === "loading" ? `${kokoroLoadPct}%` : "Kokoro ✨") : "Système";
-      }
-
-      if (voiceSelect) {
-        const isUK = state.accent === "en-GB";
-        voiceSelect.value = isUK ? (state.kokoroVoiceUK || "bf_emma") : (state.kokoroVoiceUS || "af_heart");
-      }
-
-      if (st) {
-        if (!isKokoro) {
-          st.textContent = "Voix de secours native du navigateur active.";
-          st.style.color = "var(--text-muted)";
-        } else if (kokoroStatus === "ready") {
-          st.textContent = "✅ Voix Kokoro prête & active (qualité studio ultra-humaine).";
-          st.style.color = "#15803d";
-        } else if (kokoroStatus === "loading") {
-          st.textContent = `⏳ Téléchargement du modèle Kokoro (${kokoroLoadPct}%)... En attendant, la voix système prend le relais.`;
-          st.style.color = "#d97706";
-        } else if (kokoroStatus === "error") {
-          st.textContent = "⚠️ Impossible de charger Kokoro (appareil non compatible ou hors-ligne). Voix système active.";
-          st.style.color = "var(--rose)";
-        } else {
-          st.textContent = "⚡ Prêt à être initialisé (chargement transparent).";
-          st.style.color = "#15803d";
-        }
-      }
-    }
-
-    async function getKokoroInstance() {
-      if (kokoroTTSInstance) return kokoroTTSInstance;
-      if (kokoroLoadPromise) return kokoroLoadPromise;
-
-      kokoroStatus = "loading";
-      updateKokoroUIState();
-
-      kokoroLoadPromise = (async () => {
-        try {
-          const { KokoroTTS } = await import(KOKORO_CDN_URL);
-          const tts = await KokoroTTS.from_pretrained("onnx-community/Kokoro-82M-v1.0-ONNX", {
-            dtype: "q8",
-            progress_callback: (p) => {
-              if (p && typeof p.progress === "number") {
-                kokoroLoadPct = Math.round(p.progress * 100);
-                updateKokoroUIState();
-              }
-            }
-          });
-          kokoroTTSInstance = tts;
-          kokoroStatus = "ready";
-          updateKokoroUIState();
-          return tts;
-        } catch (err) {
-          console.warn("Échec d'initialisation de Kokoro-82M:", err);
-          kokoroStatus = "error";
-          updateKokoroUIState();
-          throw err;
-        }
-      })();
-
-      return kokoroLoadPromise;
-    }
-
-    function preloadKokoroInBackground() {
-      if (state.voiceEngine === "kokoro" && !kokoroTTSInstance && !kokoroLoadPromise) {
-        setTimeout(() => {
-          getKokoroInstance().catch(() => {});
-        }, 800);
-      }
-    }
-
     function stopSpeech() {
-      if (activeAudioPlayback) {
-        try {
-          activeAudioPlayback.pause();
-          activeAudioPlayback.currentTime = 0;
-        } catch (e) {}
-        activeAudioPlayback = null;
-      }
-      if ("speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-      }
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
       const eq = $("listen-eq");
       if (eq) eq.classList.remove("eq-playing");
     }
 
-    function playAudioBlob(blob, onEnd) {
-      const audioUrl = URL.createObjectURL(blob);
-      const audio = new Audio(audioUrl);
-      activeAudioPlayback = audio;
-
-      const eq = $("listen-eq");
-      if (eq) eq.classList.add("eq-playing");
-
-      let finished = false;
-      const onFinish = () => {
-        if (finished) return;
-        finished = true;
-        if (activeAudioPlayback === audio) activeAudioPlayback = null;
-        if (eq) eq.classList.remove("eq-playing");
-        URL.revokeObjectURL(audioUrl);
-        if (onEnd) onEnd();
-      };
-
-      audio.onended = onFinish;
-      audio.onerror = onFinish;
-
-      audio.play().catch(err => {
-        console.warn("Échec lecture audio HTML5:", err);
-        onFinish();
-      });
-    }
-
-    // Sélecteur intelligent des meilleures voix neurales système (secours)
+    // Sélecteur intelligent des meilleures voix neurales et naturelles disponibles sur l'appareil (iOS / Android / Chrome / Safari / Edge)
     function pickBestVoice(targetLang) {
       if (!("speechSynthesis" in window)) return null;
       const voices = window.speechSynthesis.getVoices() || [];
@@ -1855,31 +1662,44 @@
       const isFrench = targetLang.startsWith("fr");
       const isUK = targetLang === "en-GB";
 
+      // Mots-clés désignant les voix haute fidélité (Neural, Natural, Premium, Siri, Google, Samantha, Daniel, Thomas, Audrey)
       const premiumKeywords = ["neural", "natural", "premium", "enhanced", "siri", "google", "samantha", "daniel", "arthur", "karen", "serena", "oliver", "audrey", "thomas", "amelie", "aurelie", "julie"];
 
+      // 1. Filtrer les voix de la langue exacte demandée
       let matchingVoices = voices.filter(v => v.lang.replace("_", "-").toLowerCase() === targetLang.toLowerCase());
+
+      // Si pas de correspondance exacte pour l'accent demandé, élargir à la langue principale
       if (!matchingVoices.length) {
         matchingVoices = voices.filter(v => v.lang.toLowerCase().startsWith(targetLang.slice(0, 2).toLowerCase()));
       }
+
       if (!matchingVoices.length) return null;
 
+      // 2. Trouver la voix avec le plus haut score de réalisme
       let best = matchingVoices[0];
       let bestScore = -1;
 
       matchingVoices.forEach(v => {
         let score = 0;
         const name = (v.name || "").toLowerCase();
+
+        // Bonus si c'est une voix marquée Premium / Natural / Neural
         premiumKeywords.forEach(kw => {
           if (name.includes(kw)) score += 30;
         });
+
+        // Voix spécifiques iOS réputées très naturelles
         if (isEnglish) {
           if (name.includes("samantha") || name.includes("daniel") || name.includes("karen") || name.includes("serena")) score += 40;
           if (isUK && (name.includes("daniel") || name.includes("oliver") || name.includes("george") || name.includes("uk"))) score += 35;
           if (!isUK && (name.includes("samantha") || name.includes("alex") || name.includes("us") || name.includes("ava"))) score += 35;
         }
+
         if (isFrench) {
           if (name.includes("thomas") || name.includes("audrey") || name.includes("amelie") || name.includes("aurelie") || name.includes("julie")) score += 40;
         }
+
+        // Privilégier les voix en ligne ou système haute qualité
         if (!v.localService) score += 10;
         if (v.default) score += 5;
 
@@ -1892,84 +1712,38 @@
       return best;
     }
 
-    function speakWithBrowser(text, targetLang, rate, onEnd) {
+    function speakText(text, langCode, rate, onEnd) {
       if (!("speechSynthesis" in window)) {
         showToast("Synthèse vocale non disponible.");
         if (onEnd) onEnd();
         return;
       }
+      stopSpeech();
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      }
       const u = new SpeechSynthesisUtterance(text);
+      const targetLang = langCode || state.accent;
       u.lang = targetLang;
       u.rate = rate || 1.0;
       u.pitch = 1.0;
 
       const voice = pickBestVoice(targetLang);
-      if (voice) u.voice = voice;
-
-      if (onEnd) {
-        u.onend = onEnd;
-        u.onerror = onEnd;
+      if (voice) {
+        u.voice = voice;
       }
+
+      let done = false;
+      const finish = () => {
+        if (!done) {
+          done = true;
+          if (onEnd) onEnd();
+        }
+      };
+
+      u.onend = finish;
+      u.onerror = finish;
       window.speechSynthesis.speak(u);
-    }
-
-    async function speakText(text, langCode, rate, onEnd) {
-      stopSpeech();
-      if (!text || !text.trim()) {
-        if (onEnd) onEnd();
-        return;
-      }
-
-      const cleanText = text.trim();
-      const targetLang = langCode || state.accent;
-      const speed = rate || 1.0;
-
-      // 1. Si Kokoro est actif
-      if (state.voiceEngine === "kokoro") {
-        const isUK = targetLang === "en-GB";
-        const isFrench = targetLang.startsWith("fr");
-        
-        let voice = "af_heart";
-        if (isFrench) voice = "ff_siwis";
-        else if (isUK) voice = state.kokoroVoiceUK || "bf_emma";
-        else voice = state.kokoroVoiceUS || "af_heart";
-
-        const cacheKey = `${voice}_${speed}_${cleanText}`;
-
-        // Audio déjà généré en cache -> Restitution instantanée
-        if (kokoroAudioCache.has(cacheKey)) {
-          playAudioBlob(kokoroAudioCache.get(cacheKey), onEnd);
-          return;
-        }
-
-        // Si Kokoro est prêt -> Génération audio neuronale haute qualité
-        if (kokoroStatus === "ready" && kokoroTTSInstance) {
-          try {
-            const audioRes = await kokoroTTSInstance.generate(cleanText, {
-              voice: voice,
-              speed: speed
-            });
-            const blob = audioRes.toBlob();
-            kokoroAudioCache.set(cacheKey, blob);
-            playAudioBlob(blob, onEnd);
-            return;
-          } catch (e) {
-            console.warn("Erreur génération Kokoro:", e);
-          }
-        }
-
-        // Si Kokoro est encore en chargement
-        if (kokoroStatus === "idle") {
-          getKokoroInstance().catch(() => {});
-        }
-
-        if (kokoroStatus === "loading") {
-          showToast(`🎙️ Préparation voix Kokoro IA (${kokoroLoadPct}%)...`);
-        }
-      }
-
-      // 2. Secours transparent : voix système
-      speakWithBrowser(cleanText, targetLang, speed, onEnd);
     }
 
     function speakEnglish(text, rate, onEnd) {
@@ -2822,7 +2596,6 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       b.textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
       b.className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
       updateAccentButtons();
-      updateKokoroUIState();
       $("settings-modal").classList.remove("hidden");
     }
 
@@ -2963,7 +2736,6 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
           state.accent = btn.dataset.accent;
           saveState();
           updateAccentButtons();
-          updateKokoroUIState();
         });
       });
 
@@ -3094,64 +2866,8 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         }
       });
 
-      $("btn-set-us").addEventListener("click", () => {
-        state.accent = "en-US";
-        saveState();
-        updateAccentButtons();
-        updateKokoroUIState();
-        showToast("🇺🇸 Accent US sélectionné");
-      });
-      $("btn-set-gb").addEventListener("click", () => {
-        state.accent = "en-GB";
-        saveState();
-        updateAccentButtons();
-        updateKokoroUIState();
-        showToast("🇬🇧 Accent UK sélectionné");
-      });
-
-      // Gestionnaires Kokoro
-      $("hdr-voice-btn").addEventListener("click", openSettingsModal);
-
-      $("btn-voice-kokoro").addEventListener("click", () => {
-        state.voiceEngine = "kokoro";
-        saveState();
-        updateKokoroUIState();
-        preloadKokoroInBackground();
-        showToast("✨ Voix IA Kokoro activée");
-      });
-
-      $("btn-voice-browser").addEventListener("click", () => {
-        state.voiceEngine = "browser";
-        saveState();
-        updateKokoroUIState();
-        showToast("💻 Voix système du navigateur activée");
-      });
-
-      $("select-kokoro-voice").addEventListener("change", (e) => {
-        const selected = e.target.value;
-        if (state.accent === "en-GB") {
-          state.kokoroVoiceUK = selected;
-        } else {
-          state.kokoroVoiceUS = selected;
-        }
-        saveState();
-        updateKokoroUIState();
-        showToast("Voix Kokoro mise à jour");
-      });
-
-      $("btn-test-kokoro").addEventListener("click", async () => {
-        const isUK = state.accent === "en-GB";
-        const sampleText = isUK 
-          ? "Hello there! Welcome to English Coach. I am your native British AI tutor, powered by Kokoro." 
-          : "Hello! Welcome to English Coach. I am your native American AI tutor, powered by Kokoro.";
-        showToast("🔊 Génération du test vocal Kokoro...");
-        speakText(sampleText, state.accent, 1.0, () => {
-          showToast("✅ Test terminé !");
-        });
-      });
-
-      // Lancer le préchargement transparent de Kokoro
-      preloadKokoroInBackground();
+      $("btn-set-us").addEventListener("click", () => { state.accent = "en-US"; saveState(); updateAccentButtons(); showToast("🇺🇸 US"); });
+      $("btn-set-gb").addEventListener("click", () => { state.accent = "en-GB"; saveState(); updateAccentButtons(); showToast("🇬🇧 UK"); });
 
       $("btn-reset-ask").addEventListener("click", () => {
         $("btn-reset-ask").classList.add("hidden");
@@ -3167,6 +2883,15 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         $("settings-modal").classList.add("hidden");
         showToast("Progression réinitialisée.");
       });
+
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.getVoices();
+        if (window.speechSynthesis.onvoiceschanged !== undefined) {
+          window.speechSynthesis.onvoiceschanged = () => {
+            window.speechSynthesis.getVoices();
+          };
+        }
+      }
 
       document.body.addEventListener("click", e => {
         const speakBtn = e.target.closest("[data-speak]");
