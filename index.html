@@ -1445,7 +1445,10 @@
             <button id="btn-save-key" type="button" class="btn btn-primary btn-sm flex-1" style="box-shadow:none;">Enregistrer</button>
             <button id="btn-test-key" type="button" class="btn btn-secondary btn-sm flex-1">Tester LLM</button>
           </div>
-          <!-- BLOC MOTEUR VOCAL GROQ NEURAL -->
+          <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;margin-top:4px;"></div>
+        </div>
+
+        <!-- BLOC MOTEUR VOCAL GROQ NEURAL -->
         <div class="settings-box" style="background:#f5f3ff;border-color:#ddd6fe;">
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <strong style="font-size:13px;color:#5b21b6;">🎙️ Voix IA Réaliste (Groq Neural)</strong>
@@ -2783,17 +2786,20 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     }
 
     function openSettingsModal() {
-      $("input-api-key").value = state.apiKey;
-      $("select-groq-model").value = state.groqModel;
-      $("api-test-status").classList.add("hidden");
-      $("reset-confirm-row").classList.add("hidden");
-      $("btn-reset-ask").classList.remove("hidden");
+      if ($("input-api-key")) $("input-api-key").value = state.apiKey;
+      if ($("select-groq-model")) $("select-groq-model").value = state.groqModel;
+      if ($("api-test-status")) $("api-test-status").classList.add("hidden");
+      if ($("reset-confirm-row")) $("reset-confirm-row").classList.add("hidden");
+      if ($("btn-reset-ask")) $("btn-reset-ask").classList.remove("hidden");
       const b = $("set-api-badge");
-      b.textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
-      b.className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
+      if (b) {
+        b.textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
+        b.className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
+      }
       updateAccentButtons();
       updateVoiceUIState();
-      $("settings-modal").classList.remove("hidden");
+      const modal = $("settings-modal");
+      if (modal) modal.classList.remove("hidden");
     }
 
     function switchTab(tab) {
