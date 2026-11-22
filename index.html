@@ -1448,39 +1448,53 @@
           <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;margin-top:4px;"></div>
         </div>
 
-        <!-- BLOC MOTEUR VOCAL GROQ NEURAL -->
+        <!-- BLOC MOTEUR VOCAL UNIFIÉ -->
         <div class="settings-box" style="background:#f5f3ff;border-color:#ddd6fe;">
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <strong style="font-size:13px;color:#5b21b6;">🎙️ Voix IA Réaliste (Groq Neural)</strong>
-            <span id="set-voice-badge" class="badge badge-emerald">Actif ⚡</span>
+            <strong style="font-size:13px;color:#5b21b6;">🎙️ Synthèse Vocale & Audio</strong>
+            <span id="set-voice-badge" class="badge badge-emerald">Studio HD 🌐</span>
           </div>
           <p style="font-size:12px;color:#6b21a8;margin-top:2px;">
-            Génère une voix humaine naturelle en temps réel (~150 ms) propulsée par les puces LPU de Groq. Fonctionne directement avec votre clé Groq ci-dessus.
+            Choisissez le moteur audio pour l'écoute et l'oral.
           </p>
-          <div class="btn-row" style="margin-top:6px;">
-            <button id="btn-voice-groq" type="button" class="btn btn-primary btn-sm flex-1">⚡ Groq Neural (Humain)</button>
-            <button id="btn-voice-browser" type="button" class="btn btn-secondary btn-sm flex-1">💻 Navigateur (Secours)</button>
+          <div class="btn-row" style="margin-top:6px;display:flex;gap:4px;">
+            <button id="btn-voice-studio" type="button" class="btn btn-primary btn-sm flex-1">🌐 Studio HD</button>
+            <button id="btn-voice-groq" type="button" class="btn btn-secondary btn-sm flex-1">⚡ Groq Neural</button>
+            <button id="btn-voice-browser" type="button" class="btn btn-secondary btn-sm flex-1">💻 Système</button>
           </div>
 
-          <div id="groq-voice-settings-group" style="margin-top:8px;">
+          <!-- REGLAGES STUDIO HD -->
+          <div id="studio-voice-settings-group" style="margin-top:8px;">
+            <p style="font-size:12px;color:#5b21b6;margin:0 0 6px 0;">
+              Voix studio naturelle avec prononciation authentique US & UK. 100% gratuit, instantané, sans clé API.
+            </p>
+            <button id="btn-test-studio-voice-modal" type="button" class="btn btn-secondary btn-sm" style="width:100%;background:#ede9fe;color:#5b21b6;border-color:#ddd6fe;font-weight:600;">
+              🔊 Tester la voix Studio HD
+            </button>
+          </div>
+
+          <!-- REGLAGES GROQ NEURAL -->
+          <div id="groq-voice-settings-group" class="hidden" style="margin-top:8px;">
             <div>
-              <label for="select-groq-voice" class="prompt-label" style="color:#5b21b6;">Voix Groq Neural sélectionnée</label>
+              <label for="select-groq-voice" class="prompt-label" style="color:#5b21b6;">Voix Groq Neural (Orpheus)</label>
               <select id="select-groq-voice" class="select-input" style="width:100%;">
                 <optgroup label="🇺🇸 Voix Américaines (en-US)">
-                  <option value="autumn">🇺🇸 Autumn (Femme, chaleureuse & naturelle) ⭐ Recommandée</option>
-                  <option value="diana">🇺🇸 Diana (Femme, dynamique & claire)</option>
-                  <option value="austin">🇺🇸 Austin (Homme, expressif & naturel)</option>
+                  <option value="autumn">🇺🇸 Autumn (Femme, chaleureuse) ⭐ Recommandée</option>
+                  <option value="diana">🇺🇸 Diana (Femme, dynamique)</option>
+                  <option value="austin">🇺🇸 Austin (Homme, expressif)</option>
                 </optgroup>
                 <optgroup label="🇬🇧 Voix Britanniques (en-GB)">
-                  <option value="hannah">🇬🇧 Hannah (Femme, accent British élégant) ⭐ Recommandée</option>
-                  <option value="daniel">🇬🇧 Daniel (Homme, calme & posé)</option>
-                  <option value="troy">🇬🇧 Troy (Homme, dynamique & moderne)</option>
+                  <option value="hannah">🇬🇧 Hannah (Femme, accent soigné) ⭐ Recommandée</option>
+                  <option value="daniel">🇬🇧 Daniel (Homme, calme)</option>
+                  <option value="troy">🇬🇧 Troy (Homme, dynamique)</option>
                 </optgroup>
               </select>
             </div>
-
-            <div class="btn-row" style="margin-top:8px;">
-              <button id="btn-test-groq-voice-modal" type="button" class="btn btn-primary btn-sm flex-1" style="background:#6b21a8;border:none;">🔊 Tester la voix sélectionnée</button>
+            <p style="font-size:11px;color:#7c3aed;margin:4px 0 0 0;">
+              💡 <em>Si Groq indique "conditions requises", visitez console.groq.com/playground pour activer Orpheus.</em>
+            </p>
+            <div class="btn-row" style="margin-top:6px;">
+              <button id="btn-test-groq-voice-modal" type="button" class="btn btn-primary btn-sm flex-1" style="background:#6b21a8;border:none;">🔊 Tester Groq Neural</button>
             </div>
             <div id="groq-voice-status-text" class="hidden" style="font-size:11px;font-weight:600;margin-top:4px;"></div>
           </div>
@@ -1538,7 +1552,7 @@
       listenSpeed: 1,
       apiKey: "",
       groqModel: "llama-3.3-70b-versatile",
-      voiceEngine: "groq",
+      voiceEngine: "studio",
       groqVoiceUS: "autumn",
       groqVoiceUK: "hannah",
       aiItems: [],
@@ -1562,8 +1576,8 @@
         if (["A2", "B1", "B2"].includes(d.level)) state.level = d.level;
         if (d.accent === "en-GB" || d.accent === "en-US") state.accent = d.accent;
         if (typeof d.apiKey === "string") state.apiKey = d.apiKey;
-        if (d.voiceEngine === "groq" || d.voiceEngine === "browser") state.voiceEngine = d.voiceEngine;
-        else state.voiceEngine = "groq";
+        if (["studio", "groq", "browser"].includes(d.voiceEngine)) state.voiceEngine = d.voiceEngine;
+        else state.voiceEngine = "studio";
         if (typeof d.groqVoiceUS === "string" && d.groqVoiceUS) state.groqVoiceUS = d.groqVoiceUS;
         if (typeof d.groqVoiceUK === "string" && d.groqVoiceUK) state.groqVoiceUK = d.groqVoiceUK;
         if (typeof d.groqModel === "string" && d.groqModel) state.groqModel = d.groqModel;
@@ -1698,24 +1712,28 @@
       updateHeader();
     }
 
-    // ==================== MOTEUR VOCAL GROQ NEURAL TTS & SYSTÈME ====================
+    // ==================== MOTEUR VOCAL MULTI-SOURCE & AUDIO HD ====================
     const audioCache = new Map();
     let activeAudio = null;
     let isAudioGenerating = false;
 
     function updateVoiceUIState() {
-      const isGroq = state.voiceEngine === "groq";
-      const hasKey = !!(state.apiKey && state.apiKey.trim());
+      const mode = state.voiceEngine || "studio";
+      const btnS = $("btn-voice-studio");
       const btnG = $("btn-voice-groq");
       const btnB = $("btn-voice-browser");
-      const group = $("groq-voice-settings-group");
+      const groqGroup = $("groq-voice-settings-group");
+      const studioGroup = $("studio-voice-settings-group");
       const badge = $("set-voice-badge");
       const hdrBadge = $("hdr-voice-label");
       const voiceSelect = $("select-groq-voice");
 
-      if (btnG) btnG.className = isGroq ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
-      if (btnB) btnB.className = !isGroq ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
-      if (group) group.style.display = isGroq ? "block" : "none";
+      if (btnS) btnS.className = mode === "studio" ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
+      if (btnG) btnG.className = mode === "groq" ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
+      if (btnB) btnB.className = mode === "browser" ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
+
+      if (groqGroup) groqGroup.classList.toggle("hidden", mode !== "groq");
+      if (studioGroup) studioGroup.classList.toggle("hidden", mode !== "studio");
 
       if (voiceSelect) {
         const isUK = state.accent === "en-GB";
@@ -1723,20 +1741,23 @@
       }
 
       if (badge) {
-        if (!isGroq) {
+        if (mode === "studio") {
+          badge.textContent = "Studio HD 🌐";
+          badge.className = "badge badge-emerald";
+        } else if (mode === "groq") {
+          const hasKey = !!(state.apiKey && state.apiKey.trim());
+          badge.textContent = hasKey ? "Groq Neural ⚡" : "Clé requise ⚠️";
+          badge.className = hasKey ? "badge badge-indigo" : "badge badge-rose";
+        } else {
           badge.textContent = "Navigateur 💻";
           badge.className = "badge badge-muted";
-        } else if (hasKey) {
-          badge.textContent = "Groq Neural ⚡";
-          badge.className = "badge badge-emerald";
-        } else {
-          badge.textContent = "Clé Groq requise ⚠️";
-          badge.className = "badge badge-rose";
         }
       }
 
       if (hdrBadge) {
-        hdrBadge.textContent = isGroq && hasKey ? "Groq ⚡" : "Système 💻";
+        if (mode === "studio") hdrBadge.textContent = "Studio 🌐";
+        else if (mode === "groq") hdrBadge.textContent = "Groq ⚡";
+        else hdrBadge.textContent = "Système 💻";
       }
     }
 
@@ -1760,29 +1781,68 @@
       });
       if (!res.ok) {
         const errJson = await res.json().catch(() => ({}));
-        throw new Error(errJson.error?.message || `Erreur Groq TTS (${res.status})`);
+        let errMsg = errJson.error?.message || `Erreur Groq HTTP ${res.status}`;
+        if (errMsg.includes("terms") || errMsg.includes("model_terms_required")) {
+          errMsg = "Conditions requises pour Orpheus sur console.groq.com/playground";
+        }
+        throw new Error(errMsg);
       }
       const blob = await res.blob();
       return URL.createObjectURL(blob);
     }
 
+    // Lecture audio Studio HD (Google Audio MP3 naturel, gratuit & universel)
+    function playStudioAudio(text, langCode, onEnd) {
+      const isUK = (langCode || state.accent) === "en-GB";
+      const tl = isUK ? "en-GB" : "en-US";
+      const clean = text.trim();
+      const cacheKey = `studio_${tl}_${clean}`;
+
+      if (audioCache.has(cacheKey)) {
+        playDirectAudioUrl(audioCache.get(cacheKey), onEnd);
+        return;
+      }
+
+      const encoded = encodeURIComponent(clean);
+      const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
+      audioCache.set(cacheKey, url);
+      playDirectAudioUrl(url, (err) => {
+        if (err) {
+          console.warn("Échec Studio HD, repli navigateur:", err);
+          speakWithBrowser(clean, langCode || state.accent, 1.0, onEnd);
+        } else if (onEnd) {
+          onEnd();
+        }
+      });
+    }
+
     // Préchargement anticipé silencieux pour latence 0 ms dès que l'utilisateur clique
     function preloadAudio(text, langCode) {
-      if (state.voiceEngine !== "groq" || !state.apiKey || !text) return;
+      if (!text) return;
       const cleanText = text.trim();
       const isUK = (langCode || state.accent) === "en-GB";
-      const voice = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
-      const cacheKey = `${voice}_${cleanText}`;
 
-      if (audioCache.has(cacheKey)) return;
-
-      fetchGroqAudioUrl(cleanText, voice)
-        .then(url => {
-          audioCache.set(cacheKey, url);
-          const preAudio = new Audio(url);
-          preAudio.preload = "auto";
-        })
-        .catch(() => {});
+      if (state.voiceEngine === "groq" && state.apiKey) {
+        const voice = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
+        const cacheKey = `groq_${voice}_${cleanText}`;
+        if (audioCache.has(cacheKey)) return;
+        fetchGroqAudioUrl(cleanText, voice)
+          .then(url => {
+            audioCache.set(cacheKey, url);
+            const preAudio = new Audio(url);
+            preAudio.preload = "auto";
+          })
+          .catch(() => {});
+      } else if (state.voiceEngine === "studio") {
+        const tl = isUK ? "en-GB" : "en-US";
+        const cacheKey = `studio_${tl}_${cleanText}`;
+        if (audioCache.has(cacheKey)) return;
+        const encoded = encodeURIComponent(cleanText);
+        const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encoded}`;
+        audioCache.set(cacheKey, url);
+        const preAudio = new Audio(url);
+        preAudio.preload = "auto";
+      }
     }
 
     function stopSpeech() {
@@ -1802,6 +1862,7 @@
     }
 
     function playDirectAudioUrl(url, onEnd) {
+      stopSpeech();
       const audio = new Audio(url);
       activeAudio = audio;
 
@@ -1809,19 +1870,22 @@
       if (eq) eq.classList.add("eq-playing");
 
       let done = false;
-      const finish = () => {
+      const finish = (err) => {
         if (done) return;
         done = true;
         if (activeAudio === audio) activeAudio = null;
         if (eq) eq.classList.remove("eq-playing");
-        if (onEnd) onEnd();
+        if (onEnd) onEnd(err);
       };
 
-      audio.onended = finish;
-      audio.onerror = finish;
+      audio.onended = () => finish(null);
+      audio.onerror = (e) => {
+        console.warn("Échec lecture audio direct:", e);
+        finish(new Error("Erreur lecture audio"));
+      };
       audio.play().catch(err => {
-        console.warn("Échec lecture audio direct:", err);
-        finish();
+        console.warn("Échec play audio direct:", err);
+        finish(err);
       });
     }
 
@@ -1907,19 +1971,17 @@
       const speed = rate || 1.0;
       const isEnglish = targetLang.startsWith("en");
 
-      // 1. Tenter Groq Neural TTS (ultra-rapide LPU ~150 ms)
+      // 1. Tenter Groq Neural TTS (si sélectionné et clé configurée)
       if (state.voiceEngine === "groq" && isEnglish && state.apiKey) {
         const isUK = targetLang === "en-GB";
         const voice = isUK ? (state.groqVoiceUK || "hannah") : (state.groqVoiceUS || "autumn");
-        const cacheKey = `${voice}_${cleanText}`;
+        const cacheKey = `groq_${voice}_${cleanText}`;
 
-        // Si déjà en cache -> Lecture 0 ms immédiate
         if (audioCache.has(cacheKey)) {
           playDirectAudioUrl(audioCache.get(cacheKey), onEnd);
           return;
         }
 
-        // Sinon, génération via l'API Groq LPU
         isAudioGenerating = true;
         const eq = $("listen-eq");
         if (eq) eq.classList.add("eq-playing");
@@ -1932,14 +1994,22 @@
             return;
           }
         } catch (err) {
-          console.warn("Erreur Groq TTS:", err.message);
-          showToast(`⚠️ Groq TTS indisponible : Voix système.`);
+          console.warn("Groq TTS inaccessible:", err.message);
+          showToast(`⚠️ Groq (${err.message}) → Bascule Studio HD`);
+          playStudioAudio(cleanText, targetLang, onEnd);
+          return;
         } finally {
           isAudioGenerating = false;
         }
       }
 
-      // 2. Secours transparent du navigateur
+      // 2. Moteur Studio HD (Google Audio MP3 naturel, gratuit & instantané)
+      if (state.voiceEngine === "studio" || state.voiceEngine === "groq") {
+        playStudioAudio(cleanText, targetLang, onEnd);
+        return;
+      }
+
+      // 3. Secours transparent du navigateur
       speakWithBrowser(cleanText, targetLang, speed, onEnd);
     }
 
@@ -3096,6 +3166,13 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       // Gestionnaires Voix Groq Neural
       $("hdr-voice-btn").addEventListener("click", openSettingsModal);
 
+      $("btn-voice-studio").addEventListener("click", () => {
+        state.voiceEngine = "studio";
+        saveState();
+        updateVoiceUIState();
+        showToast("🌐 Voix Studio HD activée");
+      });
+
       $("btn-voice-groq").addEventListener("click", () => {
         state.voiceEngine = "groq";
         saveState();
@@ -3119,6 +3196,15 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         showToast("Voix Groq mise à jour");
       });
 
+      $("btn-test-studio-voice-modal").addEventListener("click", () => {
+        const isUK = state.accent === "en-GB";
+        const sampleText = isUK
+          ? "Hello! Welcome to English Coach. This is the Studio British voice."
+          : "Hello! Welcome to English Coach. This is the Studio American voice.";
+        showToast("🔊 Lecture Studio HD...");
+        playStudioAudio(sampleText, state.accent);
+      });
+
       $("btn-test-groq-voice-modal").addEventListener("click", async () => {
         const key = $("input-api-key").value.trim() || state.apiKey;
         if (!key) {
@@ -3138,7 +3224,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
             : "Hello! This is your American AI tutor on Groq Neural. How do I sound?";
           const url = await fetchGroqAudioUrl(sampleText, voice);
           statusEl.style.color = "var(--emerald)";
-          statusEl.textContent = "✅ Voix Groq prête !";
+          statusEl.textContent = "✅ Voix Groq prête ! Lecture en cours...";
           playDirectAudioUrl(url, () => {
             setTimeout(() => statusEl.classList.add("hidden"), 3000);
           });
