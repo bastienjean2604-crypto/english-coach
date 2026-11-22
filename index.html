@@ -1443,8 +1443,11 @@
           </div>
           <div class="btn-row" style="margin-top:2px;">
             <button id="btn-save-key" type="button" class="btn btn-primary btn-sm flex-1" style="box-shadow:none;">Enregistrer</button>
-            <button id="btn-test-key" type="button" class="btn btn-secondary btn-sm flex-1">Tester</button>
+            <button id="btn-test-key" type="button" class="btn btn-secondary btn-sm flex-1">Tester LLM</button>
           </div>
+          <button id="btn-test-groq-voice" type="button" class="btn btn-secondary btn-sm" style="width:100%;margin-top:5px;background:#f5f3ff;color:#6b21a8;border-color:#ddd6fe;font-weight:600;">
+            🔊 Écouter la voix Groq Neural
+          </button>
           <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;"></div>
         </div>
 
@@ -3142,6 +3145,29 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         } catch (e) {
           st.style.color = "var(--rose)";
           st.textContent = `❌ ${e.message}`;
+        }
+      });
+
+      $("btn-test-groq-voice").addEventListener("click", async () => {
+        const key = $("input-api-key").value.trim() || state.apiKey;
+        if (!key) {
+          showToast("Entrez d'abord votre clé Groq ci-dessus.");
+          return;
+        }
+        state.apiKey = key;
+        const isUK = state.accent === "en-GB";
+        const voice = isUK ? "hannah" : "autumn";
+        showToast("🎙️ Génération de la voix Groq Neural...");
+        try {
+          const sampleText = isUK
+            ? "Hello there! This is the Groq Neural British voice, powered by Orpheus. How does it sound to you?"
+            : "Hello! This is the Groq Neural American voice, powered by Orpheus. How does it sound to you?";
+          const url = await fetchGroqAudioUrl(sampleText, voice);
+          playDirectAudioUrl(url, () => {
+            showToast("✅ Extrait Groq terminé !");
+          });
+        } catch (e) {
+          showToast(`❌ Erreur Groq : ${e.message}`);
         }
       });
 
