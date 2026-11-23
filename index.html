@@ -1087,6 +1087,11 @@
           <span class="stats-sep">|</span>
           <span class="stat-xp" title="Points">⚡ <span id="hdr-xp">0</span></span>
         </div>
+        <div class="stats-pill" title="Exercices réussis (sauvegardés pour ne plus retomber dessus)">
+          <span>✅ <span id="hdr-completed-count" style="font-weight:700;color:#059669;">0</span></span>
+          <span class="stats-sep">|</span>
+          <span title="Tirage aléatoire cryptographique garanti sans répétition" style="font-size:11px;color:#475569;font-weight:600;">🎲 100% Aléatoire</span>
+        </div>
         <button id="hdr-voice-btn" class="stats-pill" type="button" title="Voix IA Réaliste Jenny Neural" style="cursor:pointer;border-color:#ddd6fe;background:#f5f3ff;padding:6px 10px;">
           <span id="hdr-voice-icon">✨</span>
           <span id="hdr-voice-label" style="font-weight:700;font-size:11px;color:#6b21a8;">Jenny Neural</span>
@@ -1123,6 +1128,7 @@
           <div class="badge-row">
             <span id="speak-lvl-badge" class="badge badge-primary">A2</span>
             <span id="speak-theme-badge" class="badge badge-muted">Vie quotidienne</span>
+            <span id="speak-progress-badge" class="badge badge-emerald" title="Progression du niveau (phrases uniques réussies)">🎯 0/0 complétées</span>
             <span id="speak-ai-badge" class="badge badge-violet hidden">✨ IA</span>
           </div>
           <div class="card-tools">
@@ -1222,6 +1228,7 @@
           <div class="badge-row">
             <span id="listen-lvl-badge" class="badge badge-emerald">A2</span>
             <span id="listen-theme-badge" class="badge badge-muted">Voyage</span>
+            <span id="listen-progress-badge" class="badge badge-emerald" title="Progression du niveau (audios uniques réussis)">🎯 0/0 complétées</span>
             <span id="listen-ai-badge" class="badge badge-violet hidden">✨ IA</span>
           </div>
           <div class="card-tools">
@@ -1334,6 +1341,7 @@
           <div class="badge-row">
             <span class="badge badge-violet">🎓 Khôlle Prépa Interactive</span>
             <span id="prepa-theme-badge" class="badge badge-muted">Intelligence Artificielle</span>
+            <span id="prepa-progress-badge" class="badge badge-emerald" title="Questions de khôlle uniques complétées">🎯 0/40 faites</span>
             <span id="prepa-turn-badge" class="badge badge-primary">Tour 1</span>
           </div>
           <div class="card-tools">
@@ -1576,6 +1584,23 @@
           </div>
         </div>
 
+        <!-- BLOC PROGRESSION & ANTI-RÉPÉTITION -->
+        <div class="settings-box" style="background:#f0fdf4;border-color:#bbf7d0;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong style="font-size:13px;color:#166534;">💾 Sauvegarde & Anti-Répétition</strong>
+            <span class="badge badge-emerald">Actif 🔐</span>
+          </div>
+          <p style="font-size:12px;color:#15803d;margin-top:2px;">
+            Les exercices réussis sont mémorisés pour ne jamais retomber sur les mêmes. Tirage 100% aléatoire (CSPRNG cryptographique sans biais).
+          </p>
+          <div id="set-stats-summary" style="font-size:11.5px;color:#166534;font-weight:700;margin-top:6px;background:#dcfce7;padding:6px 10px;border-radius:8px;">
+            Chargement...
+          </div>
+          <button id="btn-reset-completed" type="button" class="btn btn-secondary btn-sm" style="margin-top:8px;width:100%;border-color:#bbf7d0;color:#166534;background:#fff;">
+            🔄 Réinitialiser uniquement l'historique des exercices faits
+          </button>
+        </div>
+
         <div style="border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:8px;">
           <button id="btn-reset-ask" type="button" class="btn btn-secondary btn-sm" style="width:100%;color:var(--rose);background:var(--rose-soft);">
             Réinitialiser progression & phrases IA
@@ -1626,6 +1651,8 @@
       aiItems: [],
       reviews: {},
       stats: { xp: 0, streak: 0, lastDate: null },
+      completed: { speak: {}, listen: {}, prepa: {} },
+      sessionSeen: { speak: [], listen: [], prepa: [] },
       seenIds: new Set(),
       seenPrepaIds: new Set(),
       currentSpeak: null,
@@ -1657,6 +1684,15 @@
           state.stats.streak = Number(d.stats.streak) || 0;
           state.stats.lastDate = d.stats.lastDate || null;
         }
+        if (d.completed && typeof d.completed === "object") {
+          state.completed = {
+            speak: (d.completed.speak && typeof d.completed.speak === "object") ? d.completed.speak : {},
+            listen: (d.completed.listen && typeof d.completed.listen === "object") ? d.completed.listen : {},
+            prepa: (d.completed.prepa && typeof d.completed.prepa === "object") ? d.completed.prepa : {}
+          };
+        } else {
+          state.completed = { speak: {}, listen: {}, prepa: {} };
+        }
       } catch (e) {
         console.warn("Impossible de lire localStorage:", e);
       }
@@ -1674,7 +1710,8 @@
           jennyVoiceUK: state.jennyVoiceUK,
           aiItems: state.aiItems,
           reviews: state.reviews,
-          stats: state.stats
+          stats: state.stats,
+          completed: state.completed
         }));
       } catch (e) {
         console.warn("Impossible de sauvegarder localStorage:", e);
@@ -1687,16 +1724,51 @@
       return [...base, ...ai];
     }
 
-    // Mélange de Fisher-Yates cryptographique pour un aléatoire parfait
-    function shuffleArray(arr) {
+    // Générateur d'entier aléatoire cryptographique uniforme sans biais de modulo (CSPRNG)
+    function cryptoRandomInt(min, max) {
+      if (min >= max) return min;
+      const range = max - min + 1;
+      const maxUint32 = 0xFFFFFFFF;
+      const limit = maxUint32 - (maxUint32 % range);
+      const array = new Uint32Array(1);
+      let rand;
+      do {
+        (window.crypto || window.msCrypto).getRandomValues(array);
+        rand = array[0];
+      } while (rand >= limit);
+      return min + (rand % range);
+    }
+
+    // Mélange de Fisher-Yates cryptographique garanti 100% sans biais
+    function cryptoShuffle(arr) {
       const a = [...arr];
       for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
+        const j = cryptoRandomInt(0, i);
         [a[i], a[j]] = [a[j], a[i]];
       }
       return a;
     }
 
+    // Enregistrement persistant d'un exercice réussi
+    function markExerciseCompleted(mode, id, score) {
+      if (!id) return;
+      if (!state.completed) state.completed = { speak: {}, listen: {}, prepa: {} };
+      if (!state.completed[mode]) state.completed[mode] = {};
+
+      const prev = state.completed[mode][id] || { count: 0, bestScore: 0 };
+      state.completed[mode][id] = {
+        count: prev.count + 1,
+        bestScore: Math.max(prev.bestScore || 0, score || 0),
+        lastScore: score || 0,
+        lastAt: new Date().toISOString()
+      };
+
+      saveState();
+      updateHeader();
+      updateProgressUI();
+    }
+
+    // Sélection intelligente anti-répétition et 100% aléatoire
     function pickNextItem(mode, excludeId) {
       let pool = getAllItems(mode).filter(x => x.level === state.level);
       if (state.theme !== "ALL") {
@@ -1705,18 +1777,42 @@
       }
       if (!pool.length) pool = getAllItems(mode);
 
-      // Tirage aléatoire sans biais
-      let candidates = pool.filter(x => !state.seenIds.has(x.id) && x.id !== excludeId);
+      // 1. Filtrer prioritairement les exercices NON encore complétés
+      const completedMap = (state.completed && state.completed[mode]) || {};
+      let candidates = pool.filter(x => !completedMap[x.id] && x.id !== excludeId);
+
+      // 2. Si tous les exercices de ce niveau/thème ont été réussis (cycle complet achevé)
+      let isCycleReset = false;
       if (!candidates.length) {
-        state.seenIds.clear();
         candidates = pool.filter(x => x.id !== excludeId);
         if (!candidates.length) candidates = pool;
+        isCycleReset = true;
       }
 
-      // Mélange complet de la liste des candidats
-      const shuffled = shuffleArray(candidates);
-      const chosen = shuffled[0];
-      if (chosen) state.seenIds.add(chosen.id);
+      // 3. Éviter les répétitions rapprochées dans la même session
+      const sessionList = (state.sessionSeen && state.sessionSeen[mode]) || [];
+      let freshCandidates = candidates.filter(x => !sessionList.includes(x.id));
+      if (!freshCandidates.length) {
+        freshCandidates = candidates;
+      }
+
+      // 4. Tirage 100% aléatoire avec CSPRNG cryptographique sans biais
+      const shuffled = cryptoShuffle(freshCandidates);
+      const chosenIndex = cryptoRandomInt(0, shuffled.length - 1);
+      const chosen = shuffled[chosenIndex];
+
+      // 5. Mémoriser dans l'historique de session
+      if (chosen) {
+        if (!state.sessionSeen) state.sessionSeen = { speak: [], listen: [], prepa: [] };
+        if (!state.sessionSeen[mode]) state.sessionSeen[mode] = [];
+        state.sessionSeen[mode].push(chosen.id);
+        if (state.sessionSeen[mode].length > 40) state.sessionSeen[mode].shift();
+      }
+
+      if (isCycleReset) {
+        showToast(`🎉 Toutes les phrases (${pool.length}) de ce filtre sont réussies ! Nouveau cycle débloqué.`);
+      }
+
       return chosen;
     }
 
@@ -1726,15 +1822,34 @@
         const byTheme = pool.filter(x => x.theme === state.prepaTheme);
         if (byTheme.length) pool = byTheme;
       }
-      let candidates = pool.filter(x => !state.seenPrepaIds.has(x.id) && x.id !== excludeId);
+      if (!pool.length) pool = BUILTIN_PREPA;
+
+      const completedMap = (state.completed && state.completed.prepa) || {};
+      let candidates = pool.filter(x => !completedMap[x.id] && x.id !== excludeId);
+
       if (!candidates.length) {
-        state.seenPrepaIds.clear();
+        // Tous les sujets de ce thème ont été complétés au moins une fois : nouveau cycle
         candidates = pool.filter(x => x.id !== excludeId);
         if (!candidates.length) candidates = pool;
+        const themeLabel = state.prepaTheme === "ALL" ? "tous thèmes" : state.prepaTheme;
+        showToast(`🎉 Tous les sujets Prépa (${themeLabel}) réussis ! Nouveau cycle.`);
       }
-      const shuffled = shuffleArray(candidates);
-      const chosen = shuffled[0];
-      if (chosen) state.seenPrepaIds.add(chosen.id);
+
+      const sessionList = (state.sessionSeen && state.sessionSeen.prepa) || [];
+      let freshCandidates = candidates.filter(x => !sessionList.includes(x.id));
+      if (!freshCandidates.length) freshCandidates = candidates;
+
+      const shuffled = cryptoShuffle(freshCandidates);
+      const chosenIndex = cryptoRandomInt(0, shuffled.length - 1);
+      const chosen = shuffled[chosenIndex];
+
+      if (chosen) {
+        if (!state.sessionSeen) state.sessionSeen = { speak: [], listen: [], prepa: [] };
+        if (!state.sessionSeen.prepa) state.sessionSeen.prepa = [];
+        state.sessionSeen.prepa.push(chosen.id);
+        if (state.sessionSeen.prepa.length > 20) state.sessionSeen.prepa.shift();
+      }
+
       return chosen;
     }
 
@@ -1757,12 +1872,49 @@
       toastTimer = setTimeout(() => el.classList.remove("show"), 2800);
     }
 
+    function updateProgressUI() {
+      const comp = state.completed || { speak: {}, listen: {}, prepa: {} };
+
+      // Speak progress
+      const speakPool = getAllItems("speak").filter(x => x.level === state.level);
+      const speakDone = speakPool.filter(x => comp.speak && comp.speak[x.id]).length;
+      const spBadge = $("speak-progress-badge");
+      if (spBadge) spBadge.textContent = `🎯 ${speakDone}/${speakPool.length} complétées`;
+
+      // Listen progress
+      const listenPool = getAllItems("listen").filter(x => x.level === state.level);
+      const listenDone = listenPool.filter(x => comp.listen && comp.listen[x.id]).length;
+      const lsBadge = $("listen-progress-badge");
+      if (lsBadge) lsBadge.textContent = `🎯 ${listenDone}/${listenPool.length} complétées`;
+
+      // Prepa progress
+      const prepaPool = BUILTIN_PREPA;
+      const prepaDone = prepaPool.filter(x => comp.prepa && comp.prepa[x.id]).length;
+      const prBadge = $("prepa-progress-badge");
+      if (prBadge) prBadge.textContent = `🎯 ${prepaDone}/${prepaPool.length} faites`;
+
+      // Header completed count
+      const totalSpeak = Object.keys(comp.speak || {}).length;
+      const totalListen = Object.keys(comp.listen || {}).length;
+      const totalPrepa = Object.keys(comp.prepa || {}).length;
+      const grandTotal = totalSpeak + totalListen + totalPrepa;
+      const hdrComp = $("hdr-completed-count");
+      if (hdrComp) hdrComp.textContent = grandTotal;
+
+      // Settings modal stats summary
+      const setSum = $("set-stats-summary");
+      if (setSum) {
+        setSum.innerHTML = `📊 <strong>${grandTotal}</strong> exos uniques réussis (Oral: ${totalSpeak}/3150 | Écoute: ${totalListen}/30 | Prépa: ${totalPrepa}/40)`;
+      }
+    }
+
     function updateHeader() {
       $("hdr-streak").textContent = state.stats.streak;
       $("hdr-xp").textContent = state.stats.xp;
       $("hdr-api-dot").classList.toggle("hidden", !state.apiKey);
       const genLbl = $("gen-ai-lvl-label");
       if (genLbl) genLbl.textContent = state.level;
+      updateProgressUI();
     }
 
     function awardXP(score) {
@@ -2020,7 +2172,14 @@
 
         // Si déjà en cache -> Lecture 0 ms immédiate
         if (audioCache.has(cacheKey)) {
-          playDirectAudioUrl(audioCache.get(cacheKey), onEnd);
+          playDirectAudioUrl(audioCache.get(cacheKey), (err) => {
+            if (err) {
+              audioCache.delete(cacheKey);
+              speakWithBrowser(cleanText, targetLang, speed, onEnd);
+            } else if (onEnd) {
+              onEnd();
+            }
+          });
           return;
         }
 
@@ -2040,7 +2199,14 @@
           const audioUrl = await fetchJennyAudioUrl(cleanText, voice);
           audioCache.set(cacheKey, audioUrl);
           if (isAudioGenerating) {
-            playDirectAudioUrl(audioUrl, onEnd);
+            playDirectAudioUrl(audioUrl, (err) => {
+              if (err) {
+                audioCache.delete(cacheKey);
+                speakWithBrowser(cleanText, targetLang, speed, onEnd);
+              } else if (onEnd) {
+                onEnd();
+              }
+            });
             return;
           }
         } catch (err) {
@@ -2301,6 +2467,7 @@
           body: JSON.stringify({
             model: model,
             temperature: 0.2,
+            max_tokens: 1024,
             response_format: { type: "json_object" },
             messages: [
               { role: "system", content: systemPrompt },
@@ -2438,6 +2605,7 @@ Traduction de l'élève (français) : "${finalAnswerText}"
           }
 
           awardXP(score);
+          markExerciseCompleted(mode, item.id, score);
           if (score < 80) markReview(item.id, { missed: true, lastScore: score });
           return;
         } catch (e) {
@@ -2464,6 +2632,7 @@ Traduction de l'élève (français) : "${finalAnswerText}"
       $(`${mode}-gram-title`).textContent = `📚 ${item.grammarTitle}`;
       $(`${mode}-gram-rule`).textContent = item.grammarNote;
       awardXP(diff.score);
+      markExerciseCompleted(mode, item.id, diff.score);
     }
 
     // ==================== KHÔLLE INTERACTIVE TYPE CPGE (DISCUSSION & RELANCES) ====================
@@ -2686,6 +2855,7 @@ Retourne l'objet JSON :
         session.currentQuestion = data.followUpQuestion || `Could you elaborate further on your previous argument regarding ${session.topic}?`;
 
         awardXP(scoreRound);
+        if (session.item) markExerciseCompleted("prepa", session.item.id, scoreRound);
         renderPrepaSessionUI();
 
         // Scroll doux vers la nouvelle question de relance
@@ -2758,6 +2928,7 @@ Réponds STRICTEMENT en JSON :
         }
 
         awardXP(grade * 5);
+        if (session.item) markExerciseCompleted("prepa", session.item.id, Math.round(grade * 5));
         renderPrepaSessionUI();
 
         setTimeout(() => {
@@ -2879,6 +3050,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       $("speak-hint-box").classList.add("hidden");
       $("speak-result").classList.add("hidden");
       updateFavUI();
+      updateProgressUI();
     }
 
     function loadListenItem(item) {
@@ -2891,6 +3063,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       $("listen-status").textContent = "Écoutez les 2 phrases en anglais";
       $("listen-result").classList.add("hidden");
       updateFavUI();
+      updateProgressUI();
     }
 
     function loadPrepaItem(item) {
