@@ -1,4 +1,4 @@
-// Dataset calibré English Coach : 455 phrases 100% uniques (150 A2, 150 B1, 155 B2), 45 audios, 40 questions prépa
+// Dataset calibré English Coach : 800 phrases 100% uniques (200 A2, 300 B1, 300 B2), 150 audios, 80 questions prépa
 window.EC_THEMES = [
   "Vie quotidienne",
   "Voyage",
@@ -3021,6 +3021,1006 @@ window.EC_BUILTIN_SPEAK = [
     ]
   },
   {
+    "id": "s-a2-151",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Opinions & Société",
+    "fr": "À mon avis, apprendre une langue étrangère ouvre beaucoup de portes.",
+    "en": "In my opinion, learning a foreign language opens many doors.",
+    "grammarTitle": "In my opinion & V-ing sujet",
+    "grammarNote": "Un verbe placé en sujet de phrase prend -ing ('learning'). Accord singulier : 'opens'.",
+    "vocab": [
+      [
+        "in my opinion",
+        "à mon avis"
+      ],
+      [
+        "foreign language",
+        "langue étrangère"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-152",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Opinions & Société",
+    "fr": "Tout le monde devrait avoir accès à une bonne connexion internet aujourd'hui.",
+    "en": "Everyone should have access to a good internet connection today.",
+    "grammarTitle": "Everyone + verbe singulier & modal should",
+    "grammarNote": "'Everyone' est toujours suivi d'un verbe au singulier (ou d'un modal invariable comme 'should').",
+    "vocab": [
+      [
+        "everyone",
+        "tout le monde"
+      ],
+      [
+        "access to",
+        "accès à"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-153",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Opinions & Société",
+    "fr": "Je suis d'accord avec toi sur l'importance du sport à l'école.",
+    "en": "I agree with you about the importance of sports at school.",
+    "grammarTitle": "Agree with (et non 'I am agree')",
+    "grammarNote": "Piège classique : on dit toujours 'I agree' (verbe), jamais 'I am agree' !",
+    "vocab": [
+      [
+        "agree with",
+        "être d'accord avec"
+      ],
+      [
+        "at school",
+        "à l'école"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-154",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Opinions & Société",
+    "fr": "Beaucoup d'habitants pensent que la ville a besoin de plus de parcs.",
+    "en": "Many residents think the city needs more parks.",
+    "grammarTitle": "Think + proposition (omission de 'that')",
+    "grammarNote": "En anglais oral courant, 'that' après 'think' est souvent omis.",
+    "vocab": [
+      [
+        "residents",
+        "habitants"
+      ],
+      [
+        "needs",
+        "a besoin de"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-155",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Opinions & Société",
+    "fr": "Est-ce que tu penses que les journaux papier vont disparaître un jour ?",
+    "en": "Do you think paper newspapers will disappear one day?",
+    "grammarTitle": "Question d'opinion + futur will",
+    "grammarNote": "Pour poser une question sur l'avenir : 'Do you think ... will + BV ?'",
+    "vocab": [
+      [
+        "newspapers",
+        "journaux"
+      ],
+      [
+        "disappear",
+        "disparaître"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-156",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Environnement & Climat",
+    "fr": "Les volontaires nettoient la plage chaque printemps avec des sacs réutilisables.",
+    "en": "Volunteers clean the beach every spring with reusable bags.",
+    "grammarTitle": "Present Simple & pluriel général sans 'the'",
+    "grammarNote": "'Volunteers' (en général) s'emploie sans article 'the'.",
+    "vocab": [
+      [
+        "volunteers",
+        "bénévoles / volontaires"
+      ],
+      [
+        "beach",
+        "plage"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-157",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Environnement & Climat",
+    "fr": "Pourquoi la forêt près du lac était-elle fermée dimanche dernier ?",
+    "en": "Why was the forest near the lake closed last Sunday?",
+    "grammarTitle": "Question au passé avec be (was)",
+    "grammarNote": "Avec 'be' au passé, on n'utilise pas 'did' : on inverse simplement 'was' et le sujet.",
+    "vocab": [
+      [
+        "forest",
+        "forêt"
+      ],
+      [
+        "closed",
+        "fermée"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-158",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Environnement & Climat",
+    "fr": "Planter des arbres dans les rues aide à garder la ville plus fraîche en été.",
+    "en": "Planting trees in the streets helps keep the city cooler in summer.",
+    "grammarTitle": "Comparatif (cooler) & V-ing sujet",
+    "grammarNote": "'Cooler' = plus frais. 'Planting trees' est le sujet singulier -> 'helps'.",
+    "vocab": [
+      [
+        "planting trees",
+        "planter des arbres"
+      ],
+      [
+        "cooler",
+        "plus frais"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-159",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Environnement & Climat",
+    "fr": "Nous ne devons pas jeter nos vieux appareils électroniques à la poubelle normale.",
+    "en": "We must not throw our old electronic devices in the regular trash.",
+    "grammarTitle": "Must not + BV & throw in the trash",
+    "grammarNote": "'Throw away' ou 'throw in the trash' = jeter à la poubelle.",
+    "vocab": [
+      [
+        "devices",
+        "appareils"
+      ],
+      [
+        "trash",
+        "poubelle / ordures"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-160",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Environnement & Climat",
+    "fr": "Mon oncle cultive des tomates et des fraises dans son petit jardin sans produits chimiques.",
+    "en": "My uncle grows tomatoes and strawberries in his small garden without chemicals.",
+    "grammarTitle": "Pluriel en -es (tomatoes) et -ies (strawberries)",
+    "grammarNote": "Attention aux pluriels : 'tomato -> tomatoes', 'strawberry -> strawberries'.",
+    "vocab": [
+      [
+        "grows",
+        "cultive"
+      ],
+      [
+        "without",
+        "sans"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-161",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Science & Éthique",
+    "fr": "Le médecin mesure toujours ma tension artérielle au début de la visite.",
+    "en": "The doctor always checks my blood pressure at the start of the visit.",
+    "grammarTitle": "At the start of & blood pressure",
+    "grammarNote": "'Blood pressure' = tension artérielle. On dit 'check' plutôt que 'measure' dans ce contexte.",
+    "vocab": [
+      [
+        "blood pressure",
+        "tension artérielle"
+      ],
+      [
+        "at the start of",
+        "au début de"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-162",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Science & Éthique",
+    "fr": "Les élèves ont fait une expérience simple avec de l'eau salée et un œuf.",
+    "en": "The students did a simple experiment with salt water and an egg.",
+    "grammarTitle": "Do an experiment (et non 'make')",
+    "grammarNote": "Collocation essentielle : on dit 'do an experiment' (faire une expérience scientifique).",
+    "vocab": [
+      [
+        "did an experiment",
+        "ont fait une expérience"
+      ],
+      [
+        "salt water",
+        "eau salée"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-163",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Science & Éthique",
+    "fr": "Marie Curie a découvert deux éléments chimiques et a gagné deux prix Nobel.",
+    "en": "Marie Curie discovered two chemical elements and won two Nobel Prizes.",
+    "grammarTitle": "Past Simple : win -> won",
+    "grammarNote": "Le verbe irrégulier 'win' (gagner un prix ou un match) devient 'won' au prétérit.",
+    "vocab": [
+      [
+        "discovered",
+        "a découvert"
+      ],
+      [
+        "won",
+        "a gagné"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-164",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Science & Éthique",
+    "fr": "Ce nouveau médicament aide des millions de personnes à vivre sans douleur.",
+    "en": "This new medicine helps millions of people live without pain.",
+    "grammarTitle": "Millions of (pluriel) & indénombrable pain",
+    "grammarNote": "Sans chiffre précis devant, 'million' prend un -s suivi de 'of' ('millions of people').",
+    "vocab": [
+      [
+        "medicine",
+        "médicament"
+      ],
+      [
+        "without pain",
+        "sans douleur"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-165",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Science & Éthique",
+    "fr": "Pourquoi est-il important de protéger les animaux sauvages dans leur habitat naturel ?",
+    "en": "Why is it important to protect wild animals in their natural habitat?",
+    "grammarTitle": "Structure impersonnelle (Why is it important to...?)",
+    "grammarNote": "Dans une question avec 'it is important to...', on inverse 'is' et 'it' : 'Why is it important to...?'",
+    "vocab": [
+      [
+        "wild animals",
+        "animaux sauvages"
+      ],
+      [
+        "protect",
+        "protéger"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-166",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Mon téléphone reconnaît mon visage en moins d'une seconde le matin.",
+    "en": "My phone recognizes my face in less than a second in the morning.",
+    "grammarTitle": "Present Simple 3e personne (recognizes)",
+    "grammarNote": "'Recognize' prend -s avec 'my phone'. 'In the morning' = le matin.",
+    "vocab": [
+      [
+        "recognizes",
+        "reconnaît"
+      ],
+      [
+        "face",
+        "visage"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-167",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Intelligence Artificielle",
+    "fr": "As-tu déjà utilisé un assistant vocal pour régler ton réveil ?",
+    "en": "Have you ever used a voice assistant to set your alarm?",
+    "grammarTitle": "Set an alarm & Present Perfect simple A2+",
+    "grammarNote": "'Set the alarm' = régler l'alarme/le réveil. 'Have you ever + PP' pour une expérience simple.",
+    "vocab": [
+      [
+        "voice assistant",
+        "assistant vocal"
+      ],
+      [
+        "set your alarm",
+        "régler ton réveil"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-168",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Ce logiciel gratuit corrige mes fautes d'orthographe quand j'écris un e-mail.",
+    "en": "This free program fixes my spelling mistakes when I write an email.",
+    "grammarTitle": "Spelling mistakes & Present Simple",
+    "grammarNote": "'Spelling mistake' = faute d'orthographe.",
+    "vocab": [
+      [
+        "spelling mistakes",
+        "fautes d'orthographe"
+      ],
+      [
+        "write an email",
+        "écrire un e-mail"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-169",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Les robots fabriquent déjà beaucoup de pièces de voiture dans les usines modernes.",
+    "en": "Robots already make many car parts in modern factories.",
+    "grammarTitle": "Factories (-y -> -ies) & already",
+    "grammarNote": "Les noms en consonne + y prennent -ies au pluriel : 'factory -> factories'.",
+    "vocab": [
+      [
+        "car parts",
+        "pièces de voiture"
+      ],
+      [
+        "factories",
+        "usines"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-170",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Je ne fais pas confiance aux sites web qui demandent mon numéro de carte trop vite.",
+    "en": "I do not trust websites that ask for my card number too quickly.",
+    "grammarTitle": "Trust (transitif direct) & ask for",
+    "grammarNote": "'Trust' ne prend pas de préposition ('trust websites', pas 'trust to'). 'Ask for' = demander qqch.",
+    "vocab": [
+      [
+        "trust",
+        "faire confiance à"
+      ],
+      [
+        "ask for",
+        "demander"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-171",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Énergie & Transition",
+    "fr": "Nous éteignons toujours l'écran de télévision au lieu de le laisser en veille.",
+    "en": "We always turn off the television screen instead of leaving it on standby.",
+    "grammarTitle": "On standby & instead of + V-ing",
+    "grammarNote": "'On standby' = en veille. 'Instead of' suivi de -ing ('leaving').",
+    "vocab": [
+      [
+        "on standby",
+        "en veille"
+      ],
+      [
+        "screen",
+        "écran"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-172",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Énergie & Transition",
+    "fr": "Combien de temps dure la batterie de ta trottinette électrique ?",
+    "en": "How long does your electric scooter battery last?",
+    "grammarTitle": "Question de durée (How long + does + sujet + last)",
+    "grammarNote": "'How long does ... last?' sert à demander la durée ou l'autonomie d'un objet.",
+    "vocab": [
+      [
+        "how long",
+        "combien de temps"
+      ],
+      [
+        "last",
+        "durer"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-173",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Énergie & Transition",
+    "fr": "Cet appartement reste chaud en hiver grâce à ses fenêtres neuves.",
+    "en": "This apartment stays warm in winter thanks to its new windows.",
+    "grammarTitle": "Stay + adjectif (stays warm) & thanks to",
+    "grammarNote": "'Stay' + adjectif décrit le maintien d'un état ('stays warm').",
+    "vocab": [
+      [
+        "stays warm",
+        "reste chaud"
+      ],
+      [
+        "windows",
+        "fenêtres"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-174",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Énergie & Transition",
+    "fr": "Le vent fort fait tourner les grandes pales des éoliennes près de la côte.",
+    "en": "The strong wind turns the big blades of the wind turbines near the coast.",
+    "grammarTitle": "Strong wind (collocation) & near",
+    "grammarNote": "On dit 'strong wind' (vent fort) et 'heavy rain' (forte pluie) en anglais.",
+    "vocab": [
+      [
+        "strong wind",
+        "vent fort"
+      ],
+      [
+        "coast",
+        "côte"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-175",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Énergie & Transition",
+    "fr": "Dans notre immeuble, personne n'utilise l'ascenseur pour monter seulement un étage.",
+    "en": "In our building, nobody uses the elevator to go up just one floor.",
+    "grammarTitle": "Nobody + verbe affirmatif singulier",
+    "grammarNote": "'Nobody' est singulier ('uses') et porte déjà la négation (pas de 'doesn't').",
+    "vocab": [
+      [
+        "nobody",
+        "personne"
+      ],
+      [
+        "elevator",
+        "ascenseur"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-176",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Les billets de cinéma coûtent moins cher le mardi soir pour les étudiants.",
+    "en": "Movie tickets are cheaper on Tuesday evenings for students.",
+    "grammarTitle": "On + jour de la semaine + moment",
+    "grammarNote": "Dès qu'on précise un jour ('Tuesday evenings'), on utilise 'on', jamais 'in'.",
+    "vocab": [
+      [
+        "movie tickets",
+        "billets de cinéma"
+      ],
+      [
+        "cheaper",
+        "moins cher"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-177",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Ma cousine économise cinquante euros chaque mois pour acheter un vélo neuf.",
+    "en": "My cousin saves fifty euros every month to buy a new bike.",
+    "grammarTitle": "Save money (économiser) & every month",
+    "grammarNote": "'Save' signifie aussi bien 'sauvegarder', 'sauver' qu''économiser' de l'argent.",
+    "vocab": [
+      [
+        "saves",
+        "économise"
+      ],
+      [
+        "every month",
+        "chaque mois"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-178",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Combien coûte le loyer d'un studio dans cette rue calme ?",
+    "en": "How much is the rent for a studio apartment on this quiet street?",
+    "grammarTitle": "How much is...? & on a street",
+    "grammarNote": "En anglais américain, on habite 'on a street' (en britannique, souvent 'in a street').",
+    "vocab": [
+      [
+        "rent",
+        "loyer"
+      ],
+      [
+        "studio apartment",
+        "studio"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-179",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Ce magasin local embauche deux étudiants pendant les vacances de Noël.",
+    "en": "This local shop hires two students during the Christmas holidays.",
+    "grammarTitle": "Hire (embaucher) & during",
+    "grammarNote": "'To hire' = embaucher (ou louer aux États-Unis).",
+    "vocab": [
+      [
+        "hires",
+        "embauche"
+      ],
+      [
+        "during",
+        "pendant"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-180",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Beaucoup de familles préfèrent comparer les prix en ligne avant d'aller en magasin.",
+    "en": "Many families prefer to compare prices online before going to the store.",
+    "grammarTitle": "Before + V-ing & online",
+    "grammarNote": "'Before going' : toujours V-ing après 'before' ou 'after'.",
+    "vocab": [
+      [
+        "compare prices",
+        "comparer les prix"
+      ],
+      [
+        "online",
+        "en ligne"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-181",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Loisirs & Culture",
+    "fr": "Le concert de rock a duré presque trois heures et le public était ravi.",
+    "en": "The rock concert lasted almost three hours and the crowd was delighted.",
+    "grammarTitle": "Crowd (+ singulier was) & lasted",
+    "grammarNote": "'Crowd' (foule/public) est singulier ici ('was delighted').",
+    "vocab": [
+      [
+        "lasted",
+        "a duré"
+      ],
+      [
+        "delighted",
+        "ravi"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-182",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Loisirs & Culture",
+    "fr": "Mon ami joue de la guitare acoustique tous les dimanches après-midi.",
+    "en": "My friend plays the acoustic guitar every Sunday afternoon.",
+    "grammarTitle": "Play THE + instrument de musique",
+    "grammarNote": "On met 'the' devant un instrument de musique ('play the guitar'), mais pas devant un sport ('play tennis').",
+    "vocab": [
+      [
+        "plays the guitar",
+        "joue de la guitare"
+      ],
+      [
+        "every Sunday",
+        "chaque dimanche"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-183",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Loisirs & Culture",
+    "fr": "J'ai emprunté trois bandes dessinées intéressantes à la bibliothèque municipale.",
+    "en": "I borrowed three interesting comic books from the public library.",
+    "grammarTitle": "Borrow FROM someone/somewhere",
+    "grammarNote": "On emprunte toujours quelque chose À quelqu'un avec 'borrow ... FROM'.",
+    "vocab": [
+      [
+        "borrowed from",
+        "ai emprunté à"
+      ],
+      [
+        "comic books",
+        "bandes dessinées"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-184",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Loisirs & Culture",
+    "fr": "Quel genre de musique écoutes-tu quand tu fais du sport ?",
+    "en": "What kind of music do you listen to when you work out?",
+    "grammarTitle": "Préposition en fin de question (listen to)",
+    "grammarNote": "En anglais, la préposition 'to' reste souvent à la fin de la proposition : 'What kind of music do you listen to?'",
+    "vocab": [
+      [
+        "what kind of",
+        "quel genre de"
+      ],
+      [
+        "work out",
+        "faire du sport / s'entraîner"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-185",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Loisirs & Culture",
+    "fr": "Nous voulons visiter l'exposition de peinture samedi prochain s'il reste des billets.",
+    "en": "We want to visit the painting exhibition next Saturday if there are tickets left.",
+    "grammarTitle": "Want to + BV & tickets left",
+    "grammarNote": "'Left' placé après un nom signifie 'restant(s)' ('tickets left').",
+    "vocab": [
+      [
+        "painting",
+        "peinture"
+      ],
+      [
+        "tickets left",
+        "billets restants"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-186",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Travail & Entreprise",
+    "fr": "Mon collègue répond toujours aux messages des clients en moins d'une heure.",
+    "en": "My colleague always replies to customer messages in under an hour.",
+    "grammarTitle": "Reply to / Answer (sans 'to')",
+    "grammarNote": "On dit 'reply TO a message', mais 'answer a message' (sans 'to').",
+    "vocab": [
+      [
+        "replies to",
+        "répond à"
+      ],
+      [
+        "in under an hour",
+        "en moins d'une heure"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-187",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Travail & Entreprise",
+    "fr": "La secrétaire a réservé une salle de réunion plus grande pour vendredi.",
+    "en": "The secretary booked a larger meeting room for Friday.",
+    "grammarTitle": "Book (réserver) & comparatif larger",
+    "grammarNote": "'Book' comme verbe signifie 'réserver' (une salle, un billet, une table).",
+    "vocab": [
+      [
+        "booked",
+        "a réservé"
+      ],
+      [
+        "meeting room",
+        "salle de réunion"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-188",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Travail & Entreprise",
+    "fr": "Mon stage d'été commence le premier juillet et se termine fin août.",
+    "en": "My summer internship starts on July first and ends at the end of August.",
+    "grammarTitle": "At the end of + mois & on + date",
+    "grammarNote": "'At the end of August' = à la fin du mois d'août.",
+    "vocab": [
+      [
+        "starts on",
+        "commence le"
+      ],
+      [
+        "at the end of",
+        "à la fin de"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-189",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Travail & Entreprise",
+    "fr": "Avez-vous envoyé votre CV et votre lettre de motivation à l'entreprise ?",
+    "en": "Did you send your resume and cover letter to the company?",
+    "grammarTitle": "Vocabulaire candidature (resume, cover letter)",
+    "grammarNote": "'Resume' (US) ou 'CV' (UK) = curriculum vitae ; 'cover letter' = lettre de motivation.",
+    "vocab": [
+      [
+        "resume",
+        "CV"
+      ],
+      [
+        "cover letter",
+        "lettre de motivation"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-190",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Travail & Entreprise",
+    "fr": "Il ne travaille plus dans ce magasin ; il a trouvé un emploi dans une banque.",
+    "en": "He does not work at that shop anymore; he found a job at a bank.",
+    "grammarTitle": "Not ... anymore (ne ... plus)",
+    "grammarNote": "'Not ... anymore' (en fin de phrase) traduit 'ne ... plus'.",
+    "vocab": [
+      [
+        "not ... anymore",
+        "ne ... plus"
+      ],
+      [
+        "found a job",
+        "a trouvé un emploi"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-191",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Le serveur a oublié d'apporter la carafe d'eau et les serviettes.",
+    "en": "The waiter forgot to bring the jug of water and the napkins.",
+    "grammarTitle": "Forget to + BV & napkins",
+    "grammarNote": "'Napkin' = serviette de table (à ne pas confondre avec 'towel' = serviette de bain).",
+    "vocab": [
+      [
+        "forgot to",
+        "a oublié de"
+      ],
+      [
+        "napkins",
+        "serviettes de table"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-192",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Combien de cuillères de sucre mets-tu dans ton thé vert ?",
+    "en": "How many spoons of sugar do you put in your green tea?",
+    "grammarTitle": "How many + spoons (dénombrable) vs sugar",
+    "grammarNote": "Même si 'sugar' est indénombrable, 'spoons' est comptable pluriel -> 'How many spoons'.",
+    "vocab": [
+      [
+        "spoons of",
+        "cuillères de"
+      ],
+      [
+        "green tea",
+        "thé vert"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-193",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Cette soupe aux légumes est délicieuse ; peux-tu me donner la recette ?",
+    "en": "This vegetable soup is delicious; can you give me the recipe?",
+    "grammarTitle": "Nom composé singulier (vegetable soup)",
+    "grammarNote": "Un nom utilisé comme adjectif avant un autre nom reste au singulier : 'vegetable soup' (sans -s).",
+    "vocab": [
+      [
+        "vegetable soup",
+        "soupe aux légumes"
+      ],
+      [
+        "recipe",
+        "recette"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-194",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Nous n'avons plus de lait, je vais au supermarché en acheter une bouteille.",
+    "en": "We ran out of milk, so I am going to the supermarket to buy a bottle.",
+    "grammarTitle": "Run out of (ne plus avoir de)",
+    "grammarNote": "'Run out of' (passé : 'ran out of') signifie 'être à court de / ne plus avoir de'.",
+    "vocab": [
+      [
+        "ran out of",
+        "sommes à court de"
+      ],
+      [
+        "supermarket",
+        "supermarché"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-195",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Voyage",
+    "fr": "Le train de nuit pour Nice arrive à la voie numéro quatre dans dix minutes.",
+    "en": "The night train to Nice arrives at platform four in ten minutes.",
+    "grammarTitle": "Platform (quai/voie) & in + durée future",
+    "grammarNote": "En gare, le quai/la voie se dit 'platform' (sans 'number' devant le chiffre : 'platform four').",
+    "vocab": [
+      [
+        "platform",
+        "quai / voie"
+      ],
+      [
+        "in ten minutes",
+        "dans dix minutes"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-196",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Voyage",
+    "fr": "J'ai perdu mon billet d'avion, mais j'ai une copie sur mon téléphone.",
+    "en": "I lost my plane ticket, but I have a copy on my phone.",
+    "grammarTitle": "Past Simple (lost) + Present Simple (have)",
+    "grammarNote": "On dit 'on my phone' pour ce qui est affiché ou stocké sur un téléphone.",
+    "vocab": [
+      [
+        "plane ticket",
+        "billet d'avion"
+      ],
+      [
+        "on my phone",
+        "sur mon téléphone"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-197",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Voyage",
+    "fr": "Faites attention en descendant les escaliers, le sol est mouillé.",
+    "en": "Be careful when going down the stairs, the floor is wet.",
+    "grammarTitle": "Be careful & go down the stairs",
+    "grammarNote": "'Stairs' (escaliers) est toujours pluriel en anglais.",
+    "vocab": [
+      [
+        "be careful",
+        "fais/faites attention"
+      ],
+      [
+        "stairs",
+        "escaliers"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-198",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Voyage",
+    "fr": "Mon sac à dos est resté dans le coffre de la voiture.",
+    "en": "My backpack stayed in the trunk of the car.",
+    "grammarTitle": "Vocabulaire voiture (trunk) & backpack",
+    "grammarNote": "'Trunk' (US) ou 'boot' (UK) = le coffre d'une voiture.",
+    "vocab": [
+      [
+        "backpack",
+        "sac à dos"
+      ],
+      [
+        "trunk",
+        "coffre (voiture)"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-199",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Vie quotidienne",
+    "fr": "Je me brosse toujours les dents avant d'aller dormir.",
+    "en": "I always brush my teeth before going to sleep.",
+    "grammarTitle": "Possessif pour les parties du corps (my teeth)",
+    "grammarNote": "En anglais, on utilise l'adjectif possessif ('my teeth', 'my hands') devant les parties du corps, pas 'the'.",
+    "vocab": [
+      [
+        "brush my teeth",
+        "me brosse les dents"
+      ],
+      [
+        "go to sleep",
+        "aller dormir"
+      ]
+    ]
+  },
+  {
+    "id": "s-a2-200",
+    "mode": "speak",
+    "level": "A2",
+    "theme": "Vie quotidienne",
+    "fr": "Il fait trop sombre dans cette pièce ; ouvre les rideaux s'il te plaît.",
+    "en": "It is too dark in this room; open the curtains please.",
+    "grammarTitle": "It is + adjectif météo/luminosité & curtains",
+    "grammarNote": "'Dark' = sombre ; 'curtains' = rideaux.",
+    "vocab": [
+      [
+        "too dark",
+        "trop sombre"
+      ],
+      [
+        "curtains",
+        "rideaux"
+      ]
+    ]
+  },
+  {
     "id": "s-b1-1",
     "mode": "speak",
     "level": "B1",
@@ -6017,6 +7017,3006 @@ window.EC_BUILTIN_SPEAK = [
       [
         "rail transport",
         "transport ferroviaire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-151",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "J'allais t'appeler pour annuler le dîner quand tu m'as envoyé un message.",
+    "en": "I was going to call you to cancel dinner when you sent me a message.",
+    "grammarTitle": "Futur dans le passé (was going to + BV)",
+    "grammarNote": "'Was/were going to + BV' exprime une intention passée qui ne s'est finalement pas réalisée.",
+    "vocab": [
+      [
+        "was going to",
+        "allais (intention passée)"
+      ],
+      [
+        "cancel",
+        "annuler"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-152",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Cela faisait deux ans qu'il cherchait un appartement abordable avant de trouver celui-ci.",
+    "en": "He had been looking for an affordable apartment for two years before finding this one.",
+    "grammarTitle": "Past Perfect Continuous (had been + V-ing)",
+    "grammarNote": "Pour exprimer une durée antérieure à un moment passé ('cela faisait deux ans que... avant...'), on utilise 'had been + V-ing'.",
+    "vocab": [
+      [
+        "had been looking for",
+        "cherchait (depuis)"
+      ],
+      [
+        "affordable",
+        "abordable"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-153",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "À cette heure-ci demain, nous serons déjà en train de survoler les Alpes en direction de Milan.",
+    "en": "At this time tomorrow, we will already be flying over the Alps on our way to Milan.",
+    "grammarTitle": "Future Continuous (will be + V-ing)",
+    "grammarNote": "'Will be + V-ing' décrit une action qui sera en plein déroulement à un moment précis du futur.",
+    "vocab": [
+      [
+        "will be flying",
+        "serons en train de voler"
+      ],
+      [
+        "on our way to",
+        "en route vers"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-154",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Depuis qu'elle a changé de poste, elle a beaucoup moins de réunions inutiles.",
+    "en": "Since she changed positions, she has had far fewer pointless meetings.",
+    "grammarTitle": "Since + Past Simple -> Present Perfect (has had)",
+    "grammarNote": "La proposition après 'since' est au Past Simple ('changed'), tandis que la principale est au Present Perfect ('has had').",
+    "vocab": [
+      [
+        "changed positions",
+        "a changé de poste"
+      ],
+      [
+        "pointless",
+        "inutile"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-155",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Nous n'avons jamais eu l'occasion de goûter à la cuisine coréenne authentique jusqu'à présent.",
+    "en": "We have never had the chance to try authentic Korean food until now.",
+    "grammarTitle": "Present Perfect avec until now & had",
+    "grammarNote": "'Have never had' associe l'auxiliaire 'have' et le participe passé 'had'.",
+    "vocab": [
+      [
+        "until now",
+        "jusqu'à présent"
+      ],
+      [
+        "authentic",
+        "authentique"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-156",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Combien de pays as-tu visités depuis que tu as commencé tes études supérieures ?",
+    "en": "How many countries have you visited since you started higher education?",
+    "grammarTitle": "How many + Present Perfect + since + Past Simple",
+    "grammarNote": "Période toujours ouverte ('since you started') -> Present Perfect dans la question ('have you visited').",
+    "vocab": [
+      [
+        "higher education",
+        "études supérieures"
+      ],
+      [
+        "countries",
+        "pays"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-157",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Les prix des billets d'avion ont baissé brièvement en novembre avant de remonter avant Noël.",
+    "en": "Plane ticket prices fell briefly in November before climbing again before Christmas.",
+    "grammarTitle": "Past Simple : fall -> fell",
+    "grammarNote": "'Fall' (baisser/tomber) devient 'fell' au prétérit (ne pas confondre avec 'feel -> felt').",
+    "vocab": [
+      [
+        "fell briefly",
+        "ont baissé brièvement"
+      ],
+      [
+        "climbing",
+        "remonter"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-158",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Le directeur financier a travaillé ici pendant quinze ans avant de prendre sa retraite.",
+    "en": "The financial director worked here for fifteen years before retiring.",
+    "grammarTitle": "For + durée révolue -> Past Simple",
+    "grammarNote": "Piège classique : 'for' ne déclenche pas automatiquement le Present Perfect ! Si la période est terminée (il est retraité), on met le Past Simple.",
+    "vocab": [
+      [
+        "worked",
+        "a travaillé (terminé)"
+      ],
+      [
+        "retiring",
+        "prendre sa retraite"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-159",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Voilà trois semaines que l'imprimante du deuxième étage est en panne.",
+    "en": "The printer on the second floor has been out of order for three weeks.",
+    "grammarTitle": "Voilà + durée -> Present Perfect (has been)",
+    "grammarNote": "En anglais, 'voilà X temps que...' ou 'il y a X temps que... (toujours vrai)' se traduit par le Present Perfect + 'for'.",
+    "vocab": [
+      [
+        "out of order",
+        "en panne / hors service"
+      ],
+      [
+        "for three weeks",
+        "depuis trois semaines"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-160",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Dès que j'aurai reçu la confirmation de l'hôtel, je réserverai nos billets de train.",
+    "en": "As soon as I receive the hotel confirmation, I will book our train tickets.",
+    "grammarTitle": "As soon as + présent (ou Present Perfect) -> futur",
+    "grammarNote": "En anglais, on n'utilise jamais 'will' après 'as soon as' : le présent simple ('receive') ou le Present Perfect ('have received') suffit.",
+    "vocab": [
+      [
+        "confirmation",
+        "confirmation"
+      ],
+      [
+        "book",
+        "réserver"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-161",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Pendant que les techniciens installaient la fibre optique, toute la rue était coupée d'internet.",
+    "en": "While technicians were installing fiber-optic cables, the whole street had no internet access.",
+    "grammarTitle": "While + Past Continuous & contextuel",
+    "grammarNote": "Description d'un événement parallèle dans le passé : 'were installing'.",
+    "vocab": [
+      [
+        "fiber-optic",
+        "fibre optique"
+      ],
+      [
+        "internet access",
+        "accès internet"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-162",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Je viens juste de me rendre compte que j'ai oublié d'envoyer la pièce jointe avec mon e-mail.",
+    "en": "I just realized that I forgot to include the attachment with my email.",
+    "grammarTitle": "Realize (se rendre compte) & forget to + BV",
+    "grammarNote": "'Realize' signifie 'se rendre compte de' (et non 'réaliser un projet' = carry out / achieve).",
+    "vocab": [
+      [
+        "realized",
+        "me suis rendu compte"
+      ],
+      [
+        "include",
+        "joindre / inclure"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-163",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Cet écrivain contemporain vient de remporter un prix prestigieux pour son troisième roman.",
+    "en": "This contemporary writer has just won a prestigious award for his third novel.",
+    "grammarTitle": "Has just + PP (win -> won)",
+    "grammarNote": "Le participe passé de 'win' est 'won'. 'Award' = récompense / prix décerné.",
+    "vocab": [
+      [
+        "contemporary",
+        "contemporain"
+      ],
+      [
+        "award",
+        "prix / récompense"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-164",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Nous avions déjà réservé les places de théâtre quand l'acteur principal est tombé malade.",
+    "en": "We had already booked the theater seats when the lead actor fell ill.",
+    "grammarTitle": "Past Perfect (antériorité) & fall ill",
+    "grammarNote": "'Fall ill' = tomber malade (passé : 'fell ill').",
+    "vocab": [
+      [
+        "lead actor",
+        "acteur principal"
+      ],
+      [
+        "fell ill",
+        "est tombé malade"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-165",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Tu n'as toujours pas répondu à l'invitation pour le dîner de samedi prochain.",
+    "en": "You still have not replied to the invitation for next Saturday's dinner.",
+    "grammarTitle": "Still + auxiliaire négatif (persistance)",
+    "grammarNote": "'Still' se place AVANT l'auxiliaire négatif ('still have not replied'), contrairement à 'already'.",
+    "vocab": [
+      [
+        "still",
+        "toujours (pas)"
+      ],
+      [
+        "replied to",
+        "répondu à"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-166",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "À ce rythme, l'association aura collecté assez d'argent avant la fin du mois.",
+    "en": "At this rate, the charity will have raised enough money before the end of the month.",
+    "grammarTitle": "Future Perfect simple & raise money",
+    "grammarNote": "On dit 'raise money' (collecter des fonds) et non 'win money'.",
+    "vocab": [
+      [
+        "at this rate",
+        "à ce rythme"
+      ],
+      [
+        "raised money",
+        "collecté des fonds"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-167",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "L'eau du lac est devenue beaucoup plus claire depuis que les usines voisines traitent leurs rejets.",
+    "en": "The lake water has become much clearer since nearby factories started treating their waste.",
+    "grammarTitle": "Since + Past Simple (started treating)",
+    "grammarNote": "'Start' peut être suivi de V-ing ou de 'to + BV' ('started treating').",
+    "vocab": [
+      [
+        "nearby",
+        "voisines / proches"
+      ],
+      [
+        "waste",
+        "rejets / déchets"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-168",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "Pendant combien de temps as-tu vécu à Lyon avant de déménager à Toulouse ?",
+    "en": "How long did you live in Lyon before moving to Toulouse?",
+    "grammarTitle": "How long + Past Simple (période passée close)",
+    "grammarNote": "Attention : 'How long' prend le Past Simple ('did you live') si la personne n'habite plus à Lyon !",
+    "vocab": [
+      [
+        "how long",
+        "pendant combien de temps"
+      ],
+      [
+        "before moving",
+        "avant de déménager"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-169",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Ce chercheur étudie l'effet des microplastiques sur les poissons d'eau douce depuis cinq ans.",
+    "en": "This researcher has been studying the effect of microplastics on freshwater fish for five years.",
+    "grammarTitle": "Present Perfect Continuous & pluriel invariable 'fish'",
+    "grammarNote": "Au pluriel général, 'fish' reste invariable ('freshwater fish').",
+    "vocab": [
+      [
+        "microplastics",
+        "microplastiques"
+      ],
+      [
+        "freshwater",
+        "eau douce"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-170",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Avant de partir en randonnée, assure-toi d'avoir téléchargé la carte sur ton téléphone.",
+    "en": "Before going hiking, make sure you have downloaded the map onto your phone.",
+    "grammarTitle": "Make sure + Present Perfect (résultat préalable)",
+    "grammarNote": "'Make sure you have + PP' insiste sur le fait que l'action doit être accomplie avant la suite.",
+    "vocab": [
+      [
+        "go hiking",
+        "faire de la randonnée"
+      ],
+      [
+        "make sure",
+        "assure-toi que"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-171",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Le quartier de la gare est devenu beaucoup plus sûr depuis qu'ils ont installé de nouveaux lampadaires.",
+    "en": "The station district has become much safer since they installed new streetlamps.",
+    "grammarTitle": "Comparatif safer & streetlamps",
+    "grammarNote": "'Safe' forme son comparatif en -r ('safer').",
+    "vocab": [
+      [
+        "district",
+        "quartier"
+      ],
+      [
+        "streetlamps",
+        "lampadaires"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-172",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Elle était convaincue d'avoir déjà rencontré ce scientifique lors d'un colloque à Genève.",
+    "en": "She was convinced she had already met this scientist at a conference in Geneva.",
+    "grammarTitle": "Convinced + Past Perfect",
+    "grammarNote": "Une rencontre antérieure à un moment passé ('was convinced') se met au Past Perfect ('had met').",
+    "vocab": [
+      [
+        "convinced",
+        "convaincue"
+      ],
+      [
+        "conference",
+        "colloque / conférence"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-173",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "D'ici quelques semaines, le nouveau système de chauffage fonctionnera parfaitement.",
+    "en": "Within a few weeks, the new heating system will be working smoothly.",
+    "grammarTitle": "Within + durée & Future Continuous",
+    "grammarNote": "'Within a few weeks' = d'ici quelques semaines / en l'espace de quelques semaines.",
+    "vocab": [
+      [
+        "within",
+        "d'ici / en l'espace de"
+      ],
+      [
+        "smoothly",
+        "sans accroc / parfaitement"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-174",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "Mon frère a raté son examen de conduite parce qu'il n'avait pas assez pratiqué les créneaux.",
+    "en": "My brother failed his driving test because he had not practiced parallel parking enough.",
+    "grammarTitle": "Fail an exam & Past Perfect négatif",
+    "grammarNote": "En anglais, on dit 'fail a test' (échouer à) et 'pass a test' (réussir, et non 'passer' = take a test).",
+    "vocab": [
+      [
+        "failed",
+        "a raté"
+      ],
+      [
+        "driving test",
+        "permis / examen de conduite"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-175",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "La qualité de l'air s'est nettement améliorée depuis l'interdiction des vieux camions en centre-ville.",
+    "en": "Air quality has improved significantly since old trucks were banned from the city center.",
+    "grammarTitle": "Since + Past Passive (were banned)",
+    "grammarNote": "'Ban someone/something FROM' = interdire l'accès à.",
+    "vocab": [
+      [
+        "significantly",
+        "nettement"
+      ],
+      [
+        "banned from",
+        "interdits dans"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-176",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Les scientifiques mènent actuellement une étude sur l'impact de la pollution sonore.",
+    "en": "Scientists are currently carrying out a study on the impact of noise pollution.",
+    "grammarTitle": "Phrasal verb : carry out (= mener / réaliser)",
+    "grammarNote": "'Carry out' (a study, an experiment, a survey) est le verbe exact pour 'mener / effectuer'.",
+    "vocab": [
+      [
+        "carry out",
+        "mener / effectuer"
+      ],
+      [
+        "noise pollution",
+        "pollution sonore"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-177",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "Nous devons trouver une solution simple pour réduire notre facture d'électricité cet hiver.",
+    "en": "We need to figure out a simple way to lower our electricity bill this winter.",
+    "grammarTitle": "Phrasal verb : figure out (= trouver / comprendre)",
+    "grammarNote": "'Figure out' signifie comprendre ou trouver la solution à un problème après réflexion.",
+    "vocab": [
+      [
+        "figure out",
+        "trouver / comprendre"
+      ],
+      [
+        "lower",
+        "baisser / réduire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-178",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Le comité a dû reporter la conférence internationale en raison d'une grève des transports.",
+    "en": "The committee had to put off the international conference because of a transport strike.",
+    "grammarTitle": "Phrasal verb : put off (= reporter / remettre à plus tard)",
+    "grammarNote": "'Put off' = reporter (synonyme de 'postpone'). Attention à ne pas confondre avec 'cancel' (annuler).",
+    "vocab": [
+      [
+        "put off",
+        "reporter"
+      ],
+      [
+        "because of",
+        "en raison de"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-179",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "En rangeant le grenier, j'ai retrouvé par hasard de vieilles lettres de mon grand-père.",
+    "en": "While tidying the attic, I came across old letters from my grandfather.",
+    "grammarTitle": "Phrasal verb : come across (= tomber par hasard sur)",
+    "grammarNote": "'Come across' (passé : 'came across') signifie trouver ou rencontrer par hasard.",
+    "vocab": [
+      [
+        "came across",
+        "suis tombé par hasard sur"
+      ],
+      [
+        "attic",
+        "grenier"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-180",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Elle a soulevé un point très pertinent pendant le débat sur la transition énergétique.",
+    "en": "She brought up a very relevant point during the debate on the energy transition.",
+    "grammarTitle": "Phrasal verb : bring up (= soulever un sujet / élever)",
+    "grammarNote": "'Bring up' a deux sens courants : aborder un sujet en discussion, ou élever un enfant.",
+    "vocab": [
+      [
+        "brought up",
+        "a soulevé / abordé"
+      ],
+      [
+        "relevant",
+        "pertinent"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-181",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Après deux semaines d'absence, il doit rattraper tout le travail accumulé au bureau.",
+    "en": "After two weeks away, he has to catch up on all the work piled up at the office.",
+    "grammarTitle": "Phrasal verb : catch up on (= rattraper son retard)",
+    "grammarNote": "'Catch up on' = rattraper (son travail, son sommeil, les nouvelles) ; 'catch up with' = rattraper quelqu'un.",
+    "vocab": [
+      [
+        "catch up on",
+        "rattraper (un retard)"
+      ],
+      [
+        "piled up",
+        "accumulé"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-182",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Finalement, la panne d'ordinateur s'est révélée beaucoup moins grave que prévu.",
+    "en": "In the end, the computer breakdown turned out to be much less serious than expected.",
+    "grammarTitle": "Phrasal verb : turn out to be (= se révéler être)",
+    "grammarNote": "'Turn out to be' est très naturel pour exprimer un dénouement ou un résultat constaté.",
+    "vocab": [
+      [
+        "turned out to be",
+        "s'est révélé être"
+      ],
+      [
+        "breakdown",
+        "panne"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-183",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Notre voiture est tombée en panne sur la route nationale à vingt kilomètres de l'hôtel.",
+    "en": "Our car broke down on the main road twenty kilometers from the hotel.",
+    "grammarTitle": "Phrasal verb : break down (= tomber en panne)",
+    "grammarNote": "'Break down' s'utilise pour une machine ou un véhicule (ou une négociation qui échoue).",
+    "vocab": [
+      [
+        "broke down",
+        "est tombée en panne"
+      ],
+      [
+        "main road",
+        "route nationale / principale"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-184",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Si tu ne connais pas ce mot technique, cherche-le dans un dictionnaire fiable.",
+    "en": "If you do not know this technical word, look it up in a reliable dictionary.",
+    "grammarTitle": "Phrasal verb : look up (pronom au milieu : look it up)",
+    "grammarNote": "Avec un pronom ('it', 'them'), on le place obligatoirement ENTRE le verbe et la particule : 'look it up' (jamais 'look up it').",
+    "vocab": [
+      [
+        "look it up",
+        "cherche-le (dans un dico)"
+      ],
+      [
+        "reliable",
+        "fiable"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-185",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "La jeune entreprise a réussi à créer cinquante emplois locaux en moins de deux ans.",
+    "en": "The start-up managed to set up fifty local jobs in less than two years.",
+    "grammarTitle": "Phrasal verb : set up (= fonder / mettre en place)",
+    "grammarNote": "'Set up' sert pour fonder une entreprise, installer un équipement ou mettre en place un dispositif.",
+    "vocab": [
+      [
+        "set up",
+        "mettre en place / créer"
+      ],
+      [
+        "managed to",
+        "a réussi à"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-186",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Une grande compagnie d'assurance envisage de racheter cette petite banque régionale.",
+    "en": "A major insurance company is planning to take over this small regional bank.",
+    "grammarTitle": "Phrasal verb : take over (= reprendre / prendre le contrôle)",
+    "grammarNote": "'Take over' = prendre la direction, racheter une entreprise ou prendre le relais.",
+    "vocab": [
+      [
+        "take over",
+        "racheter / prendre le contrôle"
+      ],
+      [
+        "insurance",
+        "assurance"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-187",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "Peux-tu t'occuper de mes plantes vertes pendant mon voyage en Irlande ?",
+    "en": "Can you look after my indoor plants while I am away in Ireland?",
+    "grammarTitle": "Phrasal verb : look after (= s'occuper de)",
+    "grammarNote": "Ne pas confondre : 'look after' (prendre soin de), 'look for' (chercher), 'look forward to' (avoir hâte de).",
+    "vocab": [
+      [
+        "look after",
+        "s'occuper de"
+      ],
+      [
+        "while I am away",
+        "pendant mon absence"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-188",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Le nouvel entraîneur s'entend très bien avec tous les joueurs de l'équipe.",
+    "en": "The new coach gets along very well with all the players on the team.",
+    "grammarTitle": "Phrasal verb : get along with (= bien s'entendre avec)",
+    "grammarNote": "'Get along with' (ou 'get on with' au Royaume-Uni) = avoir de bonnes relations avec quelqu'un.",
+    "vocab": [
+      [
+        "get along with",
+        "s'entendre avec"
+      ],
+      [
+        "on the team",
+        "dans l'équipe"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-189",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "Les pompiers ont mis trois heures à éteindre l'incendie dans l'entrepôt.",
+    "en": "Firefighters took three hours to put out the fire in the warehouse.",
+    "grammarTitle": "Phrasal verb : put out (= éteindre un feu)",
+    "grammarNote": "Pour un feu ou une cigarette, on utilise 'put out' (et 'turn off' pour une lumière ou un appareil).",
+    "vocab": [
+      [
+        "put out",
+        "éteindre (un feu)"
+      ],
+      [
+        "warehouse",
+        "entrepôt"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-190",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Je compte sur toi pour relire les chiffres avant de publier l'article demain.",
+    "en": "I am counting on you to double-check the figures before publishing the article tomorrow.",
+    "grammarTitle": "Phrasal verb : count on (= compter sur)",
+    "grammarNote": "'Count on' ou 'rely on' = compter sur quelqu'un ou quelque chose.",
+    "vocab": [
+      [
+        "counting on",
+        "compter sur"
+      ],
+      [
+        "double-check",
+        "vérifier deux fois"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-191",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "Les organisateurs ont distribué des brochures recyclées à l'entrée du salon.",
+    "en": "The organizers handed out recycled brochures at the entrance of the fair.",
+    "grammarTitle": "Phrasal verb : hand out (= distribuer)",
+    "grammarNote": "'Hand out' (distribuer à la main) s'oppose à 'hand in' (rendre un devoir ou un dossier).",
+    "vocab": [
+      [
+        "handed out",
+        "ont distribué"
+      ],
+      [
+        "entrance",
+        "entrée"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-192",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Tu dois rendre ton mémoire de recherche avant vendredi midi au plus tard.",
+    "en": "You must hand in your research paper by Friday noon at the latest.",
+    "grammarTitle": "Phrasal verb : hand in (= rendre un travail) & by + échéance",
+    "grammarNote": "Pour une date limite ('avant vendredi'), on utilise 'by Friday', jamais 'until Friday'.",
+    "vocab": [
+      [
+        "hand in",
+        "rendre (un devoir)"
+      ],
+      [
+        "at the latest",
+        "au plus tard"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-193",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "L'usine a réduit sa consommation d'électricité de vingt pour cent grâce aux nouveaux moteurs.",
+    "en": "The factory cut down on its electricity use by twenty percent thanks to the new motors.",
+    "grammarTitle": "Phrasal verb : cut down on (= réduire sa consommation de)",
+    "grammarNote": "'Cut down on' signifie diminuer volontairement une consommation ou une dépense.",
+    "vocab": [
+      [
+        "cut down on",
+        "réduire (sa consommation)"
+      ],
+      [
+        "thanks to",
+        "grâce à"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-194",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Ce restaurant familial existe depuis plus de quarante ans sans jamais avoir changé d'adresse.",
+    "en": "This family-run restaurant has been going on for over forty years without ever moving.",
+    "grammarTitle": "Phrasal verb : go on (= continuer / durer) & without + V-ing",
+    "grammarNote": "Après 'without', le verbe prend toujours -ing ('without ever moving').",
+    "vocab": [
+      [
+        "family-run",
+        "familial (géré en famille)"
+      ],
+      [
+        "for over",
+        "depuis plus de"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-195",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Les passagers doivent s'enregistrer au comptoir deux heures avant le vol international.",
+    "en": "Passengers must check in at the counter two hours before the international flight.",
+    "grammarTitle": "Phrasal verb : check in (= s'enregistrer à l'aéroport/hôtel)",
+    "grammarNote": "'Check in' = enregistrer son arrivée ; 'check out' = quitter sa chambre d'hôtel.",
+    "vocab": [
+      [
+        "check in",
+        "s'enregistrer"
+      ],
+      [
+        "counter",
+        "comptoir"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-196",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "Mon frère a abandonné son abonnement à la salle de sport après seulement deux mois.",
+    "en": "My brother dropped out of his gym membership after only two months.",
+    "grammarTitle": "Phrasal verb : drop out of (= abandonner un cursus/club)",
+    "grammarNote": "'Drop out of' signifie quitter un cours, une école ou un programme avant la fin.",
+    "vocab": [
+      [
+        "dropped out of",
+        "a abandonné"
+      ],
+      [
+        "membership",
+        "abonnement / adhésion"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-197",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Nous devons passer en revue chaque clause du contrat avant de signer quoi que ce soit.",
+    "en": "We need to go over every clause of the contract before signing anything.",
+    "grammarTitle": "Phrasal verb : go over (= passer en revue / réexaminer)",
+    "grammarNote": "'Go over' = examiner en détail ou réviser une leçon.",
+    "vocab": [
+      [
+        "go over",
+        "passer en revue"
+      ],
+      [
+        "anything",
+        "quoi que ce soit"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-198",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Le président de séance a annulé la réunion parce que la moitié des membres étaient absents.",
+    "en": "The chairperson called off the meeting because half of the members were absent.",
+    "grammarTitle": "Phrasal verb : call off (= annuler)",
+    "grammarNote": "'Call off' = annuler (synonyme de 'cancel'), alors que 'put off' = reporter.",
+    "vocab": [
+      [
+        "called off",
+        "a annulé"
+      ],
+      [
+        "chairperson",
+        "président(e) de séance"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-199",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Cette application trie automatiquement les spams pour qu'ils n'encombrent pas ta boîte mail.",
+    "en": "This app automatically filters out spam so that it does not clutter your inbox.",
+    "grammarTitle": "Phrasal verb : filter out & indénombrable spam",
+    "grammarNote": "'Filter out' = éliminer par filtrage. 'Spam' est indénombrable singulier en anglais.",
+    "vocab": [
+      [
+        "filters out",
+        "élimine par filtrage"
+      ],
+      [
+        "inbox",
+        "boîte de réception"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-200",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "Les deux voisins se sont réconciliés après une longue discussion autour d'un café.",
+    "en": "The two neighbors made up after a long talk over a cup of coffee.",
+    "grammarTitle": "Phrasal verb : make up (= se réconcilier / inventer)",
+    "grammarNote": "'Make up' peut signifier se réconcilier, inventer une histoire ou composer un tout.",
+    "vocab": [
+      [
+        "made up",
+        "se sont réconciliés"
+      ],
+      [
+        "over a cup of coffee",
+        "autour d'un café"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-201",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "J'ai passé l'examen d'anglais hier matin, et j'espère vraiment le réussir.",
+    "en": "I took the English exam yesterday morning, and I really hope to pass it.",
+    "grammarTitle": "Faux-ami majeur : take an exam (passer) vs pass (réussir)",
+    "grammarNote": "Piège n°1 des francophones : 'passer un examen' = 'take / sit an exam', tandis que 'pass' signifie 'réussir' !",
+    "vocab": [
+      [
+        "took the exam",
+        "ai passé l'examen"
+      ],
+      [
+        "pass it",
+        "le réussir"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-202",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Pourrais-tu me rappeler d'acheter du pain en rentrant ce soir ?",
+    "en": "Could you remind me to buy some bread on the way home tonight?",
+    "grammarTitle": "Remind someone to (rappeler à qqn) vs Remember",
+    "grammarNote": "'Remember' = se souvenir tout seul ; 'Remind someone' = faire penser / rappeler quelque chose à quelqu'un.",
+    "vocab": [
+      [
+        "remind me to",
+        "me rappeler de"
+      ],
+      [
+        "on the way home",
+        "en rentrant"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-203",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "La librairie du quartier organise une rencontre avec l'auteur vendredi soir.",
+    "en": "The local bookshop is hosting a meeting with the author on Friday evening.",
+    "grammarTitle": "Faux-ami : bookshop (librairie) vs library (bibliothèque)",
+    "grammarNote": "On achète des livres dans une 'bookshop / bookstore', on les emprunte dans une 'library'.",
+    "vocab": [
+      [
+        "bookshop",
+        "librairie"
+      ],
+      [
+        "hosting",
+        "organisant / accueillant"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-204",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Mon patron s'est montré très compréhensif quand j'ai eu une urgence familiale.",
+    "en": "My boss was very understanding when I had a family emergency.",
+    "grammarTitle": "Faux-ami : understanding (compréhensif) vs comprehensive (complet)",
+    "grammarNote": "'Comprehensive' signifie complet/exhaustif. 'Compréhensif' (indulgent/empathique) se traduit par 'understanding' ou 'sympathetic'.",
+    "vocab": [
+      [
+        "understanding",
+        "compréhensif"
+      ],
+      [
+        "emergency",
+        "urgence"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-205",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Le médecin m'a demandé si j'avais des douleurs ou des symptômes particuliers.",
+    "en": "The doctor asked me if I had any pain or specific symptoms.",
+    "grammarTitle": "Ask (demander) vs Demand (exiger)",
+    "grammarNote": "Faux-ami : 'demand' est très fort ('exiger'). Pour une question ou requête normale, on emploie 'ask'.",
+    "vocab": [
+      [
+        "asked me",
+        "m'a demandé"
+      ],
+      [
+        "pain",
+        "douleur"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-206",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Cet étudiant a oublié de résumer les trois arguments principaux dans sa conclusion.",
+    "en": "This student forgot to summarize the three main arguments in his conclusion.",
+    "grammarTitle": "Faux-ami : summarize (résumer) vs resume (reprendre)",
+    "grammarNote": "'To resume' signifie 'reprendre une activité interrompue'. Pour résumer un texte, on dit 'summarize'.",
+    "vocab": [
+      [
+        "summarize",
+        "résumer"
+      ],
+      [
+        "arguments",
+        "arguments"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-207",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "La nouvelle réglementation risque de retarder l'ouverture de la centrale solaire.",
+    "en": "The new regulation could delay the opening of the solar power plant.",
+    "grammarTitle": "Faux-ami : delay (retarder) vs report (signaler)",
+    "grammarNote": "'Retarder' se traduit par 'delay' (et non 'retard' !).",
+    "vocab": [
+      [
+        "delay",
+        "retarder"
+      ],
+      [
+        "power plant",
+        "centrale électrique"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-208",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "Environ deux cents personnes ont assisté à la conférence sur le climat mardi dernier.",
+    "en": "Around two hundred people attended the climate conference last Tuesday.",
+    "grammarTitle": "Faux-ami : attend (assister à) vs assist (aider)",
+    "grammarNote": "'Assist' signifie 'aider'. 'Assister à un événement' se dit 'attend' (sans préposition !).",
+    "vocab": [
+      [
+        "attended",
+        "ont assisté à"
+      ],
+      [
+        "around",
+        "environ"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-209",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Ce film m'a vraiment déçu, car la bande-annonce semblait beaucoup plus prometteuse.",
+    "en": "This movie really disappointed me, because the trailer looked much more promising.",
+    "grammarTitle": "Faux-ami : disappoint (décevoir) vs deceive (tromper)",
+    "grammarNote": "'Deceive' signifie 'tromper / duper'. 'Décevoir' se dit toujours 'disappoint'.",
+    "vocab": [
+      [
+        "disappointed",
+        "a déçu"
+      ],
+      [
+        "trailer",
+        "bande-annonce"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-210",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Tu devrais vérifier les ingrédients si tu es sensible aux produits laitiers.",
+    "en": "You should check the ingredients if you are sensitive to dairy products.",
+    "grammarTitle": "Sensitive (sensible) vs Sensible (raisonnable)",
+    "grammarNote": "'Sensitive to' = sensible/réactif à ; 'sensible' = plein de bon sens / raisonnable.",
+    "vocab": [
+      [
+        "sensitive to",
+        "sensible à"
+      ],
+      [
+        "dairy products",
+        "produits laitiers"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-211",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Il est vraiment gentil avec tout le monde, même lorsqu'il est sous pression.",
+    "en": "He is really kind to everyone, even when he is under pressure.",
+    "grammarTitle": "Faux-ami : kind/friendly vs gentle (doux)",
+    "grammarNote": "'Gentle' signifie 'doux / calme' (gentle voice, gentle wind), pas 'gentil' ('kind' ou 'nice').",
+    "vocab": [
+      [
+        "kind to",
+        "gentil avec"
+      ],
+      [
+        "under pressure",
+        "sous pression"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-212",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "J'ai raté le début du cours parce que mon réveil n'a pas sonné ce matin.",
+    "en": "I missed the beginning of the class because my alarm did not go off this morning.",
+    "grammarTitle": "Miss (rater/manquer) vs Lose (perdre)",
+    "grammarNote": "On dit 'miss a class / miss a train' (manquer), et 'lose keys / lose money' (perdre un objet).",
+    "vocab": [
+      [
+        "missed",
+        "ai raté"
+      ],
+      [
+        "go off",
+        "sonner"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-213",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Mon frère veut devenir médecin, mais il hésite encore entre la pédiatrie et la cardiologie.",
+    "en": "My brother wants to become a doctor, though he is still hesitating between pediatrics and cardiology.",
+    "grammarTitle": "Article 'a' devant les métiers (a doctor)",
+    "grammarNote": "En anglais, on met TOUJOURS l'article 'a/an' devant une profession ('become a doctor', 'she is an engineer').",
+    "vocab": [
+      [
+        "become a doctor",
+        "devenir médecin"
+      ],
+      [
+        "hesitating",
+        "hésiter"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-214",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Le projet d'agrandissement du musée comprend la construction d'un auditorium moderne.",
+    "en": "The museum expansion project includes the construction of a modern auditorium.",
+    "grammarTitle": "Include (comprendre/inclure) vs Understand",
+    "grammarNote": "Au sens de 'contenir / comporter', 'comprendre' se traduit par 'include', jamais 'understand'.",
+    "vocab": [
+      [
+        "expansion",
+        "agrandissement"
+      ],
+      [
+        "includes",
+        "comprend / inclut"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-215",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "Plusieurs citoyens ont signalé une fuite d'eau importante près de la station de métro.",
+    "en": "Several citizens reported a major water leak near the subway station.",
+    "grammarTitle": "Report (signaler) & water leak",
+    "grammarNote": "'Report' = signaler / faire un rapport sur (jamais 'reporter une réunion' = put off/postpone).",
+    "vocab": [
+      [
+        "reported",
+        "ont signalé"
+      ],
+      [
+        "water leak",
+        "fuite d'eau"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-216",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "La banque centrale pourrait éventuellement relever ses taux si l'inflation repart à la hausse.",
+    "en": "The central bank could possibly raise rates if inflation picks up again.",
+    "grammarTitle": "Faux-ami : possibly (éventuellement) vs eventually (finalement)",
+    "grammarNote": "'Éventuellement' (peut-être) se traduit par 'possibly / perhaps', et non 'eventually' (= finalement).",
+    "vocab": [
+      [
+        "possibly",
+        "éventuellement"
+      ],
+      [
+        "picks up",
+        "repart / reprend"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-217",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Les économistes ignorent encore combien de temps cette période d'incertitude va durer.",
+    "en": "Economists still do not know how long this period of uncertainty will last.",
+    "grammarTitle": "Faux-ami : ignore (ignorer délibérément) vs not know (ne pas savoir)",
+    "grammarNote": "'To ignore' signifie 'ignorer volontairement / ne pas tenir compte de'. Pour 'ne pas savoir', on dit 'do not know'.",
+    "vocab": [
+      [
+        "do not know",
+        "ignorent (ne savent pas)"
+      ],
+      [
+        "uncertainty",
+        "incertitude"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-218",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Le gouvernement envisage de créer de nouvelles bourses pour attirer des chercheurs étrangers.",
+    "en": "The government is considering creating new grants to attract foreign researchers.",
+    "grammarTitle": "Consider + V-ing & grants (bourses/subventions)",
+    "grammarNote": "'Consider' (envisager de) est toujours suivi de V-ing ('considering creating'), jamais de 'to + BV'.",
+    "vocab": [
+      [
+        "considering",
+        "envisage de"
+      ],
+      [
+        "grants",
+        "bourses / subventions"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-219",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Ce restaurant sert des portions généreuses, donc un seul plat principal suffit largement.",
+    "en": "This restaurant serves generous portions, so a single main course is more than enough.",
+    "grammarTitle": "Main course (plat principal) vs plate",
+    "grammarNote": "Au restaurant, 'plat' = 'dish' ou 'main course' (plat principal), tandis que 'plate' désigne l'assiette.",
+    "vocab": [
+      [
+        "main course",
+        "plat principal"
+      ],
+      [
+        "more than enough",
+        "largement suffisant"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-220",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Tu devrais faire attention aux fautes d'accord entre le sujet et le verbe dans ton essai.",
+    "en": "You should pay attention to subject-verb agreement mistakes in your essay.",
+    "grammarTitle": "Pay attention to (et non 'make attention')",
+    "grammarNote": "On dit toujours 'pay attention TO' (et jamais 'make attention').",
+    "vocab": [
+      [
+        "pay attention to",
+        "faire attention à"
+      ],
+      [
+        "agreement",
+        "accord (grammatical)"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-221",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Le voyage en ferry a été très agréable malgré les vagues assez hautes.",
+    "en": "The ferry trip was very pleasant in spite of the fairly high waves.",
+    "grammarTitle": "Trip / journey (voyage) vs travel (indénombrable)",
+    "grammarNote": "'Travel' est un nom général indénombrable (pas 'a travel'). Pour un trajet ou séjour précis, on dit 'a trip' ou 'a journey'.",
+    "vocab": [
+      [
+        "ferry trip",
+        "voyage en ferry"
+      ],
+      [
+        "in spite of",
+        "malgré"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-222",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Le logiciel traduit automatiquement le texte, mais il commet encore des erreurs de contexte.",
+    "en": "The software translates text automatically, yet it still makes context errors.",
+    "grammarTitle": "Make a mistake/error (et non 'do')",
+    "grammarNote": "Collocation : on dit 'make a mistake / make an error', mais 'do an exercise / do homework'.",
+    "vocab": [
+      [
+        "makes errors",
+        "commet des erreurs"
+      ],
+      [
+        "yet",
+        "pourtant / mais"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-223",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "L'entreprise offre à tous ses salariés une formation gratuite à la sécurité informatique.",
+    "en": "The company provides all its employees with free cybersecurity training.",
+    "grammarTitle": "Provide someone with something & indénombrable training",
+    "grammarNote": "'Training' (formation) est indénombrable en anglais ('free training', sans 'a').",
+    "vocab": [
+      [
+        "provides ... with",
+        "fournit à ..."
+      ],
+      [
+        "cybersecurity",
+        "sécurité informatique"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-224",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Cette ville côtière attire de nombreux touristes en été grâce à son climat doux.",
+    "en": "This coastal town attracts many tourists in summer thanks to its mild climate.",
+    "grammarTitle": "Mild climate (climat doux) & coastal",
+    "grammarNote": "Pour la météo ou le climat, 'doux' se traduit par 'mild' (et non 'soft' ou 'sweet').",
+    "vocab": [
+      [
+        "mild climate",
+        "climat doux"
+      ],
+      [
+        "attracts",
+        "attire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-225",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Il a pris la décision de quitter son poste après avoir reçu une meilleure offre ailleurs.",
+    "en": "He made the decision to leave his job after receiving a better offer elsewhere.",
+    "grammarTitle": "Make a decision (et non 'take' de préférence) & elsewhere",
+    "grammarNote": "En anglais standard, on dit plus couramment 'make a decision' que 'take a decision'.",
+    "vocab": [
+      [
+        "made the decision",
+        "a pris la décision"
+      ],
+      [
+        "elsewhere",
+        "ailleurs"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-226",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Si je gagnais mieux ma vie, je travaillerais à quatre-vingts pour cent pour avoir plus de temps libre.",
+    "en": "If I earned a better living, I would work part-time to have more free time.",
+    "grammarTitle": "Earn a living & Conditionnel Type 2",
+    "grammarNote": "'Earn a living' = gagner sa vie (pour un salaire, on utilise 'earn', pas 'win').",
+    "vocab": [
+      [
+        "earned a living",
+        "gagnais ma vie"
+      ],
+      [
+        "part-time",
+        "à temps partiel"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-227",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Tu aurais pu m'avertir que le concert commençait une heure plus tôt que d'habitude.",
+    "en": "You could have warned me that the concert started an hour earlier than usual.",
+    "grammarTitle": "Reproche doux : could have + PP",
+    "grammarNote": "'You could have + PP' exprime un reproche léger ('tu aurais quand même pu...').",
+    "vocab": [
+      [
+        "could have warned",
+        "aurais pu avertir"
+      ],
+      [
+        "than usual",
+        "que d'habitude"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-228",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Il se peut que les bus roulent au ralenti ce matin à cause du verglas sur les routes.",
+    "en": "Buses may be running slowly this morning because of ice on the roads.",
+    "grammarTitle": "Modal continu (may be + V-ing)",
+    "grammarNote": "'May be + V-ing' exprime une possibilité portant sur une action EN COURS actuellement.",
+    "vocab": [
+      [
+        "may be running",
+        "roulent peut-être"
+      ],
+      [
+        "ice",
+        "verglas / glace"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-229",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Nous sommes censés rendre nos dossiers avant lundi, mais le site semble bloqué.",
+    "en": "We are supposed to submit our files before Monday, but the website seems to be down.",
+    "grammarTitle": "Be supposed to + BV (être censé)",
+    "grammarNote": "'Be supposed to + BV' traduit très naturellement 'être censé faire quelque chose'.",
+    "vocab": [
+      [
+        "are supposed to",
+        "sommes censés"
+      ],
+      [
+        "submit",
+        "soumettre / rendre"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-230",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Je préfère cuisiner avec des produits frais plutôt que d'acheter des plats préparés.",
+    "en": "I prefer cooking with fresh ingredients rather than buying ready-made meals.",
+    "grammarTitle": "Prefer V-ing rather than V-ing",
+    "grammarNote": "Avec 'prefer + V-ing', on garde le parallélisme en -ing après 'rather than' ('rather than buying').",
+    "vocab": [
+      [
+        "rather than",
+        "plutôt que de"
+      ],
+      [
+        "ready-made meals",
+        "plats préparés"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-231",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Est-ce que tu sais si l'exposition temporaire est toujours ouverte jusqu'à la fin du mois ?",
+    "en": "Do you know whether the temporary exhibition is still open until the end of the month?",
+    "grammarTitle": "Whether (alternative / doute) dans une question indirecte",
+    "grammarNote": "'Whether' est un peu plus soutenu que 'if' après 'know, ask, wonder'.",
+    "vocab": [
+      [
+        "whether",
+        "si"
+      ],
+      [
+        "temporary",
+        "temporaire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-232",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "Ces panneaux solaires doivent être nettoyés une fois par an pour garder un bon rendement.",
+    "en": "These solar panels need to be cleaned once a year to keep high efficiency.",
+    "grammarTitle": "Need to be + PP (passif de nécessité)",
+    "grammarNote": "'Need to be cleaned' (ou 'need cleaning') exprime une nécessité passive.",
+    "vocab": [
+      [
+        "need to be cleaned",
+        "doivent être nettoyés"
+      ],
+      [
+        "efficiency",
+        "rendement / efficacité"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-233",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Elle a refusé de signer le document sans avoir d'abord consulté son avocat.",
+    "en": "She refused to sign the document without consulting her lawyer first.",
+    "grammarTitle": "Refuse to + BV & without + V-ing",
+    "grammarNote": "'Refuse' est suivi de 'to + BV', jamais de V-ing.",
+    "vocab": [
+      [
+        "refused to",
+        "a refusé de"
+      ],
+      [
+        "lawyer",
+        "avocat(e)"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-234",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "J'aimerais que mon quartier ait davantage de pistes cyclables sécurisées.",
+    "en": "I wish my neighborhood had more safe bike lanes.",
+    "grammarTitle": "I wish + Past Simple (souhait présent)",
+    "grammarNote": "Pour exprimer un regret ou souhait sur le présent ('j'aimerais que... ait'), on emploie le prétérit après 'wish' ('had').",
+    "vocab": [
+      [
+        "I wish ... had",
+        "j'aimerais que ... ait"
+      ],
+      [
+        "safe",
+        "sécurisées"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-235",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Les employés n'ont pas le droit de photographier les prototypes dans le laboratoire.",
+    "en": "Employees are not allowed to take photos of prototypes in the laboratory.",
+    "grammarTitle": "Be allowed to + BV (permission / interdiction)",
+    "grammarNote": "'Not be allowed to' équivaut à 'must not' pour une règle ou un règlement intérieur.",
+    "vocab": [
+      [
+        "are not allowed to",
+        "n'ont pas le droit de"
+      ],
+      [
+        "prototypes",
+        "prototypes"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-236",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Quand j'ai ouvert le frigo, quelqu'un avait déjà mangé la dernière part de tarte.",
+    "en": "When I opened the fridge, someone had already eaten the last slice of pie.",
+    "grammarTitle": "Past Perfect : eat -> eaten",
+    "grammarNote": "Le participe passé de 'eat' est 'eaten'.",
+    "vocab": [
+      [
+        "had already eaten",
+        "avait déjà mangé"
+      ],
+      [
+        "slice of pie",
+        "part de tarte"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-237",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Il fait semblant de comprendre l'algorithme alors qu'il n'a pas lu la documentation.",
+    "en": "He pretends to understand the algorithm even though he has not read the documentation.",
+    "grammarTitle": "Faux-ami : pretend (faire semblant) + to + BV",
+    "grammarNote": "Attention : 'pretend' signifie 'faire semblant de', jamais 'prétendre que' (= claim).",
+    "vocab": [
+      [
+        "pretends to",
+        "fait semblant de"
+      ],
+      [
+        "even though",
+        "alors que / bien que"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-238",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "Si nous n'économisons pas l'eau dès maintenant, certaines cultures souffriront cet été.",
+    "en": "If we do not save water right now, some crops will suffer this summer.",
+    "grammarTitle": "Conditionnel Type 1 & crops (cultures agricoles)",
+    "grammarNote": "'Crops' désigne les récoltes ou cultures agricoles.",
+    "vocab": [
+      [
+        "crops",
+        "cultures / récoltes"
+      ],
+      [
+        "save water",
+        "économiser l'eau"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-239",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "J'ai réussi à convaincre mon ami de venir à pied plutôt qu'en taxi.",
+    "en": "I succeeded in convincing my friend to walk rather than take a taxi.",
+    "grammarTitle": "Succeed IN + V-ing vs Manage TO + BV",
+    "grammarNote": "'Succeed' est suivi de 'IN + V-ing' ('succeeded in convincing'), contrairement à 'manage to + BV'.",
+    "vocab": [
+      [
+        "succeeded in",
+        "ai réussi à"
+      ],
+      [
+        "rather than",
+        "plutôt que de"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-240",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Le jury a félicité l'équipe d'étudiants pour avoir conçu un robot très économe en énergie.",
+    "en": "The jury congratulated the student team on designing a very energy-efficient robot.",
+    "grammarTitle": "Congratulate someone ON + V-ing",
+    "grammarNote": "En anglais, on félicite quelqu'un avec la préposition 'ON' (+ V-ing), et non 'for' de préférence.",
+    "vocab": [
+      [
+        "congratulated ... on",
+        "a félicité ... pour"
+      ],
+      [
+        "energy-efficient",
+        "économe en énergie"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-241",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "On m'a toujours appris à vérifier deux fois les chiffres avant de tirer une conclusion.",
+    "en": "I have always been taught to check numbers twice before drawing a conclusion.",
+    "grammarTitle": "Passif au Present Perfect (have been taught) & draw a conclusion",
+    "grammarNote": "'Draw a conclusion' = tirer une conclusion. 'Teach -> taught'.",
+    "vocab": [
+      [
+        "have been taught",
+        "on m'a appris"
+      ],
+      [
+        "draw a conclusion",
+        "tirer une conclusion"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-242",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "Plus les transports publics sont ponctuels, plus les habitants laissent leur voiture au garage.",
+    "en": "The more punctual public transport is, the more residents leave their cars at home.",
+    "grammarTitle": "Double comparatif (The more..., the more...)",
+    "grammarNote": "Structure symétrique : 'The more punctual..., the more residents...'.",
+    "vocab": [
+      [
+        "punctual",
+        "ponctuel"
+      ],
+      [
+        "residents",
+        "habitants"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-243",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Nous aurions aimé rester un jour de plus à Édimbourg, mais nous devions reprendre le travail.",
+    "en": "We would have liked to stay one more day in Edinburgh, but we had to go back to work.",
+    "grammarTitle": "Would have liked to + BV (regret poli)",
+    "grammarNote": "'Would have liked to + BV' = aurions aimé faire (dans le passé).",
+    "vocab": [
+      [
+        "would have liked to",
+        "aurions aimé"
+      ],
+      [
+        "go back to work",
+        "reprendre le travail"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-244",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Ce journaliste évite toujours d'utiliser des sources anonymes sans vérifier les faits.",
+    "en": "This journalist always avoids using anonymous sources without checking the facts.",
+    "grammarTitle": "Avoid + V-ing & without + V-ing",
+    "grammarNote": "Double gérondif : 'avoids using' et 'without checking'.",
+    "vocab": [
+      [
+        "anonymous sources",
+        "sources anonymes"
+      ],
+      [
+        "facts",
+        "faits"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-245",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "Ce bâtiment public est chauffé grâce à la géothermie depuis près de dix ans.",
+    "en": "This public building has been heated using geothermal energy for nearly ten years.",
+    "grammarTitle": "Passif au Present Perfect + for + durée",
+    "grammarNote": "'Has been heated ... for nearly ten years' relie le passé au présent au passif.",
+    "vocab": [
+      [
+        "geothermal energy",
+        "énergie géothermique"
+      ],
+      [
+        "for nearly",
+        "depuis près de"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-246",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "fr": "Mon colocataire insiste toujours pour payer sa part des courses le jour même.",
+    "en": "My roommate always insists on paying his share of the groceries on the same day.",
+    "grammarTitle": "Insist ON + V-ing",
+    "grammarNote": "'Insist' suivi d'une action prend la préposition 'on' + V-ing ('insists on paying').",
+    "vocab": [
+      [
+        "insists on",
+        "insiste pour"
+      ],
+      [
+        "groceries",
+        "courses alimentaires"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-247",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Elle a failli rater son train parce que le bus de correspondance avait vingt minutes de retard.",
+    "en": "She almost missed her train because the connecting bus was twenty minutes late.",
+    "grammarTitle": "Faillir faire = almost + Past Simple",
+    "grammarNote": "Piège fréquent : 'faillir faire quelque chose' se traduit tout simplement par 'almost / nearly + Past Simple'.",
+    "vocab": [
+      [
+        "almost missed",
+        "a failli rater"
+      ],
+      [
+        "connecting bus",
+        "bus de correspondance"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-248",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Il est interdit de fumer et de vapoter dans tous les espaces intérieurs publics.",
+    "en": "Smoking and vaping are prohibited in all indoor public spaces.",
+    "grammarTitle": "Gérondif sujet (Smoking...) & prohibited",
+    "grammarNote": "Les interdictions officielles utilisent souvent le gérondif en tête de phrase ('Smoking is prohibited').",
+    "vocab": [
+      [
+        "prohibited",
+        "interdit"
+      ],
+      [
+        "indoor",
+        "intérieur (bâtiment)"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-249",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Ce nouveau médicament permet aux patients de dormir sans ressentir d'effets secondaires forts.",
+    "en": "This new medication allows patients to sleep without feeling strong side effects.",
+    "grammarTitle": "Allow someone TO + BV",
+    "grammarNote": "'Allow' (et 'enable') suivent toujours la structure 'allow + personne + to + BV'.",
+    "vocab": [
+      [
+        "allows ... to",
+        "permet à ... de"
+      ],
+      [
+        "side effects",
+        "effets secondaires"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-250",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Les économistes craignent que la hausse des coûts de transport n'augmente le prix des aliments.",
+    "en": "Economists fear that rising transport costs will push up food prices.",
+    "grammarTitle": "Fear that + futur & push up (faire monter)",
+    "grammarNote": "En anglais, pas de 'ne' explétif après 'fear' : on dit directement 'fear that ... will push up'.",
+    "vocab": [
+      [
+        "fear that",
+        "craignent que"
+      ],
+      [
+        "push up",
+        "faire monter"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-251",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "De plus en plus de consommateurs achètent des appareils reconditionnés pour limiter les déchets électroniques.",
+    "en": "More and more consumers are buying refurbished devices to cut down on electronic waste.",
+    "grammarTitle": "Refurbished & Present Continuous (tendance)",
+    "grammarNote": "'Refurbished' = reconditionné ; 'second-hand' = d'occasion.",
+    "vocab": [
+      [
+        "refurbished",
+        "reconditionnés"
+      ],
+      [
+        "consumers",
+        "consommateurs"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-252",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Le développement de l'intelligence artificielle oblige les écoles à repenser certains exercices à la maison.",
+    "en": "The rise of artificial intelligence is forcing schools to rethink certain homework assignments.",
+    "grammarTitle": "Force someone to + BV & indénombrable homework",
+    "grammarNote": "'Homework' (les devoirs) est toujours indénombrable singulier en anglais (jamais 'homeworks').",
+    "vocab": [
+      [
+        "homework",
+        "devoirs"
+      ],
+      [
+        "rethink",
+        "repenser"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-253",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Ce moteur de recherche respectueux de la vie privée ne vend pas les données de ses utilisateurs.",
+    "en": "This privacy-friendly search engine does not sell its users' data.",
+    "grammarTitle": "Search engine & génitif pluriel (users')",
+    "grammarNote": "Pour un nom pluriel en -s ('users'), l'apostrophe du génitif se place après le -s : 'users' data'.",
+    "vocab": [
+      [
+        "search engine",
+        "moteur de recherche"
+      ],
+      [
+        "privacy-friendly",
+        "respectueux de la vie privée"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-254",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "De nombreux jeunes salariés cherchent désormais un emploi qui a du sens plutôt qu'un gros salaire.",
+    "en": "Many young workers now look for a meaningful job rather than just a high salary.",
+    "grammarTitle": "Meaningful & rather than",
+    "grammarNote": "'Meaningful' = qui a du sens / utile ; 'meaningless' = dénué de sens.",
+    "vocab": [
+      [
+        "meaningful",
+        "qui a du sens"
+      ],
+      [
+        "high salary",
+        "gros salaire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-255",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "L'isolement des personnes âgées devient un véritable enjeu de santé publique dans nos villes.",
+    "en": "Loneliness among older people is becoming a major public health issue in our cities.",
+    "grammarTitle": "Loneliness & public health issue",
+    "grammarNote": "'Loneliness' = sentiment de solitude / isolement ; 'among' = parmi.",
+    "vocab": [
+      [
+        "loneliness",
+        "solitude / isolement"
+      ],
+      [
+        "public health issue",
+        "enjeu de santé publique"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-256",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "Plusieurs pays européens encouragent les citoyens à isoler leurs logements grâce à des aides publiques.",
+    "en": "Several European countries encourage citizens to insulate their homes through public grants.",
+    "grammarTitle": "Encourage someone to + BV & insulate",
+    "grammarNote": "'Insulate' = isoler thermiquement (vs 'isolate' = isoler socialement ou physiquement).",
+    "vocab": [
+      [
+        "insulate",
+        "isoler (thermiquement)"
+      ],
+      [
+        "public grants",
+        "aides publiques"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-257",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Ce restaurant affiche clairement l'origine locale de toutes ses viandes et de ses fromages.",
+    "en": "This restaurant clearly displays the local origin of all its meat and cheese.",
+    "grammarTitle": "Indénombrables 'meat' et 'cheese' (singulier)",
+    "grammarNote": "En général, 'meat' et 'cheese' restent au singulier après 'all its'.",
+    "vocab": [
+      [
+        "displays",
+        "affiche"
+      ],
+      [
+        "origin",
+        "origine"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-258",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Les applications de covoiturage permettent de partager les frais d'essence sur les longs trajets.",
+    "en": "Carpooling apps make it possible to share fuel costs on long journeys.",
+    "grammarTitle": "Make it possible to + BV & carpooling",
+    "grammarNote": "Structure très utile : 'make it possible to + BV' = permettre de.",
+    "vocab": [
+      [
+        "carpooling",
+        "covoiturage"
+      ],
+      [
+        "fuel costs",
+        "frais de carburant"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-259",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Bien que la presse écrite perde des lecteurs, le journalisme d'enquête reste essentiel en démocratie.",
+    "en": "Although print newspapers are losing readers, investigative journalism remains essential in a democracy.",
+    "grammarTitle": "Although + Present Continuous & investigative journalism",
+    "grammarNote": "'Investigative journalism' = journalisme d'enquête / d'investigation.",
+    "vocab": [
+      [
+        "print newspapers",
+        "presse écrite"
+      ],
+      [
+        "investigative journalism",
+        "journalisme d'enquête"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-260",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Ce musée propose désormais des visites virtuelles gratuites pour les écoles éloignées des grandes villes.",
+    "en": "This museum now offers free virtual tours for schools far from big cities.",
+    "grammarTitle": "Offer + objet & virtual tours",
+    "grammarNote": "'Tour' = visite guidée / circuit (faux-ami : une tour = 'tower').",
+    "vocab": [
+      [
+        "virtual tours",
+        "visites virtuelles"
+      ],
+      [
+        "far from",
+        "éloignées de"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-261",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "L'accès équitable à l'eau potable représente un défi croissant dans les régions touchées par la sécheresse.",
+    "en": "Fair access to clean drinking water represents a growing challenge in drought-hit regions.",
+    "grammarTitle": "Drinking water & adjectif composé (drought-hit)",
+    "grammarNote": "'Drought-hit' = touché par la sécheresse. 'Access TO' prend toujours 'to'.",
+    "vocab": [
+      [
+        "drinking water",
+        "eau potable"
+      ],
+      [
+        "growing challenge",
+        "défi croissant"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-262",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Beaucoup de travailleurs indépendants apprécient la liberté d'organiser leur emploi du temps.",
+    "en": "Many freelance workers enjoy the freedom to organize their own schedule.",
+    "grammarTitle": "Freelance & freedom to + BV",
+    "grammarNote": "'Freelance' = indépendant ; 'schedule' = emploi du temps.",
+    "vocab": [
+      [
+        "freelance",
+        "indépendant"
+      ],
+      [
+        "schedule",
+        "emploi du temps"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-263",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Les chercheurs espèrent remplacer certains plastiques par des matériaux issus des algues marines.",
+    "en": "Researchers hope to replace certain plastics with materials made from seaweed.",
+    "grammarTitle": "Replace A with B & made from",
+    "grammarNote": "On dit 'made FROM' quand la matière première a été transformée chimiquement ('made from seaweed'), et 'made OF' quand on la reconnaît ('made of wood').",
+    "vocab": [
+      [
+        "made from",
+        "fabriqué à partir de"
+      ],
+      [
+        "seaweed",
+        "algues marines"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-264",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "Si les transports régionaux étaient plus fréquents, moins de gens achèteraient une deuxième voiture.",
+    "en": "If regional trains and buses were more frequent, fewer people would buy a second car.",
+    "grammarTitle": "Conditionnel Type 2 & fewer people",
+    "grammarNote": "Avec 'people' (pluriel), on emploie 'fewer' (= moins de), jamais 'less'.",
+    "vocab": [
+      [
+        "fewer people",
+        "moins de gens"
+      ],
+      [
+        "frequent",
+        "fréquents"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-265",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Cette plateforme de vidéos recommande souvent des contenus extrêmes pour retenir l'attention des utilisateurs.",
+    "en": "This video platform often recommends extreme content to hold users' attention.",
+    "grammarTitle": "Indénombrable 'content' & hold attention",
+    "grammarNote": "En contexte numérique, 'content' (les contenus) est généralement singulier indénombrable.",
+    "vocab": [
+      [
+        "content",
+        "contenu(s)"
+      ],
+      [
+        "hold attention",
+        "retenir l'attention"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-266",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Les commerces de centre-ville souffrent parfois de la concurrence des géants de la livraison rapide.",
+    "en": "Downtown shops sometimes suffer from competition with fast-delivery giants.",
+    "grammarTitle": "Suffer from & competition",
+    "grammarNote": "'Suffer' se construit toujours avec 'FROM'. Attention : 'competition' = concurrence (aussi bien que compétition).",
+    "vocab": [
+      [
+        "suffer from",
+        "souffrent de"
+      ],
+      [
+        "competition",
+        "concurrence"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-267",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Il est essentiel de vérifier les étiquettes alimentaires pour éviter les sucres cachés.",
+    "en": "It is essential to check food labels to avoid hidden sugars.",
+    "grammarTitle": "It is essential to & avoid",
+    "grammarNote": "'Food labels' = étiquettes alimentaires ; 'hidden' = caché.",
+    "vocab": [
+      [
+        "food labels",
+        "étiquettes alimentaires"
+      ],
+      [
+        "hidden",
+        "caché"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-268",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Le train reste le moyen le plus fiable de traverser le pays sans stress.",
+    "en": "The train remains the most reliable way to travel across the country without stress.",
+    "grammarTitle": "Way to + BV & superlatif (the most reliable)",
+    "grammarNote": "'The most reliable way to...' = le moyen le plus fiable de...",
+    "vocab": [
+      [
+        "reliable",
+        "fiable"
+      ],
+      [
+        "travel across",
+        "traverser"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-269",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Plusieurs universités proposent désormais des cours en ligne gratuits ouverts à tous les citoyens.",
+    "en": "Several universities now offer free online courses open to all citizens.",
+    "grammarTitle": "Adjectif postposé (open to all)",
+    "grammarNote": "Comme en français, un groupe adjectival long ('open to all citizens') se place après le nom.",
+    "vocab": [
+      [
+        "online courses",
+        "cours en ligne"
+      ],
+      [
+        "open to",
+        "ouverts à"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-270",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "Le recyclage du verre permet d'économiser beaucoup d'énergie par rapport à la fabrication de verre neuf.",
+    "en": "Recycling glass saves a lot of energy compared with making new glass.",
+    "grammarTitle": "Gérondif sujet (Recycling) & compared with",
+    "grammarNote": "Quand un verbe est sujet ('Le recyclage de...'), on utilise le gérondif 'Recycling glass'.",
+    "vocab": [
+      [
+        "compared with",
+        "par rapport à"
+      ],
+      [
+        "saves energy",
+        "économise de l'énergie"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-271",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Des bénévoles proposent des cours de soutien scolaire gratuits chaque mercredi après-midi.",
+    "en": "Volunteers offer free tutoring classes every Wednesday afternoon.",
+    "grammarTitle": "Tutoring classes & every Wednesday",
+    "grammarNote": "'Tutoring' = soutien scolaire / cours particuliers.",
+    "vocab": [
+      [
+        "tutoring",
+        "soutien scolaire"
+      ],
+      [
+        "volunteers",
+        "bénévoles"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-272",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "L'intelligence artificielle peut détecter certaines tumeurs sur des radiographies plus vite que l'œil humain.",
+    "en": "Artificial intelligence can detect certain tumors on X-rays faster than the human eye.",
+    "grammarTitle": "X-rays & comparatif d'adverbe (faster)",
+    "grammarNote": "'X-rays' = radiographies. Le comparatif de l'adverbe 'fast' est 'faster' (jamais 'fastly').",
+    "vocab": [
+      [
+        "X-rays",
+        "radiographies"
+      ],
+      [
+        "human eye",
+        "œil humain"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-273",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Nous avons décidé de passer nos vacances dans une région moins touristique pour éviter la foule.",
+    "en": "We decided to spend our holidays in a less crowded region to avoid the crowds.",
+    "grammarTitle": "Spend holidays & less crowded",
+    "grammarNote": "'Spend' s'emploie pour le temps et les vacances ('spend holidays'), jamais 'pass holidays'.",
+    "vocab": [
+      [
+        "spend our holidays",
+        "passer nos vacances"
+      ],
+      [
+        "crowds",
+        "la foule"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-274",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Les jeunes auteurs ont souvent besoin de subventions publiques pour publier leur premier livre.",
+    "en": "Young authors often need public funding to publish their first book.",
+    "grammarTitle": "Funding (financement) & need",
+    "grammarNote": "'Funding' = financement / subventions (indénombrable).",
+    "vocab": [
+      [
+        "public funding",
+        "financements publics"
+      ],
+      [
+        "publish",
+        "publier"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-275",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Il devient difficile de distinguer une photo réelle d'une image générée par ordinateur.",
+    "en": "It is becoming hard to tell a real photo apart from a computer-generated image.",
+    "grammarTitle": "Tell A apart from B (= distinguer A de B)",
+    "grammarNote": "'Tell A apart from B' (ou 'tell the difference between') est très idiomatique pour 'distinguer'.",
+    "vocab": [
+      [
+        "tell ... apart from",
+        "distinguer ... de"
+      ],
+      [
+        "computer-generated",
+        "générée par ordinateur"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-276",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "La consommation excessive de viande rouge a un impact lourd sur le climat et la santé.",
+    "en": "Eating too much red meat has a heavy impact on both the climate and health.",
+    "grammarTitle": "Both ... and & impact on",
+    "grammarNote": "'Impact' est suivi de 'ON' ('impact on the climate'). 'Both A and B' = à la fois A et B.",
+    "vocab": [
+      [
+        "both ... and",
+        "à la fois ... et"
+      ],
+      [
+        "impact on",
+        "impact sur"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-277",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Certaines entreprises testent la semaine de quatre jours sans réduire le salaire mensuel.",
+    "en": "Some companies are testing a four-day workweek without cutting monthly pay.",
+    "grammarTitle": "Adjectif composé sans -s (four-day) & without + V-ing",
+    "grammarNote": "Dans un adjectif composé avec un nombre, le nom reste toujours au singulier : 'a four-day week' (jamais 'days').",
+    "vocab": [
+      [
+        "four-day workweek",
+        "semaine de 4 jours"
+      ],
+      [
+        "cutting pay",
+        "réduire le salaire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-278",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "Le réseau électrique doit être modernisé pour absorber l'énergie produite par les parcs éoliens.",
+    "en": "The power grid must be upgraded to handle the electricity generated by wind farms.",
+    "grammarTitle": "Power grid & passif modal (must be upgraded)",
+    "grammarNote": "'Power grid' = réseau électrique ; 'wind farm' = parc éolien ; 'upgrade' = moderniser.",
+    "vocab": [
+      [
+        "power grid",
+        "réseau électrique"
+      ],
+      [
+        "wind farms",
+        "parcs éoliens"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-279",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Les parents se demandent souvent à quel âge il est raisonnable d'offrir un smartphone à un enfant.",
+    "en": "Parents often wonder at what age it is reasonable to give a child a smartphone.",
+    "grammarTitle": "Wonder at what age & double objet (give a child a phone)",
+    "grammarNote": "Avec 'give', on peut placer la personne directement avant l'objet ('give a child a smartphone').",
+    "vocab": [
+      [
+        "wonder",
+        "se demandent"
+      ],
+      [
+        "reasonable",
+        "raisonnable"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-280",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Cette série documentaire explique clairement comment fonctionnent les marchés financiers.",
+    "en": "This documentary series clearly explains how financial markets work.",
+    "grammarTitle": "Series (singulier/pluriel identique) & how + S + V",
+    "grammarNote": "Attention : 'series' prend toujours un -s même au singulier ('This series explains').",
+    "vocab": [
+      [
+        "series",
+        "série"
+      ],
+      [
+        "financial markets",
+        "marchés financiers"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-281",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Le chef pâtissier utilise moins de sucre raffiné pour préserver le goût naturel des fruits.",
+    "en": "The pastry chef uses less refined sugar to preserve the natural taste of the fruit.",
+    "grammarTitle": "Less + indénombrable (refined sugar)",
+    "grammarNote": "'Sugar' et 'fruit' (en général) sont singuliers indénombrables.",
+    "vocab": [
+      [
+        "refined sugar",
+        "sucre raffiné"
+      ],
+      [
+        "preserve",
+        "préserver"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-282",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "De nombreux lecteurs préfèrent encore les livres papier parce qu'ils reposent les yeux.",
+    "en": "Many readers still prefer paper books because they are easier on the eyes.",
+    "grammarTitle": "Idiome B1 : easy on the eyes",
+    "grammarNote": "'Easy on the eyes' = reposant ou agréable pour les yeux.",
+    "vocab": [
+      [
+        "paper books",
+        "livres papier"
+      ],
+      [
+        "easier on the eyes",
+        "plus reposant pour les yeux"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-283",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Le télétravail permet à certains salariés de déménager dans des villes plus abordables.",
+    "en": "Remote work enables some employees to move to more affordable towns.",
+    "grammarTitle": "Enable someone to + BV",
+    "grammarNote": "'Enable' (= permettre à) fonctionne comme 'allow' : 'enable someone to + BV'.",
+    "vocab": [
+      [
+        "enables ... to",
+        "permet à ... de"
+      ],
+      [
+        "move to",
+        "déménager vers"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-284",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Avant d'acheter un billet d'avion, vérifie si les bagages en soute sont inclus dans le tarif.",
+    "en": "Before buying a plane ticket, check whether checked luggage is included in the fare.",
+    "grammarTitle": "Checked luggage & fare (tarif voyage)",
+    "grammarNote": "'Fare' désigne le prix d'un billet de transport (train, bus, avion, taxi).",
+    "vocab": [
+      [
+        "checked luggage",
+        "bagages en soute"
+      ],
+      [
+        "fare",
+        "tarif (transport)"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-285",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Les tests sur les animaux sont progressivement remplacés par des modèles cellulaires en laboratoire.",
+    "en": "Animal testing is gradually being replaced by cell models in laboratories.",
+    "grammarTitle": "Passif continu (is being replaced)",
+    "grammarNote": "'Is gradually being replaced' exprime une transformation passive en cours.",
+    "vocab": [
+      [
+        "animal testing",
+        "tests sur les animaux"
+      ],
+      [
+        "gradually",
+        "progressivement"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-286",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Ce nouvel assistant numérique aide les personnes malvoyantes à lire les panneaux dans la rue.",
+    "en": "This new digital assistant helps visually impaired people read street signs.",
+    "grammarTitle": "Visually impaired & help + objet + BV",
+    "grammarNote": "'Visually impaired' = malvoyant ; 'street signs' = panneaux de rue.",
+    "vocab": [
+      [
+        "visually impaired",
+        "malvoyant"
+      ],
+      [
+        "street signs",
+        "panneaux de rue"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-287",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "La protection des zones humides joue un rôle majeur contre les inondations hivernales.",
+    "en": "Protecting wetlands plays a major role in preventing winter floods.",
+    "grammarTitle": "Play a role in + V-ing & wetlands",
+    "grammarNote": "On dit 'play a role IN + V-ing' (jouer un rôle dans...). 'Wetlands' = zones humides.",
+    "vocab": [
+      [
+        "wetlands",
+        "zones humides"
+      ],
+      [
+        "floods",
+        "inondations"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-288",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Les syndicats demandent de meilleures conditions de travail pour les livreurs à vélo.",
+    "en": "Unions are demanding better working conditions for bike couriers.",
+    "grammarTitle": "Working conditions & bike couriers",
+    "grammarNote": "'Conditions' dans 'working conditions' est pluriel ; 'work' seul reste singulier.",
+    "vocab": [
+      [
+        "working conditions",
+        "conditions de travail"
+      ],
+      [
+        "couriers",
+        "livreurs / coursiers"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-289",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "L'hydrogène produit à partir d'énergie verte pourrait alimenter les camions longue distance.",
+    "en": "Hydrogen produced from green power could fuel long-haul trucks.",
+    "grammarTitle": "Participe passé épithète (produced from) & fuel (verbe)",
+    "grammarNote": "'To fuel' = alimenter en carburant / énergie ; 'long-haul' = longue distance.",
+    "vocab": [
+      [
+        "fuel",
+        "alimenter (en énergie)"
+      ],
+      [
+        "long-haul",
+        "longue distance"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-290",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "De nombreux débats montrent que la liberté individuelle doit s'équilibrer avec la solidarité.",
+    "en": "Many debates show that individual freedom must be balanced with solidarity.",
+    "grammarTitle": "Passif modal (must be balanced with)",
+    "grammarNote": "'Be balanced with' = être équilibré avec / mis en balance avec.",
+    "vocab": [
+      [
+        "individual freedom",
+        "liberté individuelle"
+      ],
+      [
+        "balanced with",
+        "équilibré avec"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-291",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Le prix des matières premières a fortement augmenté après la sécheresse de l'été dernier.",
+    "en": "The price of raw materials rose sharply after last summer's drought.",
+    "grammarTitle": "Raw materials & Past Simple (rise -> rose)",
+    "grammarNote": "'Rise' devient 'rose' au prétérit. 'Raw materials' = matières premières.",
+    "vocab": [
+      [
+        "raw materials",
+        "matières premières"
+      ],
+      [
+        "rose sharply",
+        "a fortement augmenté"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-292",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "fr": "J'ai goûté pour la première fois un plat végétalien très savoureux dans ce petit café.",
+    "en": "I tasted a very flavorful vegan dish for the first time at this little cafe.",
+    "grammarTitle": "For the first time & Past Simple",
+    "grammarNote": "'For the first time' = pour la première fois ; 'vegan' = végétalien.",
+    "vocab": [
+      [
+        "flavorful",
+        "savoureux"
+      ],
+      [
+        "vegan",
+        "végétalien"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-293",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "fr": "Ce festival de musique locale attire chaque année des milliers de visiteurs curieux.",
+    "en": "This local music festival attracts thousands of curious visitors every year.",
+    "grammarTitle": "Thousands of + pluriel (sans chiffre devant)",
+    "grammarNote": "Sans nombre précis devant, 'thousand' prend un -s et 'of' : 'thousands of visitors'.",
+    "vocab": [
+      [
+        "thousands of",
+        "des milliers de"
+      ],
+      [
+        "curious",
+        "curieux"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-294",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Voyage",
+    "fr": "Le train de banlieue a été modernisé afin de réduire les retards aux heures de pointe.",
+    "en": "The commuter train was upgraded to reduce delays during rush hour.",
+    "grammarTitle": "Commuter train & rush hour",
+    "grammarNote": "'Rush hour' = heure de pointe (sans article 'the' devant en général).",
+    "vocab": [
+      [
+        "commuter train",
+        "train de banlieue"
+      ],
+      [
+        "rush hour",
+        "heure de pointe"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-295",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "fr": "Les hôpitaux utilisent déjà des logiciels intelligents pour planifier plus vite les rendez-vous.",
+    "en": "Hospitals already use smart software to schedule appointments faster.",
+    "grammarTitle": "Schedule (planifier) & software (singulier)",
+    "grammarNote": "'To schedule' = planifier / programmer dans un agenda.",
+    "vocab": [
+      [
+        "schedule",
+        "planifier"
+      ],
+      [
+        "appointments",
+        "rendez-vous"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-296",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "fr": "Le recyclage ne suffit pas si nous continuons à produire autant d'objets jetables.",
+    "en": "Recycling is not enough if we keep producing so many disposable items.",
+    "grammarTitle": "Keep + V-ing & disposable (jetable)",
+    "grammarNote": "'Disposable' = jetable / à usage unique ; 'keep + V-ing' = continuer à.",
+    "vocab": [
+      [
+        "disposable",
+        "jetable"
+      ],
+      [
+        "keep producing",
+        "continuons à produire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-297",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "fr": "Beaucoup de jeunes ingénieurs veulent travailler dans des projets liés à la transition climatique.",
+    "en": "Many young engineers want to work on projects linked to the climate transition.",
+    "grammarTitle": "Work ON a project (préposition on)",
+    "grammarNote": "On dit 'work ON a project' (travailler sur un projet) et 'linked TO' (lié à).",
+    "vocab": [
+      [
+        "work on",
+        "travailler sur"
+      ],
+      [
+        "linked to",
+        "lié à"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-298",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "fr": "L'isolation des toitures permet de garder la chaleur en hiver et la fraîcheur en été.",
+    "en": "Roof insulation helps keep heat inside in winter and keep homes cool in summer.",
+    "grammarTitle": "Keep + nom + adjectif (keep homes cool)",
+    "grammarNote": "'Keep + objet + adjectif' = maintenir dans un état ('keep homes cool').",
+    "vocab": [
+      [
+        "roof insulation",
+        "isolation des toits"
+      ],
+      [
+        "cool",
+        "frais"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-299",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "fr": "Certains philosophes s'interrogent sur les limites éthiques de l'augmentation humaine par la technologie.",
+    "en": "Some philosophers question the ethical limits of human enhancement through technology.",
+    "grammarTitle": "Question (transitif) & human enhancement",
+    "grammarNote": "En anglais, 'question something' = remettre en question / s'interroger sur.",
+    "vocab": [
+      [
+        "enhancement",
+        "augmentation / amélioration"
+      ],
+      [
+        "through",
+        "par le biais de"
+      ]
+    ]
+  },
+  {
+    "id": "s-b1-300",
+    "mode": "speak",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "fr": "Il est important d'écouter différents points de vue avant de se forger une opinion définitive.",
+    "en": "It is important to listen to different viewpoints before forming a final opinion.",
+    "grammarTitle": "Before + V-ing & form an opinion",
+    "grammarNote": "Collocation : 'form an opinion' (se forger une opinion). Toujours 'listen TO'.",
+    "vocab": [
+      [
+        "viewpoints",
+        "points de vue"
+      ],
+      [
+        "forming an opinion",
+        "se forger une opinion"
       ]
     ]
   },
@@ -9119,6 +13119,2906 @@ window.EC_BUILTIN_SPEAK = [
         "habitudes de sommeil"
       ]
     ]
+  },
+  {
+    "id": "s-b2-156",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Les algorithmes de recommandation tendent à enfermer les citoyens dans des chambres d'écho idéologiques.",
+    "en": "Recommendation algorithms tend to trap citizens inside ideological echo chambers.",
+    "grammarTitle": "Vocabulaire prépa : echo chambers & tend to",
+    "grammarNote": "'Echo chambers' = chambres d'écho ; 'filter bubbles' = bulles de filtre. Des termes incontournables en khôlle.",
+    "vocab": [
+      [
+        "echo chambers",
+        "chambres d'écho"
+      ],
+      [
+        "trap",
+        "enfermer / piéger"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-157",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "La concentration des grands quotidiens entre les mains de quelques conglomérats menace le pluralisme.",
+    "en": "The concentration of major newspapers in the hands of a few conglomerates threatens pluralism.",
+    "grammarTitle": "In the hands of & pluralism",
+    "grammarNote": "'In the hands of' = entre les mains de ; 'conglomerates' = conglomérats / grands groupes.",
+    "vocab": [
+      [
+        "conglomerates",
+        "conglomérats"
+      ],
+      [
+        "pluralism",
+        "pluralisme"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-158",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "La démocratie participative ne saurait prospérer sans une presse locale indépendante et rigoureuse.",
+    "en": "Participatory democracy cannot thrive without an independent and rigorous local press.",
+    "grammarTitle": "Thrive (= prospérer) & modal cannot",
+    "grammarNote": "'To thrive' = prospérer / s'épanouir (très utile pour remplacer 'succeed well').",
+    "vocab": [
+      [
+        "thrive",
+        "prospérer / s'épanouir"
+      ],
+      [
+        "participatory",
+        "participative"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-159",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "Sous prétexte de lutter contre la désinformation, certains régimes renforcent en réalité la censure numérique.",
+    "en": "On the pretext of fighting disinformation, some regimes are actually tightening digital censorship.",
+    "grammarTitle": "On the pretext of + V-ing & tighten",
+    "grammarNote": "'On the pretext of + V-ing' (ou 'under the guise of') = sous prétexte de.",
+    "vocab": [
+      [
+        "on the pretext of",
+        "sous prétexte de"
+      ],
+      [
+        "censorship",
+        "censure"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-160",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Les mouvements citoyens de terrain jouent un rôle décisif pour inscrire l'écologie à l'agenda politique.",
+    "en": "Grassroots movements play a decisive role in putting ecology on the political agenda.",
+    "grammarTitle": "Vocabulaire prépa : grassroots movements",
+    "grammarNote": "'Grassroots' désigne les initiatives venant de la base / des citoyens (opposé à 'top-down').",
+    "vocab": [
+      [
+        "grassroots",
+        "citoyen / de terrain"
+      ],
+      [
+        "political agenda",
+        "agenda politique"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-161",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "Quelles que soient nos divergences partisanes, un consensus bipartisan s'impose sur la souveraineté énergétique.",
+    "en": "Regardless of our partisan divides, a bipartisan consensus is needed on energy sovereignty.",
+    "grammarTitle": "Regardless of & bipartisan",
+    "grammarNote": "'Regardless of' = indépendamment de / quelles que soient. 'Bipartisan' = transpartisan.",
+    "vocab": [
+      [
+        "regardless of",
+        "quelles que soient"
+      ],
+      [
+        "bipartisan",
+        "transpartisan"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-162",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "L'abstention croissante des jeunes électeurs reflète moins l'indifférence qu'une défiance envers les institutions.",
+    "en": "Growing abstention among young voters reflects not so much indifference as distrust of institutions.",
+    "grammarTitle": "Structure comparative : not so much A as B",
+    "grammarNote": "'Not so much A as B' (= moins A que B) est une tournure analytique très élégante à l'oral.",
+    "vocab": [
+      [
+        "not so much ... as",
+        "moins ... que"
+      ],
+      [
+        "distrust of",
+        "défiance envers"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-163",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "Il est regrettable que le sensationnalisme médiatique éclipse souvent les enjeux structurels de long terme.",
+    "en": "It is regrettable that media sensationalism often overshadows long-term structural issues.",
+    "grammarTitle": "Overshadow (= éclipser) & adjectifs composés",
+    "grammarNote": "'Overshadow' signifie éclipser / rejeter dans l'ombre.",
+    "vocab": [
+      [
+        "overshadows",
+        "éclipse"
+      ],
+      [
+        "long-term",
+        "de long terme"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-164",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Faute d'une éducation solide aux médias, les internautes peinent à vérifier la fiabilité des sources.",
+    "en": "For lack of solid media literacy, internet users struggle to verify the reliability of sources.",
+    "grammarTitle": "For lack of (= faute de) & media literacy",
+    "grammarNote": "'Media literacy' = éducation aux médias ; 'reliability' = fiabilité.",
+    "vocab": [
+      [
+        "for lack of",
+        "faute de"
+      ],
+      [
+        "media literacy",
+        "éducation aux médias"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-165",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "À force de simplifier des débats complexes en slogans, on appauvrit la délibération démocratique.",
+    "en": "By reducing complex debates to mere slogans, we impoverish democratic deliberation.",
+    "grammarTitle": "By + V-ing (moyen) & mere",
+    "grammarNote": "'Mere' = simple / pur (avec nuance restrictive : 'de simples slogans').",
+    "vocab": [
+      [
+        "mere",
+        "simple(s)"
+      ],
+      [
+        "deliberation",
+        "délibération"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-166",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "La transparence financière des campagnes électorales constitue un rempart essentiel contre l'influence des lobbys.",
+    "en": "Financial transparency in election campaigns serves as a vital bulwark against lobbying influence.",
+    "grammarTitle": "Bulwark against (= rempart contre)",
+    "grammarNote": "'Bulwark' = rempart / garde-fou (vocabulaire soutenu de dissertation).",
+    "vocab": [
+      [
+        "bulwark",
+        "rempart"
+      ],
+      [
+        "lobbying",
+        "lobbying / pression"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-167",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Ce n'est que lorsqu'une crise éclate que l'opinion publique mesure le coût de la négligence passée.",
+    "en": "Only when a crisis erupts does public opinion grasp the cost of past negligence.",
+    "grammarTitle": "Inversion après Only when + proposition",
+    "grammarNote": "Avec 'Only when + sujet + verbe', l'inversion se produit uniquement dans la proposition principale ('does public opinion grasp').",
+    "vocab": [
+      [
+        "only when",
+        "ce n'est que lorsque"
+      ],
+      [
+        "grasp",
+        "saisir / mesurer"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-168",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Les plateformes sociales devraient être tenues responsables de l'amplification de discours haineux.",
+    "en": "Social media platforms ought to be held liable for amplifying hate speech.",
+    "grammarTitle": "Be held liable for + V-ing",
+    "grammarNote": "'Liable for' = juridiquement responsable de (complète bien 'accountable for').",
+    "vocab": [
+      [
+        "held liable for",
+        "tenues responsables de"
+      ],
+      [
+        "hate speech",
+        "discours haineux"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-169",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "Bien que la mondialisation culturelle favorise les échanges, elle menace parfois les langues minoritaires.",
+    "en": "Whereas cultural globalization fosters exchange, it sometimes endangers minority languages.",
+    "grammarTitle": "Whereas (contraste) & endanger",
+    "grammarNote": "'Exchange' au sens d'échanges culturels ou d'idées est souvent singulier indénombrable.",
+    "vocab": [
+      [
+        "endangers",
+        "met en danger / menace"
+      ],
+      [
+        "minority languages",
+        "langues minoritaires"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-170",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "La confiance dans l'expertise scientifique s'érode dès que les conflits d'intérêts ne sont pas déclarés.",
+    "en": "Trust in scientific expertise erodes whenever conflicts of interest go undisclosed.",
+    "grammarTitle": "Go + participe négatif (go undisclosed)",
+    "grammarNote": "'Go unnoticed / go undisclosed / go unpunished' = rester inaperçu / non déclaré / impuni.",
+    "vocab": [
+      [
+        "conflicts of interest",
+        "conflits d'intérêts"
+      ],
+      [
+        "go undisclosed",
+        "restent non déclarés"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-171",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "Les citoyens réclament davantage de droit de regard sur l'implantation des infrastructures énergétiques locales.",
+    "en": "Citizens are calling for a greater say in the siting of local energy infrastructure.",
+    "grammarTitle": "Have a say in (= avoir son mot à dire sur)",
+    "grammarNote": "'Have a say in' = avoir voix au chapitre ; 'call for' = réclamer.",
+    "vocab": [
+      [
+        "a say in",
+        "voix au chapitre dans"
+      ],
+      [
+        "siting",
+        "implantation (lieu)"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-172",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "Dans le sillage des révélations journalistiques, le parlement a ouvert une commission d'enquête indépendante.",
+    "en": "In the wake of journalistic revelations, parliament launched an independent inquiry committee.",
+    "grammarTitle": "In the wake of (= dans le sillage de / à la suite de)",
+    "grammarNote": "'In the wake of' est une transition temporelle et causale très idiomatique en prépa.",
+    "vocab": [
+      [
+        "in the wake of",
+        "à la suite de / dans le sillage de"
+      ],
+      [
+        "inquiry",
+        "enquête"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-173",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "Sans contrepoids institutionnels solides, même une majorité élue peut dériver vers l'autoritarisme.",
+    "en": "Without robust checks and balances, even an elected majority can drift toward authoritarianism.",
+    "grammarTitle": "Checks and balances (= contre-pouvoirs)",
+    "grammarNote": "'Checks and balances' est l'expression constitutionnelle exacte pour l'équilibre des pouvoirs / contre-pouvoirs.",
+    "vocab": [
+      [
+        "checks and balances",
+        "contre-pouvoirs"
+      ],
+      [
+        "drift toward",
+        "dériver vers"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-174",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "Au-delà de la simple performance technique, l'accès universel aux bibliothèques publiques demeure un levier d'émancipation.",
+    "en": "Beyond sheer technical performance, universal access to public libraries remains a lever for emancipation.",
+    "grammarTitle": "Sheer & lever for",
+    "grammarNote": "'Sheer' (= pur / simple) renforce un nom ('sheer performance', 'sheer scale').",
+    "vocab": [
+      [
+        "sheer",
+        "pur / simple"
+      ],
+      [
+        "lever",
+        "levier"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-175",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "Il va sans dire que l'éducation civique constitue le socle d'une citoyenneté éclairée.",
+    "en": "It goes without saying that civic education forms the bedrock of an informed citizenry.",
+    "grammarTitle": "It goes without saying & bedrock",
+    "grammarNote": "'It goes without saying that...' = il va sans dire que... 'Bedrock' = socle / fondement.",
+    "vocab": [
+      [
+        "goes without saying",
+        "va sans dire"
+      ],
+      [
+        "bedrock",
+        "socle"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-176",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Vie quotidienne",
+    "fr": "Loin de rapprocher les générations, l'hyperconnexion domestique isole parfois chaque membre du foyer.",
+    "en": "Far from bringing generations closer together, domestic hyperconnectivity sometimes isolates each household member.",
+    "grammarTitle": "Far from + V-ing & bring closer",
+    "grammarNote": "'Bring people closer together' = rapprocher les gens.",
+    "vocab": [
+      [
+        "bringing closer",
+        "rapprocher"
+      ],
+      [
+        "hyperconnectivity",
+        "hyperconnexion"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-177",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "Toute réforme de la presse publique doit garantir son indépendance éditoriale vis-à-vis du pouvoir exécutif.",
+    "en": "Any reform of public broadcasting must safeguard its editorial independence from the executive branch.",
+    "grammarTitle": "Public broadcasting & safeguard from",
+    "grammarNote": "'Safeguard from' = préserver / protéger de.",
+    "vocab": [
+      [
+        "public broadcasting",
+        "audiovisuel public"
+      ],
+      [
+        "safeguard",
+        "garantir / préserver"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-178",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Les observateurs étrangers ont souligné l'ampleur inédite de la mobilisation étudiante en faveur du climat.",
+    "en": "Foreign observers highlighted the unprecedented scale of student mobilization for the climate.",
+    "grammarTitle": "Highlight & unprecedented scale",
+    "grammarNote": "'Highlight' = mettre en lumière / souligner.",
+    "vocab": [
+      [
+        "highlighted",
+        "ont souligné"
+      ],
+      [
+        "mobilization",
+        "mobilisation"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-179",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "On aurait tort de réduire le succès des populismes à une seule question de pouvoir d'achat.",
+    "en": "It would be misguided to reduce the rise of populism to a mere matter of purchasing power.",
+    "grammarTitle": "Misguided (= erroné / malavisé) & populism",
+    "grammarNote": "'Misguided' permet de critiquer une interprétation sans agressivité.",
+    "vocab": [
+      [
+        "misguided",
+        "erroné / malavisé"
+      ],
+      [
+        "purchasing power",
+        "pouvoir d'achat"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-180",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "L'essor du journalisme collaboratif montre qu'une information vérifiée peut rivaliser avec les rumeurs virales.",
+    "en": "The rise of collaborative journalism shows that fact-checked reporting can rival viral rumors.",
+    "grammarTitle": "Fact-checked & rival (verbe transitif)",
+    "grammarNote": "'Rival' comme verbe est transitif direct ('rival viral rumors', sans préposition).",
+    "vocab": [
+      [
+        "fact-checked",
+        "vérifié (faits)"
+      ],
+      [
+        "rival",
+        "rivaliser avec"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-181",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "fr": "La précarité croissante des travailleurs des plateformes remet en question les fondements du droit du travail.",
+    "en": "The growing precariousness of gig-economy workers challenges the foundations of labor law.",
+    "grammarTitle": "Vocabulaire prépa : gig economy & labor law",
+    "grammarNote": "'Gig economy' désigne l'économie des petits boulots / plateformes numériques (Uber, livraison, etc.).",
+    "vocab": [
+      [
+        "gig economy",
+        "économie des plateformes"
+      ],
+      [
+        "precariousness",
+        "précarité"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-182",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "L'égalité des chances à l'école reste largement théorique tant que les inégalités territoriales persistent.",
+    "en": "Equality of opportunity at school remains largely theoretical as long as territorial disparities persist.",
+    "grammarTitle": "Equality of opportunity (égalité des chances)",
+    "grammarNote": "'Equality of opportunity' (égalité des chances) s'oppose à 'equality of outcome' (égalité de résultat).",
+    "vocab": [
+      [
+        "equality of opportunity",
+        "égalité des chances"
+      ],
+      [
+        "disparities",
+        "disparités"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-183",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Si la productivité horaire a bondi grâce au numérique, les salaires réels ont stagné pour la classe moyenne.",
+    "en": "While hourly productivity surged thanks to digital tools, real wages stagnated for the middle class.",
+    "grammarTitle": "Real wages & stagnate",
+    "grammarNote": "'Real wages' = salaires réels (corrigés de l'inflation).",
+    "vocab": [
+      [
+        "real wages",
+        "salaires réels"
+      ],
+      [
+        "stagnated",
+        "ont stagné"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-184",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "fr": "À défaut de négociations collectives équilibrées, le rapport de force penche inexorablement en faveur du capital.",
+    "en": "In the absence of balanced collective bargaining, the balance of power tilts inexorably toward capital.",
+    "grammarTitle": "Collective bargaining & balance of power",
+    "grammarNote": "'Collective bargaining' = négociation collective ; 'balance of power' = rapport de force.",
+    "vocab": [
+      [
+        "collective bargaining",
+        "négociation collective"
+      ],
+      [
+        "balance of power",
+        "rapport de force"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-185",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Nombre d'économistes estiment que la dette souveraine devrait financer l'investissement vert plutôt que les dépenses courantes.",
+    "en": "Many economists argue that sovereign debt ought to finance green investment rather than current spending.",
+    "grammarTitle": "Sovereign debt & current spending",
+    "grammarNote": "'Current spending' = dépenses courantes de fonctionnement (opposé à 'capital investment').",
+    "vocab": [
+      [
+        "sovereign debt",
+        "dette souveraine"
+      ],
+      [
+        "current spending",
+        "dépenses courantes"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-186",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "fr": "Le droit à la déconnexion peine encore à s'imposer dans les cultures d'entreprise axées sur la réactivité immédiate.",
+    "en": "The right to disconnect still struggles to take hold in corporate cultures centered on instant responsiveness.",
+    "grammarTitle": "Right to disconnect & take hold",
+    "grammarNote": "'Take hold' = s'implanter / s'ancrer ; 'responsiveness' = réactivité.",
+    "vocab": [
+      [
+        "right to disconnect",
+        "droit à la déconnexion"
+      ],
+      [
+        "take hold",
+        "s'implanter"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-187",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Plus le marché du logement est spéculatif, plus les travailleurs essentiels sont contraints de s'éloigner des métropoles.",
+    "en": "The more speculative the housing market becomes, the farther essential workers are forced to move from major cities.",
+    "grammarTitle": "Double comparatif (The more..., the farther...)",
+    "grammarNote": "Attention à la distinction 'farther' (distance géographique) et 'further' (abstrait / supplémentaire).",
+    "vocab": [
+      [
+        "speculative",
+        "spéculatif"
+      ],
+      [
+        "housing market",
+        "marché du logement"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-188",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Il est temps que les entreprises assument le coût environnemental réel de leurs chaînes d'approvisionnement mondiales.",
+    "en": "It is time companies internalized the true environmental cost of their global supply chains.",
+    "grammarTitle": "It is time + Past Simple & internalize",
+    "grammarNote": "En économie, 'internalize externalities' signifie intégrer les coûts cachés dans le prix final.",
+    "vocab": [
+      [
+        "internalized",
+        "internalisent / assument"
+      ],
+      [
+        "supply chains",
+        "chaînes d'approvisionnement"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-189",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Bien que le revenu universel séduise par sa simplicité, son financement suscite de vives réserves budgétaires.",
+    "en": "Although universal basic income appeals for its simplicity, its funding raises serious fiscal concerns.",
+    "grammarTitle": "Universal basic income & fiscal (budgétaire)",
+    "grammarNote": "Faux-ami classique : 'fiscal' en anglais signifie 'budgétaire / lié aux finances publiques' (pas seulement fiscal au sens impôt = 'tax').",
+    "vocab": [
+      [
+        "universal basic income",
+        "revenu universel"
+      ],
+      [
+        "fiscal",
+        "budgétaire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-190",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Les politiques d'austérité menées au lendemain de la crise financière ont durablement fragilisé les hôpitaux publics.",
+    "en": "Austerity policies pursued in the aftermath of the financial crisis lastingly weakened public hospitals.",
+    "grammarTitle": "In the aftermath of (= au lendemain de)",
+    "grammarNote": "'In the aftermath of' s'emploie surtout après une crise, une guerre ou une catastrophe.",
+    "vocab": [
+      [
+        "in the aftermath of",
+        "au lendemain de"
+      ],
+      [
+        "lastingly",
+        "durablement"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-191",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "L'automatisation des tâches administratives pourrait libérer du temps humain, à condition d'éviter une réduction aveugle des effectifs.",
+    "en": "Automating administrative tasks could free up human time, provided blind downsizing is avoided.",
+    "grammarTitle": "Downsizing (= réduction d'effectifs) & provided",
+    "grammarNote": "'Downsizing' = réduction d'effectifs / dégraissage ; 'free up' = libérer (du temps/des ressources).",
+    "vocab": [
+      [
+        "downsizing",
+        "réduction d'effectifs"
+      ],
+      [
+        "free up",
+        "libérer"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-192",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "fr": "Tout porte à croire que la semaine de quatre jours améliore la rétention des talents sans nuire à la productivité.",
+    "en": "There is every indication that a four-day week boosts talent retention without harming productivity.",
+    "grammarTitle": "There is every indication that (= tout porte à croire)",
+    "grammarNote": "Formule de synthèse idéale : 'There is every indication that...' (= tout indique que).",
+    "vocab": [
+      [
+        "every indication",
+        "tout porte à croire"
+      ],
+      [
+        "retention",
+        "rétention / fidélisation"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-193",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "fr": "Faute d'encadrement juridique strict, la sous-traitance en cascade dilue la responsabilité en cas d'accident.",
+    "en": "Without strict legal oversight, multi-tier subcontracting dilutes accountability in the event of an accident.",
+    "grammarTitle": "Subcontracting & accountability",
+    "grammarNote": "'Subcontracting' = sous-traitance ; 'in the event of' = en cas de.",
+    "vocab": [
+      [
+        "subcontracting",
+        "sous-traitance"
+      ],
+      [
+        "in the event of",
+        "en cas de"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-194",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "La réindustrialisation verte exige bien davantage que des incitations fiscales ; elle requiert une vision industrielle cohérente.",
+    "en": "Green reindustrialization demands far more than tax incentives; it requires a coherent industrial strategy.",
+    "grammarTitle": "Tax incentives (= incitations fiscales)",
+    "grammarNote": "'Tax incentives' = incitations/avantages fiscaux (ici on utilise 'tax', pas 'fiscal').",
+    "vocab": [
+      [
+        "tax incentives",
+        "incitations fiscales"
+      ],
+      [
+        "coherent",
+        "cohérente"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-195",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Si la mobilité sociale s'enraye, l'idéal méritocratique risque de perdre toute crédibilité aux yeux de la jeunesse.",
+    "en": "If social mobility stalls, the meritocratic ideal risks losing all credibility in the eyes of youth.",
+    "grammarTitle": "Stall (= s'enrayer/stagner) & meritocratic",
+    "grammarNote": "'Stall' = caler / s'enrayer ; 'in the eyes of' = aux yeux de.",
+    "vocab": [
+      [
+        "stalls",
+        "s'enraye"
+      ],
+      [
+        "social mobility",
+        "mobilité sociale"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-196",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "fr": "Contrairement aux promesses de l'économie collaborative, nombre d'algorithmes gèrent les livreurs de façon opaque.",
+    "en": "Contrary to the promises of the sharing economy, many algorithms manage couriers in an opaque manner.",
+    "grammarTitle": "Contrary to & sharing economy",
+    "grammarNote": "'Sharing economy' = économie collaborative / du partage.",
+    "vocab": [
+      [
+        "contrary to",
+        "contrairement à"
+      ],
+      [
+        "sharing economy",
+        "économie collaborative"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-197",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Nous ne pouvons plus tolérer que des entreprises rentables recourent massivement aux paradis fiscaux tout en sollicitant des aides publiques.",
+    "en": "We can no longer tolerate profitable corporations relying heavily on tax havens while seeking public subsidies.",
+    "grammarTitle": "Tax havens & gérondif possessif/logique",
+    "grammarNote": "'Tax haven' = paradis fiscal (attention : 'haven' = refuge, pas 'heaven' !).",
+    "vocab": [
+      [
+        "tax havens",
+        "paradis fiscaux"
+      ],
+      [
+        "profitable",
+        "rentables"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-198",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "L'essor de la consommation locale traduit un rejet croissant des produits ultra-transformés standardisés.",
+    "en": "The rise of local consumption reflects a growing rejection of standardized ultra-processed foods.",
+    "grammarTitle": "Ultra-processed foods & rejection of",
+    "grammarNote": "'Ultra-processed' = ultra-transformé ; 'translate into / reflect' = traduire (une tendance).",
+    "vocab": [
+      [
+        "ultra-processed",
+        "ultra-transformés"
+      ],
+      [
+        "rejection",
+        "rejet"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-199",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Sans une revalorisation salariale des métiers du soin, la pénurie de personnel soignant ne fera que s'accentuer.",
+    "en": "Without higher pay for care professions, the shortage of healthcare staff will only worsen.",
+    "grammarTitle": "Will only worsen & care professions",
+    "grammarNote": "'Will only worsen' = ne fera qu'empirer / s'accentuer.",
+    "vocab": [
+      [
+        "care professions",
+        "métiers du soin"
+      ],
+      [
+        "worsen",
+        "s'aggraver / s'accentuer"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-200",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "fr": "En privilégiant la rentabilité trimestrielle au détriment de l'innovation durable, certains dirigeants sacrifient l'avenir.",
+    "en": "By prioritizing quarterly returns over sustainable innovation, some executives sacrifice long-term resilience.",
+    "grammarTitle": "Quarterly returns & prioritize A over B",
+    "grammarNote": "On dit 'prioritize A over B' (= privilégier A au détriment de B). 'Returns' = rendements financiers.",
+    "vocab": [
+      [
+        "quarterly returns",
+        "rendements trimestriels"
+      ],
+      [
+        "prioritize ... over",
+        "privilégier ... au détriment de"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-201",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "Le tourisme durable suppose de plafonner la fréquentation des sites fragiles plutôt que de maximiser les recettes à court terme.",
+    "en": "Sustainable tourism entails capping visitor numbers at fragile sites rather than maximizing short-term revenue.",
+    "grammarTitle": "Entail + V-ing & cap (= plafonner)",
+    "grammarNote": "'Cap' comme verbe signifie 'plafonner / limiter'. 'Revenue' (recettes) reste singulier en économie.",
+    "vocab": [
+      [
+        "capping",
+        "plafonner"
+      ],
+      [
+        "revenue",
+        "recettes (singulier)"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-202",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "Quelles que soient les économies réalisées à court terme, la fermeture des lignes ferroviaires rurales isole des bassins de vie entiers.",
+    "en": "Whatever short-term savings may be achieved, closing rural rail lines isolates entire communities.",
+    "grammarTitle": "Whatever + nom + may be & Gérondif sujet",
+    "grammarNote": "'Savings' (économies d'argent) est toujours pluriel en anglais.",
+    "vocab": [
+      [
+        "savings",
+        "économies (argent)"
+      ],
+      [
+        "isolates",
+        "isole"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-203",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "fr": "Les discriminations à l'embauche persistent souvent de manière inconsciente, même au sein d'entreprises dotées de chartes éthiques.",
+    "en": "Hiring discrimination often persists unconsciously, even within firms equipped with ethics charters.",
+    "grammarTitle": "Hiring discrimination (indénombrable) & within",
+    "grammarNote": "'Discrimination' s'emploie généralement au singulier indénombrable en anglais.",
+    "vocab": [
+      [
+        "hiring discrimination",
+        "discrimination à l'embauche"
+      ],
+      [
+        "ethics charters",
+        "chartes éthiques"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-204",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "L'agriculture biologique peine parfois à rivaliser sur les prix lorsque les coûts cachés de l'agriculture intensive restent ignorés.",
+    "en": "Organic farming sometimes struggles to compete on price when the hidden costs of intensive agriculture remain uncounted.",
+    "grammarTitle": "Organic farming & compete on price",
+    "grammarNote": "'Organic' = biologique (pour l'agriculture/alimentation). 'Compete on price' = concurrencer sur les prix.",
+    "vocab": [
+      [
+        "organic farming",
+        "agriculture biologique"
+      ],
+      [
+        "hidden costs",
+        "coûts cachés"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-205",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "fr": "Force est de constater que la flexibilité du travail profite davantage aux cadres qualifiés qu'aux ouvriers.",
+    "en": "It must be recognized that workplace flexibility benefits skilled executives far more than manual workers.",
+    "grammarTitle": "Benefit (transitif direct !) & manual workers",
+    "grammarNote": "Piège fréquent : 'benefit' au sens de 'profiter à' est transitif direct ('benefits workers', sans 'to') ; au sens de 'bénéficier de', on dit 'benefit FROM'.",
+    "vocab": [
+      [
+        "benefits",
+        "profite à"
+      ],
+      [
+        "manual workers",
+        "ouvriers"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-206",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "La flambée des prix de l'énergie pousse certaines familles à arbitrer entre le chauffage et l'alimentation.",
+    "en": "Soaring energy prices are forcing some households to choose between heating and food.",
+    "grammarTitle": "Soaring & force someone to choose",
+    "grammarNote": "'Fuel poverty' désigne justement la précarité énergétique.",
+    "vocab": [
+      [
+        "soaring",
+        "qui flambent"
+      ],
+      [
+        "heating",
+        "chauffage"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-207",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Le libre-échange sans clauses environnementales miroirs expose les producteurs locaux à une concurrence déloyale.",
+    "en": "Free trade without mirror environmental clauses exposes local producers to unfair competition.",
+    "grammarTitle": "Unfair competition & mirror clauses",
+    "grammarNote": "'Unfair competition' = concurrence déloyale.",
+    "vocab": [
+      [
+        "unfair competition",
+        "concurrence déloyale"
+      ],
+      [
+        "mirror clauses",
+        "clauses miroirs"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-208",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Vie quotidienne",
+    "fr": "De nombreux jeunes diplômés renoncent aux grandes métropoles en raison d'un coût du logement devenu prohibitif.",
+    "en": "Many young graduates turn away from major cities because housing costs have become prohibitive.",
+    "grammarTitle": "Prohibitive & turn away from",
+    "grammarNote": "'Prohibitive' = prohibitif / dissuasif (pour un prix).",
+    "vocab": [
+      [
+        "prohibitive",
+        "prohibitif"
+      ],
+      [
+        "turn away from",
+        "renoncent à / se détournent de"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-209",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "L'investissement public dans la petite enfance génère l'un des meilleurs retours sociaux sur le long terme.",
+    "en": "Public investment in early childhood yields one of the highest long-term social returns.",
+    "grammarTitle": "Yield (= produire un rendement) & early childhood",
+    "grammarNote": "'To yield' = produire / rapporter (un résultat ou un rendement).",
+    "vocab": [
+      [
+        "yields",
+        "produit / rapporte"
+      ],
+      [
+        "early childhood",
+        "petite enfance"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-210",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "Même si la concurrence stimule parfois la baisse des tarifs aériens, elle encourage aussi une hypermobilité incompatible avec les objectifs climatiques.",
+    "en": "Even though competition sometimes drives down airfares, it also fuels hypermobility at odds with climate targets.",
+    "grammarTitle": "At odds with (= en contradiction avec)",
+    "grammarNote": "'At odds with' est une locution B2 très élégante pour signifier 'en contradiction avec / incompatible avec'.",
+    "vocab": [
+      [
+        "at odds with",
+        "en contradiction avec"
+      ],
+      [
+        "drives down",
+        "fait baisser"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-211",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Le principe de précaution exige de suspendre certaines expérimentations tant que leurs effets irréversibles demeurent inconnus.",
+    "en": "The precautionary principle requires halting certain experiments as long as their irreversible effects remain unknown.",
+    "grammarTitle": "Precautionary principle & require + V-ing",
+    "grammarNote": "'Precautionary principle' = principe de précaution ; 'halt' = suspendre / arrêter.",
+    "vocab": [
+      [
+        "precautionary principle",
+        "principe de précaution"
+      ],
+      [
+        "halting",
+        "suspendre"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-212",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "La thérapie génique ouvre des perspectives inédites contre les maladies rares, à condition d'éviter toute dérive eugéniste.",
+    "en": "Gene therapy opens unprecedented prospects against rare diseases, provided any eugenic drift is prevented.",
+    "grammarTitle": "Provided + passif & gene therapy",
+    "grammarNote": "'Gene therapy' = thérapie génique ; 'eugenic drift' = dérive eugéniste.",
+    "vocab": [
+      [
+        "gene therapy",
+        "thérapie génique"
+      ],
+      [
+        "drift",
+        "dérive"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-213",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Non seulement les grands modèles de langage consomment des quantités colossales d'eau pour le refroidissement, mais leur opacité inquiète les chercheurs.",
+    "en": "Not only do large language models consume vast amounts of water for cooling, but their opacity also worries researchers.",
+    "grammarTitle": "Inversion (Not only do...) & opacity",
+    "grammarNote": "'Large language models (LLMs)' = grands modèles de langage ; 'cooling' = refroidissement.",
+    "vocab": [
+      [
+        "cooling",
+        "refroidissement"
+      ],
+      [
+        "opacity",
+        "opacité"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-214",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Il est impératif que les essais cliniques incluent des populations représentatives afin de garantir l'équité des traitements.",
+    "en": "It is imperative that clinical trials include diverse populations to ensure treatment equity.",
+    "grammarTitle": "Subjonctif (that trials include) & clinical trials",
+    "grammarNote": "'Clinical trials' = essais cliniques ; 'ensure' = garantir (vs 'insure' = assurer contre un risque).",
+    "vocab": [
+      [
+        "clinical trials",
+        "essais cliniques"
+      ],
+      [
+        "ensure",
+        "garantir"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-215",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "La suspension temporaire des brevets pharmaceutiques lors d'une pandémie mondiale reste un sujet vivement débattu.",
+    "en": "Temporarily waiving pharmaceutical patents during a global pandemic remains a fiercely debated issue.",
+    "grammarTitle": "Patent waiver / waive patents & gérondif sujet",
+    "grammarNote": "'Waive a patent' = lever / suspendre un brevet.",
+    "vocab": [
+      [
+        "waiving patents",
+        "suspendre les brevets"
+      ],
+      [
+        "fiercely debated",
+        "vivement débattu"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-216",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "S'en remettre aveuglément aux diagnostics automatisés risque d'atrophiier la vigilance clinique des jeunes médecins.",
+    "en": "Relying blindly on automated diagnostics risks eroding the clinical vigilance of young doctors.",
+    "grammarTitle": "Gérondif sujet (Relying...) & risk + V-ing",
+    "grammarNote": "'Rely on' = s'en remettre à / compter sur.",
+    "vocab": [
+      [
+        "relying blindly on",
+        "s'en remettre aveuglément à"
+      ],
+      [
+        "diagnostics",
+        "diagnostics"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-217",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Jamais la frontière entre l'outil d'aide à la décision et la délégation totale de jugement n'a semblé aussi floue.",
+    "en": "Never has the line between a decision-support tool and the total delegation of judgment looked so blurred.",
+    "grammarTitle": "Inversion (Never has...) & blurred",
+    "grammarNote": "'Look blurred' = sembler flou.",
+    "vocab": [
+      [
+        "decision-support",
+        "aide à la décision"
+      ],
+      [
+        "blurred",
+        "floue"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-218",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "La lenteur apparente de la relecture par les pairs constitue en réalité la principale garantie de fiabilité scientifique.",
+    "en": "The apparent slowness of peer review actually constitutes the main safeguard of scientific reliability.",
+    "grammarTitle": "Peer review & actually",
+    "grammarNote": "'Peer review' = évaluation / relecture par les pairs.",
+    "vocab": [
+      [
+        "peer review",
+        "relecture par les pairs"
+      ],
+      [
+        "reliability",
+        "fiabilité"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-219",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "À peine un nouvel outil de détection des textes générés par IA est-il lancé qu'il est déjà contourné.",
+    "en": "No sooner is a new AI-text detection tool released than it is already bypassed.",
+    "grammarTitle": "Inversion au présent (No sooner is ... than)",
+    "grammarNote": "'No sooner ... than' s'utilise aussi au présent pour une vérité répétée/générale ('is ... released than').",
+    "vocab": [
+      [
+        "bypassed",
+        "contourné"
+      ],
+      [
+        "released",
+        "lancé / publié"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-220",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Les neurosciences soulèvent des questions juridiques inédites quant au libre arbitre et à la responsabilité pénale.",
+    "en": "Neuroscience raises unprecedented legal questions regarding free will and criminal liability.",
+    "grammarTitle": "Indénombrable 'neuroscience' & free will",
+    "grammarNote": "Les noms de sciences en -s (physics, economics, ethics, linguistics) prennent un verbe au SINGULIER ; 'neuroscience' est aussi singulier.",
+    "vocab": [
+      [
+        "free will",
+        "libre arbitre"
+      ],
+      [
+        "criminal liability",
+        "responsabilité pénale"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-221",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Sans données d'entraînement diversifiées et auditées, les systèmes de reconnaissance faciale reproduisent des erreurs discriminatoires.",
+    "en": "Without diverse and audited training datasets, facial recognition systems perpetuate discriminatory errors.",
+    "grammarTitle": "Perpetuate & facial recognition",
+    "grammarNote": "'Perpetuate' = perpétuer / reproduire durablement.",
+    "vocab": [
+      [
+        "facial recognition",
+        "reconnaissance faciale"
+      ],
+      [
+        "perpetuate",
+        "perpétuent"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-222",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Pour peu que la recherche publique soit soumise aux seuls impératifs de rentabilité immédiate, les sciences fondamentales déclineront.",
+    "en": "Provided public research is driven solely by short-term profitability, basic sciences will decline.",
+    "grammarTitle": "Provided + passif présent -> futur",
+    "grammarNote": "'Driven by' = guidé / dicté par ; 'solely' = uniquement.",
+    "vocab": [
+      [
+        "driven by",
+        "guidé par"
+      ],
+      [
+        "profitability",
+        "rentabilité"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-223",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Le consentement éclairé des patients ne saurait se réduire à un long formulaire numérique coché à la hâte.",
+    "en": "Patients' informed consent cannot be reduced to a lengthy digital form ticked in haste.",
+    "grammarTitle": "Informed consent & in haste",
+    "grammarNote": "'Informed consent' = consentement éclairé (terme bioéthique clé).",
+    "vocab": [
+      [
+        "informed consent",
+        "consentement éclairé"
+      ],
+      [
+        "in haste",
+        "à la hâte"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-224",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Bien que la robotique chirurgicale améliore la précision des gestes, elle accentue parfois les écarts d'équipement entre hôpitaux.",
+    "en": "While surgical robotics enhances procedural precision, it sometimes widens equipment gaps between hospitals.",
+    "grammarTitle": "Singulier de 'robotics' & enhance",
+    "grammarNote": "Comme 'physics' ou 'economics', 'robotics' finit par -s mais prend un verbe singulier ('enhances').",
+    "vocab": [
+      [
+        "robotics",
+        "robotique (singulier)"
+      ],
+      [
+        "enhances",
+        "améliore / renforce"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-225",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Si les chercheurs avaient disposé d'infrastructures de calcul européennes souveraines, ils dépendraient moins des géants étrangers.",
+    "en": "Had researchers had access to sovereign European computing infrastructure, they would depend less on foreign giants.",
+    "grammarTitle": "Conditionnel mixte inversé (Had researchers had...)",
+    "grammarNote": "Ne pas avoir peur de doubler 'had' : le premier est l'auxiliaire inversé, le second le participe passé de 'have' ('Had S had...').",
+    "vocab": [
+      [
+        "computing infrastructure",
+        "infrastructure de calcul"
+      ],
+      [
+        "sovereign",
+        "souverain(e)"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-226",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Les progrès de la médecine prédictive posent la question de l'accès à l'assurance pour les personnes génétiquement prédisposées.",
+    "en": "Advances in predictive medicine raise the question of insurance access for genetically predisposed individuals.",
+    "grammarTitle": "Advances in & predisposed",
+    "grammarNote": "On peut dire 'Progress in' (toujours singulier) ou 'Advances in' (pluriel = avancées).",
+    "vocab": [
+      [
+        "advances in",
+        "avancées dans"
+      ],
+      [
+        "predisposed",
+        "prédisposées"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-227",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Les systèmes autonomes militaires franchissent un seuil moral majeur en retirant la décision humaine de l'usage de la force.",
+    "en": "Autonomous weapons systems cross a major moral threshold by removing human judgment from the use of force.",
+    "grammarTitle": "Cross a threshold & by + V-ing",
+    "grammarNote": "'Cross a threshold' = franchir un seuil ; 'lethal autonomous weapons' = armes létales autonomes.",
+    "vocab": [
+      [
+        "threshold",
+        "seuil"
+      ],
+      [
+        "use of force",
+        "usage de la force"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-228",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "À trop vouloir imiter l'intelligence humaine, on risque d'oublier que les machines raisonnent sans conscience ni intention.",
+    "en": "By trying too hard to mimic human intelligence, we risk forgetting that machines operate without consciousness or intent.",
+    "grammarTitle": "Mimic (= imiter) & forget (sans 'to')",
+    "grammarNote": "'Risk + V-ing' ('risk forgetting') ; 'mimic' = imiter mécaniquement.",
+    "vocab": [
+      [
+        "mimic",
+        "imiter / singer"
+      ],
+      [
+        "intent",
+        "intention"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-229",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "La science ouverte accélère la diffusion des découvertes, tout en exigeant de nouveaux mécanismes contre les revues prédatrices.",
+    "en": "Open science speeds up the dissemination of discoveries while requiring new safeguards against predatory journals.",
+    "grammarTitle": "Dissemination & while + V-ing",
+    "grammarNote": "'Dissemination' = diffusion (des savoirs ou résultats) ; 'predatory journals' = revues prédatrices.",
+    "vocab": [
+      [
+        "dissemination",
+        "diffusion"
+      ],
+      [
+        "safeguards",
+        "garde-fous"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-230",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Plus les outils d'IA générative facilitent la création de contenus synthétiques, plus l'authentification des sources devient cruciale.",
+    "en": "The easier generative AI tools make the creation of synthetic content, the more crucial source authentication becomes.",
+    "grammarTitle": "Double comparatif (The easier..., the more crucial...)",
+    "grammarNote": "Structure dense et précise : 'The easier X makes Y, the more crucial Z becomes'.",
+    "vocab": [
+      [
+        "synthetic content",
+        "contenus synthétiques"
+      ],
+      [
+        "authentication",
+        "authentification"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-231",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "On s'interroge souvent sur la part d'intuition et de sérendipité dans les grandes révolutions scientifiques.",
+    "en": "People often wonder about the role of intuition and serendipity in major scientific revolutions.",
+    "grammarTitle": "Serendipity (= sérendipité / hasard fécond)",
+    "grammarNote": "'Serendipity' (trouver par heureux hasard ce qu'on ne cherchait pas) est un mot très apprécié en khôlle scientifique.",
+    "vocab": [
+      [
+        "serendipity",
+        "sérendipité"
+      ],
+      [
+        "wonder about",
+        "s'interroger sur"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-232",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Il est grand temps que les cursus d'ingénieurs intègrent obligatoirement des enseignements approfondis en éthique et sciences sociales.",
+    "en": "It is high time engineering curricula included mandatory in-depth courses in ethics and social sciences.",
+    "grammarTitle": "It is high time + Past Simple & pluriel irrégulier curricula",
+    "grammarNote": "Le pluriel latin de 'curriculum' est 'curricula' (ou 'curriculums'). 'Ethics' = l'éthique.",
+    "vocab": [
+      [
+        "curricula",
+        "programmes / cursus"
+      ],
+      [
+        "mandatory",
+        "obligatoire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-233",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Sous couvert d'objectivité mathématique, un algorithme peut entériner et légitimer des biais sociaux préexistants.",
+    "en": "Under the guise of mathematical objectivity, an algorithm can entrench and legitimize preexisting social biases.",
+    "grammarTitle": "Under the guise of & entrench (= ancrer)",
+    "grammarNote": "'Under the guise of' = sous couvert de ; 'entrench' = enraciner / figer.",
+    "vocab": [
+      [
+        "under the guise of",
+        "sous couvert de"
+      ],
+      [
+        "entrench",
+        "ancrer / consolider"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-234",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "La conquête spatiale privée stimule l'innovation technologique, mais pose le problème de la privatisation de l'orbite basse.",
+    "en": "Private spaceflight stimulates technological innovation, yet raises the issue of privatizing low Earth orbit.",
+    "grammarTitle": "Spaceflight & low Earth orbit",
+    "grammarNote": "'Low Earth orbit' = orbite terrestre basse ; 'yet' = pourtant / mais.",
+    "vocab": [
+      [
+        "spaceflight",
+        "vol spatial / conquête spatiale"
+      ],
+      [
+        "low Earth orbit",
+        "orbite basse"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-235",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "D'ici dix ans, la médecine personnalisée fondée sur le séquençage génétique sera devenue beaucoup plus courante.",
+    "en": "Ten years from now, personalized medicine based on genetic sequencing will have become far more widespread.",
+    "grammarTitle": "Future Perfect (will have become) & widespread",
+    "grammarNote": "'Widespread' = répandu / courant.",
+    "vocab": [
+      [
+        "genetic sequencing",
+        "séquençage génétique"
+      ],
+      [
+        "widespread",
+        "répandu"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-236",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "Rares sont les professions créatives qui n'aient pas été bousculées par l'arrivée des générateurs d'images et de textes.",
+    "en": "Few creative professions have remained untouched by the arrival of image and text generators.",
+    "grammarTitle": "Few (sens restrictif) & untouched by",
+    "grammarNote": "Sans 'a', 'few' a un sens négatif/restrictif ('rares sont les...').",
+    "vocab": [
+      [
+        "few",
+        "rares sont les"
+      ],
+      [
+        "untouched by",
+        "épargnées par"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-237",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Les travailleurs chargés d'annoter les données d'entraînement restent souvent invisibilisés et sous-payés dans les pays du Sud.",
+    "en": "Workers tasked with annotating training data often remain invisible and underpaid in the Global South.",
+    "grammarTitle": "Tasked with + V-ing & Global South",
+    "grammarNote": "'The Global South' est le terme académique actuel pour les pays en développement / du Sud.",
+    "vocab": [
+      [
+        "tasked with",
+        "chargés de"
+      ],
+      [
+        "Global South",
+        "pays du Sud"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-238",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "L'expérimentation animale diminue progressivement à mesure que les organoïdes cultivés en laboratoire gagnent en fiabilité.",
+    "en": "Animal testing is steadily declining as lab-grown organoids gain in reliability.",
+    "grammarTitle": "As (= à mesure que) & lab-grown",
+    "grammarNote": "'As' exprime très bien la simultanéité proportionnelle ('à mesure que').",
+    "vocab": [
+      [
+        "steadily declining",
+        "diminue régulièrement"
+      ],
+      [
+        "lab-grown",
+        "cultivés en laboratoire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-239",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Bien que la numérisation des dossiers médicaux facilite la coordination des soins, elle expose les hôpitaux aux rançongiciels.",
+    "en": "Although digitizing medical records streamlines care coordination, it exposes hospitals to ransomware attacks.",
+    "grammarTitle": "Streamline (= fluidifier/rationaliser) & ransomware",
+    "grammarNote": "'Streamline' = rationaliser / rendre plus fluide.",
+    "vocab": [
+      [
+        "streamlines",
+        "fluidifie / rationalise"
+      ],
+      [
+        "ransomware",
+        "rançongiciel"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-240",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Le progrès technique n'est moralement neutre que si la société conserve la maîtrise démocratique de ses usages.",
+    "en": "Technological progress is morally neutral only if society retains democratic control over its uses.",
+    "grammarTitle": "Retain control over & neutral",
+    "grammarNote": "Une thèse classique de philosophie des techniques parfaite pour conclure une khôlle.",
+    "vocab": [
+      [
+        "retains control",
+        "conserve la maîtrise"
+      ],
+      [
+        "morally neutral",
+        "moralement neutre"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-241",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Les assistants vocaux modifient subtilement notre rapport au langage, habituant parfois les enfants à donner des ordres secs.",
+    "en": "Voice assistants subtly alter our relationship to language, sometimes accustoming children to issuing blunt commands.",
+    "grammarTitle": "Accustom someone to + V-ing",
+    "grammarNote": "Comme 'be used to', 'accustom someone to' prend V-ing après 'to' ('to issuing').",
+    "vocab": [
+      [
+        "accustoming ... to",
+        "habituant ... à"
+      ],
+      [
+        "blunt",
+        "brusque / sec"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-242",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "En l'absence de coopération internationale, une course dérégulée à la suprématie technologique profiterait aux acteurs les moins scrupuleux.",
+    "en": "Absent international cooperation, an unregulated race for technological supremacy would favor the least scrupulous actors.",
+    "grammarTitle": "Préposition soutenue 'Absent' (= en l'absence de)",
+    "grammarNote": "'Absent + nom' en début de phrase est une formule juridique/académique concise pour 'In the absence of'.",
+    "vocab": [
+      [
+        "absent",
+        "en l'absence de"
+      ],
+      [
+        "unregulated",
+        "non régulée"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-243",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "Ce que les géants de la tech présentent comme une inévitabilité historique relève souvent de choix politiques délibérés.",
+    "en": "What tech giants portray as historical inevitability often stems from deliberate policy choices.",
+    "grammarTitle": "Portray as (= présenter comme) & stem from",
+    "grammarNote": "'Portray as' = dépeindre / présenter comme.",
+    "vocab": [
+      [
+        "portray as",
+        "présentent comme"
+      ],
+      [
+        "deliberate",
+        "délibéré"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-244",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Si les brevets sur les semences résistantes à la sécheresse restaient verrouillés, les petits agriculteurs en seraient exclus.",
+    "en": "Were patents on drought-resistant seeds to remain locked down, smallholder farmers would be excluded from them.",
+    "grammarTitle": "Inversion conditionnelle (Were patents to remain...)",
+    "grammarNote": "'Smallholder farmers' = petits exploitants agricoles.",
+    "vocab": [
+      [
+        "smallholder farmers",
+        "petits agriculteurs"
+      ],
+      [
+        "drought-resistant",
+        "résistant à la sécheresse"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-245",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "fr": "On ne saurait confondre la puissance statistique d'un modèle avec une compréhension réelle du monde physique.",
+    "en": "Statistical power in a model must not be mistaken for genuine comprehension of the physical world.",
+    "grammarTitle": "Mistake A for B (passif : be mistaken for)",
+    "grammarNote": "'Mistake A for B' = confondre A avec B.",
+    "vocab": [
+      [
+        "mistaken for",
+        "confondu avec"
+      ],
+      [
+        "comprehension",
+        "compréhension"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-246",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "L'écoblanchiment pratiqué par certaines multinationales détourne l'attention de leur refus de transformer leur modèle économique.",
+    "en": "Greenwashing practiced by certain multinationals diverts attention from their refusal to transform their business model.",
+    "grammarTitle": "Vocabulaire prépa : greenwashing & divert attention",
+    "grammarNote": "'Greenwashing' = écoblanchiment ; 'divert attention from' = détourner l'attention de.",
+    "vocab": [
+      [
+        "greenwashing",
+        "écoblanchiment"
+      ],
+      [
+        "diverts attention",
+        "détourne l'attention"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-247",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "La sobriété énergétique ne signifie pas un retour en arrière, mais une réorganisation rationnelle de nos besoins collectifs.",
+    "en": "Energy sobriety does not mean going backward, but rather a rational reorganization of our collective needs.",
+    "grammarTitle": "Not ... but rather & going backward",
+    "grammarNote": "'Go backward' = régresser / revenir en arrière.",
+    "vocab": [
+      [
+        "going backward",
+        "retour en arrière"
+      ],
+      [
+        "collective needs",
+        "besoins collectifs"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-248",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "En dépit des promesses répétées lors des sommets climatiques, les subventions aux énergies fossiles demeurent considérables.",
+    "en": "Despite repeated pledges at climate summits, fossil fuel subsidies remain substantial.",
+    "grammarTitle": "Despite & fossil fuel subsidies",
+    "grammarNote": "'Substantial' = considérable / substantiel.",
+    "vocab": [
+      [
+        "fossil fuel subsidies",
+        "subventions aux énergies fossiles"
+      ],
+      [
+        "substantial",
+        "considérables"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-249",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "La transition vers les véhicules électriques ne saurait suffire si le poids moyen des voitures continue d'augmenter.",
+    "en": "Shifting to electric vehicles cannot suffice if the average weight of cars keeps rising.",
+    "grammarTitle": "Gérondif sujet (Shifting to) & keep + V-ing",
+    "grammarNote": "Critique précise de l'effet taille/SUV très appréciée en khôlle sur les transports.",
+    "vocab": [
+      [
+        "shifting to",
+        "passer à"
+      ],
+      [
+        "average weight",
+        "poids moyen"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-250",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Si les océans absorbent près d'un quart du dioxyde de carbone émis, cette acidification fragilise déjà les récifs coralliens.",
+    "en": "While oceans absorb nearly a quarter of emitted carbon dioxide, this acidification is already weakening coral reefs.",
+    "grammarTitle": "While (concession/contraste) & coral reefs",
+    "grammarNote": "'Coral reefs' = récifs coralliens ; 'acidification' = acidification.",
+    "vocab": [
+      [
+        "coral reefs",
+        "récifs coralliens"
+      ],
+      [
+        "carbon dioxide",
+        "dioxyde de carbone"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-251",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "La géo-ingénierie solaire soulève l'inquiétude majeure d'effets secondaires climatiques incontrôlables et inégalement répartis.",
+    "en": "Solar geoengineering raises the major concern of uncontrollable and unevenly distributed climate side effects.",
+    "grammarTitle": "Geoengineering & unevenly distributed",
+    "grammarNote": "'Unevenly distributed' = inégalement réparti.",
+    "vocab": [
+      [
+        "geoengineering",
+        "géo-ingénierie"
+      ],
+      [
+        "unevenly",
+        "inégalement"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-252",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Il est essentiel que la restauration des écosystèmes aille de pair avec la protection des droits des peuples autochtones.",
+    "en": "It is crucial that ecosystem restoration go hand in hand with protecting indigenous peoples' rights.",
+    "grammarTitle": "Subjonctif (go) & indigenous peoples",
+    "grammarNote": "'Indigenous peoples' (avec -s à 'peoples' pour désigner plusieurs peuples distincts).",
+    "vocab": [
+      [
+        "indigenous peoples",
+        "peuples autochtones"
+      ],
+      [
+        "restoration",
+        "restauration"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-253",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "L'intermittence du solaire et de l'éolien impose d'associer pilotabilité nucléaire, hydraulique et stockage par batteries.",
+    "en": "The intermittency of solar and wind power requires combining dispatchable nuclear, hydro, and battery storage.",
+    "grammarTitle": "Dispatchable (= pilotable) & intermittency",
+    "grammarNote": "'Dispatchable' est le terme technique exact en énergie pour désigner une source pilotable à la demande.",
+    "vocab": [
+      [
+        "intermittency",
+        "intermittence"
+      ],
+      [
+        "dispatchable",
+        "pilotable"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-254",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "La rénovation thermique des passoires énergétiques constitue simultanément un levier climatique et une mesure de justice sociale.",
+    "en": "Retrofitting poorly insulated homes simultaneously serves as a climate lever and a social justice measure.",
+    "grammarTitle": "Retrofit (= rénover thermiquement) & poorly insulated",
+    "grammarNote": "'Retrofit' est le verbe clé pour la rénovation énergétique des bâtiments existants.",
+    "vocab": [
+      [
+        "retrofitting",
+        "rénover thermiquement"
+      ],
+      [
+        "poorly insulated",
+        "mal isolés (passoires)"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-255",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Plus les événements météorologiques extrêmes se multiplient, plus le coût des assurances habitation devient insoutenable.",
+    "en": "The more frequent extreme weather events become, the more unaffordable home insurance grows.",
+    "grammarTitle": "Double comparatif & unaffordable",
+    "grammarNote": "'Unaffordable' = hors de prix / inabordable.",
+    "vocab": [
+      [
+        "extreme weather events",
+        "événements météo extrêmes"
+      ],
+      [
+        "unaffordable",
+        "inabordable"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-256",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "Les pays en développement refusent légitimement de sacrifier leur accès à l'électricité sans solidarité financière du Nord.",
+    "en": "Developing nations legitimately refuse to sacrifice their access to electricity without financial solidarity from the North.",
+    "grammarTitle": "Developing nations & legitimately",
+    "grammarNote": "Vocabulaire de justice climatique : 'loss and damage' (pertes et préjudices), 'climate finance'.",
+    "vocab": [
+      [
+        "developing nations",
+        "pays en développement"
+      ],
+      [
+        "solidarity",
+        "solidarité"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-257",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "En remplaçant des vols intérieurs courts par des liaisons ferroviaires rapides, on réduit nettement les émissions par passager.",
+    "en": "By replacing short domestic flights with high-speed rail links, emissions per passenger are sharply reduced.",
+    "grammarTitle": "Domestic flights & rail links",
+    "grammarNote": "'Domestic flight' = vol intérieur ; 'short-haul flight' = vol court-courrier.",
+    "vocab": [
+      [
+        "domestic flights",
+        "vols intérieurs"
+      ],
+      [
+        "rail links",
+        "liaisons ferroviaires"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-258",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "La déforestation importée liée au soja et à l'huile de palme demeure largement invisible pour le consommateur final.",
+    "en": "Imported deforestation linked to soy and palm oil remains largely invisible to the end consumer.",
+    "grammarTitle": "Imported deforestation & end consumer",
+    "grammarNote": "'End consumer' = consommateur final.",
+    "vocab": [
+      [
+        "imported deforestation",
+        "déforestation importée"
+      ],
+      [
+        "end consumer",
+        "consommateur final"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-259",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "Si l'on n'avait pas négligé la maintenance du parc nucléaire pendant une décennie, la sécurité d'approvisionnement aurait été meilleure.",
+    "en": "Had maintenance of the nuclear fleet not been neglected for a decade, supply security would have been stronger.",
+    "grammarTitle": "Conditionnel Type 3 passif inversé négatif",
+    "grammarNote": "Remarquez la place de 'not' avant 'been' : 'Had [sujet] not been neglected...'.",
+    "vocab": [
+      [
+        "nuclear fleet",
+        "parc nucléaire"
+      ],
+      [
+        "supply security",
+        "sécurité d'approvisionnement"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-260",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Le recyclage chimique des plastiques complexes consomme encore beaucoup trop d'énergie pour être viable à grande échelle.",
+    "en": "Chemical recycling of complex plastics still consumes far too much energy to be viable at scale.",
+    "grammarTitle": "At scale (= à grande échelle) & far too much",
+    "grammarNote": "'At scale' = à grande échelle (très courant dans les articles scientifiques et économiques).",
+    "vocab": [
+      [
+        "at scale",
+        "à grande échelle"
+      ],
+      [
+        "viable",
+        "viable"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-261",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "Les réserves mondiales de cuivre devront augmenter drastiquement pour répondre aux besoins de l'électrification.",
+    "en": "Global copper supplies will have to expand drastically to meet the needs of electrification.",
+    "grammarTitle": "Meet the needs of (= répondre aux besoins de)",
+    "grammarNote": "Collocation indispensable : 'meet the needs / meet demand' (répondre aux besoins / à la demande).",
+    "vocab": [
+      [
+        "copper",
+        "cuivre"
+      ],
+      [
+        "meet the needs",
+        "répondre aux besoins"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-262",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "L'agriculture régénératrice restaure la fertilité des sols tout en améliorant leur capacité à retenir l'eau de pluie.",
+    "en": "Regenerative agriculture restores soil fertility while improving its capacity to retain rainwater.",
+    "grammarTitle": "Soil fertility & rainwater",
+    "grammarNote": "'Regenerative agriculture' = agriculture régénératrice ; 'soil' = sol (terre arable).",
+    "vocab": [
+      [
+        "soil fertility",
+        "fertilité des sols"
+      ],
+      [
+        "retain",
+        "retenir"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-263",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "fr": "Ce n'est qu'à travers une tarification du carbone socialement compensée qu'on évitera un rejet populaire massif.",
+    "en": "Only through socially compensated carbon pricing will widespread public backlash be avoided.",
+    "grammarTitle": "Inversion après Only through + nom",
+    "grammarNote": "'Only through + nom' entraîne l'inversion dans la principale ('will ... backlash be avoided').",
+    "vocab": [
+      [
+        "carbon pricing",
+        "tarification du carbone"
+      ],
+      [
+        "only through",
+        "ce n'est qu'à travers"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-264",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "Les réseaux de chaleur urbains permettent de valoriser la chaleur fatale issue des centres de données ou de l'industrie.",
+    "en": "District heating networks make it possible to recover waste heat from data centers or industry.",
+    "grammarTitle": "District heating & waste heat (chaleur fatale)",
+    "grammarNote": "'District heating' = réseau de chaleur urbain ; 'waste heat' = chaleur fatale/perdue.",
+    "vocab": [
+      [
+        "district heating",
+        "réseau de chaleur urbain"
+      ],
+      [
+        "waste heat",
+        "chaleur fatale"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-265",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "La raréfaction des ressources en eau douce transforme certains bassins fluviaux en foyers de tensions géopolitiques.",
+    "en": "Freshwater scarcity is turning certain river basins into flashpoints of geopolitical tension.",
+    "grammarTitle": "Scarcity & flashpoints",
+    "grammarNote": "'Scarcity' = rareté / pénurie structurelle ; 'flashpoint' = foyer de tension.",
+    "vocab": [
+      [
+        "scarcity",
+        "raréfaction / pénurie"
+      ],
+      [
+        "flashpoints",
+        "foyers de tension"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-266",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "De nombreux urbanistes préconisent de désimperméabiliser les cours d'école pour créer des îlots de fraîcheur urbains.",
+    "en": "Many urban planners advocate unsealing schoolyards to create urban cooling islands.",
+    "grammarTitle": "Advocate + V-ing & cooling islands",
+    "grammarNote": "'Advocate' (= préconiser) est suivi de V-ing ou d'un nom, jamais de 'to + BV'.",
+    "vocab": [
+      [
+        "advocate",
+        "préconisent"
+      ],
+      [
+        "cooling islands",
+        "îlots de fraîcheur"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-267",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "L'hydrogène vert reste une ressource précieuse qu'il convient de réserver aux usages industriels impossibles à électrifier directement.",
+    "en": "Green hydrogen remains a scarce resource best reserved for industrial uses impossible to electrify directly.",
+    "grammarTitle": "Best reserved for (ellipse passive) & scarce",
+    "grammarNote": "'Best reserved for' = qu'il vaut mieux réserver à (tournure concise très naturelle).",
+    "vocab": [
+      [
+        "scarce",
+        "rare / précieux"
+      ],
+      [
+        "electrify",
+        "électrifier"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-268",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Bien que les accords volontaires des entreprises soient utiles, ils ne sauraient remplacer des règles contraignantes.",
+    "en": "Helpful though voluntary corporate pledges may be, they cannot substitute for binding regulations.",
+    "grammarTitle": "Concession (Adj + though + S + may be)",
+    "grammarNote": "'Substitute for' = remplacer / se substituer à.",
+    "vocab": [
+      [
+        "substitute for",
+        "se substituer à"
+      ],
+      [
+        "binding regulations",
+        "règles contraignantes"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-269",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "La pêche industrielle excessive menace non seulement la biodiversité marine, mais aussi la sécurité alimentaire des communautés côtières.",
+    "en": "Industrial overfishing threatens not only marine biodiversity, but also the food security of coastal communities.",
+    "grammarTitle": "Overfishing & food security",
+    "grammarNote": "'Overfishing' = surpêche ; 'food security' = sécurité alimentaire.",
+    "vocab": [
+      [
+        "overfishing",
+        "surpêche"
+      ],
+      [
+        "food security",
+        "sécurité alimentaire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-270",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "À force de reporter les investissements dans les digues littorales, certaines municipalités se sont exposées à des submersions coûteuses.",
+    "en": "By repeatedly deferring investments in coastal seawalls, some municipalities exposed themselves to costly flooding.",
+    "grammarTitle": "Defer (= reporter) & seawalls",
+    "grammarNote": "'Defer' est un synonyme soutenu de 'postpone / put off'.",
+    "vocab": [
+      [
+        "deferring",
+        "reporter"
+      ],
+      [
+        "seawalls",
+        "digues"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-271",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "Les pompes à chaleur offrent un rendement énergétique nettement supérieur aux chaudières à gaz traditionnelles.",
+    "en": "Heat pumps deliver significantly higher energy efficiency than traditional gas boilers.",
+    "grammarTitle": "Heat pumps & gas boilers",
+    "grammarNote": "'Heat pump' = pompe à chaleur ; 'boiler' = chaudière.",
+    "vocab": [
+      [
+        "heat pumps",
+        "pompes à chaleur"
+      ],
+      [
+        "boilers",
+        "chaudières"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-272",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Dans un monde contraint par l'épuisement des ressources, l'indice de réparabilité incite les fabricants à concevoir des produits durables.",
+    "en": "In a resource-constrained world, repairability scores incentivize manufacturers to design durable products.",
+    "grammarTitle": "Repairability & incentivize to + BV",
+    "grammarNote": "'Incentivize someone to + BV' = inciter quelqu'un à.",
+    "vocab": [
+      [
+        "repairability",
+        "réparabilité"
+      ],
+      [
+        "resource-constrained",
+        "contraint par les ressources"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-273",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Si nous avions préservé les haies champêtres, l'érosion des sols agricoles aurait été fortement limitée.",
+    "en": "Had hedgerows been preserved, agricultural soil erosion would have been severely curtailed.",
+    "grammarTitle": "Conditionnel Type 3 passif inversé (Had ... been)",
+    "grammarNote": "'Curtail' = réduire fortement / restreindre.",
+    "vocab": [
+      [
+        "hedgerows",
+        "haies champêtres"
+      ],
+      [
+        "curtailed",
+        "fortement limitée"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-274",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "La sobriété foncière vise à freiner l'étalement urbain afin de préserver les terres agricoles périurbaines.",
+    "en": "Land-use sobriety aims to curb urban sprawl in order to preserve peri-urban farmland.",
+    "grammarTitle": "Urban sprawl (= étalement urbain) & farmland",
+    "grammarNote": "'Urban sprawl' = étalement urbain ; 'farmland' = terres agricoles (indénombrable).",
+    "vocab": [
+      [
+        "urban sprawl",
+        "étalement urbain"
+      ],
+      [
+        "farmland",
+        "terres agricoles"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-275",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "Les coûts cachés des batteries usagées exigent de structurer dès aujourd'hui une filière européenne de recyclage en boucle fermée.",
+    "en": "The hidden costs of spent batteries call for building a European closed-loop recycling sector today.",
+    "grammarTitle": "Closed-loop & call for + V-ing",
+    "grammarNote": "'Closed-loop' = en boucle fermée ; 'call for' = exiger / appeler à.",
+    "vocab": [
+      [
+        "closed-loop",
+        "en boucle fermée"
+      ],
+      [
+        "spent batteries",
+        "batteries usagées"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-276",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "Tant que l'électricité reste produite par des centrales à charbon, l'électrification des usages perd une grande partie de son intérêt climatique.",
+    "en": "As long as electricity remains generated by coal plants, electrifying end uses loses much of its climate benefit.",
+    "grammarTitle": "As long as & much of",
+    "grammarNote": "'Much of' devant un singulier ('much of its benefit') = une grande partie de.",
+    "vocab": [
+      [
+        "coal plants",
+        "centrales à charbon"
+      ],
+      [
+        "end uses",
+        "usages finaux"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-277",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "Les villes qui piétonnisent leur centre constatent souvent une hausse du chiffre d'affaires des commerces de proximité.",
+    "en": "Cities that pedestrianize their downtown areas often see higher turnover for neighborhood shops.",
+    "grammarTitle": "Turnover (= chiffre d'affaires) & pedestrianize",
+    "grammarNote": "'Turnover' signifie aussi bien 'chiffre d'affaires' (en finance) que 'rotation du personnel' (RH).",
+    "vocab": [
+      [
+        "pedestrianize",
+        "piétonnisent"
+      ],
+      [
+        "turnover",
+        "chiffre d'affaires"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-278",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "fr": "Il devient urgent d'harmoniser les normes d'écoconception à l'échelle continentale pour éviter le dumping environnemental.",
+    "en": "Harmonizing ecodesign standards at the continental level is becoming urgent to prevent environmental dumping.",
+    "grammarTitle": "Ecodesign & environmental dumping",
+    "grammarNote": "Gérondif sujet ('Harmonizing...') rend la phrase dynamique et naturelle.",
+    "vocab": [
+      [
+        "ecodesign",
+        "écoconception"
+      ],
+      [
+        "environmental dumping",
+        "dumping environnemental"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-279",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "fr": "La transition énergétique ne réussira que si les citoyens en perçoivent des retombées tangibles sur leur confort quotidien.",
+    "en": "The energy transition will succeed only if citizens perceive tangible benefits in their daily comfort.",
+    "grammarTitle": "Tangible benefits & daily comfort",
+    "grammarNote": "'Tangible' = concret / palpable.",
+    "vocab": [
+      [
+        "tangible",
+        "concret / tangible"
+      ],
+      [
+        "perceive",
+        "perçoivent"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-280",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "fr": "Rarement une crise écologique n'aura autant mis en lumière l'interdépendance entre santé humaine, animale et écosystémique.",
+    "en": "Rarely has an ecological crisis so starkly highlighted the interdependence of human, animal, and ecosystem health.",
+    "grammarTitle": "Inversion (Rarely has...) & starkly",
+    "grammarNote": "Approche 'One Health' (Une seule santé) très utile sur les sujets environnement-santé.",
+    "vocab": [
+      [
+        "starkly",
+        "de manière frappante"
+      ],
+      [
+        "interdependence",
+        "interdépendance"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-281",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Vie quotidienne",
+    "fr": "J'ai beau apprécier la commodité des livraisons en un clic, je refuse de soutenir des pratiques logistiques destructrices.",
+    "en": "Much as I appreciate the convenience of one-click delivery, I refuse to support destructive logistics practices.",
+    "grammarTitle": "Much as + verbe (= j'ai beau + infinitif)",
+    "grammarNote": "'Much as + sujet + verbe' traduit brillamment 'avoir beau + verbe' !",
+    "vocab": [
+      [
+        "much as",
+        "j'ai beau"
+      ],
+      [
+        "convenience",
+        "commodité"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-282",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "Quand bien même les guides touristiques vantent cette île préservée, le surtourisme menace déjà son équilibre fragile.",
+    "en": "Even though travel guides praise this unspoiled island, overtourism is already threatening its fragile balance.",
+    "grammarTitle": "Overtourism & unspoiled",
+    "grammarNote": "'Overtourism' = surtourisme ; 'unspoiled' = préservé / intact.",
+    "vocab": [
+      [
+        "overtourism",
+        "surtourisme"
+      ],
+      [
+        "unspoiled",
+        "préservé"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-283",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "Les voyageurs gagneraient à ralentir leur rythme afin de nouer des échanges authentiques plutôt que de collectionner les clichés.",
+    "en": "Travelers would do well to slow down in order to foster genuine exchanges rather than merely collecting snapshots.",
+    "grammarTitle": "Would do well to + BV (= gagneraient à)",
+    "grammarNote": "'Would do well to + BV' est une formule idiomatique précise pour traduire 'ferait bien de / gagnerait à'.",
+    "vocab": [
+      [
+        "would do well to",
+        "gagneraient à"
+      ],
+      [
+        "snapshots",
+        "clichés / photos rapides"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-284",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Si seulement les chaînes de restauration rapide n'avaient pas marginalisé tant de savoir-faire culinaires régionaux !",
+    "en": "If only fast-food chains had not sidelined so many regional culinary traditions!",
+    "grammarTitle": "If only + Past Perfect & sideline",
+    "grammarNote": "'Sideline' = reléguer au second plan / marginaliser.",
+    "vocab": [
+      [
+        "sidelined",
+        "marginalisé"
+      ],
+      [
+        "culinary",
+        "culinaire"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-285",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Non seulement le gaspillage domestique pèse sur le budget des ménages, mais il aggrave aussi l'empreinte foncière agricole.",
+    "en": "Not only does household waste strain family budgets, but it also worsens the agricultural land footprint.",
+    "grammarTitle": "Inversion (Not only does...) & strain",
+    "grammarNote": "'Strain' = mettre sous tension / peser sur (un budget, un système).",
+    "vocab": [
+      [
+        "strain",
+        "peser sur / tendre"
+      ],
+      [
+        "household waste",
+        "gaspillage domestique"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-286",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "La sauvegarde du patrimoine architectural ne doit pas transformer les centres historiques en musées figés réservés aux touristes.",
+    "en": "Preserving architectural heritage must not turn historic centers into frozen museums reserved for tourists.",
+    "grammarTitle": "Heritage (indénombrable) & turn A into B",
+    "grammarNote": "'Heritage' (patrimoine) est toujours singulier indénombrable.",
+    "vocab": [
+      [
+        "heritage",
+        "patrimoine"
+      ],
+      [
+        "turn ... into",
+        "transformer ... en"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-287",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "Les bibliothèques municipales demeurent l'un des rares lieux gratuits où chacun peut s'instruire sans aucune pression commerciale.",
+    "en": "Public libraries remain one of the few free places where anyone can learn without any commercial pressure.",
+    "grammarTitle": "One of the few + pluriel + where",
+    "grammarNote": "Après 'one of the few', le nom est toujours au pluriel ('places').",
+    "vocab": [
+      [
+        "one of the few",
+        "l'un des rares"
+      ],
+      [
+        "commercial pressure",
+        "pression commerciale"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-288",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "À peine les voyageurs avaient-ils réservé leur billet à bas coût que des frais cachés ont doublé la facture finale.",
+    "en": "Hardly had the travelers booked their low-cost ticket when hidden fees doubled the final bill.",
+    "grammarTitle": "Inversion (Hardly had ... when) & hidden fees",
+    "grammarNote": "'Hidden fees' = frais cachés.",
+    "vocab": [
+      [
+        "hidden fees",
+        "frais cachés"
+      ],
+      [
+        "low-cost",
+        "à bas coût"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-289",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "Bien que la lecture sur écran soit pratique en déplacement, la compréhension profonde reste meilleure sur papier selon plusieurs études.",
+    "en": "While screen reading is handy on the go, deep comprehension remains stronger on paper according to several studies.",
+    "grammarTitle": "On the go & deep comprehension",
+    "grammarNote": "'On the go' = en déplacement ; 'handy' = pratique.",
+    "vocab": [
+      [
+        "on the go",
+        "en déplacement"
+      ],
+      [
+        "handy",
+        "pratique"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-290",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Vie quotidienne",
+    "fr": "Si les consommateurs achetaient moins d'articles de mode éphémère, l'industrie textile polluerait nettement moins les rivières.",
+    "en": "If consumers bought fewer fast-fashion items, the textile industry would pollute rivers far less.",
+    "grammarTitle": "Fewer (items) vs far less (pollute)",
+    "grammarNote": "'Fast fashion' = mode éphémère / jetable.",
+    "vocab": [
+      [
+        "fast fashion",
+        "mode éphémère"
+      ],
+      [
+        "fewer items",
+        "moins d'articles"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-291",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "Les conseils que m'a donnés mon ancien professeur de khâgne m'ont appris à structurer chaque argument avec clarté.",
+    "en": "The advice my former humanities professor gave me taught me to structure every argument clearly.",
+    "grammarTitle": "Piège de thème : advice (singulier, sans 's') & taught",
+    "grammarNote": "Attention : 'The advice ... taught me' (jamais 'advices').",
+    "vocab": [
+      [
+        "advice",
+        "conseils (singulier)"
+      ],
+      [
+        "humanities",
+        "lettres / humanités"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-292",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Moins nous prenons le temps de cuisiner ensemble, plus la transmission des traditions familiales s'affaiblit.",
+    "en": "The less time we take to cook together, the weaker the transmission of family traditions becomes.",
+    "grammarTitle": "Double comparatif (The less..., the weaker...)",
+    "grammarNote": "'Take time to + BV' = prendre le temps de.",
+    "vocab": [
+      [
+        "transmission",
+        "transmission"
+      ],
+      [
+        "the weaker",
+        "plus s'affaiblit"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-293",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "Cet architecte réputé a fait rénover l'ancienne gare en un centre culturel alimenté par géothermie.",
+    "en": "This renowned architect had the old train station converted into a geothermally powered cultural center.",
+    "grammarTitle": "Causatif : have something converted into",
+    "grammarNote": "'Had [the old station] [converted]' = a fait reconvertir.",
+    "vocab": [
+      [
+        "had ... converted",
+        "a fait reconvertir"
+      ],
+      [
+        "renowned",
+        "réputé"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-294",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "Sous aucun prétexte les compagnies aériennes ne devraient facturer aux familles le fait d'être assises ensemble.",
+    "en": "Under no circumstances should airlines charge families just to sit together.",
+    "grammarTitle": "Inversion (Under no circumstances should...) & charge",
+    "grammarNote": "'Charge someone for...' = facturer à quelqu'un.",
+    "vocab": [
+      [
+        "charge",
+        "facturer"
+      ],
+      [
+        "under no circumstances",
+        "sous aucun prétexte"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-295",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Vie quotidienne",
+    "fr": "Je ne m'étais pas rendu compte à quel point les appareils en veille pesaient sur ma facture annuelle.",
+    "en": "I had not realized how heavily standby appliances weighed on my annual electricity bill.",
+    "grammarTitle": "Past Perfect & standby appliances",
+    "grammarNote": "'Standby appliances' = appareils en veille ; 'weigh on' = peser sur.",
+    "vocab": [
+      [
+        "standby appliances",
+        "appareils en veille"
+      ],
+      [
+        "annual bill",
+        "facture annuelle"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-296",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Le restaurant a beau afficher une note parfaite en ligne, la qualité des ingrédients laisse parfois à désirer.",
+    "en": "Even though the restaurant boasts a perfect online rating, the quality of its ingredients sometimes leaves much to be desired.",
+    "grammarTitle": "Boast (= afficher/se vanter de) & idiome",
+    "grammarNote": "'Leave much to be desired' = laisser beaucoup à désirer.",
+    "vocab": [
+      [
+        "boasts",
+        "affiche / s'enorgueillit de"
+      ],
+      [
+        "leaves much to be desired",
+        "laisse à désirer"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-297",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "fr": "Les informations fournies par cette étude nutritionnelle méritent d'être examinées avec esprit critique.",
+    "en": "The information provided by this nutritional study deserves to be examined critically.",
+    "grammarTitle": "Indénombrable 'information' (+ singulier deserves)",
+    "grammarNote": "Double contrôle d'accord : 'The information ... DESERVES' (singulier obligatoire).",
+    "vocab": [
+      [
+        "information",
+        "informations (singulier)"
+      ],
+      [
+        "critically",
+        "avec esprit critique"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-298",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Voyage",
+    "fr": "Faute d'avoir vérifié la date d'expiration de son passeport, il n'a pas pu embarquer pour Montréal.",
+    "en": "Having failed to check his passport's expiration date, he was unable to board the flight to Montreal.",
+    "grammarTitle": "Participe passé composé (Having failed to...)",
+    "grammarNote": "'Having failed to...' exprime la cause antérieure de manière très fluide.",
+    "vocab": [
+      [
+        "having failed to",
+        "faute d'avoir"
+      ],
+      [
+        "board",
+        "embarquer"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-299",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "fr": "L'accès aux œuvres du domaine public enrichit la création contemporaine bien plus qu'il ne la menace.",
+    "en": "Access to public-domain works enriches contemporary creation far more than it threatens it.",
+    "grammarTitle": "Public-domain works & enriches",
+    "grammarNote": "'Works' = œuvres (comptable pluriel) ; 'work' = travail (indénombrable).",
+    "vocab": [
+      [
+        "public-domain",
+        "du domaine public"
+      ],
+      [
+        "enriches",
+        "enrichit"
+      ]
+    ]
+  },
+  {
+    "id": "s-b2-300",
+    "mode": "speak",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "fr": "La véritable maîtrise d'une langue étrangère réside autant dans la nuance grammaticale que dans l'étendue du vocabulaire.",
+    "en": "True mastery of a foreign language lies as much in grammatical nuance as in breadth of vocabulary.",
+    "grammarTitle": "As much in A as in B & breadth",
+    "grammarNote": "'Lie in' = résider dans ; 'breadth of vocabulary' = richesse/étendue du vocabulaire.",
+    "vocab": [
+      [
+        "lies in",
+        "réside dans"
+      ],
+      [
+        "breadth",
+        "étendue / richesse"
+      ]
+    ]
   }
 ];
 window.EC_BUILTIN_LISTEN = [
@@ -10021,6 +16921,2106 @@ window.EC_BUILTIN_LISTEN = [
         "responsabilité"
       ]
     ]
+  },
+  {
+    "id": "l-a2-16",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Vie quotidienne",
+    "en": "My sister is cooking dinner in the kitchen right now. Can you set the table with four plates and glasses?",
+    "fr": "Ma sœur prépare le dîner dans la cuisine en ce moment. Peux-tu mettre la table avec quatre assiettes et des verres ?",
+    "grammarTitle": "Present Continuous & set the table",
+    "grammarNote": "'Is cooking right now' = action en cours. 'Set the table' = mettre la table.",
+    "vocab": [
+      [
+        "set the table",
+        "mettre la table"
+      ],
+      [
+        "plates",
+        "assiettes"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-17",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Voyage",
+    "en": "The hotel room was very clean, and the view of the mountains was amazing. We took lots of photos from the balcony.",
+    "fr": "La chambre d'hôtel était très propre, et la vue sur les montagnes était magnifique. Nous avons pris beaucoup de photos depuis le balcon.",
+    "grammarTitle": "Past Simple : was & take -> took",
+    "grammarNote": "On dit 'take photos' (prendre des photos), passé 'took'.",
+    "vocab": [
+      [
+        "amazing",
+        "magnifique / incroyable"
+      ],
+      [
+        "balcony",
+        "balcon"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-18",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Restaurant & Alimentation",
+    "en": "I do not eat spicy food very often because it hurts my stomach. Let us order the grilled chicken with rice instead.",
+    "fr": "Je ne mange pas très souvent de plats épicés parce que cela me fait mal au ventre. Commandons plutôt le poulet grillé avec du riz.",
+    "grammarTitle": "Present Simple négatif & Let us (Let's)",
+    "grammarNote": "'Let us / Let's' sert à proposer quelque chose à faire ensemble.",
+    "vocab": [
+      [
+        "spicy food",
+        "plats épicés"
+      ],
+      [
+        "order",
+        "commander"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-19",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Travail & Entreprise",
+    "en": "Our manager is away on a business trip until Thursday. If you need help, please ask Sarah at the front desk.",
+    "fr": "Notre responsable est en voyage d'affaires jusqu'à jeudi. Si vous avez besoin d'aide, adressez-vous à Sarah à l'accueil.",
+    "grammarTitle": "Business trip & until + jour",
+    "grammarNote": "'Until Thursday' = jusqu'à jeudi (sans 'the'). 'Front desk' = accueil / réception.",
+    "vocab": [
+      [
+        "business trip",
+        "voyage d'affaires"
+      ],
+      [
+        "front desk",
+        "accueil / réception"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-20",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Loisirs & Culture",
+    "en": "My friends and I went to an outdoor cinema in the park last Friday. It was a little chilly, so we brought warm blankets.",
+    "fr": "Mes amis et moi sommes allés à un cinéma en plein air dans le parc vendredi dernier. Il faisait un peu frais, alors nous avons apporté des couvertures chaudes.",
+    "grammarTitle": "Past Simple : went / brought & chilly",
+    "grammarNote": "'Bring -> brought'. 'Chilly' = un peu frais (météo).",
+    "vocab": [
+      [
+        "chilly",
+        "un peu frais"
+      ],
+      [
+        "blankets",
+        "couvertures"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-21",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Vie quotidienne",
+    "en": "Every evening after work, I go for a twenty-minute run along the river. It helps me relax and sleep much better.",
+    "fr": "Chaque soir après le travail, je vais courir vingt minutes le long de la rivière. Cela m'aide à me détendre et à beaucoup mieux dormir.",
+    "grammarTitle": "Adjectif composé (twenty-minute) & along",
+    "grammarNote": "Pas de -s à 'minute' dans 'a twenty-minute run'. 'Along' = le long de.",
+    "vocab": [
+      [
+        "along the river",
+        "le long de la rivière"
+      ],
+      [
+        "relax",
+        "se détendre"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-22",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Voyage",
+    "en": "How long does it take to get from the train station to the city center on foot? Only about fifteen minutes if you walk fast.",
+    "fr": "Combien de temps faut-il pour aller de la gare au centre-ville à pied ? Seulement environ quinze minutes si vous marchez vite.",
+    "grammarTitle": "How long does it take to...? & on foot",
+    "grammarNote": "Attention : on dit 'by bus / by car', mais toujours 'ON foot' (à pied).",
+    "vocab": [
+      [
+        "how long does it take",
+        "combien de temps faut-il"
+      ],
+      [
+        "on foot",
+        "à pied"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-23",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Environnement & Climat",
+    "en": "Do not leave the water running while you brush your teeth. Small daily habits can save thousands of liters every year.",
+    "fr": "Ne laisse pas couler l'eau pendant que tu te brosses les dents. De petites habitudes quotidiennes peuvent économiser des milliers de litres chaque année.",
+    "grammarTitle": "Impératif négatif & thousands of",
+    "grammarNote": "'Leave the water running' = laisser l'eau couler. 'Thousands of' = des milliers de.",
+    "vocab": [
+      [
+        "daily habits",
+        "habitudes quotidiennes"
+      ],
+      [
+        "save",
+        "économiser"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-24",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Intelligence Artificielle",
+    "en": "I asked my phone for the fastest route to the museum, and it showed a bike path. That saved me twenty minutes in traffic.",
+    "fr": "J'ai demandé à mon téléphone l'itinéraire le plus rapide vers le musée, et il a indiqué une piste cyclable. Cela m'a fait gagner vingt minutes dans les bouchons.",
+    "grammarTitle": "Superlatif (the fastest) & save time",
+    "grammarNote": "'Save someone time' = faire gagner du temps à quelqu'un.",
+    "vocab": [
+      [
+        "route",
+        "itinéraire"
+      ],
+      [
+        "bike path",
+        "piste cyclable"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-25",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Choix sociaux & Économie",
+    "en": "This neighborhood market is cheaper than the big supermarket downtown. Plus, the fruit is always fresher and tastier.",
+    "fr": "Ce marché de quartier est moins cher que le grand supermarché du centre-ville. De plus, les fruits sont toujours plus frais et meilleurs.",
+    "grammarTitle": "Comparatifs courts (cheaper, fresher, tastier)",
+    "grammarNote": "Rappel : 'fruit' est souvent singulier indénombrable ('the fruit is').",
+    "vocab": [
+      [
+        "cheaper",
+        "moins cher"
+      ],
+      [
+        "tastier",
+        "plus savoureux"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-26",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Travail & Entreprise",
+    "en": "My brother started a new job as a graphic designer last Monday. He likes his coworkers, and the office has lots of natural light.",
+    "fr": "Mon frère a commencé un nouveau travail comme graphiste lundi dernier. Il aime bien ses collègues, et le bureau a beaucoup de lumière naturelle.",
+    "grammarTitle": "Article devant métier (as a graphic designer)",
+    "grammarNote": "En anglais, on met 'a/an' après 'as' devant une profession ('as a designer').",
+    "vocab": [
+      [
+        "coworkers",
+        "collègues"
+      ],
+      [
+        "natural light",
+        "lumière naturelle"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-27",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Restaurant & Alimentation",
+    "en": "Would you like some more tea, or do you prefer a glass of sparkling water? We also have homemade lemon cake.",
+    "fr": "Voudriez-vous encore un peu de thé, ou préférez-vous un verre d'eau gazeuse ? Nous avons aussi du gâteau au citron maison.",
+    "grammarTitle": "Would you like some...? (offre polie)",
+    "grammarNote": "Dans une offre ou demande polie, on utilise 'some' même si c'est une question ('Would you like some...?').",
+    "vocab": [
+      [
+        "sparkling water",
+        "eau gazeuse"
+      ],
+      [
+        "lemon cake",
+        "gâteau au citron"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-28",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Énergie & Transition",
+    "en": "In winter, we always close the shutters at sunset to keep the heat inside. It really helps lower our heating bill.",
+    "fr": "En hiver, nous fermons toujours les volets au coucher du soleil pour garder la chaleur à l'intérieur. Cela aide vraiment à réduire notre facture de chauffage.",
+    "grammarTitle": "At sunset & help + BV",
+    "grammarNote": "'At sunset' = au coucher du soleil (sans article). 'Shutters' = volets.",
+    "vocab": [
+      [
+        "shutters",
+        "volets"
+      ],
+      [
+        "heating bill",
+        "facture de chauffage"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-29",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Opinions & Société",
+    "en": "In my view, libraries should stay open later in the evening for students. Many young people do not have a quiet desk at home.",
+    "fr": "À mon avis, les bibliothèques devraient rester ouvertes plus tard le soir pour les étudiants. Beaucoup de jeunes n'ont pas de bureau calme chez eux.",
+    "grammarTitle": "In my view & stay + adjectif (stay open)",
+    "grammarNote": "'Stay open' = rester ouvert ; 'in my view' = à mon avis.",
+    "vocab": [
+      [
+        "in my view",
+        "à mon avis"
+      ],
+      [
+        "quiet desk",
+        "bureau calme"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-30",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Science & Éthique",
+    "en": "Last month, our class visited a science museum and watched a show about the ocean. We saw how deep-sea fish produce their own light.",
+    "fr": "Le mois dernier, notre classe a visité un musée des sciences et regardé un spectacle sur l'océan. Nous avons vu comment les poissons des abysses produisent leur propre lumière.",
+    "grammarTitle": "Past Simple : visited, watched, saw",
+    "grammarNote": "'See -> saw'. 'Own' après un possessif = 'leur propre'.",
+    "vocab": [
+      [
+        "deep-sea",
+        "des grands fonds"
+      ],
+      [
+        "produce light",
+        "produire de la lumière"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-31",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Vie quotidienne",
+    "en": "I am going to tidy my bedroom this afternoon and give away old clothes I never wear. Everything will look much cleaner afterward.",
+    "fr": "Je vais ranger ma chambre cet après-midi et donner de vieux vêtements que je ne porte jamais. Tout aura l'air beaucoup plus propre après.",
+    "grammarTitle": "Be going to & give away (= donner gratuitement)",
+    "grammarNote": "'Give away' = donner quelque chose dont on n'a plus besoin.",
+    "vocab": [
+      [
+        "tidy",
+        "ranger"
+      ],
+      [
+        "give away",
+        "donner (se séparer de)"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-32",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Voyage",
+    "en": "Please keep your ticket until the end of the journey. You will need it to open the exit gates at the station.",
+    "fr": "Veuillez garder votre billet jusqu'à la fin du trajet. Vous en aurez besoin pour ouvrir les portillons de sortie à la gare.",
+    "grammarTitle": "Until + nom & futur need",
+    "grammarNote": "'Journey' = trajet / voyage. 'Exit gates' = portillons de sortie.",
+    "vocab": [
+      [
+        "journey",
+        "trajet"
+      ],
+      [
+        "exit gates",
+        "portillons de sortie"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-33",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Loisirs & Culture",
+    "en": "She started painting landscapes two years ago as a weekend hobby. Today, her living room walls are full of colorful canvases.",
+    "fr": "Elle a commencé à peindre des paysages il y a deux ans comme loisir du week-end. Aujourd'hui, les murs de son salon sont remplis de toiles colorées.",
+    "grammarTitle": "Past Simple + ago & full of",
+    "grammarNote": "'Full OF' (= plein de) s'utilise toujours avec 'of'.",
+    "vocab": [
+      [
+        "full of",
+        "rempli de"
+      ],
+      [
+        "canvases",
+        "toiles (peinture)"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-34",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Travail & Entreprise",
+    "en": "Do not forget to charge your laptop tonight before tomorrow's presentation. There are not many power outlets in the conference room.",
+    "fr": "N'oublie pas de charger ton ordinateur portable ce soir avant la présentation de demain. Il n'y a pas beaucoup de prises électriques dans la salle de conférence.",
+    "grammarTitle": "Génitif temporel (tomorrow's) & There are not many",
+    "grammarNote": "'Power outlet' (US) ou 'plug socket' (UK) = prise électrique.",
+    "vocab": [
+      [
+        "power outlets",
+        "prises électriques"
+      ],
+      [
+        "tomorrow's",
+        "de demain"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-35",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Restaurant & Alimentation",
+    "en": "We waited twenty minutes for a table, but the seafood pasta was worth the wait. The service was friendly and fast.",
+    "fr": "Nous avons attendu vingt minutes pour une table, mais les pâtes aux fruits de mer valaient l'attente. Le service était chaleureux et rapide.",
+    "grammarTitle": "Wait for & worth the wait",
+    "grammarNote": "'Seafood' = fruits de mer (toujours singulier). 'Be worth the wait' = valoir l'attente.",
+    "vocab": [
+      [
+        "seafood",
+        "fruits de mer"
+      ],
+      [
+        "worth the wait",
+        "valait l'attente"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-36",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Environnement & Climat",
+    "en": "More citizens are planting flowers on their balconies to help bees and butterflies. Even a small pot can make a nice difference.",
+    "fr": "Plus de citoyens plantent des fleurs sur leur balcon pour aider les abeilles et les papillons. Même un petit pot peut faire une belle différence.",
+    "grammarTitle": "Pluriel irrégulier (butterfly -> butterflies) & make a difference",
+    "grammarNote": "Consonne + y -> -ies : 'butterflies'. Collocation : 'make a difference'.",
+    "vocab": [
+      [
+        "bees",
+        "abeilles"
+      ],
+      [
+        "make a difference",
+        "faire une différence"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-37",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Intelligence Artificielle",
+    "en": "This calendar app sends a reminder ten minutes before every meeting. Since I installed it, I have never arrived late once.",
+    "fr": "Cette application de calendrier envoie un rappel dix minutes avant chaque réunion. Depuis que je l'ai installée, je ne suis jamais arrivé en retard une seule fois.",
+    "grammarTitle": "Reminder & every + singulier",
+    "grammarNote": "'Reminder' = rappel. 'Every meeting' est toujours au singulier.",
+    "vocab": [
+      [
+        "reminder",
+        "rappel"
+      ],
+      [
+        "installed",
+        "ai installé"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-38",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Énergie & Transition",
+    "en": "That old refrigerator uses twice as much electricity as a modern model. Buying a newer one will save money in the long run.",
+    "fr": "Ce vieux réfrigérateur consomme deux fois plus d'électricité qu'un modèle moderne. En acheter un plus récent fera économiser de l'argent à long terme.",
+    "grammarTitle": "Comparatif de proportion (twice as much ... as)",
+    "grammarNote": "'Twice as much + indénombrable + as' = deux fois plus que.",
+    "vocab": [
+      [
+        "twice as much",
+        "deux fois plus"
+      ],
+      [
+        "in the long run",
+        "à long terme"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-39",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Choix sociaux & Économie",
+    "en": "Many students work part-time in cafes or bookstores to pay for their rent. It teaches them how to manage their budget early.",
+    "fr": "Beaucoup d'étudiants travaillent à temps partiel dans des cafés ou des librairies pour payer leur loyer. Cela leur apprend à gérer leur budget tôt.",
+    "grammarTitle": "Work part-time & teach someone how to",
+    "grammarNote": "'Teach someone how to + BV' = apprendre à quelqu'un comment faire.",
+    "vocab": [
+      [
+        "part-time",
+        "à temps partiel"
+      ],
+      [
+        "manage a budget",
+        "gérer un budget"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-40",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Science & Éthique",
+    "en": "Clean drinking water is something we often take for granted at home. However, millions of people still walk miles every day to fetch it.",
+    "fr": "L'eau potable propre est quelque chose que nous tenons souvent pour acquis chez nous. Pourtant, des millions de personnes marchent encore des kilomètres chaque jour pour aller en chercher.",
+    "grammarTitle": "Take for granted & fetch",
+    "grammarNote": "'Take something for granted' = considérer quelque chose comme acquis.",
+    "vocab": [
+      [
+        "take for granted",
+        "tenir pour acquis"
+      ],
+      [
+        "fetch",
+        "aller chercher"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-41",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Vie quotidienne",
+    "en": "Could you turn down the television a bit while I am on the phone? I cannot hear what my colleague is saying.",
+    "fr": "Pourrais-tu baisser un peu la télévision pendant que je suis au téléphone ? Je n'entends pas ce que dit mon collègue.",
+    "grammarTitle": "Turn down & on the phone",
+    "grammarNote": "'On the phone' = au téléphone. 'Hear' = entendre (vs 'listen to' = écouter).",
+    "vocab": [
+      [
+        "turn down",
+        "baisser (le son)"
+      ],
+      [
+        "on the phone",
+        "au téléphone"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-42",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Voyage",
+    "en": "When you arrive in London, remember to look right before crossing the street. Cars drive on the left side of the road there.",
+    "fr": "Quand tu arrives à Londres, pense à regarder à droite avant de traverser la rue. Les voitures roulent du côté gauche de la route là-bas.",
+    "grammarTitle": "Remember to + BV & before + V-ing",
+    "grammarNote": "'Before crossing' : toujours V-ing après 'before'.",
+    "vocab": [
+      [
+        "crossing the street",
+        "traverser la rue"
+      ],
+      [
+        "on the left",
+        "à gauche"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-43",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Loisirs & Culture",
+    "en": "I am not very good at drawing, so I prefer taking photographs when I travel. My favorite subject is old bridges at sunrise.",
+    "fr": "Je ne suis pas très doué en dessin, alors je préfère prendre des photos quand je voyage. Mon sujet préféré, ce sont les vieux ponts au lever du soleil.",
+    "grammarTitle": "Good at + V-ing & prefer + V-ing",
+    "grammarNote": "Après une préposition ('at'), un verbe se met toujours en -ing ('good at drawing').",
+    "vocab": [
+      [
+        "good at",
+        "doué en"
+      ],
+      [
+        "at sunrise",
+        "au lever du soleil"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-44",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Travail & Entreprise",
+    "en": "We are going to move to a bigger office near the river next month. Each employee will have a quieter space to focus.",
+    "fr": "Nous allons déménager dans un bureau plus grand près de la rivière le mois prochain. Chaque employé aura un espace plus calme pour se concentrer.",
+    "grammarTitle": "Move to & each + singulier",
+    "grammarNote": "'Each employee' est toujours singulier. 'To focus' = pour se concentrer.",
+    "vocab": [
+      [
+        "move to",
+        "déménager vers"
+      ],
+      [
+        "to focus",
+        "se concentrer"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-45",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Restaurant & Alimentation",
+    "en": "Do you have any fresh orange juice, or only apple juice? I would also like two cheese sandwiches to go, please.",
+    "fr": "Avez-vous du jus d'orange frais, ou seulement du jus de pomme ? Je voudrais aussi deux sandwichs au fromage à emporter, s'il vous plaît.",
+    "grammarTitle": "Any (question) & to go (= à emporter)",
+    "grammarNote": "'To go' (US) ou 'takeaway' (UK) = à emporter.",
+    "vocab": [
+      [
+        "to go",
+        "à emporter"
+      ],
+      [
+        "cheese sandwiches",
+        "sandwichs au fromage"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-46",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Opinions & Société",
+    "en": "Learning how to cook basic meals at school is very useful for young adults. It helps them eat better and spend less money.",
+    "fr": "Apprendre à cuisiner des plats simples à l'école est très utile pour les jeunes adultes. Cela les aide à mieux manger et à dépenser moins d'argent.",
+    "grammarTitle": "Gérondif sujet (Learning...) & spend less",
+    "grammarNote": "'Learning' en sujet commande le singulier ('is very useful').",
+    "vocab": [
+      [
+        "basic meals",
+        "plats simples"
+      ],
+      [
+        "spend less",
+        "dépenser moins"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-47",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Environnement & Climat",
+    "en": "Every Saturday morning, we bring empty glass jars back to the local grocery store. They wash them and use them again.",
+    "fr": "Chaque samedi matin, nous rapportons les bocaux en verre vides à l'épicerie locale. Ils les lavent et les réutilisent.",
+    "grammarTitle": "Bring back & glass jars",
+    "grammarNote": "'Bring back' = rapporter. 'Grocery store' = épicerie / supermarché de quartier.",
+    "vocab": [
+      [
+        "glass jars",
+        "bocaux en verre"
+      ],
+      [
+        "grocery store",
+        "épicerie"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-48",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Intelligence Artificielle",
+    "en": "This smartwatch counts how many steps I walk each day and checks my heart rate. It reminds me to stand up when I sit for too long.",
+    "fr": "Cette montre connectée compte combien de pas je fais chaque jour et vérifie mon rythme cardiaque. Elle me rappelle de me lever quand je reste assis trop longtemps.",
+    "grammarTitle": "How many + steps & remind someone to + BV",
+    "grammarNote": "'Remind someone to + BV' = rappeler à quelqu'un de faire.",
+    "vocab": [
+      [
+        "steps",
+        "pas"
+      ],
+      [
+        "heart rate",
+        "rythme cardiaque"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-49",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Énergie & Transition",
+    "en": "My town replaced all the old streetlamps with bright LED lights last winter. They use half the electricity and last for years.",
+    "fr": "Ma ville a remplacé tous les vieux lampadaires par des lumières LED brillantes l'hiver dernier. Elles consomment moitié moins d'électricité et durent des années.",
+    "grammarTitle": "Replace A with B & half the electricity",
+    "grammarNote": "'Half the electricity' (sans 'of' obligatoire) = la moitié de l'électricité.",
+    "vocab": [
+      [
+        "streetlamps",
+        "lampadaires"
+      ],
+      [
+        "last for years",
+        "durent des années"
+      ]
+    ]
+  },
+  {
+    "id": "l-a2-50",
+    "mode": "listen",
+    "level": "A2",
+    "theme": "Choix sociaux & Économie",
+    "en": "Some families share one car instead of owning two because parking is hard to find. They use bikes or buses for short trips.",
+    "fr": "Certaines familles partagent une seule voiture au lieu d'en posséder deux parce qu'il est difficile de se garer. Elles utilisent le vélo ou le bus pour les courts trajets.",
+    "grammarTitle": "Instead of + V-ing & hard to find",
+    "grammarNote": "Après 'instead of', le verbe prend -ing ('owning').",
+    "vocab": [
+      [
+        "owning",
+        "posséder"
+      ],
+      [
+        "short trips",
+        "courts trajets"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-16",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "en": "I used to check my work emails right before going to bed, which always made it harder to fall asleep. Nowadays, I leave my phone in the hallway.",
+    "fr": "Avant, je vérifiais mes e-mails professionnels juste avant d'aller me coucher, ce qui rendait toujours l'endormissement plus difficile. De nos jours, je laisse mon téléphone dans le couloir.",
+    "grammarTitle": "Used to + BV & relatif de phrase (, which)",
+    "grammarNote": "', which' reprend toute la proposition précédente ('ce qui rendait...').",
+    "vocab": [
+      [
+        "fall asleep",
+        "s'endormir"
+      ],
+      [
+        "nowadays",
+        "de nos jours"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-17",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Voyage",
+    "en": "If the ferry had arrived on time, we would have caught the last bus to the village. Luckily, a friendly taxi driver offered us a reasonable price.",
+    "fr": "Si le ferry était arrivé à l'heure, nous aurions attrapé le dernier bus pour le village. Heureusement, un chauffeur de taxi sympathique nous a proposé un prix raisonnable.",
+    "grammarTitle": "Introduction Conditionnel Type 3 (If had PP, would have PP)",
+    "grammarNote": "Hypothèse passée non réalisée : 'If + had arrived, ... would have caught'.",
+    "vocab": [
+      [
+        "on time",
+        "à l'heure"
+      ],
+      [
+        "reasonable price",
+        "prix raisonnable"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-18",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "en": "Our department has been looking for a bilingual assistant since September, yet few candidates have applied so far. The salary might be slightly too low for this city.",
+    "fr": "Notre service cherche un assistant bilingue depuis septembre, pourtant peu de candidats ont postulé jusqu'ici. Le salaire est peut-être légèrement trop bas pour cette ville.",
+    "grammarTitle": "Present Perfect Continuous + yet / few + so far",
+    "grammarNote": "'Few candidates' (sans 'a') signifie 'peu de candidats'. 'So far' = jusqu'à présent.",
+    "vocab": [
+      [
+        "so far",
+        "jusqu'ici"
+      ],
+      [
+        "slightly",
+        "légèrement"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-19",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "en": "Even though this bakery charges a little more than the supermarket, every loaf is made with organic flour. Once you taste it, it is hard to go back.",
+    "fr": "Même si cette boulangerie facture un peu plus cher que le supermarché, chaque pain est fait avec de la farine biologique. Une fois qu'on y a goûté, il est difficile de revenir en arrière.",
+    "grammarTitle": "Even though & made with + ingrédient",
+    "grammarNote": "'Made with' s'utilise pour mettre en avant un ingrédient particulier ('made with organic flour').",
+    "vocab": [
+      [
+        "bakery",
+        "boulangerie"
+      ],
+      [
+        "organic flour",
+        "farine biologique"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-20",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "en": "Have you noticed how many independent cinemas now organize discussions after the screening? It turns a simple evening out into a real cultural exchange.",
+    "fr": "As-tu remarqué combien de cinémas indépendants organisent désormais des débats après la projection ? Cela transforme une simple sortie en un véritable échange culturel.",
+    "grammarTitle": "Turn A into B & screening",
+    "grammarNote": "'Screening' = projection d'un film. 'Turn A into B' = transformer A en B.",
+    "vocab": [
+      [
+        "screening",
+        "projection (film)"
+      ],
+      [
+        "turn ... into",
+        "transformer ... en"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-21",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "en": "Unless young people feel their voices are actually heard, voter turnout will keep dropping in local elections. Schools could do much more to explain how local councils work.",
+    "fr": "À moins que les jeunes ne sentent que leur voix est réellement entendue, la participation électorale continuera de baisser aux élections locales. Les écoles pourraient faire beaucoup plus pour expliquer comment fonctionnent les conseils municipaux.",
+    "grammarTitle": "Unless + présent & voter turnout",
+    "grammarNote": "'Voter turnout' = taux de participation électorale. 'Keep dropping' = continuer de baisser.",
+    "vocab": [
+      [
+        "voter turnout",
+        "taux de participation"
+      ],
+      [
+        "actually",
+        "réellement / en fait"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-22",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "en": "I tried using an AI tool to summarize a thirty-page article, but it missed two key figures. That taught me never to trust a summary without checking the original source.",
+    "fr": "J'ai essayé d'utiliser un outil d'IA pour résumer un article de trente pages, mais il a raté deux chiffres clés. Cela m'a appris à ne jamais me fier à un résumé sans vérifier la source originale.",
+    "grammarTitle": "Try + V-ing (essayer pour voir) & never to + BV",
+    "grammarNote": "'Try + V-ing' = tester une méthode pour voir ce qu'elle donne (vs 'try to + BV' = faire un effort).",
+    "vocab": [
+      [
+        "summarize",
+        "résumer"
+      ],
+      [
+        "key figures",
+        "chiffres clés"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-23",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "en": "The city decided to plant five thousand shade trees along busy avenues to cool streets down in July. Neighbors have already volunteered to water the young trees.",
+    "fr": "La ville a décidé de planter cinq mille arbres d'ombrage le long des avenues fréquentées pour rafraîchir les rues en juillet. Les voisins se sont déjà portés volontaires pour arroser les jeunes arbres.",
+    "grammarTitle": "Cool down & volunteer to + BV",
+    "grammarNote": "'Volunteer to + BV' = se porter volontaire pour faire quelque chose.",
+    "vocab": [
+      [
+        "shade trees",
+        "arbres d'ombrage"
+      ],
+      [
+        "volunteered",
+        "se sont portés volontaires"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-24",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "en": "Before any new medicine can be sold in pharmacies, it must go through several years of clinical testing. Scientists check both how effective it is and whether side effects appear.",
+    "fr": "Avant qu'un nouveau médicament puisse être vendu en pharmacie, il doit passer par plusieurs années d'essais cliniques. Les scientifiques vérifient à la fois son efficacité et l'apparition éventuelle d'effets secondaires.",
+    "grammarTitle": "Passif modal (can be sold) & both ... and",
+    "grammarNote": "'Go through' = passer par / traverser une étape.",
+    "vocab": [
+      [
+        "clinical testing",
+        "essais cliniques"
+      ],
+      [
+        "go through",
+        "passer par"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-25",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "en": "Installing heat pumps in older buildings often requires improving window insulation at the same time. Otherwise, warm air escapes far too quickly in winter.",
+    "fr": "Installer des pompes à chaleur dans des bâtiments anciens exige souvent d'améliorer l'isolation des fenêtres en même temps. Sinon, l'air chaud s'échappe beaucoup trop vite en hiver.",
+    "grammarTitle": "Gérondif sujet + require + V-ing & otherwise",
+    "grammarNote": "'Require + V-ing' = exiger de faire. 'Escape' = s'échapper.",
+    "vocab": [
+      [
+        "heat pumps",
+        "pompes à chaleur"
+      ],
+      [
+        "otherwise",
+        "sinon"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-26",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "en": "Many commuters say they would happily give up their cars if night and weekend buses ran more often. Frequency matters just as much as ticket price.",
+    "fr": "Beaucoup de navetteurs disent qu'ils abandonneraient volontiers leur voiture si les bus de nuit et du week-end passaient plus souvent. La fréquence compte tout autant que le prix du billet.",
+    "grammarTitle": "Conditionnel Type 2 (would give up if ... ran)",
+    "grammarNote": "'Commuters' = personnes faisant les trajets domicile-travail. 'Just as much as' = tout autant que.",
+    "vocab": [
+      [
+        "commuters",
+        "navetteurs"
+      ],
+      [
+        "give up",
+        "abandonner / renoncer à"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-27",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "en": "My roommate forgot to pay the internet bill last week, so our connection was cut off on Friday morning. We spent the whole weekend reading books and playing board games instead.",
+    "fr": "Mon colocataire a oublié de payer la facture d'internet la semaine dernière, donc notre connexion a été coupée vendredi matin. Nous avons passé tout le week-end à lire des livres et à jouer à des jeux de société à la place.",
+    "grammarTitle": "Spend time + V-ing & was cut off",
+    "grammarNote": "'Spent the weekend reading' : pas de préposition ni de 'to' entre 'spend' et V-ing.",
+    "vocab": [
+      [
+        "cut off",
+        "coupée"
+      ],
+      [
+        "board games",
+        "jeux de société"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-28",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Voyage",
+    "en": "Instead of flying straight to the capital, we took a slow coastal train that stopped in tiny fishing villages. It took twice as long, yet it became the highlight of our trip.",
+    "fr": "Au lieu de prendre l'avion directement vers la capitale, nous avons pris un train côtier lent qui s'arrêtait dans de minuscules villages de pêcheurs. Cela a pris deux fois plus de temps, mais c'est devenu le moment fort de notre voyage.",
+    "grammarTitle": "Instead of + V-ing & highlight",
+    "grammarNote": "'Highlight' = point culminant / moment fort.",
+    "vocab": [
+      [
+        "instead of flying",
+        "au lieu de prendre l'avion"
+      ],
+      [
+        "highlight",
+        "moment fort"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-29",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "en": "She was supposed to give her presentation at ten o'clock, but the projector stopped working. Fortunately, she stayed calm and explained her slides clearly without a screen.",
+    "fr": "Elle était censée faire sa présentation à dix heures, mais le projecteur a cessé de fonctionner. Heureusement, elle est restée calme et a expliqué ses diapositives clairement sans écran.",
+    "grammarTitle": "Be supposed to (passé) & stop + V-ing",
+    "grammarNote": "'Stop working' = cesser de fonctionner (vs 'stop to work' = s'arrêter pour travailler).",
+    "vocab": [
+      [
+        "supposed to",
+        "censée"
+      ],
+      [
+        "slides",
+        "diapositives"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-30",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "en": "When we entered the bistro, the waiter warned us that the kitchen had already run out of salmon. We chose the mushroom risotto instead, and it turned out to be delicious.",
+    "fr": "Quand nous sommes entrés dans le bistro, le serveur nous a prévenus que la cuisine n'avait plus de saumon. Nous avons choisi le risotto aux champignons à la place, et il s'est révélé délicieux.",
+    "grammarTitle": "Past Perfect (had run out of) & turn out to be",
+    "grammarNote": "'Run out of' = être à court de ; 'turn out to be' = se révéler être.",
+    "vocab": [
+      [
+        "warned us",
+        "nous a prévenus"
+      ],
+      [
+        "run out of",
+        "être à court de"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-31",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "en": "Although I had never been to an opera before, my friend convinced me to try it last Saturday. I was surprised by how modern and moving the staging felt.",
+    "fr": "Bien que je ne fusse jamais allé à l'opéra auparavant, mon ami m'a convaincu d'essayer samedi dernier. J'ai été surpris par le caractère moderne et émouvant de la mise en scène.",
+    "grammarTitle": "Although + Past Perfect & convince someone to",
+    "grammarNote": "'Staging' = mise en scène ; 'moving' = émouvant.",
+    "vocab": [
+      [
+        "convinced me to",
+        "m'a convaincu de"
+      ],
+      [
+        "staging",
+        "mise en scène"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-32",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "en": "Many experts argue that banning smartphones during school hours helps teenagers concentrate and talk more face to face. However, some parents worry about not reaching their children after class.",
+    "fr": "Beaucoup d'experts affirment qu'interdire les smartphones pendant les heures de classe aide les ados à se concentrer et à parler davantage en face à face. Cependant, certains parents s'inquiètent de ne pas pouvoir joindre leurs enfants après les cours.",
+    "grammarTitle": "Gérondif sujet (banning) & worry about + V-ing",
+    "grammarNote": "'Reach someone' = joindre quelqu'un (par téléphone ou message).",
+    "vocab": [
+      [
+        "face to face",
+        "en face à face"
+      ],
+      [
+        "reach",
+        "joindre"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-33",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "en": "Students should view language models as a study partner rather than a shortcut to skip thinking. If you let a machine write every essay, you never train your own voice.",
+    "fr": "Les étudiants devraient voir les modèles de langage comme un partenaire d'étude plutôt que comme un raccourci pour éviter de réfléchir. Si vous laissez une machine écrire chaque dissertation, vous n'entraînez jamais votre propre style.",
+    "grammarTitle": "View A as B & let + objet + BV (sans 'to')",
+    "grammarNote": "Après 'let', jamais de 'to' : 'let a machine write'. 'Shortcut' = raccourci.",
+    "vocab": [
+      [
+        "shortcut",
+        "raccourci"
+      ],
+      [
+        "skip",
+        "éviter / sauter"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-34",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "en": "Repair cafes have popped up in hundreds of towns to help people fix broken toasters, bikes, and clothing. Not only do they cut waste, but they also teach practical skills to neighbors.",
+    "fr": "Des cafés de réparation ont fleuri dans des centaines de villes pour aider les gens à réparer grille-pains, vélos et vêtements cassés. Non seulement ils réduisent les déchets, mais ils apprennent aussi des compétences pratiques aux voisins.",
+    "grammarTitle": "Pop up & Not only do they...",
+    "grammarNote": "'Pop up' = apparaître rapidement ; 'clothing' (indénombrable) = vêtements.",
+    "vocab": [
+      [
+        "popped up",
+        "ont surgi / fleuri"
+      ],
+      [
+        "practical skills",
+        "compétences pratiques"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-35",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "en": "During the experiment, the researchers realized that one sensor had been recording slightly wrong temperatures for two days. They decided to restart the whole test to be completely sure.",
+    "fr": "Pendant l'expérience, les chercheurs ont réalisé qu'un capteur enregistrait des températures légèrement erronées depuis deux jours. Ils ont décidé de recommencer tout le test pour être totalement sûrs.",
+    "grammarTitle": "Past Perfect Continuous (had been recording)",
+    "grammarNote": "'Had been recording ... for two days' exprime la durée antérieure au constat ('realized').",
+    "vocab": [
+      [
+        "realized",
+        "ont réalisé"
+      ],
+      [
+        "restart",
+        "recommencer"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-36",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "en": "When the wind blows strongly at night, wind turbines often produce more power than towns actually need. Storing that extra energy in large batteries remains one of engineering's biggest goals.",
+    "fr": "Quand le vent souffle fort la nuit, les éoliennes produisent souvent plus d'électricité que les villes n'en ont réellement besoin. Stocker cette énergie excédentaire dans de grandes batteries reste l'un des plus grands objectifs de l'ingénierie.",
+    "grammarTitle": "Gérondif sujet (Storing...) & génitif (engineering's)",
+    "grammarNote": "'Extra energy' = énergie excédentaire.",
+    "vocab": [
+      [
+        "blows strongly",
+        "souffle fort"
+      ],
+      [
+        "storing",
+        "stocker"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-37",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "en": "Because childcare has become so expensive, some parents find it cheaper to work fewer hours than to pay for full-time daycare. Affordable public nurseries could help many families stay in the workforce.",
+    "fr": "Parce que la garde d'enfants est devenue si chère, certains parents trouvent moins coûteux de travailler moins d'heures que de payer une crèche à temps plein. Des crèches publiques abordables pourraient aider beaucoup de familles à rester actives.",
+    "grammarTitle": "Find it + adjectif + to & fewer hours",
+    "grammarNote": "'Find it cheaper to...' = trouver moins cher de... 'Workforce' = population active.",
+    "vocab": [
+      [
+        "childcare",
+        "garde d'enfants"
+      ],
+      [
+        "workforce",
+        "population active"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-38",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "en": "I have been trying to cut down on coffee after lunch, so I switched to herbal tea last month. At first I felt sleepy at three o'clock, but now I sleep much more deeply.",
+    "fr": "J'essaie de réduire le café après le déjeuner, alors je suis passé aux tisanes le mois dernier. Au début je me sentais somnolent à quinze heures, mais maintenant je dors beaucoup plus profondément.",
+    "grammarTitle": "Cut down on & switch to",
+    "grammarNote": "'Switch to' = passer à / changer pour ; 'herbal tea' = tisane / infusion.",
+    "vocab": [
+      [
+        "cut down on",
+        "réduire"
+      ],
+      [
+        "herbal tea",
+        "tisane"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-39",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Voyage",
+    "en": "Make sure you verify the baggage weight limit before heading to the airport, as budget airlines charge high fees at the gate. Weighing your suitcase at home takes two minutes and saves stress.",
+    "fr": "Assure-toi de vérifier la limite de poids des bagages avant d'aller à l'aéroport, car les compagnies à bas prix facturent des frais élevés à la porte d'embarquement. Peser sa valise chez soi prend deux minutes et évite du stress.",
+    "grammarTitle": "Before + V-ing & Gérondif sujet (Weighing...)",
+    "grammarNote": "'At the gate' = à la porte d'embarquement ; 'head to' = se diriger vers.",
+    "vocab": [
+      [
+        "head to",
+        "se diriger vers"
+      ],
+      [
+        "fees",
+        "frais"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-40",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Travail & Entreprise",
+    "en": "During the job interview, the candidate admitted that he had never managed a large team before. However, he gave clear examples of how he had led student projects at university.",
+    "fr": "Pendant l'entretien d'embauche, le candidat a admis qu'il n'avait jamais dirigé une grande équipe auparavant. Cependant, il a donné des exemples clairs de la façon dont il avait mené des projets étudiants à l'université.",
+    "grammarTitle": "Discours indirect + Past Perfect (had never managed)",
+    "grammarNote": "'Job interview' = entretien d'embauche ; 'lead -> led' = diriger / mener.",
+    "vocab": [
+      [
+        "job interview",
+        "entretien d'embauche"
+      ],
+      [
+        "led",
+        "a mené"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-41",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Restaurant & Alimentation",
+    "en": "My friends insisted on splitting the bill equally, even though I had only ordered a small salad and water. Next time, I will mention upfront that I prefer paying for what I order.",
+    "fr": "Mes amis ont insisté pour diviser l'addition à parts égales, même si je n'avais commandé qu'une petite salade et de l'eau. La prochaine fois, je dirai d'emblée que je préfère payer ce que je commande.",
+    "grammarTitle": "Insist on + V-ing & split the bill",
+    "grammarNote": "'Split the bill' = partager l'addition ; 'upfront' = d'emblée / dès le départ.",
+    "vocab": [
+      [
+        "split the bill",
+        "partager l'addition"
+      ],
+      [
+        "upfront",
+        "d'emblée"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-42",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Loisirs & Culture",
+    "en": "If you enjoy historical mysteries, that new novel is definitely worth reading over the holidays. Just be warned that once you start the final chapter, you will not want to put it down.",
+    "fr": "Si tu aimes les énigmes historiques, ce nouveau roman vaut vraiment la peine d'être lu pendant les vacances. Sois juste prévenu qu'une fois le dernier chapitre entamé, tu ne voudras plus le lâcher.",
+    "grammarTitle": "Be worth + V-ing & put a book down",
+    "grammarNote": "'Put a book down' = poser / lâcher un livre ; 'worth reading' = vaut la peine d'être lu.",
+    "vocab": [
+      [
+        "worth reading",
+        "vaut la peine d'être lu"
+      ],
+      [
+        "put it down",
+        "le lâcher"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-43",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Opinions & Société",
+    "en": "People who live in rural villages often complain that public services are slowly moving online only. Without in-person help desks, older residents risk feeling left behind.",
+    "fr": "Les personnes qui vivent dans les villages ruraux se plaignent souvent que les services publics passent lentement au tout-numérique. Sans guichets physiques, les habitants âgés risquent de se sentir laissés pour compte.",
+    "grammarTitle": "Risk + V-ing & left behind",
+    "grammarNote": "'Feel left behind' = se sentir laissé pour compte / décroché.",
+    "vocab": [
+      [
+        "help desks",
+        "guichets d'accueil"
+      ],
+      [
+        "left behind",
+        "laissés pour compte"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-44",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Intelligence Artificielle",
+    "en": "While translation software helps travelers read signs abroad, it still misses cultural jokes and subtle tone. That is why human translators remain irreplaceable for literature and diplomacy.",
+    "fr": "Bien que les logiciels de traduction aident les voyageurs à lire les panneaux à l'étranger, ils passent encore à côté des blagues culturelles et du ton subtil. C'est pourquoi les traducteurs humains restent irremplaçables pour la littérature et la diplomatie.",
+    "grammarTitle": "While (concession) & miss (= passer à côté de)",
+    "grammarNote": "'That is why' = c'est pourquoi ; 'irreplaceable' = irremplaçable.",
+    "vocab": [
+      [
+        "subtle tone",
+        "ton subtil"
+      ],
+      [
+        "irreplaceable",
+        "irremplaçable"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-45",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Environnement & Climat",
+    "en": "After the heavy summer storms, volunteers spent an entire weekend clearing fallen branches from the forest trails. The mayor thanked everyone for stepping up so quickly to protect the park.",
+    "fr": "Après les violents orages d'été, les bénévoles ont passé tout un week-end à débarrasser les sentiers forestiers des branches tombées. Le maire a remercié tout le monde de s'être mobilisé si vite pour protéger le parc.",
+    "grammarTitle": "Spend time + V-ing & step up (= se mobiliser)",
+    "grammarNote": "'Thank someone for + V-ing' = remercier quelqu'un d'avoir fait.",
+    "vocab": [
+      [
+        "trails",
+        "sentiers"
+      ],
+      [
+        "stepping up",
+        "se mobiliser"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-46",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Science & Éthique",
+    "en": "The museum's new biology exhibit explains how antibiotics transformed modern medicine in less than a century. It also warns visitors that overusing them makes bacteria harder to treat.",
+    "fr": "La nouvelle exposition de biologie du musée explique comment les antibiotiques ont transformé la médecine moderne en moins d'un siècle. Elle avertit aussi les visiteurs que leur usage excessif rend les bactéries plus difficiles à traiter.",
+    "grammarTitle": "Bacteria (pluriel) & overuse + V-ing",
+    "grammarNote": "Attention : 'bacterium' (singulier) -> 'bacteria' (pluriel, donc verbe pluriel en style formel).",
+    "vocab": [
+      [
+        "antibiotics",
+        "antibiotiques"
+      ],
+      [
+        "overusing",
+        "abuser de"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-47",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Énergie & Transition",
+    "en": "Instead of demolishing the old factory, the town converted it into a community workshop powered by rooftop solar panels. Local artisans now rent studio space there at fair rates.",
+    "fr": "Au lieu de démolir l'ancienne usine, la ville l'a reconvertie en un atelier collectif alimenté par des panneaux solaires sur le toit. Les artisans locaux y louent maintenant des espaces à des tarifs équitables.",
+    "grammarTitle": "Convert A into B & powered by",
+    "grammarNote": "'Powered by' = alimenté par ; 'fair rates' = tarifs équitables.",
+    "vocab": [
+      [
+        "converted into",
+        "reconvertie en"
+      ],
+      [
+        "powered by",
+        "alimenté par"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-48",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Choix sociaux & Économie",
+    "en": "Although university tuition is free in several European countries, living expenses like rent and food still create a barrier for low-income students. Expanding student housing would make a real difference.",
+    "fr": "Bien que les frais de scolarité universitaires soient gratuits dans plusieurs pays européens, les frais de vie comme le loyer et la nourriture créent encore une barrière pour les étudiants modestes. Développer les logements étudiants ferait une réelle différence.",
+    "grammarTitle": "Tuition (indénombrable) & would make (Conditionnel)",
+    "grammarNote": "'Tuition' (frais de scolarité) s'emploie au singulier indénombrable.",
+    "vocab": [
+      [
+        "tuition",
+        "frais de scolarité"
+      ],
+      [
+        "living expenses",
+        "frais de vie"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-49",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Vie quotidienne",
+    "en": "Whenever I feel overwhelmed by my to-do list, I pick the smallest task first just to build momentum. Usually, getting started is the hardest part of the whole morning.",
+    "fr": "Chaque fois que je me sens débordé par ma liste de tâches, je choisis d'abord la plus petite juste pour prendre de l'élan. D'habitude, s'y mettre est la partie la plus difficile de toute la matinée.",
+    "grammarTitle": "Whenever & build momentum",
+    "grammarNote": "'Overwhelmed' = submergé / débordé ; 'build momentum' = prendre de l'élan.",
+    "vocab": [
+      [
+        "overwhelmed",
+        "débordé / submergé"
+      ],
+      [
+        "momentum",
+        "élan"
+      ]
+    ]
+  },
+  {
+    "id": "l-b1-50",
+    "mode": "listen",
+    "level": "B1",
+    "theme": "Voyage",
+    "en": "Our train got delayed for ninety minutes because of fallen trees on the track, so we arrived after midnight. Thankfully, the hotel staff had left our room key in a lockbox outside.",
+    "fr": "Notre train a eu quatre-vingt-dix minutes de retard à cause d'arbres tombés sur la voie, donc nous sommes arrivés après minuit. Heureusement, le personnel de l'hôtel avait laissé la clé de notre chambre dans une boîte à clé dehors.",
+    "grammarTitle": "Get delayed & Past Perfect (had left)",
+    "grammarNote": "'Staff' (le personnel) peut prendre un verbe singulier ou pluriel ; 'lockbox' = boîte sécurisée.",
+    "vocab": [
+      [
+        "track",
+        "voie ferrée"
+      ],
+      [
+        "thankfully",
+        "heureusement"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-16",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "en": "While generative models can draft fluent prose in seconds, they often hallucinate plausible-sounding citations out of thin air. Treating their output as verified fact would be a costly mistake in any academic or legal setting.",
+    "fr": "Bien que les modèles génératifs puissent rédiger une prose fluide en quelques secondes, ils inventent souvent des citations plausibles de toutes pièces. Traiter leurs résultats comme des faits vérifiés serait une erreur coûteuse dans tout cadre académique ou juridique.",
+    "grammarTitle": "Out of thin air & While (concession)",
+    "grammarNote": "'Out of thin air' = de toutes pièces / ex nihilo ; 'output' = production / résultat (singulier).",
+    "vocab": [
+      [
+        "out of thin air",
+        "de toutes pièces"
+      ],
+      [
+        "plausible-sounding",
+        "d'apparence plausible"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-17",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "en": "Had municipal authorities preserved coastal wetlands instead of draining them for parking lots, last autumn's floods would have caused far less damage. Nature-based solutions often outperform concrete barriers over the long term.",
+    "fr": "Si les autorités municipales avaient préservé les zones humides côtières au lieu de les drainer pour des parkings, les inondations de l'automne dernier auraient causé bien moins de dégâts. Les solutions fondées sur la nature surpassent souvent les digues en béton sur le long terme.",
+    "grammarTitle": "Conditionnel Type 3 inversé & outperform",
+    "grammarNote": "'Outperform' = surpasser / être plus performant que. 'Damage' reste singulier.",
+    "vocab": [
+      [
+        "wetlands",
+        "zones humides"
+      ],
+      [
+        "outperform",
+        "surpasser"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-18",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "en": "Not only does widening wealth inequality erode social cohesion, but it also dampens long-term economic growth by limiting educational investment among modest households. Addressing the issue requires progressive taxation alongside robust public services.",
+    "fr": "Non seulement le creusement des inégalités patrimoniales érode la cohésion sociale, mais il freine aussi la croissance économique à long terme en limitant l'investissement éducatif des ménages modestes. Régler ce problème exige une fiscalité progressive ainsi que des services publics solides.",
+    "grammarTitle": "Inversion (Not only does...) & dampen (= freiner)",
+    "grammarNote": "'Dampen' = freiner / tempérer (la croissance, l'enthousiasme).",
+    "vocab": [
+      [
+        "dampens",
+        "freine / tempère"
+      ],
+      [
+        "progressive taxation",
+        "fiscalité progressive"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-19",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "en": "It is high time funding agencies stopped rewarding researchers solely on the volume of publications rather than on methodological rigor. The publish-or-perish culture inadvertently encourages rushed studies and irreproducible findings.",
+    "fr": "Il est grand temps que les agences de financement cessent de récompenser les chercheurs uniquement sur le volume de publications plutôt que sur la rigueur méthodologique. La culture du 'publier ou périr' encourage involontairement les études hâtives et les résultats non reproductibles.",
+    "grammarTitle": "It is high time + Past Simple & inadvertently",
+    "grammarNote": "'Inadvertently' = involontairement / par mégarde ; 'irreproducible' = non reproductible.",
+    "vocab": [
+      [
+        "inadvertently",
+        "involontairement"
+      ],
+      [
+        "rushed",
+        "hâtives / bâclées"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-20",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "en": "Far from rendering nuclear power obsolete, the rapid expansion of intermittent renewables has underscored the value of steady low-carbon baseload capacity. Relying exclusively on imported natural gas as a backup leaves Europe exposed to geopolitical shocks.",
+    "fr": "Loin de rendre le nucléaire obsolète, l'essor rapide des renouvelables intermittents a souligné la valeur d'une capacité de base bas-carbone stable. S'en remettre exclusivement au gaz naturel importé en secours laisse l'Europe exposée aux chocs géopolitiques.",
+    "grammarTitle": "Far from + V-ing & baseload capacity",
+    "grammarNote": "'Baseload' = production électrique de base (continue) ; 'underscore' = souligner.",
+    "vocab": [
+      [
+        "underscored",
+        "souligné"
+      ],
+      [
+        "baseload",
+        "production de base"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-21",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "en": "Little did early internet pioneers anticipate that attention-maximizing business models would turn online forums into arenas of outrage. Rebuilding healthy civic discourse demands rethinking platform incentives from the ground up.",
+    "fr": "Les premiers pionniers d'internet étaient loin de se douter que des modèles économiques maximisant l'attention transformeraient les forums en ligne en arènes d'indignation. Reconstruire un débat civique sain exige de repenser les incitations des plateformes de fond en comble.",
+    "grammarTitle": "Inversion (Little did ... anticipate) & from the ground up",
+    "grammarNote": "'From the ground up' = de fond en comble / depuis la base.",
+    "vocab": [
+      [
+        "outrage",
+        "indignation / colère"
+      ],
+      [
+        "from the ground up",
+        "de fond en comble"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-22",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "en": "Whereas remote work was initially hailed as an unqualified victory for employee autonomy, many managers now worry that junior staff miss out on informal mentoring. Striking the right balance between flexibility and in-person collaboration remains a delicate task.",
+    "fr": "Alors que le télétravail avait d'abord été salué comme une victoire sans réserve pour l'autonomie des salariés, beaucoup de managers craignent désormais que les jeunes recrues ne passent à côté du mentorat informel. Trouver le juste équilibre entre flexibilité et collaboration en présentiel reste délicat.",
+    "grammarTitle": "Hailed as & strike the right balance",
+    "grammarNote": "'Hailed as' = salué comme ; 'strike a balance' = trouver un juste équilibre.",
+    "vocab": [
+      [
+        "hailed as",
+        "salué comme"
+      ],
+      [
+        "strike the right balance",
+        "trouver le juste équilibre"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-23",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Voyage",
+    "en": "No sooner had several Mediterranean cities introduced daily tourist entry fees than debate erupted over whether pricing alone can curb overcrowding. Critics contend that capping cruise ship arrivals would prove far more effective.",
+    "fr": "À peine plusieurs villes méditerranéennes avaient-elles instauré des droits d'entrée journaliers pour les touristes qu'un débat a éclaté pour savoir si la tarification seule peut freiner la surfréquentation. Les détracteurs soutiennent que plafonner les arrivées de paquebots serait bien plus efficace.",
+    "grammarTitle": "Inversion (No sooner had ... than) & overcrowd",
+    "grammarNote": "'Critics contend that...' = les détracteurs soutiennent que... 'Overcrowding' = surfréquentation.",
+    "vocab": [
+      [
+        "overcrowding",
+        "surfréquentation"
+      ],
+      [
+        "contend",
+        "soutiennent"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-24",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "en": "For all its commercial dominance, the global streaming model often leaves independent filmmakers struggling to recover their production costs. Protecting national cultural funds ensures that daring cinema does not vanish behind algorithmic formulas.",
+    "fr": "Malgré toute sa domination commerciale, le modèle mondial du streaming laisse souvent les cinéastes indépendants peiner à couvrir leurs coûts de production. Protéger les fonds culturels nationaux garantit qu'un cinéma audacieux ne disparaisse pas derrière des formules algorithmiques.",
+    "grammarTitle": "For all + nom (= malgré tout) & daring",
+    "grammarNote": "'For all its dominance' = malgré toute sa domination. 'Daring' = audacieux.",
+    "vocab": [
+      [
+        "for all",
+        "malgré tout(e)"
+      ],
+      [
+        "daring",
+        "audacieux"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-25",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "en": "Public school cafeterias could serve as a powerful lever for both child health and local agricultural transition, provided procurement rules prioritize quality over the lowest bid. Investing in fresh, regional produce yields lasting dividends.",
+    "fr": "Les cantines scolaires publiques pourraient servir de levier puissant à la fois pour la santé des enfants et la transition agricole locale, à condition que les règles d'achat public privilégient la qualité sur le moins-disant. Investir dans des produits frais régionaux rapporte des dividendes durables.",
+    "grammarTitle": "Provided (= à condition que) & lowest bid",
+    "grammarNote": "'Procurement' = commande publique / achats ; 'lowest bid' = offre la moins chère.",
+    "vocab": [
+      [
+        "procurement",
+        "achats publics"
+      ],
+      [
+        "lowest bid",
+        "offre la moins-disante"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-26",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Vie quotidienne",
+    "en": "Under no circumstances should essential municipal services become inaccessible to citizens who lack a smartphone or high-speed internet. Maintaining physical counters is a prerequisite for true administrative equality.",
+    "fr": "En aucun cas les services municipaux essentiels ne devraient devenir inaccessibles aux citoyens dépourvus de smartphone ou d'internet haut débit. Maintenir des guichets physiques est une condition préalable à une véritable égalité administrative.",
+    "grammarTitle": "Inversion (Under no circumstances should...) & prerequisite",
+    "grammarNote": "'Prerequisite for' = condition préalable à.",
+    "vocab": [
+      [
+        "prerequisite",
+        "condition préalable"
+      ],
+      [
+        "counters",
+        "guichets"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-27",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "en": "Tech conglomerates are alleged to have scraped copyrighted books and news archives without permission to train flagship models. Pending court rulings will likely redefine how intellectual property applies in the age of generative AI.",
+    "fr": "Les conglomérats technologiques sont accusés d'avoir aspiré des livres protégés et des archives de presse sans autorisation pour entraîner leurs modèles phares. Les décisions de justice attendues redéfiniront probablement l'application de la propriété intellectuelle à l'ère de l'IA générative.",
+    "grammarTitle": "Passif + infinitif passé (are alleged to have + PP)",
+    "grammarNote": "'Pending' = en attente / imminent ; 'flagship' = phare / vitrine.",
+    "vocab": [
+      [
+        "alleged to have",
+        "accusés d'avoir"
+      ],
+      [
+        "pending",
+        "en attente / à venir"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-28",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "en": "Compelling as individual eco-gestures may feel, personal virtue cannot offset the systemic emissions of heavy industry and fossil energy. Structural policy reforms must therefore accompany behavioral change.",
+    "fr": "Aussi gratifiants que puissent paraître les écogestes individuels, la vertu personnelle ne saurait compenser les émissions systémiques de l'industrie lourde et des énergies fossiles. Des réformes politiques structurelles doivent donc accompagner le changement des comportements.",
+    "grammarTitle": "Concession (Adj + as + S + may) & offset",
+    "grammarNote": "'Offset' = compenser ; 'compelling' = convaincant / séduisant.",
+    "vocab": [
+      [
+        "offset",
+        "compenser"
+      ],
+      [
+        "behavioral change",
+        "changement de comportement"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-29",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "en": "Were public health authorities to neglect preventive medicine in favor of costly curative interventions, hospital budgets would face unsustainable strain. Early screening and environmental health policies remain far more cost-effective.",
+    "fr": "Si les autorités de santé publique devaient négliger la médecine préventive au profit d'interventions curatives coûteuses, les budgets hospitaliers subiraient une tension insoutenable. Le dépistage précoce et la santé environnementale restent bien plus rentables.",
+    "grammarTitle": "Inversion conditionnelle (Were ... to + BV) & cost-effective",
+    "grammarNote": "'Early screening' = dépistage précoce ; 'cost-effective' = rentable / efficace par rapport au coût.",
+    "vocab": [
+      [
+        "screening",
+        "dépistage"
+      ],
+      [
+        "cost-effective",
+        "rentable / efficient"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-30",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "en": "Unless European nations coordinate their cross-border electricity interconnectors, surplus solar power generated in the south will go wasted during peak hours. Grid integration is just as vital as building new generation capacity.",
+    "fr": "À moins que les nations européennes ne coordonnent leurs interconnexions électriques transfrontalières, le surplus solaire produit dans le sud sera gaspillé aux heures de pointe. L'intégration des réseaux est tout aussi vitale que la construction de nouvelles capacités.",
+    "grammarTitle": "Go wasted & cross-border interconnectors",
+    "grammarNote": "'Go wasted / go unused' = être gaspillé / rester inutilisé.",
+    "vocab": [
+      [
+        "interconnectors",
+        "interconnexions"
+      ],
+      [
+        "go wasted",
+        "être gaspillé"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-31",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "en": "By the time current university students retire, demographic aging will have dramatically altered the ratio between active workers and pensioners. Raising productivity through training and healthier working conditions is essential to sustain the welfare state.",
+    "fr": "D'ici à ce que les étudiants actuels partent à la retraite, le vieillissement démographique aura profondément modifié le ratio entre actifs et retraités. Augmenter la productivité via la formation et de meilleures conditions de travail est essentiel pour préserver l'État-providence.",
+    "grammarTitle": "By the time + présent -> Future Perfect (will have altered)",
+    "grammarNote": "'Welfare state' = État-providence ; 'pensioners' = retraités.",
+    "vocab": [
+      [
+        "pensioners",
+        "retraités"
+      ],
+      [
+        "welfare state",
+        "État-providence"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-32",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "en": "Rather than treating humanities and STEM disciplines as rival camps, higher education ought to bridge the divide between them. Tomorrow's engineers will need historical and ethical perspective just as much as technical mastery.",
+    "fr": "Plutôt que de traiter les humanités et les filières scientifiques comme des camps rivaux, l'enseignement supérieur devrait combler le fossé entre eux. Les ingénieurs de demain auront besoin de recul historique et éthique tout autant que de maîtrise technique.",
+    "grammarTitle": "Rather than + V-ing & bridge the divide",
+    "grammarNote": "'Bridge the divide' = combler le fossé ; 'perspective' = recul / mise en perspective.",
+    "vocab": [
+      [
+        "bridge the divide",
+        "combler le fossé"
+      ],
+      [
+        "perspective",
+        "recul / perspective"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-33",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "en": "Having outsourced much of its manufacturing capacity abroad over three decades, Europe suddenly realized how vulnerable its medical and industrial supply chains had become. Strategic autonomy now tops the policy agenda across the continent.",
+    "fr": "Après avoir délocalisé une grande partie de sa capacité manufacturière à l'étranger pendant trois décennies, l'Europe a soudain réalisé combien ses chaînes médicales et industrielles étaient devenues vulnérables. L'autonomie stratégique figure désormais en tête de l'agenda politique sur tout le continent.",
+    "grammarTitle": "Having + PP (antériorité) & strategic autonomy",
+    "grammarNote": "'Outsource' = externaliser / sous-traiter à l'extérieur ; 'top the agenda' = être en tête des priorités.",
+    "vocab": [
+      [
+        "outsourced",
+        "externalisé"
+      ],
+      [
+        "strategic autonomy",
+        "autonomie stratégique"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-34",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Voyage",
+    "en": "Seldom have night trains enjoyed such a strong revival of political and public support as over the past few years. However, high track-access charges and fragmented booking systems still hinder seamless cross-border rail travel.",
+    "fr": "Rarement les trains de nuit n'ont connu un tel regain de soutien politique et public qu'au cours des dernières années. Toutefois, les péages ferroviaires élevés et les systèmes de réservation fragmentés freinent encore les voyages transfrontaliers fluides.",
+    "grammarTitle": "Inversion (Seldom have...) & seamless",
+    "grammarNote": "'Seamless' = sans couture / fluide d'un bout à l'autre.",
+    "vocab": [
+      [
+        "revival",
+        "regain / renaissance"
+      ],
+      [
+        "seamless",
+        "fluide / sans friction"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-35",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Loisirs & Culture",
+    "en": "Faced with rising production costs, regional theaters are increasingly turning to co-productions to keep ticket prices accessible. Ensuring that live performing arts do not become a luxury good requires sustained public backing.",
+    "fr": "Confrontés à la hausse des coûts de production, les théâtres régionaux recourent de plus en plus aux coproductions pour garder des tarifs accessibles. Garantir que le spectacle vivant ne devienne pas un bien de luxe exige un soutien public constant.",
+    "grammarTitle": "Faced with & live performing arts",
+    "grammarNote": "'Performing arts' = arts du spectacle vivant ; 'backing' = soutien (financier ou politique).",
+    "vocab": [
+      [
+        "performing arts",
+        "spectacle vivant"
+      ],
+      [
+        "backing",
+        "soutien"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-36",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Restaurant & Alimentation",
+    "en": "Food sovereignty has re-emerged as a central geopolitical concern following repeated supply disruptions and extreme harvests. Strengthening resilient local farming protects both rural livelihoods and urban consumers against price volatility.",
+    "fr": "La souveraineté alimentaire a réémergé comme une préoccupation géopolitique centrale à la suite de ruptures d'approvisionnement répétées et de récoltes extrêmes. Renforcer une agriculture locale résiliente protège à la fois les revenus ruraux et les consommateurs urbains contre la volatilité des prix.",
+    "grammarTitle": "Food sovereignty & livelihoods",
+    "grammarNote": "'Livelihoods' = moyens de subsistance / revenus d'existence.",
+    "vocab": [
+      [
+        "food sovereignty",
+        "souveraineté alimentaire"
+      ],
+      [
+        "livelihoods",
+        "moyens de subsistance"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-37",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Vie quotidienne",
+    "en": "The constant stream of notifications is widely believed to fragment deep concentration and heighten everyday anxiety. Adopting deliberate digital boundaries enables individuals to reclaim uninterrupted time for reading and reflection.",
+    "fr": "Le flux constant de notifications est largement considéré comme fragmentant la concentration profonde et accentuant l'anxiété quotidienne. Adopter des limites numériques délibérées permet aux individus de se réapproprier du temps ininterrompu pour la lecture et la réflexion.",
+    "grammarTitle": "Passif impersonnel (is believed to) & reclaim",
+    "grammarNote": "'Reclaim' = récupérer / se réapproprier ; 'heighten' = accentuer.",
+    "vocab": [
+      [
+        "reclaim",
+        "se réapproprier"
+      ],
+      [
+        "uninterrupted",
+        "ininterrompu"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-38",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "en": "Open-weight AI models foster academic scrutiny and local innovation by preventing a handful of Silicon Valley giants from monopolizing research. Yet critics warn that unrestricted access also lowers barriers for malicious misuse.",
+    "fr": "Les modèles d'IA à poids ouverts favorisent l'examen académique et l'innovation locale en empêchant une poignée de géants de la Silicon Valley de monopoliser la recherche. Pourtant, les critiques avertissent qu'un accès sans restriction abaisse aussi les barrières pour les usages malveillants.",
+    "grammarTitle": "Prevent A from + V-ing & scrutiny",
+    "grammarNote": "'Scrutiny' = examen minutieux / contrôle critique ; 'a handful of' = une poignée de.",
+    "vocab": [
+      [
+        "scrutiny",
+        "examen minutieux"
+      ],
+      [
+        "handful",
+        "poignée"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-39",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "en": "Should global deforestation in tropical basins continue unchecked, vital carbon sinks could flip into net carbon sources within decades. International trade agreements must therefore link market access to verifiable zero-deforestation commitments.",
+    "fr": "Si la déforestation mondiale dans les bassins tropicaux devait se poursuivre sans contrôle, des puits de carbone vitaux pourraient basculer en sources nettes d'émissions en quelques décennies. Les accords commerciaux internationaux doivent donc lier l'accès au marché à des engagements vérifiables zéro déforestation.",
+    "grammarTitle": "Inversion éventuelle (Should ... continue) & carbon sinks",
+    "grammarNote": "'Carbon sink' = puits de carbone ; 'unchecked' = sans entrave / incontrôlé.",
+    "vocab": [
+      [
+        "carbon sinks",
+        "puits de carbone"
+      ],
+      [
+        "unchecked",
+        "incontrôlé"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-40",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "en": "Much as society celebrates fast medical innovation during emergencies, long-term public trust hinges on transparent safety monitoring afterward. Reporting adverse reactions openly strengthens rather than weakens vaccine confidence.",
+    "fr": "Bien que la société célèbre l'innovation médicale rapide lors des urgences, la confiance publique à long terme repose ensuite sur un suivi de sécurité transparent. Signaler ouvertement les effets indésirables renforce plutôt qu'il n'affaiblit la confiance vaccinale.",
+    "grammarTitle": "Much as + verbe & hinge on",
+    "grammarNote": "'Hinge on' = reposer crucialement sur ; 'adverse reactions' = effets indésirables.",
+    "vocab": [
+      [
+        "hinges on",
+        "repose sur"
+      ],
+      [
+        "adverse reactions",
+        "effets indésirables"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-41",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "en": "Green industrial policy is no longer taboo even among traditionally free-market governments, given the scale of clean-tech subsidies abroad. However, without clear conditionality, public funds risk inflating corporate margins without delivering domestic jobs.",
+    "fr": "La politique industrielle verte n'est plus taboue même parmi les gouvernements traditionnellement libéraux, compte tenu de l'ampleur des subventions aux technologies propres à l'étranger. Toutefois, sans conditionnalité claire, les fonds publics risquent de gonfler les marges des entreprises sans créer d'emplois locaux.",
+    "grammarTitle": "Given (= compte tenu de) & risk + V-ing",
+    "grammarNote": "'Free-market' = libéral (économiquement) ; 'deliver jobs' = créer / apporter des emplois.",
+    "vocab": [
+      [
+        "conditionality",
+        "conditionnalité"
+      ],
+      [
+        "margins",
+        "marges"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-42",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "en": "Many economists contend that measuring national progress solely by GDP blinds policymakers to rising inequality and ecological depletion. Alternative dashboards incorporating health, education, and carbon budgets are gradually gaining institutional traction.",
+    "fr": "De nombreux économistes soutiennent que mesurer le progrès national uniquement par le PIB rend les décideurs aveugles à la hausse des inégalités et à l'épuisement écologique. Des tableaux de bord alternatifs intégrant santé, éducation et budgets carbone gagnent peu à peu du terrain institutionnel.",
+    "grammarTitle": "Gérondif sujet (measuring) & gain traction",
+    "grammarNote": "'Blind someone to' = rendre aveugle à ; 'gain traction' = gagner en influence.",
+    "vocab": [
+      [
+        "blinds ... to",
+        "rend aveugle à"
+      ],
+      [
+        "gain traction",
+        "gagner du terrain"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-43",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Opinions & Société",
+    "en": "Civic assemblies composed of randomly selected citizens have demonstrated a remarkable capacity to reach nuanced compromises on contentious topics. Unlike short election cycles, deliberative forums encourage participants to weigh long-term trade-offs.",
+    "fr": "Les conventions citoyennes composées de citoyens tirés au sort ont démontré une remarquable capacité à parvenir à des compromis nuancés sur des sujets controversés. Contrairement aux cycles électoraux courts, les forums délibératifs encouragent les participants à peser les arbitrages de long terme.",
+    "grammarTitle": "Randomly selected & weigh trade-offs",
+    "grammarNote": "'Randomly selected' = tirés au sort ; 'weigh trade-offs' = peser les compromis.",
+    "vocab": [
+      [
+        "randomly selected",
+        "tirés au sort"
+      ],
+      [
+        "contentious",
+        "controversé"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-44",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Travail & Entreprise",
+    "en": "Workers who undergo continuous retraining throughout their careers adapt far more smoothly to technological disruption than those left to fend for themselves. Shared funding between employers and the state is key to making lifelong learning accessible.",
+    "fr": "Les travailleurs qui suivent une reconversion continue tout au long de leur carrière s'adaptent bien plus facilement aux ruptures technologiques que ceux laissés à eux-mêmes. Un financement partagé entre employeurs et État est clé pour rendre la formation continue accessible.",
+    "grammarTitle": "Fend for themselves & lifelong learning",
+    "grammarNote": "'Fend for oneself' = se débrouiller tout seul ; 'disruption' = rupture / bouleversement.",
+    "vocab": [
+      [
+        "fend for themselves",
+        "se débrouiller seuls"
+      ],
+      [
+        "retraining",
+        "reconversion"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-45",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Voyage",
+    "en": "High-speed rail has transformed regional mobility wherever lines are frequent, reliable, and transparently priced. Yet rural areas disconnected from major hubs still depend overwhelmingly on private cars for daily errands.",
+    "fr": "Le train à grande vitesse a transformé la mobilité régionale partout où les lignes sont fréquentes, fiables et tarifées de manière transparente. Pourtant, les zones rurales déconnectées des grands pôles dépendent encore massivement de la voiture individuelle pour les courses quotidiennes.",
+    "grammarTitle": "Wherever & overwhelmingly",
+    "grammarNote": "'Overwhelmingly' = massivement / de manière écrasante ; 'errands' = courses / démarches.",
+    "vocab": [
+      [
+        "overwhelmingly",
+        "massivement"
+      ],
+      [
+        "errands",
+        "courses / démarches"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-46",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Intelligence Artificielle",
+    "en": "Algorithms deployed in hiring or credit scoring often operate as black boxes, leaving rejected applicants with no meaningful explanation. Demanding an enforceable right to explanation is vital to preserve procedural fairness.",
+    "fr": "Les algorithmes déployés dans le recrutement ou l'octroi de crédit fonctionnent souvent comme des boîtes noires, laissant les candidats refusés sans explication valable. Exiger un droit contraignant à l'explication est vital pour préserver l'équité procédurale.",
+    "grammarTitle": "Black boxes & enforceable",
+    "grammarNote": "'Enforceable' = applicable / opposable juridiquement ; 'fairness' = équité.",
+    "vocab": [
+      [
+        "enforceable",
+        "contraignant / applicable"
+      ],
+      [
+        "fairness",
+        "équité"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-47",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Environnement & Climat",
+    "en": "Biodiversity loss receives far less media coverage than carbon emissions, even though ecosystem collapse threatens pollination, clean water, and soil stability. Treating climate and biodiversity as twin crises is scientifically imperative.",
+    "fr": "La perte de biodiversité reçoit bien moins de couverture médiatique que les émissions carbone, même si l'effondrement des écosystèmes menace la pollinisation, l'eau propre et la stabilité des sols. Traiter climat et biodiversité comme deux crises jumelles est scientifiquement impératif.",
+    "grammarTitle": "Media coverage (indénombrable) & twin crises",
+    "grammarNote": "'Coverage' (couverture médiatique) est indénombrable singulier -> 'far less coverage'.",
+    "vocab": [
+      [
+        "media coverage",
+        "couverture médiatique"
+      ],
+      [
+        "collapse",
+        "effondrement"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-48",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Science & Éthique",
+    "en": "Once gene-editing therapies enter clinical practice, ensuring equitable reimbursement will determine whether they narrow or widen health inequalities. Scientific breakthroughs lose half their promise if only the affluent can afford them.",
+    "fr": "Une fois que les thérapies d'édition génique entreront en pratique clinique, garantir un remboursement équitable déterminera si elles réduisent ou creusent les inégalités de santé. Les percées scientifiques perdent la moitié de leur promesse si seuls les plus aisés peuvent se les offrir.",
+    "grammarTitle": "The affluent (= les plus aisés) & narrow vs widen",
+    "grammarNote": "'The affluent / the wealthy' (adjectif substantivé sans -s) = les personnes aisées (verbe pluriel).",
+    "vocab": [
+      [
+        "reimbursement",
+        "remboursement"
+      ],
+      [
+        "the affluent",
+        "les plus aisés"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-49",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Énergie & Transition",
+    "en": "Smart electricity meters and dynamic pricing can encourage households to shift power-hungry tasks like car charging to off-peak hours. However, such incentives must never penalize low-income families unable to alter rigid work schedules.",
+    "fr": "Les compteurs électriques intelligents et la tarification dynamique peuvent encourager les ménages à décaler les tâches énergivores comme la recharge automobile vers les heures creuses. Cependant, de telles incitations ne doivent jamais pénaliser les familles modestes incapables de modifier des horaires de travail rigides.",
+    "grammarTitle": "Off-peak hours & power-hungry",
+    "grammarNote": "'Off-peak hours' = heures creuses (opposé à 'peak hours' = heures de pointe).",
+    "vocab": [
+      [
+        "off-peak hours",
+        "heures creuses"
+      ],
+      [
+        "power-hungry",
+        "énergivore"
+      ]
+    ]
+  },
+  {
+    "id": "l-b2-50",
+    "mode": "listen",
+    "level": "B2",
+    "theme": "Choix sociaux & Économie",
+    "en": "For decades, global supply chains were optimized solely for lowest unit cost at the expense of resilience. Recent crises have reminded policymakers that efficiency without spare capacity can quickly turn into fragility.",
+    "fr": "Pendant des décennies, les chaînes d'approvisionnement mondiales ont été optimisées uniquement pour le coût unitaire le plus bas aux dépens de la résilience. Les crises récentes ont rappelé aux décideurs que l'efficacité sans capacité de réserve peut vite se transformer en fragilité.",
+    "grammarTitle": "At the expense of & spare capacity",
+    "grammarNote": "'At the expense of' = aux dépens de ; 'spare capacity' = marge / capacité de réserve.",
+    "vocab": [
+      [
+        "at the expense of",
+        "aux dépens de"
+      ],
+      [
+        "spare capacity",
+        "capacité de réserve"
+      ]
+    ]
   }
 ];
 window.EC_BUILTIN_PREPA = [
@@ -10263,5 +19263,245 @@ window.EC_BUILTIN_PREPA = [
     "theme": "Choix sociaux & Économie",
     "questionEn": "Should higher education prioritize vocational STEM degrees over humanities to meet industrial needs?",
     "questionFr": "L'enseignement supérieur doit-il prioriser les filières scientifiques et techniques (STEM) au détriment des humanités ?"
+  },
+  {
+    "id": "p-41",
+    "theme": "Intelligence Artificielle",
+    "questionEn": "Should lethal autonomous weapons systems be banned by an international treaty before full deployment?",
+    "questionFr": "Faut-il interdire les systèmes d'armes létales autonomes par un traité international avant leur déploiement massif ?"
+  },
+  {
+    "id": "p-42",
+    "theme": "Intelligence Artificielle",
+    "questionEn": "Do open-weight AI models foster democratic scrutiny and innovation, or do they dangerously lower barriers to misuse?",
+    "questionFr": "Les modèles d'IA à poids ouverts favorisent-ils le contrôle démocratique et l'innovation, ou abaissent-ils dangereusement les barrières aux usages malveillants ?"
+  },
+  {
+    "id": "p-43",
+    "theme": "Intelligence Artificielle",
+    "questionEn": "Should AI companies be forced to pay royalties to authors and artists whose works were used to train their models?",
+    "questionFr": "Les entreprises d'IA doivent-elles être contraintes de verser des droits d'auteur aux écrivains et artistes dont les œuvres ont servi à entraîner leurs modèles ?"
+  },
+  {
+    "id": "p-44",
+    "theme": "Intelligence Artificielle",
+    "questionEn": "Is relying on AI for hiring, credit scoring, or predictive policing compatible with human dignity and due process?",
+    "questionFr": "S'en remettre à l'IA pour le recrutement, l'octroi de crédit ou la police prédictive est-il compatible avec la dignité humaine et les droits de la défense ?"
+  },
+  {
+    "id": "p-45",
+    "theme": "Intelligence Artificielle",
+    "questionEn": "Can Europe build genuine digital sovereignty without falling behind the United States and China in AI infrastructure?",
+    "questionFr": "L'Europe peut-elle bâtir une véritable souveraineté numérique sans prendre de retard sur les États-Unis et la Chine dans les infrastructures d'IA ?"
+  },
+  {
+    "id": "p-46",
+    "theme": "Intelligence Artificielle",
+    "questionEn": "Are emotional AI companions a helpful remedy for modern loneliness or a deceptive substitute for human relationships?",
+    "questionFr": "Les compagnons émotionnels par IA sont-ils un remède utile à la solitude moderne ou un substitut trompeur aux relations humaines ?"
+  },
+  {
+    "id": "p-47",
+    "theme": "Intelligence Artificielle",
+    "questionEn": "In medicine, should AI ever be allowed to make diagnostic or triage decisions without human sign-off?",
+    "questionFr": "En médecine, faut-il jamais autoriser l'IA à prendre des décisions de diagnostic ou de triage sans validation humaine ?"
+  },
+  {
+    "id": "p-48",
+    "theme": "Intelligence Artificielle",
+    "questionEn": "Does mandatory watermarking of synthetic media offer real protection against disinformation, or is it easily bypassed?",
+    "questionFr": "Le tatouage numérique obligatoire des contenus synthétiques protège-t-il réellement contre la désinformation, ou est-il trop facile à contourner ?"
+  },
+  {
+    "id": "p-49",
+    "theme": "Environnement & Climat",
+    "questionEn": "Should deep-sea mining be prohibited worldwide until marine ecosystems are thoroughly understood?",
+    "questionFr": "Faut-il interdire l'exploitation minière des grands fonds marins tant que les écosystèmes océaniques ne sont pas pleinement compris ?"
+  },
+  {
+    "id": "p-50",
+    "theme": "Environnement & Climat",
+    "questionEn": "Should governments ban advertising for fossil-fuel vehicles and high-carbon luxury goods?",
+    "questionFr": "Les gouvernements doivent-ils interdire la publicité pour les véhicules fossiles et les biens de luxe très carbonés ?"
+  },
+  {
+    "id": "p-51",
+    "theme": "Environnement & Climat",
+    "questionEn": "Is fast fashion primarily a consumer responsibility issue, or must states strictly penalize ultra-short textile cycles?",
+    "questionFr": "La mode éphémère relève-t-elle d'abord de la responsabilité des consommateurs, ou les États doivent-ils sanctionner strictement les cycles textiles ultra-courts ?"
+  },
+  {
+    "id": "p-52",
+    "theme": "Environnement & Climat",
+    "questionEn": "How should international law recognize and protect climate refugees displaced by rising sea levels and drought?",
+    "questionFr": "Comment le droit international doit-il reconnaître et protéger les réfugiés climatiques déplacés par la montée des eaux et la sécheresse ?"
+  },
+  {
+    "id": "p-53",
+    "theme": "Environnement & Climat",
+    "questionEn": "Does urban densification protect farmland and biodiversity, or does it worsen urban heat islands and quality of life?",
+    "questionFr": "La densification urbaine protège-t-elle les terres agricoles et la biodiversité, ou aggrave-t-elle les îlots de chaleur et la qualité de vie ?"
+  },
+  {
+    "id": "p-54",
+    "theme": "Environnement & Climat",
+    "questionEn": "Should water pricing be steeply progressive to discourage non-essential uses during severe droughts?",
+    "questionFr": "La tarification de l'eau doit-elle devenir fortement progressive pour dissuader les usages non essentiels lors des sécheresses sévères ?"
+  },
+  {
+    "id": "p-55",
+    "theme": "Environnement & Climat",
+    "questionEn": "Can 'nature-based solutions' like rewilding and wetlands restoration replace costly concrete flood defenses?",
+    "questionFr": "Les solutions fondées sur la nature comme le réensauvagement et la restauration des zones humides peuvent-elles remplacer les digues en béton ?"
+  },
+  {
+    "id": "p-56",
+    "theme": "Environnement & Climat",
+    "questionEn": "Should imported agricultural products face mandatory mirror environmental and pesticide standards?",
+    "questionFr": "Les produits agricoles importés doivent-ils être soumis à des clauses miroirs environnementales et sanitaires obligatoires ?"
+  },
+  {
+    "id": "p-57",
+    "theme": "Science & Éthique",
+    "questionEn": "Does the 'publish or perish' academic culture undermine scientific integrity and long-term breakthroughs?",
+    "questionFr": "La culture académique du 'publier ou périr' sape-t-elle l'intégrité scientifique et les percées de long terme ?"
+  },
+  {
+    "id": "p-58",
+    "theme": "Science & Éthique",
+    "questionEn": "Should neural implants and brain-computer interfaces be restricted strictly to medical rehabilitation?",
+    "questionFr": "Les implants neuronaux et interfaces cerveau-machine doivent-ils être strictement réservés à la rééducation médicale ?"
+  },
+  {
+    "id": "p-59",
+    "theme": "Science & Éthique",
+    "questionEn": "How can democracies fight pseudoscience and vaccine hesitancy without resorting to heavy-handed censorship?",
+    "questionFr": "Comment les démocraties peuvent-elles lutter contre les pseudosciences et la défiance vaccinale sans recourir à une censure autoritaire ?"
+  },
+  {
+    "id": "p-60",
+    "theme": "Science & Éthique",
+    "questionEn": "Should biomedical research focus more on extending healthy lifespan or on reducing global disparities in basic care?",
+    "questionFr": "La recherche biomédicale doit-elle privilégier l'allongement de l'espérance de vie en bonne santé ou la réduction des inégalités mondiales d'accès aux soins ?"
+  },
+  {
+    "id": "p-61",
+    "theme": "Science & Éthique",
+    "questionEn": "Is phasing out animal testing realistically achievable thanks to organoids and computer simulations?",
+    "questionFr": "La sortie progressive des tests sur les animaux est-elle réaliste grâce aux organoïdes et aux simulations numériques ?"
+  },
+  {
+    "id": "p-62",
+    "theme": "Science & Éthique",
+    "questionEn": "Should engineering and science students be required to take ethics and humanities courses throughout their training?",
+    "questionFr": "Les étudiants en sciences et en ingénierie devraient-ils suivre des cours obligatoires d'éthique et d'humanités tout au long de leur cursus ?"
+  },
+  {
+    "id": "p-63",
+    "theme": "Science & Éthique",
+    "questionEn": "Does open-access publishing accelerate global research equity, or does it fuel predatory journals?",
+    "questionFr": "La publication scientifique en accès libre accélère-t-elle l'équité mondiale de la recherche, ou alimente-t-elle les revues prédatrices ?"
+  },
+  {
+    "id": "p-64",
+    "theme": "Science & Éthique",
+    "questionEn": "Should commercial space tourism be heavily taxed or banned to curb upper-atmosphere pollution and space debris?",
+    "questionFr": "Le tourisme spatial commercial doit-il être lourdement taxé ou interdit pour limiter la pollution de la haute atmosphère et les débris spatiaux ?"
+  },
+  {
+    "id": "p-65",
+    "theme": "Énergie & Transition",
+    "questionEn": "Does energy efficiency often backfire through the 'rebound effect' unless paired with consumption limits?",
+    "questionFr": "L'efficacité énergétique se retourne-t-elle souvent contre l'objectif climatique via l'effet rebond sans limites à la consommation ?"
+  },
+  {
+    "id": "p-66",
+    "theme": "Énergie & Transition",
+    "questionEn": "Should states prioritize retrofitting existing poorly insulated homes over subsidizing new construction?",
+    "questionFr": "Les États doivent-ils prioriser la rénovation thermique des logements existants plutôt que de subventionner la construction neuve ?"
+  },
+  {
+    "id": "p-67",
+    "theme": "Énergie & Transition",
+    "questionEn": "Is making urban public transport completely free the best way to reduce car dependency, or should funds improve frequency first?",
+    "questionFr": "La gratuité totale des transports en commun urbains est-elle le meilleur moyen de réduire la voiture, ou faut-il d'abord financer la fréquence et la couverture ?"
+  },
+  {
+    "id": "p-68",
+    "theme": "Énergie & Transition",
+    "questionEn": "Can Europe achieve clean-tech industrial autonomy without triggering a costly subsidy war with allies?",
+    "questionFr": "L'Europe peut-elle conquérir son autonomie industrielle bas-carbone sans déclencher une guerre coûteuse des subventions avec ses alliés ?"
+  },
+  {
+    "id": "p-69",
+    "theme": "Énergie & Transition",
+    "questionEn": "Should energy-intensive data centers be required to locate near waste-heat networks or clean baseload power?",
+    "questionFr": "Les centres de données énergivores doivent-ils être contraints de s'implanter près de réseaux de chaleur fatale ou de sources bas-carbone pilotables ?"
+  },
+  {
+    "id": "p-70",
+    "theme": "Énergie & Transition",
+    "questionEn": "Does expanding biofuels create an unacceptable competition between energy crops and global food security?",
+    "questionFr": "Le développement des biocarburants crée-t-il une concurrence inacceptable entre cultures énergétiques et sécurité alimentaire mondiale ?"
+  },
+  {
+    "id": "p-71",
+    "theme": "Énergie & Transition",
+    "questionEn": "Why do local communities often oppose wind turbines or power lines despite supporting climate goals in principle?",
+    "questionFr": "Pourquoi les populations locales s'opposent-elles souvent aux éoliennes ou aux lignes électriques tout en soutenant les objectifs climatiques en principe ?"
+  },
+  {
+    "id": "p-72",
+    "theme": "Énergie & Transition",
+    "questionEn": "Should night trains receive massive European subsidies to become a realistic alternative to medium-haul flights?",
+    "questionFr": "Les trains de nuit doivent-ils recevoir des subventions européennes massives pour devenir une alternative crédible aux vols moyen-courriers ?"
+  },
+  {
+    "id": "p-73",
+    "theme": "Choix sociaux & Économie",
+    "questionEn": "Is strict rent control an effective way to protect modest households, or does it worsen housing shortages?",
+    "questionFr": "L'encadrement strict des loyers protège-t-il efficacement les ménages modestes, ou aggrave-t-il la pénurie de logements ?"
+  },
+  {
+    "id": "p-74",
+    "theme": "Choix sociaux & Économie",
+    "questionEn": "Should a four-day workweek with unchanged pay become a standard labor policy in advanced economies?",
+    "questionFr": "La semaine de quatre jours sans baisse de salaire doit-elle devenir une norme du travail dans les économies avancées ?"
+  },
+  {
+    "id": "p-75",
+    "theme": "Choix sociaux & Économie",
+    "questionEn": "Can a global minimum corporate tax truly curb tax havens and the 'race to the bottom'?",
+    "questionFr": "Un impôt minimum mondial sur les sociétés peut-il réellement endiguer les paradis fiscaux et la course au moins-disant fiscal ?"
+  },
+  {
+    "id": "p-76",
+    "theme": "Choix sociaux & Économie",
+    "questionEn": "Is meritocracy a genuine engine of social mobility today, or does it mask inherited privilege?",
+    "questionFr": "La méritocratie est-elle aujourd'hui un véritable moteur de mobilité sociale, ou masque-t-elle des privilèges hérités ?"
+  },
+  {
+    "id": "p-77",
+    "theme": "Choix sociaux & Économie",
+    "questionEn": "How should aging societies finance pension systems and elderly care without overburdening younger generations?",
+    "questionFr": "Comment les sociétés vieillissantes doivent-elles financer les retraites et la dépendance sans écraser les jeunes générations ?"
+  },
+  {
+    "id": "p-78",
+    "theme": "Choix sociaux & Économie",
+    "questionEn": "Could citizens' assemblies chosen by lot revitalize democracy better than traditional referendums?",
+    "questionFr": "Les conventions citoyennes tirées au sort pourraient-elles revitaliser la démocratie mieux que les référendums traditionnels ?"
+  },
+  {
+    "id": "p-79",
+    "theme": "Choix sociaux & Économie",
+    "questionEn": "Should historic cities cap tourist arrivals and short-term rentals to preserve affordable housing for locals?",
+    "questionFr": "Les villes historiques doivent-elles plafonner les arrivées touristiques et les meublés de tourisme pour préserver des logements abordables aux habitants ?"
+  },
+  {
+    "id": "p-80",
+    "theme": "Choix sociaux & Économie",
+    "questionEn": "Does reshoring strategic industries strengthen national resilience, or does it inevitably fuel inflation for consumers?",
+    "questionFr": "La relocalisation des industries stratégiques renforce-t-elle la résilience nationale, ou alimente-t-elle inévitablement l'inflation pour les consommateurs ?"
   }
 ];
