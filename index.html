@@ -878,7 +878,7 @@
       max-width: 780px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
 
     .nav-btn {
@@ -1067,6 +1067,252 @@
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
+
+    /* ===== PROFILS, PLAN DU JOUR, FLASHCARDS SRS, DRILL & CARNET D'ERREURS ===== */
+    .profile-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 11px;
+      border-radius: 12px;
+      border: 1px solid #c7d2fe;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.12s, background 0.15s;
+    }
+    .profile-pill.mathys {
+      border-color: #a7f3d0;
+      background: var(--emerald-soft);
+      color: var(--emerald);
+    }
+    .profile-pill:active { transform: scale(0.95); }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 440px) {
+      .profile-grid { grid-template-columns: 1fr; }
+    }
+    .profile-card {
+      border: 2px solid var(--border);
+      background: var(--surface-soft);
+      border-radius: 18px;
+      padding: 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.15s, transform 0.12s, box-shadow 0.15s;
+    }
+    .profile-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .profile-card.active-bastien { border-color: var(--primary); background: var(--primary-soft); }
+    .profile-card.active-mathys { border-color: var(--emerald); background: var(--emerald-soft); }
+    .profile-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .subtabs-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 4px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+    }
+    .subtab-btn {
+      border: none;
+      background: transparent;
+      color: #475569;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 9px 6px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: center;
+    }
+    .subtab-btn.active {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+
+    .plan-hero {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff;
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+    .plan-progress-track {
+      height: 10px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.25);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .plan-progress-fill {
+      height: 100%;
+      background: #34d399;
+      border-radius: 99px;
+      transition: width 0.3s ease;
+    }
+
+    .mission-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 16px;
+      margin-bottom: 10px;
+    }
+    .mission-card.done {
+      background: var(--emerald-soft);
+      border-color: #a7f3d0;
+    }
+    .mission-info { flex: 1; min-width: 0; }
+    .mission-title { font-size: 14px; font-weight: 800; color: var(--text); }
+    .mission-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .mission-bar {
+      height: 6px;
+      border-radius: 99px;
+      background: #e2e8f0;
+      overflow: hidden;
+      margin-top: 8px;
+      max-width: 240px;
+    }
+    .mission-bar-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 99px;
+    }
+    .mission-card.done .mission-bar-fill { background: var(--emerald); }
+
+    .mode-switch-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 6px;
+      margin-bottom: 12px;
+    }
+    .mode-switch-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .mode-switch-btn.active {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+    }
+    .mode-switch-btn.active.review-active {
+      background: var(--amber-soft);
+      color: #b45309;
+    }
+
+    .flashcard-box {
+      border: 2px solid #c7d2fe;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      border-radius: 20px;
+      padding: 24px 18px;
+      text-align: center;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .flashcard-word {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .flashcard-answer {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 4px;
+    }
+    .srs-btn-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 12px;
+    }
+    @media (max-width: 500px) {
+      .srs-btn-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .drill-opt-btn {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.14s;
+    }
+    .drill-opt-btn:hover:not(:disabled) { border-color: var(--primary); background: var(--primary-soft); }
+    .drill-opt-btn.opt-ok { border-color: var(--emerald); background: var(--emerald-soft); color: #065f46; }
+    .drill-opt-btn.opt-ko { border-color: var(--rose); background: var(--rose-soft); color: #9f1239; }
+
+    .err-notebook-item {
+      border: 1px solid #fecdd3;
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .kholle-timer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid var(--border);
+    }
+    .kholle-timer-pill.urgent {
+      background: var(--rose-soft);
+      color: var(--rose);
+      border-color: #fecdd3;
+    }
   </style>
 </head>
 <body>
@@ -1082,15 +1328,18 @@
         </div>
       </div>
       <div class="header-actions">
+        <button id="btn-open-profile" type="button" class="profile-pill" title="Changer d'espace (Bastien / Mathys)">
+          <span>👤</span>
+          <span id="hdr-profile-name">Bastien</span>
+          <span>▾</span>
+        </button>
         <div class="stats-pill">
           <span title="Série">🔥 <span id="hdr-streak">0</span></span>
           <span class="stats-sep">|</span>
           <span class="stat-xp" title="Points">⚡ <span id="hdr-xp">0</span></span>
         </div>
-        <div class="stats-pill" title="Exercices réussis (sauvegardés pour ne plus retomber dessus)">
+        <div class="stats-pill" title="Exercices maîtrisés (>=80%)">
           <span>✅ <span id="hdr-completed-count" style="font-weight:700;color:#059669;">0</span></span>
-          <span class="stats-sep">|</span>
-          <span title="Tirage aléatoire cryptographique garanti sans répétition" style="font-size:11px;color:#475569;font-weight:600;">🎲 100% Aléatoire</span>
         </div>
         <button id="hdr-voice-btn" class="stats-pill" type="button" title="Voix IA Réaliste Jenny Neural" style="cursor:pointer;border-color:#ddd6fe;background:#f5f3ff;padding:6px 10px;">
           <span id="hdr-voice-icon">✨</span>
@@ -1103,7 +1352,7 @@
       </div>
     </div>
 
-    <!-- Barre de filtres Niveau + Thème -->
+    <!-- Barre de filtres Niveau + Thème + Grammaire -->
     <div id="global-filters-bar" class="filters-bar">
       <div class="filters-inner">
         <div class="level-group" role="group" aria-label="Niveau">
@@ -1112,7 +1361,15 @@
           <button type="button" class="lvl-btn" data-level="B2">B2</button>
         </div>
         <select id="theme-select" class="select-input theme-select" aria-label="Thème">
-          <option value="ALL">🎲 Tous les thèmes (Aléatoire)</option>
+          <option value="ALL">🎲 Tous les thèmes</option>
+        </select>
+        <select id="grammar-select" class="select-input theme-select" aria-label="Point de grammaire">
+          <option value="ALL">📚 Toutes notions (Grammaire)</option>
+          <option value="TENSES">⏳ Temps & Conjugaison</option>
+          <option value="MODALS_COND">🔀 Modaux & Conditionnels</option>
+          <option value="SYNTAX_B2">🏛️ Inversions, Subjonctif & Passif</option>
+          <option value="PHRASAL_ING">🔗 Gérondifs, Phrasal & Prépositions</option>
+          <option value="TRAPS_PREPA">⚠️ Faux-amis, Indénombrables & Prépa</option>
         </select>
       </div>
     </div>
@@ -1121,8 +1378,139 @@
   <!-- ==================== CONTENU PRINCIPAL ==================== -->
   <main class="main-container">
 
+    <!-- ONGLET 0 : PLAN DU JOUR, FLASHCARDS SRS, DRILL & CARNET -->
+    <section id="tab-plan" class="tab-panel active">
+      <div class="subtabs-row" role="tablist">
+        <button type="button" class="subtab-btn active" data-subtab="daily">📅 Plan</button>
+        <button type="button" class="subtab-btn" data-subtab="srs">🃏 Flashcards</button>
+        <button type="button" class="subtab-btn" data-subtab="drill">⚡ Conjugaison</button>
+        <button type="button" class="subtab-btn" data-subtab="errors">📓 Erreurs</button>
+      </div>
+
+      <!-- SOUS-VUE 1 : PLAN DU JOUR -->
+      <div id="subpanel-daily">
+        <div class="plan-hero">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;">
+            <div>
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;opacity:0.9;">
+                Espace <span id="plan-profile-label">Bastien</span> · <span id="plan-date-label"></span>
+              </div>
+              <h2 style="font-size:20px;font-weight:800;margin-top:4px;">📅 Ton plan de révision du jour</h2>
+              <p id="plan-subtitle" style="font-size:12.5px;opacity:0.92;margin-top:2px;">Routine ciblée ~15 min pour progresser chaque jour</p>
+            </div>
+            <div style="text-align:right;">
+              <div id="plan-missions-count" style="font-size:22px;font-weight:900;">0/5</div>
+              <div style="font-size:11px;opacity:0.9;font-weight:700;">missions</div>
+            </div>
+          </div>
+          <div class="plan-progress-track">
+            <div id="plan-progress-fill" class="plan-progress-fill" style="width:0%;"></div>
+          </div>
+        </div>
+
+        <div id="plan-missions-list"></div>
+
+        <div class="card" style="background:var(--surface-soft);">
+          <div class="grammar-title">📊 Points de grammaire à consolider (Niveau <span id="plan-lvl-label">B1</span>)</div>
+          <div id="plan-grammar-stats" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <!-- SOUS-VUE 2 : FLASHCARDS SRS VOCABULAIRE PRÉPA -->
+      <div id="subpanel-srs" class="hidden">
+        <div class="card">
+          <div class="card-header">
+            <div class="badge-row">
+              <span class="badge badge-violet">🃏 Répétition Espacée (SRS)</span>
+              <span id="srs-due-badge" class="badge badge-amber">0 à revoir</span>
+              <span id="srs-mastered-badge" class="badge badge-emerald">0 maîtrisées</span>
+            </div>
+            <select id="srs-level-select" class="select-input" style="padding:6px 10px;font-size:12px;">
+              <option value="CURRENT">Niveau actif</option>
+              <option value="B2">🎓 Vocabulaire Prépa (B2)</option>
+              <option value="B1">📘 Intermédiaire (B1)</option>
+              <option value="A2">📗 Bases (A2)</option>
+              <option value="ALL">🌍 Tous niveaux</option>
+            </select>
+          </div>
+
+          <div id="srs-card-area" class="flashcard-box" title="Cliquez pour retourner">
+            <span id="srs-card-meta" class="badge badge-muted">B2 · Prépa</span>
+            <div id="srs-card-front" class="flashcard-word">Chargement...</div>
+            <div id="srs-card-hint" style="font-size:12px;color:var(--text-muted);">Touchez la carte pour révéler la traduction</div>
+            <div id="srs-card-back" class="hidden" style="width:100%;">
+              <div id="srs-card-answer" class="flashcard-answer"></div>
+              <div id="srs-card-context" style="font-size:12.5px;color:#475569;margin-top:8px;font-style:italic;"></div>
+              <button id="btn-srs-speak" type="button" class="btn btn-primary btn-sm" style="width:auto;margin-top:10px;box-shadow:none;">🔊 Écouter en anglais</button>
+            </div>
+          </div>
+
+          <div id="srs-reveal-row" style="margin-top:12px;">
+            <button id="btn-srs-reveal" type="button" class="btn btn-primary">👁️ Révéler la réponse</button>
+          </div>
+
+          <div id="srs-rate-row" class="srs-btn-grid hidden">
+            <button type="button" class="btn btn-sm" style="background:var(--rose-soft);color:var(--rose);border:1px solid #fecdd3;" data-srs-rate="0">🔴 À revoir (0j)</button>
+            <button type="button" class="btn btn-sm" style="background:var(--amber-soft);color:#b45309;border:1px solid #fde68a;" data-srs-rate="1">🟠 Moyen (+1j)</button>
+            <button type="button" class="btn btn-sm" style="background:var(--emerald-soft);color:var(--emerald);border:1px solid #a7f3d0;" data-srs-rate="3">🟢 Bien (+3j)</button>
+            <button type="button" class="btn btn-sm" style="background:var(--primary-soft);color:var(--primary);border:1px solid #c7d2fe;" data-srs-rate="7">🔵 Facile (+7j)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOUS-VUE 3 : DRILL CONJUGAISON & GRAMMAIRE RAPIDE -->
+      <div id="subpanel-drill" class="hidden">
+        <div class="card">
+          <div class="card-header">
+            <div class="badge-row">
+              <span class="badge badge-primary">⚡ Drill Conjugaison & Grammaire</span>
+              <span id="drill-lvl-badge" class="badge badge-muted">B1</span>
+              <span id="drill-score-badge" class="badge badge-emerald">0/0 justes</span>
+            </div>
+            <select id="drill-level-select" class="select-input" style="padding:6px 10px;font-size:12px;">
+              <option value="CURRENT">Niveau actif</option>
+              <option value="A2">A2</option>
+              <option value="B1">B1</option>
+              <option value="B2">B2 Prépa</option>
+              <option value="ALL">Tous</option>
+            </select>
+          </div>
+
+          <div id="drill-topic" class="prompt-label" style="color:var(--violet);">Temps & Conjugaison</div>
+          <h3 id="drill-question" class="sentence-display" style="font-size:18px;margin-bottom:6px;"></h3>
+          <p id="drill-fr-hint" style="font-size:13px;color:var(--text-muted);margin-bottom:14px;"></p>
+
+          <div id="drill-options" style="display:flex;flex-direction:column;gap:8px;"></div>
+
+          <div id="drill-feedback" class="grammar-box hidden" style="margin-top:14px;">
+            <div id="drill-fb-title" class="grammar-title"></div>
+            <div id="drill-fb-note" class="grammar-text"></div>
+            <button id="btn-drill-next" type="button" class="btn btn-emerald" style="margin-top:12px;">Question suivante ➡️</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOUS-VUE 4 : CARNET D'ERREURS PERSONNELLES -->
+      <div id="subpanel-errors" class="hidden">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 style="font-size:16px;font-weight:800;">📓 Carnet d'erreurs récurrentes</h3>
+              <p style="font-size:12px;color:var(--text-muted);">Enregistrées automatiquement lors des corrections IA (Parler, Écouter, Khôlle).</p>
+            </div>
+            <button id="btn-clear-errors" type="button" class="tool-btn" style="color:var(--rose);">🗑️ Vider</button>
+          </div>
+          <div id="error-notebook-list"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ONGLET 1 : PARLER (FR -> EN) -->
-    <section id="tab-speak" class="tab-panel active">
+    <section id="tab-speak" class="tab-panel">
+      <div class="mode-switch-bar">
+        <button id="btn-speak-mode-normal" type="button" class="mode-switch-btn active">🎲 Nouvelles phrases</button>
+        <button id="btn-speak-mode-review" type="button" class="mode-switch-btn">🔁 Réviser mes erreurs (<span id="speak-missed-count">0</span>)</button>
+      </div>
       <div class="card">
         <div class="card-header">
           <div class="badge-row">
@@ -1216,6 +1604,11 @@
             <div id="speak-vocab-list" class="vocab-wrap"></div>
           </div>
 
+          <div id="speak-override-wrap" class="hidden" style="background:var(--amber-soft);border:1px solid #fde68a;border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:12px;color:#92400e;font-weight:700;">💡 Formulation différente mais juste ? En mode hors-ligne, tu peux la valider :</span>
+            <button id="btn-speak-override" type="button" class="btn btn-sm" style="background:var(--emerald);color:#fff;width:auto;">✅ Valider quand même</button>
+          </div>
+
           <button id="btn-speak-next-after" type="button" class="btn btn-emerald">Phrase suivante ➡️</button>
         </div>
       </div>
@@ -1223,6 +1616,10 @@
 
     <!-- ONGLET 2 : ÉCOUTER (EN -> FR, 2 PHRASES) -->
     <section id="tab-listen" class="tab-panel">
+      <div class="mode-switch-bar">
+        <button id="btn-listen-mode-normal" type="button" class="mode-switch-btn active">🎲 Nouveaux audios</button>
+        <button id="btn-listen-mode-review" type="button" class="mode-switch-btn">🔁 Réviser mes erreurs (<span id="listen-missed-count">0</span>)</button>
+      </div>
       <div class="card">
         <div class="card-header">
           <div class="badge-row">
@@ -1319,6 +1716,11 @@
             <div id="listen-vocab-list" class="vocab-wrap"></div>
           </div>
 
+          <div id="listen-override-wrap" class="hidden" style="background:var(--amber-soft);border:1px solid #fde68a;border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:12px;color:#92400e;font-weight:700;">💡 Traduction française différente mais correcte ?</span>
+            <button id="btn-listen-override" type="button" class="btn btn-sm" style="background:var(--emerald);color:#fff;width:auto;">✅ Valider quand même</button>
+          </div>
+
           <button id="btn-listen-next-after" type="button" class="btn btn-emerald">Audio suivant ➡️</button>
         </div>
       </div>
@@ -1328,8 +1730,13 @@
     <section id="tab-prepa" class="tab-panel">
       <div class="card">
         <div class="prepa-controls-row">
-          <select id="prepa-theme-select" class="select-input" style="flex:1; min-width:160px;" aria-label="Thème Prépa">
+          <select id="prepa-theme-select" class="select-input" style="flex:1; min-width:150px;" aria-label="Thème Prépa">
             <option value="ALL">🎲 Tous les thèmes Prépa (Aléatoire)</option>
+          </select>
+          <select id="prepa-timer-select" class="select-input" style="width:auto;font-size:12px;" aria-label="Chrono khôlle">
+            <option value="0">⏱️ Chrono : Off</option>
+            <option value="90">⏱️ Chrono : 1m30</option>
+            <option value="120">⏱️ Chrono : 2m00</option>
           </select>
           <div class="lang-switch" role="group" aria-label="Langue de réponse">
             <button type="button" class="lang-btn active" data-prepa-lang="en">🇬🇧 Anglais</button>
@@ -1341,8 +1748,9 @@
           <div class="badge-row">
             <span class="badge badge-violet">🎓 Khôlle Prépa Interactive</span>
             <span id="prepa-theme-badge" class="badge badge-muted">Intelligence Artificielle</span>
-            <span id="prepa-progress-badge" class="badge badge-emerald" title="Questions de khôlle uniques complétées">🎯 0/40 faites</span>
+            <span id="prepa-progress-badge" class="badge badge-emerald" title="Questions de khôlle uniques complétées">🎯 0/80 faites</span>
             <span id="prepa-turn-badge" class="badge badge-primary">Tour 1</span>
+            <span id="prepa-timer-pill" class="kholle-timer-pill hidden">⏱️ <span id="prepa-timer-text">01:30</span></span>
           </div>
           <div class="card-tools">
             <button id="btn-prepa-gen" type="button" class="tool-btn" title="Générer un sujet IA">✨ Sujet IA</button>
@@ -1435,6 +1843,14 @@
               <option value="speak">🎙️ Parler</option>
               <option value="listen">🎧 Écouter</option>
             </select>
+            <select id="bank-filter-grammar" class="select-input">
+              <option value="ALL">📚 Toutes notions</option>
+              <option value="TENSES">⏳ Temps & Conjugaison</option>
+              <option value="MODALS_COND">🔀 Modaux & Conditionnels</option>
+              <option value="SYNTAX_B2">🏛️ Inversions, Subjonctif & Passif</option>
+              <option value="PHRASAL_ING">🔗 Gérondifs, Phrasal & Prépositions</option>
+              <option value="TRAPS_PREPA">⚠️ Faux-amis & Vocabulaire Prépa</option>
+            </select>
           </div>
           <button id="btn-gen-ai" type="button" class="btn btn-violet-soft" style="width:100%;">
             ✨ Générer des phrases (IA) pour le niveau <span id="gen-ai-lvl-label">A2</span>
@@ -1451,7 +1867,11 @@
   <!-- ==================== NAVIGATION BASSE ==================== -->
   <nav class="bottom-nav" aria-label="Navigation principale">
     <div class="bottom-nav-inner">
-      <button type="button" class="nav-btn active" data-tab="speak">
+      <button type="button" class="nav-btn active" data-tab="plan">
+        <span class="nav-ico">📅</span>
+        <span>Plan</span>
+      </button>
+      <button type="button" class="nav-btn" data-tab="speak">
         <span class="nav-ico">🎙️</span>
         <span>Parler</span>
       </button>
@@ -1536,6 +1956,9 @@
             <button id="btn-save-key" type="button" class="btn btn-primary btn-sm flex-1" style="box-shadow:none;">Enregistrer</button>
             <button id="btn-test-key" type="button" class="btn btn-secondary btn-sm flex-1">Tester LLM</button>
           </div>
+          <button id="btn-copy-other-key" type="button" class="btn btn-secondary btn-sm hidden" style="width:100%;margin-top:2px;">
+            📋 Importer la clé Groq de l'autre espace
+          </button>
           <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;margin-top:4px;"></div>
         </div>
 
@@ -1614,6 +2037,33 @@
     </div>
   </div>
 
+  <!-- MODALE CHANGEMENT D'ESPACE (BASTIEN / MATHYS) -->
+  <div id="profile-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-sheet">
+      <div class="modal-head">
+        <div>
+          <div class="modal-title">👥 Choisir un espace personnel</div>
+          <div class="modal-sub">Progression, plan du jour, flashcards et erreurs totalement indépendants</div>
+        </div>
+        <button id="btn-close-profile" type="button" class="icon-btn" aria-label="Fermer">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="profile-grid">
+          <button id="btn-select-bastien" type="button" class="profile-card">
+            <div class="profile-avatar" style="background:linear-gradient(135deg,#4f46e5,#7c3aed);">B</div>
+            <div style="font-size:16px;font-weight:800;color:var(--text);">Espace Bastien</div>
+            <div id="profile-summary-bastien" style="font-size:12px;color:var(--text-muted);margin-top:4px;">Chargement...</div>
+          </button>
+          <button id="btn-select-mathys" type="button" class="profile-card">
+            <div class="profile-avatar" style="background:linear-gradient(135deg,#059669,#0d9488);">M</div>
+            <div style="font-size:16px;font-weight:800;color:var(--text);">Espace Mathys</div>
+            <div id="profile-summary-mathys" style="font-size:12px;color:var(--text-muted);margin-top:4px;">Chargement...</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
@@ -1631,16 +2081,91 @@
     const BUILTIN_SPEAK = window.EC_BUILTIN_SPEAK || [];
     const BUILTIN_LISTEN = window.EC_BUILTIN_LISTEN || [];
     const BUILTIN_PREPA = window.EC_BUILTIN_PREPA || [];
-    const STORAGE_KEY = "english_coach_v5_jenny";
+    const LEGACY_STORAGE_KEY = "english_coach_v5_jenny";
+    const ACTIVE_PROFILE_KEY = "english_coach_v6_active_profile";
+    const PROFILE_STORAGE_PREFIX = "english_coach_v6_profile_";
+    const PROFILES = {
+      bastien: { id: "bastien", name: "Bastien", initial: "B" },
+      mathys: { id: "mathys", name: "Mathys", initial: "M" }
+    };
 
-    // 2. ÉTAT GLOBAL & PERSISTANCE
+    function todayISO() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    // Classification grammaticale automatique de chaque phrase
+    const GRAMMAR_LABELS = {
+      ALL: "Toutes notions",
+      TENSES: "Temps & Conjugaison",
+      MODALS_COND: "Modaux & Conditionnels",
+      SYNTAX_B2: "Inversions, Subjonctif & Passif",
+      PHRASAL_ING: "Gérondifs, Phrasal & Prépositions",
+      TRAPS_PREPA: "Faux-amis, Indénombrables & Prépa"
+    };
+
+    function getGrammarCategory(item) {
+      const txt = `${item?.grammarTitle || ""} ${item?.grammarNote || ""}`.toLowerCase();
+      if (/inversion|subjonctif|mandatif|high time|about time|passif|passive|causatif|discours indirect|would rather|however \+|no matter how|much as|for all|albeit|notwithstanding|had \+ s|were \+ s/.test(txt)) {
+        return "SYNTAX_B2";
+      }
+      if (/faux-ami|indénombrable|uncountable|prépa|collocation|idiome|fewer|less|advice|information|research|luggage|evidence|progress|actually|currently|sensible|sensitive|eventually|comprehensive|bookshop|library|attend|pretend/.test(txt)) {
+        return "TRAPS_PREPA";
+      }
+      if (/modal|conditionnel|conditional|must|should|ought|could|would|might|may|had better|unless|wish|if only|if i were|needn't/.test(txt)) {
+        return "MODALS_COND";
+      }
+      if (/phrasal|particule|gérondif|v-ing|infinitif|look forward|avoid|worth|used to|préposition|good at|afraid of|interested in|depend on|before \+|after \+|instead of|without \+/.test(txt)) {
+        return "PHRASAL_ING";
+      }
+      return "TENSES";
+    }
+
+    // 2. ÉTAT GLOBAL & PERSISTANCE MULTI-PROFILS (BASTIEN / MATHYS)
     // -------------------------------------------------------------------------
+    function createEmptyDaily() {
+      return {
+        date: todayISO(),
+        speakDone: 0,
+        listenDone: 0,
+        missedDone: 0,
+        srsDone: 0,
+        drillDone: 0,
+        prepaDone: 0
+      };
+    }
+
+    function createDefaultProfileData(profileId) {
+      return {
+        level: "B1",
+        accent: "en-US",
+        apiKey: "",
+        groqModel: "llama-3.3-70b-versatile",
+        voiceEngine: "jenny",
+        jennyVoiceUS: "en-US-JennyNeural - en-US (Female)",
+        jennyVoiceUK: "en-GB-SoniaNeural - en-GB (Female)",
+        aiItems: [],
+        reviews: {},
+        stats: { xp: 0, streak: 0, lastDate: null },
+        completed: { speak: {}, listen: {}, prepa: {} },
+        srs: {},
+        errorLog: [],
+        daily: createEmptyDaily(),
+        drillStats: { total: 0, correct: 0 }
+      };
+    }
+
     const state = {
-      tab: "speak",
-      level: "A2",
+      profileId: "bastien",
+      tab: "plan",
+      subtab: "daily",
+      level: "B1",
       theme: "ALL",
+      grammarFilter: "ALL",
+      speakMode: "normal",
+      listenMode: "normal",
       prepaTheme: "ALL",
       prepaLang: "en",
+      prepaTimerSeconds: 0,
       accent: "en-US",
       listenSpeed: 1,
       apiKey: "",
@@ -1652,6 +2177,10 @@
       reviews: {},
       stats: { xp: 0, streak: 0, lastDate: null },
       completed: { speak: {}, listen: {}, prepa: {} },
+      srs: {},
+      errorLog: [],
+      daily: createEmptyDaily(),
+      drillStats: { total: 0, correct: 0 },
       sessionSeen: { speak: [], listen: [], prepa: [] },
       seenIds: new Set(),
       seenPrepaIds: new Set(),
@@ -1661,46 +2190,94 @@
       prepaSession: null,
       modalMode: "speak",
       lastAudioUrl: null,
+      lastLocalEval: { speak: null, listen: null },
       correctionSeq: 0
     };
 
-    function loadState() {
+    function getProfileKey(pid) {
+      return `${PROFILE_STORAGE_PREFIX}${pid}`;
+    }
+
+    function readRawProfile(pid) {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return;
-        const d = JSON.parse(raw);
-        if (["A2", "B1", "B2"].includes(d.level)) state.level = d.level;
-        if (d.accent === "en-GB" || d.accent === "en-US") state.accent = d.accent;
-        if (typeof d.apiKey === "string") state.apiKey = d.apiKey;
-        if (d.voiceEngine === "browser") state.voiceEngine = "browser";
-        else state.voiceEngine = "jenny";
-        if (typeof d.jennyVoiceUS === "string" && d.jennyVoiceUS) state.jennyVoiceUS = d.jennyVoiceUS;
-        if (typeof d.jennyVoiceUK === "string" && d.jennyVoiceUK) state.jennyVoiceUK = d.jennyVoiceUK;
-        if (typeof d.groqModel === "string" && d.groqModel) state.groqModel = d.groqModel;
-        if (Array.isArray(d.aiItems)) state.aiItems = d.aiItems;
-        if (d.reviews && typeof d.reviews === "object") state.reviews = d.reviews;
-        if (d.stats) {
-          state.stats.xp = Number(d.stats.xp) || 0;
-          state.stats.streak = Number(d.stats.streak) || 0;
-          state.stats.lastDate = d.stats.lastDate || null;
-        }
-        if (d.completed && typeof d.completed === "object") {
-          state.completed = {
-            speak: (d.completed.speak && typeof d.completed.speak === "object") ? d.completed.speak : {},
-            listen: (d.completed.listen && typeof d.completed.listen === "object") ? d.completed.listen : {},
-            prepa: (d.completed.prepa && typeof d.completed.prepa === "object") ? d.completed.prepa : {}
-          };
-        } else {
-          state.completed = { speak: {}, listen: {}, prepa: {} };
-        }
+        const raw = localStorage.getItem(getProfileKey(pid));
+        return raw ? JSON.parse(raw) : null;
       } catch (e) {
-        console.warn("Impossible de lire localStorage:", e);
+        return null;
       }
+    }
+
+    function migrateLegacyIfNeeded() {
+      try {
+        if (!localStorage.getItem(getProfileKey("bastien"))) {
+          const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
+          if (legacyRaw) {
+            localStorage.setItem(getProfileKey("bastien"), legacyRaw);
+          }
+        }
+      } catch (e) {}
+    }
+
+    function ensureDailyFresh() {
+      const t = todayISO();
+      if (!state.daily || state.daily.date !== t) {
+        state.daily = createEmptyDaily();
+      }
+    }
+
+    function loadProfileState(pid) {
+      const target = PROFILES[pid] ? pid : "bastien";
+      state.profileId = target;
+      try { localStorage.setItem(ACTIVE_PROFILE_KEY, target); } catch (e) {}
+
+      const d = readRawProfile(target) || createDefaultProfileData(target);
+      state.level = ["A2", "B1", "B2"].includes(d.level) ? d.level : "B1";
+      state.accent = (d.accent === "en-GB" || d.accent === "en-US") ? d.accent : "en-US";
+      state.apiKey = typeof d.apiKey === "string" ? d.apiKey : "";
+      state.voiceEngine = d.voiceEngine === "browser" ? "browser" : "jenny";
+      state.jennyVoiceUS = (typeof d.jennyVoiceUS === "string" && d.jennyVoiceUS) ? d.jennyVoiceUS : "en-US-JennyNeural - en-US (Female)";
+      state.jennyVoiceUK = (typeof d.jennyVoiceUK === "string" && d.jennyVoiceUK) ? d.jennyVoiceUK : "en-GB-SoniaNeural - en-GB (Female)";
+      state.groqModel = (typeof d.groqModel === "string" && d.groqModel) ? d.groqModel : "llama-3.3-70b-versatile";
+      state.aiItems = Array.isArray(d.aiItems) ? d.aiItems : [];
+      state.reviews = (d.reviews && typeof d.reviews === "object") ? d.reviews : {};
+      state.stats = d.stats ? {
+        xp: Number(d.stats.xp) || 0,
+        streak: Number(d.stats.streak) || 0,
+        lastDate: d.stats.lastDate || null
+      } : { xp: 0, streak: 0, lastDate: null };
+      state.completed = (d.completed && typeof d.completed === "object") ? {
+        speak: (d.completed.speak && typeof d.completed.speak === "object") ? d.completed.speak : {},
+        listen: (d.completed.listen && typeof d.completed.listen === "object") ? d.completed.listen : {},
+        prepa: (d.completed.prepa && typeof d.completed.prepa === "object") ? d.completed.prepa : {}
+      } : { speak: {}, listen: {}, prepa: {} };
+      state.srs = (d.srs && typeof d.srs === "object") ? d.srs : {};
+      state.errorLog = Array.isArray(d.errorLog) ? d.errorLog : [];
+      state.daily = (d.daily && typeof d.daily === "object") ? { ...createEmptyDaily(), ...d.daily } : createEmptyDaily();
+      ensureDailyFresh();
+      state.drillStats = (d.drillStats && typeof d.drillStats === "object")
+        ? { total: Number(d.drillStats.total) || 0, correct: Number(d.drillStats.correct) || 0 }
+        : { total: 0, correct: 0 };
+      state.sessionSeen = { speak: [], listen: [], prepa: [] };
+      state.speakMode = "normal";
+      state.listenMode = "normal";
+      state.prepaSession = null;
+    }
+
+    function loadState() {
+      migrateLegacyIfNeeded();
+      let activePid = "bastien";
+      try {
+        const saved = localStorage.getItem(ACTIVE_PROFILE_KEY);
+        if (saved && PROFILES[saved]) activePid = saved;
+      } catch (e) {}
+      loadProfileState(activePid);
     }
 
     function saveState() {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        ensureDailyFresh();
+        localStorage.setItem(ACTIVE_PROFILE_KEY, state.profileId);
+        localStorage.setItem(getProfileKey(state.profileId), JSON.stringify({
           level: state.level,
           accent: state.accent,
           apiKey: state.apiKey,
@@ -1711,7 +2288,11 @@
           aiItems: state.aiItems,
           reviews: state.reviews,
           stats: state.stats,
-          completed: state.completed
+          completed: state.completed,
+          srs: state.srs,
+          errorLog: state.errorLog,
+          daily: state.daily,
+          drillStats: state.drillStats
         }));
       } catch (e) {
         console.warn("Impossible de sauvegarder localStorage:", e);
@@ -1722,6 +2303,10 @@
       const base = mode === "speak" ? BUILTIN_SPEAK : mode === "listen" ? BUILTIN_LISTEN : [...BUILTIN_SPEAK, ...BUILTIN_LISTEN];
       const ai = mode ? state.aiItems.filter(x => x.mode === mode) : state.aiItems;
       return [...base, ...ai];
+    }
+
+    function getMissedItems(mode) {
+      return getAllItems(mode).filter(x => state.reviews && state.reviews[x.id] && state.reviews[x.id].missed);
     }
 
     // Générateur d'entier aléatoire cryptographique uniforme sans biais de modulo (CSPRNG)
@@ -1749,7 +2334,7 @@
       return a;
     }
 
-    // Enregistrement persistant d'un exercice réussi
+    // Enregistrement persistant d'un exercice maîtrisé (seuil >= 80%)
     function markExerciseCompleted(mode, id, score) {
       if (!id) return;
       if (!state.completed) state.completed = { speak: {}, listen: {}, prepa: {} };
@@ -1768,20 +2353,43 @@
       updateProgressUI();
     }
 
-    // Sélection intelligente anti-répétition et 100% aléatoire
+    // Sélection intelligente anti-répétition, filtre grammaire & mode Révision d'erreurs
     function pickNextItem(mode, excludeId) {
+      const isReviewMode = (mode === "speak" ? state.speakMode : state.listenMode) === "review";
+
+      if (isReviewMode) {
+        let missedPool = getMissedItems(mode);
+        if (!missedPool.length) {
+          if (mode === "speak") state.speakMode = "normal";
+          else state.listenMode = "normal";
+          updatePracticeModeUI();
+          showToast("🎉 Bravo, aucune erreur en attente ! Retour au mode normal.");
+        } else {
+          let filtered = missedPool.filter(x => x.id !== excludeId);
+          if (!filtered.length) filtered = missedPool;
+          // Prioriser celles dont le dernier score est le plus bas
+          filtered.sort((a, b) => (state.reviews[a.id]?.lastScore || 0) - (state.reviews[b.id]?.lastScore || 0));
+          const topSlice = filtered.slice(0, Math.min(5, filtered.length));
+          return topSlice[cryptoRandomInt(0, topSlice.length - 1)];
+        }
+      }
+
       let pool = getAllItems(mode).filter(x => x.level === state.level);
       if (state.theme !== "ALL") {
         const byTheme = pool.filter(x => x.theme === state.theme);
         if (byTheme.length) pool = byTheme;
       }
+      if (state.grammarFilter !== "ALL") {
+        const byGram = pool.filter(x => getGrammarCategory(x) === state.grammarFilter);
+        if (byGram.length) pool = byGram;
+      }
       if (!pool.length) pool = getAllItems(mode);
 
-      // 1. Filtrer prioritairement les exercices NON encore complétés
+      // 1. Filtrer prioritairement les exercices NON encore maîtrisés (>=80%)
       const completedMap = (state.completed && state.completed[mode]) || {};
       let candidates = pool.filter(x => !completedMap[x.id] && x.id !== excludeId);
 
-      // 2. Si tous les exercices de ce niveau/thème ont été réussis (cycle complet achevé)
+      // 2. Si tous les exercices de ce filtre ont été maîtrisés : nouveau cycle
       let isCycleReset = false;
       if (!candidates.length) {
         candidates = pool.filter(x => x.id !== excludeId);
@@ -1798,8 +2406,7 @@
 
       // 4. Tirage 100% aléatoire avec CSPRNG cryptographique sans biais
       const shuffled = cryptoShuffle(freshCandidates);
-      const chosenIndex = cryptoRandomInt(0, shuffled.length - 1);
-      const chosen = shuffled[chosenIndex];
+      const chosen = shuffled[cryptoRandomInt(0, shuffled.length - 1)];
 
       // 5. Mémoriser dans l'historique de session
       if (chosen) {
@@ -1810,7 +2417,7 @@
       }
 
       if (isCycleReset) {
-        showToast(`🎉 Toutes les phrases (${pool.length}) de ce filtre sont réussies ! Nouveau cycle débloqué.`);
+        showToast(`🎉 Toutes les phrases (${pool.length}) de ce filtre sont maîtrisées ! Nouveau cycle.`);
       }
 
       return chosen;
@@ -1828,7 +2435,6 @@
       let candidates = pool.filter(x => !completedMap[x.id] && x.id !== excludeId);
 
       if (!candidates.length) {
-        // Tous les sujets de ce thème ont été complétés au moins une fois : nouveau cycle
         candidates = pool.filter(x => x.id !== excludeId);
         if (!candidates.length) candidates = pool;
         const themeLabel = state.prepaTheme === "ALL" ? "tous thèmes" : state.prepaTheme;
@@ -1840,8 +2446,7 @@
       if (!freshCandidates.length) freshCandidates = candidates;
 
       const shuffled = cryptoShuffle(freshCandidates);
-      const chosenIndex = cryptoRandomInt(0, shuffled.length - 1);
-      const chosen = shuffled[chosenIndex];
+      const chosen = shuffled[cryptoRandomInt(0, shuffled.length - 1)];
 
       if (chosen) {
         if (!state.sessionSeen) state.sessionSeen = { speak: [], listen: [], prepa: [] };
@@ -1872,28 +2477,44 @@
       toastTimer = setTimeout(() => el.classList.remove("show"), 2800);
     }
 
+    function updatePracticeModeUI() {
+      const speakMissed = getMissedItems("speak").length;
+      const listenMissed = getMissedItems("listen").length;
+      if ($("speak-missed-count")) $("speak-missed-count").textContent = speakMissed;
+      if ($("listen-missed-count")) $("listen-missed-count").textContent = listenMissed;
+
+      const bSN = $("btn-speak-mode-normal"), bSR = $("btn-speak-mode-review");
+      if (bSN && bSR) {
+        bSN.classList.toggle("active", state.speakMode === "normal");
+        bSR.classList.toggle("active", state.speakMode === "review");
+        bSR.classList.toggle("review-active", state.speakMode === "review");
+      }
+      const bLN = $("btn-listen-mode-normal"), bLR = $("btn-listen-mode-review");
+      if (bLN && bLR) {
+        bLN.classList.toggle("active", state.listenMode === "normal");
+        bLR.classList.toggle("active", state.listenMode === "review");
+        bLR.classList.toggle("review-active", state.listenMode === "review");
+      }
+    }
+
     function updateProgressUI() {
       const comp = state.completed || { speak: {}, listen: {}, prepa: {} };
 
-      // Speak progress
       const speakPool = getAllItems("speak").filter(x => x.level === state.level);
       const speakDone = speakPool.filter(x => comp.speak && comp.speak[x.id]).length;
       const spBadge = $("speak-progress-badge");
-      if (spBadge) spBadge.textContent = `🎯 ${speakDone}/${speakPool.length} complétées`;
+      if (spBadge) spBadge.textContent = `🎯 ${speakDone}/${speakPool.length} maîtrisées`;
 
-      // Listen progress
       const listenPool = getAllItems("listen").filter(x => x.level === state.level);
       const listenDone = listenPool.filter(x => comp.listen && comp.listen[x.id]).length;
       const lsBadge = $("listen-progress-badge");
-      if (lsBadge) lsBadge.textContent = `🎯 ${listenDone}/${listenPool.length} complétées`;
+      if (lsBadge) lsBadge.textContent = `🎯 ${listenDone}/${listenPool.length} maîtrisées`;
 
-      // Prepa progress
       const prepaPool = BUILTIN_PREPA;
       const prepaDone = prepaPool.filter(x => comp.prepa && comp.prepa[x.id]).length;
       const prBadge = $("prepa-progress-badge");
       if (prBadge) prBadge.textContent = `🎯 ${prepaDone}/${prepaPool.length} faites`;
 
-      // Header completed count (aligné sur les exercices disponibles)
       const allSpeak = getAllItems("speak");
       const allListen = getAllItems("listen");
       const totalSpeak = allSpeak.filter(x => comp.speak && comp.speak[x.id]).length;
@@ -1903,20 +2524,32 @@
       const hdrComp = $("hdr-completed-count");
       if (hdrComp) hdrComp.textContent = grandTotal;
 
-      // Settings modal stats summary
       const setSum = $("set-stats-summary");
       if (setSum) {
-        setSum.innerHTML = `📊 <strong>${grandTotal}</strong> exos uniques réussis (Oral: ${totalSpeak}/${allSpeak.length} | Écoute: ${totalListen}/${allListen.length} | Prépa: ${totalPrepa}/${BUILTIN_PREPA.length})`;
+        setSum.innerHTML = `📊 <strong>${grandTotal}</strong> exos maîtrisés (Oral: ${totalSpeak}/${allSpeak.length} | Écoute: ${totalListen}/${allListen.length} | Prépa: ${totalPrepa}/${BUILTIN_PREPA.length})`;
       }
+      updatePracticeModeUI();
+    }
+
+    function updateProfileHeaderUI() {
+      const prof = PROFILES[state.profileId] || PROFILES.bastien;
+      const pill = $("btn-open-profile");
+      const lbl = $("hdr-profile-name");
+      if (lbl) lbl.textContent = prof.name;
+      if (pill) pill.classList.toggle("mathys", state.profileId === "mathys");
+      const planLbl = $("plan-profile-label");
+      if (planLbl) planLbl.textContent = prof.name;
     }
 
     function updateHeader() {
+      updateProfileHeaderUI();
       $("hdr-streak").textContent = state.stats.streak;
       $("hdr-xp").textContent = state.stats.xp;
       $("hdr-api-dot").classList.toggle("hidden", !state.apiKey);
       const genLbl = $("gen-ai-lvl-label");
       if (genLbl) genLbl.textContent = state.level;
       updateProgressUI();
+      if (typeof renderDailyPlan === "function") renderDailyPlan();
     }
 
     function awardXP(score) {
@@ -2241,18 +2874,94 @@
       });
     }
 
-    // Comparateur local
+    // Comparateur local tolérant (contractions complètes, UK/US, synonymes EN/FR, fautes mineures)
     const CONTRACTIONS = [
       [/\bi'm\b/g, "i am"], [/\byou're\b/g, "you are"], [/\bhe's\b/g, "he is"], [/\bshe's\b/g, "she is"],
       [/\bit's\b/g, "it is"], [/\bwe're\b/g, "we are"], [/\bthey're\b/g, "they are"],
+      [/\bthat's\b/g, "that is"], [/\bthere's\b/g, "there is"], [/\bwhat's\b/g, "what is"], [/\bwho's\b/g, "who is"],
       [/\bdon't\b/g, "do not"], [/\bdoesn't\b/g, "does not"], [/\bdidn't\b/g, "did not"],
-      [/\bcan't\b/g, "cannot"], [/\bwon't\b/g, "will not"], [/\bhaven't\b/g, "have not"]
+      [/\bisn't\b/g, "is not"], [/\baren't\b/g, "are not"], [/\bwasn't\b/g, "was not"], [/\bweren't\b/g, "were not"],
+      [/\bcan't\b/g, "cannot"], [/\bcannot\b/g, "can not"], [/\bwon't\b/g, "will not"],
+      [/\bwouldn't\b/g, "would not"], [/\bshouldn't\b/g, "should not"], [/\bcouldn't\b/g, "could not"],
+      [/\bhaven't\b/g, "have not"], [/\bhasn't\b/g, "has not"], [/\bhadn't\b/g, "had not"],
+      [/\bmustn't\b/g, "must not"], [/\bneedn't\b/g, "need not"], [/\blet's\b/g, "let us"],
+      [/\bi've\b/g, "i have"], [/\byou've\b/g, "you have"], [/\bwe've\b/g, "we have"], [/\bthey've\b/g, "they have"],
+      [/\bi'll\b/g, "i will"], [/\byou'll\b/g, "you will"], [/\bhe'll\b/g, "he will"], [/\bshe'll\b/g, "she will"],
+      [/\bwe'll\b/g, "we will"], [/\bthey'll\b/g, "they will"], [/\bi'd\b/g, "i would"], [/\byou'd\b/g, "you would"],
+      [/\bhe'd\b/g, "he would"], [/\bshe'd\b/g, "she would"], [/\bwe'd\b/g, "we would"], [/\bthey'd\b/g, "they would"]
     ];
+
+    const SYNONYM_GROUPS_EN = [
+      ["big", "large", "huge", "major"], ["small", "little", "tiny", "minor"],
+      ["start", "begin", "launch", "commence"], ["finish", "end", "complete"],
+      ["buy", "purchase"], ["help", "assist", "aid"], ["ask", "inquire"], ["answer", "reply", "respond"],
+      ["need", "require"], ["want", "wish", "desire"], ["hard", "difficult", "tough"],
+      ["fast", "quick", "rapid", "swift"], ["smart", "intelligent", "clever"],
+      ["happy", "glad", "delighted", "pleased"], ["rich", "wealthy", "affluent"],
+      ["job", "work", "position", "post", "employment"], ["company", "firm", "business", "enterprise", "corporation"],
+      ["city", "town"], ["country", "nation", "state"], ["kid", "child"], ["kids", "children"],
+      ["many", "numerous", "several", "multiple"], ["often", "frequently"], ["rarely", "seldom"],
+      ["usually", "generally", "normally", "typically"], ["nowadays", "today", "currently"],
+      ["maybe", "perhaps", "possibly"], ["immediately", "right away", "at once"],
+      ["however", "nevertheless", "yet", "still"], ["although", "though"], ["because", "since", "as"],
+      ["therefore", "thus", "consequently"], ["reduce", "cut", "curb", "lower", "decrease"],
+      ["increase", "rise", "grow", "surge"], ["improve", "enhance", "boost"],
+      ["protect", "preserve", "safeguard"], ["use", "utilize"], ["show", "demonstrate", "display"],
+      ["create", "build", "develop"], ["problem", "issue", "trouble"], ["advantage", "benefit"],
+      ["important", "essential", "crucial", "vital"], ["clear", "obvious", "evident"],
+      ["modern", "contemporary"], ["global", "worldwide"], ["local", "regional"],
+      ["apartment", "flat"], ["subway", "metro", "underground"], ["movie", "film"],
+      ["trash", "garbage", "rubbish", "waste"], ["vacation", "holidays", "holiday"],
+      ["store", "shop"], ["truck", "lorry"], ["bill", "check"], ["elevator", "lift"],
+      ["sidewalk", "pavement"], ["sneakers", "trainers"], ["fall", "autumn"],
+      ["color", "colour"], ["center", "centre"], ["realize", "realise"], ["analyze", "analyse"],
+      ["canceled", "cancelled"], ["traveling", "travelling"], ["neighbor", "neighbour"], ["program", "programme"]
+    ];
+
+    const SYNONYM_GROUPS_FR = [
+      ["grand", "gros", "important", "majeur"], ["petit", "faible", "mineur"],
+      ["commencer", "debuter", "lancer"], ["finir", "terminer", "achever"],
+      ["acheter", "acquerir"], ["aider", "assister"], ["repondre", "repliquer"],
+      ["difficile", "dur", "ardu"], ["rapide", "vite"], ["heureux", "content", "ravi"],
+      ["travail", "emploi", "poste", "metier"], ["entreprise", "societe", "firme", "boite"],
+      ["ville", "cite"], ["pays", "nation", "etat"], ["souvent", "frequemment"],
+      ["rarement", "peu souvent"], ["generalement", "habituellement", "d'habitude"],
+      ["aujourd'hui", "actuellement", "de nos jours"], ["peut-etre", "eventuellement"],
+      ["cependant", "toutefois", "neanmoins", "pourtant"], ["bien que", "quoique", "meme si"],
+      ["reduire", "baisser", "diminuer", "freiner"], ["augmenter", "hausser", "croitre", "grimper"],
+      ["ameliorer", "renforcer"], ["proteger", "preserver", "sauvegarder"],
+      ["montrer", "demontrer", "afficher"], ["probleme", "souci", "enjeu", "question"],
+      ["important", "essentiel", "crucial", "vital"], ["voiture", "automobile", "vehicule"],
+      ["velo", "bicyclette"], ["appartement", "logement"], ["argent", "fonds"],
+      ["etudiant", "eleve"], ["professeur", "enseignant", "prof"]
+    ];
+
+    function buildSynonymIndex(groups) {
+      const map = new Map();
+      groups.forEach((grp, idx) => {
+        grp.forEach(w => map.set(w, idx));
+      });
+      return map;
+    }
+    const SYN_IDX_EN = buildSynonymIndex(SYNONYM_GROUPS_EN);
+    const SYN_IDX_FR = buildSynonymIndex(SYNONYM_GROUPS_FR);
+
+    function areWordsEquivalent(w1, w2, lang) {
+      if (w1 === w2) return true;
+      const idxMap = lang === "en" ? SYN_IDX_EN : SYN_IDX_FR;
+      const g1 = idxMap.get(w1);
+      const g2 = idxMap.get(w2);
+      if (g1 !== undefined && g1 === g2) return true;
+      // Pluriels ou conjugaison régulière très proche (-s / -es / -ed)
+      if ((w1 + "s" === w2 || w2 + "s" === w1) && Math.min(w1.length, w2.length) >= 3) return true;
+      return false;
+    }
 
     function normalizeText(str, lang) {
       let s = String(str || "").toLowerCase().replace(/[''`]/g, "'").replace(/[.,!?;:«»"()—–-]/g, " ");
       if (lang === "en") {
         for (const [re, rep] of CONTRACTIONS) s = s.replace(re, rep);
+        s = s.replace(/\bcan not\b/g, "cannot");
         s = s.replace(/'/g, " ");
       } else {
         s = s.replace(/'/g, " ").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -2284,18 +2993,20 @@
       const r = normalizeText(refStr, lang).split(" ").filter(Boolean);
       const m = u.length, n = r.length;
 
-      // Détection des correspondances exactes via LCS
+      // LCS tolérant les synonymes et variantes UK/US
       const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
       for (let i = 1; i <= m; i++) {
         for (let j = 1; j <= n; j++) {
-          dp[i][j] = u[i - 1] === r[j - 1] ? dp[i - 1][j - 1] + 1 : Math.max(dp[i - 1][j], dp[i][j - 1]);
+          dp[i][j] = areWordsEquivalent(u[i - 1], r[j - 1], lang)
+            ? dp[i - 1][j - 1] + 1
+            : Math.max(dp[i - 1][j], dp[i][j - 1]);
         }
       }
       const res = [];
       let i = m, j = n, exactMatches = 0;
       while (i > 0 || j > 0) {
-        if (i > 0 && j > 0 && u[i - 1] === r[j - 1]) {
-          res.push({ t: "ok", w: r[j - 1] });
+        if (i > 0 && j > 0 && areWordsEquivalent(u[i - 1], r[j - 1], lang)) {
+          res.push({ t: "ok", w: u[i - 1] === r[j - 1] ? r[j - 1] : `${u[i - 1]} ≈ ${r[j - 1]}` });
           exactMatches++; i--; j--;
         } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
           res.push({ t: "miss", w: r[j - 1] });
@@ -2307,53 +3018,50 @@
       }
       res.reverse();
 
-      // Mots mineurs (stop-words) qui ne doivent pas pénaliser lourdement le score
-      const minorWords = new Set(["a", "an", "the", "to", "in", "on", "at", "for", "of", "and", "that", "un", "une", "le", "la", "les", "de", "du", "des", "a", "au", "et"]);
+      const minorWords = new Set(["a", "an", "the", "to", "in", "on", "at", "for", "of", "and", "that", "un", "une", "le", "la", "les", "de", "du", "des", "au", "et", "en"]);
 
-      // Calcul équilibré et bien calibré :
-      // 1. Poids des mots attendus (les mots clés comptent plus)
       let weightedTotal = 0;
       let matchedWeight = 0;
 
       r.forEach(word => {
-        const wWeight = minorWords.has(word) ? 0.4 : 1.0;
-        weightedTotal += wWeight;
+        weightedTotal += minorWords.has(word) ? 0.4 : 1.0;
       });
 
-      // Vérification des quasi-correspondances (fautes de frappe d'1 lettre ou pluriel)
-      let fuzzyMatches = 0;
       res.forEach(item => {
         if (item.t === "ok") {
-          const wWeight = minorWords.has(item.w) ? 0.4 : 1.0;
-          matchedWeight += wWeight;
+          const baseW = item.w.split(" ≈ ").pop();
+          matchedWeight += minorWords.has(baseW) ? 0.4 : 1.0;
         }
       });
 
-      // Comparaison des mots manqués avec les mots tapés en trop pour accorder des points de quasi-frappe
+      // Comparer les mots manqués restants avec les mots différents (synonymes ou quasi-frappe)
       const misses = res.filter(x => x.t === "miss").map(x => x.w);
+      const usedWrongs = new Set();
       const wrongs = res.filter(x => x.t === "wrong").map(x => x.w);
 
       misses.forEach(missW => {
-        wrongs.forEach(wrongW => {
+        for (let wi = 0; wi < wrongs.length; wi++) {
+          if (usedWrongs.has(wi)) continue;
+          const wrongW = wrongs[wi];
+          if (areWordsEquivalent(wrongW, missW, lang)) {
+            matchedWeight += minorWords.has(missW) ? 0.4 : 1.0;
+            usedWrongs.add(wi);
+            break;
+          }
           const sim = wordSimilarity(missW, wrongW);
           if (sim >= 0.75) {
-            matchedWeight += (minorWords.has(missW) ? 0.3 : 0.75);
+            matchedWeight += minorWords.has(missW) ? 0.35 : 0.85;
+            usedWrongs.add(wi);
+            break;
           }
-        });
+        }
       });
 
-      const rawRatio = weightedTotal > 0 ? (matchedWeight / weightedTotal) : 0;
-      
-      // Pénalité douce si l'utilisateur a écrit beaucoup trop de mots parasites
-      const lengthPenalty = m > n ? Math.max(0, 1 - ((m - n) / (2 * Math.max(n, 1)))) : 1;
+      const rawRatio = weightedTotal > 0 ? Math.min(1, matchedWeight / weightedTotal) : 0;
+      const extraCount = Math.max(0, m - n - usedWrongs.size);
+      const lengthPenalty = extraCount > 2 ? Math.max(0.75, 1 - (extraCount / (3 * Math.max(n, 1)))) : 1;
 
-      // Calibration progressive :
-      // 95-100% si tout est là
-      // 80-95% pour une omission mineure
-      // 60-80% pour la moitié des mots
       let calibratedScore = Math.round(rawRatio * lengthPenalty * 100);
-
-      // Si tous les mots clés principaux sont là sauf 1 petit mot, le score reste >= 88%
       if (exactMatches >= n - 1 && n >= 4 && calibratedScore < 88) {
         calibratedScore = Math.max(calibratedScore, 90);
       }
@@ -2499,10 +3207,65 @@
       }
     }
 
+    function logPersonalErrors(mode, errs) {
+      if (!Array.isArray(errs) || !errs.length) return;
+      if (!Array.isArray(state.errorLog)) state.errorLog = [];
+      const now = new Date().toISOString();
+      errs.forEach(e => {
+        const wrong = String(e?.wrong || "").trim();
+        const right = String(e?.right || "").trim();
+        const why = String(e?.why || "").trim();
+        if (!wrong || !right || wrong.toLowerCase() === right.toLowerCase()) return;
+        const key = `${wrong.toLowerCase()}__${right.toLowerCase()}`;
+        const existing = state.errorLog.find(x => x.key === key);
+        if (existing) {
+          existing.count = (existing.count || 1) + 1;
+          existing.lastAt = now;
+          if (why) existing.why = why;
+        } else {
+          state.errorLog.unshift({ key, wrong, right, why, mode, count: 1, lastAt: now });
+        }
+      });
+      if (state.errorLog.length > 80) state.errorLog = state.errorLog.slice(0, 80);
+      saveState();
+      if (typeof renderErrorNotebook === "function") renderErrorNotebook();
+    }
+
+    function applyEvaluationOutcome(mode, item, score, isLocal) {
+      ensureDailyFresh();
+      const wasMissed = !!(state.reviews[item.id] && state.reviews[item.id].missed);
+      awardXP(score);
+
+      if (score >= 80) {
+        markExerciseCompleted(mode, item.id, score);
+        if (wasMissed) {
+          markReview(item.id, { missed: false, lastScore: score });
+          state.daily.missedDone = (state.daily.missedDone || 0) + 1;
+          showToast("✅ Erreur maîtrisée et validée !");
+        }
+        if (mode === "speak") state.daily.speakDone = (state.daily.speakDone || 0) + 1;
+        else if (mode === "listen") state.daily.listenDone = (state.daily.listenDone || 0) + 1;
+      } else {
+        // Ne pas marquer comme maîtrisée : la renvoyer en file de révision
+        markReview(item.id, { missed: true, lastScore: score });
+        showToast("🔁 Score < 80% : ajoutée à « Réviser mes erreurs »");
+      }
+
+      const overWrap = $(`${mode}-override-wrap`);
+      if (overWrap) {
+        overWrap.classList.toggle("hidden", !(isLocal && score < 80));
+      }
+      saveState();
+      updateProgressUI();
+      if (typeof renderDailyPlan === "function") renderDailyPlan();
+    }
+
     async function evaluateWithGroqOrLocal(mode, item, userText, audioBlob, seq) {
       const loadEl = $(`${mode}-ai-loading`);
       const loadTxt = $(`${mode}-ai-loading-text`);
       loadEl.classList.remove("hidden");
+      const overWrap = $(`${mode}-override-wrap`);
+      if (overWrap) overWrap.classList.add("hidden");
 
       if (mode === "listen") {
         $("listen-reveal-en").textContent = item.en;
@@ -2517,7 +3280,6 @@
 
       if (state.apiKey) {
         try {
-          // Étape 1 : Transcription audio via Groq Whisper si un audio a été enregistré
           if (audioBlob && audioBlob.size > 100) {
             loadTxt.textContent = "1/2 Transcription vocale (Whisper)...";
             const expectedLang = mode === "speak" ? "en" : "fr";
@@ -2533,28 +3295,30 @@
             throw new Error("Aucun mot détecté dans l'audio. Parle plus près du micro ou tape ta réponse.");
           }
 
-          // Étape 2 : Analyse grammaticale via Groq LLM
           loadTxt.textContent = `2/2 Analyse grammaticale (${state.groqModel})...`;
           const sysPrompt = `Tu es un coach d'anglais pédagogique et bienveillant pour un étudiant francophone. Tu réponds toujours en objet JSON valide.
+RÈGLE DE TOLÉRANCE SÉMANTIQUE (TRÈS IMPORTANT) :
+- La phrase de référence fournie n'est QU'UN EXEMPLE parmi d'autres.
+- Si la traduction de l'élève est grammaticalement correcte, naturelle et fidèle au sens, même avec d'autres synonymes (ex: car/automobile, flat/apartment, movie/film, begin/start, although/even though), une autre structure équivalente, des contractions (I'm/I am, don't/do not) ou de l'anglais UK/US, ATTRIBUE 95-100% SANS PÉNALITÉ et NE SIGNALE PAS ces choix valides dans "errors".
 BARÈME DU SCORE (0-100%) :
-- 95-100% : Traduction excellente ou formulation parfaitement naturelle (accepte les synonymes et variantes idiomatiques).
-- 85-94% : Très bonne réponse avec juste une faute mineure (un article, une préposition ou une petite faute d'inattention).
-- 70-84% : Sens globalement compris mais avec une erreur de conjugaison, de temps ou de syntaxe.
-- 50-69% : Plusieurs erreurs importantes mais des éléments de vocabulaire corrects.
+- 95-100% : Traduction juste et naturelle (même différente de la référence !).
+- 85-94% : Très bonne réponse avec une faute mineure (article, préposition, petite inattention).
+- 70-84% : Sens compris mais erreur réelle de conjugaison, de temps ou de syntaxe.
+- 50-69% : Plusieurs erreurs importantes mais des éléments corrects.
 - < 50% : Contresens majeur ou phrase très incomplète.`;
           const userPrompt = mode === "speak"
             ? `Niveau : ${item.level}.
 Phrase française à traduire : "${item.fr}"
-Référence anglaise : "${item.en}"
+Exemple de référence anglaise : "${item.en}"
 Réponse de l'élève (anglais) : "${finalAnswerText}"
-Accepte toute traduction naturelle et juste. Réponds STRICTEMENT en JSON :
-{"score":0,"verdict":"court en français","better":"meilleure phrase EN naturelle","alternatives":["alt EN 1"],"errors":[{"wrong":"erreur","right":"correction","why":"explication courte en français"}],"grammar":{"title":"règle courte","rule":"explication courte en français"}}`
+Évalue la justesse réelle (grammaire, temps, sens) sans exiger le mot-à-mot avec l'exemple. Réponds STRICTEMENT en JSON :
+{"score":0,"verdict":"court en français","better":"meilleure phrase EN naturelle (ou garde celle de l'élève si parfaite)","alternatives":["alt EN 1"],"errors":[{"wrong":"erreur réelle","right":"correction","why":"explication courte en français"}],"grammar":{"title":"règle courte","rule":"explication courte en français"}}`
             : `Niveau : ${item.level}.
 Extrait audio anglais : "${item.en}"
-Référence française : "${item.fr}"
+Exemple de référence française : "${item.fr}"
 Traduction de l'élève (français) : "${finalAnswerText}"
-Évalue la compréhension globale (accepte les formulations naturelles). Réponds STRICTEMENT en JSON :
-{"score":0,"verdict":"court en français","better":"meilleure traduction FR","alternatives":["alt FR 1"],"errors":[{"wrong":"erreur ou oubli","right":"sens correct","why":"explication courte en français"}],"grammar":{"title":"point de grammaire EN","rule":"explication courte en français"}}`;
+Évalue la compréhension réelle sans exiger le mot-à-mot avec l'exemple. Réponds STRICTEMENT en JSON :
+{"score":0,"verdict":"court en français","better":"meilleure traduction FR","alternatives":["alt FR 1"],"errors":[{"wrong":"contresens ou oubli réel","right":"sens correct","why":"explication courte en français"}],"grammar":{"title":"point de grammaire EN","rule":"explication courte en français"}}`;
 
           const { data, ms } = await callGroqChat(sysPrompt, userPrompt);
           if (seq !== state.correctionSeq) return;
@@ -2594,6 +3358,7 @@ Traduction de l'élève (français) : "${finalAnswerText}"
               </div>
             `).join("");
             errWrap.classList.remove("hidden");
+            logPersonalErrors(mode, data.errors);
           } else {
             errWrap.classList.add("hidden");
           }
@@ -2606,9 +3371,7 @@ Traduction de l'élève (français) : "${finalAnswerText}"
             $(`${mode}-gram-rule`).textContent = item.grammarNote;
           }
 
-          awardXP(score);
-          markExerciseCompleted(mode, item.id, score);
-          if (score < 80) markReview(item.id, { missed: true, lastScore: score });
+          applyEvaluationOutcome(mode, item, score, false);
           return;
         } catch (e) {
           console.warn("Erreur Groq, repli local :", e);
@@ -2616,15 +3379,16 @@ Traduction de l'élève (français) : "${finalAnswerText}"
         }
       }
 
-      // Repli local si pas de clé API ou erreur
+      // Repli local tolérant si pas de clé API ou erreur
       loadEl.classList.add("hidden");
       const refText = mode === "speak" ? item.en : item.fr;
       const diff = diffWords(finalAnswerText, refText, mode === "speak" ? "en" : "fr");
       const th = scoreTheme(diff.score);
+      state.lastLocalEval[mode] = { item, userText: finalAnswerText };
 
       $(`${mode}-banner`).className = `result-banner ${th.banner}`;
       $(`${mode}-verdict`).textContent = th.verdict;
-      $(`${mode}-substatus`).textContent = state.apiKey ? "Repli local" : "Correction locale (ajoutez votre clé Groq dans ⚙️)";
+      $(`${mode}-substatus`).textContent = state.apiKey ? "Repli local" : "Correction locale tolérante (ajoutez Groq dans ⚙️ pour une analyse complète)";
       $(`${mode}-latency`).textContent = "0 ms";
       $(`${mode}-score`).textContent = `${diff.score}%`;
       $(`${mode}-score`).className = `score-circle ${th.bg}`;
@@ -2633,8 +3397,7 @@ Traduction de l'élève (français) : "${finalAnswerText}"
       $(`${mode}-errors-wrap`).classList.add("hidden");
       $(`${mode}-gram-title`).textContent = `📚 ${item.grammarTitle}`;
       $(`${mode}-gram-rule`).textContent = item.grammarNote;
-      awardXP(diff.score);
-      markExerciseCompleted(mode, item.id, diff.score);
+      applyEvaluationOutcome(mode, item, diff.score, true);
     }
 
     // ==================== KHÔLLE INTERACTIVE TYPE CPGE (DISCUSSION & RELANCES) ====================
@@ -2857,8 +3620,16 @@ Retourne l'objet JSON :
         session.currentQuestion = data.followUpQuestion || `Could you elaborate further on your previous argument regarding ${session.topic}?`;
 
         awardXP(scoreRound);
+        if (Array.isArray(data.badWords) && data.badWords.length) {
+          logPersonalErrors("prepa", data.badWords);
+        }
+        ensureDailyFresh();
+        state.daily.prepaDone = (state.daily.prepaDone || 0) + 1;
+        saveState();
         if (session.item) markExerciseCompleted("prepa", session.item.id, scoreRound);
         renderPrepaSessionUI();
+        if (typeof renderDailyPlan === "function") renderDailyPlan();
+        startPrepaTimer();
 
         // Scroll doux vers la nouvelle question de relance
         setTimeout(() => {
@@ -2916,6 +3687,7 @@ Réponds STRICTEMENT en JSON :
 
         session.status = "finished";
         session.finalReport = data;
+        stopPrepaTimer();
 
         const grade = typeof data.grade20 === "number" ? data.grade20 : 14;
         $("prepa-final-grade").textContent = `${grade}/20`;
@@ -3068,6 +3840,48 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       updateProgressUI();
     }
 
+    let prepaTimerInterval = null;
+    let prepaTimeLeft = 0;
+
+    function stopPrepaTimer() {
+      if (prepaTimerInterval) {
+        clearInterval(prepaTimerInterval);
+        prepaTimerInterval = null;
+      }
+      const pill = $("prepa-timer-pill");
+      if (pill) pill.classList.add("hidden");
+    }
+
+    function startPrepaTimer() {
+      stopPrepaTimer();
+      const limit = Number(state.prepaTimerSeconds) || 0;
+      if (!limit || (state.prepaSession && state.prepaSession.status === "finished")) return;
+      prepaTimeLeft = limit;
+      const pill = $("prepa-timer-pill");
+      const txt = $("prepa-timer-text");
+      if (!pill || !txt) return;
+      pill.classList.remove("hidden", "urgent");
+      const renderClock = () => {
+        const m = String(Math.floor(prepaTimeLeft / 60)).padStart(2, "0");
+        const s = String(prepaTimeLeft % 60).padStart(2, "0");
+        txt.textContent = `${m}:${s}`;
+        pill.classList.toggle("urgent", prepaTimeLeft <= 15);
+      };
+      renderClock();
+      prepaTimerInterval = setInterval(() => {
+        prepaTimeLeft -= 1;
+        if (prepaTimeLeft <= 0) {
+          prepaTimeLeft = 0;
+          renderClock();
+          clearInterval(prepaTimerInterval);
+          prepaTimerInterval = null;
+          showToast("⏱️ Temps écoulé pour cette réponse de khôlle !");
+        } else {
+          renderClock();
+        }
+      }, 1000);
+    }
+
     function loadPrepaItem(item) {
       if (!item) return;
       state.currentPrepa = item;
@@ -3080,6 +3894,425 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         finalReport: null
       };
       renderPrepaSessionUI();
+      startPrepaTimer();
+    }
+
+    // =========================================================================
+    // 7B. PLAN DU JOUR, FLASHCARDS SRS, DRILL CONJUGAISON & CARNET D'ERREURS
+    // =========================================================================
+    function buildSrsDeck() {
+      const seen = new Set();
+      const cards = [];
+      const addFrom = (items) => {
+        items.forEach(item => {
+          (item.vocab || []).forEach(([en, fr]) => {
+            const key = `${String(en).trim().toLowerCase()}__${item.level}`;
+            if (!en || !fr || seen.has(key)) return;
+            seen.add(key);
+            cards.push({
+              id: `srs-${key}`,
+              en: String(en).trim(),
+              fr: String(fr).trim(),
+              level: item.level,
+              theme: item.theme,
+              contextEn: item.en,
+              contextFr: item.fr
+            });
+          });
+        });
+      };
+      addFrom(BUILTIN_SPEAK);
+      addFrom(BUILTIN_LISTEN);
+      return cards;
+    }
+    const SRS_DECK = buildSrsDeck();
+    let currentSrsCard = null;
+    let srsRevealed = false;
+
+    function getFilteredSrsDeck() {
+      const sel = $("srs-level-select") ? $("srs-level-select").value : "CURRENT";
+      const lvl = sel === "CURRENT" ? state.level : sel;
+      return lvl === "ALL" ? SRS_DECK : SRS_DECK.filter(c => c.level === lvl);
+    }
+
+    function updateSrsBadges() {
+      const deck = getFilteredSrsDeck();
+      const now = Date.now();
+      let due = 0, mastered = 0;
+      deck.forEach(c => {
+        const rec = state.srs[c.id];
+        if (rec) {
+          if (rec.nextDueAt <= now) due++;
+          if ((rec.intervalDays || 0) >= 3) mastered++;
+        }
+      });
+      if ($("srs-due-badge")) $("srs-due-badge").textContent = `${due} due(s) aujourd'hui`;
+      if ($("srs-mastered-badge")) $("srs-mastered-badge").textContent = `${mastered} maîtrisées`;
+    }
+
+    function pickNextSrsCard() {
+      const deck = getFilteredSrsDeck();
+      if (!deck.length) return null;
+      const now = Date.now();
+      const dueCards = deck.filter(c => state.srs[c.id] && state.srs[c.id].nextDueAt <= now);
+      if (dueCards.length) {
+        return dueCards[cryptoRandomInt(0, dueCards.length - 1)];
+      }
+      const unseen = deck.filter(c => !state.srs[c.id]);
+      if (unseen.length) {
+        return unseen[cryptoRandomInt(0, unseen.length - 1)];
+      }
+      const sorted = [...deck].sort((a, b) => (state.srs[a.id]?.nextDueAt || 0) - (state.srs[b.id]?.nextDueAt || 0));
+      return sorted[0];
+    }
+
+    function renderSrsCard(forceNew = false) {
+      if (!currentSrsCard || forceNew) {
+        currentSrsCard = pickNextSrsCard();
+        srsRevealed = false;
+      }
+      updateSrsBadges();
+      if (!currentSrsCard) return;
+
+      $("srs-card-meta").textContent = `${currentSrsCard.level} · ${currentSrsCard.theme}`;
+      $("srs-card-front").textContent = currentSrsCard.fr;
+      $("srs-card-answer").textContent = currentSrsCard.en;
+      $("srs-card-context").textContent = `"${currentSrsCard.contextEn}"`;
+      $("srs-card-back").classList.toggle("hidden", !srsRevealed);
+      $("srs-card-hint").classList.toggle("hidden", srsRevealed);
+      $("srs-reveal-row").classList.toggle("hidden", srsRevealed);
+      $("srs-rate-row").classList.toggle("hidden", !srsRevealed);
+    }
+
+    function rateSrsCard(days) {
+      if (!currentSrsCard) return;
+      const prev = state.srs[currentSrsCard.id] || { intervalDays: 0, reps: 0 };
+      const nextDays = days === 0 ? 0 : Math.max(days, Math.round((prev.intervalDays || 1) * 1.8));
+      const nextDueAt = days === 0 ? Date.now() + 60000 : Date.now() + nextDays * 86400000;
+      state.srs[currentSrsCard.id] = {
+        intervalDays: nextDays,
+        nextDueAt,
+        reps: (prev.reps || 0) + 1,
+        lastRatedAt: Date.now()
+      };
+      ensureDailyFresh();
+      state.daily.srsDone = (state.daily.srsDone || 0) + 1;
+      awardXP(days >= 3 ? 12 : 6);
+      saveState();
+      currentSrsCard = null;
+      renderSrsCard(true);
+      renderDailyPlan();
+    }
+
+    // DRILL CONJUGAISON & GRAMMAIRE RAPIDE
+    const DRILL_BANK = [
+      // A2
+      { level: "A2", cat: "Temps & Conjugaison", q: "She ___ in a small apartment near the train station.", fr: "Elle habite dans un petit appartement près de la gare.", opts: ["live", "lives", "is live", "living"], ans: 1, rule: "Présent simple 3e personne du singulier : toujours ajouter -s ('lives')." },
+      { level: "A2", cat: "Temps & Conjugaison", q: "Did you ___ well at the hotel last night?", fr: "As-tu bien dormi à l'hôtel la nuit dernière ?", opts: ["slept", "sleeping", "sleep", "sleeps"], ans: 2, rule: "Après l'auxiliaire 'Did' dans une question au Past Simple, le verbe reste à la base verbale ('sleep')." },
+      { level: "A2", cat: "Temps & Conjugaison", q: "Yesterday, I ___ my wallet on the bus.", fr: "Hier, j'ai perdu mon portefeuille dans le bus.", opts: ["lost", "losed", "lose", "have lost"], ans: 0, rule: "'Yesterday' impose le Past Simple. Le prétérit irrégulier de 'lose' est 'lost'." },
+      { level: "A2", cat: "Modaux & Obligations", q: "You ___ bring a gift, just come as you are!", fr: "Tu n'es pas obligé d'apporter un cadeau, viens comme tu es !", opts: ["must not", "do not have to", "cannot", "should not"], ans: 1, rule: "'Do not have to' = ne pas être obligé de. ('Must not' signifie une interdiction !)." },
+      { level: "A2", cat: "Temps & Conjugaison", q: "Call me as soon as you ___ at the airport tonight.", fr: "Appelle-moi dès que tu arriveras à l'aéroport ce soir.", opts: ["will arrive", "arrived", "arrive", "arriving"], ans: 2, rule: "Pas de 'will' après 'as soon as' ou 'when' : on met le présent simple ('arrive')." },
+      { level: "A2", cat: "Indénombrables", q: "The teacher gave me some very good ___ before my exam.", fr: "Le professeur m'a donné de très bons conseils avant mon examen.", opts: ["advices", "advice", "an advice", "advise"], ans: 1, rule: "'Advice' (conseil/conseils) est toujours singulier indénombrable en anglais." },
+      { level: "A2", cat: "Temps & Conjugaison", q: "Yesterday, I ___ wait thirty minutes at the doctor's.", fr: "Hier, j'ai dû attendre trente minutes chez le médecin.", opts: ["must", "musted", "had to", "have to"], ans: 2, rule: "'Must' n'a pas de passé : au Past Simple, on utilise obligatoirement 'had to'." },
+      { level: "A2", cat: "Prépositions", q: "I am really interested ___ modern cinema and technology.", fr: "Je suis vraiment intéressé par le cinéma moderne et la technologie.", opts: ["by", "in", "on", "at"], ans: 1, rule: "On dit toujours 'interested IN' (jamais 'by')." },
+      { level: "A2", cat: "Temps & Conjugaison", q: "My grandmother ___ me how to cook this traditional soup.", fr: "Ma grand-mère m'a appris à cuisiner cette soupe traditionnelle.", opts: ["teached", "taught", "thought", "learned"], ans: 1, rule: "'Teach' -> 'taught' au Past Simple. (Ne pas confondre avec 'think -> thought')." },
+      { level: "A2", cat: "Temps & Conjugaison", q: "The news from our team abroad ___ very good today.", fr: "Les nouvelles de notre équipe à l'étranger sont très bonnes.", opts: ["are", "were", "is", "be"], ans: 2, rule: "'News' finit par -s mais est TOUJOURS singulier en anglais -> 'is'." },
+      // B1
+      { level: "B1", cat: "Present Perfect vs Past", q: "The conference ___ twenty minutes ago.", fr: "La conférence a commencé il y a vingt minutes.", opts: ["has started", "started", "was starting", "starts"], ans: 1, rule: "'Ago' renvoie à un moment précis terminé dans le passé -> Past Simple obligatoire ('started')." },
+      { level: "B1", cat: "Present Perfect vs Past", q: "We have not heard from our supplier ___ last Monday.", fr: "Nous n'avons pas eu de nouvelles de notre fournisseur depuis lundi dernier.", opts: ["for", "since", "during", "ago"], ans: 1, rule: "'Since' introduit un point de départ précis ('last Monday') ; 'for' introduit une durée." },
+      { level: "B1", cat: "Gérondifs & Prépositions", q: "We look forward to ___ the results of your research.", fr: "Nous avons hâte de découvrir les résultats de ta recherche.", opts: ["discover", "discovering", "discovered", "be discover"], ans: 1, rule: "Dans 'look forward to', 'to' est une préposition : le verbe suivant prend toujours -ing ('discovering')." },
+      { level: "B1", cat: "Habitudes (Used to)", q: "He is not used to ___ in such a noisy office.", fr: "Il n'est pas habitué à travailler dans un bureau si bruyant.", opts: ["work", "working", "worked", "works"], ans: 1, rule: "'Be used to' / 'get used to' sont suivis de V-ing ('working'), contrairement à 'used to + BV' (passé)." },
+      { level: "B1", cat: "Conditionnels", q: "___ the company reduces packaging, plastic pollution will continue.", fr: "À moins que l'entreprise ne réduise les emballages, la pollution continuera.", opts: ["Unless", "If not", "Despite", "Although"], ans: 0, rule: "'Unless' (= à moins que / si ... ne ... pas) n'est jamais suivi d'une négation." },
+      { level: "B1", cat: "Faux-amis", q: "Around two hundred people ___ the climate conference yesterday.", fr: "Environ 200 personnes ont assisté à la conférence hier.", opts: ["assisted to", "assisted", "attended", "attended to"], ans: 2, rule: "'Assister à' = 'attend' (transitif direct sans 'to'). 'Assist' signifie 'aider'." },
+      { level: "B1", cat: "Faux-amis", q: "I ___ the English exam yesterday and I hope to pass it.", fr: "J'ai passé l'examen d'anglais hier et j'espère le réussir.", opts: ["passed", "took", "made", "gave"], ans: 1, rule: "On passe un examen avec 'take / sit an exam', et on le réussit avec 'pass'." },
+      { level: "B1", cat: "Connecteurs", q: "___ the bad weather, the outdoor festival stayed open.", fr: "Malgré le mauvais temps, le festival en plein air est resté ouvert.", opts: ["Although", "Despite", "Despite of", "Even though"], ans: 1, rule: "'Despite' est suivi d'un nom et ne prend JAMAIS 'of' ('Despite the weather' ou 'In spite of')." },
+      { level: "B1", cat: "Gérondifs & Infinitifs", q: "The teacher does not let students ___ their phones in class.", fr: "Le professeur ne laisse pas les élèves utiliser leur téléphone en cours.", opts: ["to use", "using", "use", "used"], ans: 2, rule: "Après 'let' et 'make' (actifs), on utilise la base verbale SANS 'to' ('let students use')." },
+      { level: "B1", cat: "Modaux au passé", q: "You ___ the sources of this article before sharing it.", fr: "Tu aurais dû vérifier les sources de cet article avant de le partager.", opts: ["should check", "should have checked", "must check", "had to checked"], ans: 1, rule: "Reproche ou regret sur le passé : 'should have + participe passé'." },
+      { level: "B1", cat: "Faux-amis", q: "Actually, I am ___ working on a battery research project.", fr: "En fait, je travaille actuellement sur un projet sur les batteries.", opts: ["actually", "currently", "eventually", "present"], ans: 1, rule: "'Actuellement' = 'currently' ; 'actually' signifie 'en fait / à vrai dire'." },
+      { level: "B1", cat: "Past Perfect", q: "When I arrived at the station, the train ___.", fr: "Quand je suis arrivé à la gare, le train était déjà parti.", opts: ["already left", "has already left", "had already left", "was leaving"], ans: 2, rule: "Action antérieure à un moment passé ('arrived') -> Past Perfect ('had already left')." },
+      // B2 Prépa
+      { level: "B2", cat: "Subjonctif & Prétérit modal", q: "It is high time international institutions ___ binding ethical rules.", fr: "Il est grand temps que les institutions imposent des règles éthiques contraignantes.", opts: ["impose", "will impose", "imposed", "have imposed"], ans: 2, rule: "Après 'It is (high) time + sujet', l'anglais exige le prétérit modal ('imposed') pour une urgence présente." },
+      { level: "B2", cat: "Inversions emphatiques", q: "Rarely ___ a technological breakthrough sparked such sharp debate.", fr: "Rarement une percée technologique n'a suscité un débat si vif.", opts: ["has", "had been", "did", "is"], ans: 0, rule: "Inversion auxiliaire-sujet après 'Rarely' au Present Perfect : 'Rarely has a breakthrough sparked...'." },
+      { level: "B2", cat: "Conditionnel Type 3 inversé", q: "___ governments anticipated grid congestion, blackouts would not have occurred.", fr: "Si les gouvernements avaient anticipé la congestion, ces pannes n'auraient pas eu lieu.", opts: ["If had", "Had", "Were", "Should"], ans: 1, rule: "Inversion élégante du Conditionnel Type 3 sans 'if' : 'Had + sujet + participe passé'." },
+      { level: "B2", cat: "Inversions temporelles", q: "No sooner had the agreement been signed ___ several countries postponed targets.", fr: "À peine l'accord avait-il été signé que plusieurs pays ont repoussé les objectifs.", opts: ["when", "that", "than", "then"], ans: 2, rule: "'No sooner ... than' (toujours 'than', tandis que 'Hardly/Scarcely' utilisent 'when')." },
+      { level: "B2", cat: "Pièges de thème CPGE", q: "Recent ___ shows that sleep deprivation impairs cognitive functions.", fr: "Les recherches récentes montrent que le manque de sommeil altère les fonctions cognitives.", opts: ["researches", "research", "a research", "researching"], ans: 1, rule: "'Research' est indénombrable en anglais : jamais de -s, suivi du verbe au singulier ('shows')." },
+      { level: "B2", cat: "Pièges de thème CPGE", q: "This measure will prevent platforms ___ biometric data without consent.", fr: "Cette mesure empêchera les plateformes de collecter des données sans consentement.", opts: ["to collect", "from collecting", "collecting", "of collecting"], ans: 1, rule: "'Prevent someone FROM + V-ing' : préposition 'from' obligatoire." },
+      { level: "B2", cat: "Subjonctif & Regrets", q: "I would rather we ___ these funds to public education.", fr: "Je préférerais que nous consacrions ces fonds à l'éducation publique.", opts: ["allocate", "allocated", "will allocate", "allocating"], ans: 1, rule: "'Would rather + sujet différent + Past Simple' (prétérit modal 'allocated')." },
+      { level: "B2", cat: "Subjonctif mandatif", q: "NGOs demand that multinationals ___ held accountable for their supply chains.", fr: "Les ONG exigent que les multinationales rendent des comptes.", opts: ["are", "were", "be", "will be"], ans: 2, rule: "Subjonctif passif après 'demand/insist/propose that' : 'be + participe passé' (sans conjugaison)." },
+      { level: "B2", cat: "Future Perfect", q: "By 2040, many European countries ___ their last coal power plants.", fr: "D'ici 2040, beaucoup de pays européens auront fermé leurs dernières centrales à charbon.", opts: ["will shut down", "will have shut down", "have shut down", "shut down"], ans: 1, rule: "'By + échéance future' appelle le Future Perfect ('will have + participe passé')." },
+      { level: "B2", cat: "Modaux au passé", q: "You ___ those hundred pages; the file was already available online.", fr: "Vous n'aviez pas besoin d'imprimer ces cent pages (mais vous l'avez fait).", opts: ["needn't have printed", "didn't need to print", "mustn't have printed", "shouldn't print"], ans: 0, rule: "'Needn't have + PP' = action faite qui s'est révélée inutile." },
+      { level: "B2", cat: "Concessions B2", q: "___ the financial audit was, several irregularities escaped detection.", fr: "Si rigoureux qu'ait été l'audit financier, plusieurs irrégularités ont échappé.", opts: ["Rigorous although", "Rigorous though", "However rigorous was", "Despite rigorous"], ans: 1, rule: "Concession inversée : 'Adjectif + though/as + sujet + verbe' ('Rigorous though the audit was')." },
+      { level: "B2", cat: "Pièges de thème CPGE", q: "___ students are choosing STEM fields despite rising industrial needs.", fr: "Moins d'étudiants choisissent les filières scientifiques.", opts: ["Less", "Fewer", "Lesser", "Few"], ans: 1, rule: "'Fewer' avec les noms comptables au pluriel ('students') ; 'less' avec les indénombrables." },
+      { level: "B2", cat: "Inversions négatives", q: "Under no circumstances ___ a democratic state delegate justice to opaque algorithms.", fr: "En aucun cas un État démocratique ne devrait déléguer la justice à des algorithmes.", opts: ["a state should", "should a state", "must not a state", "does a state should"], ans: 1, rule: "'Under no circumstances' en tête de phrase impose l'inversion modal-sujet ('should a state')." },
+      { level: "B2", cat: "Modaux au passé", q: "This widespread outage ___ caused by mere human error; it must be a cyberattack.", fr: "Cette panne n'a pas pu être causée par une simple erreur humaine.", opts: ["mustn't have been", "cannot have been", "shouldn't be", "may not be"], ans: 1, rule: "Impossibilité logique déductive au passé : 'cannot / couldn't have been' (jamais 'mustn't have')." }
+    ];
+
+    let currentDrill = null;
+    let drillAnswered = false;
+
+    function getFilteredDrills() {
+      const sel = $("drill-level-select") ? $("drill-level-select").value : "CURRENT";
+      const lvl = sel === "CURRENT" ? state.level : sel;
+      return lvl === "ALL" ? DRILL_BANK : DRILL_BANK.filter(d => d.level === lvl);
+    }
+
+    function renderDrillQuestion(forceNew = false) {
+      const pool = getFilteredDrills();
+      if (!pool.length) return;
+      if (!currentDrill || forceNew) {
+        const candidates = pool.filter(d => d !== currentDrill);
+        const pickFrom = candidates.length ? candidates : pool;
+        currentDrill = pickFrom[cryptoRandomInt(0, pickFrom.length - 1)];
+        drillAnswered = false;
+      }
+
+      $("drill-lvl-badge").textContent = currentDrill.level;
+      $("drill-score-badge").textContent = `${state.drillStats.correct}/${state.drillStats.total} justes`;
+      $("drill-topic").textContent = currentDrill.cat;
+      $("drill-question").textContent = currentDrill.q;
+      $("drill-fr-hint").textContent = `🇫🇷 ${currentDrill.fr}`;
+      $("drill-feedback").classList.add("hidden");
+
+      const wrap = $("drill-options");
+      wrap.innerHTML = "";
+      currentDrill.opts.forEach((opt, idx) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "drill-opt-btn";
+        btn.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
+        btn.addEventListener("click", () => handleDrillAnswer(idx, btn));
+        wrap.appendChild(btn);
+      });
+    }
+
+    function handleDrillAnswer(chosenIdx, btnEl) {
+      if (drillAnswered || !currentDrill) return;
+      drillAnswered = true;
+      const isOk = chosenIdx === currentDrill.ans;
+      const btns = $("drill-options").querySelectorAll(".drill-opt-btn");
+      btns.forEach((b, idx) => {
+        b.disabled = true;
+        if (idx === currentDrill.ans) b.classList.add("opt-ok");
+        else if (idx === chosenIdx && !isOk) b.classList.add("opt-ko");
+      });
+
+      state.drillStats.total += 1;
+      if (isOk) state.drillStats.correct += 1;
+      ensureDailyFresh();
+      state.daily.drillDone = (state.daily.drillDone || 0) + 1;
+      awardXP(isOk ? 15 : 5);
+      saveState();
+
+      $("drill-score-badge").textContent = `${state.drillStats.correct}/${state.drillStats.total} justes`;
+      $("drill-fb-title").textContent = isOk ? "✅ Exact ! Bien joué !" : "❌ Attention à la règle :";
+      $("drill-fb-title").style.color = isOk ? "var(--emerald)" : "var(--rose)";
+      $("drill-fb-note").textContent = currentDrill.rule;
+      $("drill-feedback").classList.remove("hidden");
+      renderDailyPlan();
+    }
+
+    // CARNET D'ERREURS PERSONNELLES
+    function renderErrorNotebook() {
+      const container = $("error-notebook-list");
+      if (!container) return;
+      const list = [...(state.errorLog || [])].sort((a, b) => (b.count || 1) - (a.count || 1));
+      if (!list.length) {
+        container.innerHTML = `<div style="text-align:center;padding:24px 12px;color:var(--text-muted);font-size:13px;">
+          ✨ Aucune erreur enregistrée pour le moment.<br>Tes fautes récurrentes détectées par l'IA apparaîtront automatiquement ici.
+        </div>`;
+        return;
+      }
+      container.innerHTML = list.map((err, i) => `
+        <div class="err-notebook-item">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;">
+            <div class="badge-row">
+              <span class="badge badge-amber">×${err.count || 1} fois</span>
+              <span class="badge badge-muted">${esc((err.mode || "speak").toUpperCase())}</span>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button type="button" class="tool-btn" data-speak="${esc(err.right)}" title="Écouter">🔊</button>
+              <button type="button" class="tool-btn" style="color:var(--emerald);" data-archive-err="${esc(err.key)}">✓ Maîtrisée</button>
+            </div>
+          </div>
+          <div class="error-pair"><span class="chip-wrong">${esc(err.wrong)}</span> → <span class="chip-ok">${esc(err.right)}</span></div>
+          <div style="font-size:12.5px;color:#334155;">${esc(err.why)}</div>
+        </div>
+      `).join("");
+    }
+
+    // PLAN DU JOUR & PROGRESSION PAR GRAMMAIRE
+    function renderDailyPlan() {
+      const listEl = $("plan-missions-list");
+      if (!listEl) return;
+      ensureDailyFresh();
+
+      const prof = PROFILES[state.profileId] || PROFILES.bastien;
+      if ($("plan-profile-label")) $("plan-profile-label").textContent = prof.name;
+      if ($("plan-date-label")) $("plan-date-label").textContent = todayISO();
+      if ($("plan-lvl-label")) $("plan-lvl-label").textContent = state.level;
+
+      const missedTotal = getMissedItems("speak").length + getMissedItems("listen").length;
+      const missedTarget = Math.min(3, missedTotal);
+      const missions = [
+        {
+          id: "missed",
+          title: missedTotal > 0 ? `🔁 Corriger ${missedTarget} erreur(s) en attente` : "🔁 Zéro erreur en attente (bravo !)",
+          sub: missedTotal > 0 ? `${missedTotal} phrase(s) < 80% à retravailler` : "Toutes tes phrases précédentes sont >= 80%",
+          done: state.daily.missedDone || 0,
+          target: missedTarget,
+          autoDone: missedTotal === 0,
+          action: () => {
+            const m = getMissedItems("speak").length ? "speak" : "listen";
+            if (m === "speak") state.speakMode = "review"; else state.listenMode = "review";
+            updatePracticeModeUI();
+            if (m === "speak") loadSpeakItem(pickNextItem("speak", null));
+            else loadListenItem(pickNextItem("listen", null));
+            switchTab(m);
+          }
+        },
+        {
+          id: "speak",
+          title: `🎙️ Réussir 5 phrases Oral (${state.level})`,
+          sub: "Score >= 80% requis pour valider une phrase",
+          done: state.daily.speakDone || 0,
+          target: 5,
+          action: () => { state.speakMode = "normal"; updatePracticeModeUI(); switchTab("speak"); }
+        },
+        {
+          id: "listen",
+          title: `🎧 Réussir 2 compréhensions orales (${state.level})`,
+          sub: "Écoute naturelle + traduction française",
+          done: state.daily.listenDone || 0,
+          target: 2,
+          action: () => { state.listenMode = "normal"; updatePracticeModeUI(); switchTab("listen"); }
+        },
+        {
+          id: "srs_drill",
+          title: "🃏 10 révisions rapides (Flashcards SRS + Conjugaison)",
+          sub: "Ancre le vocabulaire prépa et les temps automatiques",
+          done: (state.daily.srsDone || 0) + (state.daily.drillDone || 0),
+          target: 10,
+          action: () => switchPlanSubtab("srs")
+        },
+        {
+          id: "prepa",
+          title: "🎓 1 prise de parole Khôlle Prépa",
+          sub: "Entraînement argumenté avec relances",
+          done: state.daily.prepaDone || 0,
+          target: 1,
+          action: () => switchTab("prepa")
+        }
+      ];
+
+      let completedMissions = 0;
+      listEl.innerHTML = "";
+      missions.forEach(m => {
+        const isDone = m.autoDone || (m.target > 0 && m.done >= m.target);
+        if (isDone) completedMissions++;
+        const pct = m.autoDone ? 100 : Math.min(100, Math.round((m.done / Math.max(1, m.target)) * 100));
+        const card = document.createElement("div");
+        card.className = `mission-card${isDone ? " done" : ""}`;
+        card.innerHTML = `
+          <div class="mission-info">
+            <div class="mission-title">${esc(m.title)}</div>
+            <div class="mission-sub">${esc(m.sub)} · <strong>${m.autoDone ? "OK" : `${Math.min(m.done, m.target)}/${m.target}`}</strong></div>
+            <div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div>
+          </div>
+          <button type="button" class="btn ${isDone ? "btn-secondary" : "btn-primary"} btn-sm" style="width:auto;box-shadow:none;">
+            ${isDone ? "✓ Fait" : "▶ Lancer"}
+          </button>
+        `;
+        card.querySelector("button").addEventListener("click", m.action);
+        listEl.appendChild(card);
+      });
+
+      if ($("plan-missions-count")) $("plan-missions-count").textContent = `${completedMissions}/${missions.length}`;
+      if ($("plan-progress-fill")) $("plan-progress-fill").style.width = `${Math.round((completedMissions / missions.length) * 100)}%`;
+
+      // Stats par famille grammaticale au niveau actif
+      const gWrap = $("plan-grammar-stats");
+      if (gWrap) {
+        const lvlSpeak = BUILTIN_SPEAK.filter(x => x.level === state.level);
+        const compSpeak = state.completed?.speak || {};
+        const cats = ["TENSES", "MODALS_COND", "SYNTAX_B2", "PHRASAL_ING", "TRAPS_PREPA"];
+        gWrap.innerHTML = "";
+        cats.forEach(cat => {
+          const items = lvlSpeak.filter(x => getGrammarCategory(x) === cat);
+          if (!items.length) return;
+          const done = items.filter(x => compSpeak[x.id]).length;
+          const pct = Math.round((done / items.length) * 100);
+          const row = document.createElement("div");
+          row.style.cssText = "display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;";
+          row.innerHTML = `
+            <div style="flex:1;">
+              <div style="font-weight:700;color:var(--text);">${esc(GRAMMAR_LABELS[cat])} (${done}/${items.length})</div>
+              <div class="mission-bar" style="max-width:none;margin-top:4px;"><div class="mission-bar-fill" style="width:${pct}%"></div></div>
+            </div>
+            <button type="button" class="tool-btn" style="font-size:11px;">Cibler ▶</button>
+          `;
+          row.querySelector("button").addEventListener("click", () => {
+            state.grammarFilter = cat;
+            if ($("grammar-select")) $("grammar-select").value = cat;
+            state.speakMode = "normal";
+            updatePracticeModeUI();
+            loadSpeakItem(pickNextItem("speak", null));
+            switchTab("speak");
+          });
+          gWrap.appendChild(row);
+        });
+      }
+    }
+
+    function switchPlanSubtab(sub) {
+      state.subtab = sub;
+      document.querySelectorAll(".subtab-btn").forEach(b => b.classList.toggle("active", b.dataset.subtab === sub));
+      ["daily", "srs", "drill", "errors"].forEach(s => {
+        const el = $(`subpanel-${s}`);
+        if (el) el.classList.toggle("hidden", s !== sub);
+      });
+      if (sub === "daily") renderDailyPlan();
+      if (sub === "srs") renderSrsCard(false);
+      if (sub === "drill") renderDrillQuestion(false);
+      if (sub === "errors") renderErrorNotebook();
+    }
+
+    // GESTION DES PROFILS (BASTIEN / MATHYS)
+    function formatProfileSummary(pid) {
+      const d = readRawProfile(pid);
+      if (!d) return "Nouvel espace prêt · Niveau B1";
+      const sp = Object.keys(d.completed?.speak || {}).length;
+      const ls = Object.keys(d.completed?.listen || {}).length;
+      return `Niveau ${d.level || "B1"} · 🔥 ${d.stats?.streak || 0}j · ⚡ ${d.stats?.xp || 0} XP · ✅ ${sp + ls} exos`;
+    }
+
+    function openProfileModal() {
+      if ($("profile-summary-bastien")) $("profile-summary-bastien").textContent = formatProfileSummary("bastien");
+      if ($("profile-summary-mathys")) $("profile-summary-mathys").textContent = formatProfileSummary("mathys");
+      $("btn-select-bastien").className = `profile-card${state.profileId === "bastien" ? " active-bastien" : ""}`;
+      $("btn-select-mathys").className = `profile-card${state.profileId === "mathys" ? " active-mathys" : ""}`;
+      $("profile-modal").classList.remove("hidden");
+    }
+
+    function switchProfile(pid) {
+      if (!PROFILES[pid]) return;
+      saveState();
+      stopSpeech();
+      stopPrepaTimer();
+      loadProfileState(pid);
+      currentSrsCard = null;
+      currentDrill = null;
+      document.querySelectorAll(".lvl-btn").forEach(b => b.classList.toggle("active", b.dataset.level === state.level));
+      updateHeader();
+      updateAccentButtons();
+      updateVoiceUIState();
+      loadSpeakItem(pickNextItem("speak", null));
+      loadListenItem(pickNextItem("listen", null));
+      loadPrepaItem(pickNextPrepa(null));
+      renderDailyPlan();
+      renderErrorNotebook();
+      if (state.tab === "bank") renderBank();
+      $("profile-modal").classList.add("hidden");
+      showToast(`👤 Espace ${PROFILES[pid].name} activé`);
     }
 
     let bankPageSize = 50;
@@ -3092,16 +4325,19 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       const scope = $("bank-filter-scope").value;
       const lvl = $("bank-filter-level").value;
       const mode = $("bank-filter-mode").value;
+      const gram = $("bank-filter-grammar") ? $("bank-filter-grammar").value : "ALL";
 
       let list = getAllItems();
       if (scope === "REVIEWS") list = list.filter(x => !!state.reviews[x.id]);
       if (lvl !== "ALL") list = list.filter(x => x.level === lvl);
       if (mode !== "ALL") list = list.filter(x => x.mode === mode);
+      if (gram !== "ALL") list = list.filter(x => getGrammarCategory(x) === gram);
       if (q) {
         list = list.filter(x =>
           x.fr.toLowerCase().includes(q) ||
           x.en.toLowerCase().includes(q) ||
-          x.theme.toLowerCase().includes(q)
+          x.theme.toLowerCase().includes(q) ||
+          (x.grammarTitle || "").toLowerCase().includes(q)
         );
       }
 
@@ -3283,6 +4519,16 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         b.textContent = state.apiKey ? "Connecté ⚡" : "Hors-ligne";
         b.className = state.apiKey ? "badge badge-emerald" : "badge badge-muted";
       }
+      const otherPid = state.profileId === "bastien" ? "mathys" : "bastien";
+      const otherData = readRawProfile(otherPid);
+      const copyBtn = $("btn-copy-other-key");
+      if (copyBtn) {
+        const hasOtherKey = !!(otherData && otherData.apiKey && otherData.apiKey !== state.apiKey);
+        copyBtn.classList.toggle("hidden", !hasOtherKey);
+        if (hasOtherKey) {
+          copyBtn.textContent = `📋 Importer la clé Groq de ${PROFILES[otherPid].name}`;
+        }
+      }
       // Synchroniser le sélecteur de voix Jenny avec l'accent en cours
       const voiceSelect = $("select-jenny-voice");
       if (voiceSelect) {
@@ -3297,12 +4543,20 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
 
     function switchTab(tab) {
       stopSpeech();
+      if (tab !== "prepa") stopPrepaTimer();
       state.tab = tab;
-      ["speak", "listen", "prepa", "bank"].forEach(t => $(`tab-${t}`).classList.toggle("active", t === tab));
+      ["plan", "speak", "listen", "prepa", "bank"].forEach(t => {
+        const el = $(`tab-${t}`);
+        if (el) el.classList.toggle("active", t === tab);
+      });
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
-      $("global-filters-bar").classList.toggle("hidden", tab === "prepa" || tab === "bank");
+      $("global-filters-bar").classList.toggle("hidden", tab === "prepa" || tab === "bank" || tab === "plan");
+      if (tab === "plan") switchPlanSubtab(state.subtab || "daily");
       if (tab === "bank") renderBank();
-      if (tab === "prepa" && !state.prepaSession) loadPrepaItem(pickNextPrepa(null));
+      if (tab === "prepa") {
+        if (!state.prepaSession) loadPrepaItem(pickNextPrepa(null));
+        else startPrepaTimer();
+      }
     }
 
     function setLevel(lvl) {
@@ -3313,6 +4567,9 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       updateHeader();
       loadSpeakItem(pickNextItem("speak", state.currentSpeak?.id));
       loadListenItem(pickNextItem("listen", state.currentListen?.id));
+      renderDailyPlan();
+      if (state.subtab === "srs") renderSrsCard(true);
+      if (state.subtab === "drill") renderDrillQuestion(true);
       if (state.tab === "bank") renderBank();
     }
 
@@ -3349,6 +4606,123 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       loadSpeakItem(pickNextItem("speak", null));
       loadListenItem(pickNextItem("listen", null));
       loadPrepaItem(pickNextPrepa(null));
+      renderDailyPlan();
+      renderErrorNotebook();
+      switchTab("plan");
+
+      // Ouvrir le sélecteur de profil à la toute première visite
+      try {
+        if (!localStorage.getItem(ACTIVE_PROFILE_KEY)) {
+          openProfileModal();
+        }
+      } catch (e) {}
+
+      // Profils Bastien / Mathys
+      $("btn-open-profile").addEventListener("click", openProfileModal);
+      $("btn-close-profile").addEventListener("click", () => $("profile-modal").classList.add("hidden"));
+      $("profile-modal").addEventListener("click", e => { if (e.target === $("profile-modal")) $("profile-modal").classList.add("hidden"); });
+      $("btn-select-bastien").addEventListener("click", () => switchProfile("bastien"));
+      $("btn-select-mathys").addEventListener("click", () => switchProfile("mathys"));
+
+      // Sous-onglets Plan / SRS / Drill / Carnet d'erreurs
+      document.querySelectorAll(".subtab-btn").forEach(btn => {
+        btn.addEventListener("click", () => switchPlanSubtab(btn.dataset.subtab));
+      });
+
+      // SRS Flashcards
+      $("srs-card-area").addEventListener("click", () => {
+        if (!srsRevealed) { srsRevealed = true; renderSrsCard(false); }
+      });
+      $("btn-srs-reveal").addEventListener("click", () => { srsRevealed = true; renderSrsCard(false); });
+      $("btn-srs-speak").addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (currentSrsCard) speakEnglish(currentSrsCard.en, 1.0);
+      });
+      $("srs-level-select").addEventListener("change", () => { currentSrsCard = null; renderSrsCard(true); });
+      document.querySelectorAll("[data-srs-rate]").forEach(btn => {
+        btn.addEventListener("click", () => rateSrsCard(Number(btn.dataset.srsRate)));
+      });
+
+      // Drill Conjugaison
+      $("drill-level-select").addEventListener("change", () => { currentDrill = null; renderDrillQuestion(true); });
+      $("btn-drill-next").addEventListener("click", () => renderDrillQuestion(true));
+
+      // Carnet d'erreurs
+      $("btn-clear-errors").addEventListener("click", () => {
+        state.errorLog = [];
+        saveState();
+        renderErrorNotebook();
+        showToast("Carnet d'erreurs vidé.");
+      });
+      $("error-notebook-list").addEventListener("click", e => {
+        const archBtn = e.target.closest("[data-archive-err]");
+        if (archBtn) {
+          const key = archBtn.dataset.archiveErr;
+          state.errorLog = (state.errorLog || []).filter(x => x.key !== key);
+          saveState();
+          renderErrorNotebook();
+          showToast("✅ Erreur archivée !");
+        }
+      });
+
+      // Modes Normal vs Réviser mes erreurs (Speak & Listen)
+      $("btn-speak-mode-normal").addEventListener("click", () => {
+        state.speakMode = "normal";
+        updatePracticeModeUI();
+        loadSpeakItem(pickNextItem("speak", state.currentSpeak?.id));
+      });
+      $("btn-speak-mode-review").addEventListener("click", () => {
+        if (!getMissedItems("speak").length) { showToast("🎉 Aucune erreur à revoir en Oral !"); return; }
+        state.speakMode = "review";
+        updatePracticeModeUI();
+        loadSpeakItem(pickNextItem("speak", null));
+      });
+      $("btn-listen-mode-normal").addEventListener("click", () => {
+        state.listenMode = "normal";
+        updatePracticeModeUI();
+        loadListenItem(pickNextItem("listen", state.currentListen?.id));
+      });
+      $("btn-listen-mode-review").addEventListener("click", () => {
+        if (!getMissedItems("listen").length) { showToast("🎉 Aucune erreur à revoir en Écoute !"); return; }
+        state.listenMode = "review";
+        updatePracticeModeUI();
+        loadListenItem(pickNextItem("listen", null));
+      });
+
+      // Auto-validation hors-ligne ("Ma traduction est juste")
+      $("btn-speak-override").addEventListener("click", () => {
+        const evalInfo = state.lastLocalEval.speak;
+        if (!evalInfo || !evalInfo.item) return;
+        $("speak-banner").className = "result-banner banner-good";
+        $("speak-verdict").textContent = "Validé manuellement ✅";
+        $("speak-score").textContent = "100%";
+        $("speak-score").className = "score-circle bg-good";
+        $("speak-override-wrap").classList.add("hidden");
+        applyEvaluationOutcome("speak", evalInfo.item, 100, false);
+      });
+      $("btn-listen-override").addEventListener("click", () => {
+        const evalInfo = state.lastLocalEval.listen;
+        if (!evalInfo || !evalInfo.item) return;
+        $("listen-banner").className = "result-banner banner-good";
+        $("listen-verdict").textContent = "Validé manuellement ✅";
+        $("listen-score").textContent = "100%";
+        $("listen-score").className = "score-circle bg-good";
+        $("listen-override-wrap").classList.add("hidden");
+        applyEvaluationOutcome("listen", evalInfo.item, 100, false);
+      });
+
+      // Filtre grammaire & Chrono Khôlle
+      $("grammar-select").addEventListener("change", () => {
+        state.grammarFilter = $("grammar-select").value;
+        loadSpeakItem(pickNextItem("speak", state.currentSpeak?.id));
+        loadListenItem(pickNextItem("listen", state.currentListen?.id));
+        showToast(state.grammarFilter === "ALL" ? "📚 Toutes les notions grammaticales" : `Notion : ${GRAMMAR_LABELS[state.grammarFilter]}`);
+      });
+
+      $("prepa-timer-select").addEventListener("change", () => {
+        state.prepaTimerSeconds = Number($("prepa-timer-select").value) || 0;
+        startPrepaTimer();
+      });
 
       document.querySelectorAll(".lvl-btn").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -3464,6 +4838,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       $("bank-filter-scope").addEventListener("change", renderBank);
       $("bank-filter-level").addEventListener("change", renderBank);
       $("bank-filter-mode").addEventListener("change", renderBank);
+      if ($("bank-filter-grammar")) $("bank-filter-grammar").addEventListener("change", renderBank);
       $("btn-gen-ai").addEventListener("click", generateAiSentences);
 
       $("btn-close-record").addEventListener("click", closeRecordModal);
@@ -3631,6 +5006,30 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         }
       });
 
+      $("btn-copy-other-key").addEventListener("click", () => {
+        const otherPid = state.profileId === "bastien" ? "mathys" : "bastien";
+        const otherData = readRawProfile(otherPid);
+        if (otherData && otherData.apiKey) {
+          state.apiKey = otherData.apiKey;
+          if ($("input-api-key")) $("input-api-key").value = state.apiKey;
+          saveState();
+          updateHeader();
+          $("set-api-badge").textContent = "Connecté ⚡";
+          $("set-api-badge").className = "badge badge-emerald";
+          $("btn-copy-other-key").classList.add("hidden");
+          showToast(`🔑 Clé Groq importée depuis ${PROFILES[otherPid].name} !`);
+        }
+      });
+
+      $("btn-reset-completed").addEventListener("click", () => {
+        state.completed = { speak: {}, listen: {}, prepa: {} };
+        state.sessionSeen = { speak: [], listen: [], prepa: [] };
+        saveState();
+        updateHeader();
+        renderDailyPlan();
+        showToast("Historique des exercices maîtrisés réinitialisé pour cet espace.");
+      });
+
       $("btn-reset-ask").addEventListener("click", () => {
         $("btn-reset-ask").classList.add("hidden");
         $("reset-confirm-row").classList.remove("hidden");
@@ -3640,10 +5039,19 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         $("btn-reset-ask").classList.remove("hidden");
       });
       $("btn-reset-confirm").addEventListener("click", () => {
-        state.aiItems = []; state.reviews = {}; state.stats = { xp: 0, streak: 0, lastDate: null }; state.seenIds.clear(); state.seenPrepaIds.clear();
-        saveState(); updateHeader(); renderBank();
+        state.aiItems = [];
+        state.reviews = {};
+        state.completed = { speak: {}, listen: {}, prepa: {} };
+        state.srs = {};
+        state.errorLog = [];
+        state.daily = createEmptyDaily();
+        state.drillStats = { total: 0, correct: 0 };
+        state.stats = { xp: 0, streak: 0, lastDate: null };
+        state.seenIds.clear();
+        state.seenPrepaIds.clear();
+        saveState(); updateHeader(); renderBank(); renderDailyPlan(); renderErrorNotebook();
         $("settings-modal").classList.add("hidden");
-        showToast("Progression réinitialisée.");
+        showToast(`Espace ${PROFILES[state.profileId].name} réinitialisé.`);
       });
 
       document.body.addEventListener("click", e => {
