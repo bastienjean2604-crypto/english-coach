@@ -1624,7 +1624,7 @@
     'use strict';
 
     // -------------------------------------------------------------------------
-    // 1. DONNÉES CHARGÉES DYNAMIQUEMENT DEPUIS data.js (3150 phrases, 30 audios, 60 khôlles Prépa)
+    // 1. DONNÉES CHARGÉES DYNAMIQUEMENT DEPUIS data.js
     // -------------------------------------------------------------------------
     const THEMES = window.EC_THEMES || [];
     const PREPA_THEMES = window.EC_PREPA_THEMES || [];
@@ -1893,10 +1893,12 @@
       const prBadge = $("prepa-progress-badge");
       if (prBadge) prBadge.textContent = `🎯 ${prepaDone}/${prepaPool.length} faites`;
 
-      // Header completed count
-      const totalSpeak = Object.keys(comp.speak || {}).length;
-      const totalListen = Object.keys(comp.listen || {}).length;
-      const totalPrepa = Object.keys(comp.prepa || {}).length;
+      // Header completed count (aligné sur les exercices disponibles)
+      const allSpeak = getAllItems("speak");
+      const allListen = getAllItems("listen");
+      const totalSpeak = allSpeak.filter(x => comp.speak && comp.speak[x.id]).length;
+      const totalListen = allListen.filter(x => comp.listen && comp.listen[x.id]).length;
+      const totalPrepa = BUILTIN_PREPA.filter(x => comp.prepa && comp.prepa[x.id]).length;
       const grandTotal = totalSpeak + totalListen + totalPrepa;
       const hdrComp = $("hdr-completed-count");
       if (hdrComp) hdrComp.textContent = grandTotal;
@@ -1904,7 +1906,7 @@
       // Settings modal stats summary
       const setSum = $("set-stats-summary");
       if (setSum) {
-        setSum.innerHTML = `📊 <strong>${grandTotal}</strong> exos uniques réussis (Oral: ${totalSpeak}/3150 | Écoute: ${totalListen}/30 | Prépa: ${totalPrepa}/40)`;
+        setSum.innerHTML = `📊 <strong>${grandTotal}</strong> exos uniques réussis (Oral: ${totalSpeak}/${allSpeak.length} | Écoute: ${totalListen}/${allListen.length} | Prépa: ${totalPrepa}/${BUILTIN_PREPA.length})`;
       }
     }
 
