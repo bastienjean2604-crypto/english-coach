@@ -1125,8 +1125,8 @@
 
     .subtabs-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
       background: #e2e8f0;
       padding: 4px;
       border-radius: 14px;
@@ -1136,9 +1136,9 @@
       border: none;
       background: transparent;
       color: #475569;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
-      padding: 9px 6px;
+      padding: 8px 4px;
       border-radius: 10px;
       cursor: pointer;
       transition: all 0.15s;
@@ -1313,6 +1313,91 @@
       color: var(--rose);
       border-color: #fecdd3;
     }
+
+    /* ===== GUIDED AUTOPILOT CIRCUIT & ESSAY B2 ===== */
+    .guided-banner {
+      background: linear-gradient(135deg, #0f172a, #1e1b4b);
+      color: #fff;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+    }
+    .guided-banner-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .guided-step-bar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-top: 10px;
+    }
+    .guided-step-seg {
+      height: 6px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.22);
+    }
+    .guided-step-seg.done { background: #34d399; }
+    .guided-step-seg.current { background: #818cf8; box-shadow: 0 0 8px rgba(129, 140, 248, 0.8); }
+
+    .guided-next-card {
+      background: linear-gradient(135deg, #ecfdf5, #eef2ff);
+      border: 2px solid #34d399;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .duration-pills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin: 12px 0;
+    }
+    .duration-pill {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 8px 6px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+    }
+    .duration-pill.active {
+      background: #fff;
+      color: var(--primary);
+      border-color: #fff;
+    }
+
+    .essay-textarea {
+      width: 100%;
+      min-height: 170px;
+      font-family: inherit;
+      font-size: 14.5px;
+      line-height: 1.6;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      resize: vertical;
+    }
+    .essay-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14);
+    }
   </style>
 </head>
 <body>
@@ -1378,16 +1463,47 @@
   <!-- ==================== CONTENU PRINCIPAL ==================== -->
   <main class="main-container">
 
-    <!-- ONGLET 0 : PLAN DU JOUR, FLASHCARDS SRS, DRILL & CARNET -->
+    <!-- BANDEAU SÉANCE GUIDÉE PILOTE AUTOMATIQUE -->
+    <div id="guided-banner" class="guided-banner hidden">
+      <div class="guided-banner-top">
+        <div>
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#a5b4fc;">
+            🧭 Séance Guidée (<span id="guided-duration-lbl">60</span> min) · Étape <span id="guided-step-num">1</span>/<span id="guided-step-total">7</span>
+          </div>
+          <div id="guided-step-title" style="font-size:15px;font-weight:800;margin-top:2px;">🔥 Échauffement Conjugaison</div>
+          <div id="guided-step-progress" style="font-size:12px;color:#cbd5e1;margin-top:1px;">0 / 8 complétés dans ce bloc</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span class="badge" style="background:rgba(255,255,255,0.16);color:#fff;font-size:12px;">⏱️ <span id="guided-elapsed">00:00</span></span>
+          <button id="btn-guided-skip" type="button" class="tool-btn" style="background:rgba(255,255,255,0.14);color:#fff;border-color:rgba(255,255,255,0.25);">⏭️ Passer</button>
+          <button id="btn-guided-stop" type="button" class="tool-btn" style="background:rgba(225,29,72,0.28);color:#fecdd3;border-color:rgba(254,205,211,0.35);">✕ Quitter</button>
+        </div>
+      </div>
+      <div id="guided-step-bar" class="guided-step-bar"></div>
+    </div>
+
+    <!-- CARTE TRANSITION QUAND UN BLOC EST TERMINÉ -->
+    <div id="guided-next-card" class="guided-next-card hidden">
+      <div>
+        <div style="font-size:12px;font-weight:800;color:#047857;">🎉 Bloc terminé !</div>
+        <div id="guided-next-label" style="font-size:15px;font-weight:800;color:#0f172a;margin-top:2px;">Prêt pour l'étape suivante</div>
+      </div>
+      <button id="btn-guided-next-block" type="button" class="btn btn-emerald" style="width:auto;padding:10px 18px;">
+        🚀 Étape suivante ➡️
+      </button>
+    </div>
+
+    <!-- ONGLET 0 : PLAN DU JOUR, FLASHCARDS SRS, DRILL, ESSAI B2 & CARNET -->
     <section id="tab-plan" class="tab-panel active">
       <div class="subtabs-row" role="tablist">
         <button type="button" class="subtab-btn active" data-subtab="daily">📅 Plan</button>
-        <button type="button" class="subtab-btn" data-subtab="srs">🃏 Flashcards</button>
-        <button type="button" class="subtab-btn" data-subtab="drill">⚡ Conjugaison</button>
+        <button type="button" class="subtab-btn" data-subtab="srs">🃏 Cartes</button>
+        <button type="button" class="subtab-btn" data-subtab="drill">⚡ Verbes</button>
+        <button type="button" class="subtab-btn" data-subtab="essay">✍️ Essai</button>
         <button type="button" class="subtab-btn" data-subtab="errors">📓 Erreurs</button>
       </div>
 
-      <!-- SOUS-VUE 1 : PLAN DU JOUR -->
+      <!-- SOUS-VUE 1 : PLAN DU JOUR & CIRCUIT GUIDÉ 1H -->
       <div id="subpanel-daily">
         <div class="plan-hero">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;">
@@ -1395,14 +1511,25 @@
               <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;opacity:0.9;">
                 Espace <span id="plan-profile-label">Bastien</span> · <span id="plan-date-label"></span>
               </div>
-              <h2 style="font-size:20px;font-weight:800;margin-top:4px;">📅 Ton plan de révision du jour</h2>
-              <p id="plan-subtitle" style="font-size:12.5px;opacity:0.92;margin-top:2px;">Routine ciblée ~15 min pour progresser chaque jour</p>
+              <h2 style="font-size:20px;font-weight:800;margin-top:4px;">🚀 Ta séance guidée du jour</h2>
+              <p id="plan-subtitle" style="font-size:12.5px;opacity:0.92;margin-top:2px;">Laisse-toi guider étape par étape : conjugaison, erreurs, vocabulaire, oral, écoute, écrit & khôlle.</p>
             </div>
             <div style="text-align:right;">
-              <div id="plan-missions-count" style="font-size:22px;font-weight:900;">0/5</div>
-              <div style="font-size:11px;opacity:0.9;font-weight:700;">missions</div>
+              <div id="plan-missions-count" style="font-size:22px;font-weight:900;">0/7</div>
+              <div style="font-size:11px;opacity:0.9;font-weight:700;">blocs</div>
             </div>
           </div>
+
+          <div class="duration-pills" role="group" aria-label="Durée du programme">
+            <button type="button" class="duration-pill" data-duration="20">⚡ Express 20 min</button>
+            <button type="button" class="duration-pill" data-duration="40">🎯 Solide 40 min</button>
+            <button type="button" class="duration-pill active" data-duration="60">🔥 Turbo 1h (Max)</button>
+          </div>
+
+          <button id="btn-start-guided" type="button" class="btn" style="background:#fff;color:var(--primary);font-size:15px;box-shadow:0 6px 18px rgba(15,23,42,0.22);">
+            🚀 Démarrer ma séance guidée (1h)
+          </button>
+
           <div class="plan-progress-track">
             <div id="plan-progress-fill" class="plan-progress-fill" style="width:0%;"></div>
           </div>
@@ -1490,7 +1617,67 @@
         </div>
       </div>
 
-      <!-- SOUS-VUE 4 : CARNET D'ERREURS PERSONNELLES -->
+      <!-- SOUS-VUE 4 : ESSAI B2 / ÉCRIT STRUCTURÉ PRÉPA -->
+      <div id="subpanel-essay" class="hidden">
+        <div class="card">
+          <div class="card-header">
+            <div class="badge-row">
+              <span class="badge badge-primary">✍️ Mini-Essai Structuré (Écrit B2)</span>
+              <span id="essay-theme-badge" class="badge badge-muted">Prépa</span>
+              <span id="essay-word-badge" class="badge badge-amber">0 mots (objectif 110–180)</span>
+            </div>
+            <button id="btn-essay-next" type="button" class="tool-btn">🔀 Autre sujet</button>
+          </div>
+
+          <div class="prompt-label" style="color:var(--primary);">Sujet d'argumentation (en anglais)</div>
+          <h3 id="essay-prompt-en" class="sentence-display" style="font-size:17px;margin-bottom:4px;"></h3>
+          <p id="essay-prompt-fr" style="font-size:12.5px;color:var(--text-muted);margin-bottom:10px;"></p>
+
+          <div class="hint-box" style="margin-bottom:12px;">
+            <p><strong>Plan express conseillé :</strong> 1) Phrase d'accroche + thèse · 2) Argument 1 + exemple · 3) Nuance ("However...") · 4) Conclusion.</p>
+            <p style="margin-top:4px;"><strong>Connecteurs & lexique à placer :</strong> <span id="essay-target-vocab"></span></p>
+          </div>
+
+          <textarea id="essay-textarea" class="essay-textarea" placeholder="Rédige ton paragraphe argumenté en anglais ici (110 à 180 mots)..."></textarea>
+
+          <div class="btn-row" style="margin-top:10px;">
+            <button id="btn-essay-submit" type="button" class="btn btn-primary flex-1">📝 Corriger mon essai (Note /20 + Réécriture B2)</button>
+          </div>
+        </div>
+
+        <div id="essay-result" class="card result-card hidden">
+          <div id="essay-banner" class="result-banner banner-good">
+            <div>
+              <div class="verdict-row">
+                <span id="essay-verdict" class="verdict-title">Très bon essai !</span>
+              </div>
+              <div id="essay-substatus" class="verdict-sub">Analyse écrite</div>
+            </div>
+            <div id="essay-grade" class="score-circle bg-good">15/20</div>
+          </div>
+          <div class="result-body">
+            <div id="essay-ai-loading" class="ai-loading-box hidden">
+              <div class="spinner"></div>
+              <span>Correction détaillée (grammaire, structure, lexique B2)...</span>
+            </div>
+            <div id="essay-errors-wrap" class="hidden">
+              <div class="prompt-label" style="color:var(--rose);">🔍 Fautes corrigées</div>
+              <div id="essay-errors-list"></div>
+            </div>
+            <div class="grammar-box">
+              <div class="grammar-title" style="color:var(--violet);">💡 Bilan structure & style</div>
+              <div id="essay-feedback-text" class="grammar-text"></div>
+            </div>
+            <div class="ref-box">
+              <div class="prompt-label" style="color:var(--primary);">✨ Version modèle B2/C1 (écoute possible)</div>
+              <div id="essay-model-rewrite" style="font-size:14px;line-height:1.6;color:#1e293b;margin-top:4px;"></div>
+              <button id="btn-essay-play-model" type="button" class="btn btn-primary btn-sm" style="width:auto;margin-top:8px;box-shadow:none;">🔊 Écouter le modèle</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOUS-VUE 5 : CARNET D'ERREURS PERSONNELLES -->
       <div id="subpanel-errors" class="hidden">
         <div class="card">
           <div class="card-header">
@@ -1614,11 +1801,12 @@
       </div>
     </section>
 
-    <!-- ONGLET 2 : ÉCOUTER (EN -> FR, 2 PHRASES) -->
+    <!-- ONGLET 2 : ÉCOUTER (EN -> FR, 2 PHRASES OU MONOLOGUES LONGS) -->
     <section id="tab-listen" class="tab-panel">
       <div class="mode-switch-bar">
-        <button id="btn-listen-mode-normal" type="button" class="mode-switch-btn active">🎲 Nouveaux audios</button>
-        <button id="btn-listen-mode-review" type="button" class="mode-switch-btn">🔁 Réviser mes erreurs (<span id="listen-missed-count">0</span>)</button>
+        <button id="btn-listen-mode-normal" type="button" class="mode-switch-btn active">🎲 Audios (2 phrases)</button>
+        <button id="btn-listen-mode-long" type="button" class="mode-switch-btn">📻 Monologues Longs</button>
+        <button id="btn-listen-mode-review" type="button" class="mode-switch-btn">🔁 Erreurs (<span id="listen-missed-count">0</span>)</button>
       </div>
       <div class="card">
         <div class="card-header">
@@ -2127,9 +2315,11 @@
         date: todayISO(),
         speakDone: 0,
         listenDone: 0,
+        longListenDone: 0,
         missedDone: 0,
         srsDone: 0,
         drillDone: 0,
+        essayDone: 0,
         prepaDone: 0
       };
     }
@@ -2137,6 +2327,7 @@
     function createDefaultProfileData(profileId) {
       return {
         level: "B1",
+        planDuration: 60,
         accent: "en-US",
         apiKey: "",
         groqModel: "llama-3.3-70b-versatile",
@@ -2158,6 +2349,8 @@
       profileId: "bastien",
       tab: "plan",
       subtab: "daily",
+      planDuration: 60,
+      guided: null,
       level: "B1",
       theme: "ALL",
       grammarFilter: "ALL",
@@ -2232,6 +2425,8 @@
 
       const d = readRawProfile(target) || createDefaultProfileData(target);
       state.level = ["A2", "B1", "B2"].includes(d.level) ? d.level : "B1";
+      state.planDuration = [20, 40, 60].includes(d.planDuration) ? d.planDuration : 60;
+      state.guided = null;
       state.accent = (d.accent === "en-GB" || d.accent === "en-US") ? d.accent : "en-US";
       state.apiKey = typeof d.apiKey === "string" ? d.apiKey : "";
       state.voiceEngine = d.voiceEngine === "browser" ? "browser" : "jenny";
@@ -2279,6 +2474,7 @@
         localStorage.setItem(ACTIVE_PROFILE_KEY, state.profileId);
         localStorage.setItem(getProfileKey(state.profileId), JSON.stringify({
           level: state.level,
+          planDuration: state.planDuration,
           accent: state.accent,
           apiKey: state.apiKey,
           groqModel: state.groqModel,
@@ -2353,8 +2549,97 @@
       updateProgressUI();
     }
 
-    // Sélection intelligente anti-répétition, filtre grammaire & mode Révision d'erreurs
+    // Monologues longs (4 à 5 phrases) pour entraîner la compréhension de flux continu
+    const LONG_LISTEN_BANK = [
+      {
+        id: "ll-a2-1", mode: "listen", isLong: true, level: "A2", theme: "Vie quotidienne",
+        en: "Every Sunday morning, I wake up a bit later and walk to the neighborhood bakery for fresh bread. After breakfast, I usually clean my apartment and prepare meals for the next three workdays. In the afternoon, I meet two friends at the park if the weather is sunny. Doing all these simple tasks helps me start Monday feeling calm and organized.",
+        fr: "Chaque dimanche matin, je me réveille un peu plus tard et je marche jusqu'à la boulangerie du quartier pour acheter du pain frais. Après le petit-déjeuner, je nettoie généralement mon appartement et je prépare des repas pour les trois jours de travail suivants. L'après-midi, je retrouve deux amis au parc s'il fait beau. Faire toutes ces tâches simples m'aide à commencer le lundi en me sentant calme et organisé.",
+        grammarTitle: "Flux continu A2 (Habitudes & Gérondif sujet)",
+        grammarNote: "Repérez les marqueurs de temps ('Every Sunday', 'After breakfast', 'In the afternoon') pour structurer votre compréhension.",
+        vocab: [["neighborhood bakery", "boulangerie de quartier"], ["workdays", "jours de travail"]]
+      },
+      {
+        id: "ll-a2-2", mode: "listen", isLong: true, level: "A2", theme: "Voyage",
+        en: "Last summer, my cousin and I took a night train from Paris to Vienna instead of flying. At first, we were worried that the train might be noisy, so we brought earplugs and a small pillow. However, the trip turned out to be very comfortable, and we slept for almost seven hours. When we woke up, we saw green hills through the window and arrived right in the city center.",
+        fr: "L'été dernier, mon cousin et moi avons pris un train de nuit de Paris à Vienne au lieu de prendre l'avion. Au début, nous avions peur que le train soit bruyant, alors nous avons apporté des bouchons d'oreille et un petit oreiller. Cependant, le trajet s'est révélé très confortable et nous avons dormi presque sept heures. Au réveil, nous avons vu des collines vertes par la fenêtre et sommes arrivés en plein centre-ville.",
+        grammarTitle: "Récit au Past Simple & instead of + V-ing",
+        grammarNote: "Suivez la chronologie : 'At first' -> 'However' -> 'When we woke up'.",
+        vocab: [["instead of flying", "au lieu de prendre l'avion"], ["turned out to be", "s'est révélé être"]]
+      },
+      {
+        id: "ll-b1-1", mode: "listen", isLong: true, level: "B1", theme: "Travail & Entreprise",
+        en: "Over the past two years, our company has tested a four-day workweek with no reduction in monthly pay. Before launching the trial, several managers feared that customer service would slow down on Fridays. To everyone's surprise, employees became much more focused during their four working days and took fewer sick days. As a result, the management team has decided to keep this schedule permanently.",
+        fr: "Au cours des deux dernières années, notre entreprise a testé la semaine de quatre jours sans baisse de salaire mensuel. Avant de lancer l'essai, plusieurs responsables craignaient que le service client ne ralentisse le vendredi. À la surprise générale, les employés sont devenus beaucoup plus concentrés durant leurs quatre jours de travail et ont pris moins d'arrêts maladie. En conséquence, la direction a décidé de maintenir cet horaire de façon permanente.",
+        grammarTitle: "Present Perfect + Past Simple + As a result",
+        grammarNote: "Notez l'opposition entre la crainte passée ('feared that... would') et le bilan actuel ('has decided').",
+        vocab: [["trial", "essai / test"], ["sick days", "jours d'arrêt maladie"]]
+      },
+      {
+        id: "ll-b1-2", mode: "listen", isLong: true, level: "B1", theme: "Environnement & Climat",
+        en: "Many coastal towns are discovering that restoring natural sand dunes protects homes better than building concrete walls. When strong winter storms hit the coast, dunes absorb wave energy instead of pushing water toward nearby streets. In addition, native grasses grow on the sand and create shelters for local birds. Although restoration takes patience, it costs much less to maintain over twenty years.",
+        fr: "De nombreuses villes côtières découvrent que restaurer les dunes de sable naturelles protège mieux les maisons que construire des murs en béton. Lorsque de fortes tempêtes hivernales frappent la côte, les dunes absorbent l'énergie des vagues au lieu de repousser l'eau vers les rues voisines. De plus, des herbes locales poussent sur le sable et créent des abris pour les oiseaux locaux. Bien que la restauration demande de la patience, elle coûte bien moins cher à entretenir sur vingt ans.",
+        grammarTitle: "Gérondif sujet & Connecteurs (In addition, Although)",
+        grammarNote: "Écoutez les connecteurs qui organisent les arguments : cause ('When'), ajout ('In addition'), concession ('Although').",
+        vocab: [["concrete walls", "murs en béton"], ["shelters", "abris"]]
+      },
+      {
+        id: "ll-b1-3", mode: "listen", isLong: true, level: "B1", theme: "Intelligence Artificielle",
+        en: "Voice translation apps have made traveling abroad much easier for people who do not speak the local language. Whenever I visit a new country, I still try to learn polite phrases like 'hello' and 'thank you' first. However, having an offline translator on my phone really helps when reading hospital signs or complex train schedules. Technology works best when it supports human effort rather than replacing curiosity.",
+        fr: "Les applications de traduction vocale ont rendu les voyages à l'étranger bien plus faciles pour ceux qui ne parlent pas la langue locale. Chaque fois que je visite un nouveau pays, j'essaie tout de même d'apprendre d'abord les formules polies comme 'bonjour' et 'merci'. Toutefois, avoir un traducteur hors ligne sur mon téléphone aide vraiment pour lire les panneaux d'hôpital ou les horaires de train complexes. La technologie fonctionne le mieux lorsqu'elle soutient l'effort humain plutôt que de remplacer la curiosité.",
+        grammarTitle: "Whenever + Present Perfect + rather than + V-ing",
+        grammarNote: "Structure d'argumentation claire : constat -> nuance personnelle -> thèse finale.",
+        vocab: [["abroad", "à l'étranger"], ["rather than", "plutôt que de"]]
+      },
+      {
+        id: "ll-b2-1", mode: "listen", isLong: true, level: "B2", theme: "Intelligence Artificielle",
+        en: "Rarely has a technological wave spread as rapidly into classrooms and newsrooms as generative artificial intelligence. While proponents highlight huge gains in drafting speed and personalized tutoring, skeptics warn against intellectual laziness and epistemic erosion. Whenever students outsource the struggle of structuring an argument to a chatbot, they forfeit the cognitive friction that builds critical thinking. Consequently, universities must redesign assessments around oral defense, in-class reasoning, and source verification.",
+        fr: "Rarement une vague technologique ne s'est propagée aussi rapidement dans les salles de classe et les rédactions que l'intelligence artificielle générative. Tandis que ses partisans soulignent des gains immenses en rapidité de rédaction et tutorat personnalisé, les sceptiques mettent en garde contre la paresse intellectuelle et l'érosion épistémique. Chaque fois que des étudiants sous-traitent l'effort de structurer un argument à un chatbot, ils renoncent à la friction cognitive qui forge l'esprit critique. Par conséquent, les universités doivent repenser les évaluations autour de la soutenance orale, du raisonnement en classe et de la vérification des sources.",
+        grammarTitle: "Inversion (Rarely has...) & Lexique Prépa IA",
+        grammarNote: "Discours type khôlle : inversion d'ouverture, balancement 'While proponents... skeptics...', conséquence 'Consequently'.",
+        vocab: [["forfeit", "renoncer à / perdre"], ["assessments", "évaluations"]]
+      },
+      {
+        id: "ll-b2-2", mode: "listen", isLong: true, level: "B2", theme: "Énergie & Transition",
+        en: "Had European policymakers invested consistently in grid interconnections twenty years ago, balancing renewable electricity across borders would be far smoother today. Instead, regional bottlenecks frequently force wind farms in the north to curtail output while southern regions burn imported fossil gas. Building high-voltage links and large-scale storage is therefore not a secondary detail; it is the backbone of decarbonization. Without modern infrastructure, adding more solar panels alone will hit diminishing returns.",
+        fr: "Si les décideurs européens avaient investi de façon constante dans les interconnexions de réseau il y a vingt ans, équilibrer l'électricité renouvelable par-delà les frontières serait bien plus fluide aujourd'hui. Au lieu de cela, des goulets d'étranglement régionaux forcent souvent les parcs éoliens du nord à brider leur production pendant que le sud brûle du gaz fossile importé. Construire des liaisons haute tension et du stockage à grande échelle n'est donc pas un détail secondaire ; c'est la colonne vertébrale de la décarbonation. Sans infrastructures modernes, ajouter davantage de panneaux solaires seul finira par atteindre des rendements décroissants.",
+        grammarTitle: "Conditionnel mixte inversé (Had ... invested) & Énergie",
+        grammarNote: "Vocabulaire clé : 'bottlenecks', 'curtail output', 'backbone', 'diminishing returns'.",
+        vocab: [["curtail output", "brider/réduire la production"], ["diminishing returns", "rendements décroissants"]]
+      },
+      {
+        id: "ll-b2-3", mode: "listen", isLong: true, level: "B2", theme: "Choix sociaux & Économie",
+        en: "For all the rhetoric surrounding meritocracy, social mobility in several advanced economies has stalled over the past generation. Rising housing costs in dynamic cities increasingly act as a gatekeeper, pricing young people without family wealth out of top universities and entry-level jobs. Addressing this quiet crisis requires far more than scholarships alone; it demands ambitious public housing and regional transport links. Otherwise, talent will remain unevenly tapped, eroding both social fairness and economic vitality.",
+        fr: "Malgré toute la rhétorique entourant la méritocratie, la mobilité sociale dans plusieurs économies avancées s'est enrayée au cours de la dernière génération. La hausse du coût du logement dans les villes dynamiques agit de plus en plus comme un filtre, évinçant les jeunes sans patrimoine familial des meilleures universités et des premiers emplois. Régler cette crise silencieuse exige bien plus que de simples bourses ; cela demande des logements publics ambitieux et des liaisons de transport régionales. Sinon, les talents resteront inégalement exploités, érodant à la fois l'équité sociale et la vitalité économique.",
+        grammarTitle: "For all + nom & Vocabulary (stalled, gatekeeper, price out)",
+        grammarNote: "Remarquez la progression logique : constat concessif -> mécanisme causal -> solution structurelle -> mise en garde.",
+        vocab: [["gatekeeper", "filtre / gardien d'accès"], ["tapped", "exploité / mobilisé"]]
+      },
+      {
+        id: "ll-b2-4", mode: "listen", isLong: true, level: "B2", theme: "Science & Éthique",
+        en: "It is high time biomedical research shifted part of its focus from extending extreme longevity for the wealthy to tackling preventable chronic diseases worldwide. While anti-aging startups attract billions in venture capital, millions of patients still lack basic diagnostics and affordable insulin. Scientific prestige ought not to be dictated solely by sensational breakthroughs that serve a narrow elite. Ultimately, the true measure of medical progress lies in how equitably it alleviates human suffering.",
+        fr: "Il est grand temps que la recherche biomédicale déplace une partie de son attention de l'allongement de la longévité extrême pour les plus riches vers la lutte contre les maladies chroniques évitables dans le monde. Tandis que les start-up anti-âge attirent des milliards en capital-risque, des millions de patients manquent encore de diagnostics de base et d'insuline abordable. Le prestige scientifique ne devrait pas être dicté uniquement par des percées sensationnelles servant une élite restreinte. Au final, la véritable mesure du progrès médical réside dans l'équité avec laquelle il soulage la souffrance humaine.",
+        grammarTitle: "It is high time + Past Simple & Ought not to",
+        grammarNote: "Structure oratoire percutante pour conclure un oral sur la bioéthique et la justice sanitaire.",
+        vocab: [["venture capital", "capital-risque"], ["alleviates", "soulage / atténue"]]
+      }
+    ];
+
+    // Sélection intelligente anti-répétition, filtre grammaire, Monologues Longs & Révision
     function pickNextItem(mode, excludeId) {
+      const listenM = state.listenMode;
+      if (mode === "listen" && listenM === "long") {
+        let longPool = LONG_LISTEN_BANK.filter(x => x.level === state.level);
+        if (!longPool.length) longPool = LONG_LISTEN_BANK;
+        const compMap = (state.completed && state.completed.listen) || {};
+        let candidates = longPool.filter(x => !compMap[x.id] && x.id !== excludeId);
+        if (!candidates.length) {
+          candidates = longPool.filter(x => x.id !== excludeId);
+          if (!candidates.length) candidates = longPool;
+        }
+        return candidates[cryptoRandomInt(0, candidates.length - 1)];
+      }
+
       const isReviewMode = (mode === "speak" ? state.speakMode : state.listenMode) === "review";
 
       if (isReviewMode) {
@@ -2489,9 +2774,10 @@
         bSR.classList.toggle("active", state.speakMode === "review");
         bSR.classList.toggle("review-active", state.speakMode === "review");
       }
-      const bLN = $("btn-listen-mode-normal"), bLR = $("btn-listen-mode-review");
+      const bLN = $("btn-listen-mode-normal"), bLL = $("btn-listen-mode-long"), bLR = $("btn-listen-mode-review");
       if (bLN && bLR) {
         bLN.classList.toggle("active", state.listenMode === "normal");
+        if (bLL) bLL.classList.toggle("active", state.listenMode === "long");
         bLR.classList.toggle("active", state.listenMode === "review");
         bLR.classList.toggle("review-active", state.listenMode === "review");
       }
@@ -3241,10 +3527,17 @@
         if (wasMissed) {
           markReview(item.id, { missed: false, lastScore: score });
           state.daily.missedDone = (state.daily.missedDone || 0) + 1;
+          if (typeof recordGuidedProgress === "function") recordGuidedProgress("missed");
           showToast("✅ Erreur maîtrisée et validée !");
         }
-        if (mode === "speak") state.daily.speakDone = (state.daily.speakDone || 0) + 1;
-        else if (mode === "listen") state.daily.listenDone = (state.daily.listenDone || 0) + 1;
+        if (mode === "speak") {
+          state.daily.speakDone = (state.daily.speakDone || 0) + 1;
+          if (!wasMissed && typeof recordGuidedProgress === "function") recordGuidedProgress("speak");
+        } else if (mode === "listen") {
+          if (item.isLong) state.daily.longListenDone = (state.daily.longListenDone || 0) + 1;
+          state.daily.listenDone = (state.daily.listenDone || 0) + 1;
+          if (!wasMissed && typeof recordGuidedProgress === "function") recordGuidedProgress("listen");
+        }
       } else {
         // Ne pas marquer comme maîtrisée : la renvoyer en file de révision
         markReview(item.id, { missed: true, lastScore: score });
@@ -3628,6 +3921,7 @@ Retourne l'objet JSON :
         saveState();
         if (session.item) markExerciseCompleted("prepa", session.item.id, scoreRound);
         renderPrepaSessionUI();
+        if (typeof recordGuidedProgress === "function") recordGuidedProgress("prepa");
         if (typeof renderDailyPlan === "function") renderDailyPlan();
         startPrepaTimer();
 
@@ -3834,7 +4128,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       $("listen-lvl-badge").textContent = item.level;
       $("listen-theme-badge").textContent = item.theme;
       $("listen-ai-badge").classList.toggle("hidden", !item.isAi);
-      $("listen-status").textContent = "Écoutez les 2 phrases en anglais";
+      $("listen-status").textContent = item.isLong ? "📻 Monologue long (4 phrases) — Écoutez et résumez/traduisez en français" : "Écoutez les 2 phrases en anglais";
       $("listen-result").classList.add("hidden");
       updateFavUI();
       updateProgressUI();
@@ -4001,6 +4295,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       saveState();
       currentSrsCard = null;
       renderSrsCard(true);
+      if (typeof recordGuidedProgress === "function") recordGuidedProgress("srs");
       renderDailyPlan();
     }
 
@@ -4108,6 +4403,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       $("drill-fb-title").style.color = isOk ? "var(--emerald)" : "var(--rose)";
       $("drill-fb-note").textContent = currentDrill.rule;
       $("drill-feedback").classList.remove("hidden");
+      if (typeof recordGuidedProgress === "function") recordGuidedProgress("drill");
       renderDailyPlan();
     }
 
@@ -4140,6 +4436,404 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       `).join("");
     }
 
+    // ESSAI B2 / ÉCRIT STRUCTURÉ PRÉPA
+    const ESSAY_CONNECTORS = [
+      ["however", "cependant"], ["nevertheless", "néanmoins"], ["whereas", "tandis que"],
+      ["furthermore", "de plus"], ["consequently", "par conséquent"], ["on the other hand", "d'autre part"],
+      ["insofar as", "dans la mesure où"], ["for instance", "par exemple"], ["ultimately", "au final"],
+      ["curb", "freiner"], ["foster", "favoriser"], ["outweigh", "l'emporter sur"],
+      ["silver bullet", "solution miracle"], ["trade-off", "arbitrage"]
+    ];
+    let currentEssayPrompt = null;
+    let lastEssayModelText = "";
+
+    function countWords(txt) {
+      return String(txt || "").trim().split(/\s+/).filter(Boolean).length;
+    }
+
+    function updateEssayWordCount() {
+      const ta = $("essay-textarea");
+      const badge = $("essay-word-badge");
+      if (!ta || !badge) return;
+      const wc = countWords(ta.value);
+      badge.textContent = `${wc} mots (objectif 110–180)`;
+      if (wc >= 110 && wc <= 220) {
+        badge.className = "badge badge-emerald";
+      } else {
+        badge.className = "badge badge-amber";
+      }
+    }
+
+    function loadEssayPrompt(forceNew = false) {
+      if (!BUILTIN_PREPA.length) return;
+      if (!currentEssayPrompt || forceNew) {
+        const candidates = BUILTIN_PREPA.filter(p => p !== currentEssayPrompt);
+        const pool = candidates.length ? candidates : BUILTIN_PREPA;
+        currentEssayPrompt = pool[cryptoRandomInt(0, pool.length - 1)];
+      }
+      if ($("essay-theme-badge")) $("essay-theme-badge").textContent = currentEssayPrompt.theme;
+      if ($("essay-prompt-en")) $("essay-prompt-en").textContent = currentEssayPrompt.questionEn;
+      if ($("essay-prompt-fr")) $("essay-prompt-fr").textContent = `🇫🇷 ${currentEssayPrompt.questionFr}`;
+
+      const pickedVocab = cryptoShuffle(ESSAY_CONNECTORS).slice(0, 5);
+      if ($("essay-target-vocab")) {
+        $("essay-target-vocab").innerHTML = pickedVocab.map(([en, fr]) => `<strong>${esc(en)}</strong> (${esc(fr)})`).join(" • ");
+      }
+      if (forceNew) {
+        if ($("essay-textarea")) $("essay-textarea").value = "";
+        if ($("essay-result")) $("essay-result").classList.add("hidden");
+      }
+      updateEssayWordCount();
+    }
+
+    async function evaluateEssay() {
+      const text = ($("essay-textarea")?.value || "").trim();
+      const wc = countWords(text);
+      if (wc < 35) {
+        showToast("Écris au moins 35 mots (objectif idéal : 110–180 mots).");
+        return;
+      }
+      if (!currentEssayPrompt) loadEssayPrompt(true);
+
+      const resCard = $("essay-result");
+      const loadEl = $("essay-ai-loading");
+      resCard.classList.remove("hidden");
+      loadEl.classList.remove("hidden");
+      resCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+      if (state.apiKey) {
+        try {
+          const sysPrompt = "Tu es un correcteur exigeant et bienveillant de concours CPGE (Mines-Ponts / Centrale / ENS) en anglais. Tu corriges un mini-essai de 110-180 mots. Réponds STRICTEMENT en JSON valide.";
+          const userPrompt = `Sujet : "${currentEssayPrompt.questionEn}" (Thème : ${currentEssayPrompt.theme})
+Texte de l'étudiant (${wc} mots) :
+"${text}"
+
+Évalue la langue (grammaire, conjugaison, syntaxe B2/C1, richesse lexicale) et la structure argumentative.
+Retourne STRICTEMENT ce JSON :
+{
+  "grade20": 15,
+  "verdict": "court verdict motivant en français",
+  "errors": [{"wrong": "passage fautif", "right": "correction", "why": "explication courte en français"}],
+  "feedback": "Bilan précis en français (points forts + 2 axes d'amélioration concrets)",
+  "modelRewrite": "Réécriture complète et fluide niveau B2+/C1 (130-160 mots) gardant les idées de l'étudiant"
+}`;
+          const { data } = await callGroqChat(sysPrompt, userPrompt);
+          loadEl.classList.add("hidden");
+
+          const grade = typeof data.grade20 === "number" ? Math.max(4, Math.min(20, Math.round(data.grade20))) : 14;
+          const pct = Math.round((grade / 20) * 100);
+          const th = scoreTheme(pct);
+          $("essay-banner").className = `result-banner ${th.banner}`;
+          $("essay-verdict").textContent = data.verdict || th.verdict;
+          $("essay-substatus").textContent = `${wc} mots analysés par ${state.groqModel}`;
+          $("essay-grade").textContent = `${grade}/20`;
+          $("essay-grade").className = `score-circle ${grade >= 14 ? "bg-good" : grade >= 10 ? "bg-mid" : "bg-low"}`;
+
+          const errs = Array.isArray(data.errors) ? data.errors : [];
+          if (errs.length) {
+            $("essay-errors-list").innerHTML = errs.map(e => `
+              <div class="error-item">
+                <div class="error-pair"><span class="chip-wrong">${esc(e.wrong)}</span> → <span class="chip-ok">${esc(e.right)}</span></div>
+                <div>${esc(e.why)}</div>
+              </div>
+            `).join("");
+            $("essay-errors-wrap").classList.remove("hidden");
+            logPersonalErrors("essay", errs);
+          } else {
+            $("essay-errors-wrap").classList.add("hidden");
+          }
+
+          $("essay-feedback-text").textContent = data.feedback || "Structure claire et argumentation pertinente.";
+          lastEssayModelText = String(data.modelRewrite || "").trim();
+          $("essay-model-rewrite").textContent = lastEssayModelText || "Version modèle non fournie.";
+
+          ensureDailyFresh();
+          state.daily.essayDone = (state.daily.essayDone || 0) + 1;
+          awardXP(grade * 4);
+          saveState();
+          recordGuidedProgress("essay");
+          renderDailyPlan();
+          return;
+        } catch (e) {
+          console.warn("Erreur Groq essai, repli local:", e);
+          showToast(e.message);
+        }
+      }
+
+      // Repli local structuré si hors-ligne
+      loadEl.classList.add("hidden");
+      const lower = text.toLowerCase();
+      const usedConns = ESSAY_CONNECTORS.filter(([en]) => lower.includes(en)).map(([en]) => en);
+      let estGrade = 10 + (wc >= 110 ? 3 : wc >= 75 ? 2 : 0) + Math.min(4, usedConns.length * 1.5);
+      estGrade = Math.min(18, Math.round(estGrade));
+      $("essay-banner").className = "result-banner banner-mid";
+      $("essay-verdict").textContent = "Analyse locale terminée";
+      $("essay-substatus").textContent = `${wc} mots · ${usedConns.length} connecteur(s) B2 repéré(s) (ajoutez Groq dans ⚙️ pour correction fine)`;
+      $("essay-grade").textContent = `${estGrade}/20`;
+      $("essay-grade").className = "score-circle bg-mid";
+      $("essay-errors-wrap").classList.add("hidden");
+      $("essay-feedback-text").textContent = `Longueur : ${wc} mots. Connecteurs détectés : ${usedConns.length ? usedConns.join(", ") : "aucun connecteur B2 détecté (pense à placer 'however', 'whereas', 'consequently', 'insofar as')"}.`;
+      lastEssayModelText = "";
+      $("essay-model-rewrite").textContent = "Connectez votre clé Groq gratuite dans ⚙️ Réglages pour recevoir une réécriture personnalisée niveau B2/C1.";
+
+      ensureDailyFresh();
+      state.daily.essayDone = (state.daily.essayDone || 0) + 1;
+      awardXP(30);
+      saveState();
+      recordGuidedProgress("essay");
+      renderDailyPlan();
+    }
+
+    // PROGRAMME GUIDÉ PILOTE AUTOMATIQUE (20 / 40 / 60 MIN)
+    let guidedTimerInterval = null;
+
+    function getDurationPreset(dur) {
+      if (dur === 20) return { drill: 3, missedMax: 2, srs: 6, speak: 4, listen: 1, useLong: false, essay: 0, prepa: 1, label: "20 min" };
+      if (dur === 40) return { drill: 5, missedMax: 3, srs: 10, speak: 6, listen: 2, useLong: true, essay: 1, prepa: 1, label: "40 min" };
+      return { drill: 8, missedMax: 5, srs: 15, speak: 10, listen: 3, useLong: true, essay: 1, prepa: 2, label: "60 min" };
+    }
+
+    function getWeakestGrammarCategory() {
+      const lvlSpeak = BUILTIN_SPEAK.filter(x => x.level === state.level);
+      const comp = state.completed?.speak || {};
+      const cats = ["TENSES", "MODALS_COND", "SYNTAX_B2", "PHRASAL_ING", "TRAPS_PREPA"];
+      let weakest = "TENSES", minPct = 101;
+      cats.forEach(cat => {
+        const items = lvlSpeak.filter(x => getGrammarCategory(x) === cat);
+        if (!items.length) return;
+        const pct = (items.filter(x => comp[x.id]).length / items.length) * 100;
+        if (pct < minPct) { minPct = pct; weakest = cat; }
+      });
+      return weakest;
+    }
+
+    function buildGuidedBlocks(dur) {
+      const p = getDurationPreset(dur);
+      const missedCount = getMissedItems("speak").length + getMissedItems("listen").length;
+      const missedTarget = Math.min(p.missedMax, missedCount);
+      const weakCat = getWeakestGrammarCategory();
+
+      const blocks = [
+        {
+          id: "drill",
+          title: `🔥 Bloc 1 : Échauffement Conjugaison (${p.drill} questions)`,
+          sub: "Réflexes rapides sur temps, modaux & pièges",
+          target: p.drill,
+          done: state.daily.drillDone || 0,
+          launch: () => { switchTab("plan"); switchPlanSubtab("drill"); renderDrillQuestion(true); }
+        },
+        {
+          id: "missed",
+          title: missedTarget > 0 ? `🔁 Bloc 2 : Zéro Dette Erreurs (${missedTarget} à valider)` : "🔁 Bloc 2 : Zéro Erreur en attente ✓",
+          sub: missedTarget > 0 ? "Rejoue tes phrases < 80% jusqu'à maîtrise" : "Aucune erreur en attente — passage auto !",
+          target: missedTarget,
+          done: state.daily.missedDone || 0,
+          autoDone: missedTarget === 0,
+          launch: () => {
+            const m = getMissedItems("speak").length ? "speak" : "listen";
+            if (m === "speak") state.speakMode = "review"; else state.listenMode = "review";
+            updatePracticeModeUI();
+            if (m === "speak") loadSpeakItem(pickNextItem("speak", null));
+            else loadListenItem(pickNextItem("listen", null));
+            switchTab(m);
+          }
+        },
+        {
+          id: "srs",
+          title: `🃏 Bloc 3 : Vocabulaire Prépa SRS (${p.srs} cartes)`,
+          sub: "Répétition espacée (priorité aux cartes dues)",
+          target: p.srs,
+          done: state.daily.srsDone || 0,
+          launch: () => { switchTab("plan"); switchPlanSubtab("srs"); renderSrsCard(true); }
+        },
+        {
+          id: "speak",
+          title: `🎙️ Bloc 4 : Oral Actif FR → EN (${p.speak} phrases)`,
+          sub: `Ciblé sur ta priorité : ${GRAMMAR_LABELS[weakCat]}`,
+          target: p.speak,
+          done: state.daily.speakDone || 0,
+          launch: () => {
+            state.speakMode = "normal";
+            state.grammarFilter = weakCat;
+            if ($("grammar-select")) $("grammar-select").value = weakCat;
+            updatePracticeModeUI();
+            loadSpeakItem(pickNextItem("speak", null));
+            switchTab("speak");
+          }
+        },
+        {
+          id: "listen",
+          title: `🎧 Bloc 5 : Oreille & Monologue Long (${p.listen} audios)`,
+          sub: p.useLong ? "Démarre par 1 monologue long puis écoutes ciblées" : "Compréhension orale & traduction naturelle",
+          target: p.listen,
+          done: state.daily.listenDone || 0,
+          launch: () => {
+            state.grammarFilter = "ALL";
+            if ($("grammar-select")) $("grammar-select").value = "ALL";
+            state.listenMode = p.useLong && (state.daily.longListenDone || 0) === 0 ? "long" : "normal";
+            updatePracticeModeUI();
+            loadListenItem(pickNextItem("listen", null));
+            switchTab("listen");
+          }
+        }
+      ];
+
+      if (p.essay > 0) {
+        blocks.push({
+          id: "essay",
+          title: "✍️ Bloc 6 : Écrit Structuré Prépa (1 Mini-Essai)",
+          sub: "110–180 mots argumentés + réécriture B2/C1",
+          target: p.essay,
+          done: state.daily.essayDone || 0,
+          launch: () => { switchTab("plan"); switchPlanSubtab("essay"); loadEssayPrompt(false); }
+        });
+      }
+
+      blocks.push({
+        id: "prepa",
+        title: `🎓 Bloc ${p.essay > 0 ? 7 : 6} : Khôlle Chronométrée (${p.prepa} tour${p.prepa > 1 ? "s" : ""})`,
+        sub: "Réponse orale directe en anglais sous chrono 1m30",
+        target: p.prepa,
+        done: state.daily.prepaDone || 0,
+        launch: () => {
+          state.prepaTimerSeconds = 90;
+          if ($("prepa-timer-select")) $("prepa-timer-select").value = "90";
+          state.prepaLang = "en";
+          document.querySelectorAll("[data-prepa-lang]").forEach(b => b.classList.toggle("active", b.dataset.prepaLang === "en"));
+          switchTab("prepa");
+          loadPrepaItem(pickNextPrepa(null));
+        }
+      });
+
+      return blocks;
+    }
+
+    function updateGuidedUI() {
+      const banner = $("guided-banner");
+      const nextCard = $("guided-next-card");
+      if (!banner) return;
+
+      if (!state.guided || !state.guided.active) {
+        banner.classList.add("hidden");
+        if (nextCard) nextCard.classList.add("hidden");
+        return;
+      }
+
+      const g = state.guided;
+      const blocks = buildGuidedBlocks(g.duration);
+      const cur = blocks[g.idx];
+      if (!cur) {
+        stopGuidedSession(true);
+        return;
+      }
+
+      banner.classList.remove("hidden");
+      $("guided-duration-lbl").textContent = g.duration;
+      $("guided-step-num").textContent = `${g.idx + 1}`;
+      $("guided-step-total").textContent = `${blocks.length}`;
+      $("guided-step-title").textContent = cur.title;
+      $("guided-step-progress").textContent = `${Math.min(g.blockDone, cur.target)} / ${cur.target} validé(s) dans ce bloc`;
+
+      const bar = $("guided-step-bar");
+      bar.style.gridTemplateColumns = `repeat(${blocks.length}, 1fr)`;
+      bar.innerHTML = blocks.map((b, i) => {
+        const cls = i < g.idx ? "done" : i === g.idx ? "current" : "";
+        return `<span class="guided-step-seg ${cls}"></span>`;
+      }).join("");
+
+      const isBlockComplete = cur.autoDone || g.blockDone >= cur.target;
+      if (nextCard) {
+        if (isBlockComplete) {
+          const nextB = blocks[g.idx + 1];
+          $("guided-next-label").textContent = nextB ? `Suivant : ${nextB.title}` : "🏁 Dernier bloc terminé — Clôturer la séance !";
+          $("btn-guided-next-block").textContent = nextB ? "🚀 Étape suivante ➡️" : "🏆 Terminer la séance !";
+          nextCard.classList.remove("hidden");
+        } else {
+          nextCard.classList.add("hidden");
+        }
+      }
+    }
+
+    function startGuidedSession() {
+      ensureDailyFresh();
+      const blocks = buildGuidedBlocks(state.planDuration);
+      let firstIdx = blocks.findIndex(b => !b.autoDone && b.done < b.target);
+      if (firstIdx === -1) firstIdx = 0;
+
+      state.guided = {
+        active: true,
+        duration: state.planDuration,
+        startedAt: Date.now(),
+        idx: firstIdx,
+        blockDone: blocks[firstIdx].done || 0
+      };
+
+      if (guidedTimerInterval) clearInterval(guidedTimerInterval);
+      guidedTimerInterval = setInterval(() => {
+        if (!state.guided || !state.guided.active) return;
+        const secs = Math.floor((Date.now() - state.guided.startedAt) / 1000);
+        const m = String(Math.floor(secs / 60)).padStart(2, "0");
+        const s = String(secs % 60).padStart(2, "0");
+        if ($("guided-elapsed")) $("guided-elapsed").textContent = `${m}:${s}`;
+      }, 1000);
+
+      updateGuidedUI();
+      blocks[firstIdx].launch();
+      showToast(`🚀 Séance guidée (${state.planDuration} min) lancée !`);
+    }
+
+    function recordGuidedProgress(kind) {
+      if (!state.guided || !state.guided.active) return;
+      const blocks = buildGuidedBlocks(state.guided.duration);
+      const cur = blocks[state.guided.idx];
+      if (!cur) return;
+      if (cur.id === kind) {
+        state.guided.blockDone += 1;
+        // En mode Écoute 60/40 min, après 1 monologue long réussi, basculer automatiquement sur les audios courts
+        if (kind === "listen" && state.listenMode === "long" && state.guided.blockDone < cur.target) {
+          state.listenMode = "normal";
+          updatePracticeModeUI();
+        }
+        updateGuidedUI();
+      }
+    }
+
+    function advanceGuidedBlock() {
+      if (!state.guided || !state.guided.active) return;
+      const blocks = buildGuidedBlocks(state.guided.duration);
+      let nextIdx = state.guided.idx + 1;
+      while (nextIdx < blocks.length && blocks[nextIdx].autoDone) {
+        nextIdx++;
+      }
+      if (nextIdx >= blocks.length) {
+        stopGuidedSession(true);
+        return;
+      }
+      state.guided.idx = nextIdx;
+      state.guided.blockDone = blocks[nextIdx].done || 0;
+      updateGuidedUI();
+      blocks[nextIdx].launch();
+    }
+
+    function stopGuidedSession(completedAll = false) {
+      if (guidedTimerInterval) {
+        clearInterval(guidedTimerInterval);
+        guidedTimerInterval = null;
+      }
+      state.guided = null;
+      state.grammarFilter = "ALL";
+      if ($("grammar-select")) $("grammar-select").value = "ALL";
+      updateGuidedUI();
+      if (completedAll) {
+        awardXP(50);
+        switchTab("plan");
+        switchPlanSubtab("daily");
+        showToast("🏆 Séance complète terminée ! +50 XP bonus !");
+      } else {
+        showToast("Séance guidée mise en pause.");
+      }
+    }
+
     // PLAN DU JOUR & PROGRESSION PAR GRAMMAIRE
     function renderDailyPlan() {
       const listEl = $("plan-missions-list");
@@ -4151,58 +4845,15 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       if ($("plan-date-label")) $("plan-date-label").textContent = todayISO();
       if ($("plan-lvl-label")) $("plan-lvl-label").textContent = state.level;
 
-      const missedTotal = getMissedItems("speak").length + getMissedItems("listen").length;
-      const missedTarget = Math.min(3, missedTotal);
-      const missions = [
-        {
-          id: "missed",
-          title: missedTotal > 0 ? `🔁 Corriger ${missedTarget} erreur(s) en attente` : "🔁 Zéro erreur en attente (bravo !)",
-          sub: missedTotal > 0 ? `${missedTotal} phrase(s) < 80% à retravailler` : "Toutes tes phrases précédentes sont >= 80%",
-          done: state.daily.missedDone || 0,
-          target: missedTarget,
-          autoDone: missedTotal === 0,
-          action: () => {
-            const m = getMissedItems("speak").length ? "speak" : "listen";
-            if (m === "speak") state.speakMode = "review"; else state.listenMode = "review";
-            updatePracticeModeUI();
-            if (m === "speak") loadSpeakItem(pickNextItem("speak", null));
-            else loadListenItem(pickNextItem("listen", null));
-            switchTab(m);
-          }
-        },
-        {
-          id: "speak",
-          title: `🎙️ Réussir 5 phrases Oral (${state.level})`,
-          sub: "Score >= 80% requis pour valider une phrase",
-          done: state.daily.speakDone || 0,
-          target: 5,
-          action: () => { state.speakMode = "normal"; updatePracticeModeUI(); switchTab("speak"); }
-        },
-        {
-          id: "listen",
-          title: `🎧 Réussir 2 compréhensions orales (${state.level})`,
-          sub: "Écoute naturelle + traduction française",
-          done: state.daily.listenDone || 0,
-          target: 2,
-          action: () => { state.listenMode = "normal"; updatePracticeModeUI(); switchTab("listen"); }
-        },
-        {
-          id: "srs_drill",
-          title: "🃏 10 révisions rapides (Flashcards SRS + Conjugaison)",
-          sub: "Ancre le vocabulaire prépa et les temps automatiques",
-          done: (state.daily.srsDone || 0) + (state.daily.drillDone || 0),
-          target: 10,
-          action: () => switchPlanSubtab("srs")
-        },
-        {
-          id: "prepa",
-          title: "🎓 1 prise de parole Khôlle Prépa",
-          sub: "Entraînement argumenté avec relances",
-          done: state.daily.prepaDone || 0,
-          target: 1,
-          action: () => switchTab("prepa")
-        }
-      ];
+      document.querySelectorAll(".duration-pill").forEach(b => {
+        b.classList.toggle("active", Number(b.dataset.duration) === state.planDuration);
+      });
+      const startBtn = $("btn-start-guided");
+      if (startBtn) {
+        startBtn.textContent = `🚀 Démarrer ma séance guidée (${state.planDuration} min)`;
+      }
+
+      const missions = buildGuidedBlocks(state.planDuration);
 
       let completedMissions = 0;
       listEl.innerHTML = "";
@@ -4222,7 +4873,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
             ${isDone ? "✓ Fait" : "▶ Lancer"}
           </button>
         `;
-        card.querySelector("button").addEventListener("click", m.action);
+        card.querySelector("button").addEventListener("click", m.launch);
         listEl.appendChild(card);
       });
 
@@ -4266,13 +4917,14 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function switchPlanSubtab(sub) {
       state.subtab = sub;
       document.querySelectorAll(".subtab-btn").forEach(b => b.classList.toggle("active", b.dataset.subtab === sub));
-      ["daily", "srs", "drill", "errors"].forEach(s => {
+      ["daily", "srs", "drill", "essay", "errors"].forEach(s => {
         const el = $(`subpanel-${s}`);
         if (el) el.classList.toggle("hidden", s !== sub);
       });
       if (sub === "daily") renderDailyPlan();
       if (sub === "srs") renderSrsCard(false);
       if (sub === "drill") renderDrillQuestion(false);
+      if (sub === "essay") loadEssayPrompt(false);
       if (sub === "errors") renderErrorNotebook();
     }
 
@@ -4298,7 +4950,9 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       saveState();
       stopSpeech();
       stopPrepaTimer();
+      if (guidedTimerInterval) { clearInterval(guidedTimerInterval); guidedTimerInterval = null; }
       loadProfileState(pid);
+      updateGuidedUI();
       currentSrsCard = null;
       currentDrill = null;
       document.querySelectorAll(".lvl-btn").forEach(b => b.classList.toggle("active", b.dataset.level === state.level));
@@ -4665,7 +5319,28 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         }
       });
 
-      // Modes Normal vs Réviser mes erreurs (Speak & Listen)
+      // Séance Guidée Pilote Automatique (20/40/60 min)
+      document.querySelectorAll(".duration-pill").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.planDuration = Number(btn.dataset.duration) || 60;
+          saveState();
+          renderDailyPlan();
+        });
+      });
+      $("btn-start-guided").addEventListener("click", startGuidedSession);
+      $("btn-guided-next-block").addEventListener("click", advanceGuidedBlock);
+      $("btn-guided-skip").addEventListener("click", advanceGuidedBlock);
+      $("btn-guided-stop").addEventListener("click", () => stopGuidedSession(false));
+
+      // Essai B2
+      $("essay-textarea").addEventListener("input", updateEssayWordCount);
+      $("btn-essay-next").addEventListener("click", () => loadEssayPrompt(true));
+      $("btn-essay-submit").addEventListener("click", evaluateEssay);
+      $("btn-essay-play-model").addEventListener("click", () => {
+        if (lastEssayModelText) speakEnglish(lastEssayModelText, 0.95);
+      });
+
+      // Modes Normal vs Monologues Longs vs Réviser mes erreurs (Speak & Listen)
       $("btn-speak-mode-normal").addEventListener("click", () => {
         state.speakMode = "normal";
         updatePracticeModeUI();
@@ -4681,6 +5356,12 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         state.listenMode = "normal";
         updatePracticeModeUI();
         loadListenItem(pickNextItem("listen", state.currentListen?.id));
+      });
+      $("btn-listen-mode-long").addEventListener("click", () => {
+        state.listenMode = "long";
+        updatePracticeModeUI();
+        loadListenItem(pickNextItem("listen", state.currentListen?.id));
+        showToast("📻 Mode Monologues Longs activé");
       });
       $("btn-listen-mode-review").addEventListener("click", () => {
         if (!getMissedItems("listen").length) { showToast("🎉 Aucune erreur à revoir en Écoute !"); return; }
