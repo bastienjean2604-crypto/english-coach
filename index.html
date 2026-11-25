@@ -1412,6 +1412,9 @@
           <span id="hdr-voice-icon">✨</span>
           <span id="hdr-voice-label" style="font-weight:700;font-size:11px;color:#6b21a8;">Jenny Neural</span>
         </button>
+        <button id="hdr-sync-btn" class="stats-pill" type="button" title="Synchro Cloud Bastien & Mathys" style="cursor:pointer;padding:6px 10px;">
+          <span id="hdr-sync-label" style="font-weight:700;font-size:11px;color:#64748b;">☁️ Off</span>
+        </button>
         <button id="btn-open-settings" class="icon-btn" type="button" aria-label="Réglages">
           ⚙️
           <span id="hdr-api-dot" class="api-dot hidden"></span>
@@ -1522,6 +1525,11 @@
         <div class="card" style="background:var(--surface-soft);">
           <div class="grammar-title">📊 Points de grammaire à consolider (Niveau <span id="plan-lvl-label">B1</span>)</div>
           <div id="plan-grammar-stats" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;"></div>
+        </div>
+
+        <div id="plan-history-card" class="card" style="background:var(--surface-soft);">
+          <div class="grammar-title">📈 Historique & Notes récentes (Khôlles / Essais / Jours)</div>
+          <div id="plan-history-list" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;font-size:12.5px;color:#475569;"></div>
         </div>
       </div>
 
@@ -2188,6 +2196,33 @@
           </button>
         </div>
 
+        <!-- BLOC SYNCHRO CLOUD PRIVÉE & EXPORT COACH -->
+        <div class="settings-box" style="background:#eff6ff;border-color:#bfdbfe;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong style="font-size:13px;color:#1e40af;">☁️ Synchro Cloud & Suivi Coach</strong>
+            <span id="set-sync-badge" class="badge badge-muted">Hors-ligne</span>
+          </div>
+          <p style="font-size:12px;color:#1e3a8a;margin-top:2px;">
+            Synchronise automatiquement la progression de <strong>Bastien</strong> & <strong>Mathys</strong> sur votre dépôt privé GitHub (téléphone ↔ PC ↔ Coach). Aucune clé API n'est envoyée sur le cloud.
+          </p>
+          <div class="input-row">
+            <input id="input-sync-token" type="password" class="text-input" placeholder="Token GitHub de synchro (ghp_...)" autocomplete="off">
+            <button id="btn-toggle-sync-vis" type="button" class="btn btn-secondary btn-sm" style="width:auto;">👁️</button>
+          </div>
+          <div class="btn-row" style="margin-top:2px;">
+            <button id="btn-save-sync-token" type="button" class="btn btn-primary btn-sm flex-1" style="box-shadow:none;">Enregistrer</button>
+            <button id="btn-sync-now" type="button" class="btn btn-secondary btn-sm flex-1">🔄 Synchroniser</button>
+          </div>
+          <button id="btn-copy-other-sync-token" type="button" class="btn btn-secondary btn-sm hidden" style="width:100%;margin-top:2px;">
+            📋 Importer le token de synchro de l'autre espace
+          </button>
+          <div id="sync-status-msg" style="font-size:11.5px;color:#1e3a8a;font-weight:700;margin-top:2px;"></div>
+          <div class="btn-row" style="margin-top:6px;">
+            <button id="btn-copy-coach-report" type="button" class="btn btn-secondary btn-sm flex-1" style="background:#fff;border-color:#bfdbfe;color:#1e40af;">📋 Bilan Coach</button>
+            <button id="btn-export-json" type="button" class="btn btn-secondary btn-sm flex-1" style="background:#fff;border-color:#bfdbfe;color:#1e40af;">💾 Export JSON</button>
+          </div>
+        </div>
+
         <div style="border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:8px;">
           <button id="btn-reset-ask" type="button" class="btn btn-secondary btn-sm" style="width:100%;color:var(--rose);background:var(--rose-soft);">
             Réinitialiser progression & phrases IA
@@ -2316,6 +2351,11 @@
         completed: { speak: {}, listen: {}, prepa: {} },
         srs: {},
         errorLog: [],
+        history: {},
+        kholleLog: [],
+        essayLog: [],
+        syncToken: "",
+        lastSyncAt: null,
         daily: createEmptyDaily(),
         drillStats: { total: 0, correct: 0 }
       };
@@ -2347,6 +2387,11 @@
       completed: { speak: {}, listen: {}, prepa: {} },
       srs: {},
       errorLog: [],
+      history: {},
+      kholleLog: [],
+      essayLog: [],
+      syncToken: "",
+      lastSyncAt: null,
       daily: createEmptyDaily(),
       drillStats: { total: 0, correct: 0 },
       sessionSeen: { speak: [], listen: [], prepa: [] },
@@ -2386,9 +2431,40 @@
       } catch (e) {}
     }
 
+    function pruneHistory(hist) {
+      const out = (hist && typeof hist === "object") ? { ...hist } : {};
+      const keys = Object.keys(out).sort();
+      if (keys.length > 90) {
+        keys.slice(0, keys.length - 90).forEach(k => delete out[k]);
+      }
+      return out;
+    }
+
+    function syncTodayIntoHistory(xpDelta = 0) {
+      if (!state.history || typeof state.history !== "object") state.history = {};
+      const d = state.daily && state.daily.date ? state.daily : createEmptyDaily();
+      const dateKey = d.date || todayISO();
+      const prev = state.history[dateKey] || {};
+      state.history[dateKey] = {
+        drillDone: Math.max(Number(prev.drillDone) || 0, Number(d.drillDone) || 0),
+        missedDone: Math.max(Number(prev.missedDone) || 0, Number(d.missedDone) || 0),
+        srsDone: Math.max(Number(prev.srsDone) || 0, Number(d.srsDone) || 0),
+        speakDone: Math.max(Number(prev.speakDone) || 0, Number(d.speakDone) || 0),
+        listenDone: Math.max(Number(prev.listenDone) || 0, Number(d.listenDone) || 0),
+        longListenDone: Math.max(Number(prev.longListenDone) || 0, Number(d.longListenDone) || 0),
+        essayDone: Math.max(Number(prev.essayDone) || 0, Number(d.essayDone) || 0),
+        prepaDone: Math.max(Number(prev.prepaDone) || 0, Number(d.prepaDone) || 0),
+        xpEarned: Math.max(0, (Number(prev.xpEarned) || 0) + (Number(xpDelta) || 0))
+      };
+      state.history = pruneHistory(state.history);
+    }
+
     function ensureDailyFresh() {
       const t = todayISO();
-      if (!state.daily || state.daily.date !== t) {
+      if (state.daily && state.daily.date && state.daily.date !== t) {
+        syncTodayIntoHistory(0);
+        state.daily = createEmptyDaily();
+      } else if (!state.daily || state.daily.date !== t) {
         state.daily = createEmptyDaily();
       }
     }
@@ -2422,6 +2498,11 @@
       } : { speak: {}, listen: {}, prepa: {} };
       state.srs = (d.srs && typeof d.srs === "object") ? d.srs : {};
       state.errorLog = Array.isArray(d.errorLog) ? d.errorLog : [];
+      state.history = pruneHistory(d.history);
+      state.kholleLog = Array.isArray(d.kholleLog) ? d.kholleLog : [];
+      state.essayLog = Array.isArray(d.essayLog) ? d.essayLog : [];
+      state.syncToken = typeof d.syncToken === "string" ? d.syncToken : "";
+      state.lastSyncAt = d.lastSyncAt || null;
       state.daily = (d.daily && typeof d.daily === "object") ? { ...createEmptyDaily(), ...d.daily } : createEmptyDaily();
       ensureDailyFresh();
       state.drillStats = (d.drillStats && typeof d.drillStats === "object")
@@ -2443,28 +2524,41 @@
       loadProfileState(activePid);
     }
 
-    function saveState() {
+    function buildProfilePayload() {
+      return {
+        level: state.level,
+        planDuration: state.planDuration,
+        accent: state.accent,
+        apiKey: state.apiKey,
+        groqModel: state.groqModel,
+        voiceEngine: state.voiceEngine,
+        jennyVoiceUS: state.jennyVoiceUS,
+        jennyVoiceUK: state.jennyVoiceUK,
+        aiItems: state.aiItems,
+        reviews: state.reviews,
+        stats: state.stats,
+        completed: state.completed,
+        srs: state.srs,
+        errorLog: state.errorLog,
+        history: state.history,
+        kholleLog: state.kholleLog,
+        essayLog: state.essayLog,
+        syncToken: state.syncToken,
+        lastSyncAt: state.lastSyncAt,
+        daily: state.daily,
+        drillStats: state.drillStats
+      };
+    }
+
+    function saveState(skipCloud = false) {
       try {
         ensureDailyFresh();
+        syncTodayIntoHistory(0);
         localStorage.setItem(ACTIVE_PROFILE_KEY, state.profileId);
-        localStorage.setItem(getProfileKey(state.profileId), JSON.stringify({
-          level: state.level,
-          planDuration: state.planDuration,
-          accent: state.accent,
-          apiKey: state.apiKey,
-          groqModel: state.groqModel,
-          voiceEngine: state.voiceEngine,
-          jennyVoiceUS: state.jennyVoiceUS,
-          jennyVoiceUK: state.jennyVoiceUK,
-          aiItems: state.aiItems,
-          reviews: state.reviews,
-          stats: state.stats,
-          completed: state.completed,
-          srs: state.srs,
-          errorLog: state.errorLog,
-          daily: state.daily,
-          drillStats: state.drillStats
-        }));
+        localStorage.setItem(getProfileKey(state.profileId), JSON.stringify(buildProfilePayload()));
+        if (!skipCloud && state.syncToken && typeof scheduleCloudSync === "function") {
+          scheduleCloudSync();
+        }
       } catch (e) {
         console.warn("Impossible de sauvegarder localStorage:", e);
       }
@@ -2800,6 +2894,39 @@
       if (pill) pill.classList.toggle("mathys", state.profileId === "mathys");
       const planLbl = $("plan-profile-label");
       if (planLbl) planLbl.textContent = prof.name;
+      updateSyncUIState();
+    }
+
+    function updateSyncUIState(statusText = "", isError = false) {
+      const hdrBtn = $("hdr-sync-btn");
+      const hdrLbl = $("hdr-sync-label");
+      const badge = $("set-sync-badge");
+      const msgEl = $("sync-status-msg");
+      const connected = !!state.syncToken;
+      if (hdrLbl && hdrBtn) {
+        hdrLbl.textContent = connected ? "☁️ Sync" : "☁️ Off";
+        hdrLbl.style.color = connected ? "#047857" : "#64748b";
+        hdrBtn.style.background = connected ? "#ecfdf5" : "";
+        hdrBtn.style.borderColor = connected ? "#a7f3d0" : "";
+      }
+      if (badge) {
+        badge.textContent = connected ? "Sync Auto ✅" : "Hors-ligne";
+        badge.className = connected ? "badge badge-emerald" : "badge badge-muted";
+      }
+      if (msgEl) {
+        if (statusText) {
+          msgEl.style.color = isError ? "var(--rose)" : "#1e3a8a";
+          msgEl.textContent = statusText;
+        } else if (state.lastSyncAt) {
+          const d = new Date(state.lastSyncAt);
+          const hhmm = isNaN(d.getTime()) ? state.lastSyncAt : d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+          msgEl.style.color = "#047857";
+          msgEl.textContent = `Dernière synchro (${(PROFILES[state.profileId] || PROFILES.bastien).name}) : ${hhmm}`;
+        } else {
+          msgEl.style.color = "#1e3a8a";
+          msgEl.textContent = connected ? "Prêt à synchroniser." : "Collez votre token GitHub pour activer la synchro automatique.";
+        }
+      }
     }
 
     function updateHeader() {
@@ -2814,7 +2941,8 @@
     }
 
     function awardXP(score) {
-      state.stats.xp += score >= 80 ? 20 : score >= 50 ? 12 : 6;
+      const gained = score >= 80 ? 20 : score >= 50 ? 12 : 6;
+      state.stats.xp += gained;
       const today = new Date().toISOString().slice(0, 10);
       if (state.stats.lastDate !== today) {
         if (state.stats.lastDate) {
@@ -2825,6 +2953,7 @@
         }
         state.stats.lastDate = today;
       }
+      syncTodayIntoHistory(gained);
       saveState();
       updateHeader();
     }
@@ -4069,6 +4198,23 @@ Réponds STRICTEMENT en JSON :
         if (session.rounds.length >= MAX_PREPA_ROUNDS) {
           ensureDailyFresh();
           state.daily.prepaDone = (state.daily.prepaDone || 0) + 1;
+          const avgRound = session.rounds.length
+            ? Math.round(session.rounds.reduce((s, r) => s + (r.scoreRound || 0), 0) / session.rounds.length)
+            : 0;
+          const totalErrs = session.rounds.reduce((s, r) => s + (Array.isArray(r.badWords) ? r.badWords.length : 0), 0);
+          if (!Array.isArray(state.kholleLog)) state.kholleLog = [];
+          state.kholleLog.unshift({
+            id: `kh-${Date.now()}`,
+            date: todayISO(),
+            createdAt: new Date().toISOString(),
+            topic: session.topic,
+            grade20: grade,
+            avgRoundScore: avgRound,
+            rounds: session.rounds.length,
+            errorsCount: totalErrs,
+            verdict: data.verdict || ""
+          });
+          if (state.kholleLog.length > 50) state.kholleLog = state.kholleLog.slice(0, 50);
           if (session.item) markExerciseCompleted("prepa", session.item.id, Math.round(grade * 5));
           saveState();
           if (typeof recordGuidedProgress === "function") recordGuidedProgress("prepa");
@@ -4170,7 +4316,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
 
     function markReview(id, patch) {
       const prev = state.reviews[id] || { fav: false, missed: false, lastScore: null };
-      state.reviews[id] = { ...prev, ...patch };
+      state.reviews[id] = { ...prev, ...patch, updatedAt: new Date().toISOString() };
       if (!state.reviews[id].fav && !state.reviews[id].missed) delete state.reviews[id];
       saveState();
       updateFavUI();
@@ -4586,6 +4732,17 @@ Retourne STRICTEMENT ce JSON :
 
           ensureDailyFresh();
           state.daily.essayDone = (state.daily.essayDone || 0) + 1;
+          if (!Array.isArray(state.essayLog)) state.essayLog = [];
+          state.essayLog.unshift({
+            id: `es-${Date.now()}`,
+            date: todayISO(),
+            createdAt: new Date().toISOString(),
+            topic: currentEssayPrompt.theme || "Essai B2",
+            wordCount: wc,
+            grade20: grade,
+            verdict: data.verdict || ""
+          });
+          if (state.essayLog.length > 50) state.essayLog = state.essayLog.slice(0, 50);
           awardXP(grade * 4);
           saveState();
           recordGuidedProgress("essay");
@@ -4615,6 +4772,17 @@ Retourne STRICTEMENT ce JSON :
 
       ensureDailyFresh();
       state.daily.essayDone = (state.daily.essayDone || 0) + 1;
+      if (!Array.isArray(state.essayLog)) state.essayLog = [];
+      state.essayLog.unshift({
+        id: `es-${Date.now()}`,
+        date: todayISO(),
+        createdAt: new Date().toISOString(),
+        topic: currentEssayPrompt.theme || "Essai B2",
+        wordCount: wc,
+        grade20: estGrade,
+        verdict: "Analyse locale"
+      });
+      if (state.essayLog.length > 50) state.essayLog = state.essayLog.slice(0, 50);
       awardXP(30);
       saveState();
       recordGuidedProgress("essay");
@@ -4947,6 +5115,406 @@ Retourne STRICTEMENT ce JSON :
           gWrap.appendChild(row);
         });
       }
+
+      // Historique récent (Khôlles, Essais & jours actifs)
+      const hList = $("plan-history-list");
+      if (hList) {
+        const recentDays = Object.keys(state.history || {}).sort().reverse().slice(0, 5);
+        const kh = (state.kholleLog || []).slice(0, 3);
+        const es = (state.essayLog || []).slice(0, 3);
+        if (!recentDays.length && !kh.length && !es.length) {
+          hList.innerHTML = `<span style="color:var(--text-muted);">Tes notes de khôlles, essais et bilans quotidiens apparaîtront ici automatiquement.</span>`;
+        } else {
+          const parts = [];
+          if (kh.length) {
+            parts.push(`<div><strong>🎓 Dernières Khôlles :</strong> ${kh.map(k => `<span class="badge ${k.grade20 >= 14 ? "badge-emerald" : k.grade20 >= 10 ? "badge-amber" : "badge-rose"}">${esc(k.date)} · ${k.grade20}/20 (${esc(k.topic)})</span>`).join(" ")}</div>`);
+          }
+          if (es.length) {
+            parts.push(`<div><strong>✍️ Derniers Essais :</strong> ${es.map(e => `<span class="badge badge-primary">${esc(e.date)} · ${e.grade20}/20 (${e.wordCount}m)</span>`).join(" ")}</div>`);
+          }
+          if (recentDays.length) {
+            parts.push(`<div><strong>📅 Activité récente :</strong><div style="display:flex;flex-direction:column;gap:4px;margin-top:4px;">${recentDays.map(dt => {
+              const h = state.history[dt] || {};
+              const exos = (h.speakDone || 0) + (h.listenDone || 0) + (h.drillDone || 0) + (h.srsDone || 0);
+              return `<div style="display:flex;justify-content:space-between;background:#fff;padding:5px 8px;border-radius:8px;border:1px solid var(--border);font-size:12px;">
+                <span><strong>${esc(dt)}</strong></span>
+                <span>⚡ ${h.xpEarned || 0} XP · 🗣️ ${h.speakDone || 0} · 🎧 ${h.listenDone || 0} · 🎓 ${h.prepaDone || 0} · 🧩 ${exos}</span>
+              </div>`;
+            }).join("")}</div></div>`);
+          }
+          hList.innerHTML = parts.join("");
+        }
+      }
+    }
+
+    // ==================== SYNCHRO CLOUD GITHUB PRIVÉ (BASTIEN & MATHYS) ====================
+    const CLOUD_SYNC_OWNER = "bastienjean2604-crypto";
+    const CLOUD_SYNC_REPO = "english-coach-progress";
+    const CLOUD_SYNC_BRANCH = "main";
+    let cloudSyncTimer = null;
+    let cloudSyncBusy = false;
+
+    function utf8ToB64(str) {
+      return btoa(unescape(encodeURIComponent(str)));
+    }
+    function b64ToUtf8(b64) {
+      return decodeURIComponent(escape(atob(String(b64 || "").replace(/\s+/g, ""))));
+    }
+
+    function buildRemoteSyncPayload() {
+      syncTodayIntoHistory(0);
+      return {
+        profileId: state.profileId,
+        profileName: (PROFILES[state.profileId] || PROFILES.bastien).name,
+        updatedAt: new Date().toISOString(),
+        level: state.level,
+        planDuration: state.planDuration,
+        stats: state.stats,
+        drillStats: state.drillStats,
+        daily: state.daily,
+        history: pruneHistory(state.history),
+        kholleLog: (state.kholleLog || []).slice(0, 50),
+        essayLog: (state.essayLog || []).slice(0, 50),
+        completed: state.completed,
+        errorLog: (state.errorLog || []).slice(0, 80),
+        reviews: state.reviews,
+        srs: state.srs
+      };
+    }
+
+    function mergeRemoteIntoLocal(remote) {
+      if (!remote || typeof remote !== "object") return false;
+      let changed = false;
+
+      if (remote.stats) {
+        const rxp = Number(remote.stats.xp) || 0;
+        if (rxp > (state.stats.xp || 0)) { state.stats.xp = rxp; changed = true; }
+        const rDate = remote.stats.lastDate || null;
+        if (rDate && (!state.stats.lastDate || rDate > state.stats.lastDate)) {
+          state.stats.lastDate = rDate;
+          state.stats.streak = Math.max(Number(remote.stats.streak) || 0, state.stats.streak || 0);
+          changed = true;
+        } else if (rDate && rDate === state.stats.lastDate) {
+          const rs = Number(remote.stats.streak) || 0;
+          if (rs > (state.stats.streak || 0)) { state.stats.streak = rs; changed = true; }
+        }
+      }
+
+      if (remote.drillStats) {
+        const rt = Number(remote.drillStats.total) || 0;
+        const rc = Number(remote.drillStats.correct) || 0;
+        if (rt > (state.drillStats.total || 0)) { state.drillStats.total = rt; changed = true; }
+        if (rc > (state.drillStats.correct || 0)) { state.drillStats.correct = rc; changed = true; }
+      }
+
+      if (remote.completed && typeof remote.completed === "object") {
+        ["speak", "listen", "prepa"].forEach(m => {
+          const rMap = remote.completed[m] || {};
+          if (!state.completed[m]) state.completed[m] = {};
+          Object.keys(rMap).forEach(id => {
+            const rItem = rMap[id];
+            const lItem = state.completed[m][id];
+            if (!lItem) {
+              state.completed[m][id] = rItem;
+              changed = true;
+            } else {
+              const best = Math.max(lItem.bestScore || 0, rItem.bestScore || 0);
+              const cnt = Math.max(lItem.count || 0, rItem.count || 0);
+              const useRemoteLast = (rItem.lastAt || "") > (lItem.lastAt || "");
+              if (best !== lItem.bestScore || cnt !== lItem.count || useRemoteLast) {
+                state.completed[m][id] = {
+                  count: cnt,
+                  bestScore: best,
+                  lastScore: useRemoteLast ? (rItem.lastScore || best) : (lItem.lastScore || best),
+                  lastAt: useRemoteLast ? rItem.lastAt : lItem.lastAt
+                };
+                changed = true;
+              }
+            }
+          });
+        });
+      }
+
+      if (remote.history && typeof remote.history === "object") {
+        if (!state.history) state.history = {};
+        Object.keys(remote.history).forEach(dt => {
+          const rh = remote.history[dt] || {};
+          const lh = state.history[dt] || {};
+          const merged = { ...lh };
+          let diff = false;
+          ["drillDone","missedDone","srsDone","speakDone","listenDone","longListenDone","essayDone","prepaDone","xpEarned"].forEach(k => {
+            const mv = Math.max(Number(lh[k]) || 0, Number(rh[k]) || 0);
+            if (mv !== (Number(lh[k]) || 0)) diff = true;
+            merged[k] = mv;
+          });
+          if (diff || !state.history[dt]) {
+            state.history[dt] = merged;
+            changed = true;
+          }
+        });
+        state.history = pruneHistory(state.history);
+      }
+
+      if (remote.daily && remote.daily.date === todayISO()) {
+        ["drillDone","missedDone","srsDone","speakDone","listenDone","longListenDone","essayDone","prepaDone"].forEach(k => {
+          const mv = Math.max(Number(state.daily[k]) || 0, Number(remote.daily[k]) || 0);
+          if (mv !== (Number(state.daily[k]) || 0)) { state.daily[k] = mv; changed = true; }
+        });
+      }
+
+      if (Array.isArray(remote.kholleLog)) {
+        const map = new Map((state.kholleLog || []).map(x => [x.id || `${x.date}-${x.topic}-${x.grade20}`, x]));
+        remote.kholleLog.forEach(x => {
+          const k = x.id || `${x.date}-${x.topic}-${x.grade20}`;
+          if (!map.has(k)) { map.set(k, x); changed = true; }
+        });
+        state.kholleLog = Array.from(map.values()).sort((a, b) => (b.createdAt || b.date || "").localeCompare(a.createdAt || a.date || "")).slice(0, 50);
+      }
+
+      if (Array.isArray(remote.essayLog)) {
+        const map = new Map((state.essayLog || []).map(x => [x.id || `${x.date}-${x.topic}-${x.grade20}`, x]));
+        remote.essayLog.forEach(x => {
+          const k = x.id || `${x.date}-${x.topic}-${x.grade20}`;
+          if (!map.has(k)) { map.set(k, x); changed = true; }
+        });
+        state.essayLog = Array.from(map.values()).sort((a, b) => (b.createdAt || b.date || "").localeCompare(a.createdAt || a.date || "")).slice(0, 50);
+      }
+
+      if (Array.isArray(remote.errorLog)) {
+        const map = new Map((state.errorLog || []).map(x => [x.key, x]));
+        remote.errorLog.forEach(re => {
+          if (!re || !re.key) return;
+          const le = map.get(re.key);
+          if (!le) {
+            map.set(re.key, re);
+            changed = true;
+          } else {
+            const mc = Math.max(le.count || 1, re.count || 1);
+            const useRemote = (re.lastAt || "") > (le.lastAt || "");
+            if (mc !== le.count || useRemote) {
+              map.set(re.key, {
+                ...le,
+                count: mc,
+                lastAt: useRemote ? re.lastAt : le.lastAt,
+                why: (useRemote && re.why) ? re.why : le.why
+              });
+              changed = true;
+            }
+          }
+        });
+        state.errorLog = Array.from(map.values()).sort((a, b) => (b.lastAt || "").localeCompare(a.lastAt || "")).slice(0, 80);
+      }
+
+      if (remote.reviews && typeof remote.reviews === "object") {
+        Object.keys(remote.reviews).forEach(id => {
+          const rr = remote.reviews[id];
+          const lr = state.reviews[id];
+          if (!lr || (rr.updatedAt || "") > (lr.updatedAt || "")) {
+            state.reviews[id] = rr;
+            changed = true;
+          }
+        });
+      }
+
+      if (remote.srs && typeof remote.srs === "object") {
+        Object.keys(remote.srs).forEach(id => {
+          const rs = remote.srs[id];
+          const ls = state.srs[id];
+          if (!ls || (rs.reps || 0) > (ls.reps || 0) || (rs.nextDue || "") > (ls.nextDue || "")) {
+            state.srs[id] = rs;
+            changed = true;
+          }
+        });
+      }
+
+      return changed;
+    }
+
+    async function fetchRemoteProfileFile(pid, token) {
+      const fname = `${pid}.json`;
+      const url = `https://api.github.com/repos/${CLOUD_SYNC_OWNER}/${CLOUD_SYNC_REPO}/contents/${fname}?ref=${CLOUD_SYNC_BRANCH}&t=${Date.now()}`;
+      const resp = await fetch(url, {
+        headers: {
+          "Authorization": `token ${token}`,
+          "Accept": "application/vnd.github.v3+json"
+        }
+      });
+      if (resp.status === 404) return { sha: null, data: null };
+      if (!resp.ok) {
+        const txt = await resp.text().catch(() => "");
+        throw new Error(`GitHub (${resp.status}): ${txt.slice(0, 120)}`);
+      }
+      const json = await resp.json();
+      let parsed = null;
+      try {
+        parsed = JSON.parse(b64ToUtf8(json.content || ""));
+      } catch (e) { parsed = null; }
+      return { sha: json.sha || null, data: parsed };
+    }
+
+    async function putRemoteProfileFile(pid, token, payloadObj, sha, retries = 1) {
+      const fname = `${pid}.json`;
+      const url = `https://api.github.com/repos/${CLOUD_SYNC_OWNER}/${CLOUD_SYNC_REPO}/contents/${fname}`;
+      const body = {
+        message: `Sync ${pid} (${todayISO()})`,
+        content: utf8ToB64(JSON.stringify(payloadObj, null, 2)),
+        branch: CLOUD_SYNC_BRANCH
+      };
+      if (sha) body.sha = sha;
+      const resp = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Authorization": `token ${token}`,
+          "Accept": "application/vnd.github.v3+json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      });
+      if (resp.status === 409 && retries > 0) {
+        const latest = await fetchRemoteProfileFile(pid, token);
+        if (latest.data && pid === state.profileId) mergeRemoteIntoLocal(latest.data);
+        return putRemoteProfileFile(pid, token, buildRemoteSyncPayload(), latest.sha, retries - 1);
+      }
+      if (!resp.ok) {
+        const txt = await resp.text().catch(() => "");
+        throw new Error(`GitHub PUT (${resp.status}): ${txt.slice(0, 120)}`);
+      }
+      return await resp.json();
+    }
+
+    async function pullCloudProgress(silent = true) {
+      if (!state.syncToken || cloudSyncBusy) return false;
+      cloudSyncBusy = true;
+      const pid = state.profileId;
+      const token = state.syncToken;
+      if (!silent) updateSyncUIState("⏳ Récupération & fusion depuis GitHub...");
+      try {
+        const { sha, data } = await fetchRemoteProfileFile(pid, token);
+        if (pid !== state.profileId) return false;
+        if (data) mergeRemoteIntoLocal(data);
+        await putRemoteProfileFile(pid, token, buildRemoteSyncPayload(), sha, 1);
+        state.lastSyncAt = new Date().toISOString();
+        saveState(true);
+        updateHeader();
+        renderErrorNotebook();
+        if (state.tab === "bank") renderBank();
+        updateSyncUIState();
+        if (!silent) showToast(`☁️ Espace ${PROFILES[pid].name} synchronisé !`);
+        return true;
+      } catch (e) {
+        console.warn("Erreur pullCloudProgress:", e);
+        updateSyncUIState(`⚠️ ${e.message}`, true);
+        if (!silent) showToast(`❌ Synchro : ${e.message}`);
+        return false;
+      } finally {
+        cloudSyncBusy = false;
+      }
+    }
+
+    async function pushCloudProgress(silent = true) {
+      if (!state.syncToken || cloudSyncBusy) return false;
+      cloudSyncBusy = true;
+      const pid = state.profileId;
+      const token = state.syncToken;
+      if (!silent) updateSyncUIState("⏳ Envoi vers GitHub...");
+      try {
+        const { sha, data } = await fetchRemoteProfileFile(pid, token);
+        if (pid !== state.profileId) return false;
+        if (data) mergeRemoteIntoLocal(data);
+        await putRemoteProfileFile(pid, token, buildRemoteSyncPayload(), sha, 1);
+        state.lastSyncAt = new Date().toISOString();
+        saveState(true);
+        updateSyncUIState();
+        if (!silent) showToast(`☁️ Progression ${PROFILES[pid].name} envoyée !`);
+        return true;
+      } catch (e) {
+        console.warn("Erreur pushCloudProgress:", e);
+        updateSyncUIState(`⚠️ ${e.message}`, true);
+        if (!silent) showToast(`❌ Synchro : ${e.message}`);
+        return false;
+      } finally {
+        cloudSyncBusy = false;
+      }
+    }
+
+    function scheduleCloudSync() {
+      if (!state.syncToken) return;
+      if (cloudSyncTimer) clearTimeout(cloudSyncTimer);
+      cloudSyncTimer = setTimeout(() => {
+        cloudSyncTimer = null;
+        pushCloudProgress(true);
+      }, 3500);
+    }
+
+    function applySyncTokenToProfiles(token) {
+      const clean = String(token || "").trim();
+      state.syncToken = clean;
+      saveState(true);
+      if (clean) {
+        Object.keys(PROFILES).forEach(pid => {
+          if (pid === state.profileId) return;
+          const other = readRawProfile(pid) || createDefaultProfileData(pid);
+          if (!other.syncToken) {
+            other.syncToken = clean;
+            try { localStorage.setItem(getProfileKey(pid), JSON.stringify(other)); } catch (e) {}
+          }
+        });
+      }
+      updateSyncUIState();
+    }
+
+    function consumeUrlSyncToken() {
+      try {
+        const hash = window.location.hash || "";
+        const search = window.location.search || "";
+        let tok = "";
+        if (hash.includes("sync=")) {
+          const p = new URLSearchParams(hash.replace(/^#/, ""));
+          tok = p.get("sync") || "";
+        } else if (search.includes("sync=")) {
+          const p = new URLSearchParams(search);
+          tok = p.get("sync") || "";
+        }
+        if (tok && tok.startsWith("ghp_")) {
+          applySyncTokenToProfiles(tok);
+          const cleanUrl = `${window.location.pathname}${window.location.hash.includes("sync=") ? "" : window.location.search}`;
+          window.history.replaceState(null, "", window.location.pathname);
+          showToast("☁️ Token de synchro enregistré automatiquement !");
+        }
+      } catch (e) {}
+    }
+
+    function buildCoachSummaryText() {
+      const prof = (PROFILES[state.profileId] || PROFILES.bastien).name;
+      const lvl = state.level;
+      const allSp = Object.keys(state.completed?.speak || {}).length;
+      const allLs = Object.keys(state.completed?.listen || {}).length;
+      const allPr = Object.keys(state.completed?.prepa || {}).length;
+      const missed = [...getMissedItems("speak"), ...getMissedItems("listen")].length;
+      const kh = (state.kholleLog || []).slice(0, 5).map(k => `- ${k.date} | ${k.topic}: ${k.grade20}/20 (moy tours ${k.avgRoundScore}%)`).join("\n") || "- Aucune khôlle archivee";
+      const es = (state.essayLog || []).slice(0, 5).map(e => `- ${e.date} | ${e.topic}: ${e.grade20}/20 (${e.wordCount} mots)`).join("\n") || "- Aucun essai archive";
+      const errs = [...(state.errorLog || [])].sort((a, b) => (b.count || 1) - (a.count || 1)).slice(0, 10)
+        .map(e => `- [x${e.count || 1} | ${e.mode}] "${e.wrong}" -> "${e.right}" (${e.why || ""})`).join("\n") || "- Aucune erreur";
+      const days = Object.keys(state.history || {}).sort().reverse().slice(0, 7).map(dt => {
+        const h = state.history[dt] || {};
+        return `- ${dt}: XP=${h.xpEarned || 0} | Drill=${h.drillDone || 0} | SRS=${h.srsDone || 0} | Speak=${h.speakDone || 0} | Listen=${h.listenDone || 0} | Essay=${h.essayDone || 0} | Kholle=${h.prepaDone || 0}`;
+      }).join("\n") || "- Pas encore d'historique";
+      return `=== BILAN ENGLISH COACH (${prof} - ${todayISO()}) ===
+Niveau: ${lvl} | Serie: ${state.stats.streak}j | XP: ${state.stats.xp}
+Exos valides: Oral=${allSp}, Ecoute=${allLs}, Kholles=${allPr} | En revision: ${missed}
+Drill grammaire: ${state.drillStats?.correct || 0}/${state.drillStats?.total || 0}
+
+[Dernieres Kholles /20]
+${kh}
+
+[Derniers Essais /20]
+${es}
+
+[7 derniers jours]
+${days}
+
+[Top erreurs recurrentes]
+${errs}`;
     }
 
     function switchPlanSubtab(sub) {
@@ -5001,6 +5569,7 @@ Retourne STRICTEMENT ce JSON :
       if (state.tab === "bank") renderBank();
       $("profile-modal").classList.add("hidden");
       showToast(`👤 Espace ${PROFILES[pid].name} activé`);
+      if (state.syncToken) pullCloudProgress(true);
     }
 
     let bankPageSize = 50;
@@ -5223,6 +5792,14 @@ Retourne STRICTEMENT ce JSON :
         const isUK = state.accent === "en-GB";
         voiceSelect.value = isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)");
       }
+      if ($("input-sync-token")) $("input-sync-token").value = state.syncToken || "";
+      const copySyncBtn = $("btn-copy-other-sync-token");
+      if (copySyncBtn) {
+        const hasOtherSync = !!(otherData && otherData.syncToken && otherData.syncToken !== state.syncToken);
+        copySyncBtn.classList.toggle("hidden", !hasOtherSync);
+        if (hasOtherSync) copySyncBtn.textContent = `📋 Importer le token de synchro de ${PROFILES[otherPid].name}`;
+      }
+      updateSyncUIState();
       updateAccentButtons();
       updateVoiceUIState();
       const modal = $("settings-modal");
@@ -5264,6 +5841,7 @@ Retourne STRICTEMENT ce JSON :
     // -------------------------------------------------------------------------
     function init() {
       loadState();
+      consumeUrlSyncToken();
 
       const themeSel = $("theme-select");
       THEMES.forEach(t => {
@@ -5295,6 +5873,7 @@ Retourne STRICTEMENT ce JSON :
       renderDailyPlan();
       renderErrorNotebook();
       switchTab("plan");
+      if (state.syncToken) pullCloudProgress(true);
 
       // Ouvrir le sélecteur de profil à la toute première visite
       try {
@@ -5729,6 +6308,65 @@ Retourne STRICTEMENT ce JSON :
         }
       });
 
+      // Synchro Cloud GitHub Privé & Export Coach
+      $("hdr-sync-btn").addEventListener("click", openSettingsModal);
+      $("btn-toggle-sync-vis").addEventListener("click", () => {
+        const inp = $("input-sync-token");
+        if (inp) inp.type = inp.type === "password" ? "text" : "password";
+      });
+      $("btn-save-sync-token").addEventListener("click", async () => {
+        const tok = ($("input-sync-token")?.value || "").trim();
+        applySyncTokenToProfiles(tok);
+        if (tok) {
+          await pullCloudProgress(false);
+        } else {
+          showToast("Token de synchro effacé.");
+        }
+      });
+      $("btn-sync-now").addEventListener("click", async () => {
+        const tok = ($("input-sync-token")?.value || "").trim();
+        if (tok && tok !== state.syncToken) applySyncTokenToProfiles(tok);
+        if (!state.syncToken) {
+          updateSyncUIState("Entrez d'abord votre token GitHub ci-dessus.", true);
+          showToast("Entrez d'abord votre token GitHub.");
+          return;
+        }
+        await pullCloudProgress(false);
+      });
+      $("btn-copy-other-sync-token").addEventListener("click", async () => {
+        const otherPid = state.profileId === "bastien" ? "mathys" : "bastien";
+        const otherData = readRawProfile(otherPid);
+        if (otherData && otherData.syncToken) {
+          applySyncTokenToProfiles(otherData.syncToken);
+          if ($("input-sync-token")) $("input-sync-token").value = state.syncToken;
+          $("btn-copy-other-sync-token").classList.add("hidden");
+          await pullCloudProgress(false);
+        }
+      });
+      $("btn-copy-coach-report").addEventListener("click", async () => {
+        const report = buildCoachSummaryText();
+        try {
+          await navigator.clipboard.writeText(report);
+          showToast("📋 Bilan copié ! Colle-le directement dans la conversation.");
+        } catch (e) {
+          updateSyncUIState("Impossible d'accéder au presse-papiers automatiquement.", true);
+          window.prompt("Copie ce bilan (Ctrl+C) :", report);
+        }
+      });
+      $("btn-export-json").addEventListener("click", () => {
+        const safePayload = buildRemoteSyncPayload();
+        const blob = new Blob([JSON.stringify(safePayload, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `english-coach-${state.profileId}-${todayISO()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        showToast("💾 Fichier JSON exporté !");
+      });
+
       $("btn-reset-completed").addEventListener("click", () => {
         state.completed = { speak: {}, listen: {}, prepa: {} };
         state.sessionSeen = { speak: [], listen: [], prepa: [] };
@@ -5752,6 +6390,9 @@ Retourne STRICTEMENT ce JSON :
         state.completed = { speak: {}, listen: {}, prepa: {} };
         state.srs = {};
         state.errorLog = [];
+        state.history = {};
+        state.kholleLog = [];
+        state.essayLog = [];
         state.daily = createEmptyDaily();
         state.drillStats = { total: 0, correct: 0 };
         state.stats = { xp: 0, streak: 0, lastDate: null };
