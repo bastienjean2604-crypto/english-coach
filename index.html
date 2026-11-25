@@ -4450,7 +4450,6 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function markReview(id, patch) {
       const prev = state.reviews[id] || { fav: false, missed: false, lastScore: null };
       state.reviews[id] = { ...prev, ...patch, updatedAt: new Date().toISOString() };
-      if (!state.reviews[id].fav && !state.reviews[id].missed) delete state.reviews[id];
       saveState();
       updateFavUI();
     }
@@ -5478,6 +5477,23 @@ Retourne STRICTEMENT ce JSON :
           const lr = state.reviews[id];
           if (!lr || (rr.updatedAt || "") > (lr.updatedAt || "")) {
             state.reviews[id] = rr;
+            changed = true;
+          }
+        });
+      }
+
+      // Réconcilier reviews vs completed : si validé après la dernière mise en erreur, retirer missed
+      if (state.reviews && state.completed) {
+        Object.keys(state.reviews).forEach(id => {
+          const r = state.reviews[id];
+          if (!r || !r.missed) return;
+          const isListen = id.startsWith("l-") || id.startsWith("ll-");
+          const c = (state.completed.speak && state.completed.speak[id]) || (state.completed.listen && state.completed.listen[id]);
+          const thresh = isListen ? 51 : 80;
+          if (c && c.lastAt && (!r.updatedAt || c.lastAt >= r.updatedAt) && (c.lastScore || 0) >= thresh) {
+            r.missed = false;
+            r.lastScore = c.lastScore;
+            r.updatedAt = c.lastAt;
             changed = true;
           }
         });
