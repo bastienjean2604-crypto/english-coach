@@ -1296,24 +1296,6 @@
       margin-bottom: 10px;
     }
 
-    .kholle-timer-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 10px;
-      border-radius: 10px;
-      font-size: 12px;
-      font-weight: 800;
-      background: #f1f5f9;
-      color: #334155;
-      border: 1px solid var(--border);
-    }
-    .kholle-timer-pill.urgent {
-      background: var(--rose-soft);
-      color: var(--rose);
-      border-color: #fecdd3;
-    }
-
     /* ===== GUIDED AUTOPILOT CIRCUIT & ESSAY B2 ===== */
     .guided-banner {
       background: linear-gradient(135deg, #0f172a, #1e1b4b);
@@ -1827,8 +1809,8 @@
             <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
             <span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span>
           </div>
-          <div id="listen-status" class="audio-status">Écoutez les 2 phrases en anglais</div>
-          <div class="audio-sub">Le texte anglais sera révélé après votre traduction en français</div>
+          <div id="listen-status" class="audio-status">Écoutez l'audio en anglais</div>
+          <div class="audio-sub">Le texte anglais sera révélé après votre résumé en français (grandes idées)</div>
 
           <div class="audio-controls">
             <button id="btn-listen-play" type="button" class="play-main-btn">▶️ Écouter</button>
@@ -1844,7 +1826,7 @@
         </div>
 
         <button id="btn-listen-record" type="button" class="btn btn-primary">
-          <span>🎙️</span> <span>Traduire en français</span>
+          <span>🎙️</span> <span>Résumer en français</span>
         </button>
       </div>
 
@@ -1876,12 +1858,12 @@
           </div>
 
           <div>
-            <div class="prompt-label">Votre traduction française</div>
+            <div class="prompt-label">Votre résumé / compréhension en français</div>
             <div id="listen-diff" class="diff-box"></div>
           </div>
 
           <div class="ref-box">
-            <div class="prompt-label" style="color:var(--primary);">Traduction française naturelle</div>
+            <div class="prompt-label" style="color:var(--primary);">Idées clés & traduction naturelle</div>
             <div id="listen-ref-fr" class="ref-sentence" style="font-size:15px;"></div>
             <div id="listen-alts-wrap" class="alts-box hidden">
               <strong>Autres formulations :</strong>
@@ -1890,7 +1872,7 @@
           </div>
 
           <div id="listen-errors-wrap" class="hidden">
-            <div class="prompt-label" style="color:var(--rose);">🔍 Points à ajuster</div>
+            <div class="prompt-label" style="color:var(--rose);">🔍 Contresens ou oublis majeurs</div>
             <div id="listen-errors-list"></div>
           </div>
 
@@ -1905,7 +1887,7 @@
           </div>
 
           <div id="listen-override-wrap" class="hidden" style="background:var(--amber-soft);border:1px solid #fde68a;border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span style="font-size:12px;color:#92400e;font-weight:700;">💡 Traduction française différente mais correcte ?</span>
+            <span style="font-size:12px;color:#92400e;font-weight:700;">💡 Grandes idées comprises malgré une formulation différente ?</span>
             <button id="btn-listen-override" type="button" class="btn btn-sm" style="background:var(--emerald);color:#fff;width:auto;">✅ Valider quand même</button>
           </div>
 
@@ -1921,11 +1903,6 @@
           <select id="prepa-theme-select" class="select-input" style="flex:1; min-width:150px;" aria-label="Thème Prépa">
             <option value="ALL">🎲 Tous les thèmes Prépa (Aléatoire)</option>
           </select>
-          <select id="prepa-timer-select" class="select-input" style="width:auto;font-size:12px;" aria-label="Chrono khôlle">
-            <option value="0">⏱️ Chrono : Off</option>
-            <option value="90">⏱️ Chrono : 1m30</option>
-            <option value="120">⏱️ Chrono : 2m00</option>
-          </select>
           <div class="lang-switch" role="group" aria-label="Langue de réponse">
             <button type="button" class="lang-btn active" data-prepa-lang="en">🇬🇧 Anglais</button>
             <button type="button" class="lang-btn" data-prepa-lang="fr">🇫🇷 Français</button>
@@ -1937,8 +1914,7 @@
             <span class="badge badge-violet">🎓 Khôlle Prépa Interactive</span>
             <span id="prepa-theme-badge" class="badge badge-muted">Intelligence Artificielle</span>
             <span id="prepa-progress-badge" class="badge badge-emerald" title="Questions de khôlle uniques complétées">🎯 0/80 faites</span>
-            <span id="prepa-turn-badge" class="badge badge-primary">Tour 1</span>
-            <span id="prepa-timer-pill" class="kholle-timer-pill hidden">⏱️ <span id="prepa-timer-text">01:30</span></span>
+            <span id="prepa-turn-badge" class="badge badge-primary">Tour 1 / 4</span>
           </div>
           <div class="card-tools">
             <button id="btn-prepa-gen" type="button" class="tool-btn" title="Générer un sujet IA">✨ Sujet IA</button>
@@ -2358,7 +2334,6 @@
       listenMode: "normal",
       prepaTheme: "ALL",
       prepaLang: "en",
-      prepaTimerSeconds: 0,
       accent: "en-US",
       listenSpeed: 1,
       apiKey: "",
@@ -3520,9 +3495,10 @@
     function applyEvaluationOutcome(mode, item, score, isLocal) {
       ensureDailyFresh();
       const wasMissed = !!(state.reviews[item.id] && state.reviews[item.id].missed);
+      const passThreshold = mode === "listen" ? 51 : 80;
       awardXP(score);
 
-      if (score >= 80) {
+      if (score >= passThreshold) {
         markExerciseCompleted(mode, item.id, score);
         if (wasMissed) {
           markReview(item.id, { missed: false, lastScore: score });
@@ -3541,16 +3517,61 @@
       } else {
         // Ne pas marquer comme maîtrisée : la renvoyer en file de révision
         markReview(item.id, { missed: true, lastScore: score });
-        showToast("🔁 Score < 80% : ajoutée à « Réviser mes erreurs »");
+        showToast(mode === "listen"
+          ? "🔁 Compréhension ≤ 50% : ajoutée à « Réviser mes erreurs »"
+          : "🔁 Score < 80% : ajoutée à « Réviser mes erreurs »");
       }
 
       const overWrap = $(`${mode}-override-wrap`);
       if (overWrap) {
-        overWrap.classList.toggle("hidden", !(isLocal && score < 80));
+        overWrap.classList.toggle("hidden", !(isLocal && score < passThreshold));
       }
       saveState();
       updateProgressUI();
       if (typeof renderDailyPlan === "function") renderDailyPlan();
+    }
+
+    const FR_STOPWORDS = new Set(["le","la","les","un","une","des","du","de","d","au","aux","et","ou","mais","donc","or","ni","car","que","qui","quoi","dont","ce","cet","cette","ces","mon","ma","mes","ton","ta","tes","son","sa","ses","notre","nos","votre","vos","leur","leurs","je","tu","il","elle","on","nous","vous","ils","elles","me","te","se","lui","en","y","dans","sur","sous","pour","par","avec","sans","vers","chez","entre","est","sont","etre","avoir","ont","ait","fait","faire","plus","très","tres","bien","aussi","tout","tous","toute","toutes","pas","ne","si","comme","quand","meme","même","ca","ça","cela","été","ete"]);
+
+    function normalizeSummaryTokens(text) {
+      return String(text || "")
+        .toLowerCase()
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .replace(/['’]/g, " ")
+        .replace(/[^a-z0-9\s-]/g, " ")
+        .split(/\s+/)
+        .map(w => w.trim())
+        .filter(w => w.length >= 3 && !FR_STOPWORDS.has(w));
+    }
+
+    function scoreListenSummaryLocal(userText, refFr) {
+      const refWords = Array.from(new Set(normalizeSummaryTokens(refFr)));
+      const userWords = normalizeSummaryTokens(userText);
+      if (!userWords.length) {
+        return { score: 0, hitIdeas: [], missedIdeas: refWords.slice(0, 6) };
+      }
+      const hitIdeas = [];
+      const missedIdeas = [];
+      refWords.forEach(rw => {
+        const stem = rw.slice(0, Math.min(5, rw.length));
+        const matched = userWords.some(uw => uw === rw || (stem.length >= 4 && uw.startsWith(stem)) || (uw.length >= 4 && rw.startsWith(uw.slice(0, 4))));
+        if (matched) hitIdeas.push(rw);
+        else missedIdeas.push(rw);
+      });
+      const ratio = refWords.length ? (hitIdeas.length / refWords.length) : 0;
+      const hitBonus = hitIdeas.length >= 3 ? 16 : (hitIdeas.length >= 1 ? 8 : 0);
+      const rawScore = Math.round(Math.min(96, ratio * 110 + hitBonus));
+      return { score: hitIdeas.length ? Math.max(0, rawScore) : 0, hitIdeas: hitIdeas.slice(0, 8), missedIdeas: missedIdeas.slice(0, 6) };
+    }
+
+    function renderListenSummaryDiff(studentSummary, hitIdeas, missedIdeas) {
+      const hitHtml = Array.isArray(hitIdeas) && hitIdeas.length
+        ? `<div style="margin-top:8px;font-size:12px;font-weight:700;color:var(--emerald);">✅ Idées comprises :<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">${hitIdeas.map(x => `<span class="chip-ok">${esc(x)}</span>`).join("")}</div></div>`
+        : "";
+      const missHtml = Array.isArray(missedIdeas) && missedIdeas.length
+        ? `<div style="margin-top:8px;font-size:12px;font-weight:700;color:#b45309;">💡 Nuances / détails non mentionnés :<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">${missedIdeas.map(x => `<span style="background:var(--amber-soft);color:#92400e;border:1px solid #fde68a;padding:3px 8px;border-radius:8px;font-size:11px;font-weight:700;">${esc(x)}</span>`).join("")}</div></div>`
+        : "";
+      return `<div style="font-size:13px;color:var(--ink);line-height:1.5;"><strong>Votre résumé :</strong> « ${esc(studentSummary)} »</div>${hitHtml}${missHtml}`;
     }
 
     async function evaluateWithGroqOrLocal(mode, item, userText, audioBlob, seq) {
@@ -3588,8 +3609,21 @@
             throw new Error("Aucun mot détecté dans l'audio. Parle plus près du micro ou tape ta réponse.");
           }
 
-          loadTxt.textContent = `2/2 Analyse grammaticale (${state.groqModel})...`;
-          const sysPrompt = `Tu es un coach d'anglais pédagogique et bienveillant pour un étudiant francophone. Tu réponds toujours en objet JSON valide.
+          loadTxt.textContent = mode === "listen"
+            ? `2/2 Évaluation de compréhension (${state.groqModel})...`
+            : `2/2 Analyse grammaticale (${state.groqModel})...`;
+          const sysPrompt = mode === "listen"
+            ? `Tu es un coach de compréhension orale d'anglais pour un étudiant francophone. Tu réponds toujours en objet JSON valide.
+RÈGLE FONDAMENTALE D'ÉVALUATION PAR RÉSUMÉ (TRÈS IMPORTANT) :
+- Cet exercice teste la COMPRÉHENSION ORALE globale, PAS la traduction mot à mot !
+- L'élève résume en français ce qu'il a compris de l'audio anglais (même de manière concise ou reformulée).
+- Estime à combien de pourcent ("score" entre 0 et 100) l'élève a compris le sens et les grandes idées de l'audio :
+  * 80-100% : Les grandes idées essentielles de l'audio sont comprises et restituées fidèlement (même si des détails secondaires manquent ou si la formulation est très libre).
+  * 55-79% : C'est DÉJÀ BIEN (>50%) ! L'élève a saisi les grandes idées principales / le cœur du message, même s'il manque quelques précisions ou exemples.
+  * 35-54% : Compréhension partielle (une idée centrale manque ou reste floue).
+  * < 35% : Contresens majeur ou hors-sujet.
+- Ne pénalise JAMAIS l'absence de traduction littérale si l'idée est comprise !`
+            : `Tu es un coach d'anglais pédagogique et bienveillant pour un étudiant francophone. Tu réponds toujours en objet JSON valide.
 RÈGLE DE TOLÉRANCE SÉMANTIQUE (TRÈS IMPORTANT) :
 - La phrase de référence fournie n'est QU'UN EXEMPLE parmi d'autres.
 - Si la traduction de l'élève est grammaticalement correcte, naturelle et fidèle au sens, même avec d'autres synonymes (ex: car/automobile, flat/apartment, movie/film, begin/start, although/even though), une autre structure équivalente, des contractions (I'm/I am, don't/do not) ou de l'anglais UK/US, ATTRIBUE 95-100% SANS PÉNALITÉ et NE SIGNALE PAS ces choix valides dans "errors".
@@ -3607,11 +3641,11 @@ Réponse de l'élève (anglais) : "${finalAnswerText}"
 Évalue la justesse réelle (grammaire, temps, sens) sans exiger le mot-à-mot avec l'exemple. Réponds STRICTEMENT en JSON :
 {"score":0,"verdict":"court en français","better":"meilleure phrase EN naturelle (ou garde celle de l'élève si parfaite)","alternatives":["alt EN 1"],"errors":[{"wrong":"erreur réelle","right":"correction","why":"explication courte en français"}],"grammar":{"title":"règle courte","rule":"explication courte en français"}}`
             : `Niveau : ${item.level}.
-Extrait audio anglais : "${item.en}"
-Exemple de référence française : "${item.fr}"
-Traduction de l'élève (français) : "${finalAnswerText}"
-Évalue la compréhension réelle sans exiger le mot-à-mot avec l'exemple. Réponds STRICTEMENT en JSON :
-{"score":0,"verdict":"court en français","better":"meilleure traduction FR","alternatives":["alt FR 1"],"errors":[{"wrong":"contresens ou oubli réel","right":"sens correct","why":"explication courte en français"}],"grammar":{"title":"point de grammaire EN","rule":"explication courte en français"}}`;
+Texte exact de l'audio anglais : "${item.en}"
+Résumé / sens français de référence : "${item.fr}"
+Résumé de l'élève en français : "${finalAnswerText}"
+Indique à combien de pourcent ("score") l'élève a compris l'audio en te basant sur les GRANDES IDÉES (dès >50% avec les idées principales, c'est déjà bien ; ne compare PAS mot à mot). Réponds STRICTEMENT en JSON :
+{"score":0,"verdict":"court en français (ex: Grandes idées bien comprises !)","keyIdeasHit":["grande idée comprise 1"],"keyIdeasMissed":["détail ou idée manquée éventuelle"],"better":"résumé clair et naturel en français","alternatives":["autre formulation courte"],"errors":[{"wrong":"contresens ou oubli majeur éventuel","right":"sens réel de l'audio","why":"explication courte en français"}],"grammar":{"title":"point clé EN de l'audio","rule":"explication courte en français"}}`;
 
           const { data, ms } = await callGroqChat(sysPrompt, userPrompt);
           if (seq !== state.correctionSeq) return;
@@ -3619,7 +3653,9 @@ Traduction de l'élève (français) : "${finalAnswerText}"
           loadEl.classList.add("hidden");
 
           const score = typeof data.score === "number" ? Math.max(0, Math.min(100, Math.round(data.score))) : 80;
-          const th = scoreTheme(score);
+          const th = (mode === "listen" && score >= 51 && score < 85)
+            ? { banner: score >= 70 ? "banner-good" : "banner-mid", bg: score >= 70 ? "bg-good" : "bg-mid", verdict: score >= 70 ? "Grandes idées bien comprises ! 👏" : "Essentiel compris (>50%) 👍" }
+            : scoreTheme(score);
 
           $(`${mode}-banner`).className = `result-banner ${th.banner}`;
           $(`${mode}-verdict`).textContent = data.verdict || th.verdict;
@@ -3628,9 +3664,12 @@ Traduction de l'élève (français) : "${finalAnswerText}"
           $(`${mode}-score`).textContent = `${score}%`;
           $(`${mode}-score`).className = `score-circle ${th.bg}`;
 
-          const refText = mode === "speak" ? item.en : item.fr;
-          const diff = diffWords(finalAnswerText, refText, mode === "speak" ? "en" : "fr");
-          $(`${mode}-diff`).innerHTML = renderDiffHtml(diff.tokens);
+          if (mode === "listen") {
+            $(`${mode}-diff`).innerHTML = renderListenSummaryDiff(finalAnswerText, data.keyIdeasHit, data.keyIdeasMissed);
+          } else {
+            const diff = diffWords(finalAnswerText, item.en, "en");
+            $(`${mode}-diff`).innerHTML = renderDiffHtml(diff.tokens);
+          }
 
           if (data.better) $(mode === "speak" ? "speak-ref-en" : "listen-ref-fr").textContent = data.better;
 
@@ -3674,33 +3713,48 @@ Traduction de l'élève (français) : "${finalAnswerText}"
 
       // Repli local tolérant si pas de clé API ou erreur
       loadEl.classList.add("hidden");
-      const refText = mode === "speak" ? item.en : item.fr;
-      const diff = diffWords(finalAnswerText, refText, mode === "speak" ? "en" : "fr");
-      const th = scoreTheme(diff.score);
+      let localScore = 0;
+      let diffHtml = "";
+      if (mode === "listen") {
+        const sumEval = scoreListenSummaryLocal(finalAnswerText, item.fr);
+        localScore = sumEval.score;
+        diffHtml = renderListenSummaryDiff(finalAnswerText, sumEval.hitIdeas, sumEval.missedIdeas);
+      } else {
+        const diff = diffWords(finalAnswerText, item.en, "en");
+        localScore = diff.score;
+        diffHtml = renderDiffHtml(diff.tokens);
+      }
+      const th = (mode === "listen" && localScore >= 51 && localScore < 85)
+        ? { banner: localScore >= 70 ? "banner-good" : "banner-mid", bg: localScore >= 70 ? "bg-good" : "bg-mid", verdict: localScore >= 70 ? "Grandes idées bien comprises ! 👏" : "Essentiel compris (>50%) 👍" }
+        : scoreTheme(localScore);
       state.lastLocalEval[mode] = { item, userText: finalAnswerText };
 
       $(`${mode}-banner`).className = `result-banner ${th.banner}`;
       $(`${mode}-verdict`).textContent = th.verdict;
-      $(`${mode}-substatus`).textContent = state.apiKey ? "Repli local" : "Correction locale tolérante (ajoutez Groq dans ⚙️ pour une analyse complète)";
+      $(`${mode}-substatus`).textContent = state.apiKey ? "Repli local" : (mode === "listen" ? "Évaluation locale par idées clés (ajoutez Groq dans ⚙️ pour l'analyse IA du résumé)" : "Correction locale tolérante (ajoutez Groq dans ⚙️ pour une analyse complète)");
       $(`${mode}-latency`).textContent = "0 ms";
-      $(`${mode}-score`).textContent = `${diff.score}%`;
+      $(`${mode}-score`).textContent = `${localScore}%`;
       $(`${mode}-score`).className = `score-circle ${th.bg}`;
-      $(`${mode}-diff`).innerHTML = renderDiffHtml(diff.tokens);
+      $(`${mode}-diff`).innerHTML = diffHtml;
       $(`${mode}-alts-wrap`).classList.add("hidden");
       $(`${mode}-errors-wrap`).classList.add("hidden");
       $(`${mode}-gram-title`).textContent = `📚 ${item.grammarTitle}`;
       $(`${mode}-gram-rule`).textContent = item.grammarNote;
-      applyEvaluationOutcome(mode, item, diff.score, true);
+      applyEvaluationOutcome(mode, item, localScore, true);
     }
 
     // ==================== KHÔLLE INTERACTIVE TYPE CPGE (DISCUSSION & RELANCES) ====================
+    const MAX_PREPA_ROUNDS = 4;
+
     function renderPrepaSessionUI() {
       const session = state.prepaSession;
       if (!session) return;
 
       $("prepa-theme-badge").textContent = session.topic;
-      const turnNum = session.rounds.length + 1;
-      $("prepa-turn-badge").textContent = `Tour ${turnNum}`;
+      const turnNum = Math.min(session.rounds.length + 1, MAX_PREPA_ROUNDS);
+      $("prepa-turn-badge").textContent = session.status === "finished"
+        ? `Terminée (${session.rounds.length}/${MAX_PREPA_ROUNDS})`
+        : `Tour ${turnNum} / ${MAX_PREPA_ROUNDS}`;
 
       const feed = $("prepa-discussion-feed");
       feed.innerHTML = "";
@@ -3744,6 +3798,16 @@ Traduction de l'élève (français) : "${finalAnswerText}"
           </div>`;
         }
 
+        let missedAnglesHtml = "";
+        if (Array.isArray(r.missedAngles) && r.missedAngles.length) {
+          missedAnglesHtml = `<div style="font-size:12px;color:#0369a1;background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:8px 10px;">
+            <strong>🧭 Pistes complémentaires que tu aurais pu aborder :</strong>
+            <ul style="margin:4px 0 0 18px;display:flex;flex-direction:column;gap:3px;color:#0c4a6e;">
+              ${r.missedAngles.map(a => `<li>${esc(a)}</li>`).join("")}
+            </ul>
+          </div>`;
+        }
+
         let vocabHtml = "";
         if (Array.isArray(r.suggestedVocab) && r.suggestedVocab.length) {
           vocabHtml = `<div style="font-size:12px;color:#64748b;font-weight:600;">
@@ -3757,7 +3821,7 @@ Traduction de l'élève (français) : "${finalAnswerText}"
         roundCard.innerHTML = `
           <div class="kholle-msg kholle-examiner">
             <div class="kholle-header">
-              <span class="kholle-author" style="color:var(--violet);">🎓 Khôlleur (Question ${r.roundNum})</span>
+              <span class="kholle-author" style="color:var(--violet);">🎓 Khôlleur (Question ${r.roundNum}/${MAX_PREPA_ROUNDS})</span>
               <button type="button" class="tool-btn" data-action="speak-kholle-q" data-text="${esc(r.question)}" title="Écouter avec Jenny Neural">🔊 Écouter</button>
             </div>
             <div class="kholle-text" style="color:#1e1b4b;">${esc(r.question)}</div>
@@ -3776,6 +3840,7 @@ Traduction de l'élève (français) : "${finalAnswerText}"
             ${goodHtml}
             ${badHtml}
             ${reactionHtml}
+            ${missedAnglesHtml}
             ${vocabHtml}
           </div>
         `;
@@ -3795,15 +3860,16 @@ Traduction de l'élève (français) : "${finalAnswerText}"
         finalReport.classList.add("hidden");
 
         const isFirst = session.rounds.length === 0;
-        $("prepa-prompt-label").textContent = isFirst ? "🎯 Sujet de khôlle d'ouverture :" : `🎯 Relance du colleur (Tour ${turnNum}) :`;
+        $("prepa-prompt-label").textContent = isFirst
+          ? `🎯 Sujet de khôlle d'ouverture (1/${MAX_PREPA_ROUNDS}) :`
+          : `🎯 Relance du colleur (Question ${turnNum}/${MAX_PREPA_ROUNDS}) :`;
         $("prepa-question-text").textContent = session.currentQuestion;
-        $("btn-prepa-record-label").textContent = isFirst ? "Répondre au colleur (Tour 1)" : `Répondre à cette question (Tour ${turnNum})`;
+        $("btn-prepa-record-label").textContent = isFirst
+          ? `Répondre au colleur (1/${MAX_PREPA_ROUNDS})`
+          : `Répondre à cette question (${turnNum}/${MAX_PREPA_ROUNDS})`;
 
-        if (session.rounds.length >= 1) {
-          finishBtn.classList.remove("hidden");
-        } else {
-          finishBtn.classList.add("hidden");
-        }
+        // Validation uniquement à la fin de toutes les questions (Tour MAX_PREPA_ROUNDS)
+        if (finishBtn) finishBtn.classList.add("hidden");
 
         // Préchargement de la voix Jenny Neural pour latence 0 ms
         preloadAudio(session.currentQuestion, state.accent);
@@ -3859,23 +3925,25 @@ Khôlleur : "${r.question}"
 Étudiant : "${r.studentText}"
 Commentaire colleur : "${r.examinerReaction || ""}"`).join("\n\n");
 
+        const isLastRound = currentRoundNum >= MAX_PREPA_ROUNDS;
         const sysPrompt = `Tu es un colleur / examinateur d'anglais exigeant, percutant et bienveillant de CPGE scientifique (classes préparatoires aux grandes écoles d'ingénieurs : Polytechnique, Mines-Ponts, Centrale-Supélec).
-Tu animes une vraie discussion orale dynamique (khôlle) avec l'étudiant.
+Tu animes une vraie discussion orale dynamique (khôlle) en ${MAX_PREPA_ROUNDS} questions avec l'étudiant.
 ${langPrompt}
-Consignes pour ce tour :
+Consignes pour ce tour (${currentRoundNum}/${MAX_PREPA_ROUNDS}) :
 1. Analyse la réponse de l'étudiant : clarté de la thèse, vocabulaire, grammaire.
-2. Détecte les fautes précises ("badWords": [{"wrong":"...","right":"...","why":"..."}]).
+2. Détecte TOUTES les fautes précises ("badWords": [{"wrong":"...","right":"...","why":"..."}]).
 3. Relève 1 à 3 points forts ou tournures bien trouvées ("goodPoints").
-4. Rédige une réaction directe et courte ("examinerReaction") en 1 ou 2 phrases qui commente ses arguments (en français si explication, ou anglais selon pertinence).
-5. Formule UNE nouvelle question de relance ("followUpQuestion") en anglais (ou langue de travail), directe, stimulante, qui rebondit précisément sur ce que l'étudiant vient d'affirmer pour lui faire approfondir sa réflexion ("comme si tu voulais en savoir plus", objection, nuance, dilemme).
-6. Propose 1 ou 2 expressions idiomatiques de concours utiles ("suggestedVocab": [{"en":"...","fr":"..."}]).
-7. Note ce tour sur 100 ("scoreRound").
+4. Rédige une réaction directe et courte ("examinerReaction") en 1 ou 2 phrases qui commente ses arguments.
+5. Propose 2 ou 3 pistes argumentatives, exemples concrets ou angles d'analyse PERTINENTS que l'étudiant N'A PAS mentionnés et qui auraient été très appréciés en khôlle de concours ("missedAngles": ["Piste 1 en français...", "Piste 2 en français..."]).
+6. ${isLastRound ? 'C\'est le dernier tour : laisse "followUpQuestion" vide ("").' : 'Formule UNE nouvelle question de relance ("followUpQuestion") en anglais (ou langue de travail), directe, stimulante, qui rebondit précisément sur ce que l\'étudiant vient d\'affirmer.'}
+7. Propose 1 ou 2 expressions idiomatiques de concours utiles ("suggestedVocab": [{"en":"...","fr":"..."}]).
+8. Note ce tour sur 100 ("scoreRound").
 
 Réponds STRICTEMENT en JSON valide.`;
 
         const userPrompt = `Thème général : ${session.topic}.
 ${historyText ? `Historique des échanges précédents :\n${historyText}\n\n` : ""}
-[Tour ${currentRoundNum}]
+[Tour ${currentRoundNum}/${MAX_PREPA_ROUNDS}]
 Question posée par le colleur : "${currentQ}"
 Réponse de l'étudiant : "${finalAnswerText}"
 
@@ -3886,7 +3954,8 @@ Retourne l'objet JSON :
   "goodPoints": ["point fort 1", "expression 2"],
   "badWords": [{"wrong":"...","right":"...","why":"..."}],
   "examinerReaction": "Votre argument est solide, mais comment concilier cela avec...",
-  "followUpQuestion": "Une question de relance percutante en anglais qui rebondit sur ses idées",
+  "missedAngles": ["Angle / exemple non abordé 1 qui aurait enrichi la réponse", "Angle / nuance non abordé 2"],
+  "followUpQuestion": ${isLastRound ? '""' : '"Une question de relance percutante en anglais qui rebondit sur ses idées"'},
   "suggestedVocab": [{"en":"terme EN","fr":"sens FR"}]
 }`;
 
@@ -3906,24 +3975,26 @@ Retourne l'objet JSON :
           goodPoints: Array.isArray(data.goodPoints) ? data.goodPoints : [],
           badWords: Array.isArray(data.badWords) ? data.badWords : [],
           examinerReaction: data.examinerReaction || "",
+          missedAngles: Array.isArray(data.missedAngles) ? data.missedAngles : [],
           suggestedVocab: Array.isArray(data.suggestedVocab) ? data.suggestedVocab : []
         });
-
-        // La prochaine question devient la relance du colleur
-        session.currentQuestion = data.followUpQuestion || `Could you elaborate further on your previous argument regarding ${session.topic}?`;
 
         awardXP(scoreRound);
         if (Array.isArray(data.badWords) && data.badWords.length) {
           logPersonalErrors("prepa", data.badWords);
         }
-        ensureDailyFresh();
-        state.daily.prepaDone = (state.daily.prepaDone || 0) + 1;
+
+        if (currentRoundNum >= MAX_PREPA_ROUNDS) {
+          saveState();
+          renderPrepaSessionUI();
+          await concludePrepaSession();
+          return;
+        }
+
+        // La prochaine question devient la relance du colleur
+        session.currentQuestion = data.followUpQuestion || `Could you elaborate further on your previous argument regarding ${session.topic}?`;
         saveState();
-        if (session.item) markExerciseCompleted("prepa", session.item.id, scoreRound);
         renderPrepaSessionUI();
-        if (typeof recordGuidedProgress === "function") recordGuidedProgress("prepa");
-        if (typeof renderDailyPlan === "function") renderDailyPlan();
-        startPrepaTimer();
 
         // Scroll doux vers la nouvelle question de relance
         setTimeout(() => {
@@ -3981,7 +4052,6 @@ Réponds STRICTEMENT en JSON :
 
         session.status = "finished";
         session.finalReport = data;
-        stopPrepaTimer();
 
         const grade = typeof data.grade20 === "number" ? data.grade20 : 14;
         $("prepa-final-grade").textContent = `${grade}/20`;
@@ -3996,7 +4066,15 @@ Réponds STRICTEMENT en JSON :
         }
 
         awardXP(grade * 5);
-        if (session.item) markExerciseCompleted("prepa", session.item.id, Math.round(grade * 5));
+        if (session.rounds.length >= MAX_PREPA_ROUNDS) {
+          ensureDailyFresh();
+          state.daily.prepaDone = (state.daily.prepaDone || 0) + 1;
+          if (session.item) markExerciseCompleted("prepa", session.item.id, Math.round(grade * 5));
+          saveState();
+          if (typeof recordGuidedProgress === "function") recordGuidedProgress("prepa");
+          if (typeof renderDailyPlan === "function") renderDailyPlan();
+          showToast("🎓 Khôlle complète terminée et validée !");
+        }
         renderPrepaSessionUI();
 
         setTimeout(() => {
@@ -4128,52 +4206,12 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       $("listen-lvl-badge").textContent = item.level;
       $("listen-theme-badge").textContent = item.theme;
       $("listen-ai-badge").classList.toggle("hidden", !item.isAi);
-      $("listen-status").textContent = item.isLong ? "📻 Monologue long (4 phrases) — Écoutez et résumez/traduisez en français" : "Écoutez les 2 phrases en anglais";
+      $("listen-status").textContent = item.isLong
+        ? "📻 Monologue long (4 phrases) — Écoutez et résumez les grandes idées en français"
+        : "Écoutez l'audio et résumez les grandes idées en français";
       $("listen-result").classList.add("hidden");
       updateFavUI();
       updateProgressUI();
-    }
-
-    let prepaTimerInterval = null;
-    let prepaTimeLeft = 0;
-
-    function stopPrepaTimer() {
-      if (prepaTimerInterval) {
-        clearInterval(prepaTimerInterval);
-        prepaTimerInterval = null;
-      }
-      const pill = $("prepa-timer-pill");
-      if (pill) pill.classList.add("hidden");
-    }
-
-    function startPrepaTimer() {
-      stopPrepaTimer();
-      const limit = Number(state.prepaTimerSeconds) || 0;
-      if (!limit || (state.prepaSession && state.prepaSession.status === "finished")) return;
-      prepaTimeLeft = limit;
-      const pill = $("prepa-timer-pill");
-      const txt = $("prepa-timer-text");
-      if (!pill || !txt) return;
-      pill.classList.remove("hidden", "urgent");
-      const renderClock = () => {
-        const m = String(Math.floor(prepaTimeLeft / 60)).padStart(2, "0");
-        const s = String(prepaTimeLeft % 60).padStart(2, "0");
-        txt.textContent = `${m}:${s}`;
-        pill.classList.toggle("urgent", prepaTimeLeft <= 15);
-      };
-      renderClock();
-      prepaTimerInterval = setInterval(() => {
-        prepaTimeLeft -= 1;
-        if (prepaTimeLeft <= 0) {
-          prepaTimeLeft = 0;
-          renderClock();
-          clearInterval(prepaTimerInterval);
-          prepaTimerInterval = null;
-          showToast("⏱️ Temps écoulé pour cette réponse de khôlle !");
-        } else {
-          renderClock();
-        }
-      }, 1000);
     }
 
     function loadPrepaItem(item) {
@@ -4188,7 +4226,6 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         finalReport: null
       };
       renderPrepaSessionUI();
-      startPrepaTimer();
     }
 
     // =========================================================================
@@ -4590,7 +4627,7 @@ Retourne STRICTEMENT ce JSON :
     function getDurationPreset(dur) {
       if (dur === 20) return { drill: 3, missedMax: 2, srs: 6, speak: 4, listen: 1, useLong: false, essay: 0, prepa: 1, label: "20 min" };
       if (dur === 40) return { drill: 5, missedMax: 3, srs: 10, speak: 6, listen: 2, useLong: true, essay: 1, prepa: 1, label: "40 min" };
-      return { drill: 8, missedMax: 5, srs: 15, speak: 10, listen: 3, useLong: true, essay: 1, prepa: 2, label: "60 min" };
+      return { drill: 8, missedMax: 5, srs: 15, speak: 10, listen: 3, useLong: true, essay: 1, prepa: 1, label: "60 min" };
     }
 
     function getWeakestGrammarCategory() {
@@ -4691,13 +4728,11 @@ Retourne STRICTEMENT ce JSON :
 
       blocks.push({
         id: "prepa",
-        title: `🎓 Bloc ${p.essay > 0 ? 7 : 6} : Khôlle Chronométrée (${p.prepa} tour${p.prepa > 1 ? "s" : ""})`,
-        sub: "Réponse orale directe en anglais sous chrono 1m30",
+        title: `🎓 Bloc ${p.essay > 0 ? 7 : 6} : Khôlle Interactive (${MAX_PREPA_ROUNDS} questions)`,
+        sub: `Discussion guidée en ${MAX_PREPA_ROUNDS} tours (validation à la fin)`,
         target: p.prepa,
         done: state.daily.prepaDone || 0,
         launch: () => {
-          state.prepaTimerSeconds = 90;
-          if ($("prepa-timer-select")) $("prepa-timer-select").value = "90";
           state.prepaLang = "en";
           document.querySelectorAll("[data-prepa-lang]").forEach(b => b.classList.toggle("active", b.dataset.prepaLang === "en"));
           switchTab("prepa");
@@ -4949,7 +4984,6 @@ Retourne STRICTEMENT ce JSON :
       if (!PROFILES[pid]) return;
       saveState();
       stopSpeech();
-      stopPrepaTimer();
       if (guidedTimerInterval) { clearInterval(guidedTimerInterval); guidedTimerInterval = null; }
       loadProfileState(pid);
       updateGuidedUI();
@@ -5123,12 +5157,12 @@ Retourne STRICTEMENT ce JSON :
         $("modal-sub").textContent = "Enregistrez votre voix en anglais";
         $("modal-prompt").textContent = state.currentSpeak ? state.currentSpeak.fr : "";
       } else if (mode === "listen") {
-        $("modal-title").textContent = "Traduire en français";
-        $("modal-sub").textContent = "Enregistrez votre voix ou tapez votre traduction";
+        $("modal-title").textContent = "Résumer l'audio en français";
+        $("modal-sub").textContent = "Résumez à l'oral ou par écrit les grandes idées entendues";
         $("modal-prompt").innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;">Réécouter l'extrait :</span><button type="button" class="btn btn-emerald btn-sm" style="width:auto;" data-action="replay-listen">🔊 Écouter</button></div>`;
       } else {
-        const turn = state.prepaSession ? state.prepaSession.rounds.length + 1 : 1;
-        $("modal-title").textContent = `🎓 Khôlle Prépa (Tour ${turn})`;
+        const turn = state.prepaSession ? Math.min(state.prepaSession.rounds.length + 1, MAX_PREPA_ROUNDS) : 1;
+        $("modal-title").textContent = `🎓 Khôlle Prépa (Tour ${turn} / ${MAX_PREPA_ROUNDS})`;
         $("modal-sub").textContent = "Exprimez et argumentez vos idées en 2 ou 3 phrases";
         $("modal-prompt").textContent = state.prepaSession
           ? state.prepaSession.currentQuestion
@@ -5197,7 +5231,6 @@ Retourne STRICTEMENT ce JSON :
 
     function switchTab(tab) {
       stopSpeech();
-      if (tab !== "prepa") stopPrepaTimer();
       state.tab = tab;
       ["plan", "speak", "listen", "prepa", "bank"].forEach(t => {
         const el = $(`tab-${t}`);
@@ -5209,7 +5242,6 @@ Retourne STRICTEMENT ce JSON :
       if (tab === "bank") renderBank();
       if (tab === "prepa") {
         if (!state.prepaSession) loadPrepaItem(pickNextPrepa(null));
-        else startPrepaTimer();
       }
     }
 
@@ -5392,17 +5424,12 @@ Retourne STRICTEMENT ce JSON :
         applyEvaluationOutcome("listen", evalInfo.item, 100, false);
       });
 
-      // Filtre grammaire & Chrono Khôlle
+      // Filtre grammaire
       $("grammar-select").addEventListener("change", () => {
         state.grammarFilter = $("grammar-select").value;
         loadSpeakItem(pickNextItem("speak", state.currentSpeak?.id));
         loadListenItem(pickNextItem("listen", state.currentListen?.id));
         showToast(state.grammarFilter === "ALL" ? "📚 Toutes les notions grammaticales" : `Notion : ${GRAMMAR_LABELS[state.grammarFilter]}`);
-      });
-
-      $("prepa-timer-select").addEventListener("change", () => {
-        state.prepaTimerSeconds = Number($("prepa-timer-select").value) || 0;
-        startPrepaTimer();
       });
 
       document.querySelectorAll(".lvl-btn").forEach(btn => {
