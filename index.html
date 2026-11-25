@@ -1672,10 +1672,14 @@
         <div class="card">
           <div class="card-header">
             <div>
-              <h3 style="font-size:16px;font-weight:800;">📓 Carnet d'erreurs récurrentes</h3>
-              <p style="font-size:12px;color:var(--text-muted);">Enregistrées automatiquement lors des corrections IA (Parler, Écouter, Khôlle).</p>
+              <h3 style="font-size:16px;font-weight:800;">📓 Carnet d'erreurs (10 derniers jours)</h3>
+              <p style="font-size:12px;color:var(--text-muted);">Les fautes non refaites depuis 10 jours passent automatiquement en « Guéries » pour mesurer ta progression.</p>
             </div>
             <button id="btn-clear-errors" type="button" class="tool-btn" style="color:var(--rose);">🗑️ Vider</button>
+          </div>
+          <div class="mode-switch-bar" style="margin-bottom:10px;">
+            <button id="btn-err-view-active" type="button" class="mode-switch-btn active">🔥 Actives 10j (<span id="err-active-count">0</span>)</button>
+            <button id="btn-err-view-archived" type="button" class="mode-switch-btn">✅ Guéries (<span id="err-healed-count">0</span>)</button>
           </div>
           <div id="error-notebook-list"></div>
         </div>
@@ -3701,6 +3705,25 @@
       }
     }
 
+    const ERROR_WINDOW_DAYS = 10;
+    let errorNotebookView = "active";
+
+    function isErrorArchived(err, nowMs = Date.now()) {
+      if (!err) return true;
+      if (err.archived) return true;
+      if (!err.lastAt) return false;
+      const t = Date.parse(err.lastAt);
+      if (isNaN(t)) return false;
+      return (nowMs - t) >= ERROR_WINDOW_DAYS * 86400000;
+    }
+
+    function errorDaysAgo(err, nowMs = Date.now()) {
+      if (!err || !err.lastAt) return 0;
+      const t = Date.parse(err.lastAt);
+      if (isNaN(t)) return 0;
+      return Math.max(0, Math.floor((nowMs - t) / 86400000));
+    }
+
     function logPersonalErrors(mode, errs) {
       if (!Array.isArray(errs) || !errs.length) return;
       if (!Array.isArray(state.errorLog)) state.errorLog = [];
@@ -3715,12 +3738,18 @@
         if (existing) {
           existing.count = (existing.count || 1) + 1;
           existing.lastAt = now;
+          existing.archived = false;
+          delete existing.archivedAt;
           if (why) existing.why = why;
         } else {
-          state.errorLog.unshift({ key, wrong, right, why, mode, count: 1, lastAt: now });
+          state.errorLog.unshift({ key, wrong, right, why, mode, count: 1, lastAt: now, archived: false });
         }
       });
-      if (state.errorLog.length > 80) state.errorLog = state.errorLog.slice(0, 80);
+      if (state.errorLog.length > 200) {
+        const actives = state.errorLog.filter(x => !isErrorArchived(x));
+        const healed = state.errorLog.filter(x => isErrorArchived(x));
+        state.errorLog = [...actives, ...healed].slice(0, 200);
+      }
       saveState();
       if (typeof renderErrorNotebook === "function") renderErrorNotebook();
     }
@@ -4694,33 +4723,60 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       renderDailyPlan();
     }
 
-    // CARNET D'ERREURS PERSONNELLES
+    // CARNET D'ERREURS PERSONNELLES (FENÊTRE GLISSANTE 10 JOURS + ARCHIVE GUÉRIES)
     function renderErrorNotebook() {
       const container = $("error-notebook-list");
       if (!container) return;
-      const list = [...(state.errorLog || [])].sort((a, b) => (b.count || 1) - (a.count || 1));
+      const nowMs = Date.now();
+      const all = Array.isArray(state.errorLog) ? state.errorLog : [];
+      const activeList = all.filter(err => !isErrorArchived(err, nowMs))
+        .sort((a, b) => (b.count || 1) - (a.count || 1) || (b.lastAt || "").localeCompare(a.lastAt || ""));
+      const healedList = all.filter(err => isErrorArchived(err, nowMs))
+        .sort((a, b) => (b.lastAt || "").localeCompare(a.lastAt || ""));
+
+      if ($("err-active-count")) $("err-active-count").textContent = activeList.length;
+      if ($("err-healed-count")) $("err-healed-count").textContent = healedList.length;
+      if ($("btn-err-view-active")) $("btn-err-view-active").classList.toggle("active", errorNotebookView === "active");
+      if ($("btn-err-view-archived")) $("btn-err-view-archived").classList.toggle("active", errorNotebookView === "archived");
+
+      const list = errorNotebookView === "archived" ? healedList : activeList;
       if (!list.length) {
         container.innerHTML = `<div style="text-align:center;padding:24px 12px;color:var(--text-muted);font-size:13px;">
-          ✨ Aucune erreur enregistrée pour le moment.<br>Tes fautes récurrentes détectées par l'IA apparaîtront automatiquement ici.
+          ${errorNotebookView === "archived"
+            ? "📦 Aucune erreur archivée/guérie pour le moment.<br>Toute faute non refaite pendant 10 jours (ou validée manuellement) apparaîtra ici."
+            : (healedList.length
+              ? `🏆 Zéro faute active sur les 10 derniers jours ! (${healedList.length} déjà guérie(s))`
+              : "✨ Aucune erreur enregistrée pour le moment.<br>Tes fautes récurrentes détectées par l'IA apparaîtront automatiquement ici.")}
         </div>`;
         return;
       }
-      container.innerHTML = list.map((err, i) => `
+
+      container.innerHTML = list.map(err => {
+        const days = errorDaysAgo(err, nowMs);
+        const ageLabel = days === 0 ? "Aujourd'hui" : `Il y a ${days}j`;
+        const ttlLabel = errorNotebookView === "active"
+          ? `<span class="badge badge-muted" title="Passe en Guéries après 10 jours sans récidive">⏳ ${ageLabel} (${Math.max(1, ERROR_WINDOW_DAYS - days)}j restants)</span>`
+          : `<span class="badge badge-emerald">✅ Guérie (${ageLabel})</span>`;
+        const actionBtn = errorNotebookView === "active"
+          ? `<button type="button" class="tool-btn" style="color:var(--emerald);" data-archive-err="${esc(err.key)}">✓ Maîtrisée</button>`
+          : `<button type="button" class="tool-btn" data-restore-err="${esc(err.key)}">↩️ Réactiver</button>`;
+        return `
         <div class="err-notebook-item">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;">
             <div class="badge-row">
               <span class="badge badge-amber">×${err.count || 1} fois</span>
               <span class="badge badge-muted">${esc((err.mode || "speak").toUpperCase())}</span>
+              ${ttlLabel}
             </div>
             <div style="display:flex;gap:6px;">
               <button type="button" class="tool-btn" data-speak="${esc(err.right)}" title="Écouter">🔊</button>
-              <button type="button" class="tool-btn" style="color:var(--emerald);" data-archive-err="${esc(err.key)}">✓ Maîtrisée</button>
+              ${actionBtn}
             </div>
           </div>
           <div class="error-pair"><span class="chip-wrong">${esc(err.wrong)}</span> → <span class="chip-ok">${esc(err.right)}</span></div>
           <div style="font-size:12.5px;color:#334155;">${esc(err.why)}</div>
-        </div>
-      `).join("");
+        </div>`;
+      }).join("");
     }
 
     // ESSAI B2 / ÉCRIT STRUCTURÉ PRÉPA
@@ -5280,7 +5336,7 @@ Retourne STRICTEMENT ce JSON :
         kholleLog: (state.kholleLog || []).slice(0, 50),
         essayLog: (state.essayLog || []).slice(0, 50),
         completed: state.completed,
-        errorLog: (state.errorLog || []).slice(0, 80),
+        errorLog: (state.errorLog || []).slice(0, 200),
         reviews: state.reviews,
         srs: state.srs
       };
@@ -5395,18 +5451,25 @@ Retourne STRICTEMENT ce JSON :
           } else {
             const mc = Math.max(le.count || 1, re.count || 1);
             const useRemote = (re.lastAt || "") > (le.lastAt || "");
-            if (mc !== le.count || useRemote) {
+            const rArch = re.archivedAt || "";
+            const lArch = le.archivedAt || "";
+            const latestArchived = (rArch > lArch) ? !!re.archived : (lArch > rArch) ? !!le.archived : (useRemote ? !!re.archived : !!le.archived);
+            const latestAt = useRemote ? re.lastAt : le.lastAt;
+            const reactivatedAfterArchive = latestAt && (latestAt > (rArch > lArch ? rArch : lArch));
+            if (mc !== le.count || useRemote || rArch !== lArch) {
               map.set(re.key, {
                 ...le,
                 count: mc,
-                lastAt: useRemote ? re.lastAt : le.lastAt,
+                lastAt: latestAt,
+                archived: reactivatedAfterArchive ? false : latestArchived,
+                archivedAt: reactivatedAfterArchive ? undefined : (rArch > lArch ? rArch : lArch) || undefined,
                 why: (useRemote && re.why) ? re.why : le.why
               });
               changed = true;
             }
           }
         });
-        state.errorLog = Array.from(map.values()).sort((a, b) => (b.lastAt || "").localeCompare(a.lastAt || "")).slice(0, 80);
+        state.errorLog = Array.from(map.values()).sort((a, b) => (b.lastAt || "").localeCompare(a.lastAt || "")).slice(0, 200);
       }
 
       if (remote.reviews && typeof remote.reviews === "object") {
@@ -5597,8 +5660,11 @@ Retourne STRICTEMENT ce JSON :
       const missed = [...getMissedItems("speak"), ...getMissedItems("listen")].length;
       const kh = (state.kholleLog || []).slice(0, 5).map(k => `- ${k.date} | ${k.topic}: ${k.grade20}/20 (moy tours ${k.avgRoundScore}%)`).join("\n") || "- Aucune khôlle archivee";
       const es = (state.essayLog || []).slice(0, 5).map(e => `- ${e.date} | ${e.topic}: ${e.grade20}/20 (${e.wordCount} mots)`).join("\n") || "- Aucun essai archive";
-      const errs = [...(state.errorLog || [])].sort((a, b) => (b.count || 1) - (a.count || 1)).slice(0, 10)
-        .map(e => `- [x${e.count || 1} | ${e.mode}] "${e.wrong}" -> "${e.right}" (${e.why || ""})`).join("\n") || "- Aucune erreur";
+      const allErrs = Array.isArray(state.errorLog) ? state.errorLog : [];
+      const activeErrs = allErrs.filter(e => !isErrorArchived(e));
+      const healedCount = allErrs.length - activeErrs.length;
+      const errs = [...activeErrs].sort((a, b) => (b.count || 1) - (a.count || 1)).slice(0, 10)
+        .map(e => `- [x${e.count || 1} | ${e.mode}] "${e.wrong}" -> "${e.right}" (${e.why || ""})`).join("\n") || "- Aucune erreur active (10j)";
       const days = Object.keys(state.history || {}).sort().reverse().slice(0, 7).map(dt => {
         const h = state.history[dt] || {};
         return `- ${dt}: XP=${h.xpEarned || 0} | Drill=${h.drillDone || 0} | SRS=${h.srsDone || 0} | Speak=${h.speakDone || 0} | Listen=${h.listenDone || 0} | Essay=${h.essayDone || 0} | Kholle=${h.prepaDone || 0}`;
@@ -5606,6 +5672,7 @@ Retourne STRICTEMENT ce JSON :
       return `=== BILAN ENGLISH COACH (${prof} - ${todayISO()}) ===
 Niveau: ${lvl} | Serie: ${state.stats.streak}j | XP: ${state.stats.xp}
 Exos valides: Oral=${allSp}, Ecoute=${allLs}, Kholles=${allPr} | En revision: ${missed}
+Erreurs carnet (10j): ${activeErrs.length} actives | ${healedCount} gueries
 Drill grammaire: ${state.drillStats?.correct || 0}/${state.drillStats?.total || 0}
 
 [Dernieres Kholles /20]
@@ -5617,7 +5684,7 @@ ${es}
 [7 derniers jours]
 ${days}
 
-[Top erreurs recurrentes]
+[Top erreurs actives (10j)]
 ${errs}`;
     }
 
@@ -6017,7 +6084,15 @@ ${errs}`;
       $("drill-level-select").addEventListener("change", () => { currentDrill = null; renderDrillQuestion(true); });
       $("btn-drill-next").addEventListener("click", () => renderDrillQuestion(true));
 
-      // Carnet d'erreurs
+      // Carnet d'erreurs (10 jours glissants + archive guéries)
+      $("btn-err-view-active").addEventListener("click", () => {
+        errorNotebookView = "active";
+        renderErrorNotebook();
+      });
+      $("btn-err-view-archived").addEventListener("click", () => {
+        errorNotebookView = "archived";
+        renderErrorNotebook();
+      });
       $("btn-clear-errors").addEventListener("click", () => {
         state.errorLog = [];
         saveState();
@@ -6028,10 +6103,28 @@ ${errs}`;
         const archBtn = e.target.closest("[data-archive-err]");
         if (archBtn) {
           const key = archBtn.dataset.archiveErr;
-          state.errorLog = (state.errorLog || []).filter(x => x.key !== key);
+          const entry = (state.errorLog || []).find(x => x.key === key);
+          if (entry) {
+            entry.archived = true;
+            entry.archivedAt = new Date().toISOString();
+          }
           saveState();
           renderErrorNotebook();
-          showToast("✅ Erreur archivée !");
+          showToast("✅ Erreur marquée comme guérie !");
+          return;
+        }
+        const restBtn = e.target.closest("[data-restore-err]");
+        if (restBtn) {
+          const key = restBtn.dataset.restoreErr;
+          const entry = (state.errorLog || []).find(x => x.key === key);
+          if (entry) {
+            entry.archived = false;
+            delete entry.archivedAt;
+            entry.lastAt = new Date().toISOString();
+          }
+          saveState();
+          renderErrorNotebook();
+          showToast("↩️ Erreur réactivée dans les 10 derniers jours.");
         }
       });
 
