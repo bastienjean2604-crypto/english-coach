@@ -2609,7 +2609,10 @@
     }
 
     function getMissedItems(mode) {
-      return getAllItems(mode).filter(x => state.reviews && state.reviews[x.id] && state.reviews[x.id].missed);
+      const pool = mode === "listen" && typeof LONG_LISTEN_BANK !== "undefined"
+        ? [...getAllItems(mode), ...LONG_LISTEN_BANK]
+        : getAllItems(mode);
+      return pool.filter(x => state.reviews && state.reviews[x.id] && state.reviews[x.id].missed);
     }
 
     // Générateur d'entier aléatoire cryptographique uniforme sans biais de modulo (CSPRNG)
