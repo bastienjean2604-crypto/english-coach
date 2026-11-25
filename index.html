@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>English Coach — Oral, Écoute & Prépa (Jenny Neural)</title>
+  <title>English Coach — Oral, Écoute & Prépa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f4f6fb;
-      --surface: #ffffff;
-      --surface-soft: #f8fafc;
-      --border: #e2e8f0;
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --primary: #4f46e5;
-      --primary-hover: #4338ca;
-      --primary-soft: #eef2ff;
-      --violet: #7c3aed;
-      --violet-soft: #f5f3ff;
-      --emerald: #059669;
-      --emerald-soft: #ecfdf5;
-      --amber: #d97706;
-      --amber-soft: #fffbeb;
-      --rose: #e11d48;
-      --rose-soft: #fff1f2;
+      --bg: #F6EAD6;
+      --surface: #FFFDF8;
+      --surface-soft: #FAF1E2;
+      --border: #E0CCB0;
+      --text: #2D1B12;
+      --text-muted: #7C6555;
+      --primary: #A65C43;
+      --primary-hover: #8C4A34;
+      --primary-soft: #F4E4D1;
+      --violet: #6E4736;
+      --violet-soft: #EFE3D4;
+      --emerald: #2E7A56;
+      --emerald-soft: #E8F3EC;
+      --amber: #B86B1A;
+      --amber-soft: #FCF0DA;
+      --rose: #B83A45;
+      --rose-soft: #FBEAEB;
+      --espresso-dark: #332017;
+      --espresso-mid: #4B2F21;
       --radius-lg: 22px;
-      --radius-md: 14px;
-      --radius-sm: 10px;
-      --shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+      --radius-md: 15px;
+      --radius-sm: 11px;
+      --shadow: 0 4px 18px rgba(45, 27, 18, 0.06);
     }
 
     * {
@@ -37,12 +42,14 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: var(--bg);
+      font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23DEC7A6' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.45'%3E%3Cpath d='M26 42c0 11 9 18 19 18s19-7 19-18H26z'/%3E%3Cpath d='M64 46h5a4 4 0 0 1 0 8h-5'/%3E%3Cpath d='M41 25v8M49 23v10'/%3E%3Cellipse cx='126' cy='46' rx='10' ry='14' transform='rotate(-25 126 46)'/%3E%3Cpath d='M121 34c4 7 4 16 10 24'/%3E%3Crect x='30' y='112' width='28' height='34' rx='4'/%3E%3Cpath d='M37 122h14M37 130h14M37 138h9'/%3E%3Cpath d='M122 118c0 10 8 16 17 16s17-6 17-16h-34z'/%3E%3Cpath d='M118 139h42'/%3E%3Cpath d='M139 104v7'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 180px 180px;
       color: var(--text);
       line-height: 1.5;
       min-height: 100vh;
-      padding-bottom: 88px;
+      padding-bottom: 92px;
       overscroll-behavior-y: none;
     }
 
@@ -53,19 +60,20 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(255, 250, 241, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1.5px solid var(--border);
     }
 
     .header-top {
-      max-width: 780px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 12px 16px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .brand {
@@ -78,62 +86,65 @@
     .brand-logo {
       width: 40px;
       height: 40px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--primary), var(--violet));
-      color: #fff;
+      border-radius: 13px;
+      background: var(--surface);
+      border: 2px solid var(--text);
+      color: var(--primary);
       font-weight: 900;
       font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.28);
+      box-shadow: 0 3px 0 rgba(45, 27, 18, 0.12);
     }
 
     .brand-title {
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--text);
-      line-height: 1.2;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
     }
 
     .brand-sub {
       font-size: 11px;
       color: var(--text-muted);
-      font-weight: 500;
+      font-weight: 700;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       flex-shrink: 0;
     }
 
     .stats-pill {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: var(--surface-soft);
-      border: 1px solid var(--border);
-      padding: 6px 11px;
+      gap: 6px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      padding: 5px 10px;
       border-radius: 12px;
       font-size: 12px;
       font-weight: 800;
+      color: var(--text);
     }
 
-    .stats-sep { color: #cbd5e1; }
+    .stats-sep { color: var(--border); }
     .stat-xp { color: var(--primary); }
 
     .icon-btn {
       position: relative;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--surface-soft);
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
       color: var(--text);
-      font-size: 18px;
+      font-size: 17px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -142,29 +153,29 @@
     }
 
     .icon-btn:active { transform: scale(0.93); }
-    .icon-btn:hover { background: #e2e8f0; }
+    .icon-btn:hover { background: var(--primary-soft); }
 
     .api-dot {
       position: absolute;
-      top: 6px;
-      right: 6px;
+      top: 5px;
+      right: 5px;
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: var(--emerald);
-      border: 2px solid #fff;
+      border: 2px solid var(--surface);
     }
 
     /* ===== FILTERS BAR ===== */
     .filters-bar {
-      background: var(--surface-soft);
+      background: rgba(250, 241, 226, 0.9);
       border-top: 1px solid var(--border);
     }
 
     .filters-inner {
-      max-width: 780px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 10px 16px;
+      padding: 8px 14px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -175,7 +186,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 4px;
-      background: #e2e8f0;
+      background: #E8D7BE;
       padding: 4px;
       border-radius: 12px;
       flex-shrink: 0;
@@ -184,10 +195,10 @@
     .lvl-btn {
       border: none;
       background: transparent;
-      color: #475569;
+      color: var(--text-muted);
       font-size: 12px;
       font-weight: 800;
-      padding: 7px 14px;
+      padding: 6px 13px;
       border-radius: 9px;
       cursor: pointer;
       transition: all 0.15s;
@@ -196,16 +207,16 @@
     .lvl-btn.active {
       background: var(--primary);
       color: #fff;
-      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+      box-shadow: 0 2px 6px rgba(166, 92, 67, 0.28);
     }
 
     .select-input, .text-input, .textarea-input {
       font-family: inherit;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text);
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: 12px;
       padding: 9px 12px;
       outline: none;
@@ -214,20 +225,20 @@
 
     .select-input:focus, .text-input:focus, .textarea-input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14);
+      box-shadow: 0 0 0 3px rgba(166, 92, 67, 0.16);
     }
 
-    .theme-select { flex: 1; min-width: 150px; }
+    .theme-select { flex: 1; min-width: 145px; }
 
     /* ===== MAIN CONTAINER ===== */
     .main-container {
-      max-width: 780px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 16px;
+      padding: 16px 14px;
     }
 
     .tab-panel { display: none; }
-    .tab-panel.active { display: block; animation: fadeIn 0.18s ease-out; }
+    .tab-panel.active { display: block; animation: fadeIn 0.2s ease-out; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(4px); }
@@ -237,9 +248,9 @@
     /* ===== CARDS & BADGES ===== */
     .card {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 18px;
+      padding: 20px;
       box-shadow: var(--shadow);
       margin-bottom: 16px;
     }
@@ -264,7 +275,7 @@
       display: inline-flex;
       align-items: center;
       padding: 4px 10px;
-      border-radius: 8px;
+      border-radius: 9px;
       font-size: 11px;
       font-weight: 800;
     }
@@ -272,17 +283,17 @@
     .badge-primary { background: var(--primary-soft); color: var(--primary); }
     .badge-emerald { background: var(--emerald-soft); color: var(--emerald); }
     .badge-violet { background: var(--violet-soft); color: var(--violet); }
-    .badge-muted { background: #f1f5f9; color: #475569; }
+    .badge-muted { background: #F1E5D3; color: #6B5344; }
     .badge-amber { background: var(--amber-soft); color: var(--amber); }
 
     .card-tools { display: flex; align-items: center; gap: 6px; }
 
     .tool-btn {
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       background: var(--surface-soft);
-      color: #475569;
+      color: var(--text-muted);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       padding: 7px 11px;
       border-radius: 10px;
       cursor: pointer;
@@ -290,8 +301,8 @@
     }
 
     .tool-btn:active { transform: scale(0.95); }
-    .tool-btn.fav-active { background: var(--amber-soft); border-color: #fde68a; color: var(--amber); }
-    .tool-btn.hint-btn { background: var(--amber-soft); border-color: #fde68a; color: #b45309; }
+    .tool-btn.fav-active { background: var(--amber-soft); border-color: #EBC88B; color: var(--amber); }
+    .tool-btn.hint-btn { background: var(--amber-soft); border-color: #EBC88B; color: #9C5810; }
 
     .prompt-label {
       font-size: 11px;
@@ -306,18 +317,18 @@
       font-size: 21px;
       font-weight: 800;
       color: var(--text);
-      line-height: 1.35;
+      line-height: 1.38;
       margin-bottom: 16px;
     }
 
     .hint-box {
       background: var(--amber-soft);
-      border: 1px solid #fde68a;
+      border: 1.5px solid #EBD0A0;
       border-radius: var(--radius-md);
       padding: 12px 14px;
       margin-bottom: 16px;
       font-size: 13px;
-      color: #78350f;
+      color: #6E4110;
     }
 
     .hint-box p + p { margin-top: 6px; }
@@ -342,10 +353,10 @@
     .btn-primary {
       width: 100%;
       padding: 15px 18px;
-      background: linear-gradient(135deg, var(--primary), var(--violet));
-      color: #fff;
+      background: linear-gradient(135deg, #A65C43, #874732);
+      color: #FFFDF8;
       font-size: 15px;
-      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
+      box-shadow: 0 5px 16px rgba(166, 92, 67, 0.25);
     }
 
     .btn-emerald {
@@ -354,13 +365,13 @@
       background: var(--emerald);
       color: #fff;
       font-size: 14px;
-      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.22);
+      box-shadow: 0 4px 14px rgba(46, 122, 86, 0.22);
     }
 
     .btn-secondary {
       padding: 11px 14px;
-      background: #f1f5f9;
-      color: #334155;
+      background: #EFE2CE;
+      color: var(--text);
       font-size: 13px;
     }
 
@@ -368,7 +379,7 @@
       padding: 11px 14px;
       background: var(--violet-soft);
       color: var(--violet);
-      border: 1px solid #ddd6fe;
+      border: 1.5px solid var(--border);
       font-size: 13px;
     }
 
@@ -394,11 +405,11 @@
       margin-top: 14px;
     }
     .kholle-round-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
       border-radius: 18px;
       padding: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -409,12 +420,12 @@
       position: relative;
     }
     .kholle-examiner {
-      background: #f8fafc;
-      border-left: 4px solid var(--violet);
+      background: var(--surface-soft);
+      border-left: 4px solid var(--primary);
     }
     .kholle-student {
-      background: #0f172a;
-      color: #fff;
+      background: var(--espresso-dark);
+      color: #FFF8EE;
       border-left: 4px solid var(--emerald);
     }
     .kholle-header {
@@ -432,12 +443,12 @@
     }
     .kholle-text {
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.5;
     }
     .kholle-feedback-box {
-      background: #faf5ff;
-      border: 1px solid #f3e8ff;
+      background: var(--surface-soft);
+      border: 1.5px solid var(--border);
       border-radius: 14px;
       padding: 12px 14px;
       display: flex;
@@ -445,17 +456,17 @@
       gap: 10px;
     }
     .kholle-reaction {
-      background: #ffffff;
-      border: 1px solid #ddd6fe;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
       border-radius: 10px;
       padding: 10px 12px;
       font-size: 13px;
-      color: #4c1d95;
+      color: var(--text);
       line-height: 1.45;
     }
     .kholle-next-box {
-      background: linear-gradient(135deg, #fdf4ff, #ede9fe);
-      border: 2px solid #d8b4fe;
+      background: linear-gradient(135deg, #FBF2E4, #F3E2CA);
+      border: 2px solid #D9BE9B;
       border-radius: 18px;
       padding: 16px;
     }
@@ -472,19 +483,19 @@
       border-radius: 6px;
     }
     .kholle-report-card {
-      background: linear-gradient(145deg, #ffffff, #f8fafc);
-      border: 2px solid #c7d2fe;
+      background: linear-gradient(145deg, #FFFDF8, #FAF0E0);
+      border: 2px solid #D9BE9B;
       border-radius: 20px;
       padding: 20px;
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow);
     }
 
     /* ===== AUDIO PLAYER (TAB 2) ===== */
     .audio-stage {
-      background: linear-gradient(145deg, #0f172a, #1e1b4b);
-      color: #fff;
+      background: linear-gradient(145deg, var(--espresso-dark), var(--espresso-mid));
+      color: #FFF8EE;
       border-radius: 18px;
-      padding: 20px 16px;
+      padding: 22px 16px;
       margin-bottom: 16px;
       text-align: center;
     }
@@ -502,13 +513,13 @@
       width: 6px;
       height: 100%;
       border-radius: 99px;
-      background: #818cf8;
+      background: #E2A98E;
       transform-origin: bottom;
       transform: scaleY(0.28);
       transition: transform 0.2s;
     }
 
-    .eq-bar:nth-child(even) { background: #34d399; }
+    .eq-bar:nth-child(even) { background: #6FCF97; }
 
     .eq-playing .eq-bar:nth-child(1) { animation: eq 0.5s infinite ease-in-out; }
     .eq-playing .eq-bar:nth-child(2) { animation: eq 0.42s infinite ease-in-out 0.1s; }
@@ -522,8 +533,8 @@
       50% { transform: scaleY(1); }
     }
 
-    .audio-status { font-size: 14px; font-weight: 700; }
-    .audio-sub { font-size: 11px; color: #cbd5e1; margin-top: 4px; }
+    .audio-status { font-size: 14px; font-weight: 800; }
+    .audio-sub { font-size: 11.5px; color: #DECBB4; margin-top: 4px; }
 
     .audio-controls {
       display: flex;
@@ -537,16 +548,16 @@
       padding: 11px 20px;
       border-radius: 12px;
       border: none;
-      background: #10b981;
-      color: #022c22;
-      font-weight: 800;
+      background: #52B788;
+      color: #0F291E;
+      font-weight: 900;
       font-size: 13px;
       cursor: pointer;
     }
 
     .pill-toggle-group {
       display: inline-flex;
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 248, 238, 0.12);
       padding: 3px;
       border-radius: 11px;
       gap: 3px;
@@ -555,17 +566,17 @@
     .pill-toggle {
       border: none;
       background: transparent;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 248, 238, 0.85);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       padding: 7px 11px;
       border-radius: 8px;
       cursor: pointer;
     }
 
     .pill-toggle.active {
-      background: #fff;
-      color: #0f172a;
+      background: #FFFDF8;
+      color: var(--text);
     }
 
     .prepa-controls-row {
@@ -578,7 +589,7 @@
 
     .lang-switch {
       display: inline-flex;
-      background: #e2e8f0;
+      background: #E8D7BE;
       padding: 3px;
       border-radius: 11px;
       gap: 3px;
@@ -587,7 +598,7 @@
     .lang-btn {
       border: none;
       background: transparent;
-      color: #475569;
+      color: var(--text-muted);
       font-size: 12px;
       font-weight: 800;
       padding: 6px 10px;
@@ -596,7 +607,7 @@
     }
 
     .lang-btn.active {
-      background: var(--violet);
+      background: var(--primary);
       color: #fff;
     }
 
@@ -615,10 +626,10 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .banner-good { background: var(--emerald-soft); color: #065f46; }
-    .banner-mid { background: var(--primary-soft); color: #3730a3; }
-    .banner-warn { background: var(--amber-soft); color: #92400e; }
-    .banner-low { background: var(--rose-soft); color: #9f1239; }
+    .banner-good { background: var(--emerald-soft); color: #1F5B3E; }
+    .banner-mid { background: var(--primary-soft); color: #6E3926; }
+    .banner-warn { background: var(--amber-soft); color: #7C4710; }
+    .banner-low { background: var(--rose-soft); color: #8A2630; }
 
     .score-circle {
       width: 54px;
@@ -660,9 +671,9 @@
       font-weight: 800;
       padding: 3px 8px;
       border-radius: 99px;
-      background: rgba(255, 255, 255, 0.85);
-      color: #334155;
-      border: 1px solid rgba(15, 23, 42, 0.1);
+      background: rgba(255, 253, 248, 0.88);
+      color: var(--text);
+      border: 1px solid var(--border);
     }
 
     .ai-loading-box {
@@ -670,19 +681,19 @@
       align-items: center;
       gap: 10px;
       background: var(--violet-soft);
-      border: 1px solid #ddd6fe;
-      color: #5b21b6;
+      border: 1.5px solid var(--border);
+      color: var(--violet);
       padding: 11px 14px;
       border-radius: 12px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .spinner {
       width: 16px;
       height: 16px;
-      border: 2.5px solid #c4b5fd;
-      border-top-color: var(--violet);
+      border: 2.5px solid #DBC7B2;
+      border-top-color: var(--primary);
       border-radius: 50%;
       animation: spin 0.75s linear infinite;
       flex-shrink: 0;
@@ -692,7 +703,7 @@
 
     .diff-box {
       background: var(--surface-soft);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: 14px;
       padding: 12px;
       display: flex;
@@ -702,9 +713,9 @@
       font-weight: 700;
     }
 
-    .chip-ok { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 8px; }
-    .chip-wrong { background: #ffe4e6; color: #be123c; padding: 3px 8px; border-radius: 8px; text-decoration: line-through; }
-    .chip-miss { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 8px; border: 1px solid #fcd34d; }
+    .chip-ok { background: #D7EFE0; color: #1E593B; padding: 3px 8px; border-radius: 8px; }
+    .chip-wrong { background: #F9D9DB; color: #962732; padding: 3px 8px; border-radius: 8px; text-decoration: line-through; }
+    .chip-miss { background: #FCE9C7; color: #8A4D0F; padding: 3px 8px; border-radius: 8px; border: 1px solid #EBC687; }
 
     .diff-legend {
       display: flex;
@@ -713,12 +724,12 @@
       margin-top: 6px;
       font-size: 11px;
       color: var(--text-muted);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .user-audio-box {
-      background: #0f172a;
-      color: #fff;
+      background: var(--espresso-dark);
+      color: #FFF8EE;
       border-radius: 14px;
       padding: 10px 14px;
       display: flex;
@@ -732,7 +743,7 @@
 
     .ref-box {
       background: var(--primary-soft);
-      border: 1px solid #c7d2fe;
+      border: 1.5px solid #DEC4A8;
       border-radius: 16px;
       padding: 14px;
     }
@@ -745,8 +756,8 @@
     }
 
     .transcript-box {
-      background: #0f172a;
-      color: #fff;
+      background: var(--espresso-dark);
+      color: #FFF8EE;
       border-radius: 16px;
       padding: 14px;
     }
@@ -761,16 +772,16 @@
     .alts-box {
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px solid #c7d2fe;
+      border-top: 1px solid #DEC4A8;
       font-size: 12px;
-      color: #334155;
+      color: var(--text-muted);
     }
 
     .alts-box ul { padding-left: 18px; margin-top: 4px; }
 
     .error-item {
       background: var(--rose-soft);
-      border: 1px solid #fecdd3;
+      border: 1px solid #ECC0C3;
       border-radius: 12px;
       padding: 10px 12px;
       font-size: 12px;
@@ -788,7 +799,7 @@
 
     .grammar-box {
       background: var(--surface-soft);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: 14px;
       padding: 14px;
     }
@@ -801,7 +812,7 @@
       margin-bottom: 6px;
     }
 
-    .grammar-text { font-size: 13.5px; color: #334155; white-space: pre-line; }
+    .grammar-text { font-size: 13.5px; color: var(--text); white-space: pre-line; }
 
     .vocab-wrap {
       display: flex;
@@ -814,8 +825,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #fff;
-      border: 1px solid var(--border);
+      background: var(--surface);
+      border: 1.5px solid var(--border);
       border-radius: 10px;
       padding: 7px 10px;
       font-size: 12px;
@@ -842,7 +853,7 @@
 
     .bank-item {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: 16px;
       padding: 14px;
       margin-bottom: 10px;
@@ -857,9 +868,9 @@
       flex-wrap: wrap;
     }
 
-    .bank-fr { font-size: 14px; font-weight: 700; color: var(--text); }
-    .bank-en { font-size: 13px; font-weight: 600; color: var(--primary); margin-top: 3px; }
-    .bank-gram { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 6px; }
+    .bank-fr { font-size: 14px; font-weight: 800; color: var(--text); }
+    .bank-en { font-size: 13px; font-weight: 700; color: var(--primary); margin-top: 3px; }
+    .bank-gram { font-size: 11px; color: var(--text-muted); font-weight: 700; margin-top: 6px; }
 
     /* ===== BOTTOM NAV ===== */
     .bottom-nav {
@@ -868,43 +879,51 @@
       left: 0;
       right: 0;
       z-index: 30;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border);
-      box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.05);
+      background: rgba(255, 250, 241, 0.96);
+      backdrop-filter: blur(12px);
+      border-top: 1.5px solid var(--border);
+      box-shadow: 0 -4px 18px rgba(45, 27, 18, 0.06);
     }
 
     .bottom-nav-inner {
-      max-width: 780px;
+      max-width: 760px;
       margin: 0 auto;
+      padding: 6px 8px 8px;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
     }
 
     .nav-btn {
       border: none;
       background: transparent;
-      padding: 10px 4px 12px;
+      padding: 7px 4px;
+      border-radius: 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
+      gap: 2px;
       color: var(--text-muted);
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
+      transition: background 0.15s, color 0.15s;
     }
 
     .nav-btn .nav-ico { font-size: 18px; line-height: 1; }
-    .nav-btn.active { color: var(--primary); font-weight: 800; }
+    .nav-btn.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 900;
+    }
 
     /* ===== MODALS ===== */
     .modal-overlay {
       position: fixed;
       inset: 0;
       z-index: 50;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(3px);
+      background: rgba(45, 27, 18, 0.52);
+      backdrop-filter: blur(4px);
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -917,6 +936,7 @@
 
     .modal-sheet {
       background: var(--surface);
+      border: 1.5px solid var(--border);
       width: 100%;
       max-width: 500px;
       border-radius: 24px 24px 0 0;
@@ -924,7 +944,7 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 20px 50px rgba(45, 27, 18, 0.25);
     }
 
     @media (min-width: 600px) {
@@ -933,13 +953,14 @@
 
     .modal-head {
       padding: 16px 18px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1.5px solid var(--border);
+      background: var(--surface-soft);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .modal-title { font-size: 16px; font-weight: 800; }
+    .modal-title { font-size: 16px; font-weight: 900; }
     .modal-sub { font-size: 12px; color: var(--text-muted); }
 
     .modal-body {
@@ -961,15 +982,15 @@
       width: 78px;
       height: 78px;
       border-radius: 50%;
-      border: none;
-      background: linear-gradient(135deg, var(--primary), var(--violet));
-      color: #fff;
+      border: 2px solid var(--text);
+      background: linear-gradient(135deg, #A65C43, #874732);
+      color: #FFFDF8;
       font-size: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 8px 22px rgba(79, 70, 229, 0.35);
+      box-shadow: 0 8px 20px rgba(166, 92, 67, 0.32);
       transition: transform 0.15s;
     }
 
@@ -977,13 +998,14 @@
 
     .mic-btn.recording {
       background: var(--rose);
+      border-color: #6B1A22;
       animation: pulseMic 1.3s infinite;
     }
 
     @keyframes pulseMic {
-      0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.65); }
-      70% { box-shadow: 0 0 0 20px rgba(225, 29, 72, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(184, 58, 69, 0.65); }
+      70% { box-shadow: 0 0 0 20px rgba(184, 58, 69, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(184, 58, 69, 0); }
     }
 
     .mic-status {
@@ -1000,8 +1022,8 @@
 
     .alert-box {
       background: var(--amber-soft);
-      border: 1px solid #fde68a;
-      color: #92400e;
+      border: 1.5px solid #EBD0A0;
+      color: #6E4110;
       border-radius: 12px;
       padding: 10px 12px;
       font-size: 12px;
@@ -1016,7 +1038,7 @@
 
     .settings-box {
       background: var(--violet-soft);
-      border: 1px solid #ddd6fe;
+      border: 1.5px solid var(--border);
       border-radius: 16px;
       padding: 14px;
       display: flex;
@@ -1048,13 +1070,13 @@
       top: 72px;
       left: 50%;
       transform: translateX(-50%) translateY(-10px);
-      background: #0f172a;
-      color: #fff;
+      background: var(--espresso-dark);
+      color: #FFF8EE;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       padding: 10px 16px;
       border-radius: 99px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 8px 24px rgba(45, 27, 18, 0.25);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.22s, transform 0.22s;
@@ -1072,10 +1094,10 @@
     .profile-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 11px;
+      gap: 5px;
+      padding: 5px 10px;
       border-radius: 12px;
-      border: 1px solid #c7d2fe;
+      border: 1.5px solid #DEC4A8;
       background: var(--primary-soft);
       color: var(--primary);
       font-size: 12px;
@@ -1084,7 +1106,7 @@
       transition: transform 0.12s, background 0.15s;
     }
     .profile-pill.mathys {
-      border-color: #a7f3d0;
+      border-color: #B4DAC4;
       background: var(--emerald-soft);
       color: var(--emerald);
     }
@@ -1127,7 +1149,7 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 4px;
-      background: #e2e8f0;
+      background: #E8D7BE;
       padding: 4px;
       border-radius: 14px;
       margin-bottom: 14px;
@@ -1135,7 +1157,7 @@
     .subtab-btn {
       border: none;
       background: transparent;
-      color: #475569;
+      color: var(--text-muted);
       font-size: 11px;
       font-weight: 800;
       padding: 8px 4px;
@@ -1145,28 +1167,29 @@
       text-align: center;
     }
     .subtab-btn.active {
-      background: #fff;
+      background: var(--surface);
       color: var(--primary);
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 2px 6px rgba(45, 27, 18, 0.08);
     }
 
     .plan-hero {
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
-      color: #fff;
-      border-radius: 20px;
-      padding: 18px;
+      background: linear-gradient(135deg, #A65C43, #7D422E);
+      color: #FFFDF8;
+      border-radius: 22px;
+      padding: 20px;
       margin-bottom: 14px;
+      box-shadow: 0 6px 20px rgba(125, 66, 46, 0.22);
     }
     .plan-progress-track {
       height: 10px;
       border-radius: 99px;
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 253, 248, 0.25);
       overflow: hidden;
       margin-top: 10px;
     }
     .plan-progress-fill {
       height: 100%;
-      background: #34d399;
+      background: #6FCF97;
       border-radius: 99px;
       transition: width 0.3s ease;
     }
@@ -1176,15 +1199,15 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 14px;
-      border: 1px solid var(--border);
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
       background: var(--surface);
       border-radius: 16px;
       margin-bottom: 10px;
     }
     .mission-card.done {
       background: var(--emerald-soft);
-      border-color: #a7f3d0;
+      border-color: #B4DAC4;
     }
     .mission-info { flex: 1; min-width: 0; }
     .mission-title { font-size: 14px; font-weight: 800; color: var(--text); }
@@ -1192,7 +1215,7 @@
     .mission-bar {
       height: 6px;
       border-radius: 99px;
-      background: #e2e8f0;
+      background: #E8D7BE;
       overflow: hidden;
       margin-top: 8px;
       max-width: 240px;
@@ -1208,11 +1231,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      background: var(--surface-soft);
-      border: 1px solid var(--border);
+      gap: 6px;
+      background: #EDE0CC;
+      border: 1.5px solid var(--border);
       border-radius: 14px;
-      padding: 6px;
+      padding: 5px;
       margin-bottom: 12px;
     }
     .mode-switch-btn {
@@ -1227,18 +1250,18 @@
       cursor: pointer;
     }
     .mode-switch-btn.active {
-      background: #fff;
+      background: var(--surface);
       color: var(--primary);
-      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 1px 4px rgba(45, 27, 18, 0.08);
     }
     .mode-switch-btn.active.review-active {
       background: var(--amber-soft);
-      color: #b45309;
+      color: #8C4E0E;
     }
 
     .flashcard-box {
-      border: 2px solid #c7d2fe;
-      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      border: 2px solid #DEC4A8;
+      background: linear-gradient(180deg, #FFFDF8, #FAF1E2);
       border-radius: 20px;
       padding: 24px 18px;
       text-align: center;
@@ -1285,12 +1308,12 @@
       transition: all 0.14s;
     }
     .drill-opt-btn:hover:not(:disabled) { border-color: var(--primary); background: var(--primary-soft); }
-    .drill-opt-btn.opt-ok { border-color: var(--emerald); background: var(--emerald-soft); color: #065f46; }
-    .drill-opt-btn.opt-ko { border-color: var(--rose); background: var(--rose-soft); color: #9f1239; }
+    .drill-opt-btn.opt-ok { border-color: var(--emerald); background: var(--emerald-soft); color: #1E593B; }
+    .drill-opt-btn.opt-ko { border-color: var(--rose); background: var(--rose-soft); color: #8A2630; }
 
     .err-notebook-item {
-      border: 1px solid #fecdd3;
-      background: #fff;
+      border: 1.5px solid #ECC0C3;
+      background: var(--surface);
       border-radius: 14px;
       padding: 12px;
       margin-bottom: 10px;
@@ -1298,12 +1321,12 @@
 
     /* ===== GUIDED AUTOPILOT CIRCUIT & ESSAY B2 ===== */
     .guided-banner {
-      background: linear-gradient(135deg, #0f172a, #1e1b4b);
-      color: #fff;
+      background: linear-gradient(135deg, var(--espresso-dark), var(--espresso-mid));
+      color: #FFF8EE;
       border-radius: 18px;
       padding: 14px 16px;
       margin-bottom: 14px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+      box-shadow: 0 8px 24px rgba(45, 27, 18, 0.18);
     }
     .guided-banner-top {
       display: flex;
@@ -1321,14 +1344,14 @@
     .guided-step-seg {
       height: 6px;
       border-radius: 99px;
-      background: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 248, 238, 0.22);
     }
-    .guided-step-seg.done { background: #34d399; }
-    .guided-step-seg.current { background: #818cf8; box-shadow: 0 0 8px rgba(129, 140, 248, 0.8); }
+    .guided-step-seg.done { background: #6FCF97; }
+    .guided-step-seg.current { background: #E6AC78; box-shadow: 0 0 8px rgba(230, 172, 120, 0.8); }
 
     .guided-next-card {
-      background: linear-gradient(135deg, #ecfdf5, #eef2ff);
-      border: 2px solid #34d399;
+      background: linear-gradient(135deg, #E8F3EC, #F5E5D3);
+      border: 2px solid var(--emerald);
       border-radius: 18px;
       padding: 16px;
       margin-bottom: 14px;
@@ -1346,9 +1369,9 @@
       margin: 12px 0;
     }
     .duration-pill {
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
+      border: 1.5px solid rgba(255, 253, 248, 0.35);
+      background: rgba(255, 253, 248, 0.14);
+      color: #FFFDF8;
       padding: 8px 6px;
       border-radius: 10px;
       font-size: 12px;
@@ -1357,9 +1380,9 @@
       text-align: center;
     }
     .duration-pill.active {
-      background: #fff;
+      background: #FFFDF8;
       color: var(--primary);
-      border-color: #fff;
+      border-color: #FFFDF8;
     }
 
     .essay-textarea {
@@ -1370,7 +1393,7 @@
       line-height: 1.6;
       padding: 12px;
       border-radius: 14px;
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       background: var(--surface);
       color: var(--text);
       resize: vertical;
@@ -1378,7 +1401,7 @@
     .essay-textarea:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14);
+      box-shadow: 0 0 0 3px rgba(166, 92, 67, 0.16);
     }
   </style>
 </head>
@@ -1388,10 +1411,17 @@
   <header class="app-header">
     <div class="header-top">
       <div class="brand">
-        <div class="brand-logo">EC</div>
+        <div class="brand-logo" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 4V7.5M15.5 3.5V7.5" stroke="#2D1B12" stroke-width="2.1" stroke-linecap="round"/>
+            <path d="M5.5 11H20.5V15.2C20.5 19.4 17.2 22.5 13 22.5C8.8 22.5 5.5 19.4 5.5 15.2V11Z" fill="#A65C43" stroke="#2D1B12" stroke-width="2.1" stroke-linejoin="round"/>
+            <path d="M20.5 12.6H22.3C23.8 12.6 25 13.7 25 15.2C25 16.7 23.8 17.8 22.3 17.8H20.2" stroke="#2D1B12" stroke-width="2.1" stroke-linecap="round"/>
+            <path d="M5.5 25H20.5" stroke="#2D1B12" stroke-width="2.1" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div>
           <div class="brand-title">English Coach</div>
-          <div class="brand-sub">Oral, Écoute & Prépa (Kokoro Studio & Edge HD)</div>
+          <div class="brand-sub">Calme · Régulier · Efficace</div>
         </div>
       </div>
       <div class="header-actions">
@@ -1400,20 +1430,19 @@
           <span id="hdr-profile-name">Bastien</span>
           <span>▾</span>
         </button>
-        <div class="stats-pill">
+        <div class="stats-pill" title="Série · Points XP · Exercices maîtrisés">
           <span title="Série">🔥 <span id="hdr-streak">0</span></span>
-          <span class="stats-sep">|</span>
+          <span class="stats-sep">·</span>
           <span class="stat-xp" title="Points">⚡ <span id="hdr-xp">0</span></span>
+          <span class="stats-sep">·</span>
+          <span title="Exercices maîtrisés">✅ <span id="hdr-completed-count" style="font-weight:800;color:var(--emerald);">0</span></span>
         </div>
-        <div class="stats-pill" title="Exercices maîtrisés (>=80%)">
-          <span>✅ <span id="hdr-completed-count" style="font-weight:700;color:#059669;">0</span></span>
-        </div>
-        <button id="hdr-voice-btn" class="stats-pill" type="button" title="Voix IA Réaliste Jenny Neural" style="cursor:pointer;border-color:#ddd6fe;background:#f5f3ff;padding:6px 10px;">
+        <button id="hdr-voice-btn" class="stats-pill" type="button" title="Voix Studio IA" style="cursor:pointer;padding:5px 9px;">
           <span id="hdr-voice-icon">✨</span>
-          <span id="hdr-voice-label" style="font-weight:700;font-size:11px;color:#6b21a8;">Jenny Neural</span>
+          <span id="hdr-voice-label" style="font-weight:800;font-size:11px;color:var(--primary);">Kokoro</span>
         </button>
-        <button id="hdr-sync-btn" class="stats-pill" type="button" title="Synchro Cloud Bastien & Mathys" style="cursor:pointer;padding:6px 10px;">
-          <span id="hdr-sync-label" style="font-weight:700;font-size:11px;color:#64748b;">☁️ Off</span>
+        <button id="hdr-sync-btn" class="stats-pill" type="button" title="Synchro Cloud Bastien & Mathys" style="cursor:pointer;padding:5px 9px;">
+          <span id="hdr-sync-label" style="font-weight:800;font-size:11px;color:var(--text-muted);">☁️ Off</span>
         </button>
         <button id="btn-open-settings" class="icon-btn" type="button" aria-label="Réglages">
           ⚙️
@@ -1452,16 +1481,16 @@
     <div id="guided-banner" class="guided-banner hidden">
       <div class="guided-banner-top">
         <div>
-          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#a5b4fc;">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#E6AC78;">
             🧭 Séance Guidée (<span id="guided-duration-lbl">60</span> min) · Étape <span id="guided-step-num">1</span>/<span id="guided-step-total">7</span>
           </div>
           <div id="guided-step-title" style="font-size:15px;font-weight:800;margin-top:2px;">🔥 Échauffement Conjugaison</div>
-          <div id="guided-step-progress" style="font-size:12px;color:#cbd5e1;margin-top:1px;">0 / 8 complétés dans ce bloc</div>
+          <div id="guided-step-progress" style="font-size:12px;color:#DECBB4;margin-top:1px;">0 / 8 complétés dans ce bloc</div>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-          <span class="badge" style="background:rgba(255,255,255,0.16);color:#fff;font-size:12px;">⏱️ <span id="guided-elapsed">00:00</span></span>
-          <button id="btn-guided-skip" type="button" class="tool-btn" style="background:rgba(255,255,255,0.14);color:#fff;border-color:rgba(255,255,255,0.25);">⏭️ Passer</button>
-          <button id="btn-guided-stop" type="button" class="tool-btn" style="background:rgba(225,29,72,0.28);color:#fecdd3;border-color:rgba(254,205,211,0.35);">✕ Quitter</button>
+          <span class="badge" style="background:rgba(255,248,238,0.16);color:#FFF8EE;font-size:12px;">⏱️ <span id="guided-elapsed">00:00</span></span>
+          <button id="btn-guided-skip" type="button" class="tool-btn" style="background:rgba(255,248,238,0.14);color:#FFF8EE;border-color:rgba(255,248,238,0.28);">⏭️ Passer</button>
+          <button id="btn-guided-stop" type="button" class="tool-btn" style="background:rgba(184,58,69,0.28);color:#FFD6DA;border-color:rgba(255,214,218,0.35);">✕ Quitter</button>
         </div>
       </div>
       <div id="guided-step-bar" class="guided-step-bar"></div>
@@ -1470,8 +1499,8 @@
     <!-- CARTE TRANSITION QUAND UN BLOC EST TERMINÉ -->
     <div id="guided-next-card" class="guided-next-card hidden">
       <div>
-        <div style="font-size:12px;font-weight:800;color:#047857;">🎉 Bloc terminé !</div>
-        <div id="guided-next-label" style="font-size:15px;font-weight:800;color:#0f172a;margin-top:2px;">Prêt pour l'étape suivante</div>
+        <div style="font-size:12px;font-weight:800;color:var(--emerald);">🎉 Bloc terminé !</div>
+        <div id="guided-next-label" style="font-size:15px;font-weight:800;color:var(--text);margin-top:2px;">Prêt pour l'étape suivante</div>
       </div>
       <button id="btn-guided-next-block" type="button" class="btn btn-emerald" style="width:auto;padding:10px 18px;">
         🚀 Étape suivante ➡️
@@ -1570,7 +1599,7 @@
             <button type="button" class="btn btn-sm" style="background:var(--rose-soft);color:var(--rose);border:1px solid #fecdd3;" data-srs-rate="0">🔴 À revoir (0j)</button>
             <button type="button" class="btn btn-sm" style="background:var(--amber-soft);color:#b45309;border:1px solid #fde68a;" data-srs-rate="1">🟠 Moyen (+1j)</button>
             <button type="button" class="btn btn-sm" style="background:var(--emerald-soft);color:var(--emerald);border:1px solid #a7f3d0;" data-srs-rate="3">🟢 Bien (+3j)</button>
-            <button type="button" class="btn btn-sm" style="background:var(--primary-soft);color:var(--primary);border:1px solid #c7d2fe;" data-srs-rate="7">🔵 Facile (+7j)</button>
+            <button type="button" class="btn btn-sm" style="background:var(--primary-soft);color:var(--primary);border:1.5px solid #DEC4A8;" data-srs-rate="7">🔵 Facile (+7j)</button>
           </div>
         </div>
       </div>
@@ -1863,7 +1892,7 @@
 
           <div class="transcript-box">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
-              <span class="prompt-label" style="color:#a5b4fc;margin:0;">Transcription anglaise</span>
+              <span class="prompt-label" style="color:#E6AC78;margin:0;">Transcription anglaise</span>
               <button id="btn-listen-replay" type="button" class="btn btn-sm" style="background:rgba(255,255,255,0.16);color:#fff;">🔊 Réécouter</button>
             </div>
             <div id="listen-reveal-en" class="transcript-text"></div>
@@ -1946,8 +1975,8 @@
         <!-- BOÎTE DE LA QUESTION ACTIVE & ACTIONS -->
         <div id="prepa-active-prompt-card" class="kholle-next-box" style="margin-top:14px;">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <span id="prepa-prompt-label" class="prompt-label" style="color:#6b21a8;margin:0;">🎯 Question du colleur :</span>
-            <button id="btn-prepa-play-current" type="button" class="tool-btn" style="color:#6b21a8;font-size:12px;background:#fff;" title="Écouter avec Jenny Neural">🔊 Écouter la question</button>
+            <span id="prepa-prompt-label" class="prompt-label" style="color:var(--primary);margin:0;">🎯 Question du colleur :</span>
+            <button id="btn-prepa-play-current" type="button" class="tool-btn" style="color:var(--primary);font-size:12px;background:var(--surface);" title="Écouter avec la voix Studio">🔊 Écouter la question</button>
           </div>
           <h2 id="prepa-question-text" class="sentence-display" style="font-size:17px;margin:6px 0 12px 0;"></h2>
 
@@ -2110,10 +2139,10 @@
       <div class="modal-body">
         <div class="settings-box">
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <strong style="font-size:13px;color:#4c1d95;">⚡ Clé API Groq (gratuite)</strong>
+            <strong style="font-size:13px;color:var(--text);">⚡ Clé API Groq (gratuite)</strong>
             <span id="set-api-badge" class="badge badge-muted">Hors-ligne</span>
           </div>
-          <p style="font-size:12px;color:#5b21b6;">
+          <p style="font-size:12px;color:var(--text-muted);">
             Crée ta clé gratuite sur <strong>console.groq.com/keys</strong>. Elle gère à la fois <strong>Whisper</strong> (audio → texte) et le <strong>LLM</strong> (correction & Prépa) avec un énorme quota quotidien.
           </p>
           <div class="input-with-btn">
@@ -2121,7 +2150,7 @@
             <button id="btn-toggle-key-vis" type="button" class="eye-btn" aria-label="Afficher la clé">👁️</button>
           </div>
           <div>
-            <label for="select-groq-model" class="prompt-label" style="color:#4c1d95;">Modèle de correction (LLM)</label>
+            <label for="select-groq-model" class="prompt-label" style="color:var(--text);">Modèle de correction (LLM)</label>
             <select id="select-groq-model" class="select-input" style="width:100%;">
               <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile (Recommandé / Précis)</option>
               <option value="openai/gpt-oss-120b">openai/gpt-oss-120b (Puissant / Prépa)</option>
@@ -2139,12 +2168,12 @@
         </div>
 
         <!-- BLOC MOTEUR VOCAL STUDIO NEURAL (KOKORO-82M + AZURE EDGE HD) -->
-        <div class="settings-box" style="background:#f5f3ff;border-color:#ddd6fe;">
+        <div class="settings-box" style="background:var(--surface-soft);border-color:var(--border);">
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <strong style="font-size:13px;color:#5b21b6;">🎙️ Voix Studio IA (Kokoro-82M & Edge HD)</strong>
+            <strong style="font-size:13px;color:var(--text);">🎙️ Voix Studio IA (Kokoro-82M & Edge HD)</strong>
             <span id="set-voice-badge" class="badge badge-emerald">Studio IA ✨</span>
           </div>
-          <p style="font-size:12px;color:#6b21a8;margin-top:2px;">
+          <p style="font-size:12px;color:var(--text-muted);margin-top:2px;">
             Voix neurales haute fidélité (<strong>Kokoro-82M</strong> type BBC/Cinéma + <strong>Azure Multilingual HD</strong>) avec bascule anti-panne et respect de la vitesse (0.75x / 1x). 100% gratuit & illimité.
           </p>
           <div class="btn-row" style="margin-top:6px;display:flex;gap:4px;">
@@ -2155,7 +2184,7 @@
           <!-- REGLAGES STUDIO NEURAL -->
           <div id="jenny-voice-settings-group" style="margin-top:8px;">
             <div>
-              <label for="select-jenny-voice" class="prompt-label" style="color:#5b21b6;">Voix sélectionnée (selon accent actif)</label>
+              <label for="select-jenny-voice" class="prompt-label" style="color:var(--text);">Voix sélectionnée (selon accent actif)</label>
               <select id="select-jenny-voice" class="select-input" style="width:100%;">
                 <optgroup label="🏆 Studio British — Kokoro-82M (Idéal Khôlle BBC / Oxford)">
                   <option value="kokoro:bm_george">🇬🇧 George Studio (Homme, Oxford / BBC posé) ⭐ Top UK</option>
@@ -2192,12 +2221,12 @@
                 </optgroup>
               </select>
             </div>
-            <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;font-weight:700;color:#4c1d95;cursor:pointer;">
-              <input id="chk-voice-mix" type="checkbox" style="width:15px;height:15px;accent-color:#6d28d9;">
+            <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;font-weight:700;color:var(--text);cursor:pointer;">
+              <input id="chk-voice-mix" type="checkbox" style="width:15px;height:15px;accent-color:var(--primary);">
               <span>🔀 Mix Accents (alterne US / BBC / AU / IE à chaque extrait)</span>
             </label>
             <div class="btn-row" style="margin-top:8px;">
-              <button id="btn-test-jenny-voice-modal" type="button" class="btn btn-primary btn-sm flex-1" style="background:#6b21a8;border:none;">🔊 Écouter un aperçu</button>
+              <button id="btn-test-jenny-voice-modal" type="button" class="btn btn-primary btn-sm flex-1" style="box-shadow:none;">🔊 Écouter un aperçu</button>
             </div>
             <div id="jenny-voice-status-text" class="hidden" style="font-size:11px;font-weight:600;margin-top:4px;"></div>
           </div>
@@ -2229,12 +2258,12 @@
         </div>
 
         <!-- BLOC SYNCHRO CLOUD PRIVÉE & EXPORT COACH -->
-        <div class="settings-box" style="background:#eff6ff;border-color:#bfdbfe;">
+        <div class="settings-box" style="background:var(--surface-soft);border-color:var(--border);">
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <strong style="font-size:13px;color:#1e40af;">☁️ Synchro Cloud & Suivi Coach</strong>
+            <strong style="font-size:13px;color:var(--text);">☁️ Synchro Cloud & Suivi Coach</strong>
             <span id="set-sync-badge" class="badge badge-muted">Hors-ligne</span>
           </div>
-          <p style="font-size:12px;color:#1e3a8a;margin-top:2px;">
+          <p style="font-size:12px;color:var(--text-muted);margin-top:2px;">
             Synchronise automatiquement la progression de <strong>Bastien</strong> & <strong>Mathys</strong> sur votre dépôt privé GitHub (téléphone ↔ PC ↔ Coach). Aucune clé API n'est envoyée sur le cloud.
           </p>
           <div class="input-row">
@@ -2248,10 +2277,10 @@
           <button id="btn-copy-other-sync-token" type="button" class="btn btn-secondary btn-sm hidden" style="width:100%;margin-top:2px;">
             📋 Importer le token de synchro de l'autre espace
           </button>
-          <div id="sync-status-msg" style="font-size:11.5px;color:#1e3a8a;font-weight:700;margin-top:2px;"></div>
+          <div id="sync-status-msg" style="font-size:11.5px;color:var(--text-muted);font-weight:700;margin-top:2px;"></div>
           <div class="btn-row" style="margin-top:6px;">
-            <button id="btn-copy-coach-report" type="button" class="btn btn-secondary btn-sm flex-1" style="background:#fff;border-color:#bfdbfe;color:#1e40af;">📋 Bilan Coach</button>
-            <button id="btn-export-json" type="button" class="btn btn-secondary btn-sm flex-1" style="background:#fff;border-color:#bfdbfe;color:#1e40af;">💾 Export JSON</button>
+            <button id="btn-copy-coach-report" type="button" class="btn btn-secondary btn-sm flex-1" style="background:var(--surface);border:1.5px solid var(--border);color:var(--primary);">📋 Bilan Coach</button>
+            <button id="btn-export-json" type="button" class="btn btn-secondary btn-sm flex-1" style="background:var(--surface);border:1.5px solid var(--border);color:var(--primary);">💾 Export JSON</button>
           </div>
         </div>
 
@@ -2281,12 +2310,12 @@
       <div class="modal-body">
         <div class="profile-grid">
           <button id="btn-select-bastien" type="button" class="profile-card">
-            <div class="profile-avatar" style="background:linear-gradient(135deg,#4f46e5,#7c3aed);">B</div>
+            <div class="profile-avatar" style="background:linear-gradient(135deg,#A65C43,#7D422E);">B</div>
             <div style="font-size:16px;font-weight:800;color:var(--text);">Espace Bastien</div>
             <div id="profile-summary-bastien" style="font-size:12px;color:var(--text-muted);margin-top:4px;">Chargement...</div>
           </button>
           <button id="btn-select-mathys" type="button" class="profile-card">
-            <div class="profile-avatar" style="background:linear-gradient(135deg,#059669,#0d9488);">M</div>
+            <div class="profile-avatar" style="background:linear-gradient(135deg,#2E7A56,#1F5B3E);">M</div>
             <div style="font-size:16px;font-weight:800;color:var(--text);">Espace Mathys</div>
             <div id="profile-summary-mathys" style="font-size:12px;color:var(--text-muted);margin-top:4px;">Chargement...</div>
           </button>
@@ -2950,9 +2979,9 @@
       const connected = !!state.syncToken;
       if (hdrLbl && hdrBtn) {
         hdrLbl.textContent = connected ? "☁️ Sync" : "☁️ Off";
-        hdrLbl.style.color = connected ? "#047857" : "#64748b";
-        hdrBtn.style.background = connected ? "#ecfdf5" : "";
-        hdrBtn.style.borderColor = connected ? "#a7f3d0" : "";
+        hdrLbl.style.color = connected ? "var(--emerald)" : "var(--text-muted)";
+        hdrBtn.style.background = connected ? "var(--emerald-soft)" : "";
+        hdrBtn.style.borderColor = connected ? "#B4DAC4" : "";
       }
       if (badge) {
         badge.textContent = connected ? "Sync Auto ✅" : "Hors-ligne";
@@ -2960,15 +2989,15 @@
       }
       if (msgEl) {
         if (statusText) {
-          msgEl.style.color = isError ? "var(--rose)" : "#1e3a8a";
+          msgEl.style.color = isError ? "var(--rose)" : "var(--primary)";
           msgEl.textContent = statusText;
         } else if (state.lastSyncAt) {
           const d = new Date(state.lastSyncAt);
           const hhmm = isNaN(d.getTime()) ? state.lastSyncAt : d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
-          msgEl.style.color = "#047857";
+          msgEl.style.color = "var(--emerald)";
           msgEl.textContent = `Dernière synchro (${(PROFILES[state.profileId] || PROFILES.bastien).name}) : ${hhmm}`;
         } else {
-          msgEl.style.color = "#1e3a8a";
+          msgEl.style.color = "var(--text-muted)";
           msgEl.textContent = connected ? "Prêt à synchroniser." : "Collez votre token GitHub pour activer la synchro automatique.";
         }
       }
@@ -4086,7 +4115,7 @@ Indique à combien de pourcent ("score") l'élève a compris l'audio en te basan
               <span class="kholle-author" style="color:var(--violet);">🎓 Khôlleur (Question ${r.roundNum}/${MAX_PREPA_ROUNDS})</span>
               <button type="button" class="tool-btn" data-action="speak-kholle-q" data-text="${esc(r.question)}" title="Écouter avec Jenny Neural">🔊 Écouter</button>
             </div>
-            <div class="kholle-text" style="color:#1e1b4b;">${esc(r.question)}</div>
+            <div class="kholle-text" style="color:var(--text);">${esc(r.question)}</div>
           </div>
 
           <div class="kholle-msg kholle-student">
