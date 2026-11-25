@@ -1391,7 +1391,7 @@
         <div class="brand-logo">EC</div>
         <div>
           <div class="brand-title">English Coach</div>
-          <div class="brand-sub">Oral, Écoute & Prépa (Jenny Neural)</div>
+          <div class="brand-sub">Oral, Écoute & Prépa (Kokoro Studio & Edge HD)</div>
         </div>
       </div>
       <div class="header-actions">
@@ -2134,38 +2134,66 @@
           <div id="api-test-status" class="hidden" style="font-size:12px;font-weight:700;margin-top:4px;"></div>
         </div>
 
-        <!-- BLOC MOTEUR VOCAL JENNY NEURAL (AZURE/EDGE) -->
+        <!-- BLOC MOTEUR VOCAL STUDIO NEURAL (KOKORO-82M + AZURE EDGE HD) -->
         <div class="settings-box" style="background:#f5f3ff;border-color:#ddd6fe;">
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <strong style="font-size:13px;color:#5b21b6;">🎙️ Voix IA Réaliste (Jenny Neural)</strong>
-            <span id="set-voice-badge" class="badge badge-emerald">Jenny Neural ✨</span>
+            <strong style="font-size:13px;color:#5b21b6;">🎙️ Voix Studio IA (Kokoro-82M & Edge HD)</strong>
+            <span id="set-voice-badge" class="badge badge-emerald">Studio IA ✨</span>
           </div>
           <p style="font-size:12px;color:#6b21a8;margin-top:2px;">
-            Voix humaine ultra-réaliste <strong>en-US-JennyNeural</strong> (intonation fluide, accent authentique, zéro robotique). 100% gratuit & illimité.
+            Voix neurales haute fidélité (<strong>Kokoro-82M</strong> type BBC/Cinéma + <strong>Azure Multilingual HD</strong>) avec bascule anti-panne et respect de la vitesse (0.75x / 1x). 100% gratuit & illimité.
           </p>
           <div class="btn-row" style="margin-top:6px;display:flex;gap:4px;">
-            <button id="btn-voice-jenny" type="button" class="btn btn-primary btn-sm flex-1">✨ Jenny Neural (IA)</button>
+            <button id="btn-voice-jenny" type="button" class="btn btn-primary btn-sm flex-1">✨ Studio Neural (IA)</button>
             <button id="btn-voice-browser" type="button" class="btn btn-secondary btn-sm flex-1">💻 Navigateur (Secours)</button>
           </div>
 
-          <!-- REGLAGES JENNY NEURAL -->
+          <!-- REGLAGES STUDIO NEURAL -->
           <div id="jenny-voice-settings-group" style="margin-top:8px;">
             <div>
-              <label for="select-jenny-voice" class="prompt-label" style="color:#5b21b6;">Voix sélectionnée</label>
+              <label for="select-jenny-voice" class="prompt-label" style="color:#5b21b6;">Voix sélectionnée (selon accent actif)</label>
               <select id="select-jenny-voice" class="select-input" style="width:100%;">
-                <optgroup label="🇺🇸 Voix Américaines (en-US)">
-                  <option value="en-US-JennyNeural - en-US (Female)">🇺🇸 Jenny Neural (Femme, chaleureuse & fluide) ⭐ Recommandée</option>
-                  <option value="en-US-GuyNeural - en-US (Male)">🇺🇸 Guy Neural (Homme, posé & naturel)</option>
-                  <option value="en-US-AriaNeural - en-US (Female)">🇺🇸 Aria Neural (Femme, dynamique)</option>
+                <optgroup label="🏆 Studio British — Kokoro-82M (Idéal Khôlle BBC / Oxford)">
+                  <option value="kokoro:bm_george">🇬🇧 George Studio (Homme, Oxford / BBC posé) ⭐ Top UK</option>
+                  <option value="kokoro:bf_emma">🇬🇧 Emma Studio (Femme, British élégant & net) ⭐ Top UK</option>
+                  <option value="kokoro:bm_daniel">🇬🇧 Daniel Studio (Homme, Journaliste BBC)</option>
+                  <option value="kokoro:bm_lewis">🇬🇧 Lewis Studio (Homme, Professeur calme)</option>
+                  <option value="kokoro:bf_isabella">🇬🇧 Isabella Studio (Femme, British naturel)</option>
+                  <option value="kokoro:bf_alice">🇬🇧 Alice Studio (Femme, British moderne)</option>
                 </optgroup>
-                <optgroup label="🇬🇧 Voix Britanniques (en-GB)">
-                  <option value="en-GB-SoniaNeural - en-GB (Female)">🇬🇧 Sonia Neural (Femme, accent British élégant) ⭐ Recommandée UK</option>
-                  <option value="en-GB-RyanNeural - en-GB (Male)">🇬🇧 Ryan Neural (Homme, accent British naturel)</option>
+                <optgroup label="🏆 Studio Américain — Kokoro-82M (Prosodie Ultra-Humaine)">
+                  <option value="kokoro:af_heart">🇺🇸 Heart Studio (Femme, intonation cinéma #1) ⭐ Top US</option>
+                  <option value="kokoro:am_michael">🇺🇸 Michael Studio (Homme, posé & naturel) ⭐ Top US</option>
+                  <option value="kokoro:af_bella">🇺🇸 Bella Studio (Femme, chaleureuse & fluide)</option>
+                  <option value="kokoro:am_fenrir">🇺🇸 Fenrir Studio (Homme, grave & assuré)</option>
+                  <option value="kokoro:am_adam">🇺🇸 Adam Studio (Homme, narrateur clair)</option>
+                </optgroup>
+                <optgroup label="⚡ Azure Multilingual HD (Nouvelle Génération)">
+                  <option value="en-US-AvaMultilingualNeural - en-US (Female)">🇺🇸 Ava HD (Femme, beaucoup plus naturelle que Jenny) ⭐</option>
+                  <option value="en-US-AndrewMultilingualNeural - en-US (Male)">🇺🇸 Andrew HD (Homme, conversation naturelle) ⭐</option>
+                  <option value="en-US-EmmaMultilingualNeural - en-US (Female)">🇺🇸 Emma HD (Femme, articulée)</option>
+                  <option value="en-US-BrianMultilingualNeural - en-US (Male)">🇺🇸 Brian HD (Homme, posé)</option>
+                  <option value="en-GB-LibbyNeural - en-GB (Female)">🇬🇧 Libby HD (Femme, British moderne)</option>
+                  <option value="en-GB-ThomasNeural - en-GB (Male)">🇬🇧 Thomas HD (Homme, British net)</option>
+                </optgroup>
+                <optgroup label="🌍 Accents Concours (Australie / Irlande / Canada)">
+                  <option value="en-AU-WilliamMultilingualNeural - en-AU (Male)">🇦🇺 William HD (Australien)</option>
+                  <option value="en-AU-NatashaNeural - en-AU (Female)">🇦🇺 Natasha (Australienne)</option>
+                  <option value="en-IE-EmilyNeural - en-IE (Female)">🇮🇪 Emily (Irlandaise)</option>
+                  <option value="en-CA-LiamNeural - en-CA (Male)">🇨🇦 Liam (Canadien)</option>
+                </optgroup>
+                <optgroup label="🕰️ Voix Classiques">
+                  <option value="en-US-JennyNeural - en-US (Female)">🇺🇸 Jenny Classic (Femme)</option>
+                  <option value="en-GB-SoniaNeural - en-GB (Female)">🇬🇧 Sonia Classic (Femme UK)</option>
                 </optgroup>
               </select>
             </div>
+            <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;font-weight:700;color:#4c1d95;cursor:pointer;">
+              <input id="chk-voice-mix" type="checkbox" style="width:15px;height:15px;accent-color:#6d28d9;">
+              <span>🔀 Mix Accents (alterne US / BBC / AU / IE à chaque extrait)</span>
+            </label>
             <div class="btn-row" style="margin-top:8px;">
-              <button id="btn-test-jenny-voice-modal" type="button" class="btn btn-primary btn-sm flex-1" style="background:#6b21a8;border:none;">🔊 Tester Jenny Neural</button>
+              <button id="btn-test-jenny-voice-modal" type="button" class="btn btn-primary btn-sm flex-1" style="background:#6b21a8;border:none;">🔊 Écouter un aperçu</button>
             </div>
             <div id="jenny-voice-status-text" class="hidden" style="font-size:11px;font-weight:600;margin-top:4px;"></div>
           </div>
@@ -2343,8 +2371,10 @@
         apiKey: "",
         groqModel: "llama-3.3-70b-versatile",
         voiceEngine: "jenny",
-        jennyVoiceUS: "en-US-JennyNeural - en-US (Female)",
-        jennyVoiceUK: "en-GB-SoniaNeural - en-GB (Female)",
+        jennyVoiceUS: "kokoro:af_heart",
+        jennyVoiceUK: "kokoro:bm_george",
+        voiceMix: false,
+        voiceUpgradedV10: true,
         aiItems: [],
         reviews: {},
         stats: { xp: 0, streak: 0, lastDate: null },
@@ -2379,8 +2409,10 @@
       apiKey: "",
       groqModel: "llama-3.3-70b-versatile",
       voiceEngine: "jenny",
-      jennyVoiceUS: "en-US-JennyNeural - en-US (Female)",
-      jennyVoiceUK: "en-GB-SoniaNeural - en-GB (Female)",
+      jennyVoiceUS: "kokoro:af_heart",
+      jennyVoiceUK: "kokoro:bm_george",
+      voiceMix: false,
+      voiceUpgradedV10: true,
       aiItems: [],
       reviews: {},
       stats: { xp: 0, streak: 0, lastDate: null },
@@ -2481,8 +2513,12 @@
       state.accent = (d.accent === "en-GB" || d.accent === "en-US") ? d.accent : "en-US";
       state.apiKey = typeof d.apiKey === "string" ? d.apiKey : "";
       state.voiceEngine = d.voiceEngine === "browser" ? "browser" : "jenny";
-      state.jennyVoiceUS = (typeof d.jennyVoiceUS === "string" && d.jennyVoiceUS) ? d.jennyVoiceUS : "en-US-JennyNeural - en-US (Female)";
-      state.jennyVoiceUK = (typeof d.jennyVoiceUK === "string" && d.jennyVoiceUK) ? d.jennyVoiceUK : "en-GB-SoniaNeural - en-GB (Female)";
+      const legacyUS = !d.jennyVoiceUS || (!d.voiceUpgradedV10 && d.jennyVoiceUS === "en-US-JennyNeural - en-US (Female)");
+      const legacyUK = !d.jennyVoiceUK || (!d.voiceUpgradedV10 && d.jennyVoiceUK === "en-GB-SoniaNeural - en-GB (Female)");
+      state.jennyVoiceUS = legacyUS ? "kokoro:af_heart" : d.jennyVoiceUS;
+      state.jennyVoiceUK = legacyUK ? "kokoro:bm_george" : d.jennyVoiceUK;
+      state.voiceMix = !!d.voiceMix;
+      state.voiceUpgradedV10 = true;
       state.groqModel = (typeof d.groqModel === "string" && d.groqModel) ? d.groqModel : "llama-3.3-70b-versatile";
       state.aiItems = Array.isArray(d.aiItems) ? d.aiItems : [];
       state.reviews = (d.reviews && typeof d.reviews === "object") ? d.reviews : {};
@@ -2534,6 +2570,8 @@
         voiceEngine: state.voiceEngine,
         jennyVoiceUS: state.jennyVoiceUS,
         jennyVoiceUK: state.jennyVoiceUK,
+        voiceMix: !!state.voiceMix,
+        voiceUpgradedV10: true,
         aiItems: state.aiItems,
         reviews: state.reviews,
         stats: state.stats,
@@ -2958,10 +2996,33 @@
       updateHeader();
     }
 
-    // ==================== MOTEUR VOCAL JENNY NEURAL (AZURE/EDGE) ====================
+    // ==================== MOTEUR VOCAL STUDIO IA (KOKORO-82M + AZURE EDGE HD) ====================
     const audioCache = new Map();
     let activeAudio = null;
     let isAudioGenerating = false;
+
+    const MIX_VOICES_POOL = [
+      "kokoro:af_heart",
+      "kokoro:bm_george",
+      "kokoro:bf_emma",
+      "kokoro:am_michael",
+      "en-US-AvaMultilingualNeural - en-US (Female)",
+      "en-GB-LibbyNeural - en-GB (Female)",
+      "en-AU-WilliamMultilingualNeural - en-AU (Male)",
+      "en-IE-EmilyNeural - en-IE (Female)"
+    ];
+
+    function resolveActiveNeuralVoice(cleanText, targetLang) {
+      const isUK = (targetLang || state.accent) === "en-GB";
+      if (state.voiceMix && cleanText) {
+        let h = 0;
+        for (let i = 0; i < cleanText.length; i++) h = ((h * 31) + cleanText.charCodeAt(i)) >>> 0;
+        return MIX_VOICES_POOL[h % MIX_VOICES_POOL.length];
+      }
+      return isUK
+        ? (state.jennyVoiceUK || "kokoro:bm_george")
+        : (state.jennyVoiceUS || "kokoro:af_heart");
+    }
 
     function updateVoiceUIState() {
       const mode = state.voiceEngine || "jenny";
@@ -2971,20 +3032,24 @@
       const badge = $("set-voice-badge");
       const hdrBadge = $("hdr-voice-label");
       const voiceSelect = $("select-jenny-voice");
+      const mixChk = $("chk-voice-mix");
 
       if (btnJ) btnJ.className = mode === "jenny" ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
       if (btnB) btnB.className = mode === "browser" ? "btn btn-primary btn-sm flex-1" : "btn btn-secondary btn-sm flex-1";
 
       if (jennyGroup) jennyGroup.classList.toggle("hidden", mode !== "jenny");
+      if (mixChk) mixChk.checked = !!state.voiceMix;
 
-      if (voiceSelect) {
-        const isUK = state.accent === "en-GB";
-        voiceSelect.value = isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)");
-      }
+      const isUK = state.accent === "en-GB";
+      const curVoice = isUK ? (state.jennyVoiceUK || "kokoro:bm_george") : (state.jennyVoiceUS || "kokoro:af_heart");
+      if (voiceSelect) voiceSelect.value = curVoice;
+
+      const isKokoro = curVoice.startsWith("kokoro:");
+      const shortTag = state.voiceMix ? "Mix IA ✨" : isKokoro ? "Kokoro ✨" : "Edge HD ✨";
 
       if (badge) {
         if (mode === "jenny") {
-          badge.textContent = "Jenny Neural ✨";
+          badge.textContent = state.voiceMix ? "Mix Accents IA ✨" : isKokoro ? "Kokoro Studio ✨" : "Azure Edge HD ✨";
           badge.className = "badge badge-emerald";
         } else {
           badge.textContent = "Navigateur 💻";
@@ -2993,52 +3058,96 @@
       }
 
       if (hdrBadge) {
-        hdrBadge.textContent = mode === "jenny" ? "Jenny ✨" : "Système 💻";
+        hdrBadge.textContent = mode === "jenny" ? shortTag : "Système 💻";
       }
     }
 
-    async function fetchJennyAudioUrl(text, voice) {
-      const cleanText = text.trim();
-      const isUK = state.accent === "en-GB";
-      const actualVoice = voice || (isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)"));
+    async function fetchWithTimeout(url, options = {}, timeoutMs = 14000) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+      try {
+        return await fetch(url, { ...options, signal: ctrl.signal });
+      } finally {
+        clearTimeout(timer);
+      }
+    }
 
-      const payload = {
-        data: [cleanText, actualVoice, 0, 0]
-      };
-
-      const res1 = await fetch("https://innoai-edge-tts-text-to-speech.hf.space/gradio_api/call/tts_interface", {
+    async function fetchKokoroAudioUrl(cleanText, kokoroVoicePrefixed, speed = 1.0) {
+      const voiceId = String(kokoroVoicePrefixed || "kokoro:af_heart").replace(/^kokoro:/, "");
+      const clampedSpeed = Math.max(0.65, Math.min(1.5, Number(speed) || 1.0));
+      const res1 = await fetchWithTimeout("https://remsky-kokoro-tts-zero.hf.space/gradio_api/call/generate_speech_from_ui", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if (!res1.ok) throw new Error(`Erreur réseau (${res1.status})`);
-
+        body: JSON.stringify({ data: [cleanText, [voiceId], clampedSpeed] })
+      }, 14000);
+      if (!res1.ok) throw new Error(`Kokoro POST (${res1.status})`);
       const json1 = await res1.json();
       const event_id = json1?.event_id;
-      if (!event_id) throw new Error("ID de synthèse introuvable");
+      if (!event_id) throw new Error("Kokoro: event_id manquant");
 
-      const res2 = await fetch(`https://innoai-edge-tts-text-to-speech.hf.space/gradio_api/call/tts_interface/${event_id}`);
-      if (!res2.ok) throw new Error(`Erreur flux audio (${res2.status})`);
-
+      const res2 = await fetchWithTimeout(`https://remsky-kokoro-tts-zero.hf.space/gradio_api/call/generate_speech_from_ui/${event_id}`, {}, 18000);
+      if (!res2.ok) throw new Error(`Kokoro SSE (${res2.status})`);
       const raw = await res2.text();
-      const m = raw.match(/https:\/\/innoai-edge-tts-text-to-speech\.hf\.space\/gradio_api\/file=[^\s"]+\.mp3/);
-      if (m && m[0]) {
-        return m[0];
+      const m = raw.match(/https:\/\/remsky-kokoro-tts-zero\.hf\.space\/gradio_api\/file=[^\s"\\]+\.(?:wav|mp3)/);
+      if (m && m[0]) return m[0];
+      throw new Error("Kokoro: audio introuvable");
+    }
+
+    async function fetchEdgeAudioUrl(cleanText, edgeVoice, speed = 1.0) {
+      const ratePct = Math.max(-45, Math.min(45, Math.round(((Number(speed) || 1.0) - 1.0) * 100)));
+      const res1 = await fetchWithTimeout("https://innoai-edge-tts-text-to-speech.hf.space/gradio_api/call/tts_interface", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: [cleanText, edgeVoice, ratePct, 0] })
+      }, 14000);
+      if (!res1.ok) throw new Error(`Edge HD (${res1.status})`);
+      const json1 = await res1.json();
+      const event_id = json1?.event_id;
+      if (!event_id) throw new Error("Edge HD: event_id manquant");
+
+      const res2 = await fetchWithTimeout(`https://innoai-edge-tts-text-to-speech.hf.space/gradio_api/call/tts_interface/${event_id}`, {}, 18000);
+      if (!res2.ok) throw new Error(`Edge HD SSE (${res2.status})`);
+      const raw = await res2.text();
+      const m = raw.match(/https:\/\/innoai-edge-tts-text-to-speech\.hf\.space\/gradio_api\/file=[^\s"\\]+\.mp3/);
+      if (m && m[0]) return m[0];
+      throw new Error("Edge HD: audio introuvable");
+    }
+
+    async function fetchJennyAudioUrl(text, voice, speed = 1.0) {
+      const cleanText = String(text || "").trim();
+      const actualVoice = voice || resolveActiveNeuralVoice(cleanText, state.accent);
+      const isUK = String(actualVoice).includes("en-GB") || String(actualVoice).includes(":bf_") || String(actualVoice).includes(":bm_") || state.accent === "en-GB";
+
+      if (String(actualVoice).startsWith("kokoro:")) {
+        try {
+          return await fetchKokoroAudioUrl(cleanText, actualVoice, speed);
+        } catch (err) {
+          console.warn("Repli Kokoro -> Azure Edge HD:", err);
+          const fallbackEdge = isUK ? "en-GB-LibbyNeural - en-GB (Female)" : "en-US-AvaMultilingualNeural - en-US (Female)";
+          return await fetchEdgeAudioUrl(cleanText, fallbackEdge, speed);
+        }
+      } else {
+        try {
+          return await fetchEdgeAudioUrl(cleanText, actualVoice, speed);
+        } catch (err) {
+          console.warn("Repli Azure Edge HD -> Kokoro Studio:", err);
+          const fallbackKokoro = isUK ? "kokoro:bm_george" : "kokoro:af_heart";
+          return await fetchKokoroAudioUrl(cleanText, fallbackKokoro, speed);
+        }
       }
-      throw new Error("Fichier audio Jenny non généré");
     }
 
     // Préchargement anticipé silencieux pour latence 0 ms dès que l'utilisateur clique
-    function preloadAudio(text, langCode) {
+    function preloadAudio(text, langCode, speed = 1.0) {
       if (!text || state.voiceEngine !== "jenny") return;
       const cleanText = text.trim();
-      const isUK = (langCode || state.accent) === "en-GB";
-      const voice = isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)");
-      const cacheKey = `jenny_${voice}_${cleanText}`;
+      const spd = Number(speed) || 1.0;
+      const voice = resolveActiveNeuralVoice(cleanText, langCode || state.accent);
+      const cacheKey = `studio_${voice}_${spd}_${cleanText}`;
 
       if (audioCache.has(cacheKey)) return;
 
-      fetchJennyAudioUrl(cleanText, voice)
+      fetchJennyAudioUrl(cleanText, voice, spd)
         .then(url => {
           audioCache.set(cacheKey, url);
           const preAudio = new Audio(url);
@@ -3189,11 +3298,10 @@
       const speed = rate || 1.0;
       const isEnglish = targetLang.startsWith("en");
 
-      // 1. Moteur Jenny Neural (voix IA ultra-humaine en-US-JennyNeural)
+      // 1. Moteur Studio Neural (Kokoro-82M + Azure Edge HD gratuit & illimité)
       if (state.voiceEngine === "jenny" && isEnglish) {
-        const isUK = targetLang === "en-GB";
-        const voice = isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)");
-        const cacheKey = `jenny_${voice}_${cleanText}`;
+        const voice = resolveActiveNeuralVoice(cleanText, targetLang);
+        const cacheKey = `studio_${voice}_${speed}_${cleanText}`;
 
         // Si déjà en cache -> Lecture 0 ms immédiate
         if (audioCache.has(cacheKey)) {
@@ -3208,20 +3316,13 @@
           return;
         }
 
-        // Si disponible nativement dans le navigateur (ex: Edge avec Microsoft Jenny Online Natural)
-        const bestVoice = pickBestVoice(targetLang);
-        if (bestVoice && /natural/i.test(bestVoice.name) && (/jenny/i.test(bestVoice.name) || /sonia/i.test(bestVoice.name))) {
-          speakWithBrowser(cleanText, targetLang, speed, onEnd);
-          return;
-        }
-
-        // Sinon, génération via le service Jenny Neural
+        // Génération via Studio Neural (Kokoro / Edge HD avec bascule auto)
         isAudioGenerating = true;
         const eq = $("listen-eq");
         if (eq) eq.classList.add("eq-playing");
 
         try {
-          const audioUrl = await fetchJennyAudioUrl(cleanText, voice);
+          const audioUrl = await fetchJennyAudioUrl(cleanText, voice, speed);
           audioCache.set(cacheKey, audioUrl);
           if (isAudioGenerating) {
             playDirectAudioUrl(audioUrl, (err) => {
@@ -3235,8 +3336,8 @@
             return;
           }
         } catch (err) {
-          console.warn("Échec Jenny Neural, repli navigateur:", err);
-          showToast("⚠️ Jenny Neural indisponible : Voix système.");
+          console.warn("Échec Studio Neural, repli navigateur:", err);
+          showToast("⚠️ Voix Studio temporairement indisponible : Voix système.");
           speakWithBrowser(cleanText, targetLang, speed, onEnd);
           return;
         } finally {
@@ -4348,7 +4449,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function loadListenItem(item) {
       if (!item) return;
       state.currentListen = item;
-      preloadAudio(item.en, state.accent);
+      preloadAudio(item.en, state.accent, state.listenSpeed);
       $("listen-lvl-badge").textContent = item.level;
       $("listen-theme-badge").textContent = item.theme;
       $("listen-ai-badge").classList.toggle("hidden", !item.isAi);
@@ -5786,12 +5887,13 @@ ${errs}`;
           copyBtn.textContent = `📋 Importer la clé Groq de ${PROFILES[otherPid].name}`;
         }
       }
-      // Synchroniser le sélecteur de voix Jenny avec l'accent en cours
+      // Synchroniser le sélecteur Studio Neural avec l'accent en cours
       const voiceSelect = $("select-jenny-voice");
       if (voiceSelect) {
         const isUK = state.accent === "en-GB";
-        voiceSelect.value = isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)");
+        voiceSelect.value = isUK ? (state.jennyVoiceUK || "kokoro:bm_george") : (state.jennyVoiceUS || "kokoro:af_heart");
       }
+      if ($("chk-voice-mix")) $("chk-voice-mix").checked = !!state.voiceMix;
       if ($("input-sync-token")) $("input-sync-token").value = state.syncToken || "";
       const copySyncBtn = $("btn-copy-other-sync-token");
       if (copySyncBtn) {
@@ -6251,7 +6353,7 @@ ${errs}`;
         state.voiceEngine = "jenny";
         saveState();
         updateVoiceUIState();
-        showToast("✨ Voix Jenny Neural activée");
+        showToast("✨ Voix Studio Neural activées (Kokoro & Edge HD)");
       });
 
       $("btn-voice-browser").addEventListener("click", () => {
@@ -6267,21 +6369,30 @@ ${errs}`;
         else state.jennyVoiceUS = val;
         saveState();
         updateVoiceUIState();
-        showToast("Voix Jenny Neural mise à jour");
+        showToast("Voix Studio mise à jour ✨");
+      });
+
+      $("chk-voice-mix").addEventListener("change", (e) => {
+        state.voiceMix = !!e.target.checked;
+        saveState();
+        updateVoiceUIState();
+        showToast(state.voiceMix ? "🔀 Mix d'accents activé !" : "🎙️ Voix fixe activée");
       });
 
       $("btn-test-jenny-voice-modal").addEventListener("click", async () => {
-        const isUK = state.accent === "en-GB";
-        const voice = $("select-jenny-voice").value || (isUK ? (state.jennyVoiceUK || "en-GB-SoniaNeural - en-GB (Female)") : (state.jennyVoiceUS || "en-US-JennyNeural - en-US (Female)"));
+        const voice = $("select-jenny-voice").value || resolveActiveNeuralVoice("test", state.accent);
+        const isBritish = String(voice).includes("en-GB") || String(voice).includes(":bf_") || String(voice).includes(":bm_");
         const statusEl = $("jenny-voice-status-text");
         statusEl.classList.remove("hidden");
         statusEl.style.color = "var(--violet)";
-        statusEl.textContent = "⏳ Génération Jenny Neural en cours...";
+        statusEl.textContent = voice.startsWith("kokoro:")
+          ? "⏳ Synthèse Kokoro Studio en cours..."
+          : "⏳ Synthèse Azure HD en cours...";
         try {
-          const sampleText = isUK
-            ? "Hello there! Welcome to English Coach. I am Sonia, your natural British voice. How do I sound?"
-            : "Hello! Welcome to English Coach. I am Jenny, your natural American voice. How do I sound?";
-          const url = await fetchJennyAudioUrl(sampleText, voice);
+          const sampleText = isBritish
+            ? "Good evening! Although artificial intelligence is evolving rapidly, critical thinking remains indispensable."
+            : "Hello! Even though artificial intelligence is transforming our world, strong human judgement still matters.";
+          const url = await fetchJennyAudioUrl(sampleText, voice, 1.0);
           statusEl.style.color = "var(--emerald)";
           statusEl.textContent = "✅ Voix prête ! Lecture en cours...";
           playDirectAudioUrl(url, () => {
