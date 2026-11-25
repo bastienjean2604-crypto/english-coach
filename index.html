@@ -41,6 +41,11 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg);
@@ -60,57 +65,67 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      background: rgba(255, 250, 241, 0.92);
+      width: 100%;
+      background: rgba(255, 250, 241, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1.5px solid var(--border);
     }
 
     .header-top {
       max-width: 760px;
+      width: 100%;
       margin: 0 auto;
-      padding: 10px 14px;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      flex-wrap: wrap;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       min-width: 0;
+      flex: 1 1 auto;
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 13px;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
       background: var(--surface);
       border: 2px solid var(--text);
       color: var(--primary);
       font-weight: 900;
-      font-size: 16px;
+      font-size: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 3px 0 rgba(45, 27, 18, 0.12);
+      box-shadow: 0 2px 0 rgba(45, 27, 18, 0.12);
     }
 
     .brand-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 900;
       color: var(--text);
       line-height: 1.15;
       letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .brand-sub {
       font-size: 11px;
       color: var(--text-muted);
       font-weight: 700;
+      white-space: nowrap;
+    }
+    @media (max-width: 520px) {
+      .brand-sub { display: none; }
+      .brand-title { font-size: 14px; }
     }
 
     .header-actions {
@@ -118,6 +133,33 @@
       align-items: center;
       gap: 6px;
       flex-shrink: 0;
+    }
+
+    .calm-details summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .calm-details summary::-webkit-details-marker { display: none; }
+    .calm-details summary::after {
+      content: "▾";
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: transform 0.15s;
+    }
+    .calm-details[open] summary::after { transform: rotate(180deg); }
+
+    .extra-filters-row {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 6px;
     }
 
     .stats-pill {
@@ -1412,64 +1454,60 @@
     <div class="header-top">
       <div class="brand">
         <div class="brand-logo" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="21" height="21" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11 4V7.5M15.5 3.5V7.5" stroke="#2D1B12" stroke-width="2.1" stroke-linecap="round"/>
             <path d="M5.5 11H20.5V15.2C20.5 19.4 17.2 22.5 13 22.5C8.8 22.5 5.5 19.4 5.5 15.2V11Z" fill="#A65C43" stroke="#2D1B12" stroke-width="2.1" stroke-linejoin="round"/>
             <path d="M20.5 12.6H22.3C23.8 12.6 25 13.7 25 15.2C25 16.7 23.8 17.8 22.3 17.8H20.2" stroke="#2D1B12" stroke-width="2.1" stroke-linecap="round"/>
             <path d="M5.5 25H20.5" stroke="#2D1B12" stroke-width="2.1" stroke-linecap="round"/>
           </svg>
         </div>
-        <div>
+        <div style="min-width:0;">
           <div class="brand-title">English Coach</div>
           <div class="brand-sub">Calme · Régulier · Efficace</div>
         </div>
       </div>
       <div class="header-actions">
         <button id="btn-open-profile" type="button" class="profile-pill" title="Changer d'espace (Bastien / Mathys)">
-          <span>👤</span>
           <span id="hdr-profile-name">Bastien</span>
           <span>▾</span>
         </button>
-        <div class="stats-pill" title="Série · Points XP · Exercices maîtrisés">
-          <span title="Série">🔥 <span id="hdr-streak">0</span></span>
+        <div class="stats-pill" title="Série · Points XP">
+          <span>🔥 <span id="hdr-streak">0</span></span>
           <span class="stats-sep">·</span>
-          <span class="stat-xp" title="Points">⚡ <span id="hdr-xp">0</span></span>
-          <span class="stats-sep">·</span>
-          <span title="Exercices maîtrisés">✅ <span id="hdr-completed-count" style="font-weight:800;color:var(--emerald);">0</span></span>
+          <span class="stat-xp">⚡ <span id="hdr-xp">0</span></span>
+          <span id="hdr-completed-count" class="hidden">0</span>
         </div>
-        <button id="hdr-voice-btn" class="stats-pill" type="button" title="Voix Studio IA" style="cursor:pointer;padding:5px 9px;">
-          <span id="hdr-voice-icon">✨</span>
-          <span id="hdr-voice-label" style="font-weight:800;font-size:11px;color:var(--primary);">Kokoro</span>
-        </button>
-        <button id="hdr-sync-btn" class="stats-pill" type="button" title="Synchro Cloud Bastien & Mathys" style="cursor:pointer;padding:5px 9px;">
-          <span id="hdr-sync-label" style="font-weight:800;font-size:11px;color:var(--text-muted);">☁️ Off</span>
-        </button>
-        <button id="btn-open-settings" class="icon-btn" type="button" aria-label="Réglages">
+        <button id="hdr-voice-btn" class="hidden" type="button"><span id="hdr-voice-icon">✨</span><span id="hdr-voice-label">Kokoro</span></button>
+        <button id="hdr-sync-btn" class="hidden" type="button"><span id="hdr-sync-label">☁️ Off</span></button>
+        <button id="btn-open-settings" class="icon-btn" type="button" aria-label="Réglages" title="Réglages, Voix IA & Synchro">
           ⚙️
           <span id="hdr-api-dot" class="api-dot hidden"></span>
         </button>
       </div>
     </div>
 
-    <!-- Barre de filtres Niveau + Thème + Grammaire -->
+    <!-- Barre de filtres épurée : Niveau + bouton Filtres optionnel -->
     <div id="global-filters-bar" class="filters-bar">
-      <div class="filters-inner">
+      <div class="filters-inner" style="justify-content:space-between;">
         <div class="level-group" role="group" aria-label="Niveau">
           <button type="button" class="lvl-btn active" data-level="A2">A2</button>
           <button type="button" class="lvl-btn" data-level="B1">B1</button>
           <button type="button" class="lvl-btn" data-level="B2">B2</button>
         </div>
-        <select id="theme-select" class="select-input theme-select" aria-label="Thème">
-          <option value="ALL">🎲 Tous les thèmes</option>
-        </select>
-        <select id="grammar-select" class="select-input theme-select" aria-label="Point de grammaire">
-          <option value="ALL">📚 Toutes notions (Grammaire)</option>
-          <option value="TENSES">⏳ Temps & Conjugaison</option>
-          <option value="MODALS_COND">🔀 Modaux & Conditionnels</option>
-          <option value="SYNTAX_B2">🏛️ Inversions, Subjonctif & Passif</option>
-          <option value="PHRASAL_ING">🔗 Gérondifs, Phrasal & Prépositions</option>
-          <option value="TRAPS_PREPA">⚠️ Faux-amis, Indénombrables & Prépa</option>
-        </select>
+        <button id="btn-toggle-filters" type="button" class="tool-btn" style="background:var(--surface);">🎛️ Thème & Notion</button>
+        <div id="extra-filters-wrap" class="extra-filters-row hidden">
+          <select id="theme-select" class="select-input theme-select" aria-label="Thème">
+            <option value="ALL">🎲 Tous les thèmes</option>
+          </select>
+          <select id="grammar-select" class="select-input theme-select" aria-label="Point de grammaire">
+            <option value="ALL">📚 Toutes notions</option>
+            <option value="TENSES">⏳ Temps & Conjugaison</option>
+            <option value="MODALS_COND">🔀 Modaux & Conditionnels</option>
+            <option value="SYNTAX_B2">🏛️ Inversions, Subjonctif & Passif</option>
+            <option value="PHRASAL_ING">🔗 Gérondifs, Phrasal & Prépositions</option>
+            <option value="TRAPS_PREPA">⚠️ Faux-amis & Prépa</option>
+          </select>
+        </div>
       </div>
     </div>
   </header>
@@ -1522,25 +1560,25 @@
         <div class="plan-hero">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;">
             <div>
-              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;opacity:0.9;">
-                Espace <span id="plan-profile-label">Bastien</span> · <span id="plan-date-label"></span>
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;opacity:0.88;">
+                <span id="plan-profile-label">Bastien</span> · <span id="plan-date-label"></span>
               </div>
-              <h2 style="font-size:20px;font-weight:800;margin-top:4px;">🚀 Ta séance guidée du jour</h2>
-              <p id="plan-subtitle" style="font-size:12.5px;opacity:0.92;margin-top:2px;">Laisse-toi guider étape par étape : conjugaison, erreurs, vocabulaire, oral, écoute, écrit & khôlle.</p>
+              <h2 style="font-size:19px;font-weight:900;margin-top:4px;">☕ Séance du jour</h2>
+              <p id="plan-subtitle" style="font-size:12px;opacity:0.9;margin-top:2px;">Appuie sur Démarrer pour suivre l'ordre optimal, sans te poser de question.</p>
             </div>
             <div style="text-align:right;">
               <div id="plan-missions-count" style="font-size:22px;font-weight:900;">0/7</div>
-              <div style="font-size:11px;opacity:0.9;font-weight:700;">blocs</div>
+              <div style="font-size:11px;opacity:0.9;font-weight:700;">étapes</div>
             </div>
           </div>
 
           <div class="duration-pills" role="group" aria-label="Durée du programme">
-            <button type="button" class="duration-pill" data-duration="20">⚡ Express 20 min</button>
-            <button type="button" class="duration-pill" data-duration="40">🎯 Solide 40 min</button>
-            <button type="button" class="duration-pill active" data-duration="60">🔥 Turbo 1h (Max)</button>
+            <button type="button" class="duration-pill" data-duration="20">⚡ 20 min</button>
+            <button type="button" class="duration-pill" data-duration="40">🎯 40 min</button>
+            <button type="button" class="duration-pill active" data-duration="60">🔥 1h (Max)</button>
           </div>
 
-          <button id="btn-start-guided" type="button" class="btn" style="background:#fff;color:var(--primary);font-size:15px;box-shadow:0 6px 18px rgba(15,23,42,0.22);">
+          <button id="btn-start-guided" type="button" class="btn" style="width:100%;padding:13px 16px;background:#FFFDF8;color:var(--primary);font-size:15px;box-shadow:0 4px 14px rgba(45,27,18,0.18);">
             🚀 Démarrer ma séance guidée (1h)
           </button>
 
@@ -1551,15 +1589,19 @@
 
         <div id="plan-missions-list"></div>
 
-        <div class="card" style="background:var(--surface-soft);">
-          <div class="grammar-title">📊 Points de grammaire à consolider (Niveau <span id="plan-lvl-label">B1</span>)</div>
-          <div id="plan-grammar-stats" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;"></div>
-        </div>
-
-        <div id="plan-history-card" class="card" style="background:var(--surface-soft);">
-          <div class="grammar-title">📈 Historique & Notes récentes (Khôlles / Essais / Jours)</div>
-          <div id="plan-history-list" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;font-size:12.5px;color:#475569;"></div>
-        </div>
+        <details class="card calm-details" style="background:var(--surface-soft);padding:16px 18px;">
+          <summary>📊 Statistiques & historique des notes (/20)</summary>
+          <div style="margin-top:14px;display:flex;flex-direction:column;gap:14px;">
+            <div>
+              <div class="grammar-title">Progression par grammaire (Niveau <span id="plan-lvl-label">B1</span>)</div>
+              <div id="plan-grammar-stats" style="display:flex;flex-direction:column;gap:8px;margin-top:6px;"></div>
+            </div>
+            <div id="plan-history-card" style="border-top:1px solid var(--border);padding-top:12px;">
+              <div class="grammar-title">📈 Historique & Notes récentes</div>
+              <div id="plan-history-list" style="display:flex;flex-direction:column;gap:8px;margin-top:6px;font-size:12.5px;color:var(--text-muted);"></div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <!-- SOUS-VUE 2 : FLASHCARDS SRS VOCABULAIRE PRÉPA -->
@@ -2266,9 +2308,9 @@
           <p style="font-size:12px;color:var(--text-muted);margin-top:2px;">
             Synchronise automatiquement la progression de <strong>Bastien</strong> & <strong>Mathys</strong> sur votre dépôt privé GitHub (téléphone ↔ PC ↔ Coach). Aucune clé API n'est envoyée sur le cloud.
           </p>
-          <div class="input-row">
+          <div class="input-with-btn">
             <input id="input-sync-token" type="password" class="text-input" placeholder="Token GitHub de synchro (ghp_...)" autocomplete="off">
-            <button id="btn-toggle-sync-vis" type="button" class="btn btn-secondary btn-sm" style="width:auto;">👁️</button>
+            <button id="btn-toggle-sync-vis" type="button" class="eye-btn" aria-label="Afficher le token">👁️</button>
           </div>
           <div class="btn-row" style="margin-top:2px;">
             <button id="btn-save-sync-token" type="button" class="btn btn-primary btn-sm flex-1" style="box-shadow:none;">Enregistrer</button>
@@ -5251,17 +5293,15 @@ Retourne STRICTEMENT ce JSON :
       missions.forEach(m => {
         const isDone = m.autoDone || (m.target > 0 && m.done >= m.target);
         if (isDone) completedMissions++;
-        const pct = m.autoDone ? 100 : Math.min(100, Math.round((m.done / Math.max(1, m.target)) * 100));
         const card = document.createElement("div");
         card.className = `mission-card${isDone ? " done" : ""}`;
         card.innerHTML = `
           <div class="mission-info">
             <div class="mission-title">${esc(m.title)}</div>
-            <div class="mission-sub">${esc(m.sub)} · <strong>${m.autoDone ? "OK" : `${Math.min(m.done, m.target)}/${m.target}`}</strong></div>
-            <div class="mission-bar"><div class="mission-bar-fill" style="width:${pct}%"></div></div>
+            <div class="mission-sub">${m.autoDone ? "Aucun en attente · OK" : `${Math.min(m.done, m.target)} / ${m.target} fait(s)`}</div>
           </div>
-          <button type="button" class="btn ${isDone ? "btn-secondary" : "btn-primary"} btn-sm" style="width:auto;box-shadow:none;">
-            ${isDone ? "✓ Fait" : "▶ Lancer"}
+          <button type="button" class="btn ${isDone ? "btn-secondary" : "btn-primary"} btn-sm" style="width:auto;box-shadow:none;padding:8px 14px;">
+            ${isDone ? "✓ Fait" : "▶"}
           </button>
         `;
         card.querySelector("button").addEventListener("click", m.launch);
@@ -6246,7 +6286,17 @@ ${errs}`;
         applyEvaluationOutcome("listen", evalInfo.item, 100, false);
       });
 
-      // Filtre grammaire
+      // Filtre grammaire & bouton dépliable filtres
+      const toggleFiltersBtn = $("btn-toggle-filters");
+      if (toggleFiltersBtn) {
+        toggleFiltersBtn.addEventListener("click", () => {
+          const wrap = $("extra-filters-wrap");
+          if (!wrap) return;
+          const willShow = wrap.classList.contains("hidden");
+          wrap.classList.toggle("hidden", !willShow);
+          toggleFiltersBtn.textContent = willShow ? "🎛️ Masquer filtres" : "🎛️ Thème & Notion";
+        });
+      }
       $("grammar-select").addEventListener("change", () => {
         state.grammarFilter = $("grammar-select").value;
         loadSpeakItem(pickNextItem("speak", state.currentSpeak?.id));
