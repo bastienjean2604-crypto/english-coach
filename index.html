@@ -3773,7 +3773,7 @@
           body: JSON.stringify({
             model: model,
             temperature: 0.2,
-            max_tokens: 1024,
+            max_tokens: 1500,
             response_format: { type: "json_object" },
             messages: [
               { role: "system", content: systemPrompt },
@@ -4284,6 +4284,10 @@ Indique à combien de pourcent ("score") l'élève a compris l'audio en te basan
         if (!finalAnswerText || !finalAnswerText.trim()) {
           throw new Error("Aucun propos détecté. Rapprochez-vous du micro ou écrivez votre réponse.");
         }
+        const wordTokens = finalAnswerText.trim().split(/\s+/).filter(Boolean);
+        if (!userText && wordTokens.length < 3) {
+          throw new Error(`Audio trop court ou bruit capté (« ${finalAnswerText.trim()} »). Réessayez en faisant au moins une phrase complète.`);
+        }
 
         loadTxt.textContent = `2/2 Le colleur analyse vos idées et prépare sa relance (${state.groqModel})...`;
         const currentQ = session.currentQuestion;
@@ -4303,11 +4307,11 @@ Commentaire colleur : "${r.examinerReaction || ""}"`).join("\n\n");
         const prevHookGoal = session.pendingHookGoal || "";
         let steeringDirective = "";
         if (currentRoundNum === 1) {
-          steeringDirective = `TOUR 1 -> RELANCE 2 (Avocat du diable & angle mort) : Repère ce que l'étudiant a oublié ou trop simplifié (coût économique, fracture sociale, liberté individuelle, effet pervers, faisabilité pratique) et formule UNE relance directe qui cherche à l'amener sur CE point précis qu'il n'a pas pensé à aborder — comme un vrai colleur qui teste les angles morts sans tout révéler d'un coup.`;
+          steeringDirective = `TOUR 1 -> RELANCE 2 (Avocat du diable & angle mort) : Repère ce que l'étudiant a oublié ou trop simplifié (coût économique, fracture sociale, liberté individuelle, effet pervers, faisabilité pratique) et formule DANS LE CHAMP "followUpQuestion" UNE nouvelle question directe en anglais (ou langue de travail) qui cherche à l'amener sur CE point précis qu'il n'a pas encore abordé.`;
         } else if (currentRoundNum === 2) {
-          steeringDirective = `TOUR 2 -> RELANCE 3 (Comparaison monde anglo-saxon UK / US & exemple concret) : En vrai colleur d'anglais, pousse l'étudiant à sortir du cadre franco-français ou théorique en le guidant vers un exemple concret britannique, américain ou international (ex. politiques au Royaume-Uni, aux États-Unis, modèles anglo-saxons comparés à l'Europe).`;
+          steeringDirective = `TOUR 2 -> RELANCE 3 (Comparaison monde anglo-saxon UK / US & exemple concret) : En vrai colleur d'anglais, formule DANS LE CHAMP "followUpQuestion" UNE nouvelle question directe qui pousse l'étudiant à sortir du cadre franco-français vers un exemple concret britannique, américain ou international (modèles UK/US comparés à l'Europe).`;
         } else if (currentRoundNum === 3) {
-          steeringDirective = `TOUR 3 -> RELANCE 4 (Nuance finale & prise de position : "Where do you draw the line?") : Joue un peu plus serré et pousse l'étudiant à dépasser une vision manichéenne : oblige-le à formuler une concession nuancée (Admittedly / Granted... nevertheless...) et à hiérarchiser une solution réaliste pour conclure.`;
+          steeringDirective = `TOUR 3 -> RELANCE 4 (Nuance finale & prise de position : "Where do you draw the line?") : Formule DANS LE CHAMP "followUpQuestion" UNE ultime question directe et serrée qui oblige l'étudiant à dépasser une vision tranchée, formuler une concession nuancée (Admittedly / Granted... nevertheless...) et conclure.`;
         } else {
           steeringDirective = `C'est le dernier tour (${MAX_PREPA_ROUNDS}/${MAX_PREPA_ROUNDS}) : laisse "followUpQuestion" et "nextHookGoal" vides ("").`;
         }
@@ -4384,8 +4388,31 @@ Retourne l'objet JSON :
           return;
         }
 
-        // La prochaine question devient la relance du colleur
-        session.currentQuestion = data.followUpQuestion || `Could you elaborate further on your previous argument regarding ${session.topic}?`;
+        // La prochaine question devient la relance du colleur (anti-doublon & secours distinct par tour)
+        const askedNormSet = new Set(
+          [currentQ, ...session.rounds.map(r => r.question)]
+            .map(q => String(q || "").toLowerCase().replace(/[^a-z0-9]/g, ""))
+            .filter(Boolean)
+        );
+        const candidateFollowUp = String(data.followUpQuestion || "").trim();
+        const candNorm = candidateFollowUp.toLowerCase().replace(/[^a-z0-9]/g, "");
+        const roundFallbacks = {
+          1: `What practical drawbacks, costs, or limits could critics point out regarding your stance on ${session.topic}?`,
+          2: `How is this issue approached in English-speaking countries like the UK or the US compared to France or Europe?`,
+          3: `In the end, where would you draw the line to balance both sides realistically on ${session.topic}?`
+        };
+        const isValidNewFollowUp = candidateFollowUp.length >= 12 && !askedNormSet.has(candNorm);
+        session.currentQuestion = isValidNewFollowUp
+          ? candidateFollowUp
+          : (roundFallbacks[currentRoundNum] || `Could you offer a nuanced conclusion on ${session.topic}?`);
+        if (!isValidNewFollowUp) {
+          const goalFallbacks = {
+            1: "Identifier les limites pratiques, coûts ou effets pervers de ta proposition.",
+            2: "Citer un exemple ou une comparaison avec le Royaume-Uni ou les États-Unis.",
+            3: "Formuler une nuance claire ('Admittedly... nevertheless...') et conclure fermement."
+          };
+          session.pendingHookGoal = goalFallbacks[currentRoundNum] || "";
+        }
         saveState();
         renderPrepaSessionUI();
 
