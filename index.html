@@ -4163,6 +4163,14 @@ Indique à combien de pourcent ("score") l'élève a compris l'audio en te basan
           </div>`;
         }
 
+        let hookFeedbackHtml = "";
+        if (r.hookFeedback) {
+          hookFeedbackHtml = `<div style="font-size:12px;color:#5b21b6;background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;padding:8px 10px;">
+            <strong>🎯 Perche du colleur décodée (ce qu'il voulait te faire dire) :</strong>
+            <div style="margin-top:3px;color:#4c1d95;line-height:1.45;">${esc(r.hookFeedback)}</div>
+          </div>`;
+        }
+
         let missedAnglesHtml = "";
         if (Array.isArray(r.missedAngles) && r.missedAngles.length) {
           missedAnglesHtml = `<div style="font-size:12px;color:#0369a1;background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:8px 10px;">
@@ -4205,6 +4213,7 @@ Indique à combien de pourcent ("score") l'élève a compris l'audio en te basan
             ${goodHtml}
             ${badHtml}
             ${reactionHtml}
+            ${hookFeedbackHtml}
             ${missedAnglesHtml}
             ${vocabHtml}
           </div>
@@ -4291,18 +4300,32 @@ Khôlleur : "${r.question}"
 Commentaire colleur : "${r.examinerReaction || ""}"`).join("\n\n");
 
         const isLastRound = currentRoundNum >= MAX_PREPA_ROUNDS;
-        const sysPrompt = `Tu es un colleur / examinateur d'anglais exigeant, percutant et bienveillant de CPGE scientifique (classes préparatoires aux grandes écoles d'ingénieurs : Polytechnique, Mines-Ponts, Centrale-Supélec).
-Tu animes une vraie discussion orale dynamique (khôlle) en ${MAX_PREPA_ROUNDS} questions avec l'étudiant.
+        const prevHookGoal = session.pendingHookGoal || "";
+        let steeringDirective = "";
+        if (currentRoundNum === 1) {
+          steeringDirective = `TOUR 1 -> RELANCE 2 (Avocat du diable & angle mort) : Repère ce que l'étudiant a oublié ou trop simplifié (coût économique, fracture sociale, liberté individuelle, effet pervers, faisabilité pratique) et formule UNE relance directe qui cherche à l'amener sur CE point précis qu'il n'a pas pensé à aborder — comme un vrai colleur qui teste les angles morts sans tout révéler d'un coup.`;
+        } else if (currentRoundNum === 2) {
+          steeringDirective = `TOUR 2 -> RELANCE 3 (Comparaison monde anglo-saxon UK / US & exemple concret) : En vrai colleur d'anglais, pousse l'étudiant à sortir du cadre franco-français ou théorique en le guidant vers un exemple concret britannique, américain ou international (ex. politiques au Royaume-Uni, aux États-Unis, modèles anglo-saxons comparés à l'Europe).`;
+        } else if (currentRoundNum === 3) {
+          steeringDirective = `TOUR 3 -> RELANCE 4 (Nuance finale & prise de position : "Where do you draw the line?") : Joue un peu plus serré et pousse l'étudiant à dépasser une vision manichéenne : oblige-le à formuler une concession nuancée (Admittedly / Granted... nevertheless...) et à hiérarchiser une solution réaliste pour conclure.`;
+        } else {
+          steeringDirective = `C'est le dernier tour (${MAX_PREPA_ROUNDS}/${MAX_PREPA_ROUNDS}) : laisse "followUpQuestion" et "nextHookGoal" vides ("").`;
+        }
+
+        const sysPrompt = `Tu es un VRAI colleur d'anglais angliciste (professeur de CPGE, pas scientifique : Polytechnique, Mines-Ponts, Centrale) : exigeant, fin psychologue, parfois un peu provocateur ("avocat du diable"), mais formateur.
+Tu animes une vraie khôlle orale en ${MAX_PREPA_ROUNDS} questions où tu cherches activement à amener l'étudiant sur des idées précises que tu veux entendre.
 ${langPrompt}
 Consignes pour ce tour (${currentRoundNum}/${MAX_PREPA_ROUNDS}) :
 1. Analyse la réponse de l'étudiant : clarté de la thèse, vocabulaire, grammaire.
 2. Détecte TOUTES les fautes précises ("badWords": [{"wrong":"...","right":"...","why":"..."}]).
 3. Relève 1 à 3 points forts ou tournures bien trouvées ("goodPoints").
-4. Rédige une réaction directe et courte ("examinerReaction") en 1 ou 2 phrases qui commente ses arguments.
-5. Propose 2 ou 3 pistes argumentatives, exemples concrets ou angles d'analyse PERTINENTS que l'étudiant N'A PAS mentionnés et qui auraient été très appréciés en khôlle de concours ("missedAngles": ["Piste 1 en français...", "Piste 2 en français..."]).
-6. ${isLastRound ? 'C\'est le dernier tour : laisse "followUpQuestion" vide ("").' : 'Formule UNE nouvelle question de relance ("followUpQuestion") en anglais (ou langue de travail), directe, stimulante, qui rebondit précisément sur ce que l\'étudiant vient d\'affirmer.'}
-7. Propose 1 ou 2 expressions idiomatiques de concours utiles ("suggestedVocab": [{"en":"...","fr":"..."}]).
-8. Note ce tour sur 100 ("scoreRound").
+4. Rédige une réaction directe et courte ("examinerReaction") en 1 ou 2 phrases qui réagit à ses arguments comme un vrai colleur.
+5. ${prevHookGoal ? `L'étudiant vient de répondre à ta relance dont l'intention cachée était : "${prevHookGoal}". Dans "hookFeedback" (en français, 1 à 2 phrases), décode pour lui ce que tu cherchais à lui faire dire derrière ta question, et dis-lui franchement s'il a bien saisi ta perche ou s'il est resté à côté.` : 'Laisse "hookFeedback" vide ("").'}
+6. Propose 2 ou 3 pistes argumentatives ou exemples concrets PERTINENTS que l'étudiant N'A PAS mentionnés ("missedAngles": ["Piste 1 en français...", "Piste 2 en français..."]).
+7. ${steeringDirective}
+8. ${isLastRound ? 'Laisse "nextHookGoal" vide ("").' : 'Décris en 1 phrase en français ("nextHookGoal") l\'idée précise ou l\'angle vers lequel ta "followUpQuestion" essaie secrètement d\'amener l\'étudiant (cela lui sera révélé seulement APRÈS sa réponse).'}
+9. Propose 1 ou 2 expressions idiomatiques de concours utiles ("suggestedVocab": [{"en":"...","fr":"..."}]).
+10. Note ce tour sur 100 ("scoreRound").
 
 Réponds STRICTEMENT en JSON valide.`;
 
@@ -4310,7 +4333,7 @@ Réponds STRICTEMENT en JSON valide.`;
 ${historyText ? `Historique des échanges précédents :\n${historyText}\n\n` : ""}
 [Tour ${currentRoundNum}/${MAX_PREPA_ROUNDS}]
 Question posée par le colleur : "${currentQ}"
-Réponse de l'étudiant : "${finalAnswerText}"
+${prevHookGoal ? `Perche cachée attendue par le colleur sur cette question : "${prevHookGoal}"\n` : ""}Réponse de l'étudiant : "${finalAnswerText}"
 
 Retourne l'objet JSON :
 {
@@ -4318,9 +4341,11 @@ Retourne l'objet JSON :
   "verdictRound": "court commentaire de performance",
   "goodPoints": ["point fort 1", "expression 2"],
   "badWords": [{"wrong":"...","right":"...","why":"..."}],
-  "examinerReaction": "Votre argument est solide, mais comment concilier cela avec...",
+  "examinerReaction": "Réaction naturelle du colleur sur la réponse...",
+  "hookFeedback": ${prevHookGoal ? '"Explication directe : ce que le colleur voulait te faire dire et si tu as bien saisi la perche"' : '""'},
   "missedAngles": ["Angle / exemple non abordé 1 qui aurait enrichi la réponse", "Angle / nuance non abordé 2"],
-  "followUpQuestion": ${isLastRound ? '""' : '"Une question de relance percutante en anglais qui rebondit sur ses idées"'},
+  "followUpQuestion": ${isLastRound ? '""' : '"Question de relance naturelle en anglais qui tend une perche sans donner la réponse"'},
+  "nextHookGoal": ${isLastRound ? '""' : '"Ce que le colleur cherche secrètement à amener comme idée/exemple avec cette relance"'},
   "suggestedVocab": [{"en":"terme EN","fr":"sens FR"}]
 }`;
 
@@ -4340,9 +4365,12 @@ Retourne l'objet JSON :
           goodPoints: Array.isArray(data.goodPoints) ? data.goodPoints : [],
           badWords: Array.isArray(data.badWords) ? data.badWords : [],
           examinerReaction: data.examinerReaction || "",
+          hookFeedback: data.hookFeedback || "",
           missedAngles: Array.isArray(data.missedAngles) ? data.missedAngles : [],
           suggestedVocab: Array.isArray(data.suggestedVocab) ? data.suggestedVocab : []
         });
+
+        session.pendingHookGoal = isLastRound ? "" : String(data.nextHookGoal || "").trim();
 
         awardXP(scoreRound);
         if (Array.isArray(data.badWords) && data.badWords.length) {
@@ -4641,6 +4669,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         topic: item.theme,
         rounds: [],
         currentQuestion: state.prepaLang === "en" ? item.questionEn : item.questionFr,
+        pendingHookGoal: "",
         status: "ongoing",
         finalReport: null
       };
