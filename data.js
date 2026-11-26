@@ -21055,7 +21055,7 @@ window.EC_DRILL_BANK = [
     "id": "d-a2-104",
     "level": "A2",
     "cat": "Catégories GR (Copie PC*)",
-    "q": "Platforms must try to protect ___ against automated bot attacks.",
+    "q": "Platforms must try to ___ against automated bot attacks.",
     "fr": "Les plateformes doivent essayer de se protéger contre les attaques de bots.",
     "opts": [
       "protect themselfs",
@@ -21310,7 +21310,7 @@ window.EC_DRILL_BANK = [
     "id": "d-a2-121",
     "level": "A2",
     "cat": "Généralités & Articles",
-    "q": "Wait a minute, my cousin is ___ engineer in Toulouse.",
+    "q": "Wait a minute, my cousin is ___ in Toulouse.",
     "fr": "Attends une minute, mon cousin est ingénieur à Toulouse.",
     "opts": [
       "the engineer",
@@ -21325,7 +21325,7 @@ window.EC_DRILL_BANK = [
     "id": "d-a2-122",
     "level": "A2",
     "cat": "Généralités & Articles",
-    "q": "Our plane leaves from ___ airport at six tomorrow.",
+    "q": "Our plane leaves from ___ at six tomorrow.",
     "fr": "Notre avion part de l'aéroport demain à six heures.",
     "opts": [
       "airport",
@@ -21610,7 +21610,7 @@ window.EC_DRILL_BANK = [
     "id": "d-a2-141",
     "level": "A2",
     "cat": "Pronoms & Déterminants",
-    "q": "Remember to change ___ passwords regularly.",
+    "q": "Remember to change ___ regularly.",
     "fr": "Pensez à changer vos mots de passe régulièrement.",
     "opts": [
       "yours passwords",
@@ -21970,7 +21970,7 @@ window.EC_DRILL_BANK = [
     "id": "d-a2-165",
     "level": "A2",
     "cat": "Prépositions",
-    "q": "Generative AI is very good ___ creating realistic images.",
+    "q": "Generative AI is very good ___ realistic images.",
     "fr": "L'IA générative est très douée pour créer des images réalistes.",
     "opts": [
       "at creating",
@@ -21985,7 +21985,7 @@ window.EC_DRILL_BANK = [
     "id": "d-a2-166",
     "level": "A2",
     "cat": "Prépositions",
-    "q": "This public platform is open ___ everyone who wants to learn.",
+    "q": "This public platform is open ___ who wants to learn.",
     "fr": "Cette plateforme est ouverte à tous ceux qui veulent apprendre.",
     "opts": [
       "for anyone",
@@ -23170,16 +23170,16 @@ window.EC_DRILL_BANK = [
     "id": "d-b1-45",
     "level": "B1",
     "cat": "Used to / Habits",
-    "q": "Doctors are used to ___ urgent decisions under heavy pressure.",
+    "q": "Doctors are used ___ urgent decisions under heavy pressure.",
     "fr": "Les médecins ont l'habitude de prendre des décisions urgentes sous forte pression.",
     "opts": [
+      "made",
       "to make",
-      "make",
-      "making",
-      "made"
+      "to making",
+      "making"
     ],
     "ans": 2,
-    "rule": "'be used to + V-ing' -> 'making decisions'."
+    "rule": "'be used to + V-ing' -> 'to making decisions'."
   },
   {
     "id": "d-b1-46",
@@ -26785,7 +26785,7 @@ window.EC_DRILL_BANK = [
     "id": "d-b2-106",
     "level": "B2",
     "cat": "Collocations & Syntaxe CPGE",
-    "q": "Recent ___ proves that short-form video weakens sustained reading stamina.",
+    "q": "Recent ___ that short-form video weakens sustained reading stamina.",
     "fr": "Des recherches récentes prouvent que les vidéos courtes affaiblissent l'endurance de lecture.",
     "opts": [
       "research proves",
@@ -26890,16 +26890,16 @@ window.EC_DRILL_BANK = [
     "id": "d-b2-113",
     "level": "B2",
     "cat": "Collocations & Syntaxe CPGE",
-    "q": "Tech platforms must ___ with national transparency standards or face heavy fines.",
+    "q": "Tech platforms must ___ national transparency standards or face heavy fines.",
     "fr": "Les plateformes tech doivent se conformer aux normes nationales de transparence sous peine d'amendes.",
     "opts": [
-      "comply",
+      "comply with",
       "follow with",
       "obey to",
-      "respect"
+      "respect with"
     ],
     "ans": 0,
-    "rule": "'comply WITH rules/standards' (= se conformer à). 'obey' et 'respect' n'ont pas 'with'."
+    "rule": "'comply WITH rules/standards' (= se conformer à). 'obey' et 'respect' n'ont pas de préposition."
   },
   {
     "id": "d-b2-114",
@@ -26980,7 +26980,7 @@ window.EC_DRILL_BANK = [
     "id": "d-b2-119",
     "level": "B2",
     "cat": "Collocations & Syntaxe CPGE",
-    "q": "No clear ___ links moderate video-game play to real-world violence.",
+    "q": "No clear ___ moderate video-game play to real-world violence.",
     "fr": "Aucune preuve claire ne relie une pratique modérée du jeu vidéo à la violence réelle.",
     "opts": [
       "evidences link",
