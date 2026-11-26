@@ -1670,6 +1670,7 @@
               <span class="badge badge-primary">⚡ Drill Conjugaison & Grammaire</span>
               <span id="drill-lvl-badge" class="badge badge-muted">B1</span>
               <span id="drill-score-badge" class="badge badge-emerald">0/0 justes</span>
+              <span id="drill-pool-badge" class="badge badge-muted">0/0 vues</span>
             </div>
             <select id="drill-level-select" class="select-input" style="padding:6px 10px;font-size:12px;">
               <option value="CURRENT">Niveau actif</option>
@@ -2478,7 +2479,8 @@
         syncToken: "",
         lastSyncAt: null,
         daily: createEmptyDaily(),
-        drillStats: { total: 0, correct: 0 }
+        drillStats: { total: 0, correct: 0 },
+        drillSeenIds: {}
       };
     }
 
@@ -2517,6 +2519,7 @@
       lastSyncAt: null,
       daily: createEmptyDaily(),
       drillStats: { total: 0, correct: 0 },
+      drillSeenIds: {},
       sessionSeen: { speak: [], listen: [], prepa: [] },
       seenIds: new Set(),
       seenPrepaIds: new Set(),
@@ -2635,6 +2638,9 @@
       state.drillStats = (d.drillStats && typeof d.drillStats === "object")
         ? { total: Number(d.drillStats.total) || 0, correct: Number(d.drillStats.correct) || 0 }
         : { total: 0, correct: 0 };
+      state.drillSeenIds = (d.drillSeenIds && typeof d.drillSeenIds === "object" && !Array.isArray(d.drillSeenIds))
+        ? { ...d.drillSeenIds }
+        : {};
       state.sessionSeen = { speak: [], listen: [], prepa: [] };
       state.speakMode = "normal";
       state.listenMode = "normal";
@@ -2675,7 +2681,8 @@
         syncToken: state.syncToken,
         lastSyncAt: state.lastSyncAt,
         daily: state.daily,
-        drillStats: state.drillStats
+        drillStats: state.drillStats,
+        drillSeenIds: state.drillSeenIds
       };
     }
 
@@ -4706,118 +4713,25 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       renderDailyPlan();
     }
 
-    // DRILL CONJUGAISON & GRAMMAIRE RAPIDE (100 QUESTIONS : BASES A2/B1 + PIÈGES COPIE PC* + CONCOURS B2)
-    const DRILL_BANK = [
-      // === A2 : FONDATIONS CONJUGAISON, ARTICLES, CATÉGORIES GR & PIÈGES DE BASE (36) ===
-      { level: "A2", cat: "Temps & Conjugaison", q: "She ___ in a small apartment near the train station.", fr: "Elle habite dans un petit appartement près de la gare.", opts: ["live", "lives", "is live", "living"], ans: 1, rule: "Présent simple 3e personne du singulier : toujours ajouter -s ('lives')." },
-      { level: "A2", cat: "Temps & Conjugaison", q: "ChatGPT ___ when a prompt tries to influence an election.", fr: "ChatGPT détecte quand une requête cherche à influencer une élection.", opts: ["detect", "detects", "detecting", "is detect"], ans: 1, rule: "3e personne du singulier au présent : toujours ajouter -s ('ChatGPT detects')." },
-      { level: "A2", cat: "Temps & Conjugaison", q: "This old apartment ___ warm in winter thanks to its new windows.", fr: "Cet appartement reste chaud en hiver grâce à ses nouvelles fenêtres.", opts: ["stay", "stays", "staying", "is stay"], ans: 1, rule: "Sujet singulier ('this apartment') -> verbe avec -s ('stays'). Et 'thanks to ITS new windows'." },
-      { level: "A2", cat: "Temps & Conjugaison", q: "Did you ___ well at the hotel last night?", fr: "As-tu bien dormi à l'hôtel la nuit dernière ?", opts: ["slept", "sleeping", "sleep", "sleeps"], ans: 2, rule: "Après l'auxiliaire 'Did' dans une question au Past Simple, le verbe reste à la base verbale ('sleep')." },
-      { level: "A2", cat: "Temps & Conjugaison", q: "Yesterday, I ___ my wallet on the bus.", fr: "Hier, j'ai perdu mon portefeuille dans le bus.", opts: ["lost", "losed", "lose", "have lost"], ans: 0, rule: "'Yesterday' impose le Past Simple. Le prétérit irrégulier de 'lose' est 'lost'." },
-      { level: "A2", cat: "Temps & Conjugaison", q: "Yesterday, I ___ wait thirty minutes at the doctor's.", fr: "Hier, j'ai dû attendre trente minutes chez le médecin.", opts: ["must", "musted", "had to", "have to"], ans: 2, rule: "'Must' n'a pas de passé : au Past Simple, on utilise obligatoirement 'had to' (et 'at the doctor's')." },
-      { level: "A2", cat: "Temps & Conjugaison", q: "My grandmother ___ me how to cook this traditional soup.", fr: "Ma grand-mère m'a appris à cuisiner cette soupe traditionnelle.", opts: ["teached", "taught", "thought", "learned"], ans: 1, rule: "'Teach' -> 'taught' au Past Simple. (Ne pas confondre avec 'think -> thought')." },
-      { level: "A2", cat: "Temps & Conjugaison", q: "Call me as soon as you ___ at the airport tonight.", fr: "Appelle-moi dès que tu arriveras à l'aéroport ce soir.", opts: ["will arrive", "arrived", "arrive", "arriving"], ans: 2, rule: "Pas de 'will' après 'as soon as' ou 'when' : on met le présent simple ('arrive')." },
-      { level: "A2", cat: "Temps & Conjugaison", q: "She ___ write a short summary before the deadline yesterday.", fr: "Elle a écrit un court résumé avant la date limite hier.", opts: ["wrote", "writed", "writes", "has written"], ans: 0, rule: "'Yesterday' impose le Past Simple : le prétérit irrégulier de 'write' est 'wrote'." },
-      { level: "A2", cat: "Temps & Conjugaison", q: "In general, generative AI ___ misinformation if users do not verify sources.", fr: "En général, l'IA générative diffuse de la désinformation si on ne vérifie pas.", opts: ["wanted to spread", "spreads", "spreaded", "are spreading"], ans: 1, rule: "Vérité générale dans une analyse/synthèse = Présent Simple ('spreads'), pas de prétérit aléatoire !" },
-      { level: "A2", cat: "Modaux & Obligations", q: "You ___ bring a gift, just come as you are!", fr: "Tu n'es pas obligé d'apporter un cadeau, viens comme tu es !", opts: ["must not", "do not have to", "cannot", "should not"], ans: 1, rule: "'Do not have to' = ne pas être obligé de. ('Must not' signifie une interdiction !)." },
-      { level: "A2", cat: "Modaux & Obligations", q: "You ___ share your passwords on a public computer.", fr: "On ne doit pas partager ses mots de passe sur un ordinateur public.", opts: ["don't have to", "must not", "didn't have to", "would not"], ans: 1, rule: "Interdiction stricte = 'must not' (jamais 'don't have to', qui veut dire 'pas obligé'). Et 'on a public computer'." },
-      { level: "A2", cat: "Modaux & Obligations", q: "When she was six, she already ___ swim across the pool.", fr: "À six ans, elle savait déjà traverser la piscine à la nage.", opts: ["knew swimming", "could", "can", "might to"], ans: 1, rule: "'Savoir faire (une capacité)' = 'can / could' ou 'know HOW TO + BV' (jamais 'knew swimming')." },
-      { level: "A2", cat: "Catégories GR (Copie PC*)", q: "Technology and ___ are often the main sources of disinformation.", fr: "La technologie et l'excès de confiance sont souvent sources de désinformation.", opts: ["overconfident", "overconfidence", "the overconfident", "overconfidently"], ans: 1, rule: "Catégorie GR (adj ≠ N) : un sujet doit être un NOM ('overconfidence'), pas l'adjectif 'overconfident'." },
-      { level: "A2", cat: "Catégories GR (Copie PC*)", q: "Scientists have found several ___ ways to detect deepfakes.", fr: "Les scientifiques ont trouvé plusieurs façons différentes de détecter les deepfakes.", opts: ["differents", "different", "difference", "differently"], ans: 1, rule: "En anglais, les adjectifs sont TOUJOURS invariables : jamais de -s ('different ways')." },
-      { level: "A2", cat: "Catégories GR (Copie PC*)", q: "Among screen users, ___ are often the most vulnerable to viral rumours.", fr: "Parmi les utilisateurs, les plus jeunes sont souvent les plus vulnérables.", opts: ["the younger", "the youngers", "the younger ones", "youngest ones"], ans: 2, rule: "On ne laisse pas un adjectif seul au pluriel : on ajoute 'ones' ou 'people' ('the younger ones')." },
-      { level: "A2", cat: "Catégories GR (Copie PC*)", q: "Platforms must try to protect ___ against automated bot attacks.", fr: "Les plateformes doivent essayer de se protéger contre les attaques de bots.", opts: ["protects themselfs", "protect themselfs", "protect themselves", "protecting themselves"], ans: 2, rule: "Après 'to', base verbale sans -s ('protect'), et pronom réfléchi pluriel en '-selves' ('themselves')." },
-      { level: "A2", cat: "Catégories GR (Copie PC*)", q: "The number of citizens affected by fake news ___ sharply since 2022.", fr: "Le nombre de citoyens touchés par les fausses nouvelles a fortement augmenté.", opts: ["have increased", "are increased", "has increased", "were increased"], ans: 2, rule: "'The number of + nom pluriel' prend TOUJOURS un verbe au SINGULIER ('has increased')." },
-      { level: "A2", cat: "Catégories GR (Copie PC*)", q: "Since the ___ of generative AI, realistic fake videos have multiplied.", fr: "Depuis l'avènement de l'IA générative, les fausses vidéos réalistes se sont multipliées.", opts: ["happens", "happend", "advent", "invent"], ans: 2, rule: "Après 'the', il faut un NOM ('the advent / the rise of AI'), jamais un verbe conjugué ('happens')." },
-      { level: "A2", cat: "Généralités & Articles", q: "___ is now widely used in both schools and companies.", fr: "L'intelligence artificielle est maintenant très utilisée dans les écoles et entreprises.", opts: ["The AI", "AI", "An AI", "AIs"], ans: 1, rule: "Zéro article 'the' devant les concepts généraux ou abstraits ('AI', 'politics', 'propaganda')." },
-      { level: "A2", cat: "Généralités & Articles", q: "Politicians sometimes use ___ during election campaigns.", fr: "Les politiciens utilisent parfois la propagande pendant les campagnes électorales.", opts: ["the propaganda", "propaganda", "a propaganda", "propagandas"], ans: 1, rule: "Nom général indénombrable -> ni 'the', ni 'a', ni -s ('propaganda')." },
-      { level: "A2", cat: "Indénombrables", q: "Social media spreads too ___ fake news before any fact-check happens.", fr: "Les réseaux sociaux diffusent trop de fausses informations avant toute vérification.", opts: ["many", "much", "a few", "several"], ans: 1, rule: "'News' est indénombrable singulier -> on utilise 'much' (ou 'a lot of'), jamais 'many' !" },
-      { level: "A2", cat: "Indénombrables", q: "The news from our team abroad ___ very good today.", fr: "Les nouvelles de notre équipe à l'étranger sont très bonnes.", opts: ["are", "were", "is", "be"], ans: 2, rule: "'News' finit par -s mais est TOUJOURS singulier en anglais -> 'is'." },
-      { level: "A2", cat: "Indénombrables", q: "The teacher gave me some very good ___ before my exam.", fr: "Le professeur m'a donné de très bons conseils avant mon examen.", opts: ["advices", "advice", "an advice", "advise"], ans: 1, rule: "'Advice' (conseil/conseils) est toujours singulier indénombrable en anglais." },
-      { level: "A2", cat: "Généralités & Articles", q: "She waited for half an hour at ___ yesterday.", fr: "Elle a attendu une demi-heure chez le médecin hier.", opts: ["doctors", "a doctors", "the doctor's", "doctor"], ans: 2, rule: "Pour le cabinet d'un spécialiste connu, article défini + génitif ('at the doctor's')." },
-      { level: "A2", cat: "Syntaxe verbale", q: "Checking sources allows ___ misinformation on social media.", fr: "Vérifier ses sources nous permet d'éviter la désinformation.", opts: ["to avoid", "us to avoid", "for avoiding", "avoiding to"], ans: 1, rule: "'Allow' ne se construit JAMAIS 'allow to + V' : il faut un complément ('allow US to avoid')." },
-      { level: "A2", cat: "Syntaxe verbale", q: "Fact-checking tools are designed ___ citizens identify false claims.", fr: "Les outils de vérification sont conçus pour aider les citoyens.", opts: ["in teach", "in help", "to help", "for help"], ans: 2, rule: "L'infinitif de but se forme avec 'to + BV' ('to help', 'to teach'), jamais 'in + V'." },
-      { level: "A2", cat: "Prépositions", q: "I am really interested ___ modern cinema and technology.", fr: "Je suis vraiment intéressé par le cinéma moderne et la technologie.", opts: ["by", "in", "on", "at"], ans: 1, rule: "On dit toujours 'interested IN' (jamais 'by')." },
-      { level: "A2", cat: "Prépositions", q: "Generative AI is very good ___ creating realistic images.", fr: "L'IA générative est très douée pour créer des images réalistes.", opts: ["in create", "at creating", "to creating", "for create"], ans: 1, rule: "'Good AT + nom / V-ing' ('good at creating', jamais 'good in')." },
-      { level: "A2", cat: "Prépositions", q: "This public platform is open ___ everyone who wants to learn.", fr: "Cette plateforme publique est ouverte à tous ceux qui veulent apprendre.", opts: ["at everybody", "for anyone", "to everyone", "on everybody"], ans: 2, rule: "On dit 'open TO everyone' (et jamais 'the mister everybody' !)." },
-      { level: "A2", cat: "Calques FR → EN", q: "___, we must check where the information comes from.", fr: "Dans un premier temps, nous devons vérifier d'où vient l'information.", opts: ["In first time", "Firstly", "At first time", "On first"], ans: 1, rule: "Ne jamais traduire 'en premier temps' par 'in first time' -> 'Firstly' / 'First'." },
-      { level: "A2", cat: "Calques FR → EN", q: "The students visited a ___ before entering high school.", fr: "Les élèves sont allés au collège avant d'entrer au lycée.", opts: ["college", "middle school", "faculty", "high college"], ans: 1, rule: "'Collège' (11-15 ans) = 'middle school' ('college' signifie université/fac en anglais)." },
-      { level: "A2", cat: "Calques FR → EN", q: "Let's ___ after dinner while the weather is still nice.", fr: "Allons faire une promenade après le dîner tant qu'il fait beau.", opts: ["do a walk", "go for a walk", "make a walk", "walk a walk"], ans: 1, rule: "On ne dit pas 'do a walk' : on dit 'go for a walk' ou 'take a walk'. Et 'the weather' (pas 'time')." },
-      { level: "A2", cat: "Comparatifs", q: "Unfortunately, the traffic today is much ___ than yesterday.", fr: "Malheureusement, la circulation aujourd'hui est bien pire qu'hier.", opts: ["more bad", "badder", "worse", "worst"], ans: 2, rule: "Le comparatif irrégulier de 'bad' est 'worse' (jamais 'more bad')." },
-      { level: "A2", cat: "Comparatifs", q: "Could you speak a little ___ so everyone can follow?", fr: "Pourrais-tu parler un peu plus lentement pour que tout le monde suive ?", opts: ["slowly", "more slowly", "slowlier", "most slowly"], ans: 1, rule: "Comparatif des adverbes en '-ly' : toujours 'more + adverbe' ('more slowly')." },
-      { level: "A2", cat: "Pronoms & Déterminants", q: "Remember to change ___ passwords regularly.", fr: "Pensez à changer vos mots de passe régulièrement.", opts: ["your password", "yours passwords", "your passwords", "the password"], ans: 2, rule: "Adjectif possessif invariable ('your') + nom au pluriel ('passwords')." },
-
-      // === B1 : TEMPS COMPOSÉS, MODAUX, RELATIFS, FAUX-AMIS & RÉDACTION PRÉPA (34) ===
-      { level: "B1", cat: "Present Perfect vs Past", q: "The conference ___ twenty minutes ago.", fr: "La conférence a commencé il y a vingt minutes.", opts: ["has started", "started", "was starting", "starts"], ans: 1, rule: "'Ago' renvoie à un moment précis terminé dans le passé -> Past Simple obligatoire ('started')." },
-      { level: "B1", cat: "Present Perfect vs Past", q: "We have not heard from our supplier ___ last Monday.", fr: "Nous n'avons pas eu de nouvelles de notre fournisseur depuis lundi dernier.", opts: ["for", "since", "during", "ago"], ans: 1, rule: "'Since' introduit un point de départ précis ('last Monday') ; 'for' introduit une durée." },
-      { level: "B1", cat: "Present Perfect vs Past", q: "Over the last ___ years, screen time among teenagers has risen sharply.", fr: "Ces dernières années, le temps d'écran chez les ados a fortement augmenté.", opts: ["years", "few years", "lately years", "passed years"], ans: 1, rule: "En anglais idiomatique, on dit 'over the last few years' ou 'in recent years' (pas 'in the last years')." },
-      { level: "B1", cat: "Present Perfect vs Past", q: "She has been working in this laboratory ___ more than six years.", fr: "Elle travaille dans ce laboratoire depuis plus de six ans.", opts: ["since", "for", "during", "from"], ans: 1, rule: "Devant une durée chiffrée ('six years'), on utilise 'for' + Present Perfect (jamais 'since')." },
-      { level: "B1", cat: "Past Perfect", q: "When I arrived at the station, the train ___.", fr: "Quand je suis arrivé à la gare, le train était déjà parti.", opts: ["already left", "has already left", "had already left", "was leaving"], ans: 2, rule: "Action antérieure à un moment passé ('arrived') -> Past Perfect ('had already left')." },
-      { level: "B1", cat: "Gérondifs & Prépositions", q: "We look forward to ___ the results of your research.", fr: "Nous avons hâte de découvrir les résultats de ta recherche.", opts: ["discover", "discovering", "discovered", "be discover"], ans: 1, rule: "Dans 'look forward to', 'to' est une préposition : le verbe suivant prend toujours -ing ('discovering')." },
-      { level: "B1", cat: "Habitudes (Used to)", q: "He is not used to ___ in such a noisy office.", fr: "Il n'est pas habitué à travailler dans un bureau si bruyant.", opts: ["work", "working", "worked", "works"], ans: 1, rule: "'Be used to' / 'get used to' sont suivis de V-ing ('working'), contrairement à 'used to + BV' (passé)." },
-      { level: "B1", cat: "Habitudes (Used to)", q: "Years ago, journalists ___ print newspapers rather than social networks.", fr: "Il y a des années, les journalistes privilégiaient la presse papier.", opts: ["used to read", "were used to read", "use to read", "used to reading"], ans: 0, rule: "Habitude révolue dans le passé = 'used to + base verbale' ('used to read')." },
-      { level: "B1", cat: "Conditionnels", q: "___ the company reduces packaging, plastic pollution will continue.", fr: "À moins que l'entreprise ne réduise les emballages, la pollution continuera.", opts: ["Unless", "If not", "Despite", "Although"], ans: 0, rule: "'Unless' (= à moins que / si ... ne ... pas) n'est jamais suivi d'une négation." },
-      { level: "B1", cat: "Conditionnels", q: "If governments ___ earlier, energy prices would be lower today.", fr: "Si les gouvernements avaient investi plus tôt, l'énergie serait moins chère aujourd'hui.", opts: ["invested", "would invest", "had invested", "invest"], ans: 2, rule: "Jamais de 'would' dans la proposition en 'if' : regret passé -> Past Perfect ('had invested')." },
-      { level: "B1", cat: "Faux-amis", q: "Around two hundred people ___ the climate conference yesterday.", fr: "Environ 200 personnes ont assisté à la conférence hier.", opts: ["assisted to", "assisted", "attended", "attended to"], ans: 2, rule: "'Assister à' = 'attend' (transitif direct sans 'to'). 'Assist' signifie 'aider'." },
-      { level: "B1", cat: "Faux-amis", q: "I ___ the English exam yesterday and I hope to pass it.", fr: "J'ai passé l'examen d'anglais hier et j'espère le réussir.", opts: ["passed", "took", "made", "gave"], ans: 1, rule: "On passe un examen avec 'take / sit an exam', et on le réussit avec 'pass'." },
-      { level: "B1", cat: "Faux-amis", q: "Actually, I am ___ working on a battery research project.", fr: "En fait, je travaille actuellement sur un projet sur les batteries.", opts: ["actually", "currently", "eventually", "present"], ans: 1, rule: "'Actuellement' = 'currently' ; 'actually' signifie 'en fait / à vrai dire'." },
-      { level: "B1", cat: "Faux-amis", q: "After many false starts, the team ___ reached an agreement.", fr: "Après bien des faux départs, l'équipe a fini par trouver un accord.", opts: ["possibly", "eventually", "presently", "currently"], ans: 1, rule: "'Eventually' signifie 'finalement / au bout du compte' (jamais 'éventuellement' !)." },
-      { level: "B1", cat: "Faux-amis", q: "This detailed report offers a ___ analysis of solar storage.", fr: "Ce rapport détaillé offre une analyse complète du stockage solaire.", opts: ["sympathetic", "comprehensive", "sensible", "understanding"], ans: 1, rule: "'Comprehensive' = complet / exhaustif (faux-ami ! 'Compréhensif' = 'understanding')." },
-      { level: "B1", cat: "Connecteurs", q: "___ the bad weather, the outdoor festival stayed open.", fr: "Malgré le mauvais temps, le festival en plein air est resté ouvert.", opts: ["Although", "Despite", "Despite of", "Even though"], ans: 1, rule: "'Despite' est suivi d'un nom et ne prend JAMAIS 'of' ('Despite the weather' ou 'In spite of')." },
-      { level: "B1", cat: "Connecteurs", q: "AI accelerates medical research; ___, it raises ethical concerns.", fr: "L'IA accélère la recherche médicale ; à l'inverse, elle soulève des questions éthiques.", opts: ["at contrary", "conversely", "on contrary", "in contrary"], ans: 1, rule: "Ne jamais dire 'at contrary' : utilisez 'Conversely' ou 'On the contrary'." },
-      { level: "B1", cat: "Connecteurs", q: "Nuclear power is low-carbon, ___ solar panels depend on sunlight.", fr: "Le nucléaire est bas carbone, tandis que les panneaux solaires dépendent du soleil.", opts: ["however", "whereas", "moreover", "therefore"], ans: 1, rule: "'Whereas' relie directement deux faits contrastés dans la même phrase ('tandis que')." },
-      { level: "B1", cat: "Gérondifs & Infinitifs", q: "The teacher does not let students ___ their phones in class.", fr: "Le professeur ne laisse pas les élèves utiliser leur téléphone en cours.", opts: ["to use", "using", "use", "used"], ans: 2, rule: "Après 'let' et 'make' (actifs), on utilise la base verbale SANS 'to' ('let students use')." },
-      { level: "B1", cat: "Gérondifs & Infinitifs", q: "Instead of ___ on the first link, check who published the article.", fr: "Au lieu de cliquer sur le premier lien, vérifiez qui a publié l'article.", opts: ["click", "to click", "clicking", "clicked"], ans: 2, rule: "Toute préposition ('instead of', 'without', 'before', 'after') est suivie de V-ing ('clicking')." },
-      { level: "B1", cat: "Modaux au passé", q: "You ___ the sources of this article before sharing it.", fr: "Tu aurais dû vérifier les sources de cet article avant de le partager.", opts: ["should check", "should have checked", "must check", "had to checked"], ans: 1, rule: "Reproche ou regret sur le passé : 'should have + participe passé'." },
-      { level: "B1", cat: "Relatifs & Syntaxe", q: "Beware of manipulated images ___ are designed to mislead voters.", fr: "Méfiez-vous des images manipulées qui visent à tromper les électeurs.", opts: ["who", "which", "whom", "whose"], ans: 1, rule: "'Who' est réservé aux humains ; pour une chose ('images'), on utilise 'which' ou 'that'." },
-      { level: "B1", cat: "Relatifs & Syntaxe", q: "He is a researcher ___ work focuses on climate resilience.", fr: "C'est un chercheur dont les travaux portent sur la résilience climatique.", opts: ["which", "who's", "whose", "whom"], ans: 2, rule: "Le pronom relatif possessif 'dont' est toujours 'whose' (suivi du nom sans article)." },
-      { level: "B1", cat: "Syntaxe Prépa", q: "Open access to AI can ___ if regulations stay weak.", fr: "L'accès libre à l'IA peut menacer la démocratie si la régulation reste faible.", opts: ["threaten the democratic", "threaten democracy", "threat democratic", "threatening democracy"], ans: 1, rule: "Verbe 'threaten' + nom abstrait sans 'the' ('threaten democracy', jamais l'adjectif 'democratic')." },
-      { level: "B1", cat: "Syntaxe Prépa", q: "Public investment can help ___ while funding green infrastructure.", fr: "L'investissement public peut stimuler l'économie tout en finançant la transition.", opts: ["favor the country economic", "boost the economy", "growing economic", "rise economy"], ans: 1, rule: "Collocation naturelle : 'boost the economy' (et nom 'economy', pas l'adjectif 'economic')." },
-      { level: "B1", cat: "Quantifieurs", q: "___ citizens realize how fast recommendation algorithms shape their opinions.", fr: "Peu de citoyens réalisent à quelle vitesse les algorithmes orientent leur opinion.", opts: ["Little", "Few", "Less", "Much"], ans: 1, rule: "Nom pluriel dénombrable ('citizens') -> 'Few' ('Little' s'utilise avec les indénombrables)." },
-      { level: "B1", cat: "Voix Passive", q: "Last year, millions of fake accounts ___ by the platform.", fr: "L'an dernier, des millions de faux comptes ont été supprimés par la plateforme.", opts: ["was deleted", "were deleted", "deleted", "have been delete"], ans: 1, rule: "Passé ('Last year') + sujet pluriel ('millions of accounts') -> passif 'were deleted'." },
-      { level: "B1", cat: "Questions & Ordre des mots", q: "Could you tell me what ___ about this new energy policy?", fr: "Pourriez-vous me dire ce que les experts pensent de cette politique énergétique ?", opts: ["do experts think", "experts think", "think experts", "are experts think"], ans: 1, rule: "Dans une question indirecte ('Could you tell me what...'), plus d'inversion ni 'do' -> ordre 'Sujet + Verbe'." },
-      { level: "B1", cat: "Gérondif Sujet", q: "___ basic grammar rules helps candidates gain points quickly.", fr: "Maîtriser les règles de grammaire de base aide les candidats à gagner des points.", opts: ["Master", "Mastering", "To mastering", "Mastered"], ans: 1, rule: "Un verbe en position de sujet se met au gérondif ('Mastering ... helps')." },
-      { level: "B1", cat: "Prépositions", q: "Voters often depend ___ independent media for verified facts.", fr: "Les électeurs dépendent souvent de médias indépendants pour des faits vérifiés.", opts: ["of", "from", "on", "to"], ans: 2, rule: "On dit toujours 'depend ON' (jamais 'depend of')." },
-      { level: "B1", cat: "Verbes à piège", q: "Energy consumption is expected to ___ over the next decade.", fr: "La consommation d'énergie devrait augmenter au cours de la prochaine décennie.", opts: ["raise", "rise", "arouse", "risen"], ans: 1, rule: "'Rise' (intransitif : ça augmente) vs 'Raise + objet' (lever/augmenter quelque chose)." },
-      { level: "B1", cat: "Vocabulaire Concours", q: "From a scientific ___, nuclear fusion remains a long-term goal.", fr: "D'un point de vue scientifique, la fusion nucléaire reste un objectif de long terme.", opts: ["view point", "point of view", "view's point", "looking point"], ans: 1, rule: "Orthographe exacte : 'point of view' (en 3 mots) ou 'viewpoint' (en 1 mot attaché)." },
-      { level: "B1", cat: "Accord Sujet-Verbe", q: "Everyone who reads this article ___ surprised by the statistics.", fr: "Tous ceux qui lisent cet article sont surpris par les statistiques.", opts: ["are", "were", "is", "be"], ans: 2, rule: "'Everyone / Everybody / Anyone / Someone' est TOUJOURS suivi d'un verbe au SINGULIER ('is')." },
-      { level: "B1", cat: "Style Écrit Synthèse", q: "In an exam essay, candidates ___ use casual contractions such as 'don't'.", fr: "Dans une synthèse de concours, les candidats ne doivent pas utiliser de contractions.", opts: ["mustn't", "do not", "should not", "aren't"], ans: 2, rule: "Dans une synthèse formelle CPGE, privilégiez la forme pleine ('should not' / 'do not'), sans contraction." },
-
-      // === B2 : NIVEAU CONCOURS PC* / MINES-PONTS / CENTRALE (30) ===
-      { level: "B2", cat: "Subjonctif & Prétérit modal", q: "It is high time international institutions ___ binding ethical rules.", fr: "Il est grand temps que les institutions imposent des règles éthiques contraignantes.", opts: ["impose", "will impose", "imposed", "have imposed"], ans: 2, rule: "Après 'It is (high) time + sujet', l'anglais exige le prétérit modal ('imposed') pour une urgence présente." },
-      { level: "B2", cat: "Inversions emphatiques", q: "Rarely ___ a technological breakthrough sparked such sharp debate.", fr: "Rarement une percée technologique n'a suscité un débat si vif.", opts: ["has", "had been", "did", "is"], ans: 0, rule: "Inversion auxiliaire-sujet après 'Rarely' au Present Perfect : 'Rarely has a breakthrough sparked...'." },
-      { level: "B2", cat: "Inversions emphatiques", q: "Not only ___ misinformation faster, it also undermines public trust.", fr: "Non seulement la désinformation circule plus vite, mais elle sape aussi la confiance.", opts: ["spreads fake news", "does disinformation spread", "disinformation spreads", "is spread disinformation"], ans: 1, rule: "'Not only' en tête de phrase entraîne l'inversion ('does disinformation spread')." },
-      { level: "B2", cat: "Conditionnel Type 3 inversé", q: "___ governments anticipated grid congestion, blackouts would not have occurred.", fr: "Si les gouvernements avaient anticipé la congestion, ces pannes n'auraient pas eu lieu.", opts: ["If had", "Had", "Were", "Should"], ans: 1, rule: "Inversion élégante du Conditionnel Type 3 sans 'if' : 'Had + sujet + participe passé'." },
-      { level: "B2", cat: "Conditionnel Type 2 inversé", q: "___ tech giants to ignore these rules, heavy fines would apply.", fr: "Si les géants de la tech ignoraient ces règles, de lourdes amendes s'appliqueraient.", opts: ["Were", "Had", "Should", "If were"], ans: 0, rule: "Conditionnel hypothétique soutenu sans 'if' : 'Were + sujet + to + BV'." },
-      { level: "B2", cat: "Inversions temporelles", q: "No sooner had the agreement been signed ___ several countries postponed targets.", fr: "À peine l'accord avait-il été signé que plusieurs pays ont repoussé les objectifs.", opts: ["when", "that", "than", "then"], ans: 2, rule: "'No sooner ... than' (toujours 'than', tandis que 'Hardly/Scarcely' utilisent 'when')." },
-      { level: "B2", cat: "Inversions temporelles", q: "Hardly had the chatbot launched ___ users spotted factual errors.", fr: "À peine le chatbot avait-il été lancé que les utilisateurs ont repéré des erreurs.", opts: ["than", "when", "that", "as"], ans: 1, rule: "'Hardly / Scarcely ... WHEN' (contrairement à 'No sooner ... than')." },
-      { level: "B2", cat: "Pièges de thème CPGE", q: "Recent ___ shows that sleep deprivation impairs cognitive functions.", fr: "Les recherches récentes montrent que le manque de sommeil altère les fonctions cognitives.", opts: ["researches", "research", "a research", "researching"], ans: 1, rule: "'Research' est indénombrable en anglais : jamais de -s, suivi du verbe au singulier ('shows')." },
-      { level: "B2", cat: "Pièges de thème CPGE", q: "This measure will prevent platforms ___ biometric data without consent.", fr: "Cette mesure empêchera les plateformes de collecter des données sans consentement.", opts: ["to collect", "from collecting", "collecting", "of collecting"], ans: 1, rule: "'Prevent someone FROM + V-ing' : préposition 'from' obligatoire." },
-      { level: "B2", cat: "Subjonctif & Regrets", q: "I would rather we ___ these funds to public education.", fr: "Je préférerais que nous consacrions ces fonds à l'éducation publique.", opts: ["allocate", "allocated", "will allocate", "allocating"], ans: 1, rule: "'Would rather + sujet différent + Past Simple' (prétérit modal 'allocated')." },
-      { level: "B2", cat: "Subjonctif mandatif", q: "NGOs demand that multinationals ___ held accountable for their supply chains.", fr: "Les ONG exigent que les multinationales rendent des comptes.", opts: ["are", "were", "be", "will be"], ans: 2, rule: "Subjonctif passif après 'demand/insist/propose that' : 'be + participe passé' (sans conjugaison)." },
-      { level: "B2", cat: "Future Perfect", q: "By 2040, many European countries ___ their last coal power plants.", fr: "D'ici 2040, beaucoup de pays européens auront fermé leurs dernières centrales à charbon.", opts: ["will shut down", "will have shut down", "have shut down", "shut down"], ans: 1, rule: "'By + échéance future' appelle le Future Perfect ('will have + participe passé')." },
-      { level: "B2", cat: "Modaux au passé", q: "You ___ those hundred pages; the file was already available online.", fr: "Vous n'aviez pas besoin d'imprimer ces cent pages (mais vous l'avez fait).", opts: ["needn't have printed", "didn't need to print", "mustn't have printed", "shouldn't print"], ans: 0, rule: "'Needn't have + PP' = action faite qui s'est révélée inutile." },
-      { level: "B2", cat: "Concessions B2", q: "___ the financial audit was, several irregularities escaped detection.", fr: "Si rigoureux qu'ait été l'audit financier, plusieurs irrégularités ont échappé.", opts: ["Rigorous although", "Rigorous though", "However rigorous was", "Despite rigorous"], ans: 1, rule: "Concession inversée : 'Adjectif + though/as + sujet + verbe' ('Rigorous though the audit was')." },
-      { level: "B2", cat: "Concessions B2", q: "___ its many benefits, generative AI is no silver bullet for education.", fr: "Malgré tous ses avantages, l'IA générative n'est pas une solution miracle.", opts: ["For all", "Despite of", "Although", "Whereas"], ans: 0, rule: "Tournure B2/C1 élégante : 'For all + nom' (= en dépit de tout...)." },
-      { level: "B2", cat: "Concessions B2", q: "___ attractive the promise may seem, long-term costs remain high.", fr: "Aussi séduisante que semble la promesse, les coûts à long terme restent élevés.", opts: ["Whatever", "However", "Although", "Despite"], ans: 1, rule: "'However + adjectif + sujet + verbe' (= quel que soit le degré de...)." },
-      { level: "B2", cat: "Pièges de thème CPGE", q: "___ students are choosing STEM fields despite rising industrial needs.", fr: "Moins d'étudiants choisissent les filières scientifiques.", opts: ["Less", "Fewer", "Lesser", "Few"], ans: 1, rule: "'Fewer' avec les noms comptables au pluriel ('students') ; 'less' avec les indénombrables." },
-      { level: "B2", cat: "Inversions négatives", q: "Under no circumstances ___ a democratic state delegate justice to opaque algorithms.", fr: "En aucun cas un État démocratique ne devrait déléguer la justice à des algorithmes.", opts: ["a state should", "should a state", "must not a state", "does a state should"], ans: 1, rule: "'Under no circumstances' en tête de phrase impose l'inversion modal-sujet ('should a state')." },
-      { level: "B2", cat: "Inversions négatives", q: "At no time ___ the researchers claim that the model was flawless.", fr: "À aucun moment les chercheurs n'ont affirmé que le modèle était sans défaut.", opts: ["the researchers claimed", "did the researchers claim", "claimed the researchers", "have claimed the researchers"], ans: 1, rule: "'At no time' en tête de phrase impose l'inversion auxiliaire-sujet ('did the researchers claim')." },
-      { level: "B2", cat: "Modaux au passé", q: "This widespread outage ___ caused by mere human error; it must be a cyberattack.", fr: "Cette panne n'a pas pu être causée par une simple erreur humaine.", opts: ["mustn't have been", "cannot have been", "shouldn't be", "may not be"], ans: 1, rule: "Impossibilité logique déductive au passé : 'cannot / couldn't have been' (jamais 'mustn't have')." },
-      { level: "B2", cat: "Pièges de thème CPGE", q: "Significant ___ has been made in battery density over the past decade.", fr: "Des progrès considérables ont été réalisés dans la densité des batteries.", opts: ["progresses have", "progress has", "a progress has", "progresses has"], ans: 1, rule: "'Progress' est indénombrable : jamais de -s, verbe au singulier ('progress has been made')." },
-      { level: "B2", cat: "Pièges de thème CPGE", q: "The new regulation aims at ___ disinformation without stifling innovation.", fr: "La nouvelle régulation vise à freiner la désinformation sans étouffer l'innovation.", opts: ["curbing", "curb", "to curb", "curbed"], ans: 0, rule: "'Aim at + V-ing' (préposition 'at' -> gérondif 'curbing'). 'Curb' = freiner / endiguer." },
-      { level: "B2", cat: "Collocations Concours", q: "Do the benefits of open-source models ___ the security risks?", fr: "Les avantages des modèles open-source l'emportent-ils sur les risques ?", opts: ["outweight", "outweigh", "overweight", "overbalance to"], ans: 1, rule: "Verbe indispensable en synthèse : 'outweigh' (sans 't' final ! Le nom est 'weight')." },
-      { level: "B2", cat: "Collocations Concours", q: "The success of climate targets will largely ___ public acceptance.", fr: "Le succès des objectifs climatiques dépendra largement de l'adhésion du public.", opts: ["hinge on", "hinge to", "rely of", "depend at"], ans: 0, rule: "'Hinge on' = reposer sur / dépendre de (synonyme élégant de 'depend on')." },
-      { level: "B2", cat: "Causatif", q: "The committee will have the independent audit ___ by Friday.", fr: "La commission fera publier l'audit indépendant d'ici vendredi.", opts: ["publish", "to publish", "published", "publishing"], ans: 2, rule: "Structure causative passive 'have something DONE' ('have the audit published')." },
-      { level: "B2", cat: "Connecteurs B2", q: "Digital literacy should be taught early, ___ children rely blindly on chatbots.", fr: "L'esprit critique numérique devrait être enseigné tôt, de peur que les enfants ne se fient aveuglément aux chatbots.", opts: ["lest", "insofar", "albeit", "meanwhile"], ans: 0, rule: "'Lest' = de peur que / afin d'éviter que (registre soutenu très apprécié aux concours)." },
-      { level: "B2", cat: "Connecteurs B2", q: "AI saves doctors time, ___ only when clinical records are well structured.", fr: "L'IA fait gagner du temps aux médecins, quoique seulement lorsque les dossiers sont bien structurés.", opts: ["although of", "albeit", "inasmuch", "even"], ans: 1, rule: "'Albeit' = quoique / bien que (suivi directement d'un groupe adjectival ou adverbial sans verbe)." },
-      { level: "B2", cat: "Inversions B2", q: "___ had the policy been adopted than opposition protests erupted.", fr: "À peine la mesure eut-elle été adoptée que des manifestations éclatèrent.", opts: ["Hardly", "No sooner", "Scarcely", "Only when"], ans: 1, rule: "La corrélation avec '... than ...' est obligatoirement 'No sooner ... than'." },
-      { level: "B2", cat: "Indénombrables", q: "Compelling scientific ___ suggests that algorithms amplify polarization.", fr: "Des preuves scientifiques probantes suggèrent que les algorithmes amplifient la polarisation.", opts: ["evidences suggest", "evidence suggests", "an evidence suggests", "evidences suggests"], ans: 1, rule: "'Evidence' (preuve/preuves) est indénombrable singulier en anglais -> 'evidence suggests'." },
-      { level: "B2", cat: "Subjonctif & Modalité", q: "It is essential that every candidate ___ concise and check verb endings.", fr: "Il est essentiel que chaque candidat reste concis et vérifie les terminaisons verbales.", opts: ["is", "stays", "be", "will be"], ans: 2, rule: "Après 'It is essential / vital that + sujet', subjonctif = base verbale nue ('be')." }
+    // DRILL CONJUGAISON & GRAMMAIRE RAPIDE (500 QUESTIONS UNIQUES DANS data.js : 200 A2, 180 B1, 120 B2)
+    const FALLBACK_DRILL_BANK = [
+      { id: "d-fb-1", level: "A2", cat: "Temps & Conjugaison", q: "ChatGPT ___ when a prompt tries to influence an election.", fr: "ChatGPT détecte quand une requête cherche à influencer une élection.", opts: ["detect", "detects", "detecting", "is detect"], ans: 1, rule: "3e personne du singulier au présent : toujours ajouter -s ('ChatGPT detects')." },
+      { id: "d-fb-2", level: "A2", cat: "Catégories GR (Copie PC*)", q: "Technology and ___ are often the main sources of disinformation.", fr: "La technologie et l'excès de confiance sont souvent sources de désinformation.", opts: ["overconfident", "overconfidence", "the overconfident", "overconfidently"], ans: 1, rule: "Catégorie GR (adj ≠ N) : un sujet doit être un NOM ('overconfidence'), pas l'adjectif 'overconfident'." },
+      { id: "d-fb-3", level: "B1", cat: "Present Perfect vs Past", q: "Over the last ___ years, screen time among teenagers has risen sharply.", fr: "Ces dernières années, le temps d'écran chez les ados a fortement augmenté.", opts: ["years", "few years", "lately years", "passed years"], ans: 1, rule: "En anglais idiomatique, on dit 'over the last few years' ou 'in recent years' (pas 'in the last years')." },
+      { id: "d-fb-4", level: "B1", cat: "Faux-amis", q: "After many false starts, the team ___ reached an agreement.", fr: "Après bien des faux départs, l'équipe a fini par trouver un accord.", opts: ["possibly", "eventually", "presently", "currently"], ans: 1, rule: "'Eventually' signifie 'finalement / au bout du compte' (jamais 'éventuellement' !)." },
+      { id: "d-fb-5", level: "B2", cat: "Inversions emphatiques", q: "Rarely ___ a technological breakthrough sparked such sharp debate.", fr: "Rarement une percée technologique n'a suscité un débat si vif.", opts: ["has", "had been", "did", "is"], ans: 0, rule: "Inversion auxiliaire-sujet après 'Rarely' au Present Perfect : 'Rarely has a breakthrough sparked...'." },
+      { id: "d-fb-6", level: "B2", cat: "Conditionnel Type 3 inversé", q: "___ governments anticipated grid congestion, blackouts would not have occurred.", fr: "Si les gouvernements avaient anticipé la congestion, ces pannes n'auraient pas eu lieu.", opts: ["If had", "Had", "Were", "Should"], ans: 1, rule: "Inversion élégante du Conditionnel Type 3 sans 'if' : 'Had + sujet + participe passé'." }
     ];
+    const DRILL_BANK = (Array.isArray(window.EC_DRILL_BANK) && window.EC_DRILL_BANK.length)
+      ? window.EC_DRILL_BANK
+      : FALLBACK_DRILL_BANK;
 
     let currentDrill = null;
     let drillAnswered = false;
-    const seenDrillIndices = new Set();
+
+    function getDrillId(d) {
+      return d && d.id ? String(d.id) : `d-idx-${DRILL_BANK.indexOf(d)}`;
+    }
 
     function getFilteredDrills() {
       const sel = $("drill-level-select") ? $("drill-level-select").value : "CURRENT";
@@ -4825,23 +4739,42 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       return lvl === "ALL" ? DRILL_BANK : DRILL_BANK.filter(d => d.level === lvl);
     }
 
+    function countSeenInPool(pool) {
+      const seenMap = (state.drillSeenIds && typeof state.drillSeenIds === "object") ? state.drillSeenIds : {};
+      let seen = 0;
+      pool.forEach(d => { if (seenMap[getDrillId(d)]) seen += 1; });
+      return seen;
+    }
+
+    function updateDrillPoolBadge(pool) {
+      const badge = $("drill-pool-badge");
+      if (!badge || !pool) return;
+      badge.textContent = `${countSeenInPool(pool)}/${pool.length} vues`;
+    }
+
     function renderDrillQuestion(forceNew = false) {
       const pool = getFilteredDrills();
       if (!pool.length) return;
+      if (!state.drillSeenIds || typeof state.drillSeenIds !== "object") state.drillSeenIds = {};
       if (!currentDrill || forceNew) {
-        let unseen = pool.filter(d => !seenDrillIndices.has(DRILL_BANK.indexOf(d)) && d !== currentDrill);
-        if (!unseen.length) {
-          pool.forEach(d => seenDrillIndices.delete(DRILL_BANK.indexOf(d)));
+        let allUnseen = pool.filter(d => !state.drillSeenIds[getDrillId(d)]);
+        let unseen = allUnseen.filter(d => d !== currentDrill);
+        if (!unseen.length && allUnseen.length) {
+          unseen = allUnseen;
+        } else if (!unseen.length) {
+          pool.forEach(d => delete state.drillSeenIds[getDrillId(d)]);
+          saveState();
           unseen = pool.filter(d => d !== currentDrill);
+          showToast(`🎉 Tout le stock ${currentDrill ? currentDrill.level : ""} vu ! Nouveau cycle sans répétition.`);
         }
         const pickFrom = unseen.length ? unseen : pool;
         currentDrill = pickFrom[cryptoRandomInt(0, pickFrom.length - 1)];
-        seenDrillIndices.add(DRILL_BANK.indexOf(currentDrill));
         drillAnswered = false;
       }
 
       $("drill-lvl-badge").textContent = currentDrill.level;
       $("drill-score-badge").textContent = `${state.drillStats.correct}/${state.drillStats.total} justes`;
+      updateDrillPoolBadge(pool);
       $("drill-topic").textContent = currentDrill.cat;
       $("drill-question").textContent = currentDrill.q;
       $("drill-fr-hint").textContent = `🇫🇷 ${currentDrill.fr}`;
@@ -4870,6 +4803,8 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         else if (idx === chosenIdx && !isOk) b.classList.add("opt-ko");
       });
 
+      if (!state.drillSeenIds || typeof state.drillSeenIds !== "object") state.drillSeenIds = {};
+      state.drillSeenIds[getDrillId(currentDrill)] = true;
       state.drillStats.total += 1;
       if (isOk) state.drillStats.correct += 1;
       ensureDailyFresh();
@@ -4878,6 +4813,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       saveState();
 
       $("drill-score-badge").textContent = `${state.drillStats.correct}/${state.drillStats.total} justes`;
+      updateDrillPoolBadge(getFilteredDrills());
       $("drill-fb-title").textContent = isOk ? "✅ Exact ! Bien joué !" : "❌ Attention à la règle :";
       $("drill-fb-title").style.color = isOk ? "var(--emerald)" : "var(--rose)";
       $("drill-fb-note").textContent = currentDrill.rule;
@@ -5499,6 +5435,7 @@ Retourne STRICTEMENT ce JSON :
         planDuration: state.planDuration,
         stats: state.stats,
         drillStats: state.drillStats,
+        drillSeenIds: state.drillSeenIds,
         daily: state.daily,
         history: pruneHistory(state.history),
         kholleLog: (state.kholleLog || []).slice(0, 50),
@@ -5533,6 +5470,16 @@ Retourne STRICTEMENT ce JSON :
         const rc = Number(remote.drillStats.correct) || 0;
         if (rt > (state.drillStats.total || 0)) { state.drillStats.total = rt; changed = true; }
         if (rc > (state.drillStats.correct || 0)) { state.drillStats.correct = rc; changed = true; }
+      }
+
+      if (remote.drillSeenIds && typeof remote.drillSeenIds === "object" && !Array.isArray(remote.drillSeenIds)) {
+        if (!state.drillSeenIds || typeof state.drillSeenIds !== "object") state.drillSeenIds = {};
+        Object.keys(remote.drillSeenIds).forEach(id => {
+          if (remote.drillSeenIds[id] && !state.drillSeenIds[id]) {
+            state.drillSeenIds[id] = true;
+            changed = true;
+          }
+        });
       }
 
       if (remote.completed && typeof remote.completed === "object") {
@@ -6831,6 +6778,9 @@ ${errs}`;
         state.essayLog = [];
         state.daily = createEmptyDaily();
         state.drillStats = { total: 0, correct: 0 };
+        state.drillSeenIds = {};
+        currentDrill = null;
+        drillAnswered = false;
         state.stats = { xp: 0, streak: 0, lastDate: null };
         state.seenIds.clear();
         state.seenPrepaIds.clear();
