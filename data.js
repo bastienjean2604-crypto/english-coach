@@ -1,4 +1,4 @@
-// Dataset calibré English Coach : 800 phrases 100% uniques (200 A2, 300 B1, 300 B2), 150 audios, 80 questions prépa
+// Dataset calibré English Coach : 800 phrases 100% uniques (200 A2, 300 B1, 300 B2), 150 audios, 80 questions prépa, 500 drills grammaire
 window.EC_THEMES = [
   "Vie quotidienne",
   "Voyage",
@@ -19503,5 +19503,7507 @@ window.EC_BUILTIN_PREPA = [
     "theme": "Choix sociaux & Économie",
     "questionEn": "Does reshoring strategic industries strengthen national resilience, or does it inevitably fuel inflation for consumers?",
     "questionFr": "La relocalisation des industries stratégiques renforce-t-elle la résilience nationale, ou alimente-t-elle inévitablement l'inflation pour les consommateurs ?"
+  }
+];
+window.EC_DRILL_BANK = [
+  {
+    "id": "d-a2-1",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "She ___ in a small apartment near the station.",
+    "fr": "Elle habite dans un petit appartement près de la gare.",
+    "opts": [
+      "lives",
+      "living",
+      "live",
+      "is live"
+    ],
+    "ans": 0,
+    "rule": "Présent simple 3e personne du singulier : toujours -s ('lives')."
+  },
+  {
+    "id": "d-a2-2",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "ChatGPT ___ when a prompt tries to influence an election.",
+    "fr": "ChatGPT détecte quand une requête cherche à influencer une élection.",
+    "opts": [
+      "detect",
+      "is detect",
+      "detects",
+      "detecting"
+    ],
+    "ans": 2,
+    "rule": "Sujet singulier au présent : toujours ajouter -s ('detects')."
+  },
+  {
+    "id": "d-a2-3",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "This old apartment ___ warm in winter thanks to its new windows.",
+    "fr": "Cet appartement reste chaud en hiver grâce à ses nouvelles fenêtres.",
+    "opts": [
+      "stay",
+      "stays",
+      "staying",
+      "is stay"
+    ],
+    "ans": 1,
+    "rule": "Sujet singulier ('this apartment') -> verbe avec -s ('stays')."
+  },
+  {
+    "id": "d-a2-4",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "My brother ___ his bike to school every morning.",
+    "fr": "Mon frère va à l'école à vélo chaque matin.",
+    "opts": [
+      "ride",
+      "is ride",
+      "riding",
+      "rides"
+    ],
+    "ans": 3,
+    "rule": "Habitude + 3e pers. singulier ('My brother') -> 'rides'."
+  },
+  {
+    "id": "d-a2-5",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "___ your sister speak English fluently?",
+    "fr": "Est-ce que ta sœur parle anglais couramment ?",
+    "opts": [
+      "Does",
+      "Are",
+      "Is",
+      "Do"
+    ],
+    "ans": 0,
+    "rule": "Question au présent simple avec 'your sister' (she) -> auxiliaire 'Does'."
+  },
+  {
+    "id": "d-a2-6",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "He ___ like drinking coffee late at night.",
+    "fr": "Il n'aime pas boire du café tard le soir.",
+    "opts": [
+      "doesn't",
+      "don't",
+      "isn't",
+      "not"
+    ],
+    "ans": 0,
+    "rule": "Négation présent simple 3e pers. sg -> 'doesn't + base verbale'."
+  },
+  {
+    "id": "d-a2-7",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Water ___ at zero degrees Celsius.",
+    "fr": "L'eau gèle à zéro degré Celsius.",
+    "opts": [
+      "freeze",
+      "is freeze",
+      "freezing",
+      "freezes"
+    ],
+    "ans": 3,
+    "rule": "Vérité scientifique / générale + sujet singulier -> 'freezes'."
+  },
+  {
+    "id": "d-a2-8",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "How often ___ the train leave for Lyon?",
+    "fr": "À quelle fréquence le train part-il pour Lyon ?",
+    "opts": [
+      "does",
+      "is",
+      "has",
+      "do"
+    ],
+    "ans": 0,
+    "rule": "Question présent simple avec 'the train' (it) -> 'does'."
+  },
+  {
+    "id": "d-a2-9",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Our English teacher always ___ clear examples on the board.",
+    "fr": "Notre professeur d'anglais donne toujours des exemples clairs au tableau.",
+    "opts": [
+      "is give",
+      "give",
+      "gives",
+      "giving"
+    ],
+    "ans": 2,
+    "rule": "Avec 'always' + sujet singulier -> présent simple + -s ('gives')."
+  },
+  {
+    "id": "d-a2-10",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Tom never ___ breakfast before leaving home.",
+    "fr": "Tom ne prend jamais de petit-déjeuner avant de partir.",
+    "opts": [
+      "eats",
+      "is eating",
+      "eating",
+      "eat"
+    ],
+    "ans": 0,
+    "rule": "Sujet singulier 'Tom' + 'never' -> verbe avec -s ('eats')."
+  },
+  {
+    "id": "d-a2-11",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "My parents ___ in a quiet village outside Bordeaux.",
+    "fr": "Mes parents vivent dans un village calme près de Bordeaux.",
+    "opts": [
+      "living",
+      "is living",
+      "live",
+      "lives"
+    ],
+    "ans": 2,
+    "rule": "Sujet pluriel ('My parents' = they) -> base verbale sans -s ('live')."
+  },
+  {
+    "id": "d-a2-12",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "She usually ___ her homework right after dinner.",
+    "fr": "Elle fait généralement ses devoirs juste après le dîner.",
+    "opts": [
+      "does",
+      "is do",
+      "do",
+      "doing"
+    ],
+    "ans": 0,
+    "rule": "3e pers. sg de 'do' = 'does' ('She does her homework')."
+  },
+  {
+    "id": "d-a2-13",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "That bakery ___ fresh croissants at seven o'clock.",
+    "fr": "Cette boulangerie vend des croissants frais à sept heures.",
+    "opts": [
+      "are sell",
+      "sell",
+      "selling",
+      "sells"
+    ],
+    "ans": 3,
+    "rule": "Sujet singulier ('That bakery') -> 'sells'."
+  },
+  {
+    "id": "d-a2-14",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Where ___ your cousins live during the summer?",
+    "fr": "Où habitent tes cousins pendant l'été ?",
+    "opts": [
+      "do",
+      "is",
+      "are",
+      "does"
+    ],
+    "ans": 0,
+    "rule": "Sujet pluriel ('your cousins') -> auxiliaire 'do'."
+  },
+  {
+    "id": "d-a2-15",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "A good dictionary ___ students avoid silly spelling errors.",
+    "fr": "Un bon dictionnaire aide les élèves à éviter les fautes d'orthographe.",
+    "opts": [
+      "are help",
+      "helping",
+      "helps",
+      "help"
+    ],
+    "ans": 2,
+    "rule": "'A good dictionary' = singulier -> 'helps'."
+  },
+  {
+    "id": "d-a2-16",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Why ___ Sarah look so tired this morning?",
+    "fr": "Pourquoi Sarah a-t-elle l'air si fatiguée ce matin ?",
+    "opts": [
+      "is",
+      "does",
+      "are",
+      "do"
+    ],
+    "ans": 1,
+    "rule": "Verbe lexical 'look' avec sujet singulier 'Sarah' -> auxiliaire 'does'."
+  },
+  {
+    "id": "d-a2-17",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "In general, generative AI ___ fake images very quickly.",
+    "fr": "En général, l'IA générative crée de fausses images très vite.",
+    "opts": [
+      "creates",
+      "create",
+      "creating",
+      "created"
+    ],
+    "ans": 0,
+    "rule": "Vérité générale dans un texte : présent simple + -s ('creates')."
+  },
+  {
+    "id": "d-a2-18",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Paul ___ watch television during the week.",
+    "fr": "Paul ne regarde pas la télévision en semaine.",
+    "opts": [
+      "doesn't",
+      "isn't",
+      "haven't",
+      "don't"
+    ],
+    "ans": 0,
+    "rule": "Négation 3e pers. sg -> 'doesn't watch'."
+  },
+  {
+    "id": "d-a2-19",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Each student ___ a different topic to present.",
+    "fr": "Chaque élève a un sujet différent à présenter.",
+    "opts": [
+      "have",
+      "having",
+      "are having",
+      "has"
+    ],
+    "ans": 3,
+    "rule": "'Each + singulier' est toujours suivi d'un verbe au singulier -> 'has'."
+  },
+  {
+    "id": "d-a2-20",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "The library ___ at eight p.m. on Fridays.",
+    "fr": "La bibliothèque ferme à vingt heures le vendredi.",
+    "opts": [
+      "closes",
+      "is close",
+      "close",
+      "closing"
+    ],
+    "ans": 0,
+    "rule": "Horaire fixe régulier = présent simple + -s ('closes')."
+  },
+  {
+    "id": "d-a2-21",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Look! It ___ heavily right now, take an umbrella.",
+    "fr": "Regarde ! Il pleut fort en ce moment, prends un parapluie.",
+    "opts": [
+      "rain",
+      "rained",
+      "is raining",
+      "rains"
+    ],
+    "ans": 2,
+    "rule": "Action en train de se dérouler ('Look!', 'right now') -> Present Continuous ('is raining')."
+  },
+  {
+    "id": "d-a2-22",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Be quiet please, I ___ to finish this paragraph.",
+    "fr": "Silence s'il te plaît, j'essaie de finir ce paragraphe.",
+    "opts": [
+      "tries",
+      "tried",
+      "try",
+      "am trying"
+    ],
+    "ans": 3,
+    "rule": "Action en cours au moment présent -> 'am trying'."
+  },
+  {
+    "id": "d-a2-23",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Who ___ on the front door at this hour?",
+    "fr": "Qui frappe à la porte d'entrée à cette heure-ci ?",
+    "opts": [
+      "knocked",
+      "is knocking",
+      "are knocking",
+      "knock"
+    ],
+    "ans": 1,
+    "rule": "Action immédiate avec 'Who' sujet -> 'is knocking'."
+  },
+  {
+    "id": "d-a2-24",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "We ___ for the bus right now because my car broke down.",
+    "fr": "Nous attendons le bus en ce moment car ma voiture est en panne.",
+    "opts": [
+      "waits",
+      "waiting",
+      "are waiting",
+      "wait"
+    ],
+    "ans": 2,
+    "rule": "Action en cours ('right now') -> 'are waiting'."
+  },
+  {
+    "id": "d-a2-25",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Listen! Someone ___ the piano upstairs.",
+    "fr": "Écoute ! Quelqu'un joue du piano à l'étage.",
+    "opts": [
+      "playing",
+      "play",
+      "is playing",
+      "plays"
+    ],
+    "ans": 2,
+    "rule": "'Listen!' signale une action en cours -> 'is playing'."
+  },
+  {
+    "id": "d-a2-26",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Did you ___ well at the hotel last night?",
+    "fr": "As-tu bien dormi à l'hôtel la nuit dernière ?",
+    "opts": [
+      "sleeping",
+      "sleeps",
+      "slept",
+      "sleep"
+    ],
+    "ans": 3,
+    "rule": "Après 'Did', le verbe revient toujours à la base verbale ('sleep')."
+  },
+  {
+    "id": "d-a2-27",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Yesterday, I ___ my wallet on the bus.",
+    "fr": "Hier, j'ai perdu mon portefeuille dans le bus.",
+    "opts": [
+      "lose",
+      "losed",
+      "have lost",
+      "lost"
+    ],
+    "ans": 3,
+    "rule": "'Yesterday' impose le Past Simple : 'lose' -> 'lost'."
+  },
+  {
+    "id": "d-a2-28",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Yesterday, I ___ wait thirty minutes at the doctor's.",
+    "fr": "Hier, j'ai dû attendre trente minutes chez le médecin.",
+    "opts": [
+      "musted",
+      "have to",
+      "must",
+      "had to"
+    ],
+    "ans": 3,
+    "rule": "'Must' n'a pas de passé -> toujours 'had to' au Past Simple."
+  },
+  {
+    "id": "d-a2-29",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "My grandmother ___ me how to cook this traditional soup.",
+    "fr": "Ma grand-mère m'a appris à cuisiner cette soupe traditionnelle.",
+    "opts": [
+      "learned",
+      "taught",
+      "teached",
+      "thought"
+    ],
+    "ans": 1,
+    "rule": "Prétérit irrégulier de 'teach' = 'taught' ('think' -> 'thought')."
+  },
+  {
+    "id": "d-a2-30",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "She ___ a short email before leaving yesterday.",
+    "fr": "Elle a écrit un court e-mail avant de partir hier.",
+    "opts": [
+      "writes",
+      "written",
+      "writed",
+      "wrote"
+    ],
+    "ans": 3,
+    "rule": "'Before leaving yesterday' -> Past Simple irrégulier : 'write' -> 'wrote'."
+  },
+  {
+    "id": "d-a2-31",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "They didn't ___ the train because they woke up late.",
+    "fr": "Ils n'ont pas pris le train parce qu'ils se sont réveillés tard.",
+    "opts": [
+      "catching",
+      "catch",
+      "catched",
+      "caught"
+    ],
+    "ans": 1,
+    "rule": "Après 'didn't', base verbale obligatoire ('didn't catch')."
+  },
+  {
+    "id": "d-a2-32",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Last summer, we ___ two weeks in Lisbon.",
+    "fr": "L'été dernier, nous avons passé deux semaines à Lisbonne.",
+    "opts": [
+      "have spent",
+      "spended",
+      "spend",
+      "spent"
+    ],
+    "ans": 3,
+    "rule": "'Last summer' -> Past Simple : 'spend' -> 'spent'."
+  },
+  {
+    "id": "d-a2-33",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Who ___ all the coffee this morning?",
+    "fr": "Qui a bu tout le café ce matin ?",
+    "opts": [
+      "drinks",
+      "drinked",
+      "drank",
+      "drunk"
+    ],
+    "ans": 2,
+    "rule": "Action finie ce matin -> Past Simple irrégulier : 'drink' -> 'drank'."
+  },
+  {
+    "id": "d-a2-34",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "He ___ his phone on the kitchen table an hour ago.",
+    "fr": "Il a laissé son téléphone sur la table il y a une heure.",
+    "opts": [
+      "left",
+      "leaved",
+      "leave",
+      "has left"
+    ],
+    "ans": 0,
+    "rule": "Prétérit irrégulier de 'leave' = 'left'."
+  },
+  {
+    "id": "d-a2-35",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Where did you ___ that jacket?",
+    "fr": "Où as-tu acheté cette veste ?",
+    "opts": [
+      "buys",
+      "buy",
+      "buyed",
+      "bought"
+    ],
+    "ans": 1,
+    "rule": "Après 'did', toujours la base verbale ('buy')."
+  },
+  {
+    "id": "d-a2-36",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "I ___ a strange noise outside around midnight.",
+    "fr": "J'ai entendu un bruit étrange dehors vers minuit.",
+    "opts": [
+      "hearing",
+      "hear",
+      "heard",
+      "heared"
+    ],
+    "ans": 2,
+    "rule": "Prétérit irrégulier de 'hear' = 'heard'."
+  },
+  {
+    "id": "d-a2-37",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "The wind ___ very strongly during the storm.",
+    "fr": "Le vent a soufflé très fort pendant la tempête.",
+    "opts": [
+      "blew",
+      "blown",
+      "blowed",
+      "blows"
+    ],
+    "ans": 0,
+    "rule": "Prétérit irrégulier de 'blow' = 'blew'."
+  },
+  {
+    "id": "d-a2-38",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Maria ___ her keys in the car yesterday afternoon.",
+    "fr": "Maria a oublié ses clés dans la voiture hier après-midi.",
+    "opts": [
+      "forgotten",
+      "forgets",
+      "forgot",
+      "forgetted"
+    ],
+    "ans": 2,
+    "rule": "Prétérit irrégulier de 'forget' = 'forgot'."
+  },
+  {
+    "id": "d-a2-39",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "We ___ our old car to a neighbour last month.",
+    "fr": "Nous avons vendu notre vieille voiture à un voisin le mois dernier.",
+    "opts": [
+      "have sold",
+      "selled",
+      "sell",
+      "sold"
+    ],
+    "ans": 3,
+    "rule": "Prétérit irrégulier de 'sell' = 'sold'."
+  },
+  {
+    "id": "d-a2-40",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "The teacher ___ us three new idioms during the lesson.",
+    "fr": "Le professeur nous a dit trois nouvelles expressions pendant le cours.",
+    "opts": [
+      "said",
+      "spoke",
+      "telled",
+      "told"
+    ],
+    "ans": 3,
+    "rule": "'Tell someone something' au passé = 'told us'."
+  },
+  {
+    "id": "d-a2-41",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "She ___ very nervous before her first oral exam.",
+    "fr": "Elle s'est sentie très nerveuse avant son premier oral.",
+    "opts": [
+      "falls",
+      "fallen",
+      "felt",
+      "feeled"
+    ],
+    "ans": 2,
+    "rule": "Prétérit irrégulier de 'feel' = 'felt' (ne pas confondre avec 'fall -> fell')."
+  },
+  {
+    "id": "d-a2-42",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "He ___ off his bike, luckily without getting hurt.",
+    "fr": "Il est tombé de vélo, heureusement sans se blesser.",
+    "opts": [
+      "fallen",
+      "fell",
+      "falled",
+      "felt"
+    ],
+    "ans": 1,
+    "rule": "Prétérit irrégulier de 'fall' = 'fell'."
+  },
+  {
+    "id": "d-a2-43",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Did the museum ___ open on Sunday afternoon?",
+    "fr": "Est-ce que le musée est resté ouvert dimanche après-midi ?",
+    "opts": [
+      "stay",
+      "stays",
+      "stayed",
+      "staying"
+    ],
+    "ans": 0,
+    "rule": "Après 'Did', base verbale obligatoire ('stay')."
+  },
+  {
+    "id": "d-a2-44",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "They ___ a new solar plant near the coast in 2023.",
+    "fr": "Ils ont construit une nouvelle centrale solaire près de la côte en 2023.",
+    "opts": [
+      "builded",
+      "built",
+      "have built",
+      "build"
+    ],
+    "ans": 1,
+    "rule": "'In 2023' -> Past Simple irrégulier : 'build' -> 'built'."
+  },
+  {
+    "id": "d-a2-45",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "I ___ back home around ten o'clock last night.",
+    "fr": "Je suis rentré à la maison vers vingt-deux heures hier soir.",
+    "opts": [
+      "have come",
+      "came",
+      "comed",
+      "come"
+    ],
+    "ans": 1,
+    "rule": "Prétérit irrégulier de 'come' = 'came'."
+  },
+  {
+    "id": "d-a2-46",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Emma ___ fifty pages of her novel yesterday evening.",
+    "fr": "Emma a lu cinquante pages de son roman hier soir.",
+    "opts": [
+      "readed",
+      "reads",
+      "read",
+      "was read"
+    ],
+    "ans": 2,
+    "rule": "Prétérit de 'read' s'écrit 'read' (prononcé /red/)."
+  },
+  {
+    "id": "d-a2-47",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Why didn't you ___ me about the schedule change?",
+    "fr": "Pourquoi ne m'as-tu pas parlé du changement d'horaire ?",
+    "opts": [
+      "told",
+      "say",
+      "tells",
+      "tell"
+    ],
+    "ans": 3,
+    "rule": "Après 'didn't', base verbale ('tell') + complément direct 'me'."
+  },
+  {
+    "id": "d-a2-48",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "The company ___ twelve engineers last spring.",
+    "fr": "L'entreprise a embauché douze ingénieurs au printemps dernier.",
+    "opts": [
+      "hire",
+      "was hire",
+      "has hired",
+      "hired"
+    ],
+    "ans": 3,
+    "rule": "'Last spring' -> Past Simple régulier ('hired')."
+  },
+  {
+    "id": "d-a2-49",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "I ___ you a message two hours ago.",
+    "fr": "Je t'ai envoyé un message il y a deux heures.",
+    "opts": [
+      "send",
+      "sent",
+      "sended",
+      "have sent"
+    ],
+    "ans": 1,
+    "rule": "'Two hours ago' -> Past Simple irrégulier de 'send' = 'sent'."
+  },
+  {
+    "id": "d-a2-50",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "When the alarm ___, everyone ran outside calmly.",
+    "fr": "Quand l'alarme a sonné, tout le monde est sorti calmement.",
+    "opts": [
+      "ringed",
+      "rang",
+      "rung",
+      "rings"
+    ],
+    "ans": 1,
+    "rule": "Prétérit irrégulier de 'ring' = 'rang'."
+  },
+  {
+    "id": "d-a2-51",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "We ___ in a tiny café while it was raining.",
+    "fr": "Nous nous sommes assis dans un petit café pendant qu'il pleuvait.",
+    "opts": [
+      "sit",
+      "sat",
+      "set",
+      "sitted"
+    ],
+    "ans": 1,
+    "rule": "Prétérit irrégulier de 'sit' = 'sat'."
+  },
+  {
+    "id": "d-a2-52",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "He ___ the truth when the journalist asked him directly.",
+    "fr": "Il a dit la vérité quand le journaliste lui a posé la question directement.",
+    "opts": [
+      "spoke",
+      "spoken",
+      "speak",
+      "spoked"
+    ],
+    "ans": 0,
+    "rule": "Prétérit irrégulier de 'speak' = 'spoke'."
+  },
+  {
+    "id": "d-a2-53",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "They ___ each other at university ten years ago.",
+    "fr": "Ils se sont rencontrés à l'université il y a dix ans.",
+    "opts": [
+      "meet",
+      "meeted",
+      "met",
+      "have met"
+    ],
+    "ans": 2,
+    "rule": "Prétérit irrégulier de 'meet' = 'met'."
+  },
+  {
+    "id": "d-a2-54",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Lucas ___ some snacks and drinks for the train trip.",
+    "fr": "Lucas a apporté des en-cas et des boissons pour le train.",
+    "opts": [
+      "bought",
+      "bringed",
+      "brang",
+      "brought"
+    ],
+    "ans": 3,
+    "rule": "Prétérit irrégulier de 'bring' = 'brought' ('buy' -> 'bought')."
+  },
+  {
+    "id": "d-a2-55",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "She ___ the wrong bus and arrived twenty minutes late.",
+    "fr": "Elle a pris le mauvais bus et est arrivée avec vingt minutes de retard.",
+    "opts": [
+      "takes",
+      "taked",
+      "took",
+      "taken"
+    ],
+    "ans": 2,
+    "rule": "Prétérit irrégulier de 'take' = 'took'."
+  },
+  {
+    "id": "d-a2-56",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Our basketball team ___ the final match on Saturday.",
+    "fr": "Notre équipe de basket a gagné la finale samedi.",
+    "opts": [
+      "won",
+      "has won",
+      "win",
+      "winned"
+    ],
+    "ans": 0,
+    "rule": "Prétérit irrégulier de 'win' = 'won'."
+  },
+  {
+    "id": "d-a2-57",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Nobody ___ the answer to the last math question.",
+    "fr": "Personne ne connaissait la réponse à la dernière question de maths.",
+    "opts": [
+      "knew",
+      "knowed",
+      "knows",
+      "known"
+    ],
+    "ans": 0,
+    "rule": "Prétérit irrégulier de 'know' = 'knew'."
+  },
+  {
+    "id": "d-a2-58",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "I ___ all day waiting for the parcel.",
+    "fr": "J'ai attendu toute la journée que le colis arrive.",
+    "opts": [
+      "am waiting",
+      "was wait",
+      "waited",
+      "wait"
+    ],
+    "ans": 2,
+    "rule": "Action passée terminée -> Past Simple ('waited')."
+  },
+  {
+    "id": "d-a2-59",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "She ___ her glasses on the desk and couldn't read the screen.",
+    "fr": "Elle a cassé ses lunettes sur le bureau et ne pouvait plus lire l'écran.",
+    "opts": [
+      "breaks",
+      "breaked",
+      "broken",
+      "broke"
+    ],
+    "ans": 3,
+    "rule": "Prétérit irrégulier de 'break' = 'broke'."
+  },
+  {
+    "id": "d-a2-60",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "The technician ___ the printer before noon.",
+    "fr": "Le technicien a réparé l'imprimante avant midi.",
+    "opts": [
+      "fix",
+      "was fix",
+      "fixed",
+      "fixing"
+    ],
+    "ans": 2,
+    "rule": "Action passée datée ('before noon') -> Past Simple ('fixed')."
+  },
+  {
+    "id": "d-a2-61",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "When we ___ the mountain village, snow started falling.",
+    "fr": "Quand nous sommes arrivés au village de montagne, la neige s'est mise à tomber.",
+    "opts": [
+      "were reach",
+      "reach",
+      "reaching",
+      "reached"
+    ],
+    "ans": 3,
+    "rule": "Verbe 'reach' (sans préposition) au Past Simple -> 'reached'."
+  },
+  {
+    "id": "d-a2-62",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "I ___ very tired after running five kilometres.",
+    "fr": "J'étais très fatigué après avoir couru cinq kilomètres.",
+    "opts": [
+      "were",
+      "was",
+      "had",
+      "did"
+    ],
+    "ans": 1,
+    "rule": "'I' + passé de 'be' -> 'I was' (jamais 'I were' au récit normal)."
+  },
+  {
+    "id": "d-a2-63",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Where ___ you yesterday at five o'clock?",
+    "fr": "Où étais-tu hier à dix-sept heures ?",
+    "opts": [
+      "are",
+      "did",
+      "was",
+      "were"
+    ],
+    "ans": 3,
+    "rule": "'You' au Past Simple de 'be' -> toujours 'were'."
+  },
+  {
+    "id": "d-a2-64",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "The students ___ ready for the test at nine.",
+    "fr": "Les étudiants étaient prêts pour le contrôle à neuf heures.",
+    "opts": [
+      "was",
+      "did",
+      "were",
+      "be"
+    ],
+    "ans": 2,
+    "rule": "Sujet pluriel ('The students') -> 'were'."
+  },
+  {
+    "id": "d-a2-65",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Yesterday, my brother ___ the kitchen while I cooked.",
+    "fr": "Hier, mon frère a nettoyé la cuisine pendant que je cuisinais.",
+    "opts": [
+      "cleaned",
+      "cleans",
+      "clean",
+      "was clean"
+    ],
+    "ans": 0,
+    "rule": "Récit au Past Simple -> 'cleaned'."
+  },
+  {
+    "id": "d-a2-66",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Call me as soon as you ___ at the airport tonight.",
+    "fr": "Appelle-moi dès que tu arriveras à l'aéroport ce soir.",
+    "opts": [
+      "arrive",
+      "arrived",
+      "will arrive",
+      "arriving"
+    ],
+    "ans": 0,
+    "rule": "Pas de 'will' après 'as soon as', 'when', 'before' -> présent simple ('arrive')."
+  },
+  {
+    "id": "d-a2-67",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "I will text you when the meeting ___.",
+    "fr": "Je t'enverrai un message quand la réunion sera finie.",
+    "opts": [
+      "finished",
+      "finish",
+      "will finish",
+      "finishes"
+    ],
+    "ans": 3,
+    "rule": "Après 'when' à valeur future : présent simple + -s ('finishes')."
+  },
+  {
+    "id": "d-a2-68",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "If it ___ tomorrow, we will visit the museum instead.",
+    "fr": "S'il pleut demain, nous visiterons le musée à la place.",
+    "opts": [
+      "rained",
+      "rain",
+      "rains",
+      "will rain"
+    ],
+    "ans": 2,
+    "rule": "Conditionnel type 1 : 'If + présent simple ('rains')', jamais 'will' après 'if'."
+  },
+  {
+    "id": "d-a2-69",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Wait here until the light ___ green.",
+    "fr": "Attends ici jusqu'à ce que le feu passe au vert.",
+    "opts": [
+      "turned",
+      "will turn",
+      "turning",
+      "turns"
+    ],
+    "ans": 3,
+    "rule": "Après 'until' à valeur future -> présent simple ('turns')."
+  },
+  {
+    "id": "d-a2-70",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Look at those dark clouds! It ___ soon.",
+    "fr": "Regarde ces nuages noirs ! Il va pleuvoir bientôt.",
+    "opts": [
+      "is rain",
+      "rains",
+      "is going to rain",
+      "rained"
+    ],
+    "ans": 2,
+    "rule": "Prédiction fondée sur un indice visible ('dark clouds') -> 'is going to rain'."
+  },
+  {
+    "id": "d-a2-71",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Don't worry, I ___ you carry those heavy bags.",
+    "fr": "Ne t'inquiète pas, je vais t'aider à porter ces sacs lourds.",
+    "opts": [
+      "help",
+      "will help",
+      "helped",
+      "am help"
+    ],
+    "ans": 1,
+    "rule": "Décision ou offre spontanée sur le moment -> 'will help'."
+  },
+  {
+    "id": "d-a2-72",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "We ___ to Madrid next Friday; our tickets are already booked.",
+    "fr": "Nous partons à Madrid vendredi prochain ; nos billets sont déjà réservés.",
+    "opts": [
+      "flew",
+      "fly",
+      "are flying",
+      "will flying"
+    ],
+    "ans": 2,
+    "rule": "Projet déjà arrangé / réservé dans le futur -> Present Continuous ('are flying')."
+  },
+  {
+    "id": "d-a2-73",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Before you ___ the room, please turn off the lights.",
+    "fr": "Avant de quitter la pièce, éteins les lumières s'il te plaît.",
+    "opts": [
+      "will leave",
+      "leaving",
+      "left",
+      "leave"
+    ],
+    "ans": 3,
+    "rule": "Après 'before' à valeur future -> présent simple ('leave')."
+  },
+  {
+    "id": "d-a2-74",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "I promise I ___ all these irregular verbs this weekend.",
+    "fr": "Je promets que je réviserai tous ces verbes irréguliers ce week-end.",
+    "opts": [
+      "reviewed",
+      "will review",
+      "review",
+      "reviewing"
+    ],
+    "ans": 1,
+    "rule": "Promesse -> futur avec 'will' ('I will review')."
+  },
+  {
+    "id": "d-a2-75",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Tomorrow morning, they ___ a presentation in English.",
+    "fr": "Demain matin, ils feront une présentation en anglais.",
+    "opts": [
+      "giving",
+      "will give",
+      "gave",
+      "give"
+    ],
+    "ans": 1,
+    "rule": "'Tomorrow morning' -> futur simple ('will give')."
+  },
+  {
+    "id": "d-a2-76",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Once she ___ her bachelor's degree, she plans to study abroad.",
+    "fr": "Une fois qu'elle aura fini sa licence, elle compte étudier à l'étranger.",
+    "opts": [
+      "finished",
+      "finishes",
+      "will finish",
+      "finish"
+    ],
+    "ans": 1,
+    "rule": "Après 'once' à valeur future -> présent simple ('finishes')."
+  },
+  {
+    "id": "d-a2-77",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Next week, we ___ our grandparents in Normandy.",
+    "fr": "La semaine prochaine, nous allons rendre visite à nos grands-parents.",
+    "opts": [
+      "are going to visit",
+      "visited",
+      "visiting",
+      "visit"
+    ],
+    "ans": 0,
+    "rule": "Intention planifiée -> 'are going to visit'."
+  },
+  {
+    "id": "d-a2-78",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "If you don't practice daily, your vocabulary ___ quickly.",
+    "fr": "Si tu ne pratiques pas chaque jour, ton vocabulaire va vite régresser.",
+    "opts": [
+      "drop",
+      "drops",
+      "dropped",
+      "will drop"
+    ],
+    "ans": 3,
+    "rule": "Proposition principale d'un conditionnel type 1 -> 'will drop'."
+  },
+  {
+    "id": "d-a2-79",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "Maybe our team ___ the science prize this year.",
+    "fr": "Peut-être que notre équipe gagnera le prix scientifique cette année.",
+    "opts": [
+      "is win",
+      "will win",
+      "wins",
+      "won"
+    ],
+    "ans": 1,
+    "rule": "Hypothèse sur le futur avec 'maybe' -> 'will win'."
+  },
+  {
+    "id": "d-a2-80",
+    "level": "A2",
+    "cat": "Temps & Conjugaison",
+    "q": "As soon as the train ___, jump on board.",
+    "fr": "Dès que le train arrivera, monte à bord.",
+    "opts": [
+      "arrived",
+      "arrive",
+      "arrives",
+      "will arrive"
+    ],
+    "ans": 2,
+    "rule": "Pas de 'will' après 'as soon as' -> présent simple 3e pers. ('arrives')."
+  },
+  {
+    "id": "d-a2-81",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "You ___ bring a gift, just come as you are!",
+    "fr": "Tu n'es pas obligé d'apporter un cadeau, viens comme tu es !",
+    "opts": [
+      "must not",
+      "do not have to",
+      "should not",
+      "cannot"
+    ],
+    "ans": 1,
+    "rule": "'Do not have to' = pas obligé de. ('Must not' = interdit !)."
+  },
+  {
+    "id": "d-a2-82",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "You ___ share your passwords on a public computer.",
+    "fr": "On ne doit pas partager ses mots de passe sur un ordinateur public.",
+    "opts": [
+      "needn't",
+      "must not",
+      "didn't have to",
+      "don't have to"
+    ],
+    "ans": 1,
+    "rule": "Interdiction formelle = 'must not' (jamais 'don't have to')."
+  },
+  {
+    "id": "d-a2-83",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "When she was six, she already ___ swim across the pool.",
+    "fr": "À six ans, elle savait déjà traverser la piscine à la nage.",
+    "opts": [
+      "can",
+      "might to",
+      "knew swimming",
+      "could"
+    ],
+    "ans": 3,
+    "rule": "Capacité passée = 'could' ou 'knew how to' (jamais 'knew swimming')."
+  },
+  {
+    "id": "d-a2-84",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "I'm sorry, I ___ come to dinner tonight because I have a class.",
+    "fr": "Désolé, je ne pourrai pas venir dîner ce soir car j'ai cours.",
+    "opts": [
+      "don't can",
+      "mustn't",
+      "can't to",
+      "can't"
+    ],
+    "ans": 3,
+    "rule": "Modal invariable sans 'do' ni 'to' -> 'can't come'."
+  },
+  {
+    "id": "d-a2-85",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "You look exhausted; you ___ go to bed earlier tonight.",
+    "fr": "Tu as l'air épuisé ; tu devrais te coucher plus tôt ce soir.",
+    "opts": [
+      "must to",
+      "should to",
+      "should",
+      "ought"
+    ],
+    "ans": 2,
+    "rule": "Conseil -> 'should + base verbale' sans 'to'."
+  },
+  {
+    "id": "d-a2-86",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "___ you pass me the salt, please?",
+    "fr": "Pourriez-vous me passer le sel, s'il vous plaît ?",
+    "opts": [
+      "Could",
+      "Do",
+      "Are",
+      "Must"
+    ],
+    "ans": 0,
+    "rule": "Demande polie -> 'Could you + BV ?'."
+  },
+  {
+    "id": "d-a2-87",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "Students ___ wear safety glasses in the chemistry lab.",
+    "fr": "Les élèves doivent porter des lunettes de sécurité au labo de chimie.",
+    "opts": [
+      "can to",
+      "must",
+      "need",
+      "must to"
+    ],
+    "ans": 1,
+    "rule": "Obligation -> 'must + base verbale' sans 'to'."
+  },
+  {
+    "id": "d-a2-88",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "On Sundays, we ___ wake up early.",
+    "fr": "Le dimanche, nous n'avons pas besoin de nous lever tôt.",
+    "opts": [
+      "shouldn't",
+      "must not",
+      "don't have to",
+      "cannot"
+    ],
+    "ans": 2,
+    "rule": "Absence d'obligation -> 'don't have to'."
+  },
+  {
+    "id": "d-a2-89",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "Last Monday, I ___ stay at school until seven o'clock.",
+    "fr": "Lundi dernier, j'ai dû rester à l'école jusqu'à dix-neuf heures.",
+    "opts": [
+      "had to",
+      "have to",
+      "must",
+      "musted"
+    ],
+    "ans": 0,
+    "rule": "Passé de 'must / have to' -> toujours 'had to'."
+  },
+  {
+    "id": "d-a2-90",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "Passengers ___ smoke anywhere inside the train station.",
+    "fr": "Les voyageurs n'ont pas le droit de fumer dans la gare.",
+    "opts": [
+      "didn't have to",
+      "must not",
+      "need not",
+      "don't have to"
+    ],
+    "ans": 1,
+    "rule": "Interdiction = 'must not'."
+  },
+  {
+    "id": "d-a2-91",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "Does Lucas ___ work on Saturdays?",
+    "fr": "Est-ce que Lucas doit travailler le samedi ?",
+    "opts": [
+      "has to",
+      "must",
+      "have to",
+      "had"
+    ],
+    "ans": 2,
+    "rule": "Question avec 'have to' : 'Does Lucas HAVE to...' (jamais 'Does ... must')."
+  },
+  {
+    "id": "d-a2-92",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "She ___ speak three languages by the time she was twelve.",
+    "fr": "Elle savait parler trois langues dès l'âge de douze ans.",
+    "opts": [
+      "can",
+      "knows",
+      "might",
+      "could"
+    ],
+    "ans": 3,
+    "rule": "Capacité acquise dans le passé -> 'could'."
+  },
+  {
+    "id": "d-a2-93",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "Take a coat: it ___ snow later this afternoon.",
+    "fr": "Prends un manteau : il pourrait neiger plus tard cet après-midi.",
+    "opts": [
+      "musts",
+      "might to",
+      "cans",
+      "might"
+    ],
+    "ans": 3,
+    "rule": "Éventualité + modal invariable sans 'to' -> 'might snow'."
+  },
+  {
+    "id": "d-a2-94",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "You ___ drive so fast near a school zone!",
+    "fr": "Tu ne devrais pas conduire si vite près d'une zone scolaire !",
+    "opts": [
+      "mustn't to",
+      "don't should",
+      "shouldn't",
+      "haven't to"
+    ],
+    "ans": 2,
+    "rule": "Négation d'un modal = modal + 'not' sans 'do/don't' -> 'shouldn't'."
+  },
+  {
+    "id": "d-a2-95",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "Excuse me, ___ I open the window a bit?",
+    "fr": "Excusez-moi, puis-je ouvrir un peu la fenêtre ?",
+    "opts": [
+      "must",
+      "may",
+      "do can",
+      "am"
+    ],
+    "ans": 1,
+    "rule": "Demande de permission polie -> 'May I... ?' ou 'Can I... ?'."
+  },
+  {
+    "id": "d-a2-96",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "We didn't ___ pay for the museum; it was free for students.",
+    "fr": "Nous n'avons pas eu à payer le musée ; c'était gratuit pour les étudiants.",
+    "opts": [
+      "have to",
+      "must",
+      "needed",
+      "had to"
+    ],
+    "ans": 0,
+    "rule": "Après 'didn't', on met la base verbale -> 'didn't have to'."
+  },
+  {
+    "id": "d-a2-97",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "You ___ better check your spelling before handing in the copy.",
+    "fr": "Tu ferais mieux de vérifier ton orthographe avant de rendre la copie.",
+    "opts": [
+      "would",
+      "did",
+      "should",
+      "had"
+    ],
+    "ans": 3,
+    "rule": "Expression figée : 'had better + BV' (= ferais mieux de)."
+  },
+  {
+    "id": "d-a2-98",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "Wait, that light is still on: Mark ___ still be in the office.",
+    "fr": "Attends, la lumière est encore allumée : Mark doit encore être au bureau.",
+    "opts": [
+      "can to",
+      "has",
+      "must",
+      "ought"
+    ],
+    "ans": 2,
+    "rule": "Déduction quasi certaine au présent -> 'must be'."
+  },
+  {
+    "id": "d-a2-99",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "Can your little brother ___ his shoes by himself?",
+    "fr": "Est-ce que ton petit frère sait lacer ses chaussures tout seul ?",
+    "opts": [
+      "to tie",
+      "tie",
+      "tying",
+      "ties"
+    ],
+    "ans": 1,
+    "rule": "Après 'Can ...', base verbale pure ('tie')."
+  },
+  {
+    "id": "d-a2-100",
+    "level": "A2",
+    "cat": "Modaux & Obligations",
+    "q": "Every citizen ___ check information before reposting it.",
+    "fr": "Tout citoyen devrait vérifier une information avant de la relayer.",
+    "opts": [
+      "does should",
+      "musts",
+      "should",
+      "should to"
+    ],
+    "ans": 2,
+    "rule": "Modaux invariables, pas de -s, pas de 'to' -> 'should'."
+  },
+  {
+    "id": "d-a2-101",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Technology and ___ are often the main sources of disinformation.",
+    "fr": "La technologie et l'excès de confiance sont sources de désinformation.",
+    "opts": [
+      "overconfidence",
+      "overconfident",
+      "the overconfident",
+      "overconfidently"
+    ],
+    "ans": 0,
+    "rule": "Adj ≠ N : sujet = nom ('overconfidence'), jamais l'adjectif 'overconfident'."
+  },
+  {
+    "id": "d-a2-102",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Scientists have found several ___ ways to detect deepfakes.",
+    "fr": "Les scientifiques ont trouvé plusieurs façons différentes de détecter les deepfakes.",
+    "opts": [
+      "differently",
+      "differents",
+      "different",
+      "difference"
+    ],
+    "ans": 2,
+    "rule": "En anglais, les adjectifs sont TOUJOURS invariables : jamais de -s ('different')."
+  },
+  {
+    "id": "d-a2-103",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Among screen users, ___ are often the most vulnerable to viral rumours.",
+    "fr": "Parmi les utilisateurs, les plus jeunes sont souvent les plus vulnérables.",
+    "opts": [
+      "youngest",
+      "the younger ones",
+      "the youngers",
+      "the younger"
+    ],
+    "ans": 1,
+    "rule": "On n'emploie pas un adjectif seul au pluriel sans 'ones' / 'people' ('the younger ones')."
+  },
+  {
+    "id": "d-a2-104",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Platforms must try to protect ___ against automated bot attacks.",
+    "fr": "Les plateformes doivent essayer de se protéger contre les attaques de bots.",
+    "opts": [
+      "protect themselfs",
+      "protect themselves",
+      "protects themselfs",
+      "protecting themselves"
+    ],
+    "ans": 1,
+    "rule": "Après 'to', base verbale ('protect') + pluriel en '-selves' ('themselves')."
+  },
+  {
+    "id": "d-a2-105",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "The number of citizens affected by fake news ___ sharply since 2022.",
+    "fr": "Le nombre de citoyens touchés par les fausses nouvelles a fortement augmenté.",
+    "opts": [
+      "were increased",
+      "have increased",
+      "are increased",
+      "has increased"
+    ],
+    "ans": 3,
+    "rule": "'The number of + nom pluriel' prend TOUJOURS un verbe au SINGULIER ('has increased')."
+  },
+  {
+    "id": "d-a2-106",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Since the ___ of generative AI, realistic fake videos have multiplied.",
+    "fr": "Depuis l'avènement de l'IA générative, les fausses vidéos se sont multipliées.",
+    "opts": [
+      "happens",
+      "invent",
+      "advent",
+      "happend"
+    ],
+    "ans": 2,
+    "rule": "Après 'the', il faut un NOM ('the advent of AI'), jamais un verbe conjugué ('happens')."
+  },
+  {
+    "id": "d-a2-107",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Many ___ experts agree that regulation is necessary.",
+    "fr": "De nombreux experts indépendants s'accordent à dire que la régulation est nécessaire.",
+    "opts": [
+      "independence",
+      "independents",
+      "independently",
+      "independent"
+    ],
+    "ans": 3,
+    "rule": "Adjectif invariable -> jamais de -s à 'independent'."
+  },
+  {
+    "id": "d-a2-108",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Social networks provide ___ tools to filter violent content.",
+    "fr": "Les réseaux sociaux fournissent des outils puissants pour filtrer.",
+    "opts": [
+      "powerful",
+      "powerfuls",
+      "powers",
+      "powerfully"
+    ],
+    "ans": 0,
+    "rule": "Adjectif invariable avant un nom pluriel -> 'powerful tools'."
+  },
+  {
+    "id": "d-a2-109",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Younger readers are more careful than ___.",
+    "fr": "Les jeunes lecteurs sont plus prudents que les plus âgés.",
+    "opts": [
+      "older ones",
+      "the old",
+      "old ones",
+      "the olders"
+    ],
+    "ans": 0,
+    "rule": "Comparaison claire avec pronom de reprise -> 'older ones' / 'older people'."
+  },
+  {
+    "id": "d-a2-110",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "We should teach ___ how to verify online statistics.",
+    "fr": "Nous devrions apprendre aux enfants à vérifier les statistiques en ligne.",
+    "opts": [
+      "the childs",
+      "children",
+      "childrens",
+      "childs"
+    ],
+    "ans": 1,
+    "rule": "Pluriel irrégulier de 'child' = 'children' (sans -s !)."
+  },
+  {
+    "id": "d-a2-111",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Good ___ is crucial when preparing for competitive exams.",
+    "fr": "La régularité est cruciale pour réussir les concours.",
+    "opts": [
+      "regularly",
+      "regularity",
+      "regular",
+      "regulars"
+    ],
+    "ans": 1,
+    "rule": "Sujet de phrase = NOM ('regularity'), pas l'adjectif 'regular'."
+  },
+  {
+    "id": "d-a2-112",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "The doctor advised him to take care of ___.",
+    "fr": "Le médecin lui a conseillé de prendre soin de lui-même.",
+    "opts": [
+      "hisself",
+      "himself",
+      "him's",
+      "his"
+    ],
+    "ans": 1,
+    "rule": "Pronom réfléchi masculin singulier = 'himself' (jamais 'hisself')."
+  },
+  {
+    "id": "d-a2-113",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Both companies have launched ___ applications this year.",
+    "fr": "Les deux entreprises ont lancé des applications similaires cette année.",
+    "opts": [
+      "similarity",
+      "similar",
+      "similarly",
+      "similars"
+    ],
+    "ans": 1,
+    "rule": "Adjectif toujours invariable -> 'similar applications'."
+  },
+  {
+    "id": "d-a2-114",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "A lack of ___ often pushes people to believe fake headlines.",
+    "fr": "Un manque de prudence pousse souvent à croire les faux titres.",
+    "opts": [
+      "cautious",
+      "caution",
+      "cautiously",
+      "cautiousnessly"
+    ],
+    "ans": 1,
+    "rule": "Après 'A lack of', il faut un NOM ('caution'), pas l'adjectif 'cautious'."
+  },
+  {
+    "id": "d-a2-115",
+    "level": "A2",
+    "cat": "Catégories GR (Copie PC*)",
+    "q": "Two ___ came to fix the classroom projector.",
+    "fr": "Deux techniciens sont venus réparer le vidéoprojecteur de la classe.",
+    "opts": [
+      "technicians",
+      "technicianes",
+      "technician's",
+      "technician"
+    ],
+    "ans": 0,
+    "rule": "Nom dénombrable après 'Two' -> pluriel 'technicians'."
+  },
+  {
+    "id": "d-a2-116",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "___ is now widely used in both schools and companies.",
+    "fr": "L'intelligence artificielle est très utilisée dans les écoles et entreprises.",
+    "opts": [
+      "AIs",
+      "AI",
+      "An AI",
+      "The AI"
+    ],
+    "ans": 1,
+    "rule": "Zéro article 'the' devant les concepts généraux ('AI', 'science', 'society')."
+  },
+  {
+    "id": "d-a2-117",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "Politicians sometimes use ___ during election campaigns.",
+    "fr": "Les politiciens utilisent parfois la propagande pendant les campagnes.",
+    "opts": [
+      "propagandas",
+      "a propaganda",
+      "propaganda",
+      "the propaganda"
+    ],
+    "ans": 2,
+    "rule": "Concept général indénombrable -> pas de 'the' ('propaganda')."
+  },
+  {
+    "id": "d-a2-118",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "___ plays a central role in shaping democratic debate.",
+    "fr": "La presse joue un rôle central dans le débat démocratique.",
+    "opts": [
+      "The journalisms",
+      "Journalism",
+      "Journalisms",
+      "A journalism"
+    ],
+    "ans": 1,
+    "rule": "Pas d'article devant un nom général indénombrable ('Journalism')."
+  },
+  {
+    "id": "d-a2-119",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "She waited for half an hour at ___ yesterday.",
+    "fr": "Elle a attendu une demi-heure chez le médecin hier.",
+    "opts": [
+      "doctor",
+      "doctors",
+      "a doctors",
+      "the doctor's"
+    ],
+    "ans": 3,
+    "rule": "Chez le médecin (lieu spécifique) = 'at the doctor's' (article 'the' + génitif)."
+  },
+  {
+    "id": "d-a2-120",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "Never enter your bank password on ___.",
+    "fr": "N'entrez jamais votre mot de passe bancaire sur un ordinateur public.",
+    "opts": [
+      "the public computers",
+      "a public computer",
+      "an public computer",
+      "public computer"
+    ],
+    "ans": 1,
+    "rule": "Nom singulier dénombrable -> article 'a' obligatoire ('a public computer')."
+  },
+  {
+    "id": "d-a2-121",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "Wait a minute, my cousin is ___ engineer in Toulouse.",
+    "fr": "Attends une minute, mon cousin est ingénieur à Toulouse.",
+    "opts": [
+      "the engineer",
+      "an engineer",
+      "engineer",
+      "a engineer"
+    ],
+    "ans": 1,
+    "rule": "Métier au singulier = article indéfini obligatoire ('a'/'an'). Devant voyelle -> 'an'."
+  },
+  {
+    "id": "d-a2-122",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "Our plane leaves from ___ airport at six tomorrow.",
+    "fr": "Notre avion part de l'aéroport demain à six heures.",
+    "opts": [
+      "airport",
+      "an airport",
+      "the airport",
+      "airports"
+    ],
+    "ans": 2,
+    "rule": "Lieu connu précis dans la ville ('l'aéroport') -> 'the airport'."
+  },
+  {
+    "id": "d-a2-123",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "We walked for two hours in ___ on Sunday.",
+    "fr": "Nous avons marché deux heures dans la forêt dimanche.",
+    "opts": [
+      "the forest",
+      "forest",
+      "a forests",
+      "forest's"
+    ],
+    "ans": 0,
+    "rule": "Lieu identifié ('la forêt') -> article 'the' obligatoire ('in the forest')."
+  },
+  {
+    "id": "d-a2-124",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "___ is essential if you want to understand complex news.",
+    "fr": "La patience est essentielle pour comprendre les actualités complexes.",
+    "opts": [
+      "A patience",
+      "Patience",
+      "Patiences",
+      "The patience"
+    ],
+    "ans": 1,
+    "rule": "Qualité abstraite au sens général -> zéro article ('Patience')."
+  },
+  {
+    "id": "d-a2-125",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "Turn left after the bridge; you will see ___ big hotel.",
+    "fr": "Tourne à gauche après le pont ; tu verras un grand hôtel.",
+    "opts": [
+      "an big hotel",
+      "big hotel",
+      "the big hotels",
+      "a big hotel"
+    ],
+    "ans": 3,
+    "rule": "Première mention d'un nom singulier dénombrable -> 'a big hotel'."
+  },
+  {
+    "id": "d-a2-126",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "Modern ___ allows students to learn languages faster.",
+    "fr": "La technologie moderne permet aux élèves d'apprendre plus vite.",
+    "opts": [
+      "technology",
+      "a technology",
+      "the technology",
+      "technologies is"
+    ],
+    "ans": 0,
+    "rule": "Généralité indénombrable -> zéro 'the' ('Modern technology')."
+  },
+  {
+    "id": "d-a2-127",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "Do ___ believe everything they see on television?",
+    "fr": "Est-ce que les gens croient tout ce qu'ils voient à la télévision ?",
+    "opts": [
+      "peoples",
+      "the people",
+      "people",
+      "a people"
+    ],
+    "ans": 2,
+    "rule": "'Les gens' en général = 'people' (sans 'the', jamais 'peoples')."
+  },
+  {
+    "id": "d-a2-128",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "He usually watches ___ for twenty minutes every evening.",
+    "fr": "Il regarde généralement la télévision vingt minutes chaque soir.",
+    "opts": [
+      "TV",
+      "the TVs",
+      "the TV",
+      "a TVs"
+    ],
+    "ans": 0,
+    "rule": "Sens général du média : 'watch TV' (sans 'the')."
+  },
+  {
+    "id": "d-a2-129",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "___ affects every generation differently today.",
+    "fr": "La politique touche chaque génération différemment aujourd'hui.",
+    "opts": [
+      "A politics",
+      "Politics",
+      "The politics",
+      "Politic"
+    ],
+    "ans": 1,
+    "rule": "Domaine général -> 'Politics' sans 'the' (suivi du singulier !)."
+  },
+  {
+    "id": "d-a2-130",
+    "level": "A2",
+    "cat": "Généralités & Articles",
+    "q": "I went to ___ university in Paris after high school.",
+    "fr": "Je suis allé à l'université à Paris après le lycée.",
+    "opts": [
+      "— (rien)",
+      "an",
+      "a",
+      "the universities"
+    ],
+    "ans": 0,
+    "rule": "'Go to university / school' (comme étudiant) ne prend pas d'article en anglais."
+  },
+  {
+    "id": "d-a2-131",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "Social media spreads too ___ fake news before any fact-check.",
+    "fr": "Les réseaux sociaux diffusent trop de fausses infos avant vérification.",
+    "opts": [
+      "a few",
+      "many",
+      "much",
+      "several"
+    ],
+    "ans": 2,
+    "rule": "'News' est indénombrable singulier -> 'much', jamais 'many'."
+  },
+  {
+    "id": "d-a2-132",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "The news from our team abroad ___ very good today.",
+    "fr": "Les nouvelles de notre équipe à l'étranger sont très bonnes.",
+    "opts": [
+      "are",
+      "were",
+      "is",
+      "be"
+    ],
+    "ans": 2,
+    "rule": "'News' finit par -s mais est TOUJOURS singulier -> 'is'."
+  },
+  {
+    "id": "d-a2-133",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "The teacher gave me some very good ___ before my exam.",
+    "fr": "Le professeur m'a donné de très bons conseils avant mon examen.",
+    "opts": [
+      "advise",
+      "an advice",
+      "advice",
+      "advices"
+    ],
+    "ans": 2,
+    "rule": "'Advice' est toujours indénombrable singulier (pas de -s, pas de 'an')."
+  },
+  {
+    "id": "d-a2-134",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "We found very useful ___ on the government website.",
+    "fr": "Nous avons trouvé des informations très utiles sur le site officiel.",
+    "opts": [
+      "several information",
+      "information",
+      "an information",
+      "informations"
+    ],
+    "ans": 1,
+    "rule": "'Information' est indénombrable : JAMAIS de -s ni d'article 'an'."
+  },
+  {
+    "id": "d-a2-135",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "I have a lot of ___ to finish before tomorrow morning.",
+    "fr": "J'ai beaucoup de devoirs à finir avant demain matin.",
+    "opts": [
+      "many homework",
+      "a homework",
+      "homework",
+      "homeworks"
+    ],
+    "ans": 2,
+    "rule": "'Homework' est indénombrable -> jamais de -s ('a lot of homework')."
+  },
+  {
+    "id": "d-a2-136",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "They carried three heavy ___ into the hotel lobby.",
+    "fr": "Ils ont porté trois bagages lourds (valises) dans le hall.",
+    "opts": [
+      "luggages",
+      "a luggage",
+      "suitcases",
+      "baggages"
+    ],
+    "ans": 2,
+    "rule": "'Luggage' et 'baggage' sont indénombrables (jamais -s). Pour compter, utilisez 'suitcases' / 'pieces of luggage'."
+  },
+  {
+    "id": "d-a2-137",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "He didn't have ___ money left at the end of the trip.",
+    "fr": "Il ne lui restait pas beaucoup d'argent à la fin du voyage.",
+    "opts": [
+      "many",
+      "much",
+      "a few",
+      "several"
+    ],
+    "ans": 1,
+    "rule": "'Money' est indénombrable -> 'much money' (jamais 'many')."
+  },
+  {
+    "id": "d-a2-138",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "Did the police find any ___ near the broken window?",
+    "fr": "La police a-t-elle trouvé le moindre indice / preuve près de la fenêtre ?",
+    "opts": [
+      "many evidence",
+      "evidence",
+      "evidences",
+      "an evidence"
+    ],
+    "ans": 1,
+    "rule": "'Evidence' est indénombrable singulier (jamais -s ni 'an')."
+  },
+  {
+    "id": "d-a2-139",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "She bought new ___ for her student apartment.",
+    "fr": "Elle a acheté de nouveaux meubles pour son studio.",
+    "opts": [
+      "furniture",
+      "furnitures",
+      "many furniture",
+      "a furniture"
+    ],
+    "ans": 0,
+    "rule": "'Furniture' (meubles) est indénombrable singulier en anglais."
+  },
+  {
+    "id": "d-a2-140",
+    "level": "A2",
+    "cat": "Indénombrables",
+    "q": "We had ___ trouble connecting to the campus Wi-Fi.",
+    "fr": "Nous avons eu pas mal de mal à nous connecter au Wi-Fi.",
+    "opts": [
+      "many",
+      "several",
+      "a few",
+      "a lot of"
+    ],
+    "ans": 3,
+    "rule": "'Trouble' est indénombrable -> 'a lot of trouble' / 'much trouble'."
+  },
+  {
+    "id": "d-a2-141",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "Remember to change ___ passwords regularly.",
+    "fr": "Pensez à changer vos mots de passe régulièrement.",
+    "opts": [
+      "yours passwords",
+      "your passwords",
+      "the password",
+      "your password"
+    ],
+    "ans": 1,
+    "rule": "Possessif invariable 'your' + nom pluriel ('passwords')."
+  },
+  {
+    "id": "d-a2-142",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "Look at ___ documents on the table; they contain key figures.",
+    "fr": "Regarde ces documents sur la table ; ils contiennent des chiffres clés.",
+    "opts": [
+      "that",
+      "these",
+      "them",
+      "this"
+    ],
+    "ans": 1,
+    "rule": "Démonstratif pluriel proche = 'these' (+ nom pluriel)."
+  },
+  {
+    "id": "d-a2-143",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "Everyone in this room ___ ready to start the discussion.",
+    "fr": "Tout le monde dans cette salle est prêt à lancer la discussion.",
+    "opts": [
+      "is",
+      "were",
+      "are",
+      "be"
+    ],
+    "ans": 0,
+    "rule": "'Everyone / Everybody / Anyone / Nobody' prend toujours un verbe SINGULIER ('is')."
+  },
+  {
+    "id": "d-a2-144",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "This book belongs to Emma; it is ___.",
+    "fr": "Ce livre appartient à Emma ; c'est le sien.",
+    "opts": [
+      "hers",
+      "her",
+      "she's",
+      "theirs"
+    ],
+    "ans": 0,
+    "rule": "Pronom possessif sans nom après = 'hers'."
+  },
+  {
+    "id": "d-a2-145",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "The company updated ___ privacy rules last month.",
+    "fr": "L'entreprise a mis à jour ses règles de confidentialité le mois dernier.",
+    "opts": [
+      "his",
+      "it's",
+      "its",
+      "her"
+    ],
+    "ans": 2,
+    "rule": "Possessif d'une chose ou entreprise au singulier = 'its' (sans apostrophe ! 'it's' = it is)."
+  },
+  {
+    "id": "d-a2-146",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "Would you like ___ cup of tea before studying?",
+    "fr": "Voudrais-tu une tasse de thé avant d'étudier ?",
+    "opts": [
+      "an",
+      "any",
+      "some",
+      "much"
+    ],
+    "ans": 2,
+    "rule": "Dans une offre polie ('Would you like...?'), on utilise 'some' (ou 'a')."
+  },
+  {
+    "id": "d-a2-147",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "Is there ___ milk left in the fridge for coffee?",
+    "fr": "Reste-t-il du lait dans le frigo pour le café ?",
+    "opts": [
+      "some",
+      "a few",
+      "many",
+      "any"
+    ],
+    "ans": 3,
+    "rule": "Question neutre avec indénombrable -> 'any milk'."
+  },
+  {
+    "id": "d-a2-148",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "___ of my two sisters lives in Lyon.",
+    "fr": "Aucune de mes deux sœurs ne vit à Lyon.",
+    "opts": [
+      "Every",
+      "Neither",
+      "Both",
+      "No"
+    ],
+    "ans": 1,
+    "rule": "'Neither of + pluriel' = ni l'une ni l'autre (+ verbe singulier 'lives')."
+  },
+  {
+    "id": "d-a2-149",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "I haven't seen ___ at the library since noon.",
+    "fr": "Je n'ai vu personne à la bibliothèque depuis midi.",
+    "opts": [
+      "nobody",
+      "somebody",
+      "anyone",
+      "no one"
+    ],
+    "ans": 2,
+    "rule": "Pas de double négation : 'haven't seen anyone' (jamais 'haven't seen nobody')."
+  },
+  {
+    "id": "d-a2-150",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "Do you know ___ who speaks fluent German?",
+    "fr": "Connais-tu quelqu'un qui parle allemand couramment ?",
+    "opts": [
+      "mister everybody",
+      "anyone",
+      "anywhere",
+      "nothing"
+    ],
+    "ans": 1,
+    "rule": "En anglais, 'quelqu'un / n'importe qui' = 'anyone / someone'."
+  },
+  {
+    "id": "d-a2-151",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "There aren't ___ chairs left in the classroom.",
+    "fr": "Il ne reste pas beaucoup de chaises dans la salle.",
+    "opts": [
+      "much",
+      "little",
+      "a little",
+      "many"
+    ],
+    "ans": 3,
+    "rule": "'Chairs' est dénombrable pluriel -> 'many'."
+  },
+  {
+    "id": "d-a2-152",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "We only have ___ minutes left before the bell rings.",
+    "fr": "Il ne nous reste que quelques minutes avant que la cloche sonne.",
+    "opts": [
+      "less",
+      "a little",
+      "a few",
+      "much"
+    ],
+    "ans": 2,
+    "rule": "'Minutes' est dénombrable pluriel -> 'a few' ('a little' = indénombrable)."
+  },
+  {
+    "id": "d-a2-153",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "Look at ___ tall building across the river!",
+    "fr": "Regarde ce grand immeuble là-bas de l'autre côté du fleuve !",
+    "opts": [
+      "these",
+      "this are",
+      "those",
+      "that"
+    ],
+    "ans": 3,
+    "rule": "Objet singulier éloigné -> 'that'."
+  },
+  {
+    "id": "d-a2-154",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "Do you prefer this green mug or the brown ___?",
+    "fr": "Préfères-tu cette tasse verte ou la marron ?",
+    "opts": [
+      "ones",
+      "mugs",
+      "it",
+      "one"
+    ],
+    "ans": 3,
+    "rule": "Reprise d'un nom dénombrable singulier -> 'the brown one'."
+  },
+  {
+    "id": "d-a2-155",
+    "level": "A2",
+    "cat": "Pronoms & Déterminants",
+    "q": "I bought two notebooks: a blue one and two black ___.",
+    "fr": "J'ai acheté deux cahiers : un bleu et deux noirs.",
+    "opts": [
+      "another",
+      "one",
+      "them",
+      "ones"
+    ],
+    "ans": 3,
+    "rule": "Reprise d'un nom pluriel -> 'ones'."
+  },
+  {
+    "id": "d-a2-156",
+    "level": "A2",
+    "cat": "Syntaxe verbale",
+    "q": "Checking sources allows ___ misinformation on social media.",
+    "fr": "Vérifier ses sources nous permet d'éviter la désinformation.",
+    "opts": [
+      "for avoiding",
+      "avoiding to",
+      "us to avoid",
+      "to avoid"
+    ],
+    "ans": 2,
+    "rule": "'Allow + quelqu'un + to + V' ('allows us to avoid'). Jamais 'allow to + V' directement."
+  },
+  {
+    "id": "d-a2-157",
+    "level": "A2",
+    "cat": "Syntaxe verbale",
+    "q": "Fact-checking tools are designed ___ citizens identify false claims.",
+    "fr": "Les outils de vérification servent à aider les citoyens.",
+    "opts": [
+      "for help",
+      "to help",
+      "in teach",
+      "in help"
+    ],
+    "ans": 1,
+    "rule": "Infinitif de but = 'to + base verbale' ('to help', jamais 'in + verbe')."
+  },
+  {
+    "id": "d-a2-158",
+    "level": "A2",
+    "cat": "Syntaxe verbale",
+    "q": "She went upstairs ___ a quiet place to study.",
+    "fr": "Elle est monté à l'étage pour trouver un endroit calme pour réviser.",
+    "opts": [
+      "for find",
+      "to find",
+      "to finding",
+      "in find"
+    ],
+    "ans": 1,
+    "rule": "Pour exprimer le but avant un verbe -> 'to' ou 'in order to' (jamais 'for + BV')."
+  },
+  {
+    "id": "d-a2-159",
+    "level": "A2",
+    "cat": "Syntaxe verbale",
+    "q": "Stop ___ so much noise, I'm trying to concentrate.",
+    "fr": "Arrête de faire autant de bruit, j'essaie de me concentrer.",
+    "opts": [
+      "making",
+      "to make",
+      "made",
+      "make"
+    ],
+    "ans": 0,
+    "rule": "Cesser une action en cours = 'stop + V-ing' ('stop making')."
+  },
+  {
+    "id": "d-a2-160",
+    "level": "A2",
+    "cat": "Syntaxe verbale",
+    "q": "I enjoy ___ podcasts while walking to college.",
+    "fr": "J'aime bien écouter des podcasts en marchant vers la fac.",
+    "opts": [
+      "listening to",
+      "listen",
+      "to listen",
+      "listened"
+    ],
+    "ans": 0,
+    "rule": "'Enjoy' est toujours suivi de V-ing, et 'listen TO something'."
+  },
+  {
+    "id": "d-a2-161",
+    "level": "A2",
+    "cat": "Syntaxe verbale",
+    "q": "Please tell me what you ___ during the break.",
+    "fr": "Dis-moi s'il te plaît ce que tu as acheté pendant la pause.",
+    "opts": [
+      "bought",
+      "did buy",
+      "buys",
+      "buy"
+    ],
+    "ans": 0,
+    "rule": "Subordonnée affirmative ('tell me what you...') -> pas de 'did', verbe direct ('bought')."
+  },
+  {
+    "id": "d-a2-162",
+    "level": "A2",
+    "cat": "Syntaxe verbale",
+    "q": "Before ___ the plane, keep your boarding pass ready.",
+    "fr": "Avant de monter dans l'avion, gardez votre carte d'embarquement prête.",
+    "opts": [
+      "boarding",
+      "up in",
+      "board",
+      "to board"
+    ],
+    "ans": 0,
+    "rule": "Après une préposition ('before', 'after'), le verbe prend -ing ('before boarding')."
+  },
+  {
+    "id": "d-a2-163",
+    "level": "A2",
+    "cat": "Syntaxe verbale",
+    "q": "My phone battery died just before we got ___ the train.",
+    "fr": "La batterie de mon téléphone est morte juste avant qu'on monte dans le train.",
+    "opts": [
+      "in",
+      "on",
+      "by",
+      "at"
+    ],
+    "ans": 1,
+    "rule": "Transports collectifs (train, bus, plane) -> 'get ON the train' / 'get OFF'."
+  },
+  {
+    "id": "d-a2-164",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "I am really interested ___ modern cinema and technology.",
+    "fr": "Je suis vraiment intéressé par le cinéma moderne et la technologie.",
+    "opts": [
+      "in",
+      "at",
+      "by",
+      "on"
+    ],
+    "ans": 0,
+    "rule": "On dit toujours 'interested IN' (jamais 'by')."
+  },
+  {
+    "id": "d-a2-165",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "Generative AI is very good ___ creating realistic images.",
+    "fr": "L'IA générative est très douée pour créer des images réalistes.",
+    "opts": [
+      "at creating",
+      "to creating",
+      "for create",
+      "in create"
+    ],
+    "ans": 0,
+    "rule": "'Good AT + nom / V-ing' (jamais 'good in')."
+  },
+  {
+    "id": "d-a2-166",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "This public platform is open ___ everyone who wants to learn.",
+    "fr": "Cette plateforme est ouverte à tous ceux qui veulent apprendre.",
+    "opts": [
+      "for anyone",
+      "to everyone",
+      "on everybody",
+      "at everybody"
+    ],
+    "ans": 1,
+    "rule": "Toujours 'open TO everyone'."
+  },
+  {
+    "id": "d-a2-167",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "I am looking ___ my glasses everywhere; have you seen them?",
+    "fr": "Je cherche mes lunettes partout ; les as-tu vues ?",
+    "opts": [
+      "for",
+      "at",
+      "up to",
+      "after"
+    ],
+    "ans": 0,
+    "rule": "'Look for' = chercher ('look at' = regarder, 'look after' = s'occuper de)."
+  },
+  {
+    "id": "d-a2-168",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "Don't believe everything you read ___ social media!",
+    "fr": "Ne crois pas tout ce que tu lis sur les réseaux sociaux !",
+    "opts": [
+      "on",
+      "over",
+      "in",
+      "at"
+    ],
+    "ans": 0,
+    "rule": "Médias & écrans ('on TV', 'on the radio', 'on social media', 'on the internet') -> 'on'."
+  },
+  {
+    "id": "d-a2-169",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "It is hard to spot false claims when you don't pay attention ___ details.",
+    "fr": "C'est difficile quand on ne fait pas attention aux détails.",
+    "opts": [
+      "for",
+      "to",
+      "at",
+      "on"
+    ],
+    "ans": 1,
+    "rule": "'Pay attention TO' (toujours 'to')."
+  },
+  {
+    "id": "d-a2-170",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "She arrived ___ London late on Sunday evening.",
+    "fr": "Elle est arrivée à Londres tard dimanche soir.",
+    "opts": [
+      "on",
+      "in",
+      "to",
+      "at"
+    ],
+    "ans": 1,
+    "rule": "Pour une grande ville ou un pays : 'arrive IN London' (jamais 'arrive to' !)."
+  },
+  {
+    "id": "d-a2-171",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "We got ___ the train station five minutes early.",
+    "fr": "Nous sommes arrivés à la gare avec cinq minutes d'avance.",
+    "opts": [
+      "on",
+      "to",
+      "into",
+      "in"
+    ],
+    "ans": 1,
+    "rule": "Avec 'get', on dit 'get TO a place' ('get to the station') — alors que 'arrive' prend 'in/at'."
+  },
+  {
+    "id": "d-a2-172",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "He succeeded because ___ his daily discipline.",
+    "fr": "Il a réussi grâce à sa discipline quotidienne.",
+    "opts": [
+      "from",
+      "of",
+      "at",
+      "— (rien)"
+    ],
+    "ans": 1,
+    "rule": "'Because OF + nom' ('because + Sujet + Verbe')."
+  },
+  {
+    "id": "d-a2-173",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "The meeting starts ___ nine o'clock ___ Monday morning.",
+    "fr": "La réunion commence à neuf heures lundi matin.",
+    "opts": [
+      "on / at",
+      "at / on",
+      "in / on",
+      "at / in"
+    ],
+    "ans": 1,
+    "rule": "'at' + heure ('at 9:00'), 'on' + jour précis ('on Monday morning')."
+  },
+  {
+    "id": "d-a2-174",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "Her birthday is ___ the third of July.",
+    "fr": "Son anniversaire est le trois juillet.",
+    "opts": [
+      "in",
+      "on",
+      "to",
+      "at"
+    ],
+    "ans": 1,
+    "rule": "Date précise (jour) -> toujours 'on' ('on July 3rd')."
+  },
+  {
+    "id": "d-a2-175",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "The university library is closed ___ August.",
+    "fr": "La bibliothèque universitaire est fermée en août.",
+    "opts": [
+      "to",
+      "at",
+      "in",
+      "on"
+    ],
+    "ans": 2,
+    "rule": "Mois, saisons, années -> toujours 'in' ('in August', 'in 2026')."
+  },
+  {
+    "id": "d-a2-176",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "I completely agree ___ your main argument.",
+    "fr": "Je suis tout à fait d'accord avec ton argument principal.",
+    "opts": [
+      "for",
+      "at",
+      "to",
+      "with"
+    ],
+    "ans": 3,
+    "rule": "'Agree WITH someone / an opinion' (jamais 'agree to' avec une personne)."
+  },
+  {
+    "id": "d-a2-177",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "Why are you listening ___ that loud music while revising?",
+    "fr": "Pourquoi écoutes-tu cette musique forte en révisant ?",
+    "opts": [
+      "on",
+      "to",
+      "for",
+      "at"
+    ],
+    "ans": 1,
+    "rule": "'Listen TO something' (toujours 'to')."
+  },
+  {
+    "id": "d-a2-178",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "Wait ___ me in front of the main entrance!",
+    "fr": "Attends-moi devant l'entrée principale !",
+    "opts": [
+      "at",
+      "to",
+      "for",
+      "on"
+    ],
+    "ans": 2,
+    "rule": "'Wait FOR someone' (toujours 'for')."
+  },
+  {
+    "id": "d-a2-179",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "It depends ___ how much time you spend practicing.",
+    "fr": "Cela dépend du temps que tu passes à pratiquer.",
+    "opts": [
+      "at",
+      "of",
+      "from",
+      "on"
+    ],
+    "ans": 3,
+    "rule": "'Depend ON' (jamais 'depend of' !)."
+  },
+  {
+    "id": "d-a2-180",
+    "level": "A2",
+    "cat": "Prépositions",
+    "q": "She is afraid ___ making grammar mistakes during oral exams.",
+    "fr": "Elle a peur de faire des fautes de grammaire à l'oral.",
+    "opts": [
+      "to",
+      "at",
+      "from",
+      "of"
+    ],
+    "ans": 3,
+    "rule": "'Afraid OF + nom / V-ing' ('afraid of making')."
+  },
+  {
+    "id": "d-a2-181",
+    "level": "A2",
+    "cat": "Comparatifs",
+    "q": "Unfortunately, the traffic today is much ___ than yesterday.",
+    "fr": "Malheureusement, la circulation aujourd'hui est bien pire qu'hier.",
+    "opts": [
+      "worse",
+      "more bad",
+      "worst",
+      "badder"
+    ],
+    "ans": 0,
+    "rule": "Comparatif irrégulier de 'bad' = 'worse' (jamais 'more bad')."
+  },
+  {
+    "id": "d-a2-182",
+    "level": "A2",
+    "cat": "Comparatifs",
+    "q": "Could you speak a little ___ so everyone can follow?",
+    "fr": "Pourrais-tu parler un peu plus lentement pour que tous suivent ?",
+    "opts": [
+      "most slowly",
+      "more slowly",
+      "slowly",
+      "slowlier"
+    ],
+    "ans": 1,
+    "rule": "Comparatif des adverbes en '-ly' -> 'more + adverbe' ('more slowly')."
+  },
+  {
+    "id": "d-a2-183",
+    "level": "A2",
+    "cat": "Comparatifs",
+    "q": "This train is much ___ than the old regional bus.",
+    "fr": "Ce train est beaucoup plus rapide que le vieux bus régional.",
+    "opts": [
+      "more fast",
+      "fast",
+      "faster",
+      "fastest"
+    ],
+    "ans": 2,
+    "rule": "Adjectif court (1 syllabe) -> '-er' ('faster', jamais 'more fast')."
+  },
+  {
+    "id": "d-a2-184",
+    "level": "A2",
+    "cat": "Comparatifs",
+    "q": "She thinks this chapter is ___ interesting than the first one.",
+    "fr": "Elle trouve ce chapitre plus intéressant que le premier.",
+    "opts": [
+      "much",
+      "most",
+      "more",
+      "interestinger"
+    ],
+    "ans": 2,
+    "rule": "Adjectif long (3+ syllabes) -> 'more interesting'."
+  },
+  {
+    "id": "d-a2-185",
+    "level": "A2",
+    "cat": "Comparatifs",
+    "q": "This is the ___ book I have ever read in English.",
+    "fr": "C'est le meilleur livre que j'aie jamais lu en anglais.",
+    "opts": [
+      "best",
+      "most good",
+      "better",
+      "goodest"
+    ],
+    "ans": 0,
+    "rule": "Superlatif irrégulier de 'good' = 'the best'."
+  },
+  {
+    "id": "d-a2-186",
+    "level": "A2",
+    "cat": "Comparatifs",
+    "q": "Today's exercise was ___ easier than yesterday's.",
+    "fr": "L'exercice d'aujourd'hui était beaucoup plus facile qu'hier.",
+    "opts": [
+      "more",
+      "many",
+      "very",
+      "much"
+    ],
+    "ans": 3,
+    "rule": "Devant un comparatif ('easier'), on utilise 'much' ou 'a lot', jamais 'very' !"
+  },
+  {
+    "id": "d-a2-187",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "___, we must check where the information comes from.",
+    "fr": "Dans un premier temps, nous devons vérifier l'origine de l'info.",
+    "opts": [
+      "At first time",
+      "In first time",
+      "Firstly",
+      "On first"
+    ],
+    "ans": 2,
+    "rule": "Jamais 'in first time' -> 'Firstly' ou 'First'."
+  },
+  {
+    "id": "d-a2-188",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "The students visited a ___ before entering high school.",
+    "fr": "Les élèves sont allés au collège avant d'entrer au lycée.",
+    "opts": [
+      "college",
+      "high college",
+      "faculty",
+      "middle school"
+    ],
+    "ans": 3,
+    "rule": "'Collège' = 'middle school' ('college' signifie université)."
+  },
+  {
+    "id": "d-a2-189",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "Let's ___ after dinner while the weather is nice.",
+    "fr": "Allons faire une promenade après le dîner tant qu'il fait beau.",
+    "opts": [
+      "make a walk",
+      "walk a walk",
+      "go for a walk",
+      "do a walk"
+    ],
+    "ans": 2,
+    "rule": "'Faire une promenade' = 'go for a walk' / 'take a walk'."
+  },
+  {
+    "id": "d-a2-190",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "The ___ today is much warmer than last week.",
+    "fr": "Le temps aujourd'hui est beaucoup plus chaud que la semaine dernière.",
+    "opts": [
+      "time",
+      "season",
+      "hour",
+      "weather"
+    ],
+    "ans": 3,
+    "rule": "La météo = 'the weather' ('time' = le temps qui passe / l'heure)."
+  },
+  {
+    "id": "d-a2-191",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "We went to a quiet restaurant ___ at eight.",
+    "fr": "Nous sommes allés dans un restaurant calme pour dîner à vingt heures.",
+    "opts": [
+      "for dinner",
+      "to supper",
+      "for dining",
+      "to launch"
+    ],
+    "ans": 0,
+    "rule": "'Dîner' = 'for dinner' / 'to have dinner' ('launch' = lancer ; 'lunch' = déjeuner)."
+  },
+  {
+    "id": "d-a2-192",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "Are you ___ the bus stop near the library?",
+    "fr": "Cherches-tu l'arrêt de bus près de la bibliothèque ?",
+    "opts": [
+      "searching to",
+      "reaching",
+      "looking for",
+      "finding for"
+    ],
+    "ans": 2,
+    "rule": "'Chercher' = 'look for' ('reach' = atteindre / joindre)."
+  },
+  {
+    "id": "d-a2-193",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "I want to ___ three days in Rome next month.",
+    "fr": "Je veux passer trois jours à Rome le mois prochain.",
+    "opts": [
+      "stay",
+      "make",
+      "spend",
+      "pass"
+    ],
+    "ans": 2,
+    "rule": "Passer du temps = 'spend time' (jamais 'pass time' en ce sens)."
+  },
+  {
+    "id": "d-a2-194",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "He ___ a big mistake in the last line of his essay.",
+    "fr": "Il a fait une grosse erreur à la dernière ligne de son essai.",
+    "opts": [
+      "took",
+      "made",
+      "had",
+      "did"
+    ],
+    "ans": 1,
+    "rule": "Collocation : 'MAKE a mistake' (jamais 'do a mistake')."
+  },
+  {
+    "id": "d-a2-195",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "Before deciding, you should ___ a deep breath and read again.",
+    "fr": "Avant de décider, tu devrais respirer un grand coup et relire.",
+    "opts": [
+      "do",
+      "make",
+      "take",
+      "give"
+    ],
+    "ans": 2,
+    "rule": "Collocation : 'TAKE a breath' / 'take a break' / 'take a shower'."
+  },
+  {
+    "id": "d-a2-196",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "My friends and I ___ a lot of sports on weekends.",
+    "fr": "Mes amis et moi faisons beaucoup de sport le week-end.",
+    "opts": [
+      "go",
+      "make",
+      "play",
+      "practice"
+    ],
+    "ans": 2,
+    "rule": "'Faire du sport' = 'play sports' / 'work out' / 'exercise' (rarement 'do sports')."
+  },
+  {
+    "id": "d-a2-197",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "Sorry, I ___ agree with you on that specific point.",
+    "fr": "Désolé, je ne suis pas d'accord avec toi sur ce point précis.",
+    "opts": [
+      "isn't",
+      "haven't",
+      "am not",
+      "don't"
+    ],
+    "ans": 3,
+    "rule": "'Agree' est un verbe ordinaire -> négation 'I don't agree' (jamais 'I am not agree')."
+  },
+  {
+    "id": "d-a2-198",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "She is ___ years old and studies physics in Paris.",
+    "fr": "Elle a vingt ans et étudie la physique à Paris.",
+    "opts": [
+      "of twenty",
+      "gets twenty",
+      "having twenty",
+      "twenty"
+    ],
+    "ans": 3,
+    "rule": "Âge en anglais : toujours 'be + nombre' ('She is twenty years old', jamais 'have')."
+  },
+  {
+    "id": "d-a2-199",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "Look at this ___ restaurant; there is no loud music at all.",
+    "fr": "Regarde ce restaurant calme ; il n'y a pas de musique forte.",
+    "opts": [
+      "calmly",
+      "mutism",
+      "quiet",
+      "silent"
+    ],
+    "ans": 2,
+    "rule": "Ambiance calme/tranquille = 'quiet' ('silent' = muet / silence total)."
+  },
+  {
+    "id": "d-a2-200",
+    "level": "A2",
+    "cat": "Calques FR → EN",
+    "q": "We should ___ the problem early instead of waiting.",
+    "fr": "Nous devrions résoudre le problème tôt au lieu d'attendre.",
+    "opts": [
+      "correcting",
+      "answer",
+      "solve",
+      "solution"
+    ],
+    "ans": 2,
+    "rule": "Verbe = 'solve a problem' ('solution' est un nom, jamais un verbe !)."
+  },
+  {
+    "id": "d-b1-1",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "In recent years, the number of deepfake videos ___ dramatically.",
+    "fr": "Ces dernières années, le nombre de vidéos deepfake a augmenté de façon spectaculaire.",
+    "opts": [
+      "have increased",
+      "is increased",
+      "increased",
+      "has increased"
+    ],
+    "ans": 3,
+    "rule": "Repère ouvert jusqu'au présent ('In recent years') + sujet singulier ('the number of') -> 'has increased' (voix active, jamais 'is increased')."
+  },
+  {
+    "id": "d-b1-2",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Two decades ___, very few households owned a smartphone.",
+    "fr": "Il y a vingt ans, très peu de foyers possédaient un smartphone.",
+    "opts": [
+      "since",
+      "for",
+      "ago",
+      "already"
+    ],
+    "ans": 2,
+    "rule": "'Il y a + durée' dans le passé révolu = 'durée + ago', suivi du Past Simple."
+  },
+  {
+    "id": "d-b1-3",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "I ___ in Toulouse for three years before moving to Paris in 2022.",
+    "fr": "J'ai vécu à Toulouse pendant trois ans avant de déménager à Paris en 2022.",
+    "opts": [
+      "am living",
+      "had been live",
+      "lived",
+      "have lived"
+    ],
+    "ans": 2,
+    "rule": "Période terminée dans le passé (suivie de 'before... in 2022') -> Past Simple ('lived')."
+  },
+  {
+    "id": "d-b1-4",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "She ___ as an engineer at Airbus since she graduated.",
+    "fr": "Elle travaille comme ingénieure chez Airbus depuis qu'elle a eu son diplôme.",
+    "opts": [
+      "worked",
+      "works",
+      "has worked",
+      "is working"
+    ],
+    "ans": 2,
+    "rule": "Action commencée dans le passé qui continue aujourd'hui + 'since' -> Present Perfect ('has worked')."
+  },
+  {
+    "id": "d-b1-5",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "We have known each other ___ nearly ten years.",
+    "fr": "Nous nous connaissons depuis près de dix ans.",
+    "opts": [
+      "since",
+      "during",
+      "ago",
+      "for"
+    ],
+    "ans": 3,
+    "rule": "Durée chiffrée ('nearly ten years') avec Present Perfect -> 'for' ('since' = point de départ)."
+  },
+  {
+    "id": "d-b1-6",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Has the committee published its final report ___?",
+    "fr": "Le comité a-t-il déjà publié son rapport final ?",
+    "opts": [
+      "since",
+      "already",
+      "still",
+      "yet"
+    ],
+    "ans": 3,
+    "rule": "En fin de phrase interrogative ou négative au Present Perfect -> 'yet'."
+  },
+  {
+    "id": "d-b1-7",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Look! Someone ___ a huge mistake in this dataset.",
+    "fr": "Regarde ! Quelqu'un a fait une énorme erreur dans ce jeu de données.",
+    "opts": [
+      "is making",
+      "made",
+      "has made",
+      "makes"
+    ],
+    "ans": 2,
+    "rule": "Résultat visible dans le présent ('Look!') sans date passée -> Present Perfect ('has made')."
+  },
+  {
+    "id": "d-b1-8",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "When ___ the European Union adopt the AI Act?",
+    "fr": "Quand l'Union européenne a-t-elle adopté l'AI Act ?",
+    "opts": [
+      "has",
+      "had",
+      "did",
+      "was"
+    ],
+    "ans": 2,
+    "rule": "Question commençant par 'When' sur un événement passé daté -> toujours Past Simple ('did')."
+  },
+  {
+    "id": "d-b1-9",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "They haven't found a reliable solution ___.",
+    "fr": "Ils n'ont pas encore trouvé de solution fiable.",
+    "opts": [
+      "yet",
+      "ago",
+      "already",
+      "still"
+    ],
+    "ans": 0,
+    "rule": "Négation 'not ... encore' en fin de proposition -> 'yet'."
+  },
+  {
+    "id": "d-b1-10",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Over the last decade, trust in mainstream media ___ steadily.",
+    "fr": "Au cours de la dernière décennie, la confiance envers les médias traditionnels a régulièrement diminué.",
+    "opts": [
+      "has declined",
+      "is declined",
+      "declined",
+      "declines"
+    ],
+    "ans": 0,
+    "rule": "'Over the last decade' relie le passé au présent -> Present Perfect ('has declined')."
+  },
+  {
+    "id": "d-b1-11",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "The journalist ___ three major scandals between 2018 and 2021.",
+    "fr": "La journaliste a révélé trois scandales majeurs entre 2018 et 2021.",
+    "opts": [
+      "uncovers",
+      "was uncover",
+      "has uncovered",
+      "uncovered"
+    ],
+    "ans": 3,
+    "rule": "Bornes temporelles fermées ('between 2018 and 2021') -> Past Simple ('uncovered')."
+  },
+  {
+    "id": "d-b1-12",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "It is the first time I ___ such a persuasive speech in class.",
+    "fr": "C'est la première fois que j'entends un discours aussi convaincant en classe.",
+    "opts": [
+      "have heard",
+      "heard",
+      "hear",
+      "am hearing"
+    ],
+    "ans": 0,
+    "rule": "Après 'It is the first/second time (that)...', l'anglais utilise le Present Perfect ('have heard')."
+  },
+  {
+    "id": "d-b1-13",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Have you ___ attended a live debate in English?",
+    "fr": "As-tu déjà assisté à un débat en direct en anglais ?",
+    "opts": [
+      "yet",
+      "still",
+      "never",
+      "ever"
+    ],
+    "ans": 3,
+    "rule": "Question d'expérience de vie ('déjà' = 'au moins une fois') -> 'ever'."
+  },
+  {
+    "id": "d-b1-14",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "No, I have ___ read an article from The Economist before.",
+    "fr": "Non, je n'ai jamais lu d'article de The Economist auparavant.",
+    "opts": [
+      "ever",
+      "never",
+      "not never",
+      "yet"
+    ],
+    "ans": 1,
+    "rule": "Pas de double négation : 'have never read' (jamais 'haven't never')."
+  },
+  {
+    "id": "d-b1-15",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "The company ___ twenty new researchers last quarter.",
+    "fr": "L'entreprise a recruté vingt nouveaux chercheurs au trimestre dernier.",
+    "opts": [
+      "has hired",
+      "hired",
+      "was hired",
+      "hires"
+    ],
+    "ans": 1,
+    "rule": "Date passée révolue ('last quarter') -> Past Simple ('hired')."
+  },
+  {
+    "id": "d-b1-16",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "How long ___ you been preparing for the competitive exams?",
+    "fr": "Depuis combien de temps prépares-tu les concours ?",
+    "opts": [
+      "are",
+      "do",
+      "did",
+      "have"
+    ],
+    "ans": 3,
+    "rule": "'How long' jusqu'à maintenant -> Present Perfect (Continuous) : 'have you been preparing'."
+  },
+  {
+    "id": "d-b1-17",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "The software engineer has fixed three critical bugs ___ this morning.",
+    "fr": "L'ingénieur logiciel a corrigé trois bugs critiques depuis ce matin.",
+    "opts": [
+      "since",
+      "for",
+      "from",
+      "ago"
+    ],
+    "ans": 0,
+    "rule": "Point de départ dans le temps ('this morning' comme début) -> 'since'."
+  },
+  {
+    "id": "d-b1-18",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Shakespeare ___ thirty-seven plays during his lifetime.",
+    "fr": "Shakespeare a écrit trente-sept pièces au cours de sa vie.",
+    "opts": [
+      "wrote",
+      "writes",
+      "had write",
+      "has written"
+    ],
+    "ans": 0,
+    "rule": "Auteur décédé / époque close -> Past Simple obligatoire ('wrote')."
+  },
+  {
+    "id": "d-b1-19",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Social networks ___ how young people consume political news.",
+    "fr": "Les réseaux sociaux ont transformé la façon dont les jeunes consomment l'actualité politique.",
+    "opts": [
+      "have transformed",
+      "transform",
+      "are transformed",
+      "were transform"
+    ],
+    "ans": 0,
+    "rule": "Changement accompli qui explique la situation actuelle -> Present Perfect actif ('have transformed')."
+  },
+  {
+    "id": "d-b1-20",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "We ___ the results yet, so we cannot draw a conclusion.",
+    "fr": "Nous n'avons pas encore reçu les résultats, donc nous ne pouvons pas conclure.",
+    "opts": [
+      "aren't receiving",
+      "didn't receive",
+      "haven't received",
+      "don't receive"
+    ],
+    "ans": 2,
+    "rule": "Négation avec 'yet' + conséquence présente -> Present Perfect ('haven't received')."
+  },
+  {
+    "id": "d-b1-21",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Why did the CEO ___ immediately after the data leak?",
+    "fr": "Pourquoi le PDG a-t-il démissionné immédiatement après la fuite de données ?",
+    "opts": [
+      "resign",
+      "has resigned",
+      "resigning",
+      "resigned"
+    ],
+    "ans": 0,
+    "rule": "Avec l'auxiliaire 'did', le verbe reste à la base verbale ('resign')."
+  },
+  {
+    "id": "d-b1-22",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Since 2020, remote work ___ standard practice in many tech firms.",
+    "fr": "Depuis 2020, le télétravail est devenu une pratique courante dans de nombreuses entreprises tech.",
+    "opts": [
+      "becomes",
+      "has become",
+      "is become",
+      "became"
+    ],
+    "ans": 1,
+    "rule": "'Since 2020' impose le Present Perfect ('has become'). Attention : jamais 'is become' !"
+  },
+  {
+    "id": "d-b1-23",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "I ___ the report twice, and I still notice two typos.",
+    "fr": "J'ai déjà relu le rapport deux fois, et je vois encore deux coquilles.",
+    "opts": [
+      "am already reading",
+      "had already read",
+      "have already read",
+      "already read"
+    ],
+    "ans": 2,
+    "rule": "'Already' + bilan présent -> Present Perfect ('have already read')."
+  },
+  {
+    "id": "d-b1-24",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Did the researchers ___ enough evidence during the 2021 trial?",
+    "fr": "Les chercheurs ont-ils recueilli suffisamment de preuves lors de l'essai de 2021 ?",
+    "opts": [
+      "gathered",
+      "have gathered",
+      "gather",
+      "gathers"
+    ],
+    "ans": 2,
+    "rule": "Après 'Did', toujours base verbale ('gather')."
+  },
+  {
+    "id": "d-b1-25",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "So far, neither government ___ to lower the carbon tax.",
+    "fr": "Jusqu'à présent, aucun des deux gouvernements n'a accepté de baisser la taxe carbone.",
+    "opts": [
+      "have agreed",
+      "agrees",
+      "agreed",
+      "has agreed"
+    ],
+    "ans": 3,
+    "rule": "'So far' -> Present Perfect ; et 'neither + singulier' prend un verbe au singulier ('has agreed')."
+  },
+  {
+    "id": "d-b1-26",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Maria ___ in London when the financial crisis started in 2008.",
+    "fr": "Maria vivait à Londres quand la crise financière a commencé en 2008.",
+    "opts": [
+      "has lived",
+      "is living",
+      "was living",
+      "lived"
+    ],
+    "ans": 2,
+    "rule": "Action en train de se dérouler au moment où une autre survient au passé -> Past Continuous ('was living')."
+  },
+  {
+    "id": "d-b1-27",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "While I ___ the article, the power suddenly went out.",
+    "fr": "Pendant que je lisais l'article, l'électricité s'est coupée soudainement.",
+    "opts": [
+      "had read",
+      "have read",
+      "was reading",
+      "read"
+    ],
+    "ans": 2,
+    "rule": "Action longue en cours ('While...') interrompue par un événement bref -> 'was reading'."
+  },
+  {
+    "id": "d-b1-28",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "By the time we arrived at the conference, the keynote speaker ___.",
+    "fr": "Quand nous sommes arrivés à la conférence, l'orateur principal avait déjà commencé.",
+    "opts": [
+      "had already started",
+      "has already started",
+      "was already start",
+      "already started"
+    ],
+    "ans": 0,
+    "rule": "Antériorité par rapport à un événement passé ('arrived') -> Past Perfect ('had already started')."
+  },
+  {
+    "id": "d-b1-29",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "She realized too late that she ___ to attach the bibliography.",
+    "fr": "Elle s'est rendu compte trop tard qu'elle avait oublié de joindre la bibliographie.",
+    "opts": [
+      "had forgotten",
+      "forgot",
+      "forgets",
+      "has forgotten"
+    ],
+    "ans": 0,
+    "rule": "L'oubli précède la prise de conscience au passé ('realized') -> Past Perfect ('had forgotten')."
+  },
+  {
+    "id": "d-b1-30",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "The server crashed because nobody ___ it for six months.",
+    "fr": "Le serveur a planté parce que personne ne l'avait mis à jour depuis six mois.",
+    "opts": [
+      "had updated",
+      "updated",
+      "has updated",
+      "was updating"
+    ],
+    "ans": 0,
+    "rule": "Cause antérieure au crash au passé -> Past Perfect ('had updated')."
+  },
+  {
+    "id": "d-b1-31",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "He ___ writing his essay for two hours before taking a break.",
+    "fr": "Il rédigeait sa dissertation depuis deux heures avant de faire une pause.",
+    "opts": [
+      "had been",
+      "has been",
+      "was",
+      "is"
+    ],
+    "ans": 0,
+    "rule": "Durée continue avant un point passé ('before taking') -> Past Perfect Continuous ('had been writing')."
+  },
+  {
+    "id": "d-b1-32",
+    "level": "B1",
+    "cat": "Present Perfect vs Past",
+    "q": "Everything ___ fine until the algorithm began amplifying false claims.",
+    "fr": "Tout allait bien jusqu'à ce que l'algorithme se mette à amplifier de fausses informations.",
+    "opts": [
+      "went",
+      "had gone",
+      "has gone",
+      "is going"
+    ],
+    "ans": 1,
+    "rule": "Situation antérieure rompue par 'until... began' -> Past Perfect ('had gone') ou contexte antérieur."
+  },
+  {
+    "id": "d-b1-33",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "Print newspapers ___ the primary source of political news.",
+    "fr": "Autrefois, les journaux papier étaient la principale source d'actualité politique.",
+    "opts": [
+      "are used to being",
+      "use to be",
+      "used to be",
+      "were used to be"
+    ],
+    "ans": 2,
+    "rule": "État/habitude révolue dans le passé : 'used to + base verbale' ('used to be')."
+  },
+  {
+    "id": "d-b1-34",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "Students in prepa quickly get used to ___ under strict time limits.",
+    "fr": "Les élèves de prépa s'habituent vite à travailler sous contrainte de temps.",
+    "opts": [
+      "work",
+      "working",
+      "be work",
+      "worked"
+    ],
+    "ans": 1,
+    "rule": "'get used to' = s'habituer à : 'to' est une préposition, suivie de V-ing ('working')."
+  },
+  {
+    "id": "d-b1-35",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "I am not used to ___ in front of an examiner yet.",
+    "fr": "Je ne suis pas encore habitué à parler devant un examinateur.",
+    "opts": [
+      "spoke",
+      "speaking",
+      "speak",
+      "be spoken"
+    ],
+    "ans": 1,
+    "rule": "'be used to + V-ing / nom' = être habitué à."
+  },
+  {
+    "id": "d-b1-36",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "___ you use to play chess when you were in middle school?",
+    "fr": "Jouais-tu aux échecs quand tu étais au collège ?",
+    "opts": [
+      "Did",
+      "Are",
+      "Were",
+      "Do"
+    ],
+    "ans": 0,
+    "rule": "Forme interrogative de 'used to' au passé -> 'Did ... use to + BV' (sans -d)."
+  },
+  {
+    "id": "d-b1-37",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "People didn't ___ check every headline with AI tools ten years ago.",
+    "fr": "Les gens n'avaient pas l'habitude de vérifier chaque titre avec l'IA il y a dix ans.",
+    "opts": [
+      "use to",
+      "using to",
+      "were used to",
+      "used to"
+    ],
+    "ans": 0,
+    "rule": "Après 'didn't', on retire le -d : 'didn't use to'."
+  },
+  {
+    "id": "d-b1-38",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "She has lived in Britain for five years, so she is used to ___ on the left.",
+    "fr": "Elle vit en Grande-Bretagne depuis cinq ans, donc elle a l'habitude de conduire à gauche.",
+    "opts": [
+      "drive",
+      "drove",
+      "driving",
+      "driven"
+    ],
+    "ans": 2,
+    "rule": "'be used to + V-ing' = être habitué à ('driving')."
+  },
+  {
+    "id": "d-b1-39",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "It takes several weeks to get used to ___ a 500-word synthesis in one hour.",
+    "fr": "Il faut plusieurs semaines pour s'habituer à rédiger une synthèse de 500 mots en une heure.",
+    "opts": [
+      "writing",
+      "written",
+      "write",
+      "wrote"
+    ],
+    "ans": 0,
+    "rule": "'get used to + V-ing' ('writing')."
+  },
+  {
+    "id": "d-b1-40",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "My grandfather ___ listen to the radio every evening before television existed.",
+    "fr": "Mon grand-père écoutait la radio chaque soir avant l'invention de la télévision.",
+    "opts": [
+      "is used to",
+      "uses to",
+      "used to",
+      "was used to"
+    ],
+    "ans": 2,
+    "rule": "Habitude passée révolue -> 'used to + BV' ('used to listen')."
+  },
+  {
+    "id": "d-b1-41",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "Are the new interns used to ___ complex datasets?",
+    "fr": "Les nouveaux stagiaires sont-ils habitués à analyser des jeux de données complexes ?",
+    "opts": [
+      "analyzing",
+      "analyze",
+      "be analyze",
+      "analyzed"
+    ],
+    "ans": 0,
+    "rule": "'used to' après 'be' (= habitué à) demande toujours V-ing ('analyzing')."
+  },
+  {
+    "id": "d-b1-42",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "There ___ be a small bookstore on this corner, but it closed last year.",
+    "fr": "Il y avait autrefois une petite librairie à ce coin de rue, mais elle a fermé l'an dernier.",
+    "opts": [
+      "got used to",
+      "used to",
+      "was used to",
+      "uses to"
+    ],
+    "ans": 1,
+    "rule": "'There used to be...' = Il y avait autrefois..."
+  },
+  {
+    "id": "d-b1-43",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "I can't get used to ___ up at five in the morning for morning shifts.",
+    "fr": "Je n'arrive pas à m'habituer à me lever à cinq heures du matin.",
+    "opts": [
+      "wake",
+      "waken",
+      "woke",
+      "waking"
+    ],
+    "ans": 3,
+    "rule": "'get used to + V-ing' -> 'waking up'."
+  },
+  {
+    "id": "d-b1-44",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "Before social media, citizens ___ rely much more on local journalists.",
+    "fr": "Avant les réseaux sociaux, les citoyens comptaient beaucoup plus sur les journalistes locaux.",
+    "opts": [
+      "used to",
+      "are used to",
+      "were used to",
+      "use to"
+    ],
+    "ans": 0,
+    "rule": "Habitude passée révolue -> 'used to rely'."
+  },
+  {
+    "id": "d-b1-45",
+    "level": "B1",
+    "cat": "Used to / Habits",
+    "q": "Doctors are used to ___ urgent decisions under heavy pressure.",
+    "fr": "Les médecins ont l'habitude de prendre des décisions urgentes sous forte pression.",
+    "opts": [
+      "to make",
+      "make",
+      "making",
+      "made"
+    ],
+    "ans": 2,
+    "rule": "'be used to + V-ing' -> 'making decisions'."
+  },
+  {
+    "id": "d-b1-46",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "In his copy, the solution ___ in the third paragraph.",
+    "fr": "Dans sa copie, la solution sera abordée dans le troisième paragraphe.",
+    "opts": [
+      "will addressing",
+      "will address",
+      "will be addressed",
+      "is address"
+    ],
+    "ans": 2,
+    "rule": "Une solution est abordée par l'auteur -> passif futur : 'will be addressed' (correction exacte de ta copie PC* !)."
+  },
+  {
+    "id": "d-b1-47",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "I ___ by my teacher to shorten my sentences to avoid exceeding the word limit.",
+    "fr": "Mon professeur m'a dit de raccourcir mes phrases pour ne pas dépasser la limite de mots.",
+    "opts": [
+      "was told",
+      "told",
+      "am telling",
+      "have told"
+    ],
+    "ans": 0,
+    "rule": "Passif indirect anglais : 'on m'a dit' = 'I was told' (jamais 'It was told to me')."
+  },
+  {
+    "id": "d-b1-48",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "Many young readers ___ by misleading headlines on social platforms.",
+    "fr": "De nombreux jeunes lecteurs sont trompés par des titres trompeurs sur les réseaux.",
+    "opts": [
+      "are misled",
+      "have misled",
+      "mislead",
+      "were misleading"
+    ],
+    "ans": 0,
+    "rule": "Présent passif pluriel de 'mislead' (participe passé irrégulier 'misled') -> 'are misled'."
+  },
+  {
+    "id": "d-b1-49",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "Strict privacy rules must ___ before deploying facial recognition.",
+    "fr": "Des règles strictes de confidentialité doivent être appliquées avant de déployer la reconnaissance faciale.",
+    "opts": [
+      "been enforced",
+      "enforcing",
+      "be enforced",
+      "enforce"
+    ],
+    "ans": 2,
+    "rule": "Modal + passif : 'must be + participe passé' ('must be enforced')."
+  },
+  {
+    "id": "d-b1-50",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "The bridge ___ in 1995 and renovated twenty years later.",
+    "fr": "Le pont a été construit en 1995 et rénové vingt ans plus tard.",
+    "opts": [
+      "built",
+      "was built",
+      "has been built",
+      "is built"
+    ],
+    "ans": 1,
+    "rule": "Date passée ('1995') + sens passif -> Past Simple passif ('was built')."
+  },
+  {
+    "id": "d-b1-51",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "This urgent issue needs to ___ by European lawmakers immediately.",
+    "fr": "Ce problème urgent doit être traité immédiatement par les législateurs européens.",
+    "opts": [
+      "solve",
+      "be solved",
+      "solved",
+      "solving"
+    ],
+    "ans": 1,
+    "rule": "Infinitif passif après 'needs to' -> 'to be solved'."
+  },
+  {
+    "id": "d-b1-52",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "Each candidate ___ ten minutes to present the documents in the khôlle.",
+    "fr": "On donne à chaque candidat dix minutes pour présenter les documents en khôlle.",
+    "opts": [
+      "is giving",
+      "is given",
+      "gives",
+      "gave"
+    ],
+    "ans": 1,
+    "rule": "Passif indirect avec 'give' : 'Each candidate is given ten minutes'."
+  },
+  {
+    "id": "d-b1-53",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "Several studies ___ recently to measure the impact of screen time on teenagers.",
+    "fr": "Plusieurs études ont été menées récemment pour mesurer l'impact des écrans sur les ados.",
+    "opts": [
+      "have been conducted",
+      "have conducted",
+      "conducted",
+      "are conducted"
+    ],
+    "ans": 0,
+    "rule": "Present Perfect passif pluriel : 'have been conducted'."
+  },
+  {
+    "id": "d-b1-54",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "Personal data should never ___ with third-party advertisers without consent.",
+    "fr": "Les données personnelles ne devraient jamais être partagées avec des tiers sans consentement.",
+    "opts": [
+      "share",
+      "sharing",
+      "been share",
+      "be shared"
+    ],
+    "ans": 3,
+    "rule": "Modal négatif passif : 'should never be shared'."
+  },
+  {
+    "id": "d-b1-55",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "By 2030, half of routine office tasks could ___ by automated systems.",
+    "fr": "D'ici 2030, la moitié des tâches administratives courantes pourraient être remplacées par l'automatisation.",
+    "opts": [
+      "have replace",
+      "replacing",
+      "be replaced",
+      "replace"
+    ],
+    "ans": 2,
+    "rule": "Modal passif : 'could be replaced'."
+  },
+  {
+    "id": "d-b1-56",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "The suspect is believed ___ left the country yesterday evening.",
+    "fr": "On pense que le suspect a quitté le pays hier soir.",
+    "opts": [
+      "having",
+      "to has",
+      "that he",
+      "to have"
+    ],
+    "ans": 3,
+    "rule": "Structure passive impersonnelle : 'S + is believed + to have + PP'."
+  },
+  {
+    "id": "d-b1-57",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "Two journalists were ___ access to the parliamentary debate last Monday.",
+    "fr": "Deux journalistes se sont vu refuser l'accès au débat parlementaire lundi dernier.",
+    "opts": [
+      "refusing",
+      "refuse",
+      "refused",
+      "to refuse"
+    ],
+    "ans": 2,
+    "rule": "Passif indirect ('were refused access')."
+  },
+  {
+    "id": "d-b1-58",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "A new regulation ___ currently being drafted by the Ministry of Education.",
+    "fr": "Une nouvelle réglementation est actuellement en cours de rédaction par le ministère.",
+    "opts": [
+      "were",
+      "has",
+      "is",
+      "are"
+    ],
+    "ans": 2,
+    "rule": "Sujet singulier ('A new regulation') + passif progressif -> 'is currently being drafted'."
+  },
+  {
+    "id": "d-b1-59",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "This rumor proved completely false; it ___ deliberately online.",
+    "fr": "Cette rumeur s'est révélée fausse ; elle avait été diffusée délibérément en ligne.",
+    "opts": [
+      "had been spread",
+      "spreads",
+      "had spread",
+      "was spreading"
+    ],
+    "ans": 0,
+    "rule": "Passif antérieur : 'spread - spread - spread' -> 'had been spread'."
+  },
+  {
+    "id": "d-b1-60",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "Passengers are kindly ___ to switch off their mobile phones during takeoff.",
+    "fr": "Les passagers sont priés d'éteindre leur téléphone pendant le décollage.",
+    "opts": [
+      "ask",
+      "asked",
+      "asking",
+      "to ask"
+    ],
+    "ans": 1,
+    "rule": "Présent passif poli : 'are kindly asked to...'."
+  },
+  {
+    "id": "d-b1-61",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "A lot of energy ___ wasted when older appliances stay in standby mode.",
+    "fr": "Beaucoup d'énergie est gaspillée lorsque les vieux appareils restent en veille.",
+    "opts": [
+      "are",
+      "is",
+      "were",
+      "have"
+    ],
+    "ans": 1,
+    "rule": "'energy' est indénombrable donc toujours singulier -> 'is wasted'."
+  },
+  {
+    "id": "d-b1-62",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "Nothing can ___ until all witnesses have testified.",
+    "fr": "Rien ne peut être décidé tant que tous les témoins n'ont pas témoigné.",
+    "opts": [
+      "decide",
+      "be decided",
+      "deciding",
+      "been decided"
+    ],
+    "ans": 1,
+    "rule": "'can + be + PP' -> 'can be decided'."
+  },
+  {
+    "id": "d-b1-63",
+    "level": "B1",
+    "cat": "Voix Passive",
+    "q": "The error was ___ by an automated fact-checking algorithm.",
+    "fr": "L'erreur a été repérée par un algorithme automatique de vérification des faits.",
+    "opts": [
+      "spot",
+      "spoting",
+      "spoted",
+      "spotted"
+    ],
+    "ans": 3,
+    "rule": "Consonne doublée au participe passé de 'spot' -> 'spotted'."
+  },
+  {
+    "id": "d-b1-64",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "If governments ___ stricter rules, tech giants will continue collecting data unchecked.",
+    "fr": "Si les gouvernements n'imposent pas de règles plus strictes, les géants de la tech continueront.",
+    "opts": [
+      "didn't pass",
+      "wouldn't pass",
+      "won't pass",
+      "don't pass"
+    ],
+    "ans": 3,
+    "rule": "Conditionnel type 1 : jamais de 'will' après 'If' -> 'If + présent simple' ('don't pass')."
+  },
+  {
+    "id": "d-b1-65",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "If I ___ more time during the exam, I would double-check every verb ending.",
+    "fr": "Si j'avais plus de temps pendant l'épreuve, je vérifierais chaque terminaison verbale.",
+    "opts": [
+      "had",
+      "will have",
+      "have",
+      "would have"
+    ],
+    "ans": 0,
+    "rule": "Conditionnel type 2 (irréel du présent) : 'If + Past Simple' ('had'), '... would + BV'."
+  },
+  {
+    "id": "d-b1-66",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "___ you check your sources carefully, you risk spreading misinformation.",
+    "fr": "À moins de vérifier tes sources attentivement, tu risques de propager de fausses informations.",
+    "opts": [
+      "Unless",
+      "Without",
+      "If",
+      "Except"
+    ],
+    "ans": 0,
+    "rule": "'Unless' = 'If ... not' ('à moins que / si ... ne ... pas'), suivi d'un verbe positif."
+  },
+  {
+    "id": "d-b1-67",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "What would happen if every newspaper ___ behind a paywall tomorrow?",
+    "fr": "Que se passerait-il si tous les journaux passaient derrière un mur payant demain ?",
+    "opts": [
+      "would go",
+      "went",
+      "will go",
+      "goes"
+    ],
+    "ans": 1,
+    "rule": "Conditionnel type 2 ('would happen') -> 'if + Past Simple' ('went')."
+  },
+  {
+    "id": "d-b1-68",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "If she ___ fluent in Spanish, she could apply for that position in Madrid.",
+    "fr": "Si elle parlait couramment espagnol, elle pourrait postuler à ce poste à Madrid.",
+    "opts": [
+      "were",
+      "will be",
+      "would be",
+      "is"
+    ],
+    "ans": 0,
+    "rule": "Irréel du présent avec 'be' : 'were' (ou 'was' familier) dans la subordonnée en 'if'."
+  },
+  {
+    "id": "d-b1-69",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "I wish I ___ remember irregular verbs effortlessly during oral exams.",
+    "fr": "J'aimerais me souvenir des verbes irréguliers sans effort pendant les khôlles.",
+    "opts": [
+      "can",
+      "will",
+      "may",
+      "could"
+    ],
+    "ans": 3,
+    "rule": "Souhait portant sur le présent après 'wish' -> prétérit modal ('could')."
+  },
+  {
+    "id": "d-b1-70",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "Consumers won't change their habits unless companies ___ transparent pricing.",
+    "fr": "Les consommateurs ne changeront pas leurs habitudes à moins que les entreprises ne proposent des prix transparents.",
+    "opts": [
+      "offered",
+      "will offer",
+      "offer",
+      "don't offer"
+    ],
+    "ans": 2,
+    "rule": "'Unless' contient déjà la négation et reste au présent ('offer', jamais 'will' ni 'don't')."
+  },
+  {
+    "id": "d-b1-71",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "I'll call you as soon as the train ___ at Gare de Lyon.",
+    "fr": "Je t'appellerai dès que le train arrivera à Gare de Lyon.",
+    "opts": [
+      "arrived",
+      "is arrive",
+      "will arrive",
+      "arrives"
+    ],
+    "ans": 3,
+    "rule": "Conjonction de temps ('as soon as', 'when', 'until') : futur interdit -> présent simple ('arrives')."
+  },
+  {
+    "id": "d-b1-72",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "Suppose you ___ the editor-in-chief: which story would you publish first?",
+    "fr": "Imagine que tu sois rédacteur en chef : quel article publierais-tu en premier ?",
+    "opts": [
+      "will be",
+      "would be",
+      "were",
+      "are"
+    ],
+    "ans": 2,
+    "rule": "Hypothèse imaginaire ('would you publish') -> prétérit modal 'were'."
+  },
+  {
+    "id": "d-b1-73",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "If the battery ___ fully charged, the drone can fly for forty minutes.",
+    "fr": "Si la batterie est complètement chargée, le drone peut voler quarante minutes.",
+    "opts": [
+      "is",
+      "were",
+      "would be",
+      "will be"
+    ],
+    "ans": 0,
+    "rule": "Conditionnel type 0 / vérité technique -> présent simple ('is')."
+  },
+  {
+    "id": "d-b1-74",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "Provided that everyone ___ to the word limit, no points will be deducted.",
+    "fr": "À condition que tout le monde respecte la limite de mots, aucun point ne sera retiré.",
+    "opts": [
+      "will stick",
+      "stuck",
+      "sticks",
+      "stick"
+    ],
+    "ans": 2,
+    "rule": "'Provided that' (= pourvu que) suit la même règle que 'If' : présent pour parler du futur ('sticks' après 'everyone')."
+  },
+  {
+    "id": "d-b1-75",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "I wish this documentary ___ shorter; I'm losing focus.",
+    "fr": "J'aimerais que ce documentaire soit plus court ; je perds ma concentration.",
+    "opts": [
+      "were",
+      "is",
+      "will be",
+      "would"
+    ],
+    "ans": 0,
+    "rule": "Regret sur le présent : 'I wish + sujet + Past Simple' ('were')."
+  },
+  {
+    "id": "d-b1-76",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "They wouldn't buy an electric vehicle if there ___ no charging stations nearby.",
+    "fr": "Ils n'achèteraient pas de voiture électrique s'il n'y avait aucune borne de recharge à proximité.",
+    "opts": [
+      "would be",
+      "are",
+      "were",
+      "will be"
+    ],
+    "ans": 2,
+    "rule": "Conditionnel type 2 ('wouldn't buy') -> 'if there were'."
+  },
+  {
+    "id": "d-b1-77",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "As long as you ___ the argument clearly, the examiner will follow your reasoning.",
+    "fr": "Tant que tu structures clairement l'argument, l'examinateur suivra ton raisonnement.",
+    "opts": [
+      "structure",
+      "structured",
+      "will structure",
+      "structuring"
+    ],
+    "ans": 0,
+    "rule": "'As long as' + présent simple pour renvoyer au futur ('structure')."
+  },
+  {
+    "id": "d-b1-78",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "If I ___ you, I would reread the last paragraph before handing in the paper.",
+    "fr": "À ta place, je relirais le dernier paragraphe avant de rendre la copie.",
+    "opts": [
+      "would be",
+      "am",
+      "was",
+      "were"
+    ],
+    "ans": 3,
+    "rule": "Expression figée de conseil : 'If I were you, I would...'."
+  },
+  {
+    "id": "d-b1-79",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "She wouldn't feel so stressed if she ___ practicing twenty minutes every evening.",
+    "fr": "Elle ne se sentirait pas si stressée si elle prenait l'habitude de s'entraîner 20 min par soir.",
+    "opts": [
+      "started",
+      "starts",
+      "will start",
+      "would start"
+    ],
+    "ans": 0,
+    "rule": "Type 2 ('wouldn't feel') -> 'if + Past Simple' ('started')."
+  },
+  {
+    "id": "d-b1-80",
+    "level": "B1",
+    "cat": "Conditionnels & Wish",
+    "q": "In case it ___ tomorrow, we will hold the debate inside the lecture hall.",
+    "fr": "Au cas où il pleuvrait demain, nous tiendrons le débat dans l'amphithéâtre.",
+    "opts": [
+      "would rain",
+      "will rain",
+      "rains",
+      "rained"
+    ],
+    "ans": 2,
+    "rule": "Après 'In case', présent simple pour une éventualité future ('rains')."
+  },
+  {
+    "id": "d-b1-81",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "The algorithm favors shocking content, ___ explains why false news spreads fast.",
+    "fr": "L'algorithme favorise les contenus choquants, ce qui explique pourquoi les fausses infos se propagent vite.",
+    "opts": [
+      "what",
+      "who",
+      "that",
+      "which"
+    ],
+    "ans": 3,
+    "rule": "Pour reprendre toute une proposition ('ce qui' après une virgule) -> TOUJOURS ', which', jamais 'what'."
+  },
+  {
+    "id": "d-b1-82",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "___ surprises researchers most is how fast bots mimic human tone.",
+    "fr": "Ce qui surprend le plus les chercheurs, c'est la vitesse à laquelle les bots imitent le ton humain.",
+    "opts": [
+      "Who",
+      "Which",
+      "What",
+      "That"
+    ],
+    "ans": 2,
+    "rule": "'Ce qui' sans antécédent en début de phrase (= 'la chose qui') -> 'What'."
+  },
+  {
+    "id": "d-b1-83",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "Could you tell me where ___ the official statistics for this study?",
+    "fr": "Pourriez-vous me dire où je peux trouver les statistiques officielles de cette étude ?",
+    "opts": [
+      "I can find",
+      "found I",
+      "can I find",
+      "do I find"
+    ],
+    "ans": 0,
+    "rule": "Question indirecte ('Could you tell me where...') : ordre sujet + verbe normal, sans inversion ('I can find')."
+  },
+  {
+    "id": "d-b1-84",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "I don't understand what ___ by 'algorithmic bias' in this paragraph.",
+    "fr": "Je ne comprends pas ce que l'auteur veut dire par 'biais algorithmique' dans ce paragraphe.",
+    "opts": [
+      "does the author mean",
+      "means the author",
+      "mean the author",
+      "the author means"
+    ],
+    "ans": 3,
+    "rule": "Interrogative indirecte après 'what' -> ordre déclaratif 'the author means'."
+  },
+  {
+    "id": "d-b1-85",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "The journalist ___ article won the Pulitzer Prize will speak tonight.",
+    "fr": "La journaliste dont l'article a remporté le prix Pulitzer parlera ce soir.",
+    "opts": [
+      "whose",
+      "whom",
+      "who's",
+      "which"
+    ],
+    "ans": 0,
+    "rule": "Pronom relatif possessif ('dont le/la/les') -> 'whose' (jamais 'who's' = 'who is')."
+  },
+  {
+    "id": "d-b1-86",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "Younger citizens are often the ones ___ share unverified clips on TikTok.",
+    "fr": "Les plus jeunes sont souvent ceux qui partagent des vidéos non vérifiées sur TikTok.",
+    "opts": [
+      "what",
+      "whom",
+      "which",
+      "who"
+    ],
+    "ans": 3,
+    "rule": "Antécédent humain ('the ones') + fonction sujet -> 'who' (ou 'that', jamais 'which')."
+  },
+  {
+    "id": "d-b1-87",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "Do you know whether the conference ___ on campus or online?",
+    "fr": "Sais-tu si la conférence aura lieu sur le campus ou en ligne ?",
+    "opts": [
+      "takes it place",
+      "will take place",
+      "will it take place",
+      "does take place"
+    ],
+    "ans": 1,
+    "rule": "Interrogation indirecte en 'whether' -> ordre sujet + verbe sans inversion ('will take place')."
+  },
+  {
+    "id": "d-b1-88",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "London is the city ___ the first underground railway opened in 1863.",
+    "fr": "Londres est la ville où le premier métro a ouvert en 1863.",
+    "opts": [
+      "what",
+      "whom",
+      "where",
+      "which"
+    ],
+    "ans": 2,
+    "rule": "Complément de lieu ('in that city') -> relatif de lieu 'where'."
+  },
+  {
+    "id": "d-b1-89",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "He spent three hours revising his essay, ___ improved his grade significantly.",
+    "fr": "Il a passé trois heures à relire sa copie, ce qui a nettement amélioré sa note.",
+    "opts": [
+      "who",
+      "what",
+      "that",
+      "which"
+    ],
+    "ans": 3,
+    "rule": "Virgule + reprise de toute la phrase ('ce qui') -> ', which'."
+  },
+  {
+    "id": "d-b1-90",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "All ___ we need right now is reliable data from independent labs.",
+    "fr": "Tout ce dont nous avons besoin maintenant, ce sont des données fiables.",
+    "opts": [
+      "what",
+      "that",
+      "who",
+      "which"
+    ],
+    "ans": 1,
+    "rule": "Après 'all', 'everything', 'nothing', 'the only thing' -> 'that' (ou omission), jamais 'what'."
+  },
+  {
+    "id": "d-b1-91",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "The professor asked us why ___ included so many direct quotes.",
+    "fr": "Le professeur nous a demandé pourquoi nous avions inclus autant de citations directes.",
+    "opts": [
+      "had we",
+      "did we",
+      "we had",
+      "have we"
+    ],
+    "ans": 2,
+    "rule": "Discours indirect ('asked us why...') -> pas d'inversion sujet-auxiliaire ('we had')."
+  },
+  {
+    "id": "d-b1-92",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "The website from ___ he took those figures turned out to be satire.",
+    "fr": "Le site web dont il a tiré ces chiffres s'est avéré être satirique.",
+    "opts": [
+      "which",
+      "what",
+      "that",
+      "who"
+    ],
+    "ans": 0,
+    "rule": "Après une préposition ('from'), on emploie 'which' (chose) ou 'whom' (personne), jamais 'that'."
+  },
+  {
+    "id": "d-b1-93",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "Tell me ___ is responsible for verifying the sources in this newsroom.",
+    "fr": "Dis-moi qui est responsable de vérifier les sources dans cette rédaction.",
+    "opts": [
+      "whom",
+      "whose",
+      "who",
+      "which"
+    ],
+    "ans": 2,
+    "rule": "Sujet du verbe 'is' -> 'who'."
+  },
+  {
+    "id": "d-b1-94",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "That is the exact reason ___ I avoid using vague adjectives in a synthesis.",
+    "fr": "C'est la raison exacte pour laquelle j'évite les adjectifs vagues en synthèse.",
+    "opts": [
+      "what",
+      "which",
+      "whom",
+      "why"
+    ],
+    "ans": 3,
+    "rule": "'the reason why' (ou 'that'), jamais 'the reason because' !"
+  },
+  {
+    "id": "d-b1-95",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "She showed me ___ she had corrected in my introductory paragraph.",
+    "fr": "Elle m'a montré ce qu'elle avait corrigé dans mon paragraphe d'introduction.",
+    "opts": [
+      "which",
+      "that",
+      "whose",
+      "what"
+    ],
+    "ans": 3,
+    "rule": "Pas d'antécédent avant le relatif ('ce que') -> 'what'."
+  },
+  {
+    "id": "d-b1-96",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "Could you remind me how long the written exam ___?",
+    "fr": "Peux-tu me rappeler combien de temps dure l'épreuve écrite ?",
+    "opts": [
+      "lasts",
+      "last",
+      "does last",
+      "is last"
+    ],
+    "ans": 0,
+    "rule": "Question indirecte ('how long...') : verbe à la suite du sujet ('the written exam lasts')."
+  },
+  {
+    "id": "d-b1-97",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "The candidate ___ the jury praised most had memorized key figures accurately.",
+    "fr": "Le candidat que le jury a le plus félicité avait mémorisé les chiffres clés avec précision.",
+    "opts": [
+      "which",
+      "whom",
+      "whose",
+      "what"
+    ],
+    "ans": 1,
+    "rule": "Complément d'objet humain dans un registre formel : 'whom' (ou 'who' / 'that')."
+  },
+  {
+    "id": "d-b1-98",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "AI tools, ___ are improving every month, still hallucinate historical dates.",
+    "fr": "Les outils d'IA, qui s'améliorent chaque mois, inventent encore des dates historiques.",
+    "opts": [
+      "what",
+      "who",
+      "that",
+      "which"
+    ],
+    "ans": 3,
+    "rule": "Proposition relative appositive entre deux virgules -> 'that' est INTERDIT, il faut 'which'."
+  },
+  {
+    "id": "d-b1-99",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "I wonder ___ the central bank will cut interest rates next quarter.",
+    "fr": "Je me demande si la banque centrale baissera les taux au prochain trimestre.",
+    "opts": [
+      "what",
+      "if",
+      "which",
+      "that"
+    ],
+    "ans": 1,
+    "rule": "Après 'wonder', 'si' interrogatif = 'if' ou 'whether' (jamais 'that')."
+  },
+  {
+    "id": "d-b1-100",
+    "level": "B1",
+    "cat": "Relatives & Interrogatives",
+    "q": "The era in ___ we live requires stronger media literacy from an early age.",
+    "fr": "L'époque dans laquelle nous vivons exige une éducation aux médias plus solide dès le plus jeune âge.",
+    "opts": [
+      "that",
+      "where",
+      "what",
+      "which"
+    ],
+    "ans": 3,
+    "rule": "Après la préposition 'in', seul 'which' convient ici ('in which we live')."
+  },
+  {
+    "id": "d-b1-101",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "The strict word limit makes students ___ more concisely.",
+    "fr": "La limite de mots stricte oblige les étudiants à écrire plus concisément.",
+    "opts": [
+      "to write",
+      "wrote",
+      "writing",
+      "write"
+    ],
+    "ans": 3,
+    "rule": "À la voix active : 'make someone DO something' (base verbale sans 'to')."
+  },
+  {
+    "id": "d-b1-102",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "During the exam, candidates were made ___ their smartwatches in their bags.",
+    "fr": "Pendant l'épreuve, les candidats ont été obligés de mettre leur montre connectée dans leur sac.",
+    "opts": [
+      "puts",
+      "put",
+      "to put",
+      "putting"
+    ],
+    "ans": 2,
+    "rule": "PIÈGE CLASSIQUE : au passif, 'be made TO do something' récupère le 'to' !"
+  },
+  {
+    "id": "d-b1-103",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "To reduce your error rate, avoid ___ directly from French word-for-word.",
+    "fr": "Pour réduire ton taux d'erreur, évite de traduire directement du français mot à mot.",
+    "opts": [
+      "to translate",
+      "translated",
+      "translating",
+      "translate"
+    ],
+    "ans": 2,
+    "rule": "'avoid' est toujours suivi de V-ing ('avoid translating')."
+  },
+  {
+    "id": "d-b1-104",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "I look forward to ___ your next essay with fewer conjugation slips.",
+    "fr": "J'ai hâte de lire ta prochaine copie avec moins d'erreurs de conjugaison.",
+    "opts": [
+      "reading",
+      "reads",
+      "have read",
+      "read"
+    ],
+    "ans": 0,
+    "rule": "'look forward to' contient la préposition 'to' -> toujours suivi de V-ing ('reading')."
+  },
+  {
+    "id": "d-b1-105",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "The article suggests ___ digital literacy classes in middle school.",
+    "fr": "L'article suggère d'introduire des cours d'éducation numérique au collège.",
+    "opts": [
+      "to introduce",
+      "introduce",
+      "introducing",
+      "introduced"
+    ],
+    "ans": 2,
+    "rule": "'suggest' n'est jamais suivi de 'to + BV' ! Toujours 'suggest + V-ing' (ou 'suggest that S + V')."
+  },
+  {
+    "id": "d-b1-106",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "This new legislation aims at ___ young users from harmful online ads.",
+    "fr": "Cette nouvelle loi vise à protéger les jeunes utilisateurs contre les publicités nocives.",
+    "opts": [
+      "protecting",
+      "to protect",
+      "protected",
+      "protect"
+    ],
+    "ans": 0,
+    "rule": "Après toute préposition ('at', 'for', 'of', 'in', 'by', 'without') -> V-ing ('aims at protecting')."
+  },
+  {
+    "id": "d-b1-107",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Fact-checking tools help readers ___ biased claims online.",
+    "fr": "Les outils de vérification aident les lecteurs à repérer les affirmations biaisées en ligne.",
+    "opts": [
+      "spotting",
+      "to spotting",
+      "spot",
+      "spotted"
+    ],
+    "ans": 2,
+    "rule": "'help someone (to) do something' : base verbale 'spot' (ou 'to spot', jamais V-ing)."
+  },
+  {
+    "id": "d-b1-108",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Strict regulation could prevent social networks from ___ political campaigns.",
+    "fr": "Une régulation stricte pourrait empêcher les réseaux sociaux de manipuler les campagnes politiques.",
+    "opts": [
+      "manipulate",
+      "manipulated",
+      "to manipulate",
+      "manipulating"
+    ],
+    "ans": 3,
+    "rule": "'prevent + objet + from + V-ing' ('from manipulating')."
+  },
+  {
+    "id": "d-b1-109",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "We stopped ___ a quick coffee before reviewing the last grammar chapter.",
+    "fr": "Nous nous sommes arrêtés pour prendre un café rapide avant de revoir le dernier chapitre.",
+    "opts": [
+      "to drink",
+      "drank",
+      "drink",
+      "drinking"
+    ],
+    "ans": 0,
+    "rule": "'stop + to BV' = s'arrêter de marcher/travailler POUR faire quelque chose ('to drink')."
+  },
+  {
+    "id": "d-b1-110",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "You should stop ___ 'will' right after 'when' in future sentences.",
+    "fr": "Tu devrais arrêter de mettre 'will' juste après 'when' dans les phrases au futur.",
+    "opts": [
+      "to put",
+      "put",
+      "putting",
+      "puts"
+    ],
+    "ans": 2,
+    "rule": "'stop + V-ing' = cesser une habitude ou une action en cours ('stop putting')."
+  },
+  {
+    "id": "d-b1-111",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Remember ___ your word count at the bottom of your synthesis!",
+    "fr": "N'oublie pas d'écrire ton nombre de mots en bas de ta synthèse !",
+    "opts": [
+      "to write",
+      "writing",
+      "write",
+      "written"
+    ],
+    "ans": 0,
+    "rule": "'remember + to BV' = penser à faire quelque chose qu'on doit faire ('to write')."
+  },
+  {
+    "id": "d-b1-112",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "I clearly remember ___ that rule in my grammar notebook last week.",
+    "fr": "Je me souviens clairement d'avoir lu cette règle dans mon carnet la semaine dernière.",
+    "opts": [
+      "to read",
+      "read",
+      "reading",
+      "reads"
+    ],
+    "ans": 2,
+    "rule": "'remember + V-ing' = se souvenir d'un événement passé."
+  },
+  {
+    "id": "d-b1-113",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Please let me ___ if you want to focus on oral khôlle phrasing next.",
+    "fr": "Fais-moi savoir si tu veux te concentrer sur la formulation de khôlle ensuite.",
+    "opts": [
+      "knowing",
+      "knew",
+      "to know",
+      "know"
+    ],
+    "ans": 3,
+    "rule": "'let someone DO something' : toujours base verbale sans 'to' ('let me know')."
+  },
+  {
+    "id": "d-b1-114",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Public schools do not allow students ___ smartphones in exams.",
+    "fr": "Les écoles publiques n'autorisent pas les élèves à utiliser leur smartphone aux examens.",
+    "opts": [
+      "use",
+      "used",
+      "using",
+      "to use"
+    ],
+    "ans": 3,
+    "rule": "'allow someone TO do something' (avec complément de personne) prend 'to' -> 'to use'."
+  },
+  {
+    "id": "d-b1-115",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "The teacher doesn't allow ___ calculators during the mental math test.",
+    "fr": "Le professeur n'autorise pas l'usage des calculatrices pendant le test de calcul mental.",
+    "opts": [
+      "using",
+      "use",
+      "used",
+      "to use"
+    ],
+    "ans": 0,
+    "rule": "Sans complément de personne après 'allow/forbid/advise', on utilise V-ing ('allow using')."
+  },
+  {
+    "id": "d-b1-116",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Instead of ___ vague words like 'bad', choose a precise adjective like 'harmful'.",
+    "fr": "Au lieu d'utiliser des mots vagues comme 'bad', choisis un adjectif précis comme 'harmful'.",
+    "opts": [
+      "used",
+      "using",
+      "to use",
+      "use"
+    ],
+    "ans": 1,
+    "rule": "Préposition 'Instead of' -> toujours V-ing ('using')."
+  },
+  {
+    "id": "d-b1-117",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "She succeeded in ___ her synthesis below the 420-word limit.",
+    "fr": "Elle a réussi à maintenir sa synthèse sous la limite des 420 mots.",
+    "opts": [
+      "keep",
+      "to keep",
+      "keeping",
+      "kept"
+    ],
+    "ans": 2,
+    "rule": "'succeed IN + V-ing' (jamais 'succeed to')."
+  },
+  {
+    "id": "d-b1-118",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "He managed ___ all seven parts of the study plan in fifty-five minutes.",
+    "fr": "Il a réussi à terminer les sept parties du plan d'étude en cinquante-cinq minutes.",
+    "opts": [
+      "to finish",
+      "finishing",
+      "finish",
+      "finished"
+    ],
+    "ans": 0,
+    "rule": "'manage TO do something' (contrairement à 'succeed in doing')."
+  },
+  {
+    "id": "d-b1-119",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "I regret ___ you that extra words beyond 450 are heavily penalized.",
+    "fr": "J'ai le regret de vous informer que les mots au-delà de 450 sont lourdement pénalisés.",
+    "opts": [
+      "to inform",
+      "informed",
+      "inform",
+      "informing"
+    ],
+    "ans": 0,
+    "rule": "'regret to inform/say/tell' = regretter de devoir annoncer une mauvaise nouvelle maintenant."
+  },
+  {
+    "id": "d-b1-120",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Most respondents admitted ___ on the very first search result without checking.",
+    "fr": "La plupart des répondants ont admis avoir cliqué sur le premier résultat sans vérifier.",
+    "opts": [
+      "clicking",
+      "click",
+      "to click",
+      "clicked"
+    ],
+    "ans": 0,
+    "rule": "'admit + V-ing' ('admitted clicking')."
+  },
+  {
+    "id": "d-b1-121",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Reading English press daily is the best way ___ natural sentence rhythm.",
+    "fr": "Lire la presse anglaise chaque jour est le meilleur moyen d'acquérir un rythme de phrase naturel.",
+    "opts": [
+      "for develop",
+      "of develop",
+      "developing to",
+      "to develop"
+    ],
+    "ans": 3,
+    "rule": "'a good/the best way TO + BV' (correction directe de ta copie : pas 'way of create' !)."
+  },
+  {
+    "id": "d-b1-122",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Before ___ your copy, spend three minutes checking subject-verb agreement.",
+    "fr": "Avant de rendre ta copie, passe trois minutes à vérifier l'accord sujet-verbe.",
+    "opts": [
+      "handing in",
+      "hand in",
+      "to hand in",
+      "handed in"
+    ],
+    "ans": 0,
+    "rule": "Préposition 'Before' + verbe -> V-ing ('Before handing in')."
+  },
+  {
+    "id": "d-b1-123",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "The report highlights the difficulty of ___ deepfakes from authentic videos.",
+    "fr": "Le rapport souligne la difficulté de distinguer les deepfakes des vidéos authentiques.",
+    "opts": [
+      "distinguishing",
+      "distinguish",
+      "to distinguish",
+      "distinguished"
+    ],
+    "ans": 0,
+    "rule": "Préposition 'of' -> V-ing ('distinguishing')."
+  },
+  {
+    "id": "d-b1-124",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "She decided ___ a concise summary rather than quoting three long lines.",
+    "fr": "Elle a décidé de rédiger un résumé concis plutôt que de citer trois longues lignes.",
+    "opts": [
+      "writing",
+      "write",
+      "wrote",
+      "to write"
+    ],
+    "ans": 3,
+    "rule": "'decide TO + BV' ('decided to write')."
+  },
+  {
+    "id": "d-b1-125",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "Algorithms keep ___ similar opinions, creating ideological echo chambers.",
+    "fr": "Les algorithmes continuent de recommander des opinions similaires, créant des chambres d'écho.",
+    "opts": [
+      "recommend",
+      "recommending",
+      "to recommend",
+      "recommended"
+    ],
+    "ans": 1,
+    "rule": "'keep + V-ing' = continuer à faire quelque chose ('keep recommending')."
+  },
+  {
+    "id": "d-b1-126",
+    "level": "B1",
+    "cat": "Gérondif & Infinitif",
+    "q": "He denied ___ part in spreading the fabricated rumor.",
+    "fr": "Il a nié avoir pris part à la diffusion de la rumeur fabriquée.",
+    "opts": [
+      "to take",
+      "took",
+      "take",
+      "taking"
+    ],
+    "ans": 3,
+    "rule": "'deny + V-ing' ('denied taking part')."
+  },
+  {
+    "id": "d-b1-127",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Although the reform started slowly, it ___ reduced inequality.",
+    "fr": "Bien que la réforme ait commencé lentement, elle a fini par / au bout du compte réduit les inégalités.",
+    "opts": [
+      "actually",
+      "currently",
+      "eventually",
+      "presently"
+    ],
+    "ans": 2,
+    "rule": "'eventually' signifie 'au bout du compte / finalement', JAMAIS 'éventuellement' ('possibly') !"
+  },
+  {
+    "id": "d-b1-128",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "___, European regulators are debating stricter rules on generative AI.",
+    "fr": "Actuellement, les régulateurs européens débattent de règles plus strictes sur l'IA générative.",
+    "opts": [
+      "Actually",
+      "Currently",
+      "Effectively",
+      "Eventually"
+    ],
+    "ans": 1,
+    "rule": "'Actuellement' = 'Currently' / 'At present'. 'Actually' veut dire 'en fait / en réalité'."
+  },
+  {
+    "id": "d-b1-129",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "That may sound logical at first glance, but it is ___ inaccurate.",
+    "fr": "Cela peut sembler logique à première vue, mais c'est en réalité inexact.",
+    "opts": [
+      "sensibly",
+      "eventually",
+      "currently",
+      "actually"
+    ],
+    "ans": 3,
+    "rule": "'Actually' = 'en fait / en réalité' (faux-ami de 'actuellement')."
+  },
+  {
+    "id": "d-b1-130",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "The ministry published a ___ report covering every aspect of the crisis.",
+    "fr": "Le ministère a publié un rapport complet couvrant tous les aspects de la crise.",
+    "opts": [
+      "comprehensive to",
+      "comprehensive",
+      "understanding",
+      "sympathetic"
+    ],
+    "ans": 1,
+    "rule": "'comprehensive' signifie 'complet / exhaustif', PAS 'compréhensif' ('understanding / sympathetic')."
+  },
+  {
+    "id": "d-b1-131",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Nearly three hundred students ___ the guest lecture on climate policy.",
+    "fr": "Près de trois cents étudiants ont assisté à la conférence invitée sur le climat.",
+    "opts": [
+      "attending",
+      "assisted to",
+      "attended",
+      "assisted"
+    ],
+    "ans": 2,
+    "rule": "'assister à' = 'attend' (sans préposition !). 'assist' signifie 'aider'."
+  },
+  {
+    "id": "d-b1-132",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Choosing reliable sources before writing an essay is a very ___ habit.",
+    "fr": "Choisir des sources fiables avant de rédiger est une habitude très sensée / raisonnable.",
+    "opts": [
+      "sensed",
+      "sensible",
+      "sentiment",
+      "sensitive"
+    ],
+    "ans": 1,
+    "rule": "'sensible' = sensé/raisonnable ; 'sensitive' = sensible !"
+  },
+  {
+    "id": "d-b1-133",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "The teenager pretended ___ sleeping when his parents checked the room.",
+    "fr": "L'adolescent a fait semblant de dormir quand ses parents ont vérifié la chambre.",
+    "opts": [
+      "be",
+      "to be",
+      "being",
+      "that he"
+    ],
+    "ans": 1,
+    "rule": "'pretend' = 'faire semblant de', PAS 'prétendre que' ('claim')."
+  },
+  {
+    "id": "d-b1-134",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Due to bad weather, the launch of the satellite has been ___ until Friday.",
+    "fr": "À cause de la météo, le lancement du satellite a été reporté à vendredi.",
+    "opts": [
+      "postponed",
+      "resumed",
+      "reported",
+      "pretended"
+    ],
+    "ans": 0,
+    "rule": "'reporter (une date)' = 'postpone / delay' (PAS 'report' = faire un compte rendu)."
+  },
+  {
+    "id": "d-b1-135",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "After the short break, the panel ___ the debate on energy sovereignty.",
+    "fr": "Après la courte pause, le panel a repris le débat sur la souveraineté énergétique.",
+    "opts": [
+      "engaged",
+      "deceived",
+      "resumed",
+      "summarized"
+    ],
+    "ans": 2,
+    "rule": "'resume' = 'reprendre' (un cours, un débat), PAS 'résumer' ('summarize')."
+  },
+  {
+    "id": "d-b1-136",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Many voters felt ___ by the politician's broken campaign promises.",
+    "fr": "Beaucoup d'électeurs se sont sentis trompés par les promesses rompues du politicien.",
+    "opts": [
+      "comprehensive",
+      "deceived",
+      "disappointed",
+      "sensible"
+    ],
+    "ans": 1,
+    "rule": "'deceive' = 'tromper/duper' ; 'décevoir' = 'disappoint'."
+  },
+  {
+    "id": "d-b1-137",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Young voters were deeply ___ by the lack of concrete climate measures.",
+    "fr": "Les jeunes électeurs ont été profondément déçus par le manque de mesures climatiques concrètes.",
+    "opts": [
+      "deceived",
+      "attended",
+      "assisted",
+      "disappointed"
+    ],
+    "ans": 3,
+    "rule": "'déçu' = 'disappointed' ('deceived' = trompé)."
+  },
+  {
+    "id": "d-b1-138",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "I would like to ___ my gratitude to everyone who supported this project.",
+    "fr": "Je voudrais exprimer ma gratitude à tous ceux qui ont soutenu ce projet.",
+    "opts": [
+      "express",
+      "precise",
+      "achieve",
+      "assist"
+    ],
+    "ans": 0,
+    "rule": "Attention aux verbes qui n'existent pas comme 'preciser' ('specify / clarify') ou 'decevoir'."
+  },
+  {
+    "id": "d-b1-139",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Our team aims to ___ a 30% reduction in carbon emissions by 2028.",
+    "fr": "Notre équipe vise à atteindre une réduction de 30 % des émissions d'ici 2028.",
+    "opts": [
+      "succeed",
+      "achieve",
+      "attend",
+      "resume"
+    ],
+    "ans": 1,
+    "rule": "'achieve a goal/reduction' (verbe transitif) vs 'succeed in + V-ing'."
+  },
+  {
+    "id": "d-b1-140",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Before concluding, let me briefly ___ the main points of this dossier.",
+    "fr": "Avant de conclure, permettez-moi de résumer brièvement les points principaux de ce dossier.",
+    "opts": [
+      "pretend",
+      "resume",
+      "summarize",
+      "delay"
+    ],
+    "ans": 2,
+    "rule": "'résumer' = 'summarize' (ou 'sum up'). 'resume' = reprendre."
+  },
+  {
+    "id": "d-b1-141",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "She is very ___ to criticism, so offer feedback constructively.",
+    "fr": "Elle est très sensible aux critiques, donc donne des retours de manière constructive.",
+    "opts": [
+      "comprehensive",
+      "actual",
+      "sensitive",
+      "sensible"
+    ],
+    "ans": 2,
+    "rule": "'sensitive to' = sensible à ('sensible' = raisonnable)."
+  },
+  {
+    "id": "d-b1-142",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Several companies ___ that AI will replace manual tasks within five years.",
+    "fr": "Plusieurs entreprises affirment que l'IA remplacera les tâches manuelles d'ici cinq ans.",
+    "opts": [
+      "sensitize",
+      "claim",
+      "resume",
+      "pretend"
+    ],
+    "ans": 1,
+    "rule": "'prétendre / affirmer' = 'claim' (et non 'pretend' = faire semblant)."
+  },
+  {
+    "id": "d-b1-143",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "The speaker gave us a ___ overview of recent trends before taking questions.",
+    "fr": "L'orateur nous a donné un aperçu bref des tendances récentes avant les questions.",
+    "opts": [
+      "brief",
+      "delayed",
+      "sensible",
+      "resume"
+    ],
+    "ans": 0,
+    "rule": "'bref aperçu' = 'brief overview'."
+  },
+  {
+    "id": "d-b1-144",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "These guidelines apply strictly to public sector employees, ___ teachers and nurses.",
+    "fr": "Ces directives s'appliquent aux agents du secteur public, notamment les enseignants et infirmiers.",
+    "opts": [
+      "especially",
+      "actually",
+      "notably",
+      "eventually"
+    ],
+    "ans": 2,
+    "rule": "'notably' / 'particularly' pour 'notamment' (éviter le calque 'notably' mal orthographié)."
+  },
+  {
+    "id": "d-b1-145",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Could you ___ which document supports that specific statistic?",
+    "fr": "Pourriez-vous préciser quel document étaye cette statistique précise ?",
+    "opts": [
+      "specify",
+      "deceive",
+      "resume",
+      "precise"
+    ],
+    "ans": 0,
+    "rule": "'to precise' n'existe PAS en anglais : on dit 'specify' ou 'clarify' !"
+  },
+  {
+    "id": "d-b1-146",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "We must stay alert because some websites look ___ but spread fabricated stories.",
+    "fr": "Nous devons rester vigilants car certains sites semblent crédibles mais diffusent des histoires inventées.",
+    "opts": [
+      "sensible",
+      "comprehensive",
+      "trusting",
+      "trustworthy"
+    ],
+    "ans": 3,
+    "rule": "'fiable / digne de confiance' = 'trustworthy' / 'reliable'."
+  },
+  {
+    "id": "d-b1-147",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "It is ___ to check two independent sources before sharing breaking news.",
+    "fr": "Il est prudent / raisonnable de vérifier deux sources indépendantes avant de partager une info.",
+    "opts": [
+      "sensitive",
+      "actual",
+      "sensible",
+      "sympathetic"
+    ],
+    "ans": 2,
+    "rule": "'sensible' = raisonnable / plein de bon sens."
+  },
+  {
+    "id": "d-b1-148",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "The main ___ of this policy is that it overlooks rural communities.",
+    "fr": "Le principal inconvénient de cette politique est qu'elle néglige les zones rurales.",
+    "opts": [
+      "deception",
+      "drawback",
+      "prejudice",
+      "inconvenience"
+    ],
+    "ans": 1,
+    "rule": "'inconvénient' = 'drawback / disadvantage' ('inconvenience' = désagrément mineur)."
+  },
+  {
+    "id": "d-b1-149",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "High housing prices remain a major ___ for young graduates in Paris.",
+    "fr": "Les prix élevés du logement restent un problème majeur pour les jeunes diplômés à Paris.",
+    "opts": [
+      "resume",
+      "chance",
+      "sensibility",
+      "issue"
+    ],
+    "ans": 3,
+    "rule": "'issue / challenge' pour 'problème / enjeu'."
+  },
+  {
+    "id": "d-b1-150",
+    "level": "B1",
+    "cat": "Faux-amis FR → EN",
+    "q": "Good luck with the oral exam! You definitely have a great ___ of succeeding.",
+    "fr": "Bonne chance pour l'oral ! Tu as vraiment une belle occasion / chance de réussir.",
+    "opts": [
+      "hazard",
+      "chance",
+      "risk",
+      "luck"
+    ],
+    "ans": 1,
+    "rule": "'have a chance of + V-ing' = avoir une chance de réussir (vs 'by chance' = par hasard)."
+  },
+  {
+    "id": "d-b1-151",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "The number of citizens reading print newspapers ___ fallen sharply.",
+    "fr": "Le nombre de citoyens lisant la presse papier a fortement chuté.",
+    "opts": [
+      "are",
+      "have",
+      "were",
+      "has"
+    ],
+    "ans": 3,
+    "rule": "'The number of + pluriel' = le nombre exact -> verbe SINGULIER ('has fallen')."
+  },
+  {
+    "id": "d-b1-152",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "A number of researchers ___ warning against unregulated AI deployment.",
+    "fr": "Un certain nombre de chercheurs mettent en garde contre le déploiement non régulé de l'IA.",
+    "opts": [
+      "was",
+      "has",
+      "are",
+      "is"
+    ],
+    "ans": 2,
+    "rule": "'A number of + pluriel' (= plusieurs / 'several') -> verbe PLURIEL ('are warning')."
+  },
+  {
+    "id": "d-b1-153",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Neither the journalist nor the editor ___ willing to retract the article.",
+    "fr": "Ni le journaliste ni le rédacteur en chef n'était disposé à retirer l'article.",
+    "opts": [
+      "were",
+      "was",
+      "have been",
+      "are"
+    ],
+    "ans": 1,
+    "rule": "Avec 'Neither A nor B', le verbe s'accorde avec B ('the editor', singulier) -> 'was'."
+  },
+  {
+    "id": "d-b1-154",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Each of the four documents ___ a distinct perspective on disinformation.",
+    "fr": "Chacun des quatre documents offre une perspective distincte sur la désinformation.",
+    "opts": [
+      "are offering",
+      "offer",
+      "have offered",
+      "offers"
+    ],
+    "ans": 3,
+    "rule": "'Each of + pluriel' garde toujours un verbe au SINGULIER ('offers')."
+  },
+  {
+    "id": "d-b1-155",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Statistics ___ that older citizens watch television more than Gen Z.",
+    "fr": "Les statistiques montrent que les seniors regardent plus la télévision que la génération Z.",
+    "opts": [
+      "is showing",
+      "show",
+      "shows",
+      "has shown"
+    ],
+    "ans": 1,
+    "rule": "'Statistics' au sens de chiffres/données = pluriel -> 'show' ('The statistic' = sg)."
+  },
+  {
+    "id": "d-b1-156",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Politics ___ often driven by short-term emotional reactions on social media.",
+    "fr": "La politique est souvent guidée par des réactions émotionnelles à court terme sur les réseaux.",
+    "opts": [
+      "have",
+      "are",
+      "were",
+      "is"
+    ],
+    "ans": 3,
+    "rule": "'Politics' (la politique en tant que domaine) est SINGULIER -> 'is' (cf. ta copie : pas 'politics are' !)."
+  },
+  {
+    "id": "d-b1-157",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Economics ___ heavily on reliable data to forecast inflation trends.",
+    "fr": "L'économie s'appuie fortement sur des données fiables pour prévoir l'inflation.",
+    "opts": [
+      "are relying",
+      "relies",
+      "relying",
+      "rely"
+    ],
+    "ans": 1,
+    "rule": "Les noms de disciplines en -ics ('Economics', 'Physics', 'Politics') prennent un verbe SINGULIER ('relies')."
+  },
+  {
+    "id": "d-b1-158",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "___ his strong arguments, the candidate exceeded the word limit by 100 words.",
+    "fr": "Malgré ses arguments solides, le candidat a dépassé la limite de mots de 100 mots.",
+    "opts": [
+      "Even though",
+      "Although",
+      "Despite",
+      "Whereas"
+    ],
+    "ans": 2,
+    "rule": "'Despite + groupe nominal' (ou 'In spite of + GN'). 'Although' exige sujet + verbe."
+  },
+  {
+    "id": "d-b1-159",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "___ the algorithm can filter spam, it still struggles with political satire.",
+    "fr": "Bien que l'algorithme puisse filtrer les spams, il peine encore avec la satire politique.",
+    "opts": [
+      "Although",
+      "Despite",
+      "During",
+      "In spite of"
+    ],
+    "ans": 0,
+    "rule": "Suivi d'une proposition entière (sujet + verbe 'the algorithm can filter') -> 'Although'."
+  },
+  {
+    "id": "d-b1-160",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "All four texts focus ___ how disinformation undermines democratic trust.",
+    "fr": "Les quatre textes portent sur la façon dont la désinformation sape la confiance démocratique.",
+    "opts": [
+      "on",
+      "about",
+      "at",
+      "to"
+    ],
+    "ans": 0,
+    "rule": "'focus ON something' (ou 'deal WITH' / 'revolve AROUND') — jamais 'focus to'."
+  },
+  {
+    "id": "d-b1-161",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "According ___ Document 2, 90% of respondents distrust sponsored posts.",
+    "fr": "Selon le document 2, 90 % des répondants se méfient des publications sponsorisées.",
+    "opts": [
+      "to",
+      "with",
+      "by",
+      "from"
+    ],
+    "ans": 0,
+    "rule": "'According to' = 'Selon' (jamais 'According with' ni 'According me' : 'In my opinion' pour soi)."
+  },
+  {
+    "id": "d-b1-162",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Document 1 contrasts sharply ___ Document 3 on the benefits of generative AI.",
+    "fr": "Le document 1 contraste fortement avec le document 3 sur les bénéfices de l'IA générative.",
+    "opts": [
+      "with",
+      "from",
+      "against",
+      "to"
+    ],
+    "ans": 0,
+    "rule": "'contrast WITH' ('contrasts sharply with Document 3')."
+  },
+  {
+    "id": "d-b1-163",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "First, I will examine the causes; ___, I will analyze the proposed remedies.",
+    "fr": "D'abord j'examinerai les causes ; ensuite j'analyserai les solutions proposées.",
+    "opts": [
+      "in a second time",
+      "at second time",
+      "two",
+      "secondly"
+    ],
+    "ans": 3,
+    "rule": "Bannir 'in a second time' (calque) -> 'Secondly' ou 'Next' / 'Then' !"
+  },
+  {
+    "id": "d-b1-164",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Social media platforms are largely responsible ___ amplifying viral outrage.",
+    "fr": "Les plateformes sociales sont largement responsables de l'amplification de l'indignation virale.",
+    "opts": [
+      "for",
+      "about",
+      "of",
+      "to"
+    ],
+    "ans": 0,
+    "rule": "'responsible FOR + nom / V-ing' (jamais 'responsible of')."
+  },
+  {
+    "id": "d-b1-165",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "The transition to clean energy depends ___ sustained public investment.",
+    "fr": "La transition vers l'énergie propre dépend d'un investissement public soutenu.",
+    "opts": [
+      "to",
+      "on",
+      "of",
+      "from"
+    ],
+    "ans": 1,
+    "rule": "'depend ON' (ou 'rely ON') — jamais 'depend of'."
+  },
+  {
+    "id": "d-b1-166",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "We have very ___ evidence that banning smartphones alone improves grades.",
+    "fr": "Nous avons très peu de preuves que la seule interdiction des smartphones améliore les notes.",
+    "opts": [
+      "few",
+      "many",
+      "a few",
+      "little"
+    ],
+    "ans": 3,
+    "rule": "'evidence' est indénombrable -> 'little' ('très peu de'), jamais 'few'."
+  },
+  {
+    "id": "d-b1-167",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "___ students check who funded a website before quoting its figures.",
+    "fr": "Peu d'étudiants vérifient qui a financé un site avant d'en citer les chiffres.",
+    "opts": [
+      "Little",
+      "Few",
+      "Much",
+      "Less"
+    ],
+    "ans": 1,
+    "rule": "'students' est dénombrable pluriel -> 'Few' (sens restrictif : 'peu de')."
+  },
+  {
+    "id": "d-b1-168",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "The study showed that people spend ___ time verifying news than sharing it.",
+    "fr": "L'étude a montré que les gens passent moins de temps à vérifier les infos qu'à les partager.",
+    "opts": [
+      "few",
+      "fewer",
+      "less",
+      "least"
+    ],
+    "ans": 2,
+    "rule": "'time' est indénombrable -> comparatif 'less' ('fewer' s'emploie pour le pluriel dénombrable)."
+  },
+  {
+    "id": "d-b1-169",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Today there are ___ independent local newspapers than there were in 1990.",
+    "fr": "Aujourd'hui il y a moins de journaux locaux indépendants qu'en 1990.",
+    "opts": [
+      "fewest",
+      "less",
+      "little",
+      "fewer"
+    ],
+    "ans": 3,
+    "rule": "'newspapers' est dénombrable pluriel -> 'fewer ... than'."
+  },
+  {
+    "id": "d-b1-170",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "This new policy will have a positive impact ___ media literacy in high schools.",
+    "fr": "Cette nouvelle politique aura un impact positif sur l'éducation aux médias au lycée.",
+    "opts": [
+      "to",
+      "for",
+      "on",
+      "over"
+    ],
+    "ans": 2,
+    "rule": "'have an impact ON' (comme 'influence ON', sans 'have a bad influence' trop familier -> 'detrimental impact on')."
+  },
+  {
+    "id": "d-b1-171",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "While Doc 1 highlights economic gains, Doc 4 ___ on ethical risks.",
+    "fr": "Alors que le Doc 1 souligne les gains économiques, le Doc 4 se concentre sur les risques éthiques.",
+    "opts": [
+      "focusing",
+      "focus",
+      "focuses",
+      "is focus"
+    ],
+    "ans": 2,
+    "rule": "Présent simple 3e pers. sg de 'focus' -> 'focuses on' (correction directe de ta copie PC* !)."
+  },
+  {
+    "id": "d-b1-172",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Unlike radio, television enables viewers ___ manipulated footage directly.",
+    "fr": "Contrairement à la radio, la télévision permet aux spectateurs de voir directement les images manipulées.",
+    "opts": [
+      "see",
+      "seeing",
+      "to see",
+      "saw"
+    ],
+    "ans": 2,
+    "rule": "'enable someone TO do something' ('enables viewers to see', contrairement à 'allow to see' sans objet)."
+  },
+  {
+    "id": "d-b1-173",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "___ what the first cartoon suggests, young users are not all naive.",
+    "fr": "Contrairement à ce que suggère le premier dessin, les jeunes utilisateurs ne sont pas tous naïfs.",
+    "opts": [
+      "Unlike to",
+      "Contrary at",
+      "Contrary to",
+      "In contrary of"
+    ],
+    "ans": 2,
+    "rule": "Toujours 'Contrary to + nom/what...' ou 'Unlike + nom' (sans 'to' après 'Unlike')."
+  },
+  {
+    "id": "d-b1-174",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "The essay fails to address the core question ___ it summarizes every text well.",
+    "fr": "La copie omet de traiter la problématique centrale bien qu'elle résume bien chaque texte.",
+    "opts": [
+      "even though",
+      "in spite of",
+      "unless",
+      "despite"
+    ],
+    "ans": 0,
+    "rule": "'bien que' + sujet + verbe = 'even though' / 'although'."
+  },
+  {
+    "id": "d-b1-175",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Everyone agrees that critical thinking ___ essential in the age of generative AI.",
+    "fr": "Tout le monde s'accorde à dire que l'esprit critique est essentiel à l'ère de l'IA générative.",
+    "opts": [
+      "is",
+      "were",
+      "are",
+      "have been"
+    ],
+    "ans": 0,
+    "rule": "'critical thinking' = concept abstrait indénombrable -> singulier ('is')."
+  },
+  {
+    "id": "d-b1-176",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "None of the articles ___ a single magical cure for algorithmic bias.",
+    "fr": "Aucun des articles ne propose de remède miracle unique contre les biais algorithmiques.",
+    "opts": [
+      "proposing",
+      "propose",
+      "are propose",
+      "proposes"
+    ],
+    "ans": 3,
+    "rule": "En anglais soutenu (et concours), 'None of + pluriel' prend de préférence un verbe singulier ('proposes')."
+  },
+  {
+    "id": "d-b1-177",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "___ reading the headline, she immediately shared it without opening the link.",
+    "fr": "Après avoir lu le titre, elle l'a aussitôt partagé sans ouvrir le lien.",
+    "opts": [
+      "Because",
+      "After",
+      "After to",
+      "Since to"
+    ],
+    "ans": 1,
+    "rule": "Préposition 'After' + V-ing ('After reading')."
+  },
+  {
+    "id": "d-b1-178",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "It is worth ___ a few minutes to verify every verb ending before finishing.",
+    "fr": "Cela vaut la peine de prendre quelques minutes pour vérifier chaque terminaison verbale.",
+    "opts": [
+      "to take",
+      "took",
+      "take",
+      "taking"
+    ],
+    "ans": 3,
+    "rule": "Expression figée : 'It is worth + V-ing' ('It is worth taking')."
+  },
+  {
+    "id": "d-b1-179",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "This shift toward instant video has led ___ shorter attention spans.",
+    "fr": "Ce glissement vers la vidéo instantanée a mené à une baisse de la durée d'attention.",
+    "opts": [
+      "in",
+      "to",
+      "for",
+      "at"
+    ],
+    "ans": 1,
+    "rule": "'lead TO something / V-ing' ('has led to...')."
+  },
+  {
+    "id": "d-b1-180",
+    "level": "B1",
+    "cat": "Accords & Quantifieurs",
+    "q": "Both authors warn citizens ___ trusting unverified viral claims.",
+    "fr": "Les deux auteurs mettent en garde les citoyens contre le fait de croire des affirmations virales non vérifiées.",
+    "opts": [
+      "of",
+      "to",
+      "for",
+      "against"
+    ],
+    "ans": 3,
+    "rule": "'warn someone AGAINST + nom / V-ing' ('warn citizens against trusting')."
+  },
+  {
+    "id": "d-b2-1",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Rarely ___ such sharp divergence between two editorials on AI regulation.",
+    "fr": "Rarement a-t-on observé une divergence aussi marquée entre deux éditoriaux sur la régulation de l'IA.",
+    "opts": [
+      "we have seen",
+      "did we saw",
+      "saw we",
+      "have we seen"
+    ],
+    "ans": 3,
+    "rule": "Adverbe restrictif en tête de phrase ('Rarely', 'Seldom') -> inversion auxiliaire + sujet ('have we seen')."
+  },
+  {
+    "id": "d-b2-2",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Not only ___ misinformation faster, but it also amplifies political polarization.",
+    "fr": "Non seulement les algorithmes propagent la désinformation plus vite, mais ils amplifient aussi la polarisation.",
+    "opts": [
+      "are algorithms spread",
+      "spread algorithms",
+      "do algorithms spread",
+      "algorithms spread"
+    ],
+    "ans": 2,
+    "rule": "'Not only' en début de phrase exige l'inversion avec 'do/does/did' si aucun auxiliaire n'est présent."
+  },
+  {
+    "id": "d-b2-3",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Under no circumstances ___ unverified figures be cited in an academic synthesis.",
+    "fr": "En aucun cas des chiffres non vérifiés ne doivent être cités dans une synthèse académique.",
+    "opts": [
+      "they should",
+      "are should",
+      "must to",
+      "should"
+    ],
+    "ans": 3,
+    "rule": "'Under no circumstances' en tête -> auxiliaire modal avant le sujet ('should unverified figures be cited')."
+  },
+  {
+    "id": "d-b2-4",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Little ___ realize that synthetic voices were already cloning politicians.",
+    "fr": "Il ne se doutait guère que des voix synthétiques clonaient déjà des responsables politiques.",
+    "opts": [
+      "he was",
+      "he did",
+      "had he",
+      "did he"
+    ],
+    "ans": 3,
+    "rule": "'Little + did + sujet + BV' en tête de phrase signifie 'il ne se doutait guère que...'."
+  },
+  {
+    "id": "d-b2-5",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Only after the election ___ how widely the deepfake video had circulated.",
+    "fr": "Ce n'est qu'après l'élection que les autorités ont compris l'ampleur de la diffusion du deepfake.",
+    "opts": [
+      "had authorities",
+      "realized authorities",
+      "did authorities realize",
+      "authorities realized"
+    ],
+    "ans": 2,
+    "rule": "Avec 'Only after / Only when / Only by + subordonnée', l'inversion se fait dans la PRINCIPALE ('did authorities realize')."
+  },
+  {
+    "id": "d-b2-6",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "No sooner had the report been leaked ___ the company's stock plummeted.",
+    "fr": "À peine le rapport avait-il fuité que l'action de l'entreprise s'est effondrée.",
+    "opts": [
+      "that",
+      "when",
+      "as",
+      "than"
+    ],
+    "ans": 3,
+    "rule": "Corrélation obligatoire : 'No sooner ... THAN ...' ('Hardly/Scarcely ... WHEN ...')."
+  },
+  {
+    "id": "d-b2-7",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Hardly had the panel started ___ protesters interrupted the keynote speaker.",
+    "fr": "À peine la table ronde avait-elle commencé que des manifestants ont interrompu l'orateur.",
+    "opts": [
+      "that",
+      "then",
+      "when",
+      "than"
+    ],
+    "ans": 2,
+    "rule": "'Hardly / Scarcely ... WHEN ...' (jamais 'than' avec 'Hardly')."
+  },
+  {
+    "id": "d-b2-8",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "At no time ___ the ministry acknowledge any breach of citizen privacy.",
+    "fr": "À aucun moment le ministère n'a reconnu d'atteinte à la vie privée des citoyens.",
+    "opts": [
+      "the ministry did",
+      "had the ministry did",
+      "acknowledged",
+      "did the ministry"
+    ],
+    "ans": 3,
+    "rule": "'At no time' en début de phrase impose l'inversion auxiliaire + sujet ('did the ministry acknowledge')."
+  },
+  {
+    "id": "d-b2-9",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Never before ___ technological disruption reshaped labor markets at such speed.",
+    "fr": "Jamais auparavant une rupture technologique n'avait remodelé le marché du travail à une telle vitesse.",
+    "opts": [
+      "was",
+      "has",
+      "have",
+      "did"
+    ],
+    "ans": 1,
+    "rule": "'Never before' en tête + sujet singulier 'technological disruption' -> 'has' (Present Perfect inversé)."
+  },
+  {
+    "id": "d-b2-10",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Seldom ___ politicians agree on both economic growth and strict ecological limits.",
+    "fr": "Il est rare que les responsables politiques s'accordent à la fois sur la croissance et les limites écologiques.",
+    "opts": [
+      "do",
+      "are",
+      "does",
+      "have"
+    ],
+    "ans": 0,
+    "rule": "'Seldom' en tête + sujet pluriel 'politicians' + verbe 'agree' -> auxiliaire 'do'."
+  },
+  {
+    "id": "d-b2-11",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Not until Europe builds sovereign data centers ___ reduce its foreign dependency.",
+    "fr": "Ce n'est que lorsque l'Europe bâtira des centres de données souverains qu'elle pourra réduire sa dépendance.",
+    "opts": [
+      "she can",
+      "it will can",
+      "will it be able to",
+      "can it be able to"
+    ],
+    "ans": 2,
+    "rule": "'Not until + subordonnée' -> inversion différée dans la proposition principale ('will it be able to')."
+  },
+  {
+    "id": "d-b2-12",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "In no way ___ automated grading replace nuanced human evaluation.",
+    "fr": "En aucune manière la notation automatisée ne saurait remplacer une évaluation humaine nuancée.",
+    "opts": [
+      "may to",
+      "does can",
+      "it can",
+      "can"
+    ],
+    "ans": 3,
+    "rule": "'In no way' en tête de phrase -> inversion 'can automated grading replace'."
+  },
+  {
+    "id": "d-b2-13",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "So compelling ___ the empirical evidence that all four scientists revised their model.",
+    "fr": "Les preuves empiriques étaient si convaincantes que les quatre scientifiques ont révisé leur modèle.",
+    "opts": [
+      "had",
+      "were",
+      "was",
+      "did"
+    ],
+    "ans": 2,
+    "rule": "Emphase avec 'So + adjectif' en tête + nom indénombrable 'evidence' -> verbe singulier inversé ('was')."
+  },
+  {
+    "id": "d-b2-14",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Such ___ the public outcry that parliament suspended the surveillance bill.",
+    "fr": "Tel fut le tollé public que le parlement a suspendu le projet de loi sur la surveillance.",
+    "opts": [
+      "were",
+      "has",
+      "was",
+      "did"
+    ],
+    "ans": 2,
+    "rule": "'Such + be + sujet' en tête de phrase ('Tel fut... que...')."
+  },
+  {
+    "id": "d-b2-15",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Only by enforcing algorithmic transparency ___ restore long-term public trust.",
+    "fr": "Ce n'est qu'en imposant la transparence algorithmique que les plateformes pourront restaurer la confiance.",
+    "opts": [
+      "do platforms can",
+      "can platforms",
+      "will can platforms",
+      "platforms can"
+    ],
+    "ans": 1,
+    "rule": "'Only by + V-ing' en tête -> inversion modal-sujet ('can platforms restore')."
+  },
+  {
+    "id": "d-b2-16",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Nowhere else in Europe ___ renewable capacity expanded faster than in Spain.",
+    "fr": "Nulle part ailleurs en Europe la capacité renouvelable ne s'est développée plus vite qu'en Espagne.",
+    "opts": [
+      "is",
+      "has",
+      "have",
+      "did"
+    ],
+    "ans": 1,
+    "rule": "'Nowhere else' en tête + participe passé 'expanded' -> 'has renewable capacity expanded'."
+  },
+  {
+    "id": "d-b2-17",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Neither did the defense convince the jury, ___ the prosecution's key witness.",
+    "fr": "Ni la défense n'a convaincu le jury, ni le témoin clé de l'accusation.",
+    "opts": [
+      "nor had",
+      "neither did",
+      "nor did",
+      "or did"
+    ],
+    "ans": 2,
+    "rule": "Après une négation initiale : '..., nor + auxiliaire + sujet' ('nor did...')."
+  },
+  {
+    "id": "d-b2-18",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "So rapidly ___ synthetic media evolved that laws struggle to keep pace.",
+    "fr": "Les médias synthétiques ont évolué si rapidement que les lois peinent à suivre le rythme.",
+    "opts": [
+      "has",
+      "did",
+      "were",
+      "have"
+    ],
+    "ans": 3,
+    "rule": "'So + adverbe' en tête + sujet pluriel 'synthetic media' + 'evolved' -> 'have'."
+  },
+  {
+    "id": "d-b2-19",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "On no account ___ candidates exceed the strict tolerance of plus or minus 10%.",
+    "fr": "Sous aucun prétexte les candidats ne doivent dépasser la tolérance stricte de +/- 10 %.",
+    "opts": [
+      "have to",
+      "they must",
+      "ought",
+      "must"
+    ],
+    "ans": 3,
+    "rule": "'On no account' = en aucun cas -> inversion 'must candidates exceed'."
+  },
+  {
+    "id": "d-b2-20",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Scarcely had the ceasefire been signed ___ new border clashes erupted.",
+    "fr": "À peine le cessez-le-feu avait-il été signé que de nouveaux heurts frontaliers ont éclaté.",
+    "opts": [
+      "since",
+      "while",
+      "when",
+      "than"
+    ],
+    "ans": 2,
+    "rule": "'Scarcely ... when ...' (synonyme soutenu de 'Hardly ... when')."
+  },
+  {
+    "id": "d-b2-21",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Not a single credible economist ___ that protectionism alone prevents inflation.",
+    "fr": "Pas un seul économiste crédible ne soutient que le protectionnisme seul empêche l'inflation.",
+    "opts": [
+      "claims",
+      "are claiming",
+      "claim",
+      "claiming"
+    ],
+    "ans": 0,
+    "rule": "Attention : si le sujet LUI-MÊME est négatif ('Not a single credible economist'), pas d'inversion, accord singulier ('claims')."
+  },
+  {
+    "id": "d-b2-22",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Only later ___ aware of how profoundly AI tools had altered essay marking.",
+    "fr": "Ce n'est que plus tard que les examinateurs ont pris conscience de l'ampleur du changement.",
+    "opts": [
+      "did examiners become",
+      "examiners became",
+      "were examiners become",
+      "became examiners"
+    ],
+    "ans": 0,
+    "rule": "'Only later' en tête de phrase -> inversion 'did examiners become'."
+  },
+  {
+    "id": "d-b2-23",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Seldom have citizens been ___ with such contradictory figures on energy costs.",
+    "fr": "Rarement les citoyens ont été confrontés à des chiffres aussi contradictoires sur le coût de l'énergie.",
+    "opts": [
+      "confront",
+      "confronting",
+      "confronted",
+      "to confront"
+    ],
+    "ans": 2,
+    "rule": "Passif inversé : 'Seldom have citizens been confronted with...'."
+  },
+  {
+    "id": "d-b2-24",
+    "level": "B2",
+    "cat": "Inversions CPGE",
+    "q": "Never ___ so much capital been concentrated in just five tech monopolies.",
+    "fr": "Jamais autant de capital n'avait été concentré entre les mains de seulement cinq monopoles tech.",
+    "opts": [
+      "has",
+      "have",
+      "were",
+      "was"
+    ],
+    "ans": 0,
+    "rule": "'capital' (au sens financier) est indénombrable singulier -> 'has so much capital been...'."
+  },
+  {
+    "id": "d-b2-25",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "___ governments regulated data brokers earlier, this privacy crisis might have been avoided.",
+    "fr": "Si les gouvernements avaient régulé les courtiers en données plus tôt, cette crise aurait pu être évitée.",
+    "opts": [
+      "Had",
+      "Were",
+      "If",
+      "Should"
+    ],
+    "ans": 0,
+    "rule": "Inversion du conditionnel type 3 : 'Had + sujet + participe passé' remplace 'If governments had regulated'."
+  },
+  {
+    "id": "d-b2-26",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "___ the central bank to raise rates again, mortgage defaults would surge.",
+    "fr": "Si la banque centrale venait à relever encore les taux, les défauts hypothécaires bondiraient.",
+    "opts": [
+      "Should",
+      "Had",
+      "Were",
+      "If"
+    ],
+    "ans": 2,
+    "rule": "Hypothèse peu probable au futur : 'Were + sujet + to + BV' = 'If the central bank were to raise...'."
+  },
+  {
+    "id": "d-b2-27",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "___ any discrepancy arise in your bibliography, clarify it in a concise footnote.",
+    "fr": "Si une quelconque divergence venait à apparaître dans ta bibliographie, clarifie-la en note.",
+    "opts": [
+      "Should",
+      "Were",
+      "Would",
+      "Had"
+    ],
+    "ans": 0,
+    "rule": "'Should + sujet + BV' = 'Si jamais...' (forme élégante du conditionnel type 1 en concours)."
+  },
+  {
+    "id": "d-b2-28",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "___ independent whistleblowers, several toxic financial schemes would still operate today.",
+    "fr": "Sans des lanceurs d'alerte indépendants, plusieurs montages financiers toxiques existeraient encore.",
+    "opts": [
+      "But for",
+      "Unless",
+      "Without",
+      "Except"
+    ],
+    "ans": 0,
+    "rule": "'But for + groupe nominal' (= Sans / N'eût été) introduit avec élégance un conditionnel type 2 ou 3."
+  },
+  {
+    "id": "d-b2-29",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "If she had checked every third-person singular ending, she ___ at least two points.",
+    "fr": "Si elle avait vérifié chaque terminaison de 3e personne, elle aurait gagné au moins deux points.",
+    "opts": [
+      "would have gained",
+      "had gained",
+      "would gain",
+      "will gain"
+    ],
+    "ans": 0,
+    "rule": "Conditionnel type 3 pur (conséquence passée) : 'would have + participe passé'."
+  },
+  {
+    "id": "d-b2-30",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "If we had invested heavily in nuclear research in 2005, our grid ___ cleaner today.",
+    "fr": "Si nous avions massivement investi dans le nucléaire en 2005, notre réseau serait plus propre aujourd'hui.",
+    "opts": [
+      "would have been",
+      "will be",
+      "would be",
+      "were"
+    ],
+    "ans": 2,
+    "rule": "Conditionnel MIXTE (cause passée en type 3 + conséquence AUJOURD'HUI avec 'today') -> 'would be'."
+  },
+  {
+    "id": "d-b2-31",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "If he were more disciplined with word counts, he ___ so many points last week.",
+    "fr": "S'il était plus discipliné avec les comptes de mots, il n'aurait pas perdu autant de points la semaine dernière.",
+    "opts": [
+      "didn't lose",
+      "hadn't lost",
+      "wouldn't lose",
+      "wouldn't have lost"
+    ],
+    "ans": 3,
+    "rule": "Conditionnel mixte inverse (trait permanent au type 2 + conséquence passée 'last week') -> 'wouldn't have lost'."
+  },
+  {
+    "id": "d-b2-32",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "Had it not ___ for investigative journalists, the pollution scandal would have stayed hidden.",
+    "fr": "N'eût été l'action des journalistes d'investigation, le scandale serait resté caché.",
+    "opts": [
+      "was",
+      "be",
+      "been",
+      "being"
+    ],
+    "ans": 2,
+    "rule": "Locution figée inversée type 3 : 'Had it not been for + nom'."
+  },
+  {
+    "id": "d-b2-33",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "Even if subsidies ___ doubled next year, grid bottlenecks would remain unresolved.",
+    "fr": "Même si les subventions venaient à être doublées l'an prochain, les goulots du réseau demeureraient.",
+    "opts": [
+      "had been",
+      "were",
+      "would be",
+      "are"
+    ],
+    "ans": 1,
+    "rule": "Hypothèse contrefactuelle ('would remain') -> 'Even if subsidies were doubled'."
+  },
+  {
+    "id": "d-b2-34",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "What if the candidate ___ memorized a clear plan before entering the preparation room?",
+    "fr": "Et si le candidat n'avait pas mémorisé un plan clair avant d'entrer en salle de préparation ?",
+    "opts": [
+      "hadn't",
+      "wouldn't have",
+      "wasn't",
+      "hasn't"
+    ],
+    "ans": 0,
+    "rule": "Hypothèse passée après 'What if' -> Past Perfect ('hadn't memorized')."
+  },
+  {
+    "id": "d-b2-35",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "Were I ___ summarize all four texts in under 380 words, I would cut decorative quotes.",
+    "fr": "Si je devais résumer les quatre textes en moins de 380 mots, je supprimerais les citations décoratives.",
+    "opts": [
+      "of",
+      "for",
+      "to",
+      "by"
+    ],
+    "ans": 2,
+    "rule": "Structure soutenue : 'Were I to + BV'."
+  },
+  {
+    "id": "d-b2-36",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "Suppose you had been asked that question in a Mines-Ponts khôlle: how ___ you have answered?",
+    "fr": "Suppose qu'on t'ait posé cette question en khôlle Mines-Ponts : comment aurais-tu répondu ?",
+    "opts": [
+      "would",
+      "did",
+      "could be",
+      "had"
+    ],
+    "ans": 0,
+    "rule": "Conséquence passée hypothétique -> 'how would you have answered?'."
+  },
+  {
+    "id": "d-b2-37",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "If only voters ___ paid closer attention to local investigative journalism twenty years ago!",
+    "fr": "Si seulement les électeurs avaient prêté plus d'attention au journalisme local il y a vingt ans !",
+    "opts": [
+      "were",
+      "had",
+      "would",
+      "have"
+    ],
+    "ans": 1,
+    "rule": "Regret portant sur le passé ('twenty years ago') après 'If only' -> Past Perfect ('had paid')."
+  },
+  {
+    "id": "d-b2-38",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "They acted as though they ___ never seen an AI-generated chart before.",
+    "fr": "Ils ont agi comme s'ils n'avaient jamais vu de graphique généré par l'IA auparavant.",
+    "opts": [
+      "did",
+      "have",
+      "were",
+      "had"
+    ],
+    "ans": 3,
+    "rule": "Antériorité irréelle après 'as though / as if' -> Past Perfect ('had never seen')."
+  },
+  {
+    "id": "d-b2-39",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "Provided the treaty ___ ratified before winter, cross-border grid sharing can launch on schedule.",
+    "fr": "Pourvu que le traité soit ratifié avant l'hiver, le partage transfrontalier pourra démarrer à l'heure.",
+    "opts": [
+      "were",
+      "would be",
+      "will be",
+      "is"
+    ],
+    "ans": 3,
+    "rule": "'Provided (that)' suivi du futur probable prend le présent simple passif ('is ratified')."
+  },
+  {
+    "id": "d-b2-40",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "Should the prime minister fail to secure a majority, fresh elections ___ inevitably follow.",
+    "fr": "Si le Premier ministre ne parvenait pas à obtenir une majorité, de nouvelles élections suivraient inévitablement.",
+    "opts": [
+      "will",
+      "did",
+      "would",
+      "had"
+    ],
+    "ans": 0,
+    "rule": "'Should + S + BV' renvoie au futur réel/éventuel : principale au futur ('will') ou impératif."
+  },
+  {
+    "id": "d-b2-41",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "Had the engineers foreseen that flaw, lives ___ spared during the storm.",
+    "fr": "Si les ingénieurs avaient prévu ce défaut, des vies auraient été épargnées pendant la tempête.",
+    "opts": [
+      "would have been",
+      "were",
+      "had been",
+      "would be"
+    ],
+    "ans": 0,
+    "rule": "Type 3 passif : 'would have been spared'."
+  },
+  {
+    "id": "d-b2-42",
+    "level": "B2",
+    "cat": "Conditionnels Avancés",
+    "q": "___ you need further practice on relative clauses, review the summary table first.",
+    "fr": "Si jamais tu avais besoin de plus d'entraînement sur les relatives, relis d'abord le tableau récapitulatif.",
+    "opts": [
+      "Were",
+      "Did",
+      "Had",
+      "Should"
+    ],
+    "ans": 3,
+    "rule": "'Should you need...' remplace élégamment 'If you (happen to) need...'."
+  },
+  {
+    "id": "d-b2-43",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "It is high time European universities ___ more resources in sovereign AI research.",
+    "fr": "Il est grand temps que les universités européennes investissent davantage dans l'IA souveraine.",
+    "opts": [
+      "invested",
+      "are investing",
+      "will invest",
+      "invest"
+    ],
+    "ans": 0,
+    "rule": "'It is (high/about) time + sujet + PAST SIMPLE' -> 'invested' (prétérit modal, sens présent/urgent !)."
+  },
+  {
+    "id": "d-b2-44",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "The examiner insisted that every candidate ___ strictly within the 450-word limit.",
+    "fr": "L'examinateur a insisté pour que chaque candidat reste strictement sous la limite des 450 mots.",
+    "opts": [
+      "staying",
+      "stays",
+      "stay",
+      "stayed to"
+    ],
+    "ans": 2,
+    "rule": "Subjonctif présent après 'insist that' -> BASE VERBALE invariable sans -s même à la 3e personne ('stay') !"
+  },
+  {
+    "id": "d-b2-45",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "It is imperative that personal health records ___ encrypted on European servers.",
+    "fr": "Il est impératif que les dossiers médicaux personnels soient chiffrés sur des serveurs européens.",
+    "opts": [
+      "be",
+      "to be",
+      "are",
+      "being"
+    ],
+    "ans": 0,
+    "rule": "Adjectif de nécessité ('imperative/essential/vital that') -> subjonctif 'be + participe passé'."
+  },
+  {
+    "id": "d-b2-46",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "I would rather you ___ vague generalizations in your synthesis introduction.",
+    "fr": "Je préférerais que tu n'utilises pas de généralisations vagues dans l'introduction de ta synthèse.",
+    "opts": [
+      "not use",
+      "won't use",
+      "don't use",
+      "didn't use"
+    ],
+    "ans": 3,
+    "rule": "'would rather + sujet différent + PAST SIMPLE' -> 'didn't use'."
+  },
+  {
+    "id": "d-b2-47",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "The committee recommended that the bill ___ amended before the autumn vote.",
+    "fr": "La commission a recommandé que le projet de loi soit amendé avant le vote d'automne.",
+    "opts": [
+      "be",
+      "would be",
+      "is",
+      "was"
+    ],
+    "ans": 0,
+    "rule": "Subjonctif passif après 'recommend that' -> 'be amended'."
+  },
+  {
+    "id": "d-b2-48",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "It is about time teenagers ___ how recommendation algorithms capture their attention.",
+    "fr": "Il est temps que les adolescents comprennent comment les algorithmes captent leur attention.",
+    "opts": [
+      "will understand",
+      "have understood",
+      "understand",
+      "understood"
+    ],
+    "ans": 3,
+    "rule": "'It is about time + sujet + Past Simple' ('understood')."
+  },
+  {
+    "id": "d-b2-49",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "I'd sooner we ___ the root causes rather than listing isolated symptoms.",
+    "fr": "Je préférerais que nous analysions les causes profondes plutôt que d'énumérer des symptômes isolés.",
+    "opts": [
+      "are analyzing",
+      "will analyze",
+      "analyzed",
+      "analyze"
+    ],
+    "ans": 2,
+    "rule": "'I'd sooner / I'd rather + sujet + Past Simple' ('analyzed')."
+  },
+  {
+    "id": "d-b2-50",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "The ethics board demanded that the tech giant ___ its training datasets immediately.",
+    "fr": "Le comité d'éthique a exigé que le géant tech divulgue immédiatement ses jeux d'entraînement.",
+    "opts": [
+      "disclose",
+      "to disclose",
+      "disclosing",
+      "discloses"
+    ],
+    "ans": 0,
+    "rule": "Après 'demand that' -> subjonctif = base verbale sans -s ('disclose')."
+  },
+  {
+    "id": "d-b2-51",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "Supposing this policy ___ implemented nationwide tomorrow, who would fund it?",
+    "fr": "À supposer que cette politique soit appliquée demain à l'échelle nationale, qui la financerait ?",
+    "opts": [
+      "has been",
+      "is",
+      "will be",
+      "were"
+    ],
+    "ans": 3,
+    "rule": "Hypothèse imaginaire après 'Supposing...' -> prétérit modal 'were'."
+  },
+  {
+    "id": "d-b2-52",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "It is crucial that a synthesis ___ its authorized word count.",
+    "fr": "Il est crucial qu'une synthèse ne dépasse pas le nombre de mots autorisé.",
+    "opts": [
+      "not exceed",
+      "exceeds not",
+      "not to exceed",
+      "does not exceed"
+    ],
+    "ans": 0,
+    "rule": "Subjonctif négatif soutenu : 'It is crucial that + sujet + not + base verbale' ('not exceed', sans 'does')."
+  },
+  {
+    "id": "d-b2-53",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "It is vital that every participant ___ informed of how their voice samples are stored.",
+    "fr": "Il est vital que chaque participant soit informé de la conservation de ses échantillons vocaux.",
+    "opts": [
+      "will be",
+      "was",
+      "is",
+      "be"
+    ],
+    "ans": 3,
+    "rule": "'It is vital that + sujet + be + PP' (subjonctif passif formel)."
+  },
+  {
+    "id": "d-b2-54",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "The union proposed that overtime wages ___ raised by fifteen percent.",
+    "fr": "Le syndicat a proposé que la rémunération des heures supplémentaires soit augmentée de 15 %.",
+    "opts": [
+      "be",
+      "are",
+      "will be",
+      "were"
+    ],
+    "ans": 0,
+    "rule": "Après 'propose that' -> subjonctif 'be raised'."
+  },
+  {
+    "id": "d-b2-55",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "He speaks about quantum computing as if he ___ led research at CERN himself.",
+    "fr": "Il parle de l'informatique quantique comme s'il avait lui-même dirigé des recherches au CERN.",
+    "opts": [
+      "had",
+      "has",
+      "were",
+      "was"
+    ],
+    "ans": 0,
+    "rule": "Comparaison irréelle antérieure ('as if') -> Past Perfect ('had led')."
+  },
+  {
+    "id": "d-b2-56",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "I would rather ___ five minutes polishing my transitions than add weak examples.",
+    "fr": "Je préférerais passer cinq minutes à peaufiner mes transitions plutôt que d'ajouter des exemples faibles.",
+    "opts": [
+      "spent",
+      "to spend",
+      "spend",
+      "spending"
+    ],
+    "ans": 2,
+    "rule": "MÊME sujet après 'would rather' (sans second sujet) -> base verbale sans 'to' ('spend') !"
+  },
+  {
+    "id": "d-b2-57",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "Lest citizens ___ misled, public broadcasters must clearly label sponsored content.",
+    "fr": "De peur que les citoyens ne soient induits en erreur, les chaînes publiques doivent signaler le sponsorisé.",
+    "opts": [
+      "will be",
+      "were",
+      "are",
+      "be"
+    ],
+    "ans": 3,
+    "rule": "Conjonction littéraire 'Lest + S + be/BV' (= de peur que... ne)."
+  },
+  {
+    "id": "d-b2-58",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "It is high time you ___ mixing up 'eventually' and 'possibly' in written translations.",
+    "fr": "Il est grand temps que tu cesses de confondre 'eventually' et 'possibly' en version/thème.",
+    "opts": [
+      "will stop",
+      "stop",
+      "have stopped",
+      "stopped"
+    ],
+    "ans": 3,
+    "rule": "'It is high time + S + Past Simple' -> 'stopped'."
+  },
+  {
+    "id": "d-b2-59",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "The court ordered that the misleading advertisement ___ withdrawn within 48 hours.",
+    "fr": "Le tribunal a ordonné que la publicité trompeuse soit retirée sous 48 heures.",
+    "opts": [
+      "be",
+      "has been",
+      "was",
+      "is"
+    ],
+    "ans": 0,
+    "rule": "'order that + S + be + PP' (subjonctif juridique)."
+  },
+  {
+    "id": "d-b2-60",
+    "level": "B2",
+    "cat": "Subjonctif & Prétérit Modal",
+    "q": "Wait—the judge urged that lawmakers ___ haste before voting on the AI tax.",
+    "fr": "Le juge a exhorté les législateurs à ne pas agir avec précipitation avant de voter la taxe IA.",
+    "opts": [
+      "not act in",
+      "didn't act in",
+      "not to act in",
+      "don't act in"
+    ],
+    "ans": 0,
+    "rule": "Subjonctif négatif formel : 'urge that + sujet + not + base verbale' ('not act in haste')."
+  },
+  {
+    "id": "d-b2-61",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "You ___ printed fifty copies of the handout; everyone already has the PDF.",
+    "fr": "Tu n'avais pas besoin d'imprimer cinquante exemplaires (et pourtant tu l'as fait) ; tout le monde a déjà le PDF.",
+    "opts": [
+      "needn't have",
+      "didn't need to",
+      "mustn't have",
+      "couldn't have"
+    ],
+    "ans": 0,
+    "rule": "'needn't have + PP' = action passée qui a été faite inutilement ('tu l'as fait pour rien')."
+  },
+  {
+    "id": "d-b2-62",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "Since the meeting moved online, we ___ commute to Paris at all yesterday.",
+    "fr": "Comme la réunion est passée en ligne, nous n'avons pas eu besoin de nous déplacer à Paris hier.",
+    "opts": [
+      "didn't need to",
+      "couldn't have",
+      "needn't have",
+      "mustn't have"
+    ],
+    "ans": 0,
+    "rule": "'didn't need to + BV' = ce n'était pas nécessaire (et en général on ne l'a pas fait)."
+  },
+  {
+    "id": "d-b2-63",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "The photographer ___ captured this crisp close-up without a telephoto lens; it's clearly staged.",
+    "fr": "Le photographe n'a pas pu prendre ce gros plan net sans téléobjectif ; c'est clairement mis en scène.",
+    "opts": [
+      "needn't have",
+      "couldn't have",
+      "mustn't have",
+      "shouldn't have"
+    ],
+    "ans": 1,
+    "rule": "Quasi-certitude NÉGATIVE au passé ('il est impossible qu'il ait...') -> 'couldn't/can't have + PP' (JAMAIS 'mustn't have')."
+  },
+  {
+    "id": "d-b2-64",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "The author ___ overlooked recent European data; her conclusion completely ignores it.",
+    "fr": "L'autrice a forcément négligé les données européennes récentes ; sa conclusion les ignore totalement.",
+    "opts": [
+      "must have",
+      "would have",
+      "should have",
+      "can have"
+    ],
+    "ans": 0,
+    "rule": "Forte probabilité / quasi-certitude affirmative au passé -> 'must have + PP'."
+  },
+  {
+    "id": "d-b2-65",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "Regulators ___ anticipated how rapidly deepfake scams would target elderly citizens.",
+    "fr": "Les régulateurs auraient dû anticiper à quelle vitesse les arnaques deepfake cibleraient les seniors.",
+    "opts": [
+      "needn't have",
+      "should have",
+      "would have",
+      "must have"
+    ],
+    "ans": 1,
+    "rule": "Reproche / regret sur le passé ('ils auraient dû...') -> 'should have + PP'."
+  },
+  {
+    "id": "d-b2-66",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "You ___ copied a three-line quote into the intro; it wasted precious words.",
+    "fr": "Tu n'aurais pas dû recopier une citation de trois lignes en intro ; cela a gaspillé de précieux mots.",
+    "opts": [
+      "shouldn't have",
+      "mustn't have",
+      "couldn't have",
+      "needn't to"
+    ],
+    "ans": 0,
+    "rule": "Reproche négatif sur le passé -> 'shouldn't have + PP'."
+  },
+  {
+    "id": "d-b2-67",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "Since the essay is already due in ten minutes, you ___ focus on fixing grammar errors now.",
+    "fr": "Puisqu'il faut rendre la copie dans dix minutes, autant te concentrer sur la correction grammaticale maintenant.",
+    "opts": [
+      "ought",
+      "had better to",
+      "would rather to",
+      "might as well"
+    ],
+    "ans": 3,
+    "rule": "'might as well + BV' = 'autant / tu ferais aussi bien de...'."
+  },
+  {
+    "id": "d-b2-68",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "You ___ double-check the tense of every 'since' clause before handing in your test.",
+    "fr": "Tu ferais bien de vérifier le temps de chaque proposition en 'since' avant de rendre ta copie.",
+    "opts": [
+      "had better",
+      "would better",
+      "ought",
+      "had better to"
+    ],
+    "ans": 0,
+    "rule": "'had better + BV' (sans 'to' !) = conseil pressant / mise en garde."
+  },
+  {
+    "id": "d-b2-69",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "___ the summit fail to yield binding targets, island nations face rising sea levels.",
+    "fr": "Si le sommet venait à ne pas aboutir à des objectifs contraignants, les nations insulaires seraient menacées.",
+    "opts": [
+      "Would",
+      "May",
+      "Could",
+      "Should"
+    ],
+    "ans": 3,
+    "rule": "Inversion conditionnelle avec 'Should' ('Should the summit fail...')."
+  },
+  {
+    "id": "d-b2-70",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "They ___ have missed the deadline intentionally; look how detailed the appendix is.",
+    "fr": "Ils ne peuvent pas avoir raté l'échéance exprès ; regarde comme l'annexe est détaillée.",
+    "opts": [
+      "wouldn't",
+      "can't",
+      "mustn't",
+      "needn't"
+    ],
+    "ans": 1,
+    "rule": "Impossibilité logique déduite au passé -> 'can't have missed' (jamais 'mustn't have')."
+  },
+  {
+    "id": "d-b2-71",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "Without public subsidies, solar adoption ___ never have scaled so rapidly after 2015.",
+    "fr": "Sans subventions publiques, l'adoption du solaire n'aurait jamais crû si vite après 2015.",
+    "opts": [
+      "must",
+      "would",
+      "will",
+      "can"
+    ],
+    "ans": 1,
+    "rule": "Conséquence passée d'une hypothèse contraire aux faits -> 'would never have + PP'."
+  },
+  {
+    "id": "d-b2-72",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "The witness ___ been lying, or perhaps he simply misremembered the date.",
+    "fr": "Le témoin mentait peut-être, ou peut-être s'est-il simplement trompé de date.",
+    "opts": [
+      "ought to have",
+      "can't have",
+      "must have",
+      "may have"
+    ],
+    "ans": 3,
+    "rule": "Éventualité passée ('il se peut qu'il ait...') -> 'may/might have + PP'."
+  },
+  {
+    "id": "d-b2-73",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "Policy makers ___ to distinguish between harmless parody and malicious impersonation.",
+    "fr": "Les décideurs politiques devraient distinguer parodie inoffensive et usurpation malveillante.",
+    "opts": [
+      "must",
+      "should",
+      "had better",
+      "ought"
+    ],
+    "ans": 3,
+    "rule": "'ought TO + BV' est le seul de la liste qui prend 'to'."
+  },
+  {
+    "id": "d-b2-74",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "She ___ speak three languages fluently, which gave her a decisive edge in oral exams.",
+    "fr": "Elle savait parler trois langues couramment, ce qui lui a donné un avantage décisif aux oraux.",
+    "opts": [
+      "can",
+      "was able",
+      "managed",
+      "could"
+    ],
+    "ans": 3,
+    "rule": "Capacité générale permanente dans le passé -> 'could' (ou 'was able to')."
+  },
+  {
+    "id": "d-b2-75",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "Despite intense pressure during yesterday's khôlle, he ___ answer every follow-up question.",
+    "fr": "Malgré une forte pression pendant la khôlle d'hier, il a réussi à répondre à chaque relance.",
+    "opts": [
+      "managed to",
+      "succeeded",
+      "was able",
+      "could"
+    ],
+    "ans": 0,
+    "rule": "Réussite ponctuelle difficile dans le passé ('hier') : on utilise 'managed to / was able to', jamais 'could' seul."
+  },
+  {
+    "id": "d-b2-76",
+    "level": "B2",
+    "cat": "Modaux Avancés",
+    "q": "No passenger ___ leave luggage unattended inside the terminal building.",
+    "fr": "Aucun passager ne doit laisser de bagage sans surveillance dans le terminal.",
+    "opts": [
+      "must",
+      "can",
+      "needn't",
+      "may"
+    ],
+    "ans": 3,
+    "rule": "Avec un sujet déjà négatif ('No passenger'), 'may' exprime l'interdiction formelle ('No passenger may...' = interdiction administrative soutenue)."
+  },
+  {
+    "id": "d-b2-77",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "___ as the proposed regulation may seem, loopholes remain easy to exploit.",
+    "fr": "Aussi ambitieuse que puisse paraître la réglementation proposée, des failles restent faciles à exploiter.",
+    "opts": [
+      "Although",
+      "Despite",
+      "However",
+      "Ambitious"
+    ],
+    "ans": 3,
+    "rule": "Structure concessive très valorisée en prépa : 'Adjectif + as/though + sujet + may seem'."
+  },
+  {
+    "id": "d-b2-78",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "___ all his effort to craft clever metaphors, the synthesis exceeded 450 words.",
+    "fr": "Malgré tous ses efforts pour ciseler des métaphores, la synthèse dépassait 450 mots.",
+    "opts": [
+      "Although",
+      "Despite",
+      "With",
+      "For"
+    ],
+    "ans": 3,
+    "rule": "'For all + groupe nominal' = 'Malgré tout(e)...' (tournure idiomatique B2/C1)."
+  },
+  {
+    "id": "d-b2-79",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "___ compelling the documentary's visuals may be, its statistical sample is flawed.",
+    "fr": "Si convaincantes que soient les images du documentaire, son échantillon statistique est biaisé.",
+    "opts": [
+      "Despite",
+      "Whatever",
+      "However",
+      "Although"
+    ],
+    "ans": 2,
+    "rule": "'However + adjectif/adverbe + sujet + verbe' = 'Aussi ... que soit...'."
+  },
+  {
+    "id": "d-b2-80",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "___ as I admire investigative podcasts, they rarely match peer-reviewed studies.",
+    "fr": "Autant j'admire les podcasts d'enquête, autant ils égalent rarement les études à comité de lecture.",
+    "opts": [
+      "However",
+      "So",
+      "Though",
+      "Much"
+    ],
+    "ans": 3,
+    "rule": "'Much as + sujet + verbe (d'appréciation/croyance)' = 'Bien que / Autant que...'."
+  },
+  {
+    "id": "d-b2-81",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "___ measures governments adopt, hackers adapt just as quickly.",
+    "fr": "Quelles que soient les mesures adoptées par les gouvernements, les hackers s'adaptent tout aussi vite.",
+    "opts": [
+      "However",
+      "Whatever",
+      "However much",
+      "Whichever of"
+    ],
+    "ans": 1,
+    "rule": "'Whatever + nom (+ S + V)' = 'Quel(le) que soit...' ('However' qualifie un adjectif/adverbe)."
+  },
+  {
+    "id": "d-b2-82",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "Smart as the chatbot appears, it ___ still cannot grasp genuine human irony.",
+    "fr": "Aussi intelligent que paraisse le chatbot, il ne sait toujours pas saisir la véritable ironie humaine.",
+    "opts": [
+      "so",
+      "does",
+      "yet",
+      "nevertheless"
+    ],
+    "ans": 3,
+    "rule": "Rappel de concession élégant après 'Smart as...': 'nevertheless / nonetheless' (jamais 'yet' après 'although/as')."
+  },
+  {
+    "id": "d-b2-83",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "___ is precisely this lack of oversight that fuels distrust in AI journalism.",
+    "fr": "C'est précisément ce manque de contrôle qui alimente la méfiance envers le journalisme par IA.",
+    "opts": [
+      "It",
+      "That",
+      "What",
+      "There"
+    ],
+    "ans": 0,
+    "rule": "Clivée d'emphase en anglais : 'It is ... that/who...' (jamais 'That is... that')."
+  },
+  {
+    "id": "d-b2-84",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "___ makes Document 3 stand out is its focus on concrete educational solutions.",
+    "fr": "Ce qui distingue le document 3, c'est l'accent qu'il met sur des solutions éducatives concrètes.",
+    "opts": [
+      "What",
+      "That",
+      "Which",
+      "It"
+    ],
+    "ans": 0,
+    "rule": "Pseudo-clivée : 'What makes X stand out is...' ('Ce qui fait ressortir X, c'est...')."
+  },
+  {
+    "id": "d-b2-85",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "Far from ___ democratic debate, unmoderated feeds often polarize opinions.",
+    "fr": "Loin d'enrichir le débat démocratique, les fils non modérés polarisent souvent les opinions.",
+    "opts": [
+      "to enrich",
+      "enriching",
+      "enriched",
+      "enrich"
+    ],
+    "ans": 1,
+    "rule": "'Far from + V-ing' = 'Loin de + infinitif' ('Far from enriching...')."
+  },
+  {
+    "id": "d-b2-86",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "___ to popular belief, older viewers are not the only victims of clickbait.",
+    "fr": "Contrairement à une idée reçue, les spectateurs âgés ne sont pas les seules victimes du piège à clics.",
+    "opts": [
+      "Despite",
+      "Opposed",
+      "Unlike",
+      "Contrary"
+    ],
+    "ans": 3,
+    "rule": "Expression figée : 'Contrary to popular belief'."
+  },
+  {
+    "id": "d-b2-87",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "Not only did the study overlook rural towns, it also failed to weight age groups; ___, its conclusions are weak.",
+    "fr": "Non seulement l'étude a négligé les zones rurales, mais elle n'a pas pondéré les âges ; par conséquent, ses conclusions sont faibles.",
+    "opts": [
+      "moreover",
+      "whereas",
+      "consequently",
+      "meanwhile"
+    ],
+    "ans": 2,
+    "rule": "Connecteur de conséquence formel : 'consequently / therefore / hence'."
+  },
+  {
+    "id": "d-b2-88",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "Nuclear power provides steady baseload electricity, ___ wind output fluctuates with the weather.",
+    "fr": "Le nucléaire fournit une électricité de base stable, tandis que la production éolienne fluctue avec la météo.",
+    "opts": [
+      "whereas",
+      "moreover",
+      "unless",
+      "despite"
+    ],
+    "ans": 0,
+    "rule": "Opposition logique entre deux faits -> 'whereas' / 'while' ('tandis que')."
+  },
+  {
+    "id": "d-b2-89",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "The reform cut administrative red tape; ___, hospital waiting lists remained unchanged.",
+    "fr": "La réforme a réduit la paperasserie ; néanmoins, les listes d'attente à l'hôpital sont restées inchangées.",
+    "opts": [
+      "accordingly",
+      "therefore",
+      "nonetheless",
+      "moreover"
+    ],
+    "ans": 2,
+    "rule": "Opposition après point-virgule : 'nonetheless / nevertheless / however'."
+  },
+  {
+    "id": "d-b2-90",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "In sharp ___ to Document 1, Document 4 argues that technology empowers young readers.",
+    "fr": "En vif contraste avec le document 1, le document 4 soutient que la technologie donne du pouvoir aux jeunes.",
+    "opts": [
+      "reverse",
+      "opposition",
+      "contrast",
+      "difference"
+    ],
+    "ans": 2,
+    "rule": "Expression idiomatique de synthèse : 'In sharp contrast to Document X,...'."
+  },
+  {
+    "id": "d-b2-91",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "___ the economic cost of grid modernization, inaction would prove far costlier.",
+    "fr": "Quel que soit le coût économique de la modernisation du réseau, l'inaction s'avérerait bien plus coûteuse.",
+    "opts": [
+      "Irrespectively",
+      "Regardless of",
+      "Despite of",
+      "Regardless to"
+    ],
+    "ans": 1,
+    "rule": "Toujours 'Regardless of + nom' (= sans égard pour / quel que soit). Jamais 'Despite of' ni 'Regardless to'."
+  },
+  {
+    "id": "d-b2-92",
+    "level": "B2",
+    "cat": "Concession & Emphase",
+    "q": "Having ___ every draft twice, she noticed a subtle subject-verb disagreement.",
+    "fr": "Ayant relu chaque brouillon deux fois, elle a remarqué un subtil défaut d'accord sujet-verbe.",
+    "opts": [
+      "proofread",
+      "proofreaded",
+      "proofreading",
+      "to proofread"
+    ],
+    "ans": 0,
+    "rule": "Participe passé de 'read/proofread' = même orthographe ('proofread', prononcé /red/)."
+  },
+  {
+    "id": "d-b2-93",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "The panel interviewed twenty engineers, several of ___ raised concerns over safety.",
+    "fr": "Le panel a interrogé vingt ingénieurs, dont plusieurs ont exprimé des inquiétudes sur la sécurité.",
+    "opts": [
+      "which",
+      "whose",
+      "who",
+      "whom"
+    ],
+    "ans": 3,
+    "rule": "Après une préposition dans une relative de quantité ('several of', 'many of', 'most of'), personne -> 'whom' !"
+  },
+  {
+    "id": "d-b2-94",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "Four scenarios were modeled, neither of ___ predicted full decarbonization by 2035.",
+    "fr": "Quatre scénarios ont été modélisés, dont aucun n'a prédit une décarbonation totale d'ici 2035.",
+    "opts": [
+      "what",
+      "that",
+      "which",
+      "whom"
+    ],
+    "ans": 2,
+    "rule": "Chose après 'neither of' -> 'which' ('neither of which')."
+  },
+  {
+    "id": "d-b2-95",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "We must assess the extent ___ social platforms shape teenage self-esteem.",
+    "fr": "Nous devons évaluer dans quelle mesure les plateformes sociales façonnent l'estime de soi des ados.",
+    "opts": [
+      "of which",
+      "that",
+      "to which",
+      "how"
+    ],
+    "ans": 2,
+    "rule": "Expression de prépa : 'the extent TO which...' (= la mesure dans laquelle...)."
+  },
+  {
+    "id": "d-b2-96",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "The media group had its fact-checking workflow ___ by external auditors last spring.",
+    "fr": "Le groupe média a fait auditer son processus de vérification des faits par des auditeurs externes.",
+    "opts": [
+      "audit",
+      "audited",
+      "auditing",
+      "to audit"
+    ],
+    "ans": 1,
+    "rule": "Causatif passif : 'have + chose + participe passé' ('had its workflow audited')."
+  },
+  {
+    "id": "d-b2-97",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "The editor-in-chief had his interns ___ every single URL before publication.",
+    "fr": "Le rédacteur en chef a fait vérifier chaque URL par ses stagiaires avant publication.",
+    "opts": [
+      "verifying",
+      "verify",
+      "verified",
+      "to verify"
+    ],
+    "ans": 1,
+    "rule": "Causatif actif avec 'have' : 'have + personne + base verbale sans to' ('had his interns verify')."
+  },
+  {
+    "id": "d-b2-98",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "She finally got her article ___ in a leading peer-reviewed engineering journal.",
+    "fr": "Elle a finalement réussi à faire publier son article dans une grande revue à comité de lecture.",
+    "opts": [
+      "publishing",
+      "to publish",
+      "published",
+      "publish"
+    ],
+    "ans": 2,
+    "rule": "'get + chose + participe passé' ('got her article published')."
+  },
+  {
+    "id": "d-b2-99",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "I'll get my British colleague ___ through my presentation slides before the conference.",
+    "fr": "Je demanderai à mon collègue britannique de relire mes diapositives avant la conférence.",
+    "opts": [
+      "to look",
+      "looked",
+      "looking",
+      "look"
+    ],
+    "ans": 0,
+    "rule": "PIÈGE : avec une personne, 'get someone TO do something' prend 'to' (contrairement à 'have someone do') !"
+  },
+  {
+    "id": "d-b2-100",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "The city council decided to have all misleading campaign posters ___ overnight.",
+    "fr": "La mairie a décidé de faire retirer toutes les affiches électorales trompeuses dans la nuit.",
+    "opts": [
+      "removing",
+      "remove",
+      "to remove",
+      "removed"
+    ],
+    "ans": 3,
+    "rule": "Causatif passif : 'have + objet + PP' ('have ... posters removed')."
+  },
+  {
+    "id": "d-b2-101",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "They visited three coastal plants, one of ___ already runs on tidal power.",
+    "fr": "Ils ont visité trois centrales côtières, dont l'une fonctionne déjà à l'énergie marémotrice.",
+    "opts": [
+      "whom",
+      "whose",
+      "which",
+      "them"
+    ],
+    "ans": 2,
+    "rule": "Dans une même phrase avec virgule (sans point-virgule), il faut un pronom relatif -> 'one of which' (pas 'them')."
+  },
+  {
+    "id": "d-b2-102",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "The mechanism ___ disinformation spreads relies on emotional outrage.",
+    "fr": "Le mécanisme par lequel la désinformation se propage repose sur l'indignation émotionnelle.",
+    "opts": [
+      "for which",
+      "by that",
+      "whereby",
+      "whose"
+    ],
+    "ans": 2,
+    "rule": "'whereby' (ou 'by which') = 'par lequel / grâce auquel'."
+  },
+  {
+    "id": "d-b2-103",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "Citizens deserve clearer rules regarding the criteria ___ algorithms rank news.",
+    "fr": "Les citoyens méritent des règles plus claires sur les critères selon lesquels les algorithmes classent l'info.",
+    "opts": [
+      "by which",
+      "what",
+      "by that",
+      "whom"
+    ],
+    "ans": 0,
+    "rule": "Après préposition ('by'), utiliser 'which' ('the criteria by which')."
+  },
+  {
+    "id": "d-b2-104",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "He had his passport ___ just two days before flying to Edinburgh.",
+    "fr": "Il s'est fait voler son passeport deux jours seulement avant de s'envoler pour Édimbourg.",
+    "opts": [
+      "stealing",
+      "stole",
+      "stolen",
+      "steal"
+    ],
+    "ans": 2,
+    "rule": "'have + chose + PP' exprime aussi un malheur subi ('had his passport stolen')."
+  },
+  {
+    "id": "d-b2-105",
+    "level": "B2",
+    "cat": "Relatives & Causatives",
+    "q": "The university made all incoming students ___ an academic integrity workshop.",
+    "fr": "L'université a obligé tous les nouveaux étudiants à suivre un atelier d'intégrité académique.",
+    "opts": [
+      "attend",
+      "attending",
+      "to attend",
+      "attended"
+    ],
+    "ans": 0,
+    "rule": "'make + personne + BV sans to' (à la voix active) : 'made students attend'."
+  },
+  {
+    "id": "d-b2-106",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Recent ___ proves that short-form video weakens sustained reading stamina.",
+    "fr": "Des recherches récentes prouvent que les vidéos courtes affaiblissent l'endurance de lecture.",
+    "opts": [
+      "research proves",
+      "researches proves",
+      "researches prove",
+      "research prove"
+    ],
+    "ans": 0,
+    "rule": "'research' est INDÉNOMBRABLE en anglais : jamais de -s, verbe singulier ('research proves')."
+  },
+  {
+    "id": "d-b2-107",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "A great ___ of public funding is still needed to modernize rural broadband.",
+    "fr": "Une grande quantité de financements publics est encore nécessaire pour moderniser le haut débit rural.",
+    "opts": [
+      "many",
+      "deal",
+      "number",
+      "several"
+    ],
+    "ans": 1,
+    "rule": "'a great deal of + indénombrable' ('funding') vs 'a large number of + dénombrable pluriel'."
+  },
+  {
+    "id": "d-b2-108",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Long-term ecological gains far ___ short-term industrial adjustment costs.",
+    "fr": "Les gains écologiques à long terme dépassent de loin les coûts d'ajustement industriel à court terme.",
+    "opts": [
+      "outweigh",
+      "exceed than",
+      "overweight",
+      "outperform to"
+    ],
+    "ans": 0,
+    "rule": "'outweigh' (= l'emporter sur / peser plus lourd que) est transitif direct, verbe clé de synthèse !"
+  },
+  {
+    "id": "d-b2-109",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Strict labeling rules could help ___ the proliferation of deceptive synthetic media.",
+    "fr": "Des règles strictes d'étiquetage pourraient aider à freiner la prolifération des médias synthétiques trompeurs.",
+    "opts": [
+      "curbing",
+      "to be curb",
+      "curve",
+      "curb"
+    ],
+    "ans": 3,
+    "rule": "Collocation concours : 'curb the proliferation / spread / emissions' (= freiner/endiguer), verbe transitif après 'help'."
+  },
+  {
+    "id": "d-b2-110",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Ultimately, democratic resilience ___ citizens' ability to cross-check sources.",
+    "fr": "En fin de compte, la résilience démocratique repose sur la capacité des citoyens à recouper les sources.",
+    "opts": [
+      "relies of",
+      "hinges of",
+      "depends to",
+      "hinges on"
+    ],
+    "ans": 3,
+    "rule": "'hinge ON' = dépendre crucialement de / reposer sur (synonyme soutenu de 'depend on')."
+  },
+  {
+    "id": "d-b2-111",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Unmoderated comment sections are often ___ to toxic polarization.",
+    "fr": "Les sections de commentaires non modérées sont souvent enclines à une polarisation toxique.",
+    "opts": [
+      "adapted",
+      "prone",
+      "likely",
+      "resulting"
+    ],
+    "ans": 1,
+    "rule": "'be prone TO + nom/V-ing' (= être enclin à / sujet à). 'likely' se construit avec 'to + BV'."
+  },
+  {
+    "id": "d-b2-112",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Refusing to disclose training data is ___ to undermining scientific reproducibility.",
+    "fr": "Refuser de divulguer les données d'entraînement équivaut à saper la reproductibilité scientifique.",
+    "opts": [
+      "identical",
+      "similar",
+      "tantamount",
+      "comparable"
+    ],
+    "ans": 2,
+    "rule": "Collocation B2/C1 : 'tantamount TO + V-ing' (= équivaloir à)."
+  },
+  {
+    "id": "d-b2-113",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Tech platforms must ___ with national transparency standards or face heavy fines.",
+    "fr": "Les plateformes tech doivent se conformer aux normes nationales de transparence sous peine d'amendes.",
+    "opts": [
+      "comply",
+      "follow with",
+      "obey to",
+      "respect"
+    ],
+    "ans": 0,
+    "rule": "'comply WITH rules/standards' (= se conformer à). 'obey' et 'respect' n'ont pas 'with'."
+  },
+  {
+    "id": "d-b2-114",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Rising energy insecurity ___ partly from decades of underinvestment in grids.",
+    "fr": "L'insécurité énergétique croissante découle en partie de décennies de sous-investissement dans les réseaux.",
+    "opts": [
+      "results to",
+      "stems",
+      "arises of",
+      "causes from"
+    ],
+    "ans": 1,
+    "rule": "'stem FROM' (= découler de / provenir de) — verbe essentiel d'analyse des causes."
+  },
+  {
+    "id": "d-b2-115",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Analysts urge young journalists to ___ from publishing uncorroborated leaks.",
+    "fr": "Les analystes exhortent les jeunes journalistes à s'abstenir de publier des fuites non recoupées.",
+    "opts": [
+      "refrain",
+      "forbid",
+      "avoid",
+      "prevent"
+    ],
+    "ans": 0,
+    "rule": "'refrain FROM + V-ing' (= s'abstenir de). 'avoid' ne prend pas 'from'."
+  },
+  {
+    "id": "d-b2-116",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Reliable local reporting is ___ to healthy civic participation.",
+    "fr": "Un journalisme local fiable est propice à une participation citoyenne saine.",
+    "opts": [
+      "helping",
+      "conducive",
+      "favorable for",
+      "beneficial for"
+    ],
+    "ans": 1,
+    "rule": "'conducive TO + nom/V-ing' (= propice à)."
+  },
+  {
+    "id": "d-b2-117",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "There has been remarkable ___ in battery density over the last five years.",
+    "fr": "Il y a eu des progrès remarquables dans la densité des batteries ces cinq dernières années.",
+    "opts": [
+      "progress",
+      "progresses",
+      "advances in a",
+      "developments has"
+    ],
+    "ans": 0,
+    "rule": "'progress' est INDÉNOMBRABLE : jamais au pluriel ('remarkable progress', jamais 'progresses')."
+  },
+  {
+    "id": "d-b2-118",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "The editorial offers insightful ___ on how screen habits reshape childhood.",
+    "fr": "L'éditorial offre des éclairages pertinents sur la façon dont les écrans transforment l'enfance.",
+    "opts": [
+      "advices",
+      "insighting",
+      "insights",
+      "an insight"
+    ],
+    "ans": 2,
+    "rule": "'insight(s)' peut être pluriel pour des éclairages précis, tandis que 'advice' est toujours indénombrable."
+  },
+  {
+    "id": "d-b2-119",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "No clear ___ links moderate video-game play to real-world violence.",
+    "fr": "Aucune preuve claire ne relie une pratique modérée du jeu vidéo à la violence réelle.",
+    "opts": [
+      "evidences link",
+      "proofs links",
+      "evidence link",
+      "evidence links"
+    ],
+    "ans": 3,
+    "rule": "'evidence' est INDÉNOMBRABLE donc singulier -> 'No clear evidence links...'."
+  },
+  {
+    "id": "d-b2-120",
+    "level": "B2",
+    "cat": "Collocations & Syntaxe CPGE",
+    "q": "Much more ___ needs to be carried out before deploying autonomous taxis nationwide.",
+    "fr": "Il faut mener bien davantage de travaux de terrain avant de déployer les taxis autonomes partout.",
+    "opts": [
+      "fieldworks",
+      "experiments has",
+      "fieldwork",
+      "knowledges"
+    ],
+    "ans": 2,
+    "rule": "'work' / 'fieldwork' / 'knowledge' / 'research' sont tous indénombrables -> singulier sans -s ('fieldwork')."
   }
 ];
