@@ -3844,6 +3844,7 @@
     function applyEvaluationOutcome(mode, item, score, isLocal) {
       ensureDailyFresh();
       const wasMissed = !!(state.reviews[item.id] && state.reviews[item.id].missed);
+      const isReviewFlow = (mode === "speak" ? state.speakMode : state.listenMode) === "review";
       const passThreshold = mode === "listen" ? 51 : 80;
       awardXP(score);
 
@@ -3855,20 +3856,24 @@
           if (typeof recordGuidedProgress === "function") recordGuidedProgress("missed");
           showToast("✅ Erreur maîtrisée et validée !");
         }
+      } else {
+        // Ajouter / garder en file de révision pour le bloc final de rattrapage
+        markReview(item.id, { missed: true, lastScore: score });
+        showToast(mode === "listen"
+          ? "🔁 ≤ 50% : ajoutée aux erreurs à corriger en fin de séance"
+          : "🔁 < 80% : ajoutée aux erreurs à corriger en fin de séance");
+      }
+
+      // Compter la phrase/audio pratiqué(e) dès qu'il/elle est terminé(e) hors mode révision
+      if (!isReviewFlow) {
         if (mode === "speak") {
           state.daily.speakDone = (state.daily.speakDone || 0) + 1;
-          if (!wasMissed && typeof recordGuidedProgress === "function") recordGuidedProgress("speak");
+          if (typeof recordGuidedProgress === "function") recordGuidedProgress("speak");
         } else if (mode === "listen") {
           if (item.isLong) state.daily.longListenDone = (state.daily.longListenDone || 0) + 1;
           state.daily.listenDone = (state.daily.listenDone || 0) + 1;
-          if (!wasMissed && typeof recordGuidedProgress === "function") recordGuidedProgress("listen");
+          if (typeof recordGuidedProgress === "function") recordGuidedProgress("listen");
         }
-      } else {
-        // Ne pas marquer comme maîtrisée : la renvoyer en file de révision
-        markReview(item.id, { missed: true, lastScore: score });
-        showToast(mode === "listen"
-          ? "🔁 Compréhension ≤ 50% : ajoutée à « Réviser mes erreurs »"
-          : "🔁 Score < 80% : ajoutée à « Réviser mes erreurs »");
       }
 
       const overWrap = $(`${mode}-override-wrap`);
@@ -5039,9 +5044,9 @@ Retourne STRICTEMENT ce JSON :
     let guidedTimerInterval = null;
 
     function getDurationPreset(dur) {
-      if (dur === 20) return { drill: 3, missedMax: 2, srs: 6, speak: 4, listen: 1, useLong: false, essay: 0, prepa: 1, label: "20 min" };
-      if (dur === 40) return { drill: 5, missedMax: 3, srs: 10, speak: 6, listen: 2, useLong: true, essay: 1, prepa: 1, label: "40 min" };
-      return { drill: 8, missedMax: 5, srs: 15, speak: 10, listen: 3, useLong: true, essay: 1, prepa: 1, label: "60 min" };
+      if (dur === 20) return { drill: 3, srs: 5, speak: 4, listen: 1, useLong: false, essay: 0, prepa: 0, missedMax: 2, label: "20 min" };
+      if (dur === 40) return { drill: 5, srs: 8, speak: 5, listen: 2, useLong: true, essay: 0, prepa: 1, missedMax: 3, label: "40 min" };
+      return { drill: 6, srs: 10, speak: 8, listen: 2, useLong: true, essay: 1, prepa: 1, missedMax: 5, label: "60 min" };
     }
 
     function getWeakestGrammarCategory() {
@@ -5061,46 +5066,31 @@ Retourne STRICTEMENT ce JSON :
     function buildGuidedBlocks(dur) {
       const p = getDurationPreset(dur);
       const missedCount = getMissedItems("speak").length + getMissedItems("listen").length;
-      const missedTarget = Math.min(p.missedMax, missedCount);
+      const missedDone = state.daily.missedDone || 0;
+      const missedTarget = missedCount === 0 ? missedDone : Math.min(p.missedMax, missedDone + missedCount);
       const weakCat = getWeakestGrammarCategory();
 
       const blocks = [
         {
           id: "drill",
-          title: `🔥 Bloc 1 : Échauffement Conjugaison (${p.drill} questions)`,
-          sub: "Réflexes rapides sur temps, modaux & pièges",
+          title: `🔥 Bloc 1 : Verbes & Grammaire (${p.drill} questions)`,
+          sub: "Échauffement rapide (~3 min)",
           target: p.drill,
           done: state.daily.drillDone || 0,
           launch: () => { switchTab("plan"); switchPlanSubtab("drill"); renderDrillQuestion(true); }
         },
         {
-          id: "missed",
-          title: missedTarget > 0 ? `🔁 Bloc 2 : Zéro Dette Erreurs (${missedTarget} à valider)` : "🔁 Bloc 2 : Zéro Erreur en attente ✓",
-          sub: missedTarget > 0 ? "Rejoue tes phrases < 80% jusqu'à maîtrise" : "Aucune erreur en attente — passage auto !",
-          target: missedTarget,
-          done: state.daily.missedDone || 0,
-          autoDone: missedTarget === 0,
-          launch: () => {
-            const m = getMissedItems("speak").length ? "speak" : "listen";
-            if (m === "speak") state.speakMode = "review"; else state.listenMode = "review";
-            updatePracticeModeUI();
-            if (m === "speak") loadSpeakItem(pickNextItem("speak", null));
-            else loadListenItem(pickNextItem("listen", null));
-            switchTab(m);
-          }
-        },
-        {
           id: "srs",
-          title: `🃏 Bloc 3 : Vocabulaire Prépa SRS (${p.srs} cartes)`,
-          sub: "Répétition espacée (priorité aux cartes dues)",
+          title: `🃏 Bloc 2 : Vocabulaire Prépa (${p.srs} cartes)`,
+          sub: "Répétition espacée (~4 min)",
           target: p.srs,
           done: state.daily.srsDone || 0,
           launch: () => { switchTab("plan"); switchPlanSubtab("srs"); renderSrsCard(true); }
         },
         {
           id: "speak",
-          title: `🎙️ Bloc 4 : Oral Actif FR → EN (${p.speak} phrases)`,
-          sub: `Ciblé sur ta priorité : ${GRAMMAR_LABELS[weakCat]}`,
+          title: `🎙️ Bloc 3 : Oral FR → EN (${p.speak} phrases)`,
+          sub: `Terminer ${p.speak} phrases (${GRAMMAR_LABELS[weakCat]}) — les ratées passent en correction à la fin`,
           target: p.speak,
           done: state.daily.speakDone || 0,
           launch: () => {
@@ -5114,8 +5104,8 @@ Retourne STRICTEMENT ce JSON :
         },
         {
           id: "listen",
-          title: `🎧 Bloc 5 : Oreille & Monologue Long (${p.listen} audios)`,
-          sub: p.useLong ? "Démarre par 1 monologue long puis écoutes ciblées" : "Compréhension orale & traduction naturelle",
+          title: `🎧 Bloc 4 : Écoute & Résumé (${p.listen} audio${p.listen > 1 ? "s" : ""})`,
+          sub: p.useLong ? "1 monologue long + compréhension en français" : "Compréhension orale en français",
           target: p.listen,
           done: state.daily.listenDone || 0,
           launch: () => {
@@ -5129,28 +5119,50 @@ Retourne STRICTEMENT ce JSON :
         }
       ];
 
+      let nextNum = 5;
       if (p.essay > 0) {
         blocks.push({
           id: "essay",
-          title: "✍️ Bloc 6 : Écrit Structuré Prépa (1 Mini-Essai)",
-          sub: "110–180 mots argumentés + réécriture B2/C1",
+          title: `✍️ Bloc ${nextNum} : Mini-Essai Prépa (1 écrit)`,
+          sub: "110–150 mots structurés (~12 min)",
           target: p.essay,
           done: state.daily.essayDone || 0,
           launch: () => { switchTab("plan"); switchPlanSubtab("essay"); loadEssayPrompt(false); }
         });
+        nextNum++;
+      }
+
+      if (p.prepa > 0) {
+        blocks.push({
+          id: "prepa",
+          title: `🎓 Bloc ${nextNum} : Khôlle Interactive (${MAX_PREPA_ROUNDS} questions)`,
+          sub: `Discussion guidée en ${MAX_PREPA_ROUNDS} tours (~10 min)`,
+          target: p.prepa,
+          done: state.daily.prepaDone || 0,
+          launch: () => {
+            state.prepaLang = "en";
+            document.querySelectorAll("[data-prepa-lang]").forEach(b => b.classList.toggle("active", b.dataset.prepaLang === "en"));
+            switchTab("prepa");
+            loadPrepaItem(pickNextPrepa(null));
+          }
+        });
+        nextNum++;
       }
 
       blocks.push({
-        id: "prepa",
-        title: `🎓 Bloc ${p.essay > 0 ? 7 : 6} : Khôlle Interactive (${MAX_PREPA_ROUNDS} questions)`,
-        sub: `Discussion guidée en ${MAX_PREPA_ROUNDS} tours (validation à la fin)`,
-        target: p.prepa,
-        done: state.daily.prepaDone || 0,
+        id: "missed",
+        title: missedCount > 0 ? `🔁 Bloc ${nextNum} : Corriger tes erreurs (${missedTarget})` : `🔁 Bloc ${nextNum} : Aucune erreur à corriger ✓`,
+        sub: missedCount > 0 ? "Reprends tes phrases/audios ratés (aujourd'hui ou avant) jusqu'à réussite" : "Tout est maîtrisé !",
+        target: Math.max(missedTarget, 0),
+        done: missedDone,
+        autoDone: missedCount === 0,
         launch: () => {
-          state.prepaLang = "en";
-          document.querySelectorAll("[data-prepa-lang]").forEach(b => b.classList.toggle("active", b.dataset.prepaLang === "en"));
-          switchTab("prepa");
-          loadPrepaItem(pickNextPrepa(null));
+          const m = getMissedItems("speak").length ? "speak" : "listen";
+          if (m === "speak") state.speakMode = "review"; else state.listenMode = "review";
+          updatePracticeModeUI();
+          if (m === "speak") loadSpeakItem(pickNextItem("speak", null));
+          else loadListenItem(pickNextItem("listen", null));
+          switchTab(m);
         }
       });
 
@@ -5181,7 +5193,7 @@ Retourne STRICTEMENT ce JSON :
       $("guided-step-num").textContent = `${g.idx + 1}`;
       $("guided-step-total").textContent = `${blocks.length}`;
       $("guided-step-title").textContent = cur.title;
-      $("guided-step-progress").textContent = `${Math.min(g.blockDone, cur.target)} / ${cur.target} validé(s) dans ce bloc`;
+      $("guided-step-progress").textContent = `${Math.min(g.blockDone, cur.target)} / ${cur.target} fait(s) dans ce bloc`;
 
       const bar = $("guided-step-bar");
       bar.style.gridTemplateColumns = `repeat(${blocks.length}, 1fr)`;
