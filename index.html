@@ -53,6 +53,16 @@
       padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
     }
 
+    body.feed-tab-active {
+      padding-bottom: 0;
+      overflow: hidden;
+    }
+
+    body.feed-tab-active .main-container {
+      padding-top: 10px;
+      padding-bottom: 6px;
+    }
+
     html.modal-open, body.modal-open {
       overflow: hidden;
       overscroll-behavior: none;
@@ -940,23 +950,23 @@
     .bottom-nav-inner {
       max-width: 760px;
       margin: 0 auto;
-      padding: 6px 8px calc(8px + env(safe-area-inset-bottom, 0px));
+      padding: 6px 6px calc(8px + env(safe-area-inset-bottom, 0px));
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 4px;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2px;
     }
 
     .nav-btn {
       border: none;
       background: transparent;
-      padding: 7px 4px;
+      padding: 7px 2px;
       border-radius: 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 2px;
       color: var(--text-muted);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
@@ -1461,6 +1471,249 @@
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(166, 92, 67, 0.16);
     }
+
+    /* ===== FEED INFINI TIKTOK-STYLE ===== */
+    .feed-hud {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      flex-wrap: wrap;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .feed-hud-left, .feed-hud-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .feed-combo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 900;
+      background: var(--surface-soft);
+      color: var(--text-muted);
+      border: 1.5px solid var(--border);
+      transition: transform 0.16s, background 0.2s, color 0.2s;
+    }
+
+    .feed-combo-pill.hot {
+      background: linear-gradient(135deg, #D97706, #A65C43);
+      color: #FFFDF8;
+      border-color: #9A4A2E;
+      box-shadow: 0 3px 10px rgba(166, 92, 67, 0.3);
+    }
+
+    .feed-combo-pill.fire {
+      background: linear-gradient(135deg, #B83A45, #D97706);
+      color: #FFFDF8;
+      border-color: #881337;
+      box-shadow: 0 4px 14px rgba(184, 58, 69, 0.35);
+    }
+
+    .feed-combo-pill.pop { transform: scale(1.13); }
+
+    .feed-shell {
+      position: relative;
+    }
+
+    .feed-xp-pop {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      z-index: 15;
+      pointer-events: none;
+      font-size: 13px;
+      font-weight: 900;
+      padding: 5px 12px;
+      border-radius: 99px;
+      background: var(--emerald);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(45, 114, 79, 0.35);
+      opacity: 0;
+      white-space: nowrap;
+      transform: translateX(-50%) translateY(8px) scale(0.92);
+      transition: opacity 0.22s ease-out, transform 0.35s ease-out;
+    }
+
+    .feed-xp-pop.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px) scale(1);
+    }
+
+    .feed-scroller {
+      position: relative;
+      height: calc(100dvh - 236px);
+      min-height: 360px;
+      max-height: 660px;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      border-radius: 22px;
+      border: 1.5px solid var(--border);
+      background: linear-gradient(180deg, #FBF6ED 0%, #F4E9D7 100%);
+      box-shadow: var(--shadow-md);
+    }
+
+    .feed-scroller::-webkit-scrollbar { display: none; }
+
+    .feed-slide {
+      height: 100%;
+      min-height: 100%;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .feed-slide.boss-card {
+      background: linear-gradient(160deg, #FFF7ED 0%, #FDE8D8 100%);
+      box-shadow: inset 0 0 0 2.5px #D97706;
+    }
+
+    .feed-slide-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .feed-slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      padding: 4px 0;
+    }
+
+    .feed-main-prompt {
+      font-size: 19px;
+      font-weight: 800;
+      line-height: 1.38;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .feed-sub-hint {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .feed-opts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .feed-opt-btn {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.1s, border-color 0.15s, background 0.15s;
+      box-shadow: 0 2px 6px rgba(45, 27, 18, 0.04);
+    }
+
+    .feed-opt-btn:active:not(:disabled) { transform: scale(0.985); }
+    .feed-opt-btn.opt-ok { background: var(--emerald-soft); border-color: var(--emerald); color: #194A32; }
+    .feed-opt-btn.opt-ko { background: var(--rose-soft); border-color: var(--rose); color: #7C1D25; }
+
+    .feed-duel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .feed-duel-btn {
+      padding: 14px 10px;
+      border-radius: 16px;
+      border: 2px solid var(--border);
+      background: var(--surface);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: transform 0.12s, border-color 0.15s, background 0.15s;
+    }
+
+    .feed-duel-btn:active:not(:disabled) { transform: scale(0.96); }
+    .feed-duel-btn.opt-ok { background: var(--emerald-soft); border-color: var(--emerald); color: #194A32; }
+    .feed-duel-btn.opt-ko { background: var(--rose-soft); border-color: var(--rose); color: #7C1D25; }
+
+    .feed-audio-card {
+      background: var(--espresso-dark);
+      color: #FFF8EE;
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 8px 20px rgba(45, 27, 18, 0.18);
+    }
+
+    .feed-rule-box {
+      background: var(--surface);
+      border: 1.5px solid #DEC4A8;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      line-height: 1.48;
+      color: var(--text);
+      animation: fadeIn 0.18s ease-out;
+    }
+
+    .feed-slide-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 6px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .feed-swipe-hint {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
   </style>
 </head>
 <body>
@@ -1771,6 +2024,30 @@
           </div>
           <div id="error-notebook-list"></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ONGLET 1B : FEED INFINI TIKTOK-STYLE -->
+    <section id="tab-feed" class="tab-panel">
+      <div class="feed-hud">
+        <div class="feed-hud-left">
+          <span id="feed-combo-badge" class="feed-combo-pill">🔥 x1</span>
+          <span id="feed-stats-badge" class="badge badge-muted">🎯 0 vues · Record 0</span>
+        </div>
+        <div class="feed-hud-right">
+          <select id="feed-mode-select" class="select-input" style="padding:5px 8px;font-size:11.5px;">
+            <option value="all">⚡ Mix Complet</option>
+            <option value="grammar">🧠 Grammaire PC*</option>
+            <option value="audio_vocab">🎧 Audio & Khôlle</option>
+          </select>
+          <button id="btn-feed-auto-audio" type="button" class="tool-btn" title="Lecture auto des cartes audio">🔊 Auto</button>
+          <button id="btn-feed-sfx" type="button" class="tool-btn" title="Effets sonores de combo">🔔 Sons</button>
+        </div>
+      </div>
+
+      <div class="feed-shell">
+        <div id="feed-xp-pop" class="feed-xp-pop">+15 XP</div>
+        <div id="feed-scroller" class="feed-scroller" aria-label="Flux vertical infini d'anglais"></div>
       </div>
     </section>
 
@@ -2139,6 +2416,10 @@
         <span class="nav-ico">📅</span>
         <span>Plan</span>
       </button>
+      <button type="button" class="nav-btn" data-tab="feed">
+        <span class="nav-ico">⚡</span>
+        <span>Feed</span>
+      </button>
       <button type="button" class="nav-btn" data-tab="speak">
         <span class="nav-ico">🎙️</span>
         <span>Parler</span>
@@ -2484,7 +2765,8 @@
         lastSyncAt: null,
         daily: createEmptyDaily(),
         drillStats: { total: 0, correct: 0 },
-        drillSeenIds: {}
+        drillSeenIds: {},
+        feedStats: { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" }
       };
     }
 
@@ -2524,6 +2806,7 @@
       daily: createEmptyDaily(),
       drillStats: { total: 0, correct: 0 },
       drillSeenIds: {},
+      feedStats: { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" },
       sessionSeen: { speak: [], listen: [], prepa: [] },
       seenIds: new Set(),
       seenPrepaIds: new Set(),
@@ -2645,6 +2928,15 @@
       state.drillSeenIds = (d.drillSeenIds && typeof d.drillSeenIds === "object" && !Array.isArray(d.drillSeenIds))
         ? { ...d.drillSeenIds }
         : {};
+      const fs = (d.feedStats && typeof d.feedStats === "object") ? d.feedStats : {};
+      state.feedStats = {
+        bestCombo: Number(fs.bestCombo) || 0,
+        totalCards: Number(fs.totalCards) || 0,
+        totalCorrect: Number(fs.totalCorrect) || 0,
+        autoAudio: fs.autoAudio !== false,
+        sfxEnabled: fs.sfxEnabled !== false,
+        mode: ["all", "grammar", "audio_vocab"].includes(fs.mode) ? fs.mode : "all"
+      };
       state.sessionSeen = { speak: [], listen: [], prepa: [] };
       state.speakMode = "normal";
       state.listenMode = "normal";
@@ -2686,7 +2978,8 @@
         lastSyncAt: state.lastSyncAt,
         daily: state.daily,
         drillStats: state.drillStats,
-        drillSeenIds: state.drillSeenIds
+        drillSeenIds: state.drillSeenIds,
+        feedStats: state.feedStats
       };
     }
 
@@ -4815,7 +5108,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     const FALLBACK_DRILL_BANK = [
       { id: "d-fb-1", level: "A2", cat: "Temps & Conjugaison", q: "ChatGPT ___ when a prompt tries to influence an election.", fr: "ChatGPT détecte quand une requête cherche à influencer une élection.", opts: ["detect", "detects", "detecting", "is detect"], ans: 1, rule: "3e personne du singulier au présent : toujours ajouter -s ('ChatGPT detects')." },
       { id: "d-fb-2", level: "A2", cat: "Catégories GR (Copie PC*)", q: "Technology and ___ are often the main sources of disinformation.", fr: "La technologie et l'excès de confiance sont souvent sources de désinformation.", opts: ["overconfident", "overconfidence", "the overconfident", "overconfidently"], ans: 1, rule: "Catégorie GR (adj ≠ N) : un sujet doit être un NOM ('overconfidence'), pas l'adjectif 'overconfident'." },
-      { id: "d-fb-3", level: "B1", cat: "Present Perfect vs Past", q: "Over the last ___ years, screen time among teenagers has risen sharply.", fr: "Ces dernières années, le temps d'écran chez les ados a fortement augmenté.", opts: ["years", "few years", "lately years", "passed years"], ans: 1, rule: "En anglais idiomatique, on dit 'over the last few years' ou 'in recent years' (pas 'in the last years')." },
+      { id: "d-fb-3", level: "B1", cat: "Present Perfect vs Past", q: "Over the last ___, screen time among teenagers has risen sharply.", fr: "Ces dernières années, le temps d'écran chez les ados a fortement augmenté.", opts: ["lately years", "few years", "passed years", "lasts years"], ans: 1, rule: "En anglais idiomatique, on dit 'over the last few years' ou 'in recent years' (pas 'in the last years')." },
       { id: "d-fb-4", level: "B1", cat: "Faux-amis", q: "After many false starts, the team ___ reached an agreement.", fr: "Après bien des faux départs, l'équipe a fini par trouver un accord.", opts: ["possibly", "eventually", "presently", "currently"], ans: 1, rule: "'Eventually' signifie 'finalement / au bout du compte' (jamais 'éventuellement' !)." },
       { id: "d-fb-5", level: "B2", cat: "Inversions emphatiques", q: "Rarely ___ a technological breakthrough sparked such sharp debate.", fr: "Rarement une percée technologique n'a suscité un débat si vif.", opts: ["has", "had been", "did", "is"], ans: 0, rule: "Inversion auxiliaire-sujet après 'Rarely' au Present Perfect : 'Rarely has a breakthrough sparked...'." },
       { id: "d-fb-6", level: "B2", cat: "Conditionnel Type 3 inversé", q: "___ governments anticipated grid congestion, blackouts would not have occurred.", fr: "Si les gouvernements avaient anticipé la congestion, ces pannes n'auraient pas eu lieu.", opts: ["If had", "Had", "Were", "Should"], ans: 1, rule: "Inversion élégante du Conditionnel Type 3 sans 'if' : 'Had + sujet + participe passé'." }
@@ -4918,6 +5211,730 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       $("drill-feedback").classList.remove("hidden");
       if (typeof recordGuidedProgress === "function") recordGuidedProgress("drill");
       renderDailyPlan();
+    }
+
+    // =========================================================================
+    // 7C. FEED INFINI TIKTOK-STYLE (5 FORMATS + COMBO + AUDIO + BOSS FAUTES)
+    // =========================================================================
+    const feedRuntime = {
+      cards: [],
+      seq: 0,
+      combo: 0,
+      recentKeys: [],
+      activeIndex: 0,
+      userInteracted: false,
+      audioCtx: null,
+      observer: null,
+      xpPopTimer: null,
+      rendered: false
+    };
+
+    function getFeedComboMultiplier(combo) {
+      if (combo >= 10) return 4;
+      if (combo >= 6) return 3;
+      if (combo >= 3) return 2;
+      return 1;
+    }
+
+    function playFeedSfx(type, combo = 0) {
+      if (!state.feedStats || state.feedStats.sfxEnabled === false) return;
+      try {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return;
+        if (!feedRuntime.audioCtx) feedRuntime.audioCtx = new Ctx();
+        const ctx = feedRuntime.audioCtx;
+        if (ctx.state === "suspended") ctx.resume().catch(() => {});
+
+        const playTone = (freq, dur, delay = 0, vol = 0.08, wave = "triangle") => {
+          const t0 = ctx.currentTime + delay;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = wave;
+          osc.frequency.setValueAtTime(freq, t0);
+          gain.gain.setValueAtTime(0.001, t0);
+          gain.gain.exponentialRampToValueAtTime(vol, t0 + 0.015);
+          gain.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(t0);
+          osc.stop(t0 + dur + 0.02);
+        };
+
+        if (type === "ok") {
+          const base = 440 * Math.pow(1.055, Math.min(combo, 12));
+          playTone(base, 0.14, 0, 0.08, "triangle");
+          playTone(base * 1.25, 0.18, 0.07, 0.08, "triangle");
+          if (combo > 0 && combo % 5 === 0) {
+            playTone(base * 1.5, 0.24, 0.14, 0.09, "sine");
+          }
+        } else {
+          playTone(170, 0.15, 0, 0.07, "sine");
+          playTone(135, 0.18, 0.09, 0.06, "sine");
+        }
+      } catch (e) {}
+    }
+
+    function showFeedXpPop(xp, mult, isBoss = false) {
+      const pop = $("feed-xp-pop");
+      if (!pop) return;
+      if (feedRuntime.xpPopTimer) clearTimeout(feedRuntime.xpPopTimer);
+      pop.textContent = isBoss
+        ? `+${xp} XP · BOSS ×${mult} !`
+        : (mult > 1 ? `+${xp} XP · COMBO ×${mult} 🔥` : `+${xp} XP`);
+      pop.style.background = isBoss ? "#D97706" : "var(--emerald)";
+      pop.classList.remove("show");
+      void pop.offsetWidth;
+      pop.classList.add("show");
+      feedRuntime.xpPopTimer = setTimeout(() => pop.classList.remove("show"), 1350);
+    }
+
+    function updateFeedHud(animateCombo = false) {
+      if (!state.feedStats) {
+        state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" };
+      }
+      const combo = feedRuntime.combo || 0;
+      const mult = getFeedComboMultiplier(combo);
+      const comboEl = $("feed-combo-badge");
+      if (comboEl) {
+        comboEl.textContent = combo >= 3 ? `🔥 Série ${combo} (×${mult} XP)` : `🔥 x${mult} · Série ${combo}`;
+        comboEl.className = "feed-combo-pill"
+          + (combo >= 6 ? " fire" : combo >= 3 ? " hot" : "")
+          + (animateCombo ? " pop" : "");
+        if (animateCombo) setTimeout(() => comboEl.classList.remove("pop"), 220);
+      }
+      const statsEl = $("feed-stats-badge");
+      if (statsEl) {
+        statsEl.textContent = `🎯 ${state.feedStats.totalCards || 0} vues · Record ${state.feedStats.bestCombo || 0}`;
+      }
+      const autoBtn = $("btn-feed-auto-audio");
+      if (autoBtn) {
+        const on = state.feedStats.autoAudio !== false;
+        autoBtn.textContent = on ? "🔊 Auto" : "🔇 Muet";
+        autoBtn.style.opacity = on ? "1" : "0.68";
+      }
+      const sfxBtn = $("btn-feed-sfx");
+      if (sfxBtn) {
+        const on = state.feedStats.sfxEnabled !== false;
+        sfxBtn.textContent = on ? "🔔 Sons" : "🔕 Sans son";
+        sfxBtn.style.opacity = on ? "1" : "0.68";
+      }
+      const modeSel = $("feed-mode-select");
+      if (modeSel && state.feedStats.mode) modeSel.value = state.feedStats.mode;
+    }
+
+    function rememberFeedKey(key) {
+      feedRuntime.recentKeys.push(key);
+      if (feedRuntime.recentKeys.length > 50) feedRuntime.recentKeys.shift();
+    }
+
+    function pickNotRecent(arr, keyFn) {
+      if (!arr || !arr.length) return null;
+      const recent = new Set(feedRuntime.recentKeys);
+      const fresh = arr.filter(x => !recent.has(keyFn(x)));
+      const src = fresh.length ? fresh : arr;
+      return src[cryptoRandomInt(0, src.length - 1)];
+    }
+
+    function getFeedTargetLevels() {
+      const lvl = state.level || "B1";
+      if (lvl === "A2") return ["A2", "A2", "A2", "B1"];
+      if (lvl === "B1") return ["B1", "B1", "B1", "B2"];
+      return ["B2", "B2", "B2", "B1"];
+    }
+
+    function createFeedCard(modeFilter, seqNum) {
+      const targetPoolLvls = getFeedTargetLevels();
+      const targetLvl = targetPoolLvls[cryptoRandomInt(0, targetPoolLvls.length - 1)];
+
+      // 1. Boss Card toutes les 9 cartes si des erreurs actives existent
+      if (seqNum > 1 && seqNum % 9 === 0 && modeFilter !== "audio_vocab") {
+        const activeErrs = (state.errorLog || []).filter(e =>
+          !isErrorArchived(e) && e.wrong && e.right
+          && String(e.wrong).length <= 85 && String(e.right).length <= 85
+          && String(e.wrong).trim().toLowerCase() !== String(e.right).trim().toLowerCase()
+        );
+        const errPick = pickNotRecent(activeErrs, e => `boss:${e.key}`);
+        if (errPick) {
+          rememberFeedKey(`boss:${errPick.key}`);
+          const rightFirst = cryptoRandomInt(0, 1) === 0;
+          return {
+            uid: `fc-${seqNum}`,
+            type: "boss",
+            isBoss: true,
+            badge: "🔥 BOSS · TA FAUTE ×2 XP",
+            level: state.level,
+            prompt: "Corrige cette faute tirée de ton carnet personnel :",
+            subHint: "Quelle version est la bonne en anglais ?",
+            opts: rightFirst ? [errPick.right, errPick.wrong] : [errPick.wrong, errPick.right],
+            ans: rightFirst ? 0 : 1,
+            rule: errPick.why || `Forme correcte : "${errPick.right}".`,
+            speakText: errPick.right,
+            saveMeta: { title: errPick.right, fr: `À la place de : "${errPick.wrong}" — ${errPick.why || ""}`, level: state.level },
+            answered: false
+          };
+        }
+      }
+
+      // Choix du format pondéré selon le filtre choisi
+      let rollType = "drill";
+      const r = cryptoRandomInt(1, 100);
+      if (modeFilter === "grammar") {
+        rollType = r <= 60 ? "drill" : "duel";
+      } else if (modeFilter === "audio_vocab") {
+        rollType = r <= 55 ? "audio" : "gem";
+      } else {
+        if (r <= 36) rollType = "drill";
+        else if (r <= 62) rollType = "duel";
+        else if (r <= 82) rollType = "audio";
+        else rollType = "gem";
+      }
+
+      const drillsForLvl = DRILL_BANK.filter(d => d.level === targetLvl);
+      const drillPool = drillsForLvl.length ? drillsForLvl : DRILL_BANK;
+
+      if (rollType === "drill" && drillPool.length) {
+        const d = pickNotRecent(drillPool, x => `drill:${getDrillId(x)}`);
+        if (d) {
+          rememberFeedKey(`drill:${getDrillId(d)}`);
+          const completedEn = d.q.replace(/_{2,}/, d.opts[d.ans]);
+          return {
+            uid: `fc-${seqNum}`,
+            type: "drill",
+            drillId: getDrillId(d),
+            badge: `⚡ Piège ${d.cat || "Grammaire"}`,
+            level: d.level,
+            prompt: d.q,
+            subHint: `🇫🇷 ${d.fr}`,
+            opts: [...d.opts],
+            ans: d.ans,
+            rule: d.rule,
+            speakText: completedEn,
+            saveMeta: { title: completedEn, fr: `${d.fr} (${d.cat})`, level: d.level },
+            answered: false
+          };
+        }
+      }
+
+      if (rollType === "duel" && drillPool.length) {
+        const d = pickNotRecent(drillPool, x => `duel:${getDrillId(x)}`);
+        if (d) {
+          rememberFeedKey(`duel:${getDrillId(d)}`);
+          const isTrap = cryptoRandomInt(0, 1) === 1;
+          const wrongIndices = [0, 1, 2, 3].filter(i => i !== d.ans);
+          const pickedIdx = isTrap ? wrongIndices[cryptoRandomInt(0, wrongIndices.length - 1)] : d.ans;
+          const shownOption = d.opts[pickedIdx];
+          const rightOption = d.opts[d.ans];
+          const displayedSentence = d.q.replace(/_{2,}/, shownOption);
+          const completedEn = d.q.replace(/_{2,}/, rightOption);
+          return {
+            uid: `fc-${seqNum}`,
+            type: "duel",
+            drillId: getDrillId(d),
+            badge: "⚔️ Duel 3s · Juste ou Piège ?",
+            level: d.level,
+            prompt: displayedSentence,
+            subHint: `🇫🇷 Sens voulu : ${d.fr}`,
+            isTrap: isTrap,
+            wrongWord: shownOption,
+            rightWord: rightOption,
+            rule: isTrap
+              ? `Piège ! "${shownOption}" → "${rightOption}". ${d.rule}`
+              : `Phrase 100 % juste ! ${d.rule}`,
+            speakText: completedEn,
+            saveMeta: { title: completedEn, fr: d.fr, level: d.level },
+            answered: false
+          };
+        }
+      }
+
+      if (rollType === "audio") {
+        const allAudioPool = [...BUILTIN_SPEAK, ...BUILTIN_LISTEN].filter(x => x.en && x.fr && x.en.length <= 165);
+        const lvlAudioPool = allAudioPool.filter(x => x.level === targetLvl);
+        const pool = lvlAudioPool.length >= 4 ? lvlAudioPool : allAudioPool;
+        const picked = pickNotRecent(pool, x => `audio:${x.id}`);
+        if (picked) {
+          rememberFeedKey(`audio:${picked.id}`);
+          const others = allAudioPool.filter(x => x.id !== picked.id && x.fr !== picked.fr);
+          const d1 = others.length ? others[cryptoRandomInt(0, others.length - 1)].fr : "Un accord économique est en cours de discussion.";
+          const d2Pool = others.filter(x => x.fr !== d1);
+          const d2 = d2Pool.length ? d2Pool[cryptoRandomInt(0, d2Pool.length - 1)].fr : "Les transports locaux changent leurs horaires demain.";
+          const rawOpts = [
+            { text: picked.fr, ok: true },
+            { text: d1, ok: false },
+            { text: d2, ok: false }
+          ];
+          for (let i = rawOpts.length - 1; i > 0; i--) {
+            const j = cryptoRandomInt(0, i);
+            [rawOpts[i], rawOpts[j]] = [rawOpts[j], rawOpts[i]];
+          }
+          const ansIdx = rawOpts.findIndex(o => o.ok);
+          return {
+            uid: `fc-${seqNum}`,
+            type: "audio",
+            sourceId: picked.id,
+            badge: `🎧 Oreille Native · ${picked.theme || "Audio"}`,
+            level: picked.level,
+            speakText: picked.en,
+            subHint: "Écoute bien sans lire et choisis le bon sens en français :",
+            opts: rawOpts.map(o => o.text),
+            ans: ansIdx,
+            rule: `🇬🇧 "${picked.en}" — ${picked.grammarTitle ? picked.grammarTitle + " : " : ""}${picked.grammarNote || picked.fr}`,
+            vocab: picked.vocab || [],
+            saveMeta: { id: picked.id, title: picked.en, fr: picked.fr, level: picked.level },
+            answered: false
+          };
+        }
+      }
+
+      // 4. Fallback / Pépite Khôlle & Vocabulaire C1
+      const useKholle = BUILTIN_PREPA.length && cryptoRandomInt(0, 1) === 1;
+      if (useKholle) {
+        const p = pickNotRecent(BUILTIN_PREPA, x => `kholle:${x.id}`);
+        if (p) {
+          rememberFeedKey(`kholle:${p.id}`);
+          return {
+            uid: `fc-${seqNum}`,
+            type: "gem",
+            gemKind: "kholle",
+            badge: `🎓 Flash Khôlle · ${p.theme}`,
+            level: "B2",
+            prompt: p.questionEn,
+            subHint: `🇫🇷 ${p.questionFr}`,
+            revealNote: "Formule en tête : 1 nuance (« Admittedly... nevertheless... ») + 1 exemple UK/US concret !",
+            speakText: p.questionEn,
+            saveMeta: { title: p.questionEn, fr: p.questionFr, level: "B2" },
+            answered: false
+          };
+        }
+      }
+
+      const vocabCandidates = [...BUILTIN_SPEAK, ...BUILTIN_LISTEN].filter(x => Array.isArray(x.vocab) && x.vocab.length && x.en && x.fr);
+      const fallbackGems = [
+        { pair: ["outweigh", "l'emporter sur"], en: "Do the long-term climate gains outweigh short-term industrial costs?", fr: "Les gains climatiques l'emportent-ils sur les coûts à court terme ?", note: "Verbe clé de synthèse sans 't' final !", lvl: "B2" },
+        { pair: ["curb", "freiner / endiguer"], en: "Governments must curb the spread of misleading videos online.", fr: "Les gouvernements doivent freiner la propagation des vidéos trompeuses.", note: "Collocation concours : 'curb the spread / proliferation'.", lvl: "B2" },
+        { pair: ["eventually", "au bout du compte (jamais 'éventuellement' !)"], en: "After months of debate, parliament eventually passed the privacy bill.", fr: "Après des mois de débats, le parlement a fini par voter la loi.", note: "Faux-ami classique de ta copie PC* ! 'Éventuellement' = 'possibly'.", lvl: "B1" },
+        { pair: ["politics is", "la politique est (toujours singulier !)"], en: "Politics is shaped heavily by short video algorithms today.", fr: "La politique est aujourd'hui fortement influencée par les algorithmes vidéo.", note: "Les noms en -ics (politics, economics) sont toujours singuliers !", lvl: "A2" },
+        { pair: ["had to", "j'ai dû (passé de must)"], en: "Yesterday, students had to proofread every verb ending carefully.", fr: "Hier, les élèves ont dû relire chaque terminaison verbale attentivement.", note: "'Must' n'existe pas au passé : toujours 'had to'.", lvl: "A2" },
+        { pair: ["if I were you", "à ta place (+ would)"], en: "If I were you, I would cut decorative quotes to stay under 450 words.", fr: "À ta place, je supprimerais les citations décoratives pour rester sous 450 mots.", note: "Irréel du présent : 'If I were you, I would...'.", lvl: "B1" }
+      ];
+      if (!vocabCandidates.length) {
+        const fg = pickNotRecent(fallbackGems, x => `fg:${x.pair[0]}`) || fallbackGems[0];
+        rememberFeedKey(`fg:${fg.pair[0]}`);
+        return {
+          uid: `fc-${seqNum}`,
+          type: "gem",
+          gemKind: "vocab",
+          badge: "🧠 Pépite Copie PC* & Concours",
+          level: fg.lvl,
+          prompt: fg.pair[0],
+          subHint: `Sens : ${fg.pair[1]}`,
+          contextEn: fg.en,
+          contextFr: fg.fr,
+          grammarNote: fg.note,
+          speakText: fg.en,
+          saveMeta: { title: `${fg.pair[0]} — ${fg.en}`, fr: `${fg.pair[1]} (${fg.fr})`, level: fg.lvl },
+          answered: false
+        };
+      }
+      const lvlVocab = vocabCandidates.filter(x => x.level === targetLvl);
+      const item = pickNotRecent(lvlVocab.length ? lvlVocab : vocabCandidates, x => `gem:${x.id}`);
+      const pair = item.vocab[cryptoRandomInt(0, item.vocab.length - 1)];
+      rememberFeedKey(`gem:${item.id}`);
+      return {
+        uid: `fc-${seqNum}`,
+        type: "gem",
+        gemKind: "vocab",
+        sourceId: item.id,
+        badge: `🧠 Pépite Lexique · ${item.theme || "Prépa"}`,
+        level: item.level || state.level,
+        prompt: pair[0],
+        subHint: `Sens : ${pair[1]}`,
+        contextEn: item.en,
+        contextFr: item.fr,
+        grammarNote: item.grammarNote || "",
+        speakText: item.en,
+        saveMeta: { id: item.id, title: `${pair[0]} — ${item.en}`, fr: `${pair[1]} (${item.fr})`, level: item.level || state.level },
+        answered: false
+      };
+    }
+
+    function handleFeedSaveCard(card, btnEl) {
+      if (!card || !card.saveMeta) return;
+      if (card.saveMeta.id && !String(card.saveMeta.id).startsWith("d-")) {
+        markReview(card.saveMeta.id, { fav: true });
+        if (btnEl) btnEl.textContent = "💖 Sauvé !";
+        showToast("⭐ Ajouté aux favoris (Banque & SRS)");
+        return;
+      }
+      const keyTxt = String(card.saveMeta.title || "").trim();
+      const exists = (state.aiItems || []).some(x => x.en === keyTxt);
+      if (!exists && keyTxt) {
+        const newId = `ai-feed-${Date.now()}-${cryptoRandomInt(10, 99)}`;
+        state.aiItems.unshift({
+          id: newId,
+          mode: "speak",
+          level: card.saveMeta.level || state.level,
+          theme: "Feed & Révisions",
+          fr: card.saveMeta.fr || "",
+          en: keyTxt,
+          grammarTitle: card.badge || "Pépite Feed",
+          grammarNote: card.rule || card.subHint || "",
+          vocab: [[keyTxt.slice(0, 60), String(card.saveMeta.fr || "").slice(0, 80)]],
+          isAi: true
+        });
+        state.reviews[newId] = { fav: true, missed: false, lastScore: null, updatedAt: new Date().toISOString() };
+        saveState();
+      }
+      if (btnEl) btnEl.textContent = "💖 Sauvé !";
+      showToast("⭐ Sauvé dans ta Banque & Cartes SRS !");
+    }
+
+    function buildFeedSlideEl(card, index) {
+      const slide = document.createElement("article");
+      slide.className = "feed-slide" + (card.isBoss ? " boss-card" : "");
+      slide.dataset.feedIdx = String(index);
+
+      const top = document.createElement("div");
+      top.className = "feed-slide-top";
+      top.innerHTML = `
+        <div class="badge-row">
+          <span class="badge ${card.isBoss ? "badge-primary" : "badge-violet"}">${esc(card.badge)}</span>
+          <span class="badge badge-muted">${esc(card.level || state.level)}</span>
+        </div>
+        <span style="font-size:11px;font-weight:800;color:var(--text-muted);">#${index + 1}</span>
+      `;
+      slide.appendChild(top);
+
+      const body = document.createElement("div");
+      body.className = "feed-slide-body";
+
+      const fbBox = document.createElement("div");
+      fbBox.className = "feed-rule-box hidden";
+
+      if (card.type === "drill" || card.type === "boss") {
+        const qEl = document.createElement("h3");
+        qEl.className = "feed-main-prompt";
+        qEl.textContent = card.prompt;
+        const hEl = document.createElement("p");
+        hEl.className = "feed-sub-hint";
+        hEl.textContent = card.subHint;
+
+        const optsWrap = document.createElement("div");
+        optsWrap.className = "feed-opts";
+        card.opts.forEach((opt, idx) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "feed-opt-btn";
+          b.textContent = `${String.fromCharCode(65 + idx)}. ${opt}`;
+          b.addEventListener("click", () => {
+            if (card.answered) return;
+            card.answered = true;
+            feedRuntime.userInteracted = true;
+            const ok = idx === card.ans;
+            optsWrap.querySelectorAll(".feed-opt-btn").forEach((el, j) => {
+              el.disabled = true;
+              if (j === card.ans) el.classList.add("opt-ok");
+              else if (j === idx && !ok) el.classList.add("opt-ko");
+            });
+            if (card.drillId) {
+              if (!state.drillSeenIds || typeof state.drillSeenIds !== "object") state.drillSeenIds = {};
+              state.drillSeenIds[card.drillId] = true;
+              state.drillStats.total += 1;
+              if (ok) state.drillStats.correct += 1;
+            }
+            recordFeedOutcome(ok, card.isBoss ? 25 : 15, card.isBoss);
+            fbBox.innerHTML = `<strong style="color:${ok ? "var(--emerald)" : "var(--rose)"};">${ok ? "✅ Bien vu !" : "❌ Piège !"}</strong> ${esc(card.rule)}`;
+            fbBox.classList.remove("hidden");
+            if (card.speakText && state.feedStats.autoAudio !== false) {
+              speakEnglish(card.speakText, 1.0);
+            }
+          });
+          optsWrap.appendChild(b);
+        });
+        body.append(qEl, hEl, optsWrap, fbBox);
+      } else if (card.type === "duel") {
+        const qEl = document.createElement("h3");
+        qEl.className = "feed-main-prompt";
+        qEl.textContent = `“ ${card.prompt} ”`;
+        const hEl = document.createElement("p");
+        hEl.className = "feed-sub-hint";
+        hEl.textContent = card.subHint;
+
+        const duelGrid = document.createElement("div");
+        duelGrid.className = "feed-duel-grid";
+        const btnOk = document.createElement("button");
+        btnOk.type = "button";
+        btnOk.className = "feed-duel-btn";
+        btnOk.innerHTML = `<span style="font-size:20px;">✅</span><span>100% Juste</span>`;
+        const btnTrap = document.createElement("button");
+        btnTrap.type = "button";
+        btnTrap.className = "feed-duel-btn";
+        btnTrap.innerHTML = `<span style="font-size:20px;">❌</span><span>C'est un piège !</span>`;
+
+        const resolveDuel = (chosenTrap) => {
+          if (card.answered) return;
+          card.answered = true;
+          feedRuntime.userInteracted = true;
+          const ok = chosenTrap === card.isTrap;
+          btnOk.disabled = true;
+          btnTrap.disabled = true;
+          (card.isTrap ? btnTrap : btnOk).classList.add("opt-ok");
+          if (!ok) (chosenTrap ? btnTrap : btnOk).classList.add("opt-ko");
+          if (card.drillId) {
+            if (!state.drillSeenIds || typeof state.drillSeenIds !== "object") state.drillSeenIds = {};
+            state.drillSeenIds[card.drillId] = true;
+          }
+          recordFeedOutcome(ok, 15, false);
+          fbBox.innerHTML = `<strong style="color:${ok ? "var(--emerald)" : "var(--rose)"};">${ok ? "✅ Réflexe éclair !" : "❌ Raté :"}</strong> ${esc(card.rule)}`;
+          fbBox.classList.remove("hidden");
+          if (card.speakText && state.feedStats.autoAudio !== false) {
+            speakEnglish(card.speakText, 1.0);
+          }
+        };
+        btnOk.addEventListener("click", () => resolveDuel(false));
+        btnTrap.addEventListener("click", () => resolveDuel(true));
+        duelGrid.append(btnOk, btnTrap);
+        body.append(qEl, hEl, duelGrid, fbBox);
+      } else if (card.type === "audio") {
+        const audioCard = document.createElement("div");
+        audioCard.className = "feed-audio-card";
+        audioCard.innerHTML = `
+          <div>
+            <div style="font-size:11px;font-weight:800;opacity:0.75;text-transform:uppercase;">🎧 Oreille Native</div>
+            <div style="font-size:15px;font-weight:800;margin-top:2px;">Écoute et comprends le sens</div>
+          </div>
+          <div style="display:flex;gap:6px;">
+            <button type="button" class="btn btn-sm" style="background:var(--primary);color:#fff;width:auto;padding:8px 12px;" data-feed-play="1">🔊 Écouter</button>
+            <button type="button" class="btn btn-sm" style="background:rgba(255,255,255,0.14);color:#FFF8EE;width:auto;padding:8px 10px;" data-feed-play="0.75">🐢</button>
+          </div>
+        `;
+        audioCard.querySelectorAll("[data-feed-play]").forEach(b => {
+          b.addEventListener("click", () => {
+            feedRuntime.userInteracted = true;
+            speakEnglish(card.speakText, Number(b.dataset.feedPlay) || 1.0);
+          });
+        });
+
+        const hEl = document.createElement("p");
+        hEl.className = "feed-sub-hint";
+        hEl.textContent = card.subHint;
+
+        const optsWrap = document.createElement("div");
+        optsWrap.className = "feed-opts";
+        card.opts.forEach((opt, idx) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "feed-opt-btn";
+          b.textContent = `${idx + 1}. ${opt}`;
+          b.addEventListener("click", () => {
+            if (card.answered) return;
+            card.answered = true;
+            feedRuntime.userInteracted = true;
+            const ok = idx === card.ans;
+            optsWrap.querySelectorAll(".feed-opt-btn").forEach((el, j) => {
+              el.disabled = true;
+              if (j === card.ans) el.classList.add("opt-ok");
+              else if (j === idx && !ok) el.classList.add("opt-ko");
+            });
+            recordFeedOutcome(ok, 18, false);
+            fbBox.innerHTML = `<strong style="color:${ok ? "var(--emerald)" : "var(--rose)"};">${ok ? "✅ Oreille affûtée !" : "❌ Pas tout à fait :"}</strong> ${esc(card.rule)}`;
+            fbBox.classList.remove("hidden");
+          });
+          optsWrap.appendChild(b);
+        });
+        body.append(audioCard, hEl, optsWrap, fbBox);
+      } else {
+        // Gem / Khôlle Flash
+        const qEl = document.createElement("h3");
+        qEl.className = "feed-main-prompt";
+        qEl.textContent = card.prompt;
+        const hEl = document.createElement("p");
+        hEl.className = "feed-sub-hint";
+        hEl.textContent = card.subHint;
+
+        const btnReveal = document.createElement("button");
+        btnReveal.type = "button";
+        btnReveal.className = "btn btn-primary";
+        btnReveal.textContent = card.gemKind === "kholle" ? "💡 Voir piste d'argument (+XP)" : "👀 Voir l'exemple en contexte (+XP)";
+        btnReveal.addEventListener("click", () => {
+          if (card.answered) return;
+          card.answered = true;
+          feedRuntime.userInteracted = true;
+          btnReveal.disabled = true;
+          btnReveal.style.opacity = "0.65";
+          recordFeedOutcome(true, 10, false);
+          if (card.gemKind === "kholle") {
+            fbBox.innerHTML = `<strong>🧭 Réflexe Khôlle :</strong> ${esc(card.revealNote)}`;
+          } else {
+            fbBox.innerHTML = `<strong>🇬🇧 Exemple :</strong> ${esc(card.contextEn)}<br><span style="color:var(--text-muted);">🇫🇷 ${esc(card.contextFr)}</span>`
+              + (card.grammarNote ? `<br><strong>📌 Note :</strong> ${esc(card.grammarNote)}` : "");
+          }
+          fbBox.classList.remove("hidden");
+          if (card.speakText && state.feedStats.autoAudio !== false) {
+            speakEnglish(card.speakText, 1.0);
+          }
+        });
+        body.append(qEl, hEl, btnReveal, fbBox);
+      }
+
+      slide.appendChild(body);
+
+      // Pied de slide : Écouter / Sauver / Suivante
+      const foot = document.createElement("div");
+      foot.className = "feed-slide-foot";
+      const leftBtns = document.createElement("div");
+      leftBtns.style.display = "flex";
+      leftBtns.style.gap = "6px";
+
+      if (card.speakText) {
+        const playBtn = document.createElement("button");
+        playBtn.type = "button";
+        playBtn.className = "tool-btn";
+        playBtn.textContent = "🔊 Écouter";
+        playBtn.addEventListener("click", () => {
+          feedRuntime.userInteracted = true;
+          speakEnglish(card.speakText, 1.0);
+        });
+        leftBtns.appendChild(playBtn);
+      }
+      const saveBtn = document.createElement("button");
+      saveBtn.type = "button";
+      saveBtn.className = "tool-btn";
+      saveBtn.textContent = "❤️ Sauver";
+      saveBtn.addEventListener("click", () => handleFeedSaveCard(card, saveBtn));
+      leftBtns.appendChild(saveBtn);
+
+      const rightControls = document.createElement("div");
+      rightControls.style.display = "flex";
+      rightControls.style.alignItems = "center";
+      rightControls.style.gap = "6px";
+      rightControls.innerHTML = `<span class="feed-swipe-hint">↑ Swipe</span>`;
+      const nextBtn = document.createElement("button");
+      nextBtn.type = "button";
+      nextBtn.className = "tool-btn";
+      nextBtn.textContent = "⬇️ Suivante";
+      nextBtn.addEventListener("click", () => scrollFeedBy(1));
+      rightControls.appendChild(nextBtn);
+
+      foot.append(leftBtns, rightControls);
+      slide.appendChild(foot);
+      return slide;
+    }
+
+    function recordFeedOutcome(isOk, baseXp = 15, isBoss = false) {
+      if (!state.feedStats) {
+        state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" };
+      }
+      state.feedStats.totalCards = (state.feedStats.totalCards || 0) + 1;
+      if (isOk) {
+        feedRuntime.combo += 1;
+        state.feedStats.totalCorrect = (state.feedStats.totalCorrect || 0) + 1;
+        if (feedRuntime.combo > (state.feedStats.bestCombo || 0)) {
+          state.feedStats.bestCombo = feedRuntime.combo;
+        }
+        const mult = getFeedComboMultiplier(feedRuntime.combo);
+        const gained = baseXp * mult;
+        awardXP(gained);
+        playFeedSfx("ok", feedRuntime.combo);
+        showFeedXpPop(gained, mult, isBoss);
+      } else {
+        feedRuntime.combo = 0;
+        awardXP(3);
+        playFeedSfx("ko", 0);
+      }
+      saveState();
+      updateFeedHud(isOk);
+      renderDailyPlan();
+    }
+
+    function ensureFeedObserver() {
+      const scroller = $("feed-scroller");
+      if (!scroller) return;
+      if (feedRuntime.observer) feedRuntime.observer.disconnect();
+      if (typeof IntersectionObserver !== "function") return;
+      feedRuntime.observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.6) return;
+          const idx = Number(entry.target.dataset.feedIdx);
+          if (Number.isNaN(idx)) return;
+          feedRuntime.activeIndex = idx;
+          if (idx >= feedRuntime.cards.length - 3) {
+            appendFeedSlides(5);
+          }
+          const activeCard = feedRuntime.cards[idx];
+          if (activeCard && activeCard.type === "audio" && feedRuntime.userInteracted && state.feedStats?.autoAudio !== false) {
+            speakEnglish(activeCard.speakText, 1.0);
+          }
+        });
+      }, { root: scroller, threshold: [0.65] });
+      scroller.querySelectorAll(".feed-slide").forEach(el => feedRuntime.observer.observe(el));
+    }
+
+    function appendFeedSlides(count = 5) {
+      const scroller = $("feed-scroller");
+      if (!scroller) return;
+      const modeFilter = state.feedStats?.mode || "all";
+      for (let i = 0; i < count; i++) {
+        feedRuntime.seq += 1;
+        const card = createFeedCard(modeFilter, feedRuntime.seq);
+        const idx = feedRuntime.cards.length;
+        feedRuntime.cards.push(card);
+        const el = buildFeedSlideEl(card, idx);
+        scroller.appendChild(el);
+        if (feedRuntime.observer) feedRuntime.observer.observe(el);
+      }
+    }
+
+    function fitFeedHeight() {
+      const scroller = $("feed-scroller");
+      const nav = document.querySelector(".bottom-nav");
+      if (!scroller || !nav || state.tab !== "feed") return;
+      const scRect = scroller.getBoundingClientRect();
+      const navRect = nav.getBoundingClientRect();
+      const avail = Math.floor(navRect.top - scRect.top - 10);
+      if (avail >= 320 && navRect.top > 0) {
+        scroller.style.height = `${Math.min(660, avail)}px`;
+      }
+    }
+
+    function scrollFeedBy(delta) {
+      const scroller = $("feed-scroller");
+      if (!scroller) return;
+      feedRuntime.userInteracted = true;
+      const targetIdx = Math.max(0, Math.min(feedRuntime.cards.length - 1, feedRuntime.activeIndex + delta));
+      const targetSlide = scroller.querySelector(`.feed-slide[data-feed-idx="${targetIdx}"]`);
+      if (targetSlide) {
+        scroller.scrollTo({ top: targetSlide.offsetTop, behavior: "smooth" });
+      }
+    }
+
+    function resetFeedDeck(renderNow = true) {
+      const scroller = $("feed-scroller");
+      if (feedRuntime.observer) {
+        feedRuntime.observer.disconnect();
+        feedRuntime.observer = null;
+      }
+      feedRuntime.cards = [];
+      feedRuntime.seq = 0;
+      feedRuntime.combo = 0;
+      feedRuntime.recentKeys = [];
+      feedRuntime.activeIndex = 0;
+      feedRuntime.rendered = false;
+      if (scroller) scroller.innerHTML = "";
+      if (renderNow) initFeedTab();
+    }
+
+    function initFeedTab() {
+      updateFeedHud(false);
+      const scroller = $("feed-scroller");
+      if (!scroller) return;
+      if (!feedRuntime.rendered || !feedRuntime.cards.length) {
+        feedRuntime.rendered = true;
+        appendFeedSlides(6);
+        ensureFeedObserver();
+        scroller.scrollTop = 0;
+      }
+      requestAnimationFrame(fitFeedHeight);
     }
 
     // CARNET D'ERREURS PERSONNELLES (FENÊTRE GLISSANTE 10 JOURS + ARCHIVE GUÉRIES)
@@ -5534,6 +6551,7 @@ Retourne STRICTEMENT ce JSON :
         stats: state.stats,
         drillStats: state.drillStats,
         drillSeenIds: state.drillSeenIds,
+        feedStats: state.feedStats,
         daily: state.daily,
         history: pruneHistory(state.history),
         kholleLog: (state.kholleLog || []).slice(0, 50),
@@ -5578,6 +6596,18 @@ Retourne STRICTEMENT ce JSON :
             changed = true;
           }
         });
+      }
+
+      if (remote.feedStats && typeof remote.feedStats === "object") {
+        if (!state.feedStats || typeof state.feedStats !== "object") {
+          state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" };
+        }
+        const rb = Number(remote.feedStats.bestCombo) || 0;
+        const rtc = Number(remote.feedStats.totalCards) || 0;
+        const rtok = Number(remote.feedStats.totalCorrect) || 0;
+        if (rb > (state.feedStats.bestCombo || 0)) { state.feedStats.bestCombo = rb; changed = true; }
+        if (rtc > (state.feedStats.totalCards || 0)) { state.feedStats.totalCards = rtc; changed = true; }
+        if (rtok > (state.feedStats.totalCorrect || 0)) { state.feedStats.totalCorrect = rtok; changed = true; }
       }
 
       if (remote.completed && typeof remote.completed === "object") {
@@ -5985,6 +7015,7 @@ ${errs}`;
       stopSpeech();
       if (guidedTimerInterval) { clearInterval(guidedTimerInterval); guidedTimerInterval = null; }
       loadProfileState(pid);
+      if (typeof resetFeedDeck === "function") resetFeedDeck(false);
       updateGuidedUI();
       currentSrsCard = null;
       currentDrill = null;
@@ -6245,13 +7276,15 @@ ${errs}`;
     function switchTab(tab) {
       stopSpeech();
       state.tab = tab;
-      ["plan", "speak", "listen", "prepa", "bank"].forEach(t => {
+      document.body.classList.toggle("feed-tab-active", tab === "feed");
+      ["plan", "feed", "speak", "listen", "prepa", "bank"].forEach(t => {
         const el = $(`tab-${t}`);
         if (el) el.classList.toggle("active", t === tab);
       });
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
-      $("global-filters-bar").classList.toggle("hidden", tab === "prepa" || tab === "bank" || tab === "plan");
+      $("global-filters-bar").classList.toggle("hidden", tab === "prepa" || tab === "bank" || tab === "plan" || tab === "feed");
       if (tab === "plan") switchPlanSubtab(state.subtab || "daily");
+      if (tab === "feed") { window.scrollTo(0, 0); initFeedTab(); }
       if (tab === "bank") renderBank();
       if (tab === "prepa") {
         if (!state.prepaSession) loadPrepaItem(pickNextPrepa(null));
@@ -6269,6 +7302,7 @@ ${errs}`;
       renderDailyPlan();
       if (state.subtab === "srs") renderSrsCard(true);
       if (state.subtab === "drill") renderDrillQuestion(true);
+      if (typeof resetFeedDeck === "function") resetFeedDeck(state.tab === "feed");
       if (state.tab === "bank") renderBank();
     }
 
@@ -6347,6 +7381,37 @@ ${errs}`;
       // Drill Conjugaison
       $("drill-level-select").addEventListener("change", () => { currentDrill = null; renderDrillQuestion(true); });
       $("btn-drill-next").addEventListener("click", () => renderDrillQuestion(true));
+
+      // Feed Infini (TikTok-style)
+      $("feed-mode-select").addEventListener("change", () => {
+        if (!state.feedStats) state.feedStats = {};
+        state.feedStats.mode = $("feed-mode-select").value;
+        saveState();
+        resetFeedDeck(true);
+      });
+      $("btn-feed-auto-audio").addEventListener("click", () => {
+        if (!state.feedStats) state.feedStats = {};
+        state.feedStats.autoAudio = state.feedStats.autoAudio === false;
+        feedRuntime.userInteracted = true;
+        saveState();
+        updateFeedHud(false);
+        showToast(state.feedStats.autoAudio ? "🔊 Auto-lecture activée dans le Feed" : "🔇 Auto-lecture coupée");
+      });
+      $("btn-feed-sfx").addEventListener("click", () => {
+        if (!state.feedStats) state.feedStats = {};
+        state.feedStats.sfxEnabled = state.feedStats.sfxEnabled === false;
+        saveState();
+        updateFeedHud(false);
+        if (state.feedStats.sfxEnabled) playFeedSfx("ok", 2);
+      });
+      $("feed-scroller").addEventListener("touchstart", () => { feedRuntime.userInteracted = true; }, { passive: true });
+      document.addEventListener("keydown", (e) => {
+        if (state.tab !== "feed") return;
+        if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+        if (e.key === "ArrowDown") { e.preventDefault(); scrollFeedBy(1); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); scrollFeedBy(-1); }
+      });
+      window.addEventListener("resize", () => { if (state.tab === "feed") fitFeedHeight(); });
 
       // Carnet d'erreurs (10 jours glissants + archive guéries)
       $("btn-err-view-active").addEventListener("click", () => {
@@ -6877,6 +7942,8 @@ ${errs}`;
         state.daily = createEmptyDaily();
         state.drillStats = { total: 0, correct: 0 };
         state.drillSeenIds = {};
+        state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" };
+        if (typeof resetFeedDeck === "function") resetFeedDeck(false);
         currentDrill = null;
         drillAnswered = false;
         state.stats = { xp: 0, streak: 0, lastDate: null };
