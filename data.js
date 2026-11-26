@@ -13,11 +13,11 @@ window.EC_THEMES = [
   "Choix sociaux & Économie"
 ];
 window.EC_PREPA_THEMES = [
-  "Intelligence Artificielle",
-  "Environnement & Climat",
-  "Science & Éthique",
-  "Énergie & Transition",
-  "Choix sociaux & Économie"
+  "Tourisme, Ville & Culture",
+  "Médias, Éducation & Démocratie",
+  "Travail, Économie & Société",
+  "Environnement, Énergie & Modes de vie",
+  "Numérique, IA & Société"
 ];
 window.EC_BUILTIN_SPEAK = [
   {
@@ -19026,483 +19026,483 @@ window.EC_BUILTIN_LISTEN = [
 window.EC_BUILTIN_PREPA = [
   {
     "id": "p-1",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Should AI be allowed to assist students during their studies, or does it weaken critical thinking?",
-    "questionFr": "Faut-il autoriser l'IA pour aider les étudiants dans leurs études, ou cela affaiblit-il l'esprit critique ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Should historic cities cap tourist arrivals and cruise ships to protect local residents' quality of life?",
+    "questionFr": "Les villes historiques doivent-elles plafonner les arrivées touristiques et les paquebots pour protéger la qualité de vie des habitants ?"
   },
   {
     "id": "p-2",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Will artificial intelligence destroy more jobs than it creates in the next decade?",
-    "questionFr": "L'intelligence artificielle va-t-elle détruire plus d'emplois qu'elle n'en créera au cours de la prochaine décennie ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Should platforms like Airbnb be strictly limited in big cities to curb the housing shortage?",
+    "questionFr": "Faut-il limiter strictement les plateformes comme Airbnb dans les grandes villes pour freiner la crise du logement ?"
   },
   {
     "id": "p-3",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Can we hold an autonomous algorithm legally and morally accountable for a fatal mistake?",
-    "questionFr": "Peut-on tenir un algorithme autonome légalement et moralement responsable d'une erreur fatale ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Is 'ecotourism' a genuine way to protect nature, or mostly a marketing label for wealthy travelers?",
+    "questionFr": "L'écotourisme est-il un vrai moyen de protéger la nature, ou surtout une étiquette marketing pour voyageurs aisés ?"
   },
   {
     "id": "p-4",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Is the rapid development of generative AI a threat to democratic debate and truthful information?",
-    "questionFr": "Le développement rapide de l'IA générative est-il une menace pour le débat démocratique et la véracité de l'information ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Should national museums remain free for everyone, or should foreign tourists pay higher entry fees?",
+    "questionFr": "Les musées nationaux doivent-ils rester gratuits pour tous, ou les touristes étrangers doivent-ils payer un tarif plus élevé ?"
   },
   {
     "id": "p-5",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Should governments impose strict international regulations on artificial intelligence before artificial general intelligence is achieved?",
-    "questionFr": "Les gouvernements doivent-ils imposer des régulations internationales strictes sur l'IA avant que l'AGI (IA générale) ne soit atteinte ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Does hosting the Olympic Games bring lasting pride and investment, or leave cities with huge debt?",
+    "questionFr": "Accueillir les Jeux olympiques apporte-t-il une fierté et des investissements durables, ou laisse-t-il des dettes énormes aux villes ?"
   },
   {
     "id": "p-6",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Does algorithmic decision-making inevitably reproduce and amplify human societal biases?",
-    "questionFr": "La prise de décision algorithmique reproduit-elle et amplifie-t-elle inévitablement les préjugés sociétaux humains ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Should commercial space tourism for billionaires be heavily taxed or banned altogether?",
+    "questionFr": "Le tourisme spatial commercial réservé aux milliardaires doit-il être lourdement taxé ou tout simplement interdit ?"
   },
   {
     "id": "p-7",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Can artificial intelligence ever develop genuine creativity, or is it merely sophisticated mimicry?",
-    "questionFr": "L'intelligence artificielle pourra-t-elle jamais développer une véritable créativité, ou n'est-ce qu'un mimétisme sophistiqué ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "When historical figures are controversial today, should their statues be removed or kept with context?",
+    "questionFr": "Lorsque des figures historiques font polémique aujourd'hui, faut-il retirer leurs statues ou les laisser avec des explications ?"
   },
   {
     "id": "p-8",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Is the massive carbon and water footprint of AI data centers compatible with climate goals?",
-    "questionFr": "L'énorme empreinte carbone et hydrique des centres de données d'IA est-elle compatible avec les objectifs climatiques ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "How can major cities avoid pushing lower-income residents out of renovated neighborhoods?",
+    "questionFr": "Comment les grandes villes peuvent-elles éviter d'expulser les habitants modestes des quartiers rénovés (gentrification) ?"
   },
   {
     "id": "p-9",
-    "theme": "Environnement & Climat",
-    "questionEn": "Can technological innovation alone solve climate change, or must we drastically change our lifestyles?",
-    "questionFr": "L'innovation technologique peut-elle à elle seule résoudre le changement climatique, ou devons-nous changer radicalement nos modes de vie ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Is making urban public transport completely free better than spending the money on better train frequency?",
+    "questionFr": "Rendre les transports urbains gratuits vaut-il mieux que d'investir l'argent pour augmenter la fréquence des rames ?"
   },
   {
     "id": "p-10",
-    "theme": "Environnement & Climat",
-    "questionEn": "Should short-haul flights be banned whenever a viable high-speed train alternative exists?",
-    "questionFr": "Faut-il interdire les vols court-courriers dès qu'une alternative viable en train à grande vitesse existe ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Do pedestrian zones and bike lanes revitalize city centers, or create a divide with suburban commuters?",
+    "questionFr": "Les zones piétonnes et pistes cyclables revitalisent-elles les centres-villes, ou créent-elles une fracture avec les banlieues ?"
   },
   {
     "id": "p-11",
-    "theme": "Environnement & Climat",
-    "questionEn": "Is individual carbon responsibility an effective solution, or should policy solely focus on major corporate polluters?",
-    "questionFr": "La responsabilité carbone individuelle est-elle efficace, ou les politiques doivent-elles cibler exclusivement les grandes entreprises polluantes ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Should governments invest more to stop young people leaving rural towns for crowded capitals?",
+    "questionFr": "Les États doivent-ils investir davantage pour freiner l'exode des jeunes des petites villes rurales vers les grandes capitales ?"
   },
   {
     "id": "p-12",
-    "theme": "Environnement & Climat",
-    "questionEn": "Should ecological transition be financed through higher carbon taxes, even at the risk of social unrest?",
-    "questionFr": "La transition écologique doit-elle être financée par des taxes carbone plus élevées, quitte à risquer des tensions sociales ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Is global streaming culture threatening independent cinema and local bookshops?",
+    "questionFr": "La culture mondiale du streaming menace-t-elle le cinéma indépendant et les librairies de quartier ?"
   },
   {
     "id": "p-13",
-    "theme": "Environnement & Climat",
-    "questionEn": "Can geoengineering techniques like solar radiation management safely mitigate global warming?",
-    "questionFr": "Les techniques de géo-ingénierie comme la gestion du rayonnement solaire peuvent-elles atténuer le réchauffement en toute sécurité ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Can traditional culinary heritage survive fast-food globalization, or is food culture naturally evolving?",
+    "questionFr": "Le patrimoine gastronomique traditionnel peut-il résister à la mondialisation du fast-food, ou évolue-t-il naturellement ?"
   },
   {
     "id": "p-14",
-    "theme": "Environnement & Climat",
-    "questionEn": "Is economic degrowth necessary to preserve global biodiversity and stay within planetary boundaries?",
-    "questionFr": "La décroissance économique est-elle nécessaire pour préserver la biodiversité mondiale et respecter les limites planétaires ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Is the dominance of English as a global language an advantage for exchange or a loss for cultural diversity?",
+    "questionFr": "La domination de l'anglais comme langue mondiale est-elle un atout pour les échanges ou une perte pour la diversité culturelle ?"
   },
   {
     "id": "p-15",
-    "theme": "Environnement & Climat",
-    "questionEn": "Who should pay for the loss and damage suffered by developing nations due to historical emissions?",
-    "questionFr": "Qui doit payer pour les pertes et préjudices subis par les pays en développement à cause des émissions historiques ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "With instant translation apps improving fast, why is learning foreign languages still essential today?",
+    "questionFr": "Avec les progrès des applis de traduction instantanée, pourquoi apprendre les langues étrangères reste-t-il essentiel ?"
   },
   {
     "id": "p-16",
-    "theme": "Environnement & Climat",
-    "questionEn": "Can voluntary corporate ESG commitments effectively curb environmental degradation without state coercion?",
-    "questionFr": "Les engagements ESG volontaires des entreprises peuvent-ils freiner la dégradation environnementale sans contrainte étatique ?"
+    "theme": "Tourisme, Ville & Culture",
+    "questionEn": "Is mass travel a basic right in modern life, or should travelers pay a strict ecological tax on long flights?",
+    "questionFr": "Voyager à travers le monde est-il un droit acquis, ou faut-il imposer une lourde taxe écologique sur les vols long-courriers ?"
   },
   {
     "id": "p-17",
-    "theme": "Science & Éthique",
-    "questionEn": "Should there be strict global ethical limits on human genetic editing and germline modifications?",
-    "questionFr": "Faut-il imposer des limites éthiques mondiales strictes à l'édition génétique chez l'être humain et aux modifications germinales ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Should smartphones be completely banned in middle and high schools to protect concentration?",
+    "questionFr": "Faut-il interdire totalement les smartphones au collège et au lycée pour protéger la concentration des élèves ?"
   },
   {
     "id": "p-18",
-    "theme": "Science & Éthique",
-    "questionEn": "Should scientific research be steered primarily by market profitability or by public interest?",
-    "questionFr": "La recherche scientifique doit-elle être guidée principalement par la rentabilité du marché ou par l'intérêt public ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Is the British and American model of high university tuition fees fairer or more divisive than free public universities?",
+    "questionFr": "Le modèle anglo-saxon de frais universitaires élevés est-il plus juste ou plus inégalitaire que l'université quasi gratuite ?"
   },
   {
     "id": "p-19",
-    "theme": "Science & Éthique",
-    "questionEn": "Does scientific progress inherently lead to human happiness, or does it merely create new vulnerabilities?",
-    "questionFr": "Le progrès scientifique conduit-il intrinsèquement au bonheur humain, ou crée-t-il simplement de nouvelles vulnérabilités ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Should engineering and science students still study literature, history, and ethics throughout their degrees?",
+    "questionFr": "Les étudiants en sciences et en ingénierie doivent-ils continuer d'étudier la culture générale et l'éthique tout au long de leur cursus ?"
   },
   {
     "id": "p-20",
-    "theme": "Science & Éthique",
-    "questionEn": "Should space exploration be subsidized by taxpayers while urgent ecological crises persist on Earth?",
-    "questionFr": "L'exploration spatiale doit-elle être financée par les contribuables alors que des crises écologiques urgentes persistent sur Terre ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Are short-form videos destroying young people's ability to read long books and focus deeply?",
+    "questionFr": "Les vidéos courtes détruisent-elles la capacité des jeunes à lire de longs livres et à se concentrer en profondeur ?"
   },
   {
     "id": "p-21",
-    "theme": "Science & Éthique",
-    "questionEn": "Should scientific patents on lifesaving medicines be suspended during global health emergencies?",
-    "questionFr": "Les brevets scientifiques sur les médicaments vitaux doivent-ils être suspendus lors d'urgences sanitaires mondiales ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "With print newspapers struggling, should taxpayers subsidize independent journalism?",
+    "questionFr": "Face aux difficultés de la presse écrite, l'État et les contribuables doivent-ils subventionner le journalisme indépendant ?"
   },
   {
     "id": "p-22",
-    "theme": "Science & Éthique",
-    "questionEn": "How should scientists reconcile the demand for immediate answers from media with the slow pace of peer review?",
-    "questionFr": "Comment les scientifiques doivent-ils concilier la demande de réponses immédiates des médias avec le temps long de la relecture par les pairs ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "How can democracies fight online hate speech and fake news without turning into censorship?",
+    "questionFr": "Comment les démocraties peuvent-elles lutter contre la haine et les fausses infos en ligne sans tomber dans la censure ?"
   },
   {
     "id": "p-23",
-    "theme": "Science & Éthique",
-    "questionEn": "Is transhumanism and human enhancement a natural evolutionary step or a moral dead-end?",
-    "questionFr": "Le transhumanisme et l'augmentation humaine sont-ils une étape évolutive naturelle ou une impasse morale ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Do social media platforms strengthen democratic debate or mainly fuel anger and political division?",
+    "questionFr": "Les réseaux sociaux renforcent-ils le débat démocratique ou attisent-ils surtout la colère et la division politique ?"
   },
   {
     "id": "p-24",
-    "theme": "Science & Éthique",
-    "questionEn": "Are scientists responsible for the unforeseen military applications of their fundamental discoveries?",
-    "questionFr": "Les scientifiques sont-ils responsables des applications militaires imprévues de leurs découvertes fondamentales ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Should online influencers follow the same strict fact-checking rules as professional journalists?",
+    "questionFr": "Les influenceurs en ligne devraient-ils respecter les mêmes règles de vérification des faits que les journalistes professionnels ?"
   },
   {
     "id": "p-25",
-    "theme": "Énergie & Transition",
-    "questionEn": "Is nuclear energy an indispensable bridge fuel to reach net-zero carbon emissions by 2050?",
-    "questionFr": "L'énergie nucléaire est-elle une énergie de transition indispensable pour atteindre zéro émission nette d'ici 2050 ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Should citizens be allowed to vote at sixteen to give young generations a stronger political voice?",
+    "questionFr": "Faudrait-il accorder le droit de vote dès 16 ans pour donner plus de poids politique aux jeunes générations ?"
   },
   {
     "id": "p-26",
-    "theme": "Énergie & Transition",
-    "questionEn": "Should governments subsidize electric cars or prioritize mass investments in public transportation?",
-    "questionFr": "Les gouvernements doivent-ils subventionner les voitures électriques ou investir prioritairement dans les transports en commun ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Could citizens' assemblies chosen by lot revitalize democracy better than traditional referendums?",
+    "questionFr": "Les conventions citoyennes tirées au sort pourraient-elles revitaliser la démocratie mieux que les référendums classiques ?"
   },
   {
     "id": "p-27",
-    "theme": "Énergie & Transition",
-    "questionEn": "Can modern electricity grids function stably on 100% intermittent renewable sources like wind and solar?",
-    "questionFr": "Les réseaux électriques modernes peuvent-ils fonctionner de manière stable avec 100% de sources renouvelables intermittentes ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Are smart surveillance cameras in cities a reassuring safety tool or a threat to everyday privacy?",
+    "questionFr": "Les caméras intelligentes dans les villes sont-elles un outil rassurant de sécurité ou une menace pour la vie privée ?"
   },
   {
     "id": "p-28",
-    "theme": "Énergie & Transition",
-    "questionEn": "Does the transition to clean energy merely replace oil dependency with critical minerals dependency?",
-    "questionFr": "La transition vers les énergies propres remplace-t-elle simplement la dépendance au pétrole par une dépendance aux minerais critiques ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Would a mandatory civic or national service help rebuild social unity among young people?",
+    "questionFr": "Un service civique ou national obligatoire aiderait-il à recréer du lien social et de l'unité chez les jeunes ?"
   },
   {
     "id": "p-29",
-    "theme": "Énergie & Transition",
-    "questionEn": "Is green hydrogen a realistic solution for heavy transport, or is its energy efficiency too low?",
-    "questionFr": "L'hydrogène vert est-il une solution réaliste pour le transport lourd, ou son rendement énergétique est-il trop faible ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Is school meritocracy a genuine engine of social mobility today, or does it still favor privileged families?",
+    "questionFr": "La méritocratie scolaire est-elle un vrai moteur d'ascension sociale aujourd'hui, ou favorise-t-elle encore les milieux aisés ?"
   },
   {
     "id": "p-30",
-    "theme": "Énergie & Transition",
-    "questionEn": "Should carbon pricing be harmonized globally through border carbon adjustment mechanisms?",
-    "questionFr": "La tarification du carbone doit-elle être harmonisée à l'échelle mondiale par des mécanismes d'ajustement carbone aux frontières ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "How can selective education push students toward excellence without harming their mental health?",
+    "questionFr": "Comment l'enseignement sélectif peut-il pousser les étudiants vers l'excellence sans nuire à leur santé mentale ?"
   },
   {
     "id": "p-31",
-    "theme": "Énergie & Transition",
-    "questionEn": "Is nuclear fusion research receiving adequate funding given its potential to revolutionize world energy?",
-    "questionFr": "La recherche sur la fusion nucléaire reçoit-elle des financements suffisants au vu de son potentiel révolutionnaire ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Should voting become compulsory in democratic countries, like in Australia, to fight high abstention?",
+    "questionFr": "Le vote devrait-il devenir obligatoire dans les démocraties, comme en Australie, pour lutter contre la forte abstention ?"
   },
   {
     "id": "p-32",
-    "theme": "Énergie & Transition",
-    "questionEn": "Can energy sobriety be achieved voluntarily, or does it inevitably require rationing and statutory quotas?",
-    "questionFr": "La sobriété énergétique peut-elle être volontaire, ou exige-t-elle inévitablement un rationnement et des quotas légaux ?"
+    "theme": "Médias, Éducation & Démocratie",
+    "questionEn": "Why do so many citizens distrust mainstream media today, and how can newspapers rebuild credibility?",
+    "questionFr": "Pourquoi tant de citoyens se méfient-ils des grands médias aujourd'hui, et comment la presse peut-elle regagner leur confiance ?"
   },
   {
     "id": "p-33",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Is widespread remote work a lasting social progress or a threat to corporate culture and social equality?",
-    "questionFr": "Le télétravail généralisé est-il un progrès social durable ou une menace pour la culture d'entreprise et l'égalité sociale ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Is widespread remote work a lasting improvement or a threat to team spirit and equal opportunities?",
+    "questionFr": "Le télétravail généralisé est-il un progrès durable ou une menace pour l'esprit d'équipe et l'égalité des chances ?"
   },
   {
     "id": "p-34",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Do algorithmic social media platforms foster democratic deliberation or fuel toxic political polarization?",
-    "questionFr": "Les plateformes sociales algorithmiques favorisent-elles la délibération démocratique ou attisent-elles la polarisation politique ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Should a four-day workweek with the same salary become standard practice in rich economies?",
+    "questionFr": "La semaine de quatre jours sans baisse de salaire doit-elle devenir la norme dans les pays développés ?"
   },
   {
     "id": "p-35",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Should a universal basic income be introduced to offset technological unemployment caused by automation?",
-    "questionFr": "Faut-il instaurer un revenu universel de base pour compenser le chômage technologique provoqué par l'automatisation ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Should workers have a strict legal 'right to disconnect' outside office hours?",
+    "questionFr": "Les salariés doivent-ils bénéficier d'un véritable droit légal à la déconnexion en dehors des heures de bureau ?"
   },
   {
     "id": "p-36",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Is GDP an outdated metric that fails to capture environmental depletion and genuine human well-being?",
-    "questionFr": "Le PIB est-il un indicateur obsolète qui échoue à mesurer l'épuisement environnemental et le bien-être humain réel ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Does the delivery and ride-hailing 'gig economy' offer freedom or poorly protected precarious jobs?",
+    "questionFr": "L'économie des plateformes de livraison et VTC offre-t-elle de la liberté ou des emplois précaires mal protégés ?"
   },
   {
     "id": "p-37",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Can free market capitalism adapt to ecological limits, or is state interventionism mandatory?",
-    "questionFr": "Le capitalisme de marché libre peut-il s'adapter aux limites écologiques, ou l'interventionnisme étatique est-il obligatoire ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Is strict rent control a good way to help modest families, or does it worsen housing shortages?",
+    "questionFr": "L'encadrement strict des loyers aide-t-il vraiment les ménages modestes, ou aggrave-t-il la pénurie de logements ?"
   },
   {
     "id": "p-38",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Should workers have the legal 'right to disconnect' in an increasingly digital and hyperconnected workplace?",
-    "questionFr": "Les travailleurs doivent-ils bénéficier d'un droit à la déconnexion contraignant dans un monde professionnel hyperconnecté ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "How should aging societies finance pensions and care for the elderly without overburdening young workers?",
+    "questionFr": "Comment les sociétés vieillissantes doivent-elles financer les retraites et le grand âge sans écraser les jeunes actifs ?"
   },
   {
     "id": "p-39",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Does the gig economy provide entrepreneurial liberation or precarious exploitation of workers?",
-    "questionFr": "L'économie des plateformes offre-t-elle une émancipation entrepreneuriale ou une exploitation précaire des travailleurs ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Should governments introduce a universal basic income to protect citizens from job losses due to automation?",
+    "questionFr": "Faut-il instaurer un revenu universel de base pour protéger les citoyens face aux suppressions d'emplois liées à l'automatisation ?"
   },
   {
     "id": "p-40",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Should higher education prioritize vocational STEM degrees over humanities to meet industrial needs?",
-    "questionFr": "L'enseignement supérieur doit-il prioriser les filières scientifiques et techniques (STEM) au détriment des humanités ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Does economic growth (GDP) still measure real human well-being in the twenty-first century?",
+    "questionFr": "La croissance du PIB mesure-t-elle encore le véritable bien-être humain au XXIe siècle ?"
   },
   {
     "id": "p-41",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Should lethal autonomous weapons systems be banned by an international treaty before full deployment?",
-    "questionFr": "Faut-il interdire les systèmes d'armes létales autonomes par un traité international avant leur déploiement massif ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Does bringing factories back home strengthen national security, or does it inevitably raise prices for families?",
+    "questionFr": "Relocaliser nos usines renforce-t-il notre indépendance, ou fait-il inévitablement grimper les prix pour les familles ?"
   },
   {
     "id": "p-42",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Do open-weight AI models foster democratic scrutiny and innovation, or do they dangerously lower barriers to misuse?",
-    "questionFr": "Les modèles d'IA à poids ouverts favorisent-ils le contrôle démocratique et l'innovation, ou abaissent-ils dangereusement les barrières aux usages malveillants ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Can a global minimum corporate tax really stop big multinationals from avoiding taxes?",
+    "questionFr": "Un impôt minimum mondial sur les sociétés peut-il vraiment empêcher les grandes multinationales d'éviter l'impôt ?"
   },
   {
     "id": "p-43",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Should AI companies be forced to pay royalties to authors and artists whose works were used to train their models?",
-    "questionFr": "Les entreprises d'IA doivent-elles être contraintes de verser des droits d'auteur aux écrivains et artistes dont les œuvres ont servi à entraîner leurs modèles ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Is fast fashion mainly consumers' responsibility, or must states heavily fine ultra-cheap clothing brands?",
+    "questionFr": "La fast fashion relève-t-elle d'abord de la responsabilité des acheteurs, ou les États doivent-ils sanctionner les marques ?"
   },
   {
     "id": "p-44",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Is relying on AI for hiring, credit scoring, or predictive policing compatible with human dignity and due process?",
-    "questionFr": "S'en remettre à l'IA pour le recrutement, l'octroi de crédit ou la police prédictive est-il compatible avec la dignité humaine et les droits de la défense ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Are mandatory quotas the fastest way to close the gender pay and leadership gap in companies?",
+    "questionFr": "Les quotas obligatoires sont-ils le moyen le plus efficace de réduire les écarts de salaire et de postes entre femmes et hommes ?"
   },
   {
     "id": "p-45",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Can Europe build genuine digital sovereignty without falling behind the United States and China in AI infrastructure?",
-    "questionFr": "L'Europe peut-elle bâtir une véritable souveraineté numérique sans prendre de retard sur les États-Unis et la Chine dans les infrastructures d'IA ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Why is loneliness growing among both young adults and seniors despite constant digital connection?",
+    "questionFr": "Pourquoi la solitude progresse-t-elle autant chez les jeunes adultes que chez les seniors malgré l'hyperconnexion ?"
   },
   {
     "id": "p-46",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Are emotional AI companions a helpful remedy for modern loneliness or a deceptive substitute for human relationships?",
-    "questionFr": "Les compagnons émotionnels par IA sont-ils un remède utile à la solitude moderne ou un substitut trompeur aux relations humaines ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Are young graduates asking for too much work-life balance, or rightly rejecting burnout culture?",
+    "questionFr": "Les jeunes diplômés sont-ils trop exigeants sur l'équilibre vie pro/vie perso, ou rejettent-ils avec raison la culture du surmenage ?"
   },
   {
     "id": "p-47",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "In medicine, should AI ever be allowed to make diagnostic or triage decisions without human sign-off?",
-    "questionFr": "En médecine, faut-il jamais autoriser l'IA à prendre des décisions de diagnostic ou de triage sans validation humaine ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "Can free-market capitalism fix social inequalities on its own, or is strong public regulation essential?",
+    "questionFr": "Le capitalisme de marché libre peut-il corriger les inégalités sociales seul, ou une régulation publique forte est-elle indispensable ?"
   },
   {
     "id": "p-48",
-    "theme": "Intelligence Artificielle",
-    "questionEn": "Does mandatory watermarking of synthetic media offer real protection against disinformation, or is it easily bypassed?",
-    "questionFr": "Le tatouage numérique obligatoire des contenus synthétiques protège-t-il réellement contre la désinformation, ou est-il trop facile à contourner ?"
+    "theme": "Travail, Économie & Société",
+    "questionEn": "With living costs rising fast, does taking a student job help independence or hurt academic success?",
+    "questionFr": "Avec la hausse du coût de la vie, travailler pendant ses études rend-il plus autonome ou nuit-il à la réussite universitaire ?"
   },
   {
     "id": "p-49",
-    "theme": "Environnement & Climat",
-    "questionEn": "Should deep-sea mining be prohibited worldwide until marine ecosystems are thoroughly understood?",
-    "questionFr": "Faut-il interdire l'exploitation minière des grands fonds marins tant que les écosystèmes océaniques ne sont pas pleinement compris ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Can new green inventions alone save the climate, or must citizens also accept simpler lifestyles?",
+    "questionFr": "Les inventions vertes peuvent-elles suffire face au climat, ou faut-il aussi accepter des modes de vie plus sobres ?"
   },
   {
     "id": "p-50",
-    "theme": "Environnement & Climat",
-    "questionEn": "Should governments ban advertising for fossil-fuel vehicles and high-carbon luxury goods?",
-    "questionFr": "Les gouvernements doivent-ils interdire la publicité pour les véhicules fossiles et les biens de luxe très carbonés ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Should short domestic flights be banned whenever a direct high-speed train takes under three hours?",
+    "questionFr": "Faut-il interdire les vols intérieurs courts dès qu'un trajet direct en TGV dure moins de trois heures ?"
   },
   {
     "id": "p-51",
-    "theme": "Environnement & Climat",
-    "questionEn": "Is fast fashion primarily a consumer responsibility issue, or must states strictly penalize ultra-short textile cycles?",
-    "questionFr": "La mode éphémère relève-t-elle d'abord de la responsabilité des consommateurs, ou les États doivent-ils sanctionner strictement les cycles textiles ultra-courts ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Is individual recycling and footprint tracking effective, or does it distract from big corporate polluters?",
+    "questionFr": "Les écogestes individuels sont-ils vraiment efficaces, ou détournent-ils l'attention de la responsabilité des grands pollueurs ?"
   },
   {
     "id": "p-52",
-    "theme": "Environnement & Climat",
-    "questionEn": "How should international law recognize and protect climate refugees displaced by rising sea levels and drought?",
-    "questionFr": "Comment le droit international doit-il reconnaître et protéger les réfugiés climatiques déplacés par la montée des eaux et la sécheresse ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "How can governments raise carbon taxes to fight pollution without hurting modest rural households?",
+    "questionFr": "Comment augmenter les taxes écologiques contre la pollution sans pénaliser injustement les ménages modestes en zone rurale ?"
   },
   {
     "id": "p-53",
-    "theme": "Environnement & Climat",
-    "questionEn": "Does urban densification protect farmland and biodiversity, or does it worsen urban heat islands and quality of life?",
-    "questionFr": "La densification urbaine protège-t-elle les terres agricoles et la biodiversité, ou aggrave-t-elle les îlots de chaleur et la qualité de vie ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Should states subsidize private electric cars or put that public money into trains and local buses?",
+    "questionFr": "Les États doivent-ils subventionner les voitures électriques privées ou investir cet argent dans les trains et les bus ?"
   },
   {
     "id": "p-54",
-    "theme": "Environnement & Climat",
-    "questionEn": "Should water pricing be steeply progressive to discourage non-essential uses during severe droughts?",
-    "questionFr": "La tarification de l'eau doit-elle devenir fortement progressive pour dissuader les usages non essentiels lors des sécheresses sévères ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Should European countries rely more on nuclear power to cut emissions, despite public fears over waste?",
+    "questionFr": "Les pays européens doivent-ils miser davantage sur le nucléaire pour décarboner, malgré les craintes liées aux déchets ?"
   },
   {
     "id": "p-55",
-    "theme": "Environnement & Climat",
-    "questionEn": "Can 'nature-based solutions' like rewilding and wetlands restoration replace costly concrete flood defenses?",
-    "questionFr": "Les solutions fondées sur la nature comme le réensauvagement et la restauration des zones humides peuvent-elles remplacer les digues en béton ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Why do local communities often oppose wind turbines near their homes even when they support clean energy?",
+    "questionFr": "Pourquoi les riverains s'opposent-ils souvent aux éoliennes près de chez eux tout en se disant favorables à l'écologie ?"
   },
   {
     "id": "p-56",
-    "theme": "Environnement & Climat",
-    "questionEn": "Should imported agricultural products face mandatory mirror environmental and pesticide standards?",
-    "questionFr": "Les produits agricoles importés doivent-ils être soumis à des clauses miroirs environnementales et sanitaires obligatoires ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Can energy sobriety come from citizens' voluntary choices, or will strict quotas eventually be needed?",
+    "questionFr": "La sobriété énergétique peut-elle reposer sur le volontariat des citoyens, ou faudra-t-il des quotas stricts ?"
   },
   {
     "id": "p-57",
-    "theme": "Science & Éthique",
-    "questionEn": "Does the 'publish or perish' academic culture undermine scientific integrity and long-term breakthroughs?",
-    "questionFr": "La culture académique du 'publier ou périr' sape-t-elle l'intégrité scientifique et les percées de long terme ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Should public aid focus first on insulating old cold homes rather than building brand-new districts?",
+    "questionFr": "Les aides publiques doivent-elles prioriser l'isolation des vieux logements plutôt que la construction de nouveaux quartiers ?"
   },
   {
     "id": "p-58",
-    "theme": "Science & Éthique",
-    "questionEn": "Should neural implants and brain-computer interfaces be restricted strictly to medical rehabilitation?",
-    "questionFr": "Les implants neuronaux et interfaces cerveau-machine doivent-ils être strictement réservés à la rééducation médicale ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Should school cafeterias serve more vegetarian meals to fight climate change, or leave food choices to families?",
+    "questionFr": "Les cantines scolaires doivent-elles servir davantage de repas végétariens pour le climat, ou laisser ce choix aux familles ?"
   },
   {
     "id": "p-59",
-    "theme": "Science & Éthique",
-    "questionEn": "How can democracies fight pseudoscience and vaccine hesitancy without resorting to heavy-handed censorship?",
-    "questionFr": "Comment les démocraties peuvent-elles lutter contre les pseudosciences et la défiance vaccinale sans recourir à une censure autoritaire ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "During severe summer droughts, should water prices rise sharply for pools and lawns while staying cheap for basic needs?",
+    "questionFr": "Lors des sécheresses estivales, faut-il faire payer l'eau beaucoup plus cher pour les piscines et pelouses tout en protégeant l'usage vital ?"
   },
   {
     "id": "p-60",
-    "theme": "Science & Éthique",
-    "questionEn": "Should biomedical research focus more on extending healthy lifespan or on reducing global disparities in basic care?",
-    "questionFr": "La recherche biomédicale doit-elle privilégier l'allongement de l'espérance de vie en bonne santé ou la réduction des inégalités mondiales d'accès aux soins ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Should advertising for SUVs, flights, and polluting products be banned just like tobacco ads?",
+    "questionFr": "Faut-il interdire la publicité pour les SUV, l'avion et les produits polluants comme on l'a fait pour le tabac ?"
   },
   {
     "id": "p-61",
-    "theme": "Science & Éthique",
-    "questionEn": "Is phasing out animal testing realistically achievable thanks to organoids and computer simulations?",
-    "questionFr": "La sortie progressive des tests sur les animaux est-elle réaliste grâce aux organoïdes et aux simulations numériques ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Is 'green growth' possible today, or must rich countries intentionally produce and consume less?",
+    "questionFr": "La « croissance verte » est-elle possible aujourd'hui, ou les pays riches doivent-ils délibérément produire et consommer moins ?"
   },
   {
     "id": "p-62",
-    "theme": "Science & Éthique",
-    "questionEn": "Should engineering and science students be required to take ethics and humanities courses throughout their training?",
-    "questionFr": "Les étudiants en sciences et en ingénierie devraient-ils suivre des cours obligatoires d'éthique et d'humanités tout au long de leur cursus ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Should wealthy nations pay climate compensation to poorer countries hit by floods and droughts?",
+    "questionFr": "Les pays riches doivent-ils indemniser les pays pauvres frappés par les inondations et sécheresses liées aux émissions passées ?"
   },
   {
     "id": "p-63",
-    "theme": "Science & Éthique",
-    "questionEn": "Does open-access publishing accelerate global research equity, or does it fuel predatory journals?",
-    "questionFr": "La publication scientifique en accès libre accélère-t-elle l'équité mondiale de la recherche, ou alimente-t-elle les revues prédatrices ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Should imported food products be banned unless they meet the same environmental rules as local farmers?",
+    "questionFr": "Faut-il interdire les produits alimentaires importés s'ils ne respectent pas les mêmes normes écologiques que nos agriculteurs ?"
   },
   {
     "id": "p-64",
-    "theme": "Science & Éthique",
-    "questionEn": "Should commercial space tourism be heavily taxed or banned to curb upper-atmosphere pollution and space debris?",
-    "questionFr": "Le tourisme spatial commercial doit-il être lourdement taxé ou interdit pour limiter la pollution de la haute atmosphère et les débris spatiaux ?"
+    "theme": "Environnement, Énergie & Modes de vie",
+    "questionEn": "Are European night trains a realistic alternative to short flights or just a nostalgic idea?",
+    "questionFr": "Les trains de nuit européens sont-ils une alternative crédible à l'avion sur moyenne distance ou juste une idée nostalgique ?"
   },
   {
     "id": "p-65",
-    "theme": "Énergie & Transition",
-    "questionEn": "Does energy efficiency often backfire through the 'rebound effect' unless paired with consumption limits?",
-    "questionFr": "L'efficacité énergétique se retourne-t-elle souvent contre l'objectif climatique via l'effet rebond sans limites à la consommation ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Should students be allowed to use AI tools like ChatGPT for homework, or does it weaken critical thinking?",
+    "questionFr": "Faut-il autoriser les élèves à utiliser des IA comme ChatGPT pour leurs devoirs, ou cela affaiblit-il l'esprit critique ?"
   },
   {
     "id": "p-66",
-    "theme": "Énergie & Transition",
-    "questionEn": "Should states prioritize retrofitting existing poorly insulated homes over subsidizing new construction?",
-    "questionFr": "Les États doivent-ils prioriser la rénovation thermique des logements existants plutôt que de subventionner la construction neuve ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Will artificial intelligence destroy more jobs than it creates over the next ten years?",
+    "questionFr": "L'intelligence artificielle va-t-elle détruire plus d'emplois qu'elle n'en créera dans les dix prochaines années ?"
   },
   {
     "id": "p-67",
-    "theme": "Énergie & Transition",
-    "questionEn": "Is making urban public transport completely free the best way to reduce car dependency, or should funds improve frequency first?",
-    "questionFr": "La gratuité totale des transports en commun urbains est-elle le meilleur moyen de réduire la voiture, ou faut-il d'abord financer la fréquence et la couverture ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Who should be held responsible if a self-driving car or automated system causes a fatal accident?",
+    "questionFr": "Qui doit être tenu responsable si une voiture autonome ou un système automatisé provoque un accident mortel ?"
   },
   {
     "id": "p-68",
-    "theme": "Énergie & Transition",
-    "questionEn": "Can Europe achieve clean-tech industrial autonomy without triggering a costly subsidy war with allies?",
-    "questionFr": "L'Europe peut-elle conquérir son autonomie industrielle bas-carbone sans déclencher une guerre coûteuse des subventions avec ses alliés ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Are realistic AI-generated images and deepfakes a major danger for upcoming elections?",
+    "questionFr": "Les images réalistes générées par IA et les deepfakes constituent-ils un danger majeur pour les prochaines élections ?"
   },
   {
     "id": "p-69",
-    "theme": "Énergie & Transition",
-    "questionEn": "Should energy-intensive data centers be required to locate near waste-heat networks or clean baseload power?",
-    "questionFr": "Les centres de données énergivores doivent-ils être contraints de s'implanter près de réseaux de chaleur fatale ou de sources bas-carbone pilotables ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Should AI companies have to pay writers, musicians, and journalists whose work trained their systems?",
+    "questionFr": "Les entreprises d'IA doivent-elles rémunérer les écrivains, musiciens et journalistes dont les œuvres ont servi à les entraîner ?"
   },
   {
     "id": "p-70",
-    "theme": "Énergie & Transition",
-    "questionEn": "Does expanding biofuels create an unacceptable competition between energy crops and global food security?",
-    "questionFr": "Le développement des biocarburants crée-t-il une concurrence inacceptable entre cultures énergétiques et sécurité alimentaire mondiale ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Can artificial intelligence create genuine art, or does true art always require human emotion and experience?",
+    "questionFr": "L'IA peut-elle créer véritablement de l'art, ou l'art exige-t-il toujours une émotion et une expérience humaines ?"
   },
   {
     "id": "p-71",
-    "theme": "Énergie & Transition",
-    "questionEn": "Why do local communities often oppose wind turbines or power lines despite supporting climate goals in principle?",
-    "questionFr": "Pourquoi les populations locales s'opposent-elles souvent aux éoliennes ou aux lignes électriques tout en soutenant les objectifs climatiques en principe ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Should governments ban social media accounts for teenagers under fifteen to protect mental health?",
+    "questionFr": "Les États doivent-ils interdire les comptes sur les réseaux sociaux avant 15 ans pour protéger la santé mentale ?"
   },
   {
     "id": "p-72",
-    "theme": "Énergie & Transition",
-    "questionEn": "Should night trains receive massive European subsidies to become a realistic alternative to medium-haul flights?",
-    "questionFr": "Les trains de nuit doivent-ils recevoir des subventions européennes massives pour devenir une alternative crédible aux vols moyen-courriers ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Are AI chatbots and virtual friends a helpful solution to loneliness or a deceptive trap?",
+    "questionFr": "Les chatbots et amis virtuels par IA sont-ils une aide utile contre la solitude ou un piège émotionnel trompeur ?"
   },
   {
     "id": "p-73",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Is strict rent control an effective way to protect modest households, or does it worsen housing shortages?",
-    "questionFr": "L'encadrement strict des loyers protège-t-il efficacement les ménages modestes, ou aggrave-t-il la pénurie de logements ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Is using algorithms to screen job applicants fairer than human recruiters, or can it reproduce bias?",
+    "questionFr": "Utiliser des algorithmes pour trier les candidats à l'embauche est-il plus impartial que l'humain, ou cela reproduit-il des biais ?"
   },
   {
     "id": "p-74",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Should a four-day workweek with unchanged pay become a standard labor policy in advanced economies?",
-    "questionFr": "La semaine de quatre jours sans baisse de salaire doit-elle devenir une norme du travail dans les économies avancées ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Would you trust a medical diagnosis made by an AI tool without a human doctor checking it?",
+    "questionFr": "Ferais-tu confiance à un diagnostic médical posé par une IA sans vérification finale par un médecin humain ?"
   },
   {
     "id": "p-75",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Can a global minimum corporate tax truly curb tax havens and the 'race to the bottom'?",
-    "questionFr": "Un impôt minimum mondial sur les sociétés peut-il réellement endiguer les paradis fiscaux et la course au moins-disant fiscal ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Are people still in control of their free time when apps are designed to keep them scrolling?",
+    "questionFr": "Les utilisateurs maîtrisent-ils encore leur temps libre quand les applications sont conçues pour capter leur attention ?"
   },
   {
     "id": "p-76",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Is meritocracy a genuine engine of social mobility today, or does it mask inherited privilege?",
-    "questionFr": "La méritocratie est-elle aujourd'hui un véritable moteur de mobilité sociale, ou masque-t-elle des privilèges hérités ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Should anonymity on social platforms be restricted to reduce cyberbullying, or is it vital for free speech?",
+    "questionFr": "Faut-il restreindre l'anonymat sur les réseaux contre le cyberharcèlement, ou est-il vital pour la liberté d'expression ?"
   },
   {
     "id": "p-77",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "How should aging societies finance pension systems and elderly care without overburdening younger generations?",
-    "questionFr": "Comment les sociétés vieillissantes doivent-elles financer les retraites et la dépendance sans écraser les jeunes générations ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Given the huge electricity and water needs of data centers, is digital life really eco-friendly?",
+    "questionFr": "Vu l'énorme consommation d'électricité et d'eau des centres de données, le numérique est-il vraiment si écologique ?"
   },
   {
     "id": "p-78",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Could citizens' assemblies chosen by lot revitalize democracy better than traditional referendums?",
-    "questionFr": "Les conventions citoyennes tirées au sort pourraient-elles revitaliser la démocratie mieux que les référendums traditionnels ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Can Europe build its own tech champions instead of relying on American and Chinese platforms?",
+    "questionFr": "L'Europe peut-elle bâtir ses propres géants numériques plutôt que de dépendre des plateformes américaines et chinoises ?"
   },
   {
     "id": "p-79",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Should historic cities cap tourist arrivals and short-term rentals to preserve affordable housing for locals?",
-    "questionFr": "Les villes historiques doivent-elles plafonner les arrivées touristiques et les meublés de tourisme pour préserver des logements abordables aux habitants ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Should autonomous 'killer robots' in warfare be banned by an international treaty right now?",
+    "questionFr": "Les « robots tueurs » autonomes dans les conflits armés doivent-ils être interdits dès maintenant par un traité mondial ?"
   },
   {
     "id": "p-80",
-    "theme": "Choix sociaux & Économie",
-    "questionEn": "Does reshoring strategic industries strengthen national resilience, or does it inevitably fuel inflation for consumers?",
-    "questionFr": "La relocalisation des industries stratégiques renforce-t-elle la résilience nationale, ou alimente-t-elle inévitablement l'inflation pour les consommateurs ?"
+    "theme": "Numérique, IA & Société",
+    "questionEn": "Do video medical appointments improve healthcare in rural areas, or worsen the loss of human contact?",
+    "questionFr": "La téléconsultation médicale améliore-t-elle l'accès aux soins à la campagne, ou dégrade-t-elle le lien humain ?"
   }
 ];
 window.EC_DRILL_BANK = [
