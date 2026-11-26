@@ -2072,6 +2072,10 @@
               <div class="grammar-title" style="color:var(--violet);">💡 Argumentation, Clarté & Réactivité aux relances</div>
               <div id="prepa-final-arg" class="grammar-text"></div>
             </div>
+            <div class="grammar-box" id="prepa-final-parts-box">
+              <div class="grammar-title" style="color:var(--primary);">📚 Parties & pistes d'arguments possibles (pour enrichir ton plan)</div>
+              <div id="prepa-final-parts" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;"></div>
+            </div>
             <div class="grammar-box">
               <div class="grammar-title" style="color:var(--emerald);">🎯 3 Conseils clés pour réussir le jour J</div>
               <ul id="prepa-final-tips" style="padding-left:18px;margin:6px 0 0 0;font-size:13.5px;color:#334155;line-height:1.6;"></ul>
@@ -4387,17 +4391,23 @@ Réponse de l'étudiant : "${r.studentText}"
 Score du tour : ${r.scoreRound}/100
 `).join("\n");
 
-        const sysPrompt = "Tu es le président d'un jury de khôlle d'anglais de CPGE scientifique. Tu rédiges un bilan officiel de khôlle de concours. Tu réponds toujours en JSON valide.";
+        const mainSubject = session.rounds[0]?.question || session.item?.questionEn || session.topic;
+        const sysPrompt = "Tu es un colleur angliciste (professeur de lettres/langues en CPGE scientifique). Tu rédiges un bilan officiel de khôlle de concours complet et constructif. Tu réponds toujours en JSON valide.";
         const userPrompt = `Voici la totalité de la khôlle d'anglais :
 Thème : ${session.topic}
+Sujet principal de départ : "${mainSubject}"
 ${fullTranscript}
 
 Rédige le bilan de concours :
 1. Note finale sur 20 ("grade20", entier ou demi-point entre 5 et 19).
-2. Verdict officiel ("verdict", ex: "Prestation remarquable, niveau admissible Mines-Ponts").
-3. Bilan sur la qualité de la langue ("languageReport" : grammaire, richesse, fluidité).
-4. Bilan sur l'argumentation et la réactivité ("argumentReport" : esprit critique, pertinence des réponses aux relances).
-5. 3 conseils prioritaires pour réussir le jour du concours ("topTips": ["...", "...", "..."]).
+2. Verdict officiel ("verdict", ex: "Prestation solide, niveau admissible Mines-Ponts").
+3. Bilan sur la qualité de la langue ("languageReport" : grammaire, syntaxe, richesse lexicale).
+4. Bilan sur l'argumentation et la réactivité ("argumentReport" : esprit critique, structure, pertinence aux relances).
+5. "suggestedParts" : 3 GRANDES PARTIES d'un plan type de khôlle (ex: Partie I - Enjeux économiques/pratiques, Partie II - Dimension sociale/humaine/culturelle, Partie III - Limites, nuances & comparaison monde anglo-saxon UK/US) que l'étudiant AURAIT PU aborder sur le sujet de départ "${mainSubject}". Pour chaque partie, donne :
+   - "partTitle" (titre clair en français de la partie/axe),
+   - "arguments" (liste de 2 ou 3 arguments précis, nuances ou exemples concrets issus de l'actualité UK/US/internationale que l'étudiant n'a pas encore assez exploités, en français),
+   - "keyPhrase" (1 phrase modèle en anglais soutenu B2/C1 directement réutilisable à l'oral pour introduire cette partie).
+6. 3 conseils prioritaires pour réussir le jour du concours ("topTips": ["...", "...", "..."]).
 
 Réponds STRICTEMENT en JSON :
 {
@@ -4405,6 +4415,13 @@ Réponds STRICTEMENT en JSON :
   "verdict": "...",
   "languageReport": "...",
   "argumentReport": "...",
+  "suggestedParts": [
+    {
+      "partTitle": "I. ...",
+      "arguments": ["Argument + exemple concret...", "Nuance..."],
+      "keyPhrase": "Idiomatic English sentence..."
+    }
+  ],
   "topTips": ["conseil 1", "conseil 2", "conseil 3"]
 }`;
 
@@ -4420,6 +4437,31 @@ Réponds STRICTEMENT en JSON :
         $("prepa-final-verdict").textContent = data.verdict || "Khôlle terminée avec succès.";
         $("prepa-final-lang").textContent = data.languageReport || "Bon niveau d'expression générale.";
         $("prepa-final-arg").textContent = data.argumentReport || "Réflexion structurée et réactive aux questions.";
+
+        const partsWrap = $("prepa-final-parts");
+        const partsBox = $("prepa-final-parts-box");
+        const parts = Array.isArray(data.suggestedParts) ? data.suggestedParts : [];
+        if (partsWrap && partsBox) {
+          if (parts.length) {
+            partsBox.classList.remove("hidden");
+            partsWrap.innerHTML = parts.map(p => {
+              const args = Array.isArray(p.arguments) ? p.arguments : [];
+              const kp = p.keyPhrase ? String(p.keyPhrase).trim() : "";
+              return `<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;">
+                <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">${esc(p.partTitle || "Axe complémentaire")}</div>
+                <ul style="padding-left:18px;margin:0;font-size:13px;color:#334155;line-height:1.5;display:flex;flex-direction:column;gap:3px;">
+                  ${args.map(a => `<li>${esc(a)}</li>`).join("")}
+                </ul>
+                ${kp ? `<div style="margin-top:6px;padding-top:6px;border-top:1px dashed #cbd5e1;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;color:#0369a1;">
+                  <span>🇬🇧 <em>${esc(kp)}</em></span>
+                  <button type="button" class="tool-btn" data-speak="${esc(kp)}" title="Écouter la formulation">🔊</button>
+                </div>` : ""}
+              </div>`;
+            }).join("");
+          } else {
+            partsBox.classList.add("hidden");
+          }
+        }
 
         const tipsList = $("prepa-final-tips");
         if (tipsList && Array.isArray(data.topTips)) {
@@ -4478,8 +4520,8 @@ Réponds STRICTEMENT en JSON :
       const themeHint = state.prepaTheme === "ALL" ? PREPA_THEMES.join(", ") : state.prepaTheme;
       try {
         const { data } = await callGroqChat(
-          "Tu génères des sujets d'oral de CPGE scientifique. Réponds toujours en objet JSON valide.",
-          `Génère 1 question simple et pertinente de khôlle de CPGE scientifique (répondable en 2-3 phrases à l'oral) sur le thème : ${themeHint}.
+          "Tu es un colleur angliciste (professeur d'anglais généraliste, pas scientifique) qui pose des sujets de presse et de société en CPGE. Réponds toujours en objet JSON valide.",
+          `Génère 1 question de débat classique de khôlle d'anglais (accessible à un littéraire, SANS jargon technique pointu : enjeux de société, tourisme, médias, éducation, travail, culture, environnement ou numérique du quotidien, répondable en 2-3 phrases à l'oral) sur le thème : ${themeHint}.
 Retourne STRICTEMENT en JSON : {"theme":"...","questionEn":"question en anglais","questionFr":"même question en français"}`
         );
         if (data && data.questionEn && data.questionFr) {
