@@ -2184,10 +2184,16 @@
           <span id="feed-stats-badge" class="badge badge-muted">🎯 0 vues · Record 0</span>
         </div>
         <div class="feed-hud-right">
+          <select id="feed-level-select" class="select-input" style="padding:5px 8px;font-size:11.5px;">
+            <option value="CURRENT">Niveau actif</option>
+            <option value="A2">📗 A2</option>
+            <option value="B1">📘 B1</option>
+            <option value="B2">🎓 B2 Prépa</option>
+          </select>
           <select id="feed-mode-select" class="select-input" style="padding:5px 8px;font-size:11.5px;">
-            <option value="all">⚡ Mix Complet</option>
-            <option value="grammar">🧠 Grammaire PC*</option>
-            <option value="audio_vocab">🎧 Audio & Khôlle</option>
+            <option value="all">⚡ Mix</option>
+            <option value="grammar">🧠 Grammaire</option>
+            <option value="audio_vocab">🎧 Audio & Vocab</option>
           </select>
           <button id="btn-feed-auto-audio" type="button" class="tool-btn" title="Lecture auto des cartes audio">🔊 Auto</button>
           <button id="btn-feed-sfx" type="button" class="tool-btn" title="Effets sonores de combo">🔔 Sons</button>
@@ -2927,7 +2933,8 @@
         daily: createEmptyDaily(),
         drillStats: { total: 0, correct: 0 },
         drillSeenIds: {},
-        feedStats: { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" }
+        feedStats: { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all", levelFilter: "CURRENT" },
+        feedSeenByLevel: { A2: {}, B1: {}, B2: {} }
       };
     }
 
@@ -2967,7 +2974,8 @@
       daily: createEmptyDaily(),
       drillStats: { total: 0, correct: 0 },
       drillSeenIds: {},
-      feedStats: { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" },
+      feedStats: { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all", levelFilter: "CURRENT" },
+      feedSeenByLevel: { A2: {}, B1: {}, B2: {} },
       sessionSeen: { speak: [], listen: [], prepa: [] },
       seenIds: new Set(),
       seenPrepaIds: new Set(),
@@ -3096,7 +3104,14 @@
         totalCorrect: Number(fs.totalCorrect) || 0,
         autoAudio: fs.autoAudio !== false,
         sfxEnabled: fs.sfxEnabled !== false,
-        mode: ["all", "grammar", "audio_vocab"].includes(fs.mode) ? fs.mode : "all"
+        mode: ["all", "grammar", "audio_vocab"].includes(fs.mode) ? fs.mode : "all",
+        levelFilter: ["CURRENT", "A2", "B1", "B2"].includes(fs.levelFilter) ? fs.levelFilter : "CURRENT"
+      };
+      const rawFeedSeen = (d.feedSeenByLevel && typeof d.feedSeenByLevel === "object") ? d.feedSeenByLevel : {};
+      state.feedSeenByLevel = {
+        A2: (rawFeedSeen.A2 && typeof rawFeedSeen.A2 === "object" && !Array.isArray(rawFeedSeen.A2)) ? { ...rawFeedSeen.A2 } : {},
+        B1: (rawFeedSeen.B1 && typeof rawFeedSeen.B1 === "object" && !Array.isArray(rawFeedSeen.B1)) ? { ...rawFeedSeen.B1 } : {},
+        B2: (rawFeedSeen.B2 && typeof rawFeedSeen.B2 === "object" && !Array.isArray(rawFeedSeen.B2)) ? { ...rawFeedSeen.B2 } : {}
       };
       state.sessionSeen = { speak: [], listen: [], prepa: [] };
       state.speakMode = "normal";
@@ -3140,7 +3155,8 @@
         daily: state.daily,
         drillStats: state.drillStats,
         drillSeenIds: state.drillSeenIds,
-        feedStats: state.feedStats
+        feedStats: state.feedStats,
+        feedSeenByLevel: state.feedSeenByLevel
       };
     }
 
@@ -5693,7 +5709,8 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
 
     function updateFeedHud(animateCombo = false) {
       if (!state.feedStats) {
-        state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" };
+        state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all", levelFilter: "CURRENT" };
+        state.feedSeenByLevel = { A2: {}, B1: {}, B2: {} };
       }
       const combo = feedRuntime.combo || 0;
       const mult = getFeedComboMultiplier(combo);
@@ -5705,9 +5722,17 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
           + (animateCombo ? " pop" : "");
         if (animateCombo) setTimeout(() => comboEl.classList.remove("pop"), 220);
       }
+      const activeLvl = getActiveFeedLevel();
+      const seenLvlCount = Object.keys((state.feedSeenByLevel && state.feedSeenByLevel[activeLvl]) || {}).length;
       const statsEl = $("feed-stats-badge");
       if (statsEl) {
-        statsEl.textContent = `🎯 ${state.feedStats.totalCards || 0} vues · Record ${state.feedStats.bestCombo || 0}`;
+        statsEl.textContent = `🎯 ${seenLvlCount} vues ${activeLvl} · Record ${state.feedStats.bestCombo || 0}`;
+      }
+      const lvlSel = $("feed-level-select");
+      if (lvlSel) {
+        lvlSel.value = state.feedStats.levelFilter || "CURRENT";
+        const curOpt = lvlSel.querySelector('option[value="CURRENT"]');
+        if (curOpt) curOpt.textContent = `Actif (${state.level})`;
       }
       const autoBtn = $("btn-feed-auto-audio");
       if (autoBtn) {
@@ -5725,29 +5750,57 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       if (modeSel && state.feedStats.mode) modeSel.value = state.feedStats.mode;
     }
 
-    function rememberFeedKey(key) {
-      feedRuntime.recentKeys.push(key);
-      if (feedRuntime.recentKeys.length > 50) feedRuntime.recentKeys.shift();
+    function getActiveFeedLevel() {
+      const f = state.feedStats?.levelFilter;
+      if (f === "A2" || f === "B1" || f === "B2") return f;
+      return ["A2", "B1", "B2"].includes(state.level) ? state.level : "A2";
     }
 
-    function pickNotRecent(arr, keyFn) {
+    function ensureFeedLevelMap(lvl) {
+      if (!state.feedSeenByLevel || typeof state.feedSeenByLevel !== "object") {
+        state.feedSeenByLevel = { A2: {}, B1: {}, B2: {} };
+      }
+      if (!state.feedSeenByLevel[lvl] || typeof state.feedSeenByLevel[lvl] !== "object") {
+        state.feedSeenByLevel[lvl] = {};
+      }
+      return state.feedSeenByLevel[lvl];
+    }
+
+    function markFeedCardSeen(card, doSave = true) {
+      if (!card || !card.feedKey) return;
+      const lvl = card.feedLevel || getActiveFeedLevel();
+      const seenMap = ensureFeedLevelMap(lvl);
+      if (!seenMap[card.feedKey]) {
+        seenMap[card.feedKey] = true;
+        if (doSave) saveState();
+      }
+    }
+
+    function rememberFeedKey(key) {
+      feedRuntime.recentKeys.push(key);
+      if (feedRuntime.recentKeys.length > 60) feedRuntime.recentKeys.shift();
+    }
+
+    function pickNotRecent(arr, keyFn, persistLvl = null) {
       if (!arr || !arr.length) return null;
       const recent = new Set(feedRuntime.recentKeys);
-      const fresh = arr.filter(x => !recent.has(keyFn(x)));
+      const seenMap = persistLvl ? ensureFeedLevelMap(persistLvl) : {};
+      let fresh = arr.filter(x => {
+        const k = keyFn(x);
+        return !recent.has(k) && !seenMap[k];
+      });
+      if (!fresh.length && persistLvl) {
+        // Tout le stock de cette catégorie au niveau persistLvl a été vu -> nouveau cycle aléatoire propre
+        arr.forEach(x => delete seenMap[keyFn(x)]);
+        fresh = arr.filter(x => !recent.has(keyFn(x)));
+        saveState();
+      }
       const src = fresh.length ? fresh : arr;
       return src[cryptoRandomInt(0, src.length - 1)];
     }
 
-    function getFeedTargetLevels() {
-      const lvl = state.level || "B1";
-      if (lvl === "A2") return ["A2", "A2", "A2", "B1"];
-      if (lvl === "B1") return ["B1", "B1", "B1", "B2"];
-      return ["B2", "B2", "B2", "B1"];
-    }
-
     function createFeedCard(modeFilter, seqNum) {
-      const targetPoolLvls = getFeedTargetLevels();
-      const targetLvl = targetPoolLvls[cryptoRandomInt(0, targetPoolLvls.length - 1)];
+      const targetLvl = getActiveFeedLevel();
 
       // 1. Boss Card toutes les 9 cartes si des erreurs actives existent
       if (seqNum > 1 && seqNum % 9 === 0 && modeFilter !== "audio_vocab") {
@@ -5756,23 +5809,26 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
           && String(e.wrong).length <= 85 && String(e.right).length <= 85
           && String(e.wrong).trim().toLowerCase() !== String(e.right).trim().toLowerCase()
         );
-        const errPick = pickNotRecent(activeErrs, e => `boss:${e.key}`);
+        const errPick = pickNotRecent(activeErrs, e => `boss:${e.key}`, targetLvl);
         if (errPick) {
-          rememberFeedKey(`boss:${errPick.key}`);
+          const fk = `boss:${errPick.key}`;
+          rememberFeedKey(fk);
           const rightFirst = cryptoRandomInt(0, 1) === 0;
           return {
             uid: `fc-${seqNum}`,
+            feedKey: fk,
+            feedLevel: targetLvl,
             type: "boss",
             isBoss: true,
             badge: "🔥 BOSS · TA FAUTE ×2 XP",
-            level: state.level,
+            level: targetLvl,
             prompt: "Corrige cette faute tirée de ton carnet personnel :",
             subHint: "Quelle version est la bonne en anglais ?",
             opts: rightFirst ? [errPick.right, errPick.wrong] : [errPick.wrong, errPick.right],
             ans: rightFirst ? 0 : 1,
             rule: errPick.why || `Forme correcte : "${errPick.right}".`,
             speakText: errPick.right,
-            saveMeta: { title: errPick.right, fr: `À la place de : "${errPick.wrong}" — ${errPick.why || ""}`, level: state.level },
+            saveMeta: { title: errPick.right, fr: `À la place de : "${errPick.wrong}" — ${errPick.why || ""}`, level: targetLvl },
             answered: false
           };
         }
@@ -5796,12 +5852,15 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       const drillPool = drillsForLvl.length ? drillsForLvl : DRILL_BANK;
 
       if (rollType === "drill" && drillPool.length) {
-        const d = pickNotRecent(drillPool, x => `drill:${getDrillId(x)}`);
+        const d = pickNotRecent(drillPool, x => `drill:${getDrillId(x)}`, targetLvl);
         if (d) {
-          rememberFeedKey(`drill:${getDrillId(d)}`);
+          const fk = `drill:${getDrillId(d)}`;
+          rememberFeedKey(fk);
           const completedEn = d.q.replace(/_{2,}/, d.opts[d.ans]);
           return {
             uid: `fc-${seqNum}`,
+            feedKey: fk,
+            feedLevel: targetLvl,
             type: "drill",
             drillId: getDrillId(d),
             badge: `⚡ Piège ${d.cat || "Grammaire"}`,
@@ -5819,9 +5878,10 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       }
 
       if (rollType === "duel" && drillPool.length) {
-        const d = pickNotRecent(drillPool, x => `duel:${getDrillId(x)}`);
+        const d = pickNotRecent(drillPool, x => `duel:${getDrillId(x)}`, targetLvl);
         if (d) {
-          rememberFeedKey(`duel:${getDrillId(d)}`);
+          const fk = `duel:${getDrillId(d)}`;
+          rememberFeedKey(fk);
           const isTrap = cryptoRandomInt(0, 1) === 1;
           const wrongIndices = [0, 1, 2, 3].filter(i => i !== d.ans);
           const pickedIdx = isTrap ? wrongIndices[cryptoRandomInt(0, wrongIndices.length - 1)] : d.ans;
@@ -5831,6 +5891,8 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
           const completedEn = d.q.replace(/_{2,}/, rightOption);
           return {
             uid: `fc-${seqNum}`,
+            feedKey: fk,
+            feedLevel: targetLvl,
             type: "duel",
             drillId: getDrillId(d),
             badge: "⚔️ Duel 3s · Juste ou Piège ?",
@@ -5854,12 +5916,13 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         const allAudioPool = [...BUILTIN_SPEAK, ...BUILTIN_LISTEN].filter(x => x.en && x.fr && x.en.length <= 165);
         const lvlAudioPool = allAudioPool.filter(x => x.level === targetLvl);
         const pool = lvlAudioPool.length >= 4 ? lvlAudioPool : allAudioPool;
-        const picked = pickNotRecent(pool, x => `audio:${x.id}`);
+        const picked = pickNotRecent(pool, x => `audio:${x.id}`, targetLvl);
         if (picked) {
-          rememberFeedKey(`audio:${picked.id}`);
-          const others = allAudioPool.filter(x => x.id !== picked.id && x.fr !== picked.fr);
-          const d1 = others.length ? others[cryptoRandomInt(0, others.length - 1)].fr : "Un accord économique est en cours de discussion.";
-          const d2Pool = others.filter(x => x.fr !== d1);
+          const fk = `audio:${picked.id}`;
+          rememberFeedKey(fk);
+          const sameLvlOthers = (lvlAudioPool.length >= 4 ? lvlAudioPool : allAudioPool).filter(x => x.id !== picked.id && x.fr !== picked.fr);
+          const d1 = sameLvlOthers.length ? sameLvlOthers[cryptoRandomInt(0, sameLvlOthers.length - 1)].fr : "Un accord économique est en cours de discussion.";
+          const d2Pool = sameLvlOthers.filter(x => x.fr !== d1);
           const d2 = d2Pool.length ? d2Pool[cryptoRandomInt(0, d2Pool.length - 1)].fr : "Les transports locaux changent leurs horaires demain.";
           const rawOpts = [
             { text: picked.fr, ok: true },
@@ -5873,6 +5936,8 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
           const ansIdx = rawOpts.findIndex(o => o.ok);
           return {
             uid: `fc-${seqNum}`,
+            feedKey: fk,
+            feedLevel: targetLvl,
             type: "audio",
             sourceId: picked.id,
             badge: `🎧 Oreille Native · ${picked.theme || "Audio"}`,
@@ -5889,14 +5954,17 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         }
       }
 
-      // 4. Fallback / Pépite Khôlle & Vocabulaire C1
-      const useKholle = BUILTIN_PREPA.length && cryptoRandomInt(0, 1) === 1;
+      // 4. Pépite Khôlle (STRICTEMENT en mode B2) & Pépite Vocabulaire du niveau exact
+      const useKholle = targetLvl === "B2" && BUILTIN_PREPA.length && cryptoRandomInt(0, 1) === 1;
       if (useKholle) {
-        const p = pickNotRecent(BUILTIN_PREPA, x => `kholle:${x.id}`);
+        const p = pickNotRecent(BUILTIN_PREPA, x => `kholle:${x.id}`, "B2");
         if (p) {
-          rememberFeedKey(`kholle:${p.id}`);
+          const fk = `kholle:${p.id}`;
+          rememberFeedKey(fk);
           return {
             uid: `fc-${seqNum}`,
+            feedKey: fk,
+            feedLevel: "B2",
             type: "gem",
             gemKind: "kholle",
             badge: `🎓 Flash Khôlle · ${p.theme}`,
@@ -5916,47 +5984,56 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
         { pair: ["outweigh", "l'emporter sur"], en: "Do the long-term climate gains outweigh short-term industrial costs?", fr: "Les gains climatiques l'emportent-ils sur les coûts à court terme ?", note: "Verbe clé de synthèse sans 't' final !", lvl: "B2" },
         { pair: ["curb", "freiner / endiguer"], en: "Governments must curb the spread of misleading videos online.", fr: "Les gouvernements doivent freiner la propagation des vidéos trompeuses.", note: "Collocation concours : 'curb the spread / proliferation'.", lvl: "B2" },
         { pair: ["eventually", "au bout du compte (jamais 'éventuellement' !)"], en: "After months of debate, parliament eventually passed the privacy bill.", fr: "Après des mois de débats, le parlement a fini par voter la loi.", note: "Faux-ami classique de ta copie PC* ! 'Éventuellement' = 'possibly'.", lvl: "B1" },
+        { pair: ["if I were you", "à ta place (+ would)"], en: "If I were you, I would cut decorative quotes to stay under 450 words.", fr: "À ta place, je supprimerais les citations décoratives pour rester sous 450 mots.", note: "Irréel du présent : 'If I were you, I would...'.", lvl: "B1" },
         { pair: ["politics is", "la politique est (toujours singulier !)"], en: "Politics is shaped heavily by short video algorithms today.", fr: "La politique est aujourd'hui fortement influencée par les algorithmes vidéo.", note: "Les noms en -ics (politics, economics) sont toujours singuliers !", lvl: "A2" },
-        { pair: ["had to", "j'ai dû (passé de must)"], en: "Yesterday, students had to proofread every verb ending carefully.", fr: "Hier, les élèves ont dû relire chaque terminaison verbale attentivement.", note: "'Must' n'existe pas au passé : toujours 'had to'.", lvl: "A2" },
-        { pair: ["if I were you", "à ta place (+ would)"], en: "If I were you, I would cut decorative quotes to stay under 450 words.", fr: "À ta place, je supprimerais les citations décoratives pour rester sous 450 mots.", note: "Irréel du présent : 'If I were you, I would...'.", lvl: "B1" }
+        { pair: ["had to", "j'ai dû (passé de must)"], en: "Yesterday, students had to proofread every verb ending carefully.", fr: "Hier, les élèves ont dû relire chaque terminaison verbale attentivement.", note: "'Must' n'existe pas au passé : toujours 'had to'.", lvl: "A2" }
       ];
       if (!vocabCandidates.length) {
-        const fg = pickNotRecent(fallbackGems, x => `fg:${x.pair[0]}`) || fallbackGems[0];
-        rememberFeedKey(`fg:${fg.pair[0]}`);
+        const lvlFallbacks = fallbackGems.filter(fg => fg.lvl === targetLvl);
+        const fgPool = lvlFallbacks.length ? lvlFallbacks : fallbackGems;
+        const fg = pickNotRecent(fgPool, x => `fg:${x.pair[0]}`, targetLvl) || fgPool[0];
+        const fk = `fg:${fg.pair[0]}`;
+        rememberFeedKey(fk);
         return {
           uid: `fc-${seqNum}`,
+          feedKey: fk,
+          feedLevel: targetLvl,
           type: "gem",
           gemKind: "vocab",
-          badge: "🧠 Pépite Copie PC* & Concours",
-          level: fg.lvl,
+          badge: `🧠 Pépite Lexique · ${targetLvl}`,
+          level: targetLvl,
           prompt: fg.pair[0],
           subHint: `Sens : ${fg.pair[1]}`,
           contextEn: fg.en,
           contextFr: fg.fr,
           grammarNote: fg.note,
           speakText: fg.en,
-          saveMeta: { title: `${fg.pair[0]} — ${fg.en}`, fr: `${fg.pair[1]} (${fg.fr})`, level: fg.lvl },
+          saveMeta: { title: `${fg.pair[0]} — ${fg.en}`, fr: `${fg.pair[1]} (${fg.fr})`, level: targetLvl },
           answered: false
         };
       }
       const lvlVocab = vocabCandidates.filter(x => x.level === targetLvl);
-      const item = pickNotRecent(lvlVocab.length ? lvlVocab : vocabCandidates, x => `gem:${x.id}`);
+      const vPool = lvlVocab.length ? lvlVocab : vocabCandidates;
+      const item = pickNotRecent(vPool, x => `gem:${x.id}`, targetLvl);
       const pair = item.vocab[cryptoRandomInt(0, item.vocab.length - 1)];
-      rememberFeedKey(`gem:${item.id}`);
+      const fk = `gem:${item.id}`;
+      rememberFeedKey(fk);
       return {
         uid: `fc-${seqNum}`,
+        feedKey: fk,
+        feedLevel: targetLvl,
         type: "gem",
         gemKind: "vocab",
         sourceId: item.id,
-        badge: `🧠 Pépite Lexique · ${item.theme || "Prépa"}`,
-        level: item.level || state.level,
+        badge: `🧠 Pépite Lexique · ${item.theme || targetLvl}`,
+        level: item.level || targetLvl,
         prompt: pair[0],
         subHint: `Sens : ${pair[1]}`,
         contextEn: item.en,
         contextFr: item.fr,
         grammarNote: item.grammarNote || "",
         speakText: item.en,
-        saveMeta: { id: item.id, title: `${pair[0]} — ${item.en}`, fr: `${pair[1]} (${item.fr})`, level: item.level || state.level },
+        saveMeta: { id: item.id, title: `${pair[0]} — ${item.en}`, fr: `${pair[1]} (${item.fr})`, level: item.level || targetLvl },
         answered: false
       };
     }
@@ -6045,7 +6122,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
               state.drillStats.total += 1;
               if (ok) state.drillStats.correct += 1;
             }
-            recordFeedOutcome(ok, card.isBoss ? 25 : 15, card.isBoss);
+            recordFeedOutcome(ok, card.isBoss ? 25 : 15, card.isBoss, card);
             fbBox.innerHTML = `<strong style="color:${ok ? "var(--emerald)" : "var(--rose)"};">${ok ? "✅ Bien vu !" : "❌ Piège !"}</strong> ${esc(card.rule)}`;
             fbBox.classList.remove("hidden");
             if (card.speakText && state.feedStats.autoAudio !== false) {
@@ -6087,7 +6164,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
             if (!state.drillSeenIds || typeof state.drillSeenIds !== "object") state.drillSeenIds = {};
             state.drillSeenIds[card.drillId] = true;
           }
-          recordFeedOutcome(ok, 15, false);
+          recordFeedOutcome(ok, 15, false, card);
           fbBox.innerHTML = `<strong style="color:${ok ? "var(--emerald)" : "var(--rose)"};">${ok ? "✅ Réflexe éclair !" : "❌ Raté :"}</strong> ${esc(card.rule)}`;
           fbBox.classList.remove("hidden");
           if (card.speakText && state.feedStats.autoAudio !== false) {
@@ -6139,7 +6216,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
               if (j === card.ans) el.classList.add("opt-ok");
               else if (j === idx && !ok) el.classList.add("opt-ko");
             });
-            recordFeedOutcome(ok, 18, false);
+            recordFeedOutcome(ok, 18, false, card);
             fbBox.innerHTML = `<strong style="color:${ok ? "var(--emerald)" : "var(--rose)"};">${ok ? "✅ Oreille affûtée !" : "❌ Pas tout à fait :"}</strong> ${esc(card.rule)}`;
             fbBox.classList.remove("hidden");
           });
@@ -6165,7 +6242,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
           feedRuntime.userInteracted = true;
           btnReveal.disabled = true;
           btnReveal.style.opacity = "0.65";
-          recordFeedOutcome(true, 10, false);
+          recordFeedOutcome(true, 10, false, card);
           if (card.gemKind === "kholle") {
             fbBox.innerHTML = `<strong>🧭 Réflexe Khôlle :</strong> ${esc(card.revealNote)}`;
           } else {
@@ -6217,10 +6294,11 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       return slide;
     }
 
-    function recordFeedOutcome(isOk, baseXp = 15, isBoss = false) {
+    function recordFeedOutcome(isOk, baseXp = 15, isBoss = false, card = null) {
       if (!state.feedStats) {
-        state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" };
+        state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all", levelFilter: "CURRENT" };
       }
+      if (card) markFeedCardSeen(card, false);
       state.feedStats.totalCards = (state.feedStats.totalCards || 0) + 1;
       if (isOk) {
         feedRuntime.combo += 1;
@@ -6246,7 +6324,12 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function onFeedSlideActive(idx) {
       if (Number.isNaN(idx) || idx < 0 || idx >= feedRuntime.cards.length) return;
       if (feedRuntime.activeIndex === idx && idx !== 0) return;
-      const changed = feedRuntime.activeIndex !== idx;
+      const prevIdx = feedRuntime.activeIndex;
+      const changed = prevIdx !== idx;
+      if (changed && feedRuntime.cards[prevIdx]) {
+        markFeedCardSeen(feedRuntime.cards[prevIdx], true);
+        updateFeedHud(false);
+      }
       feedRuntime.activeIndex = idx;
       if (idx >= feedRuntime.cards.length - 4) {
         appendFeedSlides(6);
@@ -6379,6 +6462,10 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       const targetIdx = Math.min(feedRuntime.cards.length - 1, nextIdx);
       const targetSlide = scroller.querySelector(`.feed-slide[data-feed-idx="${targetIdx}"]`);
       if (targetSlide) {
+        if (targetIdx !== feedRuntime.activeIndex && feedRuntime.cards[feedRuntime.activeIndex]) {
+          markFeedCardSeen(feedRuntime.cards[feedRuntime.activeIndex], true);
+          updateFeedHud(false);
+        }
         feedRuntime.activeIndex = targetIdx;
         scroller.scrollTo({ top: targetSlide.offsetTop, behavior: "smooth" });
         const activeCard = feedRuntime.cards[targetIdx];
@@ -7032,6 +7119,7 @@ Retourne STRICTEMENT ce JSON :
         drillStats: state.drillStats,
         drillSeenIds: state.drillSeenIds,
         feedStats: state.feedStats,
+        feedSeenByLevel: state.feedSeenByLevel,
         daily: state.daily,
         history: pruneHistory(state.history),
         kholleLog: (state.kholleLog || []).slice(0, 50),
@@ -7080,7 +7168,7 @@ Retourne STRICTEMENT ce JSON :
 
       if (remote.feedStats && typeof remote.feedStats === "object") {
         if (!state.feedStats || typeof state.feedStats !== "object") {
-          state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" };
+          state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all", levelFilter: "CURRENT" };
         }
         const rb = Number(remote.feedStats.bestCombo) || 0;
         const rtc = Number(remote.feedStats.totalCards) || 0;
@@ -7088,6 +7176,24 @@ Retourne STRICTEMENT ce JSON :
         if (rb > (state.feedStats.bestCombo || 0)) { state.feedStats.bestCombo = rb; changed = true; }
         if (rtc > (state.feedStats.totalCards || 0)) { state.feedStats.totalCards = rtc; changed = true; }
         if (rtok > (state.feedStats.totalCorrect || 0)) { state.feedStats.totalCorrect = rtok; changed = true; }
+      }
+
+      if (remote.feedSeenByLevel && typeof remote.feedSeenByLevel === "object") {
+        if (!state.feedSeenByLevel || typeof state.feedSeenByLevel !== "object") {
+          state.feedSeenByLevel = { A2: {}, B1: {}, B2: {} };
+        }
+        ["A2", "B1", "B2"].forEach(lvl => {
+          const rMap = remote.feedSeenByLevel[lvl];
+          if (rMap && typeof rMap === "object" && !Array.isArray(rMap)) {
+            if (!state.feedSeenByLevel[lvl]) state.feedSeenByLevel[lvl] = {};
+            Object.keys(rMap).forEach(k => {
+              if (rMap[k] && !state.feedSeenByLevel[lvl][k]) {
+                state.feedSeenByLevel[lvl][k] = true;
+                changed = true;
+              }
+            });
+          }
+        });
       }
 
       if (remote.completed && typeof remote.completed === "object") {
@@ -7960,7 +8066,13 @@ ${errs}`;
       $("drill-level-select").addEventListener("change", () => { currentDrill = null; renderDrillQuestion(true); });
       $("btn-drill-next").addEventListener("click", () => renderDrillQuestion(true));
 
-      // Feed Infini (TikTok-style)
+      // Feed Infini (TikTok-style par niveau strict)
+      $("feed-level-select").addEventListener("change", () => {
+        if (!state.feedStats) state.feedStats = {};
+        state.feedStats.levelFilter = $("feed-level-select").value;
+        saveState();
+        resetFeedDeck(true);
+      });
       $("feed-mode-select").addEventListener("change", () => {
         if (!state.feedStats) state.feedStats = {};
         state.feedStats.mode = $("feed-mode-select").value;
@@ -8537,7 +8649,8 @@ ${errs}`;
         state.daily = createEmptyDaily();
         state.drillStats = { total: 0, correct: 0 };
         state.drillSeenIds = {};
-        state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all" };
+        state.feedStats = { bestCombo: 0, totalCards: 0, totalCorrect: 0, autoAudio: true, sfxEnabled: true, mode: "all", levelFilter: "CURRENT" };
+        state.feedSeenByLevel = { A2: {}, B1: {}, B2: {} };
         if (typeof resetFeedDeck === "function") resetFeedDeck(false);
         currentDrill = null;
         drillAnswered = false;
