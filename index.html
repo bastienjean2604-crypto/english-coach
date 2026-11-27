@@ -1558,9 +1558,10 @@
       min-height: 360px;
       max-height: 660px;
       overflow-y: auto;
+      overflow-x: hidden;
       scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
       overscroll-behavior-y: contain;
+      touch-action: pan-y;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -1577,12 +1578,13 @@
       min-height: 100%;
       scroll-snap-align: start;
       scroll-snap-stop: always;
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 10px;
-      overflow-y: auto;
+      gap: 8px;
+      overflow: hidden;
+      touch-action: pan-y;
       position: relative;
     }
 
@@ -1609,15 +1611,15 @@
     }
 
     .feed-main-prompt {
-      font-size: 19px;
+      font-size: 17.5px;
       font-weight: 800;
-      line-height: 1.38;
+      line-height: 1.34;
       color: var(--text);
       margin: 0;
     }
 
     .feed-sub-hint {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--text-muted);
       margin: 0;
@@ -1626,21 +1628,22 @@
     .feed-opts {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
 
     .feed-opt-btn {
       width: 100%;
       text-align: left;
-      padding: 12px 14px;
-      border-radius: 14px;
+      padding: 10px 12px;
+      border-radius: 13px;
       border: 1.5px solid var(--border);
       background: var(--surface);
       color: var(--text);
       font-family: inherit;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       cursor: pointer;
+      touch-action: pan-y;
       transition: transform 0.1s, border-color 0.15s, background 0.15s;
       box-shadow: 0 2px 6px rgba(45, 27, 18, 0.04);
     }
@@ -6207,14 +6210,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       const rightControls = document.createElement("div");
       rightControls.style.display = "flex";
       rightControls.style.alignItems = "center";
-      rightControls.style.gap = "6px";
-      rightControls.innerHTML = `<span class="feed-swipe-hint">↑ Swipe</span>`;
-      const nextBtn = document.createElement("button");
-      nextBtn.type = "button";
-      nextBtn.className = "tool-btn";
-      nextBtn.textContent = "⬇️ Suivante";
-      nextBtn.addEventListener("click", () => scrollFeedBy(1));
-      rightControls.appendChild(nextBtn);
+      rightControls.innerHTML = `<span class="feed-swipe-hint">↑ Swipe vers le haut</span>`;
 
       foot.append(leftBtns, rightControls);
       slide.appendChild(foot);
@@ -6247,24 +6243,99 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       renderDailyPlan();
     }
 
+    function onFeedSlideActive(idx) {
+      if (Number.isNaN(idx) || idx < 0 || idx >= feedRuntime.cards.length) return;
+      if (feedRuntime.activeIndex === idx && idx !== 0) return;
+      const changed = feedRuntime.activeIndex !== idx;
+      feedRuntime.activeIndex = idx;
+      if (idx >= feedRuntime.cards.length - 4) {
+        appendFeedSlides(6);
+      }
+      if (changed) {
+        const activeCard = feedRuntime.cards[idx];
+        if (activeCard && activeCard.type === "audio" && feedRuntime.userInteracted && state.feedStats?.autoAudio !== false) {
+          speakEnglish(activeCard.speakText, 1.0);
+        }
+      }
+    }
+
     function ensureFeedObserver() {
       const scroller = $("feed-scroller");
       if (!scroller) return;
       if (feedRuntime.observer) feedRuntime.observer.disconnect();
+      if (!scroller.dataset.scrollBound) {
+        scroller.dataset.scrollBound = "1";
+        let touchStartY = 0;
+        let touchStartT = 0;
+        let touchStartScroll = 0;
+
+        scroller.addEventListener("touchstart", (e) => {
+          feedRuntime.userInteracted = true;
+          const t = e.touches && e.touches[0];
+          if (t) {
+            touchStartY = t.clientY;
+            touchStartT = Date.now();
+            touchStartScroll = scroller.scrollTop;
+          }
+        }, { passive: true });
+
+        scroller.addEventListener("touchend", (e) => {
+          const t = e.changedTouches && e.changedTouches[0];
+          if (!t || !touchStartT) return;
+          const dy = touchStartY - t.clientY;
+          const dt = Date.now() - touchStartT;
+          const h = Math.max(1, scroller.clientHeight);
+          const movedRatio = Math.abs(scroller.scrollTop - touchStartScroll) / h;
+          // Si geste rapide court sur mobile (swipe vif >= 36px en < 320ms) qui n'a pas encore changé de slide
+          if (dt < 340 && Math.abs(dy) >= 36 && movedRatio < 0.35) {
+            scrollFeedBy(dy > 0 ? 1 : -1);
+          }
+        }, { passive: true });
+
+        let wheelLockUntil = 0;
+        let ptrDownY = 0;
+        let ptrDownActive = false;
+
+        scroller.addEventListener("wheel", (e) => {
+          if (Math.abs(e.deltaY) < 8) return;
+          e.preventDefault();
+          const now = Date.now();
+          if (now < wheelLockUntil) return;
+          wheelLockUntil = now + 340;
+          scrollFeedBy(e.deltaY > 0 ? 1 : -1);
+        }, { passive: false });
+
+        scroller.addEventListener("pointerdown", (e) => {
+          if (e.pointerType !== "mouse") return;
+          if (e.target && e.target.closest("button, input, select, a, audio")) return;
+          ptrDownY = e.clientY;
+          ptrDownActive = true;
+        });
+
+        scroller.addEventListener("pointerup", (e) => {
+          if (!ptrDownActive || e.pointerType !== "mouse") return;
+          ptrDownActive = false;
+          const dy = ptrDownY - e.clientY;
+          if (Math.abs(dy) >= 42) {
+            scrollFeedBy(dy > 0 ? 1 : -1);
+          }
+        });
+
+        scroller.addEventListener("scroll", () => {
+          const h = Math.max(1, scroller.clientHeight);
+          const idx = Math.round(scroller.scrollTop / h);
+          onFeedSlideActive(idx);
+          if (scroller.scrollTop + h * 3 >= scroller.scrollHeight - 60) {
+            appendFeedSlides(6);
+          }
+        }, { passive: true });
+      }
       if (typeof IntersectionObserver !== "function") return;
       feedRuntime.observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting || entry.intersectionRatio < 0.6) return;
           const idx = Number(entry.target.dataset.feedIdx);
-          if (Number.isNaN(idx)) return;
-          feedRuntime.activeIndex = idx;
-          if (idx >= feedRuntime.cards.length - 3) {
-            appendFeedSlides(5);
-          }
-          const activeCard = feedRuntime.cards[idx];
-          if (activeCard && activeCard.type === "audio" && feedRuntime.userInteracted && state.feedStats?.autoAudio !== false) {
-            speakEnglish(activeCard.speakText, 1.0);
-          }
+          onFeedSlideActive(idx);
         });
       }, { root: scroller, threshold: [0.65] });
       scroller.querySelectorAll(".feed-slide").forEach(el => feedRuntime.observer.observe(el));
@@ -6301,10 +6372,19 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
       const scroller = $("feed-scroller");
       if (!scroller) return;
       feedRuntime.userInteracted = true;
-      const targetIdx = Math.max(0, Math.min(feedRuntime.cards.length - 1, feedRuntime.activeIndex + delta));
+      const nextIdx = Math.max(0, feedRuntime.activeIndex + delta);
+      if (nextIdx >= feedRuntime.cards.length - 4) {
+        appendFeedSlides(6);
+      }
+      const targetIdx = Math.min(feedRuntime.cards.length - 1, nextIdx);
       const targetSlide = scroller.querySelector(`.feed-slide[data-feed-idx="${targetIdx}"]`);
       if (targetSlide) {
+        feedRuntime.activeIndex = targetIdx;
         scroller.scrollTo({ top: targetSlide.offsetTop, behavior: "smooth" });
+        const activeCard = feedRuntime.cards[targetIdx];
+        if (activeCard && activeCard.type === "audio" && feedRuntime.userInteracted && state.feedStats?.autoAudio !== false) {
+          speakEnglish(activeCard.speakText, 1.0);
+        }
       }
     }
 
