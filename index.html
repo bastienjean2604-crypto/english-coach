@@ -1714,6 +1714,152 @@
       color: var(--text-muted);
       letter-spacing: 0.02em;
     }
+
+    /* ===== LECTEUR AUDIO AVEC BARRE DE PROGRESSION & MULTI-PRISES ===== */
+    .listen-player-bar {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255, 250, 241, 0.12);
+      border: 1px solid rgba(255, 248, 238, 0.22);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-listen-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .modal-listen-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .listen-range {
+      -webkit-appearance: none;
+      appearance: none;
+      flex: 1;
+      height: 6px;
+      border-radius: 99px;
+      background: rgba(255, 248, 238, 0.26);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .listen-range.light {
+      background: #E2D4BD;
+    }
+
+    .listen-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid #FFFDF8;
+      box-shadow: 0 2px 6px rgba(45, 27, 18, 0.35);
+      cursor: pointer;
+    }
+
+    .listen-range::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid #FFFDF8;
+      box-shadow: 0 2px 6px rgba(45, 27, 18, 0.35);
+      cursor: pointer;
+    }
+
+    .listen-time-label {
+      font-size: 11.5px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      min-width: 78px;
+      text-align: right;
+      opacity: 0.92;
+    }
+
+    .listen-nudge-btn {
+      border: 1px solid rgba(255, 248, 238, 0.28);
+      background: rgba(255, 248, 238, 0.14);
+      color: #FFF8EE;
+      border-radius: 9px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .listen-nudge-btn.light {
+      border-color: var(--border);
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    .modal-clips-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .modal-clips-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-muted);
+    }
+
+    .modal-clips-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .clip-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 12px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+    }
+
+    .clip-tag {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--primary);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .clip-row audio {
+      flex: 1;
+      height: 30px;
+      min-width: 0;
+    }
+
+    .clip-del-btn {
+      border: none;
+      background: var(--rose-soft);
+      color: var(--rose);
+      border-radius: 8px;
+      padding: 5px 7px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
@@ -2200,6 +2346,12 @@
               <button type="button" class="pill-toggle" data-accent="en-GB">🇬🇧 UK</button>
             </div>
           </div>
+
+          <div id="listen-player-bar" class="listen-player-bar">
+            <button id="btn-listen-back3" type="button" class="listen-nudge-btn" title="Reculer de 3 secondes">⏪ -3s</button>
+            <input id="listen-seek-bar" type="range" class="listen-range" min="0" max="100" step="0.05" value="0" aria-label="Position dans l'audio">
+            <span id="listen-time-label" class="listen-time-label">00:00 / 00:00</span>
+          </div>
         </div>
 
         <button id="btn-listen-record" type="button" class="btn btn-primary">
@@ -2458,7 +2610,13 @@
           <div id="modal-mic-status" class="mic-status">Touchez pour enregistrer</div>
         </div>
 
-        <audio id="modal-audio-preview" controls class="hidden" style="width:100%; margin-top:4px;"></audio>
+        <div id="modal-clips-wrap" class="modal-clips-wrap hidden">
+          <div class="modal-clips-head">
+            <span id="modal-clips-count">🎙️ 1 prise enregistrée (seront assemblées à l'envoi)</span>
+            <button id="btn-clear-clips" type="button" style="border:none;background:none;color:var(--rose);font-size:11.5px;font-weight:800;cursor:pointer;">Tout effacer</button>
+          </div>
+          <div id="modal-clips-list" class="modal-clips-list"></div>
+        </div>
 
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
@@ -3554,6 +3712,91 @@
         .catch(() => {});
     }
 
+    const listenPlayer = {
+      audio: null,
+      cacheKey: "",
+      duration: 0,
+      isLoading: false,
+      isSeeking: false,
+      browserFallback: false
+    };
+
+    function formatTimeSec(sec) {
+      if (!Number.isFinite(sec) || sec < 0) return "00:00";
+      const total = Math.floor(sec);
+      const m = Math.floor(total / 60);
+      const s = total % 60;
+      return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    }
+
+    function pauseListenPlayer() {
+      if (listenPlayer.audio && !listenPlayer.audio.paused) {
+        try { listenPlayer.audio.pause(); } catch (e) {}
+      }
+      listenPlayer.isLoading = false;
+      syncListenPlayerUI();
+    }
+
+    function resetListenPlayer() {
+      if (listenPlayer.audio) {
+        try {
+          listenPlayer.audio.pause();
+          listenPlayer.audio.currentTime = 0;
+        } catch (e) {}
+        listenPlayer.audio = null;
+      }
+      listenPlayer.cacheKey = "";
+      listenPlayer.duration = 0;
+      listenPlayer.isLoading = false;
+      listenPlayer.isSeeking = false;
+      listenPlayer.browserFallback = false;
+      syncListenPlayerUI();
+    }
+
+    function syncListenPlayerUI() {
+      const a = listenPlayer.audio;
+      const dur = a && Number.isFinite(a.duration) && a.duration > 0 ? a.duration : (listenPlayer.duration || 0);
+      const cur = a ? Math.min(dur || 9999, Math.max(0, a.currentTime || 0)) : 0;
+      const playing = !!(a && !a.paused && !a.ended);
+      const started = cur > 0.15 && dur > 0 && cur < dur - 0.15;
+      const labelTxt = listenPlayer.isLoading
+        ? "⏳ Chargement..."
+        : (playing ? "⏸️ Pause" : (started ? "▶️ Reprendre" : "▶️ Écouter"));
+      const timeTxt = `${formatTimeSec(cur)} / ${formatTimeSec(dur)}`;
+      const pct = dur > 0 ? Math.min(100, Math.max(0, (cur / dur) * 100)) : 0;
+
+      const eq = $("listen-eq");
+      if (eq) eq.classList.toggle("eq-playing", playing || listenPlayer.isLoading);
+
+      const mainBtn = $("btn-listen-play");
+      if (mainBtn) mainBtn.textContent = labelTxt;
+      const seekMain = $("listen-seek-bar");
+      if (seekMain && !listenPlayer.isSeeking) {
+        seekMain.value = String(pct);
+        seekMain.disabled = listenPlayer.browserFallback;
+      }
+      const timeMain = $("listen-time-label");
+      if (timeMain) timeMain.textContent = timeTxt;
+
+      const st = $("listen-status");
+      if (st && state.currentListen) {
+        if (listenPlayer.isLoading) st.textContent = "⏳ Préparation de l'audio studio...";
+        else if (playing) st.textContent = "🔊 Lecture en cours — mettez en pause ou déplacez la barre";
+        else if (a && a.ended) st.textContent = "✅ Terminé — Résumez en français ou déplacez la barre";
+        else if (started) st.textContent = `⏸️ En pause à ${formatTimeSec(cur)} — prêt à reprendre`;
+      }
+
+      const modBtn = $("btn-modal-listen-toggle");
+      if (modBtn) modBtn.textContent = labelTxt;
+      const modSeek = $("modal-listen-seek");
+      if (modSeek && !listenPlayer.isSeeking) {
+        modSeek.value = String(pct);
+        modSeek.disabled = listenPlayer.browserFallback;
+      }
+      const modTime = $("modal-listen-time");
+      if (modTime) modTime.textContent = timeTxt;
+    }
+
     function stopSpeech() {
       if (activeAudio) {
         try {
@@ -3562,12 +3805,16 @@
         } catch (e) {}
         activeAudio = null;
       }
+      if (listenPlayer.audio && !listenPlayer.audio.paused) {
+        try { listenPlayer.audio.pause(); } catch (e) {}
+      }
       if ("speechSynthesis" in window) {
         window.speechSynthesis.cancel();
       }
       const eq = $("listen-eq");
       if (eq) eq.classList.remove("eq-playing");
       isAudioGenerating = false;
+      syncListenPlayerUI();
     }
 
     function playDirectAudioUrl(url, onEnd) {
@@ -3751,16 +3998,148 @@
       speakText(text, state.accent, rate, onEnd);
     }
 
+    async function ensureListenPlayerReady() {
+      const item = state.currentListen;
+      if (!item || !item.en) return null;
+      const cleanText = item.en.trim();
+      const speed = Number(state.listenSpeed) || 1.0;
+      const targetLang = state.accent || "en-US";
+      if (state.voiceEngine !== "jenny") {
+        listenPlayer.browserFallback = true;
+        syncListenPlayerUI();
+        return null;
+      }
+      const voice = resolveActiveNeuralVoice(cleanText, targetLang);
+      const cacheKey = `studio_${voice}_${speed}_${cleanText}`;
+      if (listenPlayer.audio && listenPlayer.cacheKey === cacheKey) {
+        listenPlayer.browserFallback = false;
+        return listenPlayer.audio;
+      }
+
+      listenPlayer.isLoading = true;
+      listenPlayer.browserFallback = false;
+      syncListenPlayerUI();
+      try {
+        let audioUrl = audioCache.get(cacheKey);
+        if (!audioUrl) {
+          audioUrl = await fetchJennyAudioUrl(cleanText, voice, speed);
+          audioCache.set(cacheKey, audioUrl);
+        }
+        const audio = new Audio(audioUrl);
+        audio.preload = "auto";
+        listenPlayer.audio = audio;
+        listenPlayer.cacheKey = cacheKey;
+        listenPlayer.duration = 0;
+
+        audio.addEventListener("loadedmetadata", () => {
+          if (listenPlayer.audio !== audio) return;
+          listenPlayer.duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+          syncListenPlayerUI();
+        });
+        audio.addEventListener("timeupdate", () => {
+          if (listenPlayer.audio !== audio) return;
+          if (Number.isFinite(audio.duration) && audio.duration > 0) listenPlayer.duration = audio.duration;
+          syncListenPlayerUI();
+        });
+        audio.addEventListener("play", () => { if (listenPlayer.audio === audio) syncListenPlayerUI(); });
+        audio.addEventListener("pause", () => { if (listenPlayer.audio === audio) syncListenPlayerUI(); });
+        audio.addEventListener("ended", () => { if (listenPlayer.audio === audio) syncListenPlayerUI(); });
+        audio.addEventListener("error", () => {
+          if (listenPlayer.audio !== audio) return;
+          audioCache.delete(cacheKey);
+          listenPlayer.audio = null;
+          listenPlayer.browserFallback = true;
+          syncListenPlayerUI();
+        });
+
+        await new Promise((resolve) => {
+          if (Number.isFinite(audio.duration) && audio.duration > 0) {
+            listenPlayer.duration = audio.duration;
+            resolve();
+            return;
+          }
+          const done = () => {
+            if (Number.isFinite(audio.duration) && audio.duration > 0) listenPlayer.duration = audio.duration;
+            resolve();
+          };
+          audio.addEventListener("loadedmetadata", done, { once: true });
+          audio.addEventListener("canplay", done, { once: true });
+          setTimeout(done, 1500);
+        });
+        listenPlayer.isLoading = false;
+        syncListenPlayerUI();
+        return audio;
+      } catch (err) {
+        console.warn("Repli lecteur Listen vers navigateur:", err);
+        listenPlayer.isLoading = false;
+        listenPlayer.browserFallback = true;
+        syncListenPlayerUI();
+        return null;
+      }
+    }
+
+    async function toggleListenPlayback(forceRestart = false) {
+      const item = state.currentListen;
+      if (!item) return;
+
+      // Arrêter tout autre audio (activeAudio / speechSynthesis) sans effacer la position de listenPlayer
+      if (activeAudio) {
+        try { activeAudio.pause(); activeAudio.currentTime = 0; } catch (e) {}
+        activeAudio = null;
+      }
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+
+      const existing = listenPlayer.audio;
+      const speed = Number(state.listenSpeed) || 1.0;
+      const expectedVoice = state.voiceEngine === "jenny" ? resolveActiveNeuralVoice(item.en.trim(), state.accent || "en-US") : "";
+      const expectedKey = expectedVoice ? `studio_${expectedVoice}_${speed}_${item.en.trim()}` : "";
+
+      if (!forceRestart && existing && existing.src && listenPlayer.cacheKey === expectedKey && !existing.paused && !existing.ended) {
+        existing.pause();
+        syncListenPlayerUI();
+        return;
+      }
+
+      const audio = await ensureListenPlayerReady();
+      if (!audio) {
+        showToast("⚠️ Mode secours navigateur : barre de progression non disponible.");
+        speakWithBrowser(item.en, state.accent, speed, () => {
+          syncListenPlayerUI();
+        });
+        return;
+      }
+
+      try {
+        if (forceRestart || audio.ended || (audio.duration && audio.currentTime >= audio.duration - 0.15)) {
+          audio.currentTime = 0;
+        }
+        await audio.play();
+        syncListenPlayerUI();
+      } catch (e) {
+        console.warn("Lecture audio bloquée:", e);
+        speakWithBrowser(item.en, state.accent, speed, () => syncListenPlayerUI());
+      }
+    }
+
+    async function seekListenToPercent(pct) {
+      const clamped = Math.min(100, Math.max(0, Number(pct) || 0));
+      const audio = await ensureListenPlayerReady();
+      if (!audio || !Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      audio.currentTime = (clamped / 100) * audio.duration;
+      syncListenPlayerUI();
+    }
+
+    async function nudgeListenSeconds(deltaSec) {
+      const audio = await ensureListenPlayerReady();
+      if (!audio) return;
+      const dur = Number.isFinite(audio.duration) ? audio.duration : (listenPlayer.duration || 0);
+      const next = Math.max(0, Math.min(dur || 9999, (audio.currentTime || 0) + deltaSec));
+      audio.currentTime = next;
+      syncListenPlayerUI();
+    }
+
     function playCurrentListen() {
-      if (!state.currentListen) return;
-      const eq = $("listen-eq");
-      const st = $("listen-status");
-      eq.classList.add("eq-playing");
-      st.textContent = "🔊 Lecture en cours...";
-      speakEnglish(state.currentListen.en, state.listenSpeed, () => {
-        eq.classList.remove("eq-playing");
-        st.textContent = "✅ Terminé — Traduisez en français";
-      });
+      toggleListenPlayback(false);
     }
 
     // Comparateur local tolérant (contractions complètes, UK/US, synonymes EN/FR, fautes mineures)
@@ -4249,17 +4628,27 @@
 
       let finalAnswerText = userText || "";
       let totalMs = 0;
+      const audioBlobs = Array.isArray(audioBlob)
+        ? audioBlob.filter(b => b && b.size > 100)
+        : (audioBlob && audioBlob.size > 100 ? [audioBlob] : []);
 
       if (state.apiKey) {
         try {
-          if (audioBlob && audioBlob.size > 100) {
-            loadTxt.textContent = "1/2 Transcription vocale (Whisper)...";
+          if (audioBlobs.length) {
             const expectedLang = mode === "speak" ? "en" : "fr";
-            const tr = await transcribeWithGroq(audioBlob, expectedLang);
-            if (seq !== state.correctionSeq) return;
-            totalMs += tr.ms;
-            if (tr.text) {
-              finalAnswerText = finalAnswerText ? `${finalAnswerText} ${tr.text}` : tr.text;
+            const parts = [];
+            for (let i = 0; i < audioBlobs.length; i++) {
+              loadTxt.textContent = audioBlobs.length > 1
+                ? `1/2 Transcription prise ${i + 1}/${audioBlobs.length} (Whisper)...`
+                : "1/2 Transcription vocale (Whisper)...";
+              const tr = await transcribeWithGroq(audioBlobs[i], expectedLang);
+              if (seq !== state.correctionSeq) return;
+              totalMs += tr.ms;
+              if (tr.text && tr.text.trim()) parts.push(tr.text.trim());
+            }
+            const joinedAudio = parts.join(" ").trim();
+            if (joinedAudio) {
+              finalAnswerText = finalAnswerText ? `${finalAnswerText} ${joinedAudio}` : joinedAudio;
             }
           }
 
@@ -4562,15 +4951,25 @@ Indique à combien de pourcent ("score") l'élève a compris l'audio en te basan
       const session = state.prepaSession;
       let finalAnswerText = userText || "";
       let audioPlaybackUrl = null;
+      const audioBlobs = Array.isArray(audioBlob)
+        ? audioBlob.filter(b => b && b.size > 100)
+        : (audioBlob && audioBlob.size > 100 ? [audioBlob] : []);
 
       try {
-        if (audioBlob && audioBlob.size > 100) {
-          loadTxt.textContent = "1/2 Transcription vocale de vos arguments (Whisper)...";
-          audioPlaybackUrl = URL.createObjectURL(audioBlob);
-          const tr = await transcribeWithGroq(audioBlob, state.prepaLang);
-          if (seq !== state.correctionSeq) return;
-          if (tr.text) {
-            finalAnswerText = finalAnswerText ? `${finalAnswerText} ${tr.text}` : tr.text;
+        if (audioBlobs.length) {
+          audioPlaybackUrl = URL.createObjectURL(audioBlobs[audioBlobs.length - 1]);
+          const parts = [];
+          for (let i = 0; i < audioBlobs.length; i++) {
+            loadTxt.textContent = audioBlobs.length > 1
+              ? `1/2 Transcription prise ${i + 1}/${audioBlobs.length} (Whisper)...`
+              : "1/2 Transcription vocale de vos arguments (Whisper)...";
+            const tr = await transcribeWithGroq(audioBlobs[i], state.prepaLang);
+            if (seq !== state.correctionSeq) return;
+            if (tr.text && tr.text.trim()) parts.push(tr.text.trim());
+          }
+          const joinedAudio = parts.join(" ").trim();
+          if (joinedAudio) {
+            finalAnswerText = finalAnswerText ? `${finalAnswerText} ${joinedAudio}` : joinedAudio;
           }
         }
 
@@ -4969,6 +5368,7 @@ Retourne STRICTEMENT un objet JSON avec la clé "items" :
     function loadListenItem(item) {
       if (!item) return;
       state.currentListen = item;
+      resetListenPlayer();
       preloadAudio(item.en, state.accent, state.listenSpeed);
       $("listen-lvl-badge").textContent = item.level;
       $("listen-theme-badge").textContent = item.theme;
@@ -7113,9 +7513,60 @@ ${errs}`;
     // -------------------------------------------------------------------------
     let mediaRecorder = null;
     let audioChunks = [];
-    let recordedAudioBlob = null;
+    let recordedClips = [];
+    let clipRecStartedAt = 0;
     let isRecording = false;
     let micStream = null;
+
+    function clearRecordedClips() {
+      recordedClips.forEach(c => {
+        try { if (c.url) URL.revokeObjectURL(c.url); } catch (e) {}
+      });
+      recordedClips = [];
+      renderModalClips();
+    }
+
+    function renderModalClips() {
+      const wrap = $("modal-clips-wrap");
+      const list = $("modal-clips-list");
+      const cnt = $("modal-clips-count");
+      if (!wrap || !list) return;
+      if (!recordedClips.length) {
+        wrap.classList.add("hidden");
+        list.innerHTML = "";
+        return;
+      }
+      wrap.classList.remove("hidden");
+      if (cnt) {
+        cnt.textContent = recordedClips.length === 1
+          ? "🎙️ 1 prise enregistrée — vous pouvez ajouter la suite !"
+          : `🎙️ ${recordedClips.length} prises enregistrées (assemblées à l'envoi)`;
+      }
+      list.innerHTML = "";
+      recordedClips.forEach((clip, idx) => {
+        const row = document.createElement("div");
+        row.className = "clip-row";
+        const tag = document.createElement("span");
+        tag.className = "clip-tag";
+        tag.textContent = `Prise ${idx + 1} (${clip.durationLabel || "0:01"})`;
+        const aud = document.createElement("audio");
+        aud.controls = true;
+        aud.src = clip.url;
+        const del = document.createElement("button");
+        del.type = "button";
+        del.className = "clip-del-btn";
+        del.textContent = "🗑️";
+        del.title = `Supprimer la prise ${idx + 1}`;
+        del.addEventListener("click", () => {
+          try { if (clip.url) URL.revokeObjectURL(clip.url); } catch (e) {}
+          recordedClips = recordedClips.filter(x => x.id !== clip.id);
+          renderModalClips();
+          setMicUI(isRecording);
+        });
+        row.append(tag, aud, del);
+        list.appendChild(row);
+      });
+    }
 
     function setMicUI(active) {
       const btn = $("btn-toggle-mic");
@@ -7123,7 +7574,15 @@ ${errs}`;
       btn.classList.toggle("recording", active);
       btn.textContent = active ? "⏹️" : "🎙️";
       st.classList.toggle("recording", active);
-      st.textContent = active ? "Enregistrement en cours... Touchez pour arrêter" : "Touchez pour enregistrer";
+      if (active) {
+        st.textContent = recordedClips.length
+          ? `Enregistrement prise ${recordedClips.length + 1}... Touchez pour arrêter`
+          : "Enregistrement en cours... Touchez pour arrêter";
+      } else {
+        st.textContent = recordedClips.length
+          ? `➕ Touchez pour enregistrer la suite (Prise ${recordedClips.length + 1})`
+          : "Touchez pour enregistrer";
+      }
     }
 
     async function toggleRecording() {
@@ -7141,11 +7600,14 @@ ${errs}`;
       }
 
       try {
-        stopSpeech();
+        pauseListenPlayer();
+        if (activeAudio) {
+          try { activeAudio.pause(); activeAudio.currentTime = 0; } catch (e) {}
+          activeAudio = null;
+        }
+        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         audioChunks = [];
-        recordedAudioBlob = null;
         $("modal-mic-alert").classList.add("hidden");
-        $("modal-audio-preview").classList.add("hidden");
 
         micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder = new MediaRecorder(micStream);
@@ -7155,14 +7617,23 @@ ${errs}`;
         };
 
         mediaRecorder.onstop = () => {
-          recordedAudioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType || "audio/webm" });
-          const audioUrl = URL.createObjectURL(recordedAudioBlob);
-          const preview = $("modal-audio-preview");
-          preview.src = audioUrl;
-          preview.classList.remove("hidden");
-          showToast("🎤 Enregistrement prêt !");
+          const blob = new Blob(audioChunks, { type: mediaRecorder.mimeType || "audio/webm" });
+          const url = URL.createObjectURL(blob);
+          const elapsedSec = Math.max(1, Math.round((Date.now() - clipRecStartedAt) / 1000));
+          recordedClips.push({
+            id: `clip-${Date.now()}-${recordedClips.length + 1}`,
+            blob: blob,
+            url: url,
+            durationLabel: formatTimeSec(elapsedSec)
+          });
+          renderModalClips();
+          setMicUI(false);
+          showToast(recordedClips.length > 1
+            ? `🎤 Prise ${recordedClips.length} ajoutée !`
+            : "🎤 Prise 1 prête ! Vous pouvez réécouter puis ajouter la suite.");
         };
 
+        clipRecStartedAt = Date.now();
         mediaRecorder.start();
         isRecording = true;
         setMicUI(true);
@@ -7174,14 +7645,18 @@ ${errs}`;
     }
 
     function openRecordModal(mode) {
-      stopSpeech();
+      pauseListenPlayer();
+      if (activeAudio) {
+        try { activeAudio.pause(); activeAudio.currentTime = 0; } catch (e) {}
+        activeAudio = null;
+      }
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
       state.modalMode = mode;
       audioChunks = [];
-      recordedAudioBlob = null;
+      clearRecordedClips();
       isRecording = false;
       $("modal-textarea").value = "";
       $("modal-mic-alert").classList.add("hidden");
-      $("modal-audio-preview").classList.add("hidden");
       setMicUI(false);
 
       if (mode === "speak") {
@@ -7190,8 +7665,31 @@ ${errs}`;
         $("modal-prompt").textContent = state.currentSpeak ? state.currentSpeak.fr : "";
       } else if (mode === "listen") {
         $("modal-title").textContent = "Résumer l'audio en français";
-        $("modal-sub").textContent = "Résumez à l'oral ou par écrit les grandes idées entendues";
-        $("modal-prompt").innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;">Réécouter l'extrait :</span><button type="button" class="btn btn-emerald btn-sm" style="width:auto;" data-action="replay-listen">🔊 Écouter</button></div>`;
+        $("modal-sub").textContent = "Écoutez par morceaux, déplacez la barre et ajoutez plusieurs prises";
+        $("modal-prompt").innerHTML = `
+          <div class="modal-listen-box">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+              <span style="font-size:12px;font-weight:800;color:var(--text-muted);">🎧 Audio cible (reprend là où vous étiez) :</span>
+              <button id="btn-modal-listen-toggle" type="button" class="btn btn-emerald btn-sm" style="width:auto;">▶️ Écouter</button>
+            </div>
+            <div class="modal-listen-row">
+              <button id="btn-modal-listen-back3" type="button" class="listen-nudge-btn light" title="Reculer de 3 secondes">⏪ -3s</button>
+              <input id="modal-listen-seek" type="range" class="listen-range light" min="0" max="100" step="0.05" value="0" aria-label="Position audio dans la modale">
+              <span id="modal-listen-time" class="listen-time-label" style="color:var(--text);">00:00 / 00:00</span>
+            </div>
+          </div>`;
+        $("btn-modal-listen-toggle").addEventListener("click", () => toggleListenPlayback(false));
+        $("btn-modal-listen-back3").addEventListener("click", () => nudgeListenSeconds(-3));
+        const modSeek = $("modal-listen-seek");
+        modSeek.addEventListener("input", () => {
+          listenPlayer.isSeeking = true;
+          seekListenToPercent(modSeek.value);
+        });
+        modSeek.addEventListener("change", () => {
+          listenPlayer.isSeeking = false;
+          seekListenToPercent(modSeek.value);
+        });
+        syncListenPlayerUI();
       } else {
         const turn = state.prepaSession ? Math.min(state.prepaSession.rounds.length + 1, MAX_PREPA_ROUNDS) : 1;
         $("modal-title").textContent = `🎓 Khôlle Prépa (Tour ${turn} / ${MAX_PREPA_ROUNDS})`;
@@ -7616,13 +8114,25 @@ ${errs}`;
       $("btn-listen-next").addEventListener("click", nextListen);
       $("btn-listen-next-after").addEventListener("click", nextListen);
 
-      $("btn-listen-play").addEventListener("click", playCurrentListen);
-      $("btn-listen-replay").addEventListener("click", playCurrentListen);
+      $("btn-listen-play").addEventListener("click", () => toggleListenPlayback(false));
+      $("btn-listen-replay").addEventListener("click", () => toggleListenPlayback(true));
+      $("btn-listen-back3").addEventListener("click", () => nudgeListenSeconds(-3));
+      const mainSeek = $("listen-seek-bar");
+      mainSeek.addEventListener("input", () => {
+        listenPlayer.isSeeking = true;
+        seekListenToPercent(mainSeek.value);
+      });
+      mainSeek.addEventListener("change", () => {
+        listenPlayer.isSeeking = false;
+        seekListenToPercent(mainSeek.value);
+      });
 
       document.querySelectorAll("[data-speed]").forEach(btn => {
         btn.addEventListener("click", () => {
           state.listenSpeed = parseFloat(btn.dataset.speed) || 1;
           document.querySelectorAll("[data-speed]").forEach(b => b.classList.toggle("active", b === btn));
+          resetListenPlayer();
+          if (state.currentListen) preloadAudio(state.currentListen.en, state.accent, state.listenSpeed);
         });
       });
 
@@ -7631,6 +8141,8 @@ ${errs}`;
           state.accent = btn.dataset.accent;
           saveState();
           updateAccentButtons();
+          resetListenPlayer();
+          if (state.currentListen) preloadAudio(state.currentListen.en, state.accent, state.listenSpeed);
         });
       });
 
@@ -7672,8 +8184,11 @@ ${errs}`;
 
       $("btn-clear-textarea").addEventListener("click", () => {
         $("modal-textarea").value = "";
-        recordedAudioBlob = null;
-        $("modal-audio-preview").classList.add("hidden");
+      });
+      $("btn-clear-clips").addEventListener("click", () => {
+        clearRecordedClips();
+        setMicUI(isRecording);
+        showToast("Prises vocales effacées.");
       });
 
       $("btn-submit-answer").addEventListener("click", async () => {
@@ -7684,25 +8199,25 @@ ${errs}`;
           await new Promise(r => setTimeout(r, 250));
         }
         const textVal = $("modal-textarea").value.trim();
-        if (!textVal && !recordedAudioBlob) {
+        if (!textVal && !recordedClips.length) {
           showToast("Enregistrez votre voix ou tapez une réponse.");
           return;
         }
         const mode = state.modalMode;
-        const blobToProcess = recordedAudioBlob;
+        const clipsToProcess = recordedClips.map(c => c.blob);
         closeRecordModal();
 
         state.correctionSeq += 1;
         const seq = state.correctionSeq;
 
         if (mode === "prepa") {
-          await evaluatePrepaAnswer(state.currentPrepa, textVal, blobToProcess, seq);
+          await evaluatePrepaAnswer(state.currentPrepa, textVal, clipsToProcess, seq);
           return;
         }
 
         const item = mode === "speak" ? state.currentSpeak : state.currentListen;
-        if (mode === "speak" && blobToProcess) {
-          state.lastAudioUrl = URL.createObjectURL(blobToProcess);
+        if (mode === "speak" && clipsToProcess.length) {
+          state.lastAudioUrl = URL.createObjectURL(clipsToProcess[clipsToProcess.length - 1]);
           $("speak-user-audio").src = state.lastAudioUrl;
           $("speak-user-audio-wrap").classList.remove("hidden");
         } else if (mode === "speak") {
@@ -7713,7 +8228,7 @@ ${errs}`;
         card.classList.remove("hidden");
         card.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
-        await evaluateWithGroqOrLocal(mode, item, textVal, blobToProcess, seq);
+        await evaluateWithGroqOrLocal(mode, item, textVal, clipsToProcess, seq);
       });
 
       $("btn-open-settings").addEventListener("click", openSettingsModal);
