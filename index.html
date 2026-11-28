@@ -5040,7 +5040,10 @@ Consignes pour ce tour (${currentRoundNum}/${MAX_PREPA_ROUNDS}) :
 7. ${steeringDirective}
 8. ${isLastRound ? 'Laisse "nextHookGoal" vide ("").' : 'Décris en 1 phrase en français ("nextHookGoal") l\'idée précise ou l\'angle vers lequel ta "followUpQuestion" essaie secrètement d\'amener l\'étudiant (cela lui sera révélé seulement APRÈS sa réponse).'}
 9. Propose 1 ou 2 expressions idiomatiques de concours utiles ("suggestedVocab": [{"en":"...","fr":"..."}]).
-10. Note ce tour sur 100 ("scoreRound").
+10. Note ce tour sur 100 ("scoreRound") avec un VRAI BARÈME EXIGEANT DE KHÔLLE CPGE (50 % Langue / 50 % Idées & Réactivité) — ne sois PAS complaisant :
+    - Langue (sur 50) : <=1 faute bénigne -> 42-50 ; 2 fautes -> 32-41 ; 3-4 fautes (dont accords, temps, prépositions, calques) -> 18-29 ; >=5 fautes ou syntaxe très hachée -> 5-17. (Avoir de bonnes idées NE COMPENSE PAS une grammaire défaillante.)
+    - Idées, nuance & réactivité à la relance (sur 50) : réponse précise + exemple concret UK/US + perche saisie -> 40-50 ; idées justes mais vagues -> 25-38 ; superficiel ou à côté -> 0-24.
+    Additionne les deux pour obtenir "scoreRound".
 
 Réponds STRICTEMENT en JSON valide.`;
 
@@ -5052,8 +5055,8 @@ ${prevHookGoal ? `Perche cachée attendue par le colleur sur cette question : "$
 
 Retourne l'objet JSON :
 {
-  "scoreRound": 78,
-  "verdictRound": "court commentaire de performance",
+  "scoreRound": 52,
+  "verdictRound": "court commentaire réaliste de niveau prépa",
   "goodPoints": ["point fort 1", "expression 2"],
   "badWords": [{"wrong":"...","right":"...","why":"..."}],
   "examinerReaction": "Réaction naturelle du colleur sur la réponse...",
@@ -5068,7 +5071,7 @@ Retourne l'objet JSON :
         if (seq !== state.correctionSeq) return;
         loadEl.classList.add("hidden");
 
-        const scoreRound = typeof data.scoreRound === "number" ? Math.max(0, Math.min(100, Math.round(data.scoreRound))) : 75;
+        const scoreRound = typeof data.scoreRound === "number" ? Math.max(0, Math.min(100, Math.round(data.scoreRound))) : 55;
 
         session.rounds.push({
           roundNum: currentRoundNum,
@@ -5150,25 +5153,41 @@ Retourne l'objet JSON :
       loadTxt.textContent = "L'examinateur rédige votre bulletin officiel de khôlle...";
 
       try {
-        const fullTranscript = session.rounds.map((r, i) => `
+        const totalErrsAll = session.rounds.reduce((s, r) => s + (Array.isArray(r.badWords) ? r.badWords.length : 0), 0);
+        const avgRoundPct = session.rounds.length
+          ? Math.round(session.rounds.reduce((s, r) => s + (r.scoreRound || 0), 0) / session.rounds.length)
+          : 0;
+        const fullTranscript = session.rounds.map((r, i) => {
+          const errs = Array.isArray(r.badWords) ? r.badWords : [];
+          const errsTxt = errs.length ? errs.slice(0, 6).map(e => `"${e.wrong}" -> "${e.right}"`).join(" ; ") : "aucune";
+          return `
 [Tour ${i + 1}]
 Question : "${r.question}"
 Réponse de l'étudiant : "${r.studentText}"
-Score du tour : ${r.scoreRound}/100
-`).join("\n");
+Score du tour : ${r.scoreRound}/100 | Fautes relevées (${errs.length}) : ${errsTxt}
+`;
+        }).join("\n");
 
         const mainSubject = session.rounds[0]?.question || session.item?.questionEn || session.topic;
-        const sysPrompt = "Tu es un colleur angliciste (professeur de lettres/langues en CPGE scientifique). Tu rédiges un bilan officiel de khôlle de concours complet et constructif. Tu réponds toujours en JSON valide.";
+        const sysPrompt = "Tu es un colleur angliciste exigeant de CPGE scientifique (PC* / MP* : Mines-Ponts, Centrale). Tu notes sur un VRAI barème de prépa (50 % Langue, 50 % Idées/Réactivité) sans complaisance, tout en restant bienveillant et constructif dans les conseils. Tu réponds toujours en JSON valide.";
         const userPrompt = `Voici la totalité de la khôlle d'anglais :
 Thème : ${session.topic}
 Sujet principal de départ : "${mainSubject}"
+Bilan quantitatif sur les ${session.rounds.length} tours : Moyenne brute des tours = ${avgRoundPct}% | Total fautes de langue relevées = ${totalErrsAll}.
 ${fullTranscript}
 
+BARÈME RÉALISTE STRICT DE KHÔLLE CPGE (50 % Langue / 50 % Argumentation) — RESPECTE CES PALIERS :
+- 4 à 8,5/20 : idées compréhensibles ou intéressantes, MAIS >= 12 fautes de langue au total (ou fautes lourdes répétées de grammaire A2/B1, calques FR, phrases cassées). Un vrai colleur ne met pas la moyenne si la grammaire reste très fragile.
+- 9 à 11,5/20 : bons arguments et réactivité correcte, mais encore 7 à 11 fautes nettes sur les 4 tours (manque de rigueur syntaxique / lexicale).
+- 12 à 13,5/20 : prestation sérieuse de concours, arguments construits avec exemples concrets (UK/US), langue globalement propre (max 4 à 6 fautes mineures).
+- 14 à 16,5/20 : très bon niveau admissible, anglais fluide, idiomatique et nuancé (<= 3 légères maladresses sur toute la khôlle).
+- 17 à 19/20 : niveau exceptionnel, bilingue et brillant.
+
 Rédige le bilan de concours :
-1. Note finale sur 20 ("grade20", entier ou demi-point entre 5 et 19).
-2. Verdict officiel ("verdict", ex: "Prestation solide, niveau admissible Mines-Ponts").
-3. Bilan sur la qualité de la langue ("languageReport" : grammaire, syntaxe, richesse lexicale).
-4. Bilan sur l'argumentation et la réactivité ("argumentReport" : esprit critique, structure, pertinence aux relances).
+1. Note finale sur 20 ("grade20", entier ou demi-point entre 4 et 19, cohérente avec le nombre réel de fautes ci-dessus !).
+2. Verdict officiel ("verdict", ex: "Idées solides mais trop de fautes grammaticales — consolide les bases pour viser 12+").
+3. Bilan sur la qualité de la langue ("languageReport" : honnête et précis sur grammaire, syntaxe, richesse lexicale).
+4. Bilan sur l'argumentation et la réactivité ("argumentReport" : esprit critique, structure, capacité à saisir les perches).
 5. "suggestedParts" : 3 GRANDES PARTIES d'un plan type de khôlle (ex: Partie I - Enjeux économiques/pratiques, Partie II - Dimension sociale/humaine/culturelle, Partie III - Limites, nuances & comparaison monde anglo-saxon UK/US) que l'étudiant AURAIT PU aborder sur le sujet de départ "${mainSubject}". Pour chaque partie, donne :
    - "partTitle" (titre clair en français de la partie/axe),
    - "arguments" (liste de 2 ou 3 arguments précis, nuances ou exemples concrets issus de l'actualité UK/US/internationale que l'étudiant n'a pas encore assez exploités, en français),
@@ -5177,7 +5196,7 @@ Rédige le bilan de concours :
 
 Réponds STRICTEMENT en JSON :
 {
-  "grade20": 15,
+  "grade20": 9.5,
   "verdict": "...",
   "languageReport": "...",
   "argumentReport": "...",
@@ -5197,7 +5216,7 @@ Réponds STRICTEMENT en JSON :
         session.status = "finished";
         session.finalReport = data;
 
-        const grade = typeof data.grade20 === "number" ? data.grade20 : 14;
+        const grade = typeof data.grade20 === "number" ? Math.max(4, Math.min(19.5, data.grade20)) : 10;
         $("prepa-final-grade").textContent = `${grade}/20`;
         $("prepa-final-grade").className = `score-circle ${grade >= 14 ? "bg-good" : grade >= 10 ? "bg-mid" : "bg-low"}`;
         $("prepa-final-verdict").textContent = data.verdict || "Khôlle terminée avec succès.";
