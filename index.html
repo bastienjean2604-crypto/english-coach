@@ -705,7 +705,7 @@
       flex-shrink: 0;
     }
 
-    .bg-good { background: var(--emerald); }
+    .bg-good, .bg-high { background: var(--emerald); }
     .bg-mid { background: var(--primary); }
     .bg-warn { background: var(--amber); }
     .bg-low { background: var(--rose); }
@@ -2496,7 +2496,7 @@
               <p id="prepa-final-verdict" style="font-size:13px;color:#64748b;margin:4px 0 0 0;"></p>
             </div>
             <div style="text-align:center;">
-              <div id="prepa-final-grade" class="score-circle bg-high" style="font-size:20px;width:68px;height:68px;">--/20</div>
+              <div id="prepa-final-grade" class="score-circle bg-good" style="font-size:20px;width:68px;height:68px;">--/20</div>
               <span style="font-size:10px;font-weight:700;color:#64748b;">NOTE CONCOURS</span>
             </div>
           </div>
@@ -5199,7 +5199,7 @@ Réponds STRICTEMENT en JSON :
 
         const grade = typeof data.grade20 === "number" ? data.grade20 : 14;
         $("prepa-final-grade").textContent = `${grade}/20`;
-        $("prepa-final-grade").className = `score-circle ${grade >= 14 ? "bg-high" : grade >= 10 ? "bg-mid" : "bg-low"}`;
+        $("prepa-final-grade").className = `score-circle ${grade >= 14 ? "bg-good" : grade >= 10 ? "bg-mid" : "bg-low"}`;
         $("prepa-final-verdict").textContent = data.verdict || "Khôlle terminée avec succès.";
         $("prepa-final-lang").textContent = data.languageReport || "Bon niveau d'expression générale.";
         $("prepa-final-arg").textContent = data.argumentReport || "Réflexion structurée et réactive aux questions.";
